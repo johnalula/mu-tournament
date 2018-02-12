@@ -26,9 +26,11 @@ test:
 dev:
   mailer:
     param:
-      delivery_strategy: none
+      delivery_strategy: realtime
 
 all:
+  mailer:
+    class: DynamicConfigMailer
   routing:
     class: sfPatternRouting
     param:

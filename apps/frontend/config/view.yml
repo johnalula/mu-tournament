@@ -1,6 +1,5 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/13-View
-
 default:
   http_metas:
     content-type: text/html
@@ -11,10 +10,12 @@ default:
     #keywords:     symfony, project
     #language:     en
     #robots:       index, follow
-
-  stylesheets:    [main.css]
-
-  javascripts:    []
-
+    #bootstrap/css/bootstrap.css,jquery-ui-1.8.21.custom.css,jquery.ui.accordion.css, , bootstrap.css, bootstrap-responsive.css, doc.css
+  stylesheets:    [template.css, position.css, main.css, jquery-ui.css, bootstrap.css, bootstrap.min.css, bootstrap-theme.css, bootstrap-theme.min.css, ui-style.css, ui-style-default.css, default.css, ie10-viewport-bug-workaround.css, print: { media: print } ]
+ 
+  javascripts:    [jquery.min.js, jquery-ui.js, bootstrap.min.js, ajax.js, functions.js, holder.min.js, tooltip-viewport.js, customize.min.js, docs.min.js, npm.js, ie10-viewport-bug-workaround.js, ie8-responsive-file-warning.js, ie-emulation-modes-warning.js, raw-files.min.js ] 
+  
   has_layout:     true
   layout:         layout
+
+ 
