@@ -5,6 +5,6 @@ all:
   doctrine:
     class: sfDoctrineDatabase
     param:
-      dsn:      mysql:host=localhost;dbname=mu-TMS
+      dsn:      mysql:host=localhost;dbname=db_tournament_cms
       username: root
-      password: 
+      password: root
