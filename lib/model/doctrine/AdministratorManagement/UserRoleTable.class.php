@@ -12,8 +12,360 @@ class UserRoleTable extends PluginUserRoleTable
      *
      * @return object UserRoleTable
      */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('UserRole');
-    }
+	public static function getInstance()
+	{
+		return Doctrine_Core::getTable('UserRole');
+	}
+	//
+	public static function processNew ( $_orgID, $_orgTokenID, $_userRoleName, $_userRoleTypeID, $_applicableFlag, $_activeFlag, $_description, $_userID, $_userTokenID ) 
+	{ 
+		if(!$_orgID || !$_userRoleTypeID) { return false; }
+	
+			$_userRole = self::processCreate ( $_orgID, $_orgTokenID, $_userRoleName, $_userRoleTypeID, $_applicableFlag, $_activeFlag, $_description );
+			$orgTokenID = md5(sha1(trim($_orgTokenID)));
+			
+			$_modules = ModuleSettingTable::processActiveCandidateModules ( $_orgID, $orgTokenID, true, $_exclusion );
+			
+			foreach($_modules as $_module ) {
+				if(PermissionCore::makeDefaultAccessLevel ($_module->moduleTypeID, $_userRoleTypeID) != PermissionCore::$_NO_ACCESS ) {
+					$_flag = AccessLevelPermissionTable::processNew ( $_orgID, $_orgTokenID, $_userRole->id, $_userRoleTypeID, $_module ); 	
+				}
+			}
+			
+			/*$_actionID = SystemCore::$_CREATE; 
+			$_moduleID  = ModuleCore::$_ADMINISTRATION;  
+			$_actionObject  = 'User Role ID: '.$_userRole->id;  
+			$_actionDesc  = 'User Role - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_ADMINISTRATION).' ]';  
+		
+			$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);*/
+			
+		return $_userRole ? true:false;
+	}
+	//
+	public static function processAdd ( $_orgID, $_orgTokenID, $_userRoleID, $_userRoleTokenID, $_moduleID, $_moduleTokenID, $_accessLevelID, $_activeFlag, $_applicableFlag, $_description, $_userID, $_userTokenID ) 
+	{ 
+		//if(!trim($_orgID) || !trim($_userRoleID) || !trim($_moduleID)) { return false; }
+	
+			$_userRole = self::processObject ( $_orgID, md5(sha1($_orgTokenID)), $_userRoleID, $_userRoleTokenID);
+			$_module = ModuleSettingTable::processObject ( $_orgID, md5(sha1($_orgTokenID)), $_moduleID, $_moduleTokenID); 
+			
+			if($_userRole && $_module) {
+				$_accessLevel = AccessLevelPermissionTable::processCreate ( $_userRole->id, $_userRole->userRoleTypeID, $_module, $_accessLevelID, $_activeFlag, $_applicableFlag, $_description ); 	
+				$_accessLevelID = (($_userRole->userRoleTypeID != UserCore::$_SUPER_ADMINISTRATOR || $_userRole->userRoleTypeID != UserCore::$_ADMINISTRATOR) && ($_module->module_type_id == ModuleCore::$_ADMINISTRATION || $_module->module_type_id == ModuleCore::$_SYSTEM_SETTING )) ? PermissionCore::$_NO_ACCESS:trim($_accessLevelID);
+				$_flag = $_accessLevel->makeAccessLevel ($_accessLevelID);
+			}
+			
+			/*$_actionID = SystemCore::$_CREATE; 
+			$_moduleID  = ModuleCore::$_ADMINISTRATION;  
+			$_actionObject  = 'User Role Acess Level ID: '.$_accessLevel->id;  
+			$_actionDesc  = 'User Role Acess Level - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_ADMINISTRATION).' ]';  
+		
+			$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);*/
+			
+		return $_accessLevel ? true:false;
+	}
+	//
+	public static function processCreate ( $_orgID, $_orgTokenID, $_userRoleName, $_userRoleTypeID, $_applicableFlag, $_activeFlag, $_description )
+	{
+		//try {
+			
+			$_token = trim($_orgTokenID).trim($_userRoleName).trim($_description).rand('11111', '99999'); 
+			$_nw = new UserRole ();  
+			$_nw->token_id = md5(sha1($_token)); 
+			$_nw->org_id = trim($_orgID);
+			$_nw->org_token_id = md5(sha1(trim($_orgTokenID)));
+			$_nw->user_role_name = ucwords(trim($_userRoleName));
+			$_nw->user_role_type_id = trim($_userRoleTypeID);
+			$_nw->alias = strtoupper(trim(UserCore::processUserRoleIcon($_userRoleTypeID))); 
+			$_nw->applicable_flag = trim($_applicableFlag);  
+			$_nw->active_flag = trim($_activeFlag);  
+			$_nw->default_flag = ($_userRoleTypeID == UserCore::$_OPERATOR) ? true:false;  
+			$_nw->description = $_description ? trim(ucfirst($_userRoleName).' user role ('.ucfirst($_description).' )'):(ucfirst($_userRoleName).' user role');
+			$_nw->save();  
+				
+			return $_nw; 
+		//} catch ( Exception $e) {
+	     // return false; 
+	//	}
+	}
+	//
+	public static function processBatchUpdate ( $_orgID, $_orgTokenID, $_userRoleID, $_userRoleTokenID, $_userRoleAccessLevelIDs, $_userRoleAccessLevelTokenIDs, $_moduleAccessLevelValues, $_userID, $_userTokenID )
+	{
+		$_userRole = self::processObject ( $_orgID, md5(sha1($_orgTokenID)), $_userRoleID, $_userRoleTokenID );
+		
+		for($_i = 0; $_i < count($_userRoleAccessLevelIDs) ; $_i++) {
+			$_accessLevel = AccessLevelPermissionTable::makeObject ( $_userRoleAccessLevelIDs[$_i], $_userRoleAccessLevelTokenIDs[$_i] );  
+			$_accessLevelID = (($_userRole->userRoleTypeID == UserCore::$_SUPER_ADMINISTRATOR || $_userRole->userRoleTypeID == UserCore::$_ADMINISTRATOR)) ? trim($_moduleAccessLevelValues[$_i]):(($_accessLevel->moduleTypeID == ModuleCore::$_ADMINISTRATION || $_accessLevel->moduleTypeID == ModuleCore::$_SYSTEM_SETTING ) ? PermissionCore::$_NO_ACCESS:trim($_moduleAccessLevelValues[$_i])); 
+			$_accessLevel->makeUpdate ($_accessLevelID);  
+		} 
+		
+		/*$_actionID = SystemCore::$_UPDATE; 
+		$_moduleID  = ModuleCore::$_ADMINISTRATION;  
+		$_actionObject  = 'User Roles ';  
+		$_actionDesc  = 'User Roles - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_ADMINISTRATION).' ]';  
+		
+		$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);*/
+			
+		return true; 
+	}
+	//
+	public static function processBatchAction ( $_orgID, $_orgTokenID, $_userRoleID, $_userRoleTokenID, $_userRoleAccessLevelIDs, $_userRoleAccessLevelTokenIDs, $_systemModuleAccessLevelID, $_userID, $_userTokenID )
+	{
+		$_userRole = self::processObject ( $_orgID, md5(sha1($_orgTokenID)), $_userRoleID, $_userRoleTokenID );
+		
+		for($_i = 0; $_i < count($_userRoleAccessLevelIDs) ; $_i++) {
+			$_accessLevel = AccessLevelPermissionTable::makeObject ( $_userRoleAccessLevelIDs[$_i], $_userRoleAccessLevelTokenIDs[$_i] ); 
+			$_accessLevelID = (($_userRole->userRoleTypeID == UserCore::$_SUPER_ADMINISTRATOR || $_userRole->userRoleTypeID == UserCore::$_ADMINISTRATOR)) ? trim($_systemModuleAccessLevelID):(($_accessLevel->moduleTypeID == ModuleCore::$_ADMINISTRATION || $_accessLevel->moduleTypeID == ModuleCore::$_SYSTEM_SETTING ) ? PermissionCore::$_NO_ACCESS:trim($_systemModuleAccessLevelID)); 
+			$_accessLevel->makeUpdate ($_accessLevelID);  
+		} 
+			
+		return true; 
+	}
+	//
+	public static function proccessUpdate( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_moduleID, $_moduleTokenID, $_moduleTypeID, $_isApplicable, $_isAccessible, $_description, $_userID, $_userTokenID)
+	{
+		
+	}
+	
+	public static function processDelete()
+	{
+		
+	}
+	
+	public static function appendQueryFields ( ) 
+	{
+		$_queryFileds = "usrRole.id, usrRole.token_id as tokenID, usrRole.org_id as orgID, usrRole.org_token_id as orgTokenID, usrRole.user_role_type_id as userRoleTypeID, usrRole.user_role_name as userRoleName, usrRole.alias as userRoleAlias, usrRole.default_flag as defaultFlag, usrRole.applicable_flag as applicableFlag, usrRole.active_flag as activeFlag, usrRole.created_at as createdAt, usrRole.updated_at as updatedAt,
+		
+		(usrRole.applicable_flag=true) as applicableUserRole, (usrRole.active_flag=true) as activeUserRole,
+		
+		(EXISTS (SELECT usr.id FROM User usr WHERE usr.user_role_id = usrRole.id AND usr.status = ".UserCore::$_ACTIVE."  AND usr.trashed_flag IS NOT TRUE )) as hasActiveUser,
+		 
+		";		
+		return $_queryFileds;
+	}
+	//
+   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_applicableFlag=null, $_activeFlag=null, $_exclusion=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("UserRole usrRole") 
+			->innerJoin("usrRole.Organization org on usrRole.org_id = org.id ")   
+			->offset($_offset)
+			->limit($_limit) 
+			->orderBy("usrRole.user_role_type_id ASC")
+			->where("usrRole.trashed_flag IS NOT TRUE AND usrRole.id IS NOT NULL"); 
+			if(!is_null($_orgID)) 		$_qry = $_qry->addWhere("usrRole.org_id=? AND usrRole.org_token_id=? ", array($_orgID, $_orgTokenID)); 
+			if(!is_null($_applicableFlag))	$_qry = $_qry->addWhere("usrRole.applicable_flag = ?", $_applicableFlag); 
+			if(!is_null($_activeFlag))	$_qry = $_qry->addWhere("usrRole.active_flag = ?", $_activeFlag);  
+			if(!is_null($_exclusion)) 	 	$_qry = $_qry->andWhereNotIn("usrRole.user_role_id", $_exclusion ); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$_qry = $_qry->andWhere("usrRole.user_role_name LIKE ? OR usrRole.description LIKE ?", array($_keyword,$_keyword));
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}
+	//
+   public static function processAll ( $_orgID=null, $_orgTokenID=null, $_applicableFlag=null, $_activeFlag=null, $_exclusion=null,  $_keyword=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("UserRole usrRole") 
+			->innerJoin("usrRole.Organization org on usrRole.org_id = org.id ")   
+			->orderBy("usrRole.user_role_name ASC")
+			->where("usrRole.trashed_flag IS NOT TRUE AND usrRole.id IS NOT NULL"); 
+			if(!is_null($_orgID)) 		$_qry = $_qry->addWhere("usrRole.org_id=? AND usrRole.org_token_id=? ", array($_orgID, $_orgTokenID)); 
+			if(!is_null($_applicableFlag))	$_qry = $_qry->addWhere("usrRole.applicable_flag = ?", $_applicableFlag); 
+			if(!is_null($_activeFlag))	$_qry = $_qry->addWhere("usrRole.active_flag = ?", $_activeFlag);  
+			if(!is_null($_exclusion)) 	 	$_qry = $_qry->andWhereNotIn("usrRole.user_role_id", $_exclusion ); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$_qry = $_qry->andWhere("usrRole.user_role_name LIKE ? OR usrRole.description LIKE ?", array($_keyword,$_keyword));
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}  
+	//
+	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_userRoleID, $_userRoleTokenID ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("UserRole usrRole") 
+			->innerJoin("usrRole.Organization org on usrRole.org_id = org.id ")    
+			->where("usrRole.id = ? AND usrRole.token_id = ? ", array( $_userRoleID, $_userRoleTokenID));
+			if(!is_null($_orgID)) $_qry = $_qry->addWhere("usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_orgID, $_orgTokenID));
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( !$_qry ? null:$_qry ); 
+	}
+	//
+	public static function makeObject ( $_userRoleID, $_userRoleTokenID=null  ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendLoginQueryFields())
+			->from("UserRole usrRole") 
+			->innerJoin("usrRole.Organization org on usrRole.org_id = org.id ")   
+			->where("usrRole.id = ?", $_userRoleID );
+			if(!is_null($_userRoleTokenID)) $_qry = $_qry->andWhere("usrRole.token_id = ? ", $_userRoleTokenID);
+			
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( ! $_qry ? null : $_qry ); 
+	} 
+	//
+	public static function processModule ( $_orgID, $_orgTokenID, $_moduleID ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("UserRole usrRole") 
+			->innerJoin("usrRole.Organization org on usrRole.org_id = org.id ")   
+			->where("usrRole.user_role_type_id=? AND usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_moduleID, $_orgID, $_orgTokenID))
+			->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( !$_qry ? null:$_qry ); 
+	}
+	//
+	public static function processDefaultSelection ( $_orgID, $_orgTokenID, $_parentID=null, $_parentTokenID=null, $_default=true ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("UserRole usrRole") 
+			->innerJoin("usrRole.Organization org on usrRole.org_id = org.id ")   
+			->innerJoin("usrRole.Party prt on usrRole.parent_id = prt.id ")
+			->where("usrRole.default_flag=? AND usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_default, $_orgID, $_orgTokenID));
+			if(!is_null($_parentID)) 		$_qry = $_qry->addWhere("usrRole.parent_id=? AND usrRole.parent_token_id=? ", array($_parentID, $_parentTokenID)); 
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	} 
+	//
+   public static function processCandidates ( $_orgID=null, $_orgTokenID=null, $_userRoleTypeID=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("UserRole usrRole") 
+				->innerJoin("usrRole.Organization org on usrRole.org_id = org.id ")   
+				->orderBy("usrRole.user_role_type_id ASC")
+				->where("usrRole.trashed_flag IS NOT TRUE AND usrRole.id IS NOT NULL"); 
+				if(!is_null($_orgID)) 		$_qry = $_qry->addWhere("usrRole.org_id=? AND usrRole.org_token_id=? ", array($_orgID, $_orgTokenID)); 
+				if(!is_null($_userRoleTypeID))	$_qry = $_qry->addWhere("usrRole.user_role_type_id = ?", $_userRoleTypeID);  
+			
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}  
+	//
+	public static function processExistence( $_orgID, $_orgTokenID, $_userRoleID, $_userRoleAlias ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("UserRole usrRole") 
+			->innerJoin("usrRole.Organization org on usrRole.org_id = org.id ")   
+			->innerJoin("usrRole.Party prt on usrRole.parent_id = prt.id ")
+			->where("usrRole.user_role_type_id=? AND usrRole.alias=? AND usrRole.org_id=? AND usrRole.org_token_id=? ", array($_userRoleID, $_userRoleAlias,$_orgID,$_orgTokenID)); 
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( !$_qry ? null:$_qry ); 
+	}
+	/*********************************************************
+	********** Task Approval and Completion process *****************
+	*********************************************************/
+	
+	//
+	public static function processCandidateActiveModules ( $_orgID, $_orgTokenID, $_userRoleID, $_applicableFlag=null, $_activeFlag=null, $_offset=0, $_limit=10 ) 
+   {
+		$_exclusion = array();
+		$_userRoleAccessLevels = AccessLevelPermissionTable::processCandidateAccesslevels ( $_orgID, $_orgTokenID, $_userRoleID, $_activeFlag, $_status );
+		
+		foreach ( $_userRoleAccessLevels as $_key => $_accessLevel ) {
+			$_exclusion[] = $_accessLevel->moduleID;
+		}
+		
+		return ModuleSettingTable::processSelection ( $_orgID, $_orgTokenID, $_applicableFlag, $_activeFlag, $_exclusion, $_keyword, $_offset, $_limit);
+	}
+	//
+	public static function processCountCandidateActiveModules ( $_orgID, $_orgTokenID, $_userRoleID, $_applicableFlag=null, $_activeFlag=null ) 
+   {
+		$_exclusion = array();
+		$_userRoleAccessLevels = AccessLevelPermissionTable::processCandidateAccesslevels ( $_orgID, $_orgTokenID, $_userRoleID, $_activeFlag, $_status );
+		
+		foreach ( $_userRoleAccessLevels as $_key => $_accessLevel ) {
+			$_exclusion[] = $_accessLevel->moduleID;
+		}
+		return ModuleSettingTable::processAll ( $_orgID, $_orgTokenID, $_defaultFlag, $_applicableFlag, $_activeFlag, $_exclusion, $_keyword );
+	}
+	//
+	public static function processCandidateAccessLevels ( $_orgID=null, $_orgTokenID=null, $_userRoleID=null, $_moduleID=null, $_moduleTypeID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   { 
+		return AccessLevelPermissionTable::processSelection ( $_orgID, $_orgTokenID, $_userRoleID, $_moduleID, $_moduleTypeID, $_keyword, $_offset, $_limit ) ;
+	}
+	public static function processCountCandidateAccessLevels ( $_orgID=null, $_orgTokenID=null, $_userRoleID=null, $_moduleID=null, $_moduleTypeID=null, $_keyword=null) 
+   { 
+		return AccessLevelPermissionTable::processAll ( $_orgID, $_orgTokenID, $_userRoleID, $_moduleID, $_moduleTypeID, $_keyword ) ;
+	} 
+	//
+	public static function processCandidate ( $_orgID, $_orgTokenID) 
+   { 
+		return self::processExclusion ( $_orgID, $_orgTokenID);
+	}
+	//
+	public static function processExclusion ( $_orgID, $_orgTokenID) 
+   {
+		$_exclusion = array();
+		foreach(UserCore::processUserRoles() as $_key => $_userRole) {
+			//$_userRoleAlias = UserCore::processUserRoleIcon ( $_key );
+			//$_flag = self::processExistence( $_orgID, $_orgTokenID, $_key, $_userRoleAlias );
+			//if($_key != UserCore::$_SUPER_ADMINISTRATOR ) {
+				$_exclusion [] = $_key;
+			//}
+		}
+		return $_exclusion;
+	}
+	//
+   
+   public static function processDefaultAccesslevel ( $_orgID, $_orgTokenID, $_parentID=null, $_parentTokenID=null, $_moduleTypeID, $_userRoleID) 
+   {
+		return ModuleAccessLevelTable::processDefaultAccesslevel ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_moduleTypeID, $_userRoleID); 
+	}
+	//
+	public static function proccessModuleAccessLevelBatchAction( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_moduleID, $_moduleTokenID, $_arrayValues, $_arrIDValues, $_arrTokenIDValues, $_userID, $_userTokenID)
+	{
+		return ModuleAccessLevelTable::proccessModuleAccessLevelBatchAction ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_moduleID, $_moduleTokenID, $_arrayValues, $_arrIDValues, $_arrTokenIDValues, $_userID, $_userTokenID); 
+	}
+	//
+	public static function proccessBatchAction( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID,  $_moduleIDs, $_moduleTokenIDs, $_batchAction)
+	{
+		for($i = 0; $i < count($_moduleIDs) ; $i++) {
+			$_moduleID = $_moduleIDs[$i];
+			$_tokenID = $_moduleTokenIDs[$i];
+			$_obj = self::processObject ( $_id, $_token_id, $_orgID, $_orgTokenID );  
+			$_obj->processAccessLevelSetting($_batchAction);  
+			$_modules = AccessPermissionTable::processCandidateModule($_orgID, $_orgTokenID, $_moduleID, $_tokenID);
+			foreach($_modules as $_module){
+				$_module->processAccessLevelSetting($_batchAction); 	
+			} 
+		}
+		return true; 
+	}
+	//
+	public static function proccessApplicable( $_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID)
+	{
+		$_obj = self::processObject ( $_moduleID, $_moduleTokenID, $_orgID, $_orgTokenID );  
+		$_obj->makeApplicable();    
+		$_modules = AccessPermissionTable::processCandidateModule($_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID);
+		foreach($_modules as $_module){
+			$_module->makeApplicable(); 	
+		}
+		return true; 
+	}
+	public static function proccessAccessible( $_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID)
+	{
+		$_obj = self::processObject ( $_moduleID, $_moduleTokenID, $_orgID, $_orgTokenID );  
+		$_obj->makeAccessible();    
+		$_modules = AccessPermissionTable::processCandidateModule($_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID);
+		foreach($_modules as $_module){
+			$_module->makeAccessible(); 	
+		}
+		return true; 
+	}
 }

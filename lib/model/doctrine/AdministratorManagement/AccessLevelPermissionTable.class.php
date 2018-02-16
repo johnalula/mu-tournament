@@ -12,8 +12,257 @@ class AccessLevelPermissionTable extends PluginAccessLevelPermissionTable
      *
      * @return object AccessLevelPermissionTable
      */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('AccessLevelPermission');
-    }
+	public static function getInstance()
+	{
+		return Doctrine_Core::getTable('AccessLevelPermission');
+	}
+	//
+	public static function processNew ( $_orgID, $_orgTokenID, $_userRoleID, $_userRoleTypeID, $_module )
+	{
+			//$_accessLevelID = ($_userRoleTypeID == UserCore::$_ANONYMOUS) ? PermissionCore::$_NO_ACCESS:trim($_accessLevelID);
+			$_accessLevel = self::processCreate ( $_userRoleID, $_userRoleTypeID, $_module, $_accessLevelID, $_activeFlag, $_applicableFlag, $_description );
+			
+			$_flag = $_accessLevel->makeDefaultAccessLevel();
+			
+		return ($_accessLevel&&$_flag) ? true:false;; 
+	}
+	//
+	public static function processCreate ( $_userRoleID, $_userRoleTypeID, $_module, $_accessLevelID, $_activeFlag, $_applicableFlag, $_description )
+	{
+			$_token = trim($_userRoleID).trim($_module).trim($_userRoleTypeID).rand('11111', '99999');
+			$_nw = new AccessLevelPermission ();  
+			$_nw->token_id = md5(sha1($_token)); 
+			$_nw->user_role_id = trim($_userRoleID);
+			$_nw->module_setting_id = trim($_module->id);
+			$_nw->access_level = $_accessLevelID ? ((($_userRoleTypeID != UserCore::$_SUPER_ADMINISTRATOR || $_userRoleTypeID != UserCore::$_ADMINISTRATOR) && ($_module->module_type_id == ModuleCore::$_ADMINISTRATION || $_module->module_type_id == ModuleCore::$_SYSTEM_SETTING )) ? PermissionCore::$_NO_ACCESS:trim($_accessLevelID)):($_module->active_flag ? (($_module->defaultAccessLevelTypeID && ($_userRoleTypeID == UserCore::$_SUPER_ADMINISTRATOR || $_userRoleTypeID == UserCore::$_ADMINISTRATOR)) ? PermissionCore::makeDefaultAccessLevel ($_module->module_type_id, $_userRoleTypeID):(($_userRoleTypeID == UserCore::$_ANONYMOUS) ? PermissionCore::$_VIEW:$_module->defaultAccessLevelTypeID)):PermissionCore::$_NO_ACCESS);
+			$_nw->description = $_description ? (ucfirst(trim(UserCore::processUserRoleValue($_userRoleTypeID))).' user role access control ('.ucfirst($_description).' )'):(ucfirst(trim(UserCore::processUserRoleValue($_userRoleTypeID))).' user role access control');	 
+			$_nw->save();  
+			
+		return $_nw; 
+	}
+	//
+	public static function processActivation ( $_accessLevelID, $_accessLevelTokenID, $_userID, $_userTokenID )
+	{
+		$_accessLevel = AccessLevelPermissionTable::makeObject ( $_accessLevelID, $_accessLevelTokenID );
+			
+		return $_accessLevel->makeActivation (); 
+	}
+	//
+	public static function processApplicable ( $_accessLevelID, $_accessLevelTokenID, $_userID, $_userTokenID )
+	{
+		$_accessLevel = AccessLevelPermissionTable::makeObject ( $_accessLevelID, $_accessLevelTokenID );
+			
+		return $_accessLevel->makeApplicable (); 
+	}
+	//
+	public static function processDefaultPermission ( $_orgID, $_orgTokenID, $_user )
+	{  
+		$_modules = ModuleSettingTable::processAll ( $_orgID, $_orgTokenID, $_isDefault,  true,  $_isAccessable, $_exclusion,  $_keyword);
+		
+		foreach($_modules as $key => $_module ) {
+			$_token = trim($_user->token_id).trim($_user->userName).trim($_user->org_token_id).rand('11111', '99999');
+			$_nw = new AccessLevelPermission ();  
+			$_nw->org_id = $_user->orgID;
+			$_nw->org_token_id = $_user->orgTokenID;
+			$_nw->parent_id = trim($_user->parentID);
+			$_nw->parent_token_id = trim($_user->parentTokenID);
+			$_nw->token_id = md5(sha1($_token));
+			$_nw->permission_level = $_module->isAccessible ? self::makeDefaultModuleAccessLevel($_module, $_user->userRole):PermissionCore::$_NO_ACCESS;
+			$_nw->group_id = $_user->groupID; 
+			$_nw->user_id = $_user->id;
+			$_nw->user_token_id = $_user->token_id; 
+			$_nw->module_setting_id = $_module->id;
+			$_nw->module_token_id = $_module->tokenID;
+			$_nw->access_level = $_module->isAccessible ? self::makeDefaultModuleAccessLevel($_module, $_user->userRole):PermissionCore::$_NO_ACCESS;
+			$_nw->enabled_flag = $_module->isAccessible;		 
+			$_nw->applicable_flag = $_module->isApplicable;		 
+			$_nw->access_description = $_user->userName;		 
+			$_nw->save();  
+			
+			$_nw->processAccessLevel();
+		}
+		return true; 
+	}
+	
+	public static function makeDefaultModuleAccessLevel($_module, $_userRole) 
+	{
+		$_accessLevel = ModuleAccessLevelTable::processModuleUserRoleAccess( $_module->orgID, $_module->orgTokenID, $_module->id, $_module->tokenID, $_userRole);
+		
+		if($_module->hasAccessLevel){
+			return $_accessLevel->accessLevel;
+		} 
+		return PermissionCore::makeDefaultAccessLevel ($_module->moduleTypeID, $_userRole); 
+	}
+	
+   public static function processCreateSuperAdminPermission($_groupID, $_tokenID )
+	{
+		$modules = PermissionTable::$ALL_MODULES;			
+		$length = count($modules);
+		foreach($modules as $key => $module ):		
+			$_nw = new Permission ();  
+			$_nw->token_id = $_tokenID;
+			$_nw->group_id = $_groupID;
+			$_nw->user_id = null;
+			$_nw->module_setting_id = $key;
+			$_nw->create_action = true;
+			$_nw->edit_action = true;
+			$_nw->delete_action = true;
+			$_nw->view_action = true;		 
+			$_nw->save(); 
+		endforeach;
+		
+		return true; 
+	}
+   
+   public static function processUpdate ( $_id, $token_id, $group_id, $user_id, $module_setting_id, $create_action, $delete_action, $edit_action, $view_action )
+	{
+		$pass = trim($password);
+		$q = Doctrine_Query::create( )
+			->update('Permission per') 
+			->set('per.user_id', '?', $p_id) 
+			->set('per.group_id', '?', trim($username)) 
+			->set('per.module_setting_id', '?', md5($pass)) 
+			->set('per.create_action', '?', $create_action)
+			->set('per.edit_action', '?', $edit_action)
+			->set('per.delete_action', '?', $delete_action)
+			->set('per.view_action', '?', $view_action)
+			->where('per.id = ? AND per.token_id = ?', array($_id, $token_id))
+			->execute();	
+					
+		return ( $q > 0 );   
+
+	} 
+	public static function appendQueryFields ( ) 
+	{		
+		$queryFileds = "acclvl.*, acclvl.access_level as accessLevel, acclvl.module_setting_id as moduleID, acclvl.can_view as canRead, acclvl.can_add as canCreate, acclvl.can_edit as canUpdate, acclvl.can_delete as canDelete, acclvl.can_approve as canApprove, modstt.applicable_flag as applicableFlag, modstt.active_flag as activeFlag, 
+		usrRole.user_role_name as userRoleName, usrRole.user_role_type_id as userRoleTypeID, 
+		modstt.module_name as moduleName, modstt.module_type_id as moduleTypeID, modstt.default_flag as defaultFlag, modstt.applicable_flag as applicableFlag, modstt.active_flag as activeFlag,
+		";
+		
+		return $queryFileds;
+	} 
+	//
+   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_userRoleID=null, $_moduleID=null, $_moduleTypeID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("AccessLevelPermission acclvl")       
+			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")     
+			->offset($_offset)
+			->limit($_limit) 
+			->orderBy("modstt.module_type_id ASC")
+			->where("acclvl.id IS NOT NULL");
+			if(!is_null($_orgID)) $_qry=$_qry->addWhere("usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_orgID, $_orgTokenID));   
+			if(!is_null($_userRoleID)) $_qry=$_qry->addWhere("acclvl.user_role_id = ? ", $_userRoleID );   
+			if(!is_null($_moduleID)) $_qry=$_qry->addWhere("acclvl.module_setting_id = ? ", $_moduleID );   
+			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modstt.module_type_id = ? ", $_moduleTypeID);
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count ( $_qry ) <= 0 ? null : $_qry ); 
+	}
+   public static function processAll ( $_orgID=null, $_orgTokenID=null, $_userID=null, $_userTokenID=null, $_moduleID=null, $_moduleTokenID=null, $_moduleTypeID=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("AccessLevelPermission acclvl")       
+			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")   
+			->orderBy("acclvl.id DESC")
+			->where("acclvl.trashed_flag IS NOT TRUE");
+			if(!is_null($_orgID)) $_qry=$_qry->addWhere("usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_orgID, $_orgTokenID));   
+			if(!is_null($_userID)) $_qry=$_qry->addWhere("acclvl.user_id=? AND acclvl.user_token_id=? ", array($_userID, $_userTokenID));   
+			if(!is_null($_moduleID)) $_qry=$_qry->addWhere("acclvl.module_setting_id=? AND acclvl.module_token_id=? ", array($_moduleID, $_moduleTokenID));   
+			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modstt.module_type_id = ? ", $_moduleTypeID);
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count ( $_qry ) <= 0 ? null : $_qry ); 
+	}
+   public static function processObject ($_orgID, $_orgTokenID, $_accessLevelID, $_accessLevelTokenID  ) 
+   {
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("AccessLevelPermission acclvl")       
+			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")  
+			->where("acclvl.id=? AND acclvl.token_id=? AND usrRole.org_id = ? AND usrRole.org_token_id = ?", array($_accessLevelID, $_accessLevelTokenID, $_orgID, $_orgTokenID))
+			->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+		return ( ! $q ? null : $q ); 
+		
+	} 
+   public static function makeObject ( $_accessLevelID, $_accessLevelTokenID=null  ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("AccessLevelPermission acclvl")       
+			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")   
+			->where("acclvl.id = ?", $_accessLevelID );
+			if(!is_null($_accessLevelTokenID)) $_qry = $_qry->andWhere("acclvl.token_id = ? ", $_accessLevelTokenID);
+			
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( ! $_qry ? null : $_qry ); 
+	} 
+	
+	public static function processUserRoleModuleAccess ( $_orgID, $_orgTokenID, $_userRoleID, $_userRoleTokenID, $_moduleID) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("AccessLevelPermission acclvl")      
+			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")   
+			->where("acclvl.id IS NOT NULL ");
+			if(!is_null($_orgID)) $_qry=$_qry->addWhere("usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_orgID, $_orgTokenID));   
+			//if(!is_null($_userRoleID)) $_qry=$_qry->addWhere("acclvl.user_role_id=? AND acclvl.user_role_token_id=? ", array($_userRoleID, $_userRoleTokenID));   
+			if(!is_null($_userRoleID)) $_qry=$_qry->addWhere("usrRole.user_role_type_id = ? ", $_userRoleID);   
+			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modstt.module_type_id = ? ", $_moduleID);
+				
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( ! $_qry ? null : $_qry ); 
+	}
+	public static function processCandidateUserRoleAccessLevel ( $_userRoleID, $_moduleID ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("AccessLevelPermission acclvl")       
+				->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+				->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")     
+				->where("acclvl.id IS NOT NULL"); 
+				if(!is_null($_userRoleID)) $_qry = $_qry->addWhere("acclvl.user_role_id = ? ", $_userRoleID);   
+				if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modstt.module_type_id = ? ", $_moduleID);
+				
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( ! $_qry ? null : $_qry ); 
+		
+	}
+	public static function processCandidateModule($_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID) 
+   {
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("AccessLevelPermission acclvl")   
+			->where("acclvl.module_setting_id=? AND acclvl.module_token_id=? AND acclvl.org_id = ? AND acclvl.org_token_id = ?", array($_moduleID, $_moduleTokenID, $_orgID, $_orgTokenID))
+			->execute (array(), Doctrine_Core::HYDRATE_RECORD);
+		return ( ! $q ? null : $q ); 
+	}
+	//
+	public static function processCandidateAccesslevels ( $_orgID=null, $_orgTokenID=null, $_userRoleID=null, $_activeFlag=null, $_status=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("AccessLevelPermission acclvl")       
+			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")  
+			->orderBy("modstt.module_type_id ASC")
+			->where("acclvl.id IS NOT NULL");
+			if(!is_null($_orgID)) $_qry=$_qry->addWhere("usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_orgID, $_orgTokenID));   
+			if(!is_null($_userRoleID)) $_qry=$_qry->addWhere("acclvl.user_role_id = ? ", $_userRoleID);     
+			if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("acclvl.active_flag = ? ", $_activeFlag);
+			if(!is_null($_status)) $_qry = $_qry->andWhere("acclvl.status = ? ", $_status);
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count ( $_qry ) <= 0 ? null : $_qry ); 
+	}
 }

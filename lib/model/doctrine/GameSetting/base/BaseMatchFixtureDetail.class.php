@@ -27,7 +27,7 @@ abstract class BaseMatchFixtureDetail extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_match_fixture_detail');
+        $this->setTableName('mutms_tbl_match_fixture_detail');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

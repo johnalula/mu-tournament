@@ -31,7 +31,7 @@ abstract class BaseCodeGenerator extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_code_generator');
+        $this->setTableName('mutms_tbl_code_generator');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

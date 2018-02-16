@@ -28,7 +28,7 @@ abstract class BaseGroupMembers extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_group_members');
+        $this->setTableName('mutms_tbl_group_members');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

@@ -4,7 +4,7 @@ detect_relations: true
 
 Tournament:
   package: TournamentManagement
-  tableName: musms_tbl_tournament
+  tableName: mutms_tbl_tournament
   actAs:
     Timestampable: ~
   columns:
@@ -23,10 +23,24 @@ Tournament:
   relations:  
     Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationTournaments } 
 
+GameCategory:
+  package: TournamentManagement
+  tableName: mutms_tbl_game_category
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    org_id: { type: integer } 
+    category_type: { type: integer } 
+    active_flag: { type: boolean, default: true } 
+    description:  { type: string(255) }    
+  relations:  
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes }     
+ 
  
 Game:
   package: TournamentManagement
-  tableName: musms_tbl_games
+  tableName: mutms_tbl_games
   actAs:
     Timestampable: ~
   columns:
@@ -40,6 +54,7 @@ Game:
     start_date: { type: string(100) }
     effective_date: { type: string(100) }
     end_date: { type: string(100) }  
+    roundable_flag: { type: boolean } 
     active_flag: { type: boolean, default: true } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
@@ -50,7 +65,7 @@ Game:
    
 GroupType:
   package: TournamentManagement
-  tableName: musms_tbl_group_type
+  tableName: mutms_tbl_group_type
   actAs:
     Timestampable: ~
   columns:
@@ -64,7 +79,7 @@ GroupType:
  
 Group:
   package: TournamentManagement
-  tableName: musms_tbl_groups
+  tableName: mutms_tbl_groups
   actAs:
     Timestampable: ~
   columns:
@@ -84,7 +99,7 @@ Group:
  
 GroupMembers:
   package: GameSetting
-  tableName: musms_tbl_group_members
+  tableName: mutms_tbl_group_members
   actAs:
     Timestampable: ~
   columns:
@@ -108,7 +123,7 @@ GroupMembers:
 
 Team:
   package: TeamManagement
-  tableName: musms_tbl_teams
+  tableName: mutms_tbl_teams
   actAs:
     Timestampable: ~
   columns:
@@ -129,7 +144,7 @@ Team:
 
 TeamParticipants:
   package: TeamManagement
-  tableName: musms_tbl_team_participants
+  tableName: mutms_tbl_team_participants
   actAs:
     Timestampable: ~
   columns:
@@ -146,7 +161,7 @@ TeamParticipants:
  
 TeamDetail:
   package: TeamManagement
-  tableName: musms_tbl_team_detail
+  tableName: mutms_tbl_team_detail
   actAs:
     Timestampable: ~
   columns:
@@ -163,7 +178,7 @@ TeamDetail:
    
 MatchFixture:
   package: GameSetting
-  tableName: musms_tbl_match_fixture
+  tableName: mutms_tbl_match_fixture
   actAs:
     Timestampable: ~
   columns:
@@ -184,7 +199,7 @@ MatchFixture:
  
 MatchParticipants:
   package: GameSetting
-  tableName: musms_tbl_match_participants
+  tableName: mutms_tbl_match_participants
   actAs:
     Timestampable: ~
   columns:
@@ -204,7 +219,7 @@ MatchParticipants:
  
 MatchResult:
   package: GameSetting
-  tableName: musms_tbl_match_result
+  tableName: mutms_tbl_match_result
   actAs:
     Timestampable: ~
   columns:
@@ -224,7 +239,7 @@ MatchResult:
  
 MatchTable:
   package: GameSetting
-  tableName: musms_tbl_match_table
+  tableName: mutms_tbl_match_table
   actAs:
     Timestampable: ~
   columns:
@@ -254,7 +269,7 @@ MatchTable:
  
 MatchFixtureDetail:
   package: GameSetting
-  tableName: musms_tbl_match_fixture_detail
+  tableName: mutms_tbl_match_fixture_detail
   actAs:
     Timestampable: ~
   columns:
@@ -277,7 +292,7 @@ MatchFixtureDetail:
 
 Party:
   package: PartyManagement
-  tableName: musms_tbl_party
+  tableName: mutms_tbl_party
   actAs:
     Timestampable: ~
   columns:
@@ -334,7 +349,7 @@ Person:
 
 PartyRole:
   package: PartyManagement
-  tableName: musms_tbl_party_role
+  tableName: mutms_tbl_party_role
   actAs:
     Timestampable: ~
   columns:
@@ -354,7 +369,7 @@ PartyRole:
     
 PartyRelationship:
   package: PartyManagement
-  tableName: musms_tbl_party_relationship
+  tableName: mutms_tbl_party_relationship
   actAs:
     Timestampable: ~
   columns:
@@ -373,7 +388,7 @@ PartyRelationship:
 
 PartyContact:
   package: PartyManagement
-  tableName: musms_tbl_party_contact_address
+  tableName: mutms_tbl_party_contact_address
   actAs:
     Timestampable: ~
   columns:
@@ -424,7 +439,7 @@ CompanyContact:
    
 SystemConfig:
   package: GeneralSetting
-  tableName: musms_tbl_system_config
+  tableName: mutms_tbl_system_config
   actAs:
     Timestampable: ~
   columns:
@@ -445,7 +460,7 @@ SystemConfig:
     
 CodeGenerator:
   package: GeneralSetting
-  tableName: musms_tbl_code_generator
+  tableName: mutms_tbl_code_generator
   actAs:
     Timestampable: ~
   columns:
@@ -472,7 +487,7 @@ CodeGenerator:
 
 User:
   package: AdministratorManagement
-  tableName: musms_tbl_user
+  tableName: mutms_tbl_user
   actAs:
     Timestampable: ~
   columns:
@@ -509,7 +524,7 @@ User:
    
 UserGroup:
   package: AdministratorManagement
-  tableName: musms_tbl_user_group
+  tableName: mutms_tbl_user_group
   actAs:
     Timestampable: ~
   columns:
@@ -531,7 +546,7 @@ UserGroup:
  
 UserRole:
   package: AdministratorManagement
-  tableName: musms_tbl_user_role 
+  tableName: mutms_tbl_user_role 
   actAs:
     Timestampable: ~
   columns: 
@@ -551,7 +566,7 @@ UserRole:
 
 AccessLevelPermission:
   package: AdministratorManagement
-  tableName: musms_tbl_access_level_permission
+  tableName: mutms_tbl_access_level_permission
   actAs:
     Timestampable: ~
   columns: 
@@ -571,7 +586,7 @@ AccessLevelPermission:
  
 ModuleSetting:
   package: AdministratorManagement
-  tableName: musms_tbl_module_setting 
+  tableName: mutms_tbl_module_setting 
   actAs:
     Timestampable: ~
   columns: 
@@ -593,7 +608,7 @@ ModuleSetting:
     
 SystemLogFile:
   package: SystemLogFile
-  tableName: musms_tbl_system_log_file
+  tableName: mutms_tbl_system_log_file
   actAs:
     Timestampable: ~
   columns:

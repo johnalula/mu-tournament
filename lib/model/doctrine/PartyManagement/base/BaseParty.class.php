@@ -48,7 +48,7 @@ abstract class BaseParty extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_party');
+        $this->setTableName('mutms_tbl_party');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

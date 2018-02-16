@@ -16,4 +16,93 @@ class TournamentTable extends PluginTournamentTable
     {
         return Doctrine_Core::getTable('Tournament');
     }
+    
+    //
+	public static function processNew ( )
+	{
+		 
+	}
+	//
+	public static function processCreate ( )
+	{
+		
+	} 
+	public static function processSave ( )
+	{
+		
+	} 
+	public static function processEdit ( )
+	{
+		
+	} 
+	//
+	public static function processUpdate ( )
+	{
+		   
+	} 
+	//
+	public static function processDelete( ) 
+   {	
+		 
+	}
+	//
+	public static function appendPartialQueryFields ( ) 
+	{		
+		 
+	}
+	//
+	public static function appendCandidateQueryFields ( ) 
+	{		
+		 
+	}
+	public static function appendQueryFields ( ) 
+	{		
+		 
+	}
+	//
+   public static function processSelection ( ) 
+   {
+		
+	}
+	//
+   public static function processAll ( ) 
+   {
+		  
+	}
+	//
+   public static function processCandidates ( ) 
+   {
+		 
+	}
+	//
+   public static function processObject( ) 
+   {
+		
+	}  
+	//
+   public static function makeObject ( ) 
+   {
+		 
+	} 
+	 
+	
+	/*********************************************************
+	********** Candidate selection process *******************
+	**********************************************************/
+	
+	//
+	public static function processCandidatePersonSelection ( ) 
+   { 
+		
+	}  
+	
+	/*********************************************************
+	********** Candidate filtering process *******************
+	**********************************************************/
+	
+	public static function processRoleSelection ()
+	{
+		 
+	}
+	
 }

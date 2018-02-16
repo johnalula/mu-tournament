@@ -33,7 +33,7 @@ abstract class BaseSystemLogFile extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_system_log_file');
+        $this->setTableName('mutms_tbl_system_log_file');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

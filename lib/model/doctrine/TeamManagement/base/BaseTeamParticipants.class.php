@@ -24,7 +24,7 @@ abstract class BaseTeamParticipants extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_team_participants');
+        $this->setTableName('mutms_tbl_team_participants');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

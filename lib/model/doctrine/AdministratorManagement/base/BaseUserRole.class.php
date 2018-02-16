@@ -30,7 +30,7 @@ abstract class BaseUserRole extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_user_role');
+        $this->setTableName('mutms_tbl_user_role');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

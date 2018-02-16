@@ -31,7 +31,7 @@ abstract class BaseModuleSetting extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_module_setting');
+        $this->setTableName('mutms_tbl_module_setting');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

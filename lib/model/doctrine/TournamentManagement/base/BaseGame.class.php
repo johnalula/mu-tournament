@@ -15,6 +15,7 @@
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
+ * @property boolean $roundable_flag
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
@@ -31,7 +32,7 @@ abstract class BaseGame extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_games');
+        $this->setTableName('mutms_tbl_games');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
@@ -67,6 +68,9 @@ abstract class BaseGame extends sfDoctrineRecord
         $this->hasColumn('end_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('roundable_flag', 'boolean', null, array(
+             'type' => 'boolean',
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',

@@ -12,8 +12,335 @@ class ModuleSettingTable extends PluginModuleSettingTable
      *
      * @return object ModuleSettingTable
      */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('ModuleSetting');
-    }
+	public static function getInstance()
+	{
+		return Doctrine_Core::getTable('ModuleSetting');
+	}
+	//
+	public static function proccessNew( $_orgID, $_orgTokenID, $_moduleID, $_defaultAccessLevel, $_applicableFlag, $_activeFlag, $_description, $_userID, $_userTokenID )
+	{
+			$_systemModule = self::proccessCreate( $_orgID, $_orgTokenID, $_moduleID, $_defaultAccessLevel, $_applicableFlag, $_activeFlag, $_description );
+			
+		return $_systemModule ? true:false; 
+	}
+	public static function proccessCreate( $_orgID, $_orgTokenID, $_moduleID, $_defaultAccessLevel, $_applicableFlag, $_activeFlag, $_description )
+	{
+		//try {
+			
+			//if(!$_orgID || !$_moduleID) { return false; }
+			
+			$_token = trim($_orgTokenID).trim($_moduleTypeID).trim($_description).rand('11111', '99999'); 
+			$_nw = new ModuleSetting ();  
+			$_nw->token_id = md5(sha1($_token)); 
+			$_nw->org_id = trim($_orgID);
+			$_nw->org_token_id = md5(sha1(trim($_orgTokenID))); 
+			$_nw->module_name = trim(ModuleCore::processModuleValue($_moduleID));
+			$_nw->alias = trim(SystemCore::processAlias( ModuleCore::processModuleValue( $_moduleID ))); 
+			$_nw->module_type_id = trim($_moduleID);
+			$_nw->default_access_level_type_id = intval(trim($_defaultAccessLevel));
+			$_nw->applicable_flag = trim($_applicableFlag);  
+			$_nw->active_flag = $_applicableFlag ? trim($_activeFlag):'false';  
+			$_nw->default_flag = ($_moduleID == ModuleCore::$_DASHBOARD) ? true:false;  
+			$_nw->description = trim(SystemCore::processDescription( ModuleCore::processModuleValue( $_moduleID ),$_description ));
+			$_nw->save();   
+		
+			return $_nw; 
+		//} catch ( Exception $e) {
+	    //  return false; 
+		//}
+	}
+	//
+	
+	public static function proccessModuleAccessLevelBatchAction( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_moduleID, $_moduleTokenID, $_arrayValues, $_arrIDValues, $_arrTokenIDValues, $_userID, $_userTokenID)
+	{
+		return ModuleAccessLevelTable::proccessModuleAccessLevelBatchAction ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_moduleID, $_moduleTokenID, $_arrayValues, $_arrIDValues, $_arrTokenIDValues, $_userID, $_userTokenID); 
+	}
+	//
+	public static function proccessBatchAction( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID,  $_moduleIDs, $_moduleTokenIDs, $_batchAction)
+	{
+		for($i = 0; $i < count($_moduleIDs) ; $i++) {
+			$_moduleID = $_moduleIDs[$i];
+			$_tokenID = $_moduleTokenIDs[$i];
+			$_obj = self::processObject ( $_id, $_token_id, $_orgID, $_orgTokenID );  
+			$_obj->processAccessLevelSetting($_batchAction);  
+			$_modules = AccessPermissionTable::processCandidateModule($_orgID, $_orgTokenID, $_moduleID, $_tokenID);
+			foreach($_modules as $_module){
+				$_module->processAccessLevelSetting($_batchAction); 	
+			} 
+		}
+		return true; 
+	}
+	//
+	public static function proccessApplicable( $_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID)
+	{
+		$_obj = self::processObject ( $_moduleID, $_moduleTokenID, $_orgID, $_orgTokenID );  
+		$_obj->makeApplicable();    
+		$_modules = AccessPermissionTable::processCandidateModule($_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID);
+		foreach($_modules as $_module){
+			$_module->makeApplicable(); 	
+		}
+		return true; 
+	}
+	public static function proccessAccessible( $_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID)
+	{
+		$_obj = self::processObject ( $_moduleID, $_moduleTokenID, $_orgID, $_orgTokenID );  
+		$_obj->makeAccessible();    
+		$_modules = AccessPermissionTable::processCandidateModule($_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID);
+		foreach($_modules as $_module){
+			$_module->makeAccessible(); 	
+		}
+		return true; 
+	} 
+	public static function proccessUpdate( $_orgID, $_orgTokenID, $_moduleID, $_moduleTokenID, $_moduleDefaultAccessLevel, $_applicableFlag, $_activeFlag, $_description, $_userID, $_userTokenID )
+	{
+		$_qry = Doctrine_Query::create( )
+				->update('ModuleSetting modSett') 
+				->set('modSett.default_access_level_type_id', '?', $_moduleDefaultAccessLevel) 
+				->set('modSett.applicable_flag', '?', trim($_applicableFlag))  
+				->set('modSett.active_flag', '?', $_activeFlag) 
+				->set('modSett.description', '?', trim($_description))  
+				->where('modSett.id = ? AND modSett.token_id = ? AND modSett.org_id = ? AND modSett.org_token_id = ?', array($_moduleID, $_moduleTokenID, $_orgID, $_orgTokenID))
+				->execute();	
+
+		/*$_actionID = SystemCore::$_UPDATE;
+		$_moduleName  = ModuleCore::processModuleValue(ModuleCore::$_ADMINISTRATION); 
+		$_moduleID  = ModuleCore::$_ADMINISTRATION;  
+		$_modulePartyType  = 'Update user ID: '.$userID;  
+		
+		$_flag1 = SystemLogFileTable::processCreate($_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_modulePartyType);*/
+		
+			return ( $_qry > 0 );   
+	}
+	
+	public static function processDelete()
+	{
+		
+	}
+	
+	public static function processDefault()
+	{
+		
+	}
+	public static function removeDefault()
+	{
+			
+	}
+		// process query function
+	public static function appendPartialQueryFields ( ) 
+	{
+		$_queryFileds = "mod.id, mod.token_id as tokenID, mod.module_type_id as moduleTypeID, mod.default_flag as isDefault, mod.applicable_flag as applicableFlag, mod.active_flag as activeFlag, mod.default_access_level_type_id as defaultAccessLevelTypeID,
+		";	
+		return $_queryFileds;
+	}
+	public static function appendQueryFields ( ) 
+	{
+		$_queryFileds = "mod.id, mod.token_id as tokenID, mod.org_id as orgID, mod.org_token_id as orgTokenID, mod.module_type_id as moduleTypeID, mod.module_name as moduleName, mod.alias as moduleAlias, mod.default_flag as defaultFlag, mod.applicable_flag as applicableFlag, mod.active_flag as activeFlag, mod.created_at as createdAt, mod.updated_at as updatedAt, mod.default_access_level_type_id as defaultAccessLevelTypeID,
+		
+		(mod.applicable_flag=true) as applicableModule, (mod.active_flag=true) as activeModule,
+		 
+		";		
+		return $_queryFileds;
+	}
+	//
+   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_applicableFlag=null, $_activeFlag=null, $_exclusion=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->leftJoin("mod.Organization org on mod.org_id = org.id ")   
+			->offset($_offset)
+			->limit($_limit) 
+			->orderBy("mod.module_type_id ASC")
+			->where("mod.id IS NOT NULL"); 
+			if(!is_null($_orgID)) 		$_qry = $_qry->addWhere("mod.org_id=? AND mod.org_token_id=? ", array($_orgID, $_orgTokenID)); 
+			if(!is_null($_applicableFlag))	$_qry = $_qry->addWhere("mod.applicable_flag = ?", $_applicableFlag); 
+			if(!is_null($_activeFlag))	$_qry = $_qry->addWhere("mod.active_flag = ?", $_activeFlag);  
+			if(!is_null($_exclusion)) 	 	$_qry = $_qry->andWhereNotIn("mod.id", $_exclusion ); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$_qry = $_qry->andWhere("mod.module_name LIKE ? OR mod.description LIKE ?", array($_keyword,$_keyword));
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}
+	//
+   public static function processAll ( $_orgID=null, $_orgTokenID=null, $_defaultFlag=null, $_applicableFlag=null, $_activeFlag=null, $_exclusion=null, $_keyword=null) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->leftJoin("mod.Organization org on mod.org_id = org.id ")  
+			->orderBy("mod.module_type_id ASC")
+			->where("mod.id IS NOT NULL"); 
+			if(!is_null($_orgID)) 		$_qry = $_qry->addWhere("mod.org_id=? AND mod.org_token_id=? ", array($_orgID, $_orgTokenID));  
+			if(!is_null($_defaultFlag))		$_qry = $_qry->addWhere("mod.default_flag = ?", $_defaultFlag); 
+			if(!is_null($_applicableFlag))	$_qry = $_qry->addWhere("mod.applicable_flag = ?", $_applicableFlag); 
+			if(!is_null($_activeFlag))	$_qry = $_qry->addWhere("mod.active_flag = ?", $_activeFlag);  
+			if(!is_null($_exclusion)) 	 	$_qry = $_qry->andWhereNotIn("mod.id", $_exclusion ); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$_qry = $_qry->andWhere("mod.module_name LIKE ? OR mod.description LIKE ?", array($_keyword,$_keyword));
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}
+	//
+	public static function processCandidateModules ( $_orgID=null, $_orgTokenID=null, $_applicableFlag=null, $_activeFlag=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->innerJoin("mod.Organization org on mod.org_id = org.id ")    
+			->offset($_offset)
+			->limit($_limit) 
+			->orderBy("mod.module_type_id ASC")
+			->where("mod.id IS NOT NULL"); 
+			if(!is_null($_orgID)) 		$_qry = $_qry->addWhere("mod.org_id=? AND mod.org_token_id=? ", array($_orgID, $_orgTokenID)); 
+			if(!is_null($_applicableFlag))	$_qry = $_qry->addWhere("mod.applicable_flag = ?", $_applicableFlag); 
+			if(!is_null($_activeFlag))	$_qry = $_qry->addWhere("mod.active_flag = ?", $_activeFlag);  
+			if(!is_null($_exclusion)) 	 	$_qry = $_qry->andWhereNotIn("mod.id", $_exclusion );  
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}
+	//
+	public static function processCountCandidateModules ( $_orgID=null, $_orgTokenID=null, $_applicableFlag=null, $_activeFlag=null, $_exclusion=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->innerJoin("mod.Organization org on mod.org_id = org.id ")   
+			->orderBy("mod.module_type_id ASC")
+			->where("mod.id IS NOT NULL"); 
+			if(!is_null($_orgID)) 		$_qry = $_qry->addWhere("mod.org_id=? AND mod.org_token_id=? ", array($_orgID, $_orgTokenID)); 
+			if(!is_null($_applicableFlag))	$_qry = $_qry->addWhere("mod.applicable_flag = ?", $_applicableFlag); 
+			if(!is_null($_activeFlag))	$_qry = $_qry->addWhere("mod.active_flag = ?", $_activeFlag);  
+			if(!is_null($_exclusion)) 	 	$_qry = $_qry->andWhereNotIn("mod.id", $_exclusion );  
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}
+	//
+	public static function processActiveCandidateModules ( $_orgID=null, $_orgTokenID=null, $_activeFlag=null, $_exclusion=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendPartialQueryFields())
+			->from("ModuleSetting mod") 
+			->innerJoin("mod.Organization org on mod.org_id = org.id ")   
+			->orderBy("mod.module_type_id ASC")
+			->where("mod.id IS NOT NULL AND mod.applicable_flag IS TRUE"); 
+			if(!is_null($_orgID)) 		$_qry = $_qry->addWhere("mod.org_id=? AND mod.org_token_id=? ", array($_orgID, $_orgTokenID)); 
+			if(!is_null($_activeFlag))	$_qry = $_qry->addWhere("mod.active_flag = ?", $_activeFlag);  
+			if(!is_null($_exclusion)) 	 	$_qry = $_qry->andWhereNotIn("mod.id", $_exclusion );  
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}
+	//
+	public static function processObject( $_orgID=null, $_orgTokenID=null, $_moduleID, $_moduleTokenID ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->innerJoin("mod.Organization org on mod.org_id = org.id ")    
+			->where("mod.id = ? AND mod.token_id = ?", array( $_moduleID, $_moduleTokenID));
+			if(!is_null($_orgID)) $_qry = $_qry->addWhere("mod.org_id = ? AND mod.org_token_id = ? ", array($_orgID, $_orgTokenID));
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( !$_qry ? null:$_qry ); 
+	}
+	//
+	public static function makeObject( $_moduleID, $_moduleTokenID=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->innerJoin("mod.Organization org on mod.org_id = org.id ")    
+			->where("mod.id = ? AND mod.token_id = ? ", array( $_moduleID, $_moduleTokenID));
+			if(!is_null($_orgID)) $_qry = $_qry->addWhere("mod.org_id = ? AND mod.org_token_id = ? ", array($_orgID, $_orgTokenID));
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( !$_qry ? null:$_qry ); 
+	} 
+	//
+	public static function processModule ( $_orgID, $_orgTokenID, $_moduleID ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->innerJoin("mod.Organization org on mod.org_id = org.id ")    
+			->where("mod.module_type_id = ? ", $_moduleID);
+			if(!is_null($_orgID)) $_qry = $_qry->addWhere("mod.org_id = ? AND mod.org_token_id = ? ", array($_orgID, $_orgTokenID));
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( !$_qry ? null:$_qry ); 
+	}
+	//
+	public static function processCandidateModule ( $_orgID, $_orgTokenID, $_moduleID ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->innerJoin("mod.Organization org on mod.org_id = org.id ")    
+			->where("mod.module_type_id = ? ", $_moduleID);
+			if(!is_null($_orgID)) $_qry = $_qry->addWhere("mod.org_id = ? AND mod.org_token_id = ? ", array($_orgID, $_orgTokenID));
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( !$_qry ? null:$_qry ); 
+	}
+	//
+	public static function processExistence( $_orgID=null, $_orgTokenID=null, $_moduleID, $_moduleAlias ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->innerJoin("mod.Organization org on mod.org_id = org.id ")  
+			->where("mod.module_type_id = ? AND mod.alias = ? ", array($_moduleID, $_moduleAlias));
+			if(!is_null($_orgID)) $_qry = $_qry->addWhere("mod.org_id = ? AND mod.org_token_id = ? ", array($_orgID, $_orgTokenID));
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( !$_qry ? null:$_qry ); 
+	}
+	//
+	public static function processDefaultSelection ( $_orgID, $_orgTokenID, $_default=true ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("ModuleSetting mod") 
+			->innerJoin("mod.Organization org on mod.org_id = org.id ")   
+			->innerJoin("mod.Party prt on mod.parent_id = prt.id ")
+			->where("mod.default_flag=? AND mod.org_id = ? AND mod.org_token_id = ? ", array($_default, $_orgID, $_orgTokenID));
+			//if(!is_null($_parentID)) 		$_qry = $_qry->addWhere("mod.parent_id=? AND mod.parent_token_id=? ", array($_parentID, $_parentTokenID)); 
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}  
+	//
+	public static function processCandidate ( $_orgID, $_orgTokenID ) 
+   { 
+		return self::processExclusion ( $_orgID, $_orgTokenID );
+	}
+	//
+	public static function processExclusion ( $_orgID, $_orgTokenID ) 
+   {
+		$_exclusion = array();
+		foreach ( ModuleCore::processModules() as $_key => $_module ) {
+			$_moduleAlias = ModuleCore::processModuleIcon ( $_key );
+			$_flag = self::processExistence ( $_orgID, $_orgTokenID, $_key, $_moduleAlias );
+			if(!$_flag) {
+				$_exclusion[] = $_key;
+			}
+		}
+		return $_exclusion;
+	}
+	//
+   public static function processCandidateAccesslevels ( $_orgID, $_orgTokenID, $_parentID=null, $_parentTokenID=null, $_moduleID=null, $_moduleTokenID=null, $_exclusion=null,  $_keyword=null ) 
+   {
+		return ModuleAccessLevelTable::processAll ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_moduleID, $_moduleTokenID, $_exclusion,  $_keyword); 
+	}
+	//
+   public static function processDefaultAccesslevel ( $_orgID, $_orgTokenID, $_parentID=null, $_parentTokenID=null, $_moduleTypeID, $_userRoleID) 
+   {
+		return ModuleAccessLevelTable::processDefaultAccesslevel ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_moduleTypeID, $_userRoleID); 
+	}
 }

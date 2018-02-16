@@ -21,7 +21,7 @@ abstract class BaseGroupType extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_group_type');
+        $this->setTableName('mutms_tbl_group_type');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

@@ -12,4 +12,49 @@
  */
 class Tournament extends PluginTournament
 {
+	public function processAccessLevelSetting ($_batchAction)
+	{ 
+		if($_batchAction == 1) {
+			$this->makeAccessible(); 
+		}
+		if($_batchAction == 2) {
+			$this->makeApplicable(); 
+		}
+		return true;
+	}
+	
+	public function makeApplicable()
+	{ 
+		if($this->applicableFlag) {
+			$this->applicable_flag = false; 
+			$this->active_flag = false; 
+		} else {
+			$this->applicable_flag = true; 	
+			$this->active_flag = true; 		
+		}
+		$this->save(); 
+			
+		return true;
+	}
+	public function makeActivation ()
+	{  
+		if($this->activeFlag) {
+			$this->active_flag = false; 
+		} else {
+			$this->active_flag = true; 			
+		} 
+		$this->save(); 
+			
+		return true;
+	}
+	public function makeUpdate ($_accessLevel )
+	{  
+		if(!$_accessLevel) { return false; }
+		$this->access_level = intval($_accessLevel); 
+		$this->save(); 
+		
+		$this->makeAccessLevel ($_accessLevel);
+			
+		return true;
+	}
 }

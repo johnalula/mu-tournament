@@ -38,7 +38,7 @@ abstract class BasePartyContact extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('musms_tbl_party_contact_address');
+        $this->setTableName('mutms_tbl_party_contact_address');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
