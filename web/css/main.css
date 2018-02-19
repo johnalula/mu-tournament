@@ -42,7 +42,162 @@ h6, .h6 {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
+.form-group {
+	margin:1px!important;
+}
 
+.form-control {
+  display: block;
+  width: 100%;
+  height: 26px!important;
+  padding: 3px 5px!important;
+  font-size: 11px!important; 
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+	-webkit-border-radius:2px 2px 2px 2px;!important
+	-moz-border-radius:2px 2px 2px 2px!important;
+	border-radius:2px 2px 2px 2px!important;
+	border:1px solid #7f9db9!important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-group label.control-label {
+  font-size: 11px!important;
+  border:0px solid #f00;
+  padding-right: 1px!important;
+}
+.form-group textarea.form-control {
+  height: 68px!important;
+}
+.form-group textarea.form-control-lg {
+  height: 50px!important;
+}
+.form-group span.ui-avatar-image-span { 
+  margin-left:10px!important;
+}
+.form-group img.ui-avatar-image-input {
+  width: 60%!important;
+  height: 60%!important; 
+}
+.form-group input.ui-input-file-form {
+  height: 30px!important;
+}
+.ui-hot-key {
+	text-decoration:underline!important;
+}
+.ui-text-left-align {
+	text-align:left!important;
+}
+.ui-text-center-align {
+	text-align:center!important;
+}
+.ui-text-right-align {
+	text-align:right!important;
+}
+.input-group-btn button.btn img.btn-img {
+	width:12px!important;
+	height:12px!important;
+}
+.input-group-btn button.btn {
+	padding:5px 10px 5px 10px!important;
+}
+.input-group-btn button.dropdown-toggle {
+	padding:3px 10px 3px 10px!important;
+}
+.ui-btn-input-group {
+	display:inline-block!important;
+	vertical-align:middle!important;
+	border:1px solid #f00!important;
+	margin:0px!important;
+	padding:0px!important;
+}
+.ui-btn-input-group input.ui-input-inline-option { 
+	vertical-align:top!important; 
+	margin:0px!important;
+	border:1px solid #f00!important;
+	padding:0px!important;
+}
+.input-group-addon {
+	 padding: 4px 8px!important; 
+}
+.input-group-addon-sm {
+	font-size:11px!important;
+	font-weight:bold!important;
+}
+.input-group-btn .dropdown-toggle {
+	padding: 4px 12px!important; 
+	font-size:11px!important;
+	letter-spacing:0.06em!important;
+} 
+.btn-action-img img.btn-img-sm {
+	width:14px!important;
+	height:14px!important;
+	margin-right:8px!important;
+	margin-left:2px!important;
+	vertical-align:middle!important;
+	border:0px solid #f00!important;
+}
+.btn-action-img img.btn-img-xs {
+	width:12px!important;
+	height:12px!important;
+	margin-right:8px!important;
+	margin-left:2px!important;
+	vertical-align:middle!important;
+	border:0px solid #f00!important;
+} 
+input.ui-disabled-input-box { 
+}
+.error { 
+	color: #ee0000!important; 
+	padding-left: 2px; 
+}
+.required-error { 
+	color: #ee0000!important; 
+	padding-left: 2px!important;    
+	padding-top: 8px!important;    
+	font-size:0.88em!important;
+	font-weight:bold!important;
+	letter-spacing:0.1em!important;
+}
+.invalid-error { 
+	color: #ee0000!important; 
+	padding-left: 2px!important;    
+	padding-top: 8px!important;    
+	font-size:0.88em!important;
+	font-weight:bold!important;
+	letter-spacing:0.1em!important;
+}
+input.has-input-error { 
+	color: black!important;
+	border:1px solid #ee0000!important;
+	background:#ebccd1!important;
+}
+span.has-input-error { 
+	color: red!important;
+	border:1px solid #ee0000!important; 
+	border-radius: 1px 3px 3px 0px;
+}
+
+.btn-padding {
+	padding:2px 19px 2px 19px!important;
+  font-size: 11px!important;
+}
+.btn-padding-sm {
+	padding:2px 15px 2px 15px!important;
+  font-size: 11px!important;
+}
+.ui-date-input {
+  cursor: pointer!important;
+}
+.ui-data-modal {
+  cursor: pointer!important;
+}
+/********************************************/
 .ui-list-box-container {
 	margin-bottom:30px!important;
 }

@@ -1,3 +1,4 @@
+https://web.stanford.edu/~eadolfo/cis-redesign/attachments/proposal-newsignature.pdf
 
 <div class="ui-content-page">
 	<?php include_partial('tournament', array( '_products' => $_products, '_countProducts' => $_countProducts, '_productClasses' => $_productClasses )) ?> 

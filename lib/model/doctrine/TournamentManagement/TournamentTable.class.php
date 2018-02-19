@@ -27,9 +27,35 @@ class TournamentTable extends PluginTournamentTable
 	{
 		
 	} 
-	public static function processSave ( )
+	public static function processSave ( $_orgID, $_orgTokenID, $_dataIncoderID, $_campusID, $_academicYearID, $_semesterID, $_regModeID, $_entryDate, $_taskNumber, $_refNumber, $_description )
 	{
-		
+		//try {
+			if(!$_orgID || !$_refNumber) return false;
+    	
+			$_token = trim($_orgTokenID).trim($_dataIncoderID).trim($_taskNumber).trim($_entryDate).rand('11111', '99999'); 
+			$_startDate = date('m/d/Y', time());
+			$_nw = new Tournament (); 
+			$_nw->token_id = sha1(md5(trim($_orgTokenID))); 
+			$_nw->org_id = trim($_orgID); 
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
+			$_nw->data_incoder_id = trim($_dataIncoderID); 
+			$_nw->school_academic_year_id = trim($_academicYearID); 
+			$_nw->school_academic_semester_id = trim($_semesterID);  
+			$_nw->task_number = trim($_taskNumber); 
+			$_nw->registration_mode = trim($_regModeID); 
+			$_nw->reference_number = trim($_refNumber);  
+			$_nw->entry_date = trim($_entryDate);  
+			$_nw->start_date = trim($_startDate);  
+			$_nw->approval_status = trim(TaskCore::$_INITIATED);    
+			$_nw->process_status = trim(TaskCore::$_INITIATED);    
+			$_nw->status = trim(TaskCore::$_INITIATED);   
+			$_nw->description = SystemCore::processDescription ( trim($_descValue), trim($_description) );  
+			$_nw->save(); 
+			
+			return $_nw; 
+		//} catch ( Exception $e) {
+	    //  return false; 
+		//}
 	} 
 	public static function processEdit ( )
 	{

@@ -57,6 +57,7 @@
 		</div><!-- end of ui-container-box -->
 	</div><!-- end of ui-container-box -->
 	
+	<?php if($sf_user->isAuthenticated()): ?>
 	<footer class="blog-footer">
 		  
 		<div class="ui-footer-container"> 
@@ -116,6 +117,15 @@
 			</div><!-- end of ui-footer --> 
 		</div><!-- end of ui-footer-container -->
 	</footer>
+	
+	<?php else: ?>
+		<footer class="footer">
+			<div class="container">
+				<p class="text-muted"><?php echo __('Powered by') ?><a href=""> <?php echo __('Aurora IT Solutions') ?></a>
+				&copy;<?php echo (' 2016 All Rights Reserved') ?></p>
+			</div>
+		</footer> <!-- Bibi Faye  christina parra shahid khan isabel cristina parra   Juju Ferrari -->
+	<?php endif; ?>
 </body>
 </html>
 

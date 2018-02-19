@@ -21,10 +21,7 @@
 							<div id="" class="navbar-collapse ui-toolbar">
 								<div class="row">
 									<div class="col-sm-6">
-										<?php include_partial('tournament_toolbar', array()) ?> 
-									</div>
-									<div class="col-sm-6">
-										<?php include_partial('filter', array( '_productClasses' => $_productClasses )) ?> 
+										<?php include_partial('action_toolbar', array()) ?> 
 									</div>
 								</div><!-- end of ui-filter-list -->
 							</div><!-- end of ui-filter-list -->
@@ -36,13 +33,19 @@
 					</div> <!-- ui-panel-conten -->
 				</div><!-- ui-panel-content-box -->
 				
-				<div class="ui-panel-footer-default">
-					<div class="ui-panel-list-pagination-default">
-						<div class="ui-panel-list-pagination">
-							xx
+				<!-- Begining of toolbar -->
+					<div class="ui-toolbar-menu-box  ui-toolbar-border">
+						<div class="ui-toolbar-menu">
+							<div id="" class="navbar-collapse ui-toolbar">
+								<div class="row">
+									<div class="col-sm-6">
+										<?php include_partial('footer_action_toolbar', array()) ?> 
+									</div>
+								</div><!-- end of ui-filter-list -->
+							</div><!-- end of ui-filter-list -->
 						</div>
-					</div>
-				</div>
+					</div  
+					<!--    End of toolbar      -->
 				
 			</div><!-- end of ui-panel-grid -->
 		</div><!-- end of ui-panel-box5 -->   
@@ -53,61 +56,7 @@
 </div><!-- end of ui-panel-container -->   
 
 <script>
-	$(document).ready(function()	{ 
-		$('.next-page').click(function() {
-			 
-			var navButton =  $(this).attr('rel');
-			var serializedData = 'class_id='+$('#product_class_id').val()+'&keyword='+$('#product_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-product').value;
-			var recordURL = 'product/search';
-			var divName =  'product';
-			//makeNavigation ();
-			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
-			//alert(result);
-			return false; 
-		});
-		$('.prev-page').click(function() {
-			var navButton =  $(this).attr('rel');
-			var serializedData = 'class_id='+$('#product_class_id').val()+'&keyword='+$('#product_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-product').value;
-			var recordURL = 'product/search';
-			var divName =  'product';
-			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
-			return false; 
-		});
-		$('.last-page').click(function() {
-			var navButton =  $(this).attr('rel');
-			var serializedData = 'class_id='+$('#product_class_id').val()+'&keyword='+$('#product_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-product').value;
-			var recordURL = 'product/search';
-			var divName =  'product';
-			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
-			return false; 
-		});
-		$('.first-page').click(function() {
-			var navButton =  $(this).attr('rel');
-			var serializedData = 'class_id='+$('#product_class_id').val()+'&keyword='+$('#product_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-product').value;
-			var recordURL = 'product/search';
-			var divName =  'product';
-			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
-		});
-		$('#product_keyword').keyup(function(key) {
-			var navButton =  $(this).attr('rel');
-			var serializedData = 'class_id='+$('#product_class_id').val()+'&keyword='+$('#product_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-product').value;
-			var recordURL = 'product/search';
-			var divName =  'product';
-			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
-		});
-		$('#product_class_id').click(function() {
-			var navButton =  $(this).attr('rel');
-			var serializedData = 'class_id='+$('#product_class_id').val()+'&keyword='+$('#product_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-product').value;
-			var recordURL = 'product/search';
-			var divName =  'product';
-			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
-		});
+	
 		/*$('#product_class_id').change(function()	 {
 			$('#product').load(
 				$(this).parents('form').attr('action'),
