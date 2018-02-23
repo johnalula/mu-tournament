@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title><?php echo __('MU-Sport Management System') ?></title> 
+		<title><?php echo __('MU-TMS') ?></title> 
 		<?php include_metas() ?>
 		<?php include_title() ?>
 		<link rel="shortcut icon" href="/favicon.ico" />

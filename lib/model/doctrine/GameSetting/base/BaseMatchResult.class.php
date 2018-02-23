@@ -7,7 +7,7 @@
  * 
  * @property string $token_id
  * @property integer $match_fixture_id
- * @property integer $group_id
+ * @property integer $sport_game_group_id
  * @property integer $team_id
  * @property string $start_date
  * @property string $effective_date
@@ -16,7 +16,7 @@
  * @property integer $status
  * @property clob $description
  * @property MatchFixture $MatchFixture
- * @property Group $Group
+ * @property SportGameGroup $SportGameGroup
  * @property Team $Team
  * 
  * @package    mu-TMS
@@ -36,9 +36,8 @@ abstract class BaseMatchResult extends sfDoctrineRecord
         $this->hasColumn('match_fixture_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('group_id', 'integer', 8, array(
+        $this->hasColumn('sport_game_group_id', 'integer', null, array(
              'type' => 'integer',
-             'length' => 8,
              ));
         $this->hasColumn('team_id', 'integer', 8, array(
              'type' => 'integer',
@@ -77,9 +76,10 @@ abstract class BaseMatchResult extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('Group', array(
-             'local' => 'group_id',
-             'foreign' => 'id'));
+        $this->hasOne('SportGameGroup', array(
+             'local' => 'sport_game_group_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Team', array(
              'local' => 'team_id',

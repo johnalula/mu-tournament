@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Group form base class.
+ * SportGameGroup form base class.
  *
- * @method Group getObject() Returns the current form's model object
+ * @method SportGameGroup getObject() Returns the current form's model object
  *
  * @package    mu-TMS
  * @subpackage form
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseGroupForm extends BaseFormDoctrine
+abstract class BaseSportGameGroupForm extends BaseFormDoctrine
 {
   public function setup()
   {
@@ -46,7 +46,7 @@ abstract class BaseGroupForm extends BaseFormDoctrine
       'updated_at'          => new sfValidatorDateTime(),
     ));
 
-    $this->widgetSchema->setNameFormat('group[%s]');
+    $this->widgetSchema->setNameFormat('sport_game_group[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -57,7 +57,7 @@ abstract class BaseGroupForm extends BaseFormDoctrine
 
   public function getModelName()
   {
-    return 'Group';
+    return 'SportGameGroup';
   }
 
 }

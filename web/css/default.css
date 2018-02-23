@@ -1104,7 +1104,9 @@
 }
 
 /*####################################*/
-
+.blog-featured {
+}
+.blog-featured  p.readmore {border:1px solid #f00;background:#ff0;}
 #ui-footer-action-toolbar-container {
 	background-color: #dce7f4!important; 
 	background: -moz-linear-gradient(100% 100% 90deg, #ceddf0, #dce7f4)!important;

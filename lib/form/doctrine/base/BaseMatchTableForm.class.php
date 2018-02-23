@@ -17,8 +17,8 @@ abstract class BaseMatchTableForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'              => new sfWidgetFormInputHidden(),
       'token_id'        => new sfWidgetFormInputText(),
-      'game_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Game'), 'add_empty' => true)),
-      'group_id'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Group'), 'add_empty' => true)),
+      'game_id'         => new sfWidgetFormInputText(),
+      'group_id'        => new sfWidgetFormInputText(),
       'team_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Team'), 'add_empty' => true)),
       'person_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Person'), 'add_empty' => true)),
       'position'        => new sfWidgetFormInputText(),
@@ -40,8 +40,8 @@ abstract class BaseMatchTableForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'              => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'token_id'        => new sfValidatorString(array('max_length' => 100, 'required' => false)),
-      'game_id'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Game'), 'required' => false)),
-      'group_id'        => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Group'), 'required' => false)),
+      'game_id'         => new sfValidatorInteger(array('required' => false)),
+      'group_id'        => new sfValidatorInteger(array('required' => false)),
       'team_id'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Team'), 'required' => false)),
       'person_id'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Person'), 'required' => false)),
       'position'        => new sfValidatorInteger(array('required' => false)),

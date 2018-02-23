@@ -158,74 +158,89 @@ class TournamentCore {
 		}
 	}
 	
-	public static $_RESEARCH_NOTES = 1;
-	public static $_ORGINAL_RESEARCH_PAPER = 2;
-	public static $_CASE_REPORT = 3;
-	public static $_REVIEW_PAPER = 4;
-	public static $_SHORT_COMMUNICATION = 5; 
-	public static $_OTHERS = 6;
-	public static $_MANUSCRIPT_TYPES = array ( 1 => "Research Notes", 2 => "Orginal Research Paper", 3 => "Case Report", 4 => "Review Paper", 5 => "Short Communication", 6 => "Other" );
+	/************************************************/
+	
+	public static $_SPRINTS = 1;
+	public static $_MIDDLE_DISTANCE = 2;
+	public static $_LONG_DISTANCE = 3;
+	public static $_HARDLES = 4;
+	public static $_STEEPLE_CHASE = 5; 
+	public static $_RELAY = 6;
+	public static $_JUMPS = 7;
+	public static $_THROWS = 8;
+	public static $_HALF_MARATHON = 9;
+	public static $_MARATHON = 10;
+	public static $_OTHER_DISTANCE = 11;
+	public static $_DISTANCE_TYPES = array ( 1 => "Sprints", 2 => "Middle Distance", 3 => "Long Distance", 4 => "Hardless", 5 => "Steeplechase", 6 => "Relay",7 => "Jumps", 8 => "Throws", 9 => "Half Marathon", 10 => "Marathon", 11 => "Other" );
 
-	public static function processManuscriptTypes() 
+	public static function processDistanceTypes() 
 	{
-		return self::$_MANUSCRIPT_TYPES;
+		return self::$_DISTANCE_TYPES;
 	}
-	public static function processManuscriptTypeID ( $_value ) 
+	public static function processDistanceTypeID ( $_value ) 
 	{
 		try {
-			foreach( self::$_MANUSCRIPT_TYPES as $_key=> $_item ) {
-				if( strcmp($_item, $_value) == 0 )
+			foreach( self::$_DISTANCE_TYPES as $_key => $_distance ) {
+				if( strcmp($_distance, $_value) == 0 )
 					return $_key; 
 			}
 			return null; 
-		} catch ( Exception $e ) {
+		} catch ( Exception $_e ) {
 			return null; 
 		}        
 	}
-	public static function processManuscriptTypeValue ( $_id )
+	public static function processDistanceTypeValue ( $_id )
 	{
 		try {
-			foreach( self::$_MANUSCRIPT_TYPES as $_key=> $_item ) {
+			foreach( self::$_DISTANCE_TYPES as $_key => $_distance ) {
 				if( $_key == $_id )
-					return $_item; 
+					return $_distance; 
 			}
 			return null; 
-		} catch ( Exception $e ) {
+		} catch ( Exception $_e ) {
 			return null; 
 		}    
 	}
-	public static function processManuscriptTypeIcon ($_status) 
+	public static function processDefaultDistanceType ( )
 	{
-		switch($_status) {			
-			case self::$_INITIATED:
-				return 'initiated';
+		 try {
+				return self::$_OTHER_DISTANCE; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processDistanceTypeIcon ($_distance) 
+	{
+		switch($_distance) {			
+			case self::$_SPRINTS:
+				return 'sprints';
 			break;
-			case self::$_PENDING:
-				return 'pending';
+			case self::$_MIDDLE_DISTANCE:
+				return 'middle_distance';
 			break;
-			case self::$_ACTIVE:
-				return 'active';
+			case self::$_LONG_DISTANCE:
+				return 'long_distance';
 			break; 
-			case self::$_APPROVED:
-				return 'approved';
+			case self::$_HARDLES:
+				return 'hardles';
 			break;
-			case self::$_REJECTED:
-				return 'paid';
+			case self::$_STEEPLE_CHASE:
+				return 'steeplechase';
 			break;
-			case self::$_COMPLETED:
-				return 'viod';
+			case self::$_RELAY:
+				return 'relay';
 			break;
-			case self::$_EDITED:
-				return 'rejected';
+			case self::$_JUMPS:
+				return 'jumps';
 			break;
-			case self::$_REVIEWED:
-				return 'completed';
+			case self::$_THROWS:
+				return 'throws';
 			break;
-			case self::$_PUBLISHED:
-				return 'completed';
+			case self::$_HALF_MARATHON:
+				return 'half_marathon';
 			break;
-			case self::$_REVIEWED:
-				return 'completed';
+			case self::$_MARATHON:
+				return 'marathon';
 			break;
 			default:
 				return 'other';
@@ -244,134 +259,147 @@ class TournamentCore {
 		}    
 	}
 	
-	public static $_REVIEWER_MESSAGE = 1; 
-	public static $_EDITOR_MESSAGE = 2; 
-	public static $_PUBLISHER_MESSAGE = 3; 
-	public static $_OTHER_MESSAGE_TYPE = 4; 
 	
-	public static $_DEFAULT_MESSAGES = array ( 1 => "Reviewer Message", 2 => "Editor Message", 3 => "Publisher Message", 4 => "Other Message");
-		
-	public static function processDefaultMessages ( ) 
+	/*********************************************/
+	
+	public static $_ROUND = 1;
+	public static $_QUARTER_FINAL = 2;
+	public static $_SEMI_FINAL = 3;
+	public static $_FINAL = 4;
+	public static $_OTHER_ROUND = 5; 
+
+	public static $_ROUND_TYPES = array ( 1 => 'Round', 2 => 'Quarter Final', 3 => 'Semi Final', 4 => 'Final', 5 => 'None');
+	
+	public static function processRounds ( ) 
 	{
-	  try {
-				return  self::$_DEFAULT_MESSAGES; 
-			} catch ( Exception $e ) {
-			return null; 
-	  }        
+		 try {
+				return self::$_ROUND_TYPES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
 	}
-	public static function processDefaultMessageID ( $_value ) 
+	
+	public static function processRoundID ( $_value ) 
 	{
 		try {
-			foreach( self::$_DEFAULT_MESSAGES as $_key=> $_role ){
-				if( strcmp($_role, $_value) == 0 )
+			foreach( self::$_ROUND_TYPES as $_key=> $_round ){
+				if( strcmp($_round, $_value) == 0 )
 					return $_key; 
 			}
 			return null; 
-			} catch ( Exception $e ) {
+		} catch ( Exception $_e ) {
 			return null; 
-		}        
+		}
 	}
-	
-	public static function processDefaultMessageValue ( $_id )
+
+	public static function processRoundValue ($_id )
 	{
 		try {
-				foreach( self::$_DEFAULT_MESSAGES as $_key=> $_message ) {
-					if( $_key == $_id )
-						return $_message; 
+			foreach( self::$_ROUND_TYPES as $_key=> $_round ){
+			  if( $_key == $_id )
+					return $_round; 
 			}
+			return null;       
+		} catch ( Exception $_e ) {
 			return null; 
-			} catch ( Exception $e ) {
-			return null; 
-		}    
-	} 
-	public static function processDefaultMessageIcon ($_message )
+		}
+	}
+	public static function processDefaultRound ( )
 	{
-		switch($_position) {			
-			case self::$_REVIEWER_MESSAGE:
-				return 'owner';
-			break;	
-			case self::$_EDITOR_MESSAGE:
-				return 'family_member';
+		 try {
+				return self::$_ROUND; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processUserRoleIcon ($_round) 
+	{
+		switch($_round) {			
+			case self::$_ROUND:
+				return 'Round';
 			break;
-			case self::$_PUBLISHER_MESSAGE:
-				return 'employee';
-			break; 
-			case self::$_OTHER_MESSAGE_TYPE:
-				return 'instructor';
+			case self::$_QUARTER_FINAL:
+				return 'Quarter Final';
+			break;
+			case self::$_SEMI_FINAL:
+				return 'Semi Final';
+			break;
+			case self::$_FINAL:
+				return 'Final';
+			break;
+			case self::$_OTHER_ROUND:
+				return 'None';
 			break; 
 		}
-	} 
-	
-	public static $_APPROVAL_MESSAGE = 1; 
-	public static $_REJECTION_MESSAGE = 2; 
-	public static $_OTHER_MESSAGE_STATUS = 3; 
-	
-	public static $_DEFAULT_MESSAGE_STATUSES = array ( 1 => "Approval Message", 2 => "Rejection Message", 3 => "Other Message Status");
-		
-	public static function processDefaultMessageStatuses ( ) 
-	{
-	  try {
-				return  self::$_DEFAULT_MESSAGE_STATUSES; 
-			} catch ( Exception $e ) {
-			return null; 
-	  }        
 	}
-	public static function processDefaultMessageStatusID ( $_value ) 
+	/*********************************************/
+	
+	public static $_TRACK = 1;
+	public static $_FIELD = 2;
+	public static $_ROAD = 3;
+	public static $_OTHER_EVENT = 4; 
+
+	public static $_EVENT_TYPES = array ( 1 => 'Track Event', 2 => 'Field Event', 3 => 'Road EVent', 4 =>  'None');
+	
+	public static function processEventTypes ( ) 
+	{
+		 try {
+				return self::$_EVENT_TYPES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processEventTypeID ( $_value ) 
 	{
 		try {
-			foreach( self::$_DEFAULT_MESSAGE_STATUSES as $_key=> $_role ){
-				if( strcmp($_role, $_value) == 0 )
+			foreach( self::$_EVENT_TYPES as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
 					return $_key; 
 			}
 			return null; 
-			} catch ( Exception $e ) {
+		} catch ( Exception $_e ) {
 			return null; 
-		}        
+		}
 	}
-	
-	public static function processDefaultMessageStatusValue ( $_id )
+
+	public static function processEventTypeValue ($_id )
 	{
 		try {
-				foreach( self::$_DEFAULT_MESSAGE_STATUSES as $_key=> $_message ) {
-					if( $_key == $_id )
-						return $_message; 
+			foreach( self::$_EVENT_TYPES as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
 			}
+			return null;       
+		} catch ( Exception $_e ) {
 			return null; 
-			} catch ( Exception $e ) {
-			return null; 
-		}    
-	} 
-	public static function processDefaultMessageStatusIcon ($_message )
+		}
+	}
+	public static function processDefaultEventType ( )
 	{
-		switch($_position) {			
-			case self::$_APPROVAL_MESSAGE:
-				return 'owner';
-			break;	
-			case self::$_REJECTION_MESSAGE:
-				return 'family_member';
+		 try {
+				return self::$_TRACK; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processEventTypeIcon ($_event) 
+	{
+		switch($_event) {			
+			case self::$_TRACK:
+				return 'Track Event';
 			break;
-			case self::$_OTHER_MESSAGE_STATUS:
-				return 'instructor';
+			case self::$_FIELD:
+				return 'Field Event';
+			break;
+			case self::$_ROAD:
+				return 'Road Event';
+			break;
+			case self::$_OTHER_EVENT:
+				return 'Other EVEnt';
 			break; 
 		}
-	} 
-	
-	public static function makeFileSize($_fileSize)
-	{
-		$_convertedFileSize = 0;
-		if($_fileSize >= 1073741824) {
-			$_convertedFileSize = number_format(($_fileSize/1073741824), 2).' GB';
-		} elseif($_fileSize >= 1048576) {
-			$_convertedFileSize = number_format(($_fileSize/1048576), 2).' MB'; 
-		} elseif($_fileSize >= 1024) {
-			$_convertedFileSize = number_format(($_fileSize/1024), 2).' KB';
-		} elseif($_fileSize > 1) {
-			$_convertedFileSize = ($_fileSize/1048576).' Bytes';
-		} elseif($_fileSize == 1) {
-			$_convertedFileSize = ($_fileSize).' Byte';
-		} else {
-			$_convertedFileSize = '0 Byte';
-		}
-		return $_convertedFileSize;
 	}
+	
+
 }

@@ -34,7 +34,6 @@
  * @property Person $Person
  * @property UserRole $UserRole
  * @property UserGroup $UserGroup
- * @property Group $Group
  * @property Doctrine_Collection $userSystemLogFileActivities
  * 
  * @package    mu-TMS
@@ -87,9 +86,8 @@ abstract class BaseUser extends sfDoctrineRecord
         $this->hasColumn('user_role_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('group_id', 'integer', 8, array(
+        $this->hasColumn('group_id', 'integer', null, array(
              'type' => 'integer',
-             'length' => 8,
              ));
         $this->hasColumn('permission_mode', 'integer', null, array(
              'type' => 'integer',
@@ -168,10 +166,6 @@ abstract class BaseUser extends sfDoctrineRecord
              'local' => 'group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
-
-        $this->hasOne('Group', array(
-             'local' => 'group_id',
-             'foreign' => 'id'));
 
         $this->hasMany('SystemLogFile as userSystemLogFileActivities', array(
              'local' => 'id',

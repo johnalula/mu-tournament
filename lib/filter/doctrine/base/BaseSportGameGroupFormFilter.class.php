@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Group filter form base class.
+ * SportGameGroup filter form base class.
  *
  * @package    mu-TMS
  * @subpackage filter
  * @author     Your name here
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
-abstract class BaseGroupFormFilter extends BaseFormFilterDoctrine
+abstract class BaseSportGameGroupFormFilter extends BaseFormFilterDoctrine
 {
   public function setup()
   {
@@ -42,7 +42,7 @@ abstract class BaseGroupFormFilter extends BaseFormFilterDoctrine
       'updated_at'          => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
 
-    $this->widgetSchema->setNameFormat('group_filters[%s]');
+    $this->widgetSchema->setNameFormat('sport_game_group_filters[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
 
@@ -53,7 +53,7 @@ abstract class BaseGroupFormFilter extends BaseFormFilterDoctrine
 
   public function getModelName()
   {
-    return 'Group';
+    return 'SportGameGroup';
   }
 
   public function getFields()

@@ -14,8 +14,8 @@ abstract class BaseMatchTableFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'token_id'        => new sfWidgetFormFilterInput(),
-      'game_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Game'), 'add_empty' => true)),
-      'group_id'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Group'), 'add_empty' => true)),
+      'game_id'         => new sfWidgetFormFilterInput(),
+      'group_id'        => new sfWidgetFormFilterInput(),
       'team_id'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Team'), 'add_empty' => true)),
       'person_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Person'), 'add_empty' => true)),
       'position'        => new sfWidgetFormFilterInput(),
@@ -36,8 +36,8 @@ abstract class BaseMatchTableFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'token_id'        => new sfValidatorPass(array('required' => false)),
-      'game_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Game'), 'column' => 'id')),
-      'group_id'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Group'), 'column' => 'id')),
+      'game_id'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'group_id'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'team_id'         => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Team'), 'column' => 'id')),
       'person_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Person'), 'column' => 'id')),
       'position'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
@@ -75,8 +75,8 @@ abstract class BaseMatchTableFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'              => 'Number',
       'token_id'        => 'Text',
-      'game_id'         => 'ForeignKey',
-      'group_id'        => 'ForeignKey',
+      'game_id'         => 'Number',
+      'group_id'        => 'Number',
       'team_id'         => 'ForeignKey',
       'person_id'       => 'ForeignKey',
       'position'        => 'Number',

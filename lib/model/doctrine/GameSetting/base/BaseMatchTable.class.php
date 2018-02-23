@@ -22,8 +22,6 @@
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
- * @property Game $Game
- * @property Group $Group
  * @property Team $Team
  * @property Person $Person
  * 
@@ -96,16 +94,6 @@ abstract class BaseMatchTable extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Game', array(
-             'local' => 'game_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
-
-        $this->hasOne('Group', array(
-             'local' => 'group_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
-
         $this->hasOne('Team', array(
              'local' => 'team_id',
              'foreign' => 'id',

@@ -7,13 +7,13 @@
  * 
  * @property string $token_id
  * @property integer $match_fixture_id
- * @property integer $group_id
+ * @property integer $sport_game_group_id
  * @property integer $team_id
  * @property string $effective_date
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
- * @property Group $Group
+ * @property SportGameGroup $SportGameGroup
  * @property Team $Team
  * @property MatchFixture $MatchFixture
  * 
@@ -34,7 +34,7 @@ abstract class BaseMatchParticipants extends sfDoctrineRecord
         $this->hasColumn('match_fixture_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('group_id', 'integer', null, array(
+        $this->hasColumn('sport_game_group_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('team_id', 'integer', null, array(
@@ -60,8 +60,8 @@ abstract class BaseMatchParticipants extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Group', array(
-             'local' => 'group_id',
+        $this->hasOne('SportGameGroup', array(
+             'local' => 'sport_game_group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
