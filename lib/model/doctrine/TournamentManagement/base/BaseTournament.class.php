@@ -18,6 +18,7 @@
  * @property integer $status
  * @property clob $description
  * @property Organization $Organization
+ * @property Doctrine_Collection $tournamentGameCategorys
  * @property Doctrine_Collection $tournamentGames
  * @property Doctrine_Collection $tournamentGroups
  * @property Doctrine_Collection $tournamentGroupMembers
@@ -88,6 +89,10 @@ abstract class BaseTournament extends sfDoctrineRecord
              'local' => 'org_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('GameCategory as tournamentGameCategorys', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
 
         $this->hasMany('SportGame as tournamentGames', array(
              'local' => 'id',

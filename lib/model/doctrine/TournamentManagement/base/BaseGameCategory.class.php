@@ -7,10 +7,15 @@
  * 
  * @property string $token_id
  * @property integer $org_id
+ * @property integer $tournament_id
  * @property integer $category_type
+ * @property string $category_name
+ * @property string $alias
  * @property boolean $active_flag
+ * @property integer $status
  * @property string $description
  * @property Organization $Organization
+ * @property Tournament $Tournament
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -29,12 +34,26 @@ abstract class BaseGameCategory extends sfDoctrineRecord
         $this->hasColumn('org_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('tournament_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('category_type', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('category_name', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('alias', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => true,
+             ));
+        $this->hasColumn('status', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('description', 'string', 255, array(
              'type' => 'string',
@@ -47,6 +66,11 @@ abstract class BaseGameCategory extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Organization', array(
              'local' => 'org_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('Tournament', array(
+             'local' => 'tournament_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

@@ -36,43 +36,123 @@
 	<div class="ui-sidebar-nav-box">
 		<h2 class="ui-sidebar-header">
 			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/student') ?>">
-			<?php echo __('Products') ?>
+			<?php echo __('Tournament') ?>
 			<span class="ui-accordion-slider ui-right-slider ui-display-none"><img class="ui-sidebar-slider-img" src="<?php echo image_path('icons/minus') ?>"></span>
 			<span class="ui-accordion-slider ui-right-slider"><img class="ui-sidebar-slider-img" src="<?php echo image_path('icons/plus') ?>"></span>
 		</h2>
 		<div class="ui-sidebar-nav" id="ui-panel-2">
 			<ul class="nav nav-sidebar">
 				<li>
-					<a href="#">
+					<a href="<?php echo url_for('tournament/index') ?>">
 						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/save') ?>">
-						<?php echo __('Products') ?>
+						<?php echo __('Tournaments') ?>
 					</a>
 				</li> 
 				<li>
-					<a href="<?php echo url_for('inventory_item/index') ?>">
+					<a href="<?php echo url_for('group/index') ?>">
 						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/update') ?>">
-						<?php echo __('Inventory Items') ?>
+						<?php echo __('Groups') ?>
 					</a>
 				</li> 
 				<li role="separator" class="ui-sidebar-divider"></li>  
 				<li>
-					<a href="#">
+					<a href="<?php echo url_for('round/index') ?>">
 						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">
-						<?php echo __('Sold Items') ?>
+						<?php echo __('Rounds') ?>
 					</a>
-				</li> 
+				</li>  
 				<li>
-					<a href="#">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">
-						<?php echo __('Sales Order') ?>
-					</a>
-				</li> 
-				<li>
-					<a href="#">
+					<a href="<?php echo url_for('inventory_item/index') ?>">
 						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">
 						<?php echo __('Purchase Order') ?>
 					</a>
 				</li> 
+			</ul>
+		</div>
+	</div> 
+	
+	<div class="ui-sidebar-nav-box">
+		<h2 class="ui-sidebar-header">
+			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/organization') ?>">
+			<?php echo __('Sport Games') ?>
+			<span class="ui-accordion-slider ui-right-slider ui-display-none"><img class="ui-sidebar-slider-img" src="<?php echo image_path('icons/minus') ?>"></span>
+			<span class="ui-accordion-slider ui-right-slider"><img class="ui-sidebar-slider-img" src="<?php echo image_path('icons/plus') ?>"></span>
+		</h2>
+		<div class="ui-sidebar-nav ui-accordion-box ui-display-none" id="ui-panel-3">
+			<ul class="nav nav-sidebar">
+				<li>
+					<a href="<?php echo url_for('game/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/school') ?>">
+						<?php echo __('Categories') ?>
+					</a>
+				</li> 
+				<li>
+					<a href="<?php echo url_for('sport_games/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/organization') ?>">
+						<?php echo __('Sport Games') ?>
+					</a>
+				</li> 
+				<li>
+					<a href="<?php echo url_for('employee/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/employee') ?>">
+						<?php echo __('Employees') ?>
+					</a>
+				</li>  
+				<li>
+					<a href="<?php echo url_for('vendor/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/vendor') ?>">
+						<?php echo __('Vendor') ?>
+					</a>
+				</li>  
+				<li>
+					<a href="<?php echo url_for('customer/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/customer') ?>">
+						<?php echo __('Customer') ?>
+					</a>
+				</li>  
+			</ul>
+		</div>
+	</div> 
+	
+	<div class="ui-sidebar-nav-box">
+		<h2 class="ui-sidebar-header">
+			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/group') ?>">
+			<?php echo __('Teams') ?>
+			<span class="ui-accordion-slider ui-right-slider ui-display-none"><img class="ui-sidebar-slider-img" src="<?php echo image_path('icons/minus') ?>"></span>
+			<span class="ui-accordion-slider ui-right-slider"><img class="ui-sidebar-slider-img" src="<?php echo image_path('icons/plus') ?>"></span>
+		</h2>
+		<div class="ui-sidebar-nav ui-accordion-box ui-display-none" id="ui-panel-3">
+			<ul class="nav nav-sidebar">
+				<li>
+					<a href="<?php echo url_for('company/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/school') ?>">
+						<?php echo __('Company') ?>
+					</a>
+				</li> 
+				<li>
+					<a href="<?php echo url_for('organization/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/organization') ?>">
+						<?php echo __('Organization') ?>
+					</a>
+				</li> 
+				<li>
+					<a href="<?php echo url_for('employee/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/employee') ?>">
+						<?php echo __('Employees') ?>
+					</a>
+				</li>  
+				<li>
+					<a href="<?php echo url_for('vendor/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/vendor') ?>">
+						<?php echo __('Vendor') ?>
+					</a>
+				</li>  
+				<li>
+					<a href="<?php echo url_for('customer/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/customer') ?>">
+						<?php echo __('Customer') ?>
+					</a>
+				</li>  
 			</ul>
 		</div>
 	</div> 
@@ -119,6 +199,7 @@
 			</ul>
 		</div>
 	</div> 
+	
 	<div class="ui-sidebar-nav-box">
 		<h2 class="ui-sidebar-header">
 			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/user_administration') ?>">

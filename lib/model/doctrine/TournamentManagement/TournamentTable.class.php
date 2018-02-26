@@ -18,38 +18,38 @@ class TournamentTable extends PluginTournamentTable
     }
     
     //
-	public static function processNew ( )
+	public static function processNew ( $_orgID, $_orgTokenID,  $_tournamentName, $_tournamentAlias, $_tournamentSeason, $_startDate, $_effectiveDate, $_endDate, $_status, $_description, $_userID, $_userTokenID  )
 	{
-		 
+		 $_flag = true;
+
+			$_tournament = self::processSave ( $_orgID, $_orgTokenID,  $_tournamentName, $_tournamentAlias, $_tournamentSeason, $_startDate, $_effectiveDate, $_endDate, $_description );
+		
+		return $_tournament;
 	}
 	//
 	public static function processCreate ( )
 	{
 		
 	} 
-	public static function processSave ( $_orgID, $_orgTokenID, $_dataIncoderID, $_campusID, $_academicYearID, $_semesterID, $_regModeID, $_entryDate, $_taskNumber, $_refNumber, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID,  $_tournamentName, $_tournamentAlias, $_tournamentSeason, $_startDate, $_effectiveDate, $_endDate, $_description )
 	{
 		//try {
-			if(!$_orgID || !$_refNumber) return false;
+			//if(!$_orgID || !$_name) return false;
     	
-			$_token = trim($_orgTokenID).trim($_dataIncoderID).trim($_taskNumber).trim($_entryDate).rand('11111', '99999'); 
+			$_token = trim($_orgTokenID).trim($_tournamentName).trim($_tournamentAlias).trim($_startDate).rand('11111', '99999'); 
 			$_startDate = date('m/d/Y', time());
 			$_nw = new Tournament (); 
-			$_nw->token_id = sha1(md5(trim($_orgTokenID))); 
-			$_nw->org_id = trim($_orgID); 
-			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
-			$_nw->data_incoder_id = trim($_dataIncoderID); 
-			$_nw->school_academic_year_id = trim($_academicYearID); 
-			$_nw->school_academic_semester_id = trim($_semesterID);  
-			$_nw->task_number = trim($_taskNumber); 
-			$_nw->registration_mode = trim($_regModeID); 
-			$_nw->reference_number = trim($_refNumber);  
-			$_nw->entry_date = trim($_entryDate);  
+			$_nw->token_id = sha1(md5(trim($_token))); 
+			//$_nw->org_id = trim($_orgID); 
+			//$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
+			$_nw->name = trim($_tournamentName); 
+			$_nw->alias = trim($_tournamentAlias); 
+			$_nw->season = trim($_tournamentSeason);  
 			$_nw->start_date = trim($_startDate);  
-			$_nw->approval_status = trim(TaskCore::$_INITIATED);    
-			$_nw->process_status = trim(TaskCore::$_INITIATED);    
-			$_nw->status = trim(TaskCore::$_INITIATED);   
-			$_nw->description = SystemCore::processDescription ( trim($_descValue), trim($_description) );  
+			$_nw->effective_date = trim($_effectiveDate);  
+			$_nw->end_date = trim($_endDate);  
+			$_nw->status = trim(TournamentCore::$_PENDING);   
+			//$_nw->description = SystemCore::processDescription ( trim($_tournamentName), trim($_description) );  
 			$_nw->save(); 
 			
 			return $_nw; 
@@ -83,12 +83,34 @@ class TournamentTable extends PluginTournamentTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 
+		 $_queryFileds = "trnmnt.id, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.active_flag as activeFlag, 
+		";	
+		return $_queryFileds;
 	}
 	//
-   public static function processSelection ( ) 
+  // process list selection function 
+   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_season=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
-		
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("Tournament trnmnt") 
+				//->innerJoin("trnmnt.Campus cmps on trnmnt.campus_id = cmps.id ")  
+				//->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")   
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("trnmnt.id ASC")
+				->where("trnmnt.id IS NOT NULL");
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmnt.org_id = ? AND trnmnt.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_season)) $_qry = $_qry->addWhere("trnmnt.season = ? ", $_season); 
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("trnmnt.active_flag = ?", $_activeFlag);    
+				if(!is_null($_exclusion))  $_qry = $_qry->andWhereNotIn("trnmnt.id", $_exclusion ); 
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("trnmnt.name LIKE ? OR trnmnt.alias LIKE ? OR trnmnt.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
    public static function processAll ( ) 

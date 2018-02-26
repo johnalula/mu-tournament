@@ -1,4 +1,10 @@
-
+<?php
+	//ournament_name=asdfasdf&tournament_alias=asdfasdf&season=1&status=1&start_date=02/23/2018&end_date=02/28/2018&description=asdfasdfasdfad asdfasdf
+	//processSave ( $_orgID, $_orgTokenID,  $_tournamentName, $_tournamentAlias, $_tournamentSeason, $_startDate, $_effectiveDate, $_endDate, $_description )
+	
+	//$_flag =  TournamentTable::processNew ( $_orgID, $_orgTokenID,  'asdfasdf', 'asdfasdf', '2018', '02/23/2018', $_effectiveDate, '02/28/2018', 1, $_description, $_userID, $_userTokenID  ); 
+	//$_flag =  TournamentTable::processSave ( $_orgID, $_orgTokenID,  'asdfasdf', 'asdfasdf', '2018', '02/23/2018', $_effectiveDate, '02/28/2018', $_description ); 
+?>
 <div class="ui-content-page">
 	<?php include_partial('new', array( '_products' => $_products, '_countProducts' => $_countProducts, '_productClasses' => $_productClasses )) ?> 
 </div>		  
@@ -19,10 +25,10 @@
  
 
 <script>
-	$('#createProduct').click(function(){
-		var url = '<?php echo url_for('product/createProduct')?>'; 
-		var formName = 'createProductForm';
-		var data = $("form#createProductForm").serialize();
+	$('#createTournament').click(function(){
+		var url = '<?php echo url_for('tournament/createTournament')?>'; 
+		var formName = 'createTournamentForm';
+		var data = $("form#createTournamentForm").serialize();
 		var datas = generateValidData (formName);
 		processEntry(datas, url )
 		//alert(datas);

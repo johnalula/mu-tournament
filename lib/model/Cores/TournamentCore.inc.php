@@ -1,18 +1,15 @@
 <?php 
 class TournamentCore {
  
-	public static $_INITIATED = 1;
-	public static $_PENDING = 2;
-	public static $_ACTIVE = 3;
-	public static $_APPROVED = 4;
-	public static $_REJECTED = 5;
-	public static $_DECLINED = 6;
-	public static $_REVIEWED = 7;
-	public static $_EDITED = 8;
-	public static $_REVISION_REQUIRED = 9;
-	public static $_PUBLISHED = 10;
-	public static $_COMPLETED = 11;
-	public static $_TOURNAMENT_STATUS = array ( 1 => "Initiated", 2 => "Pending", 3 => "Active", 4 => "Approved", 5 => "Rejected", 6 => "Declined", 7 => "Reviewed", 8 => "Edited", 9 => "Published", 10 => "Completed" );
+	public static $_PENDING = 1;
+	public static $_ACTIVE = 2;
+	public static $_NOT_PLAYED = 3;
+	public static $_PLAYED = 4;
+	public static $_POSTPOND = 5;
+	public static $_ROUNDING = 6;
+	public static $_FINALIZED = 7;
+	public static $_COMPLETED = 8;
+	public static $_TOURNAMENT_STATUS = array ( 1 => "Pending", 2 => "Active", 3 => "Not Playe", 4 => "Played", 5 => "Postpond", 6 => "Rounding", 7 => "Finalized", 8 => "Completed" );
 
 	public static function processTournamentStatuses() 
 	{
@@ -49,34 +46,28 @@ class TournamentCore {
 	public static function processTournamentStatusIcon ($_status) 
 	{
 		switch($_status) {			
-			case self::$_INITIATED:
-				return 'initiated';
-			break;
 			case self::$_PENDING:
 				return 'pending';
 			break;
 			case self::$_ACTIVE:
-				return 'Review Pending';
+				return 'active';
 			break; 
-			case self::$_APPROVED:
-				return 'approved';
+			case self::$_NOT_PLAYED:
+				return 'not_played';
 			break;
-			case self::$_DECLINED:
-				return 'paid';
+			case self::$_PLAYED:
+				return 'played';
+			break;
+			case self::$_POSTPOND:
+				return 'postpond';
+			break;
+			case self::$_ROUNDING:
+				return 'rounding';
+			break;
+			case self::$_FINALIZED:
+				return 'finalized';
 			break;
 			case self::$_COMPLETED:
-				return 'viod';
-			break;
-			case self::$_EDITED:
-				return 'rejected';
-			break;
-			case self::$_REVIEWED:
-				return 'completed';
-			break;
-			case self::$_PUBLISHED:
-				return 'completed';
-			break;
-			case self::$_REVIEWED:
 				return 'completed';
 			break;
 			default:

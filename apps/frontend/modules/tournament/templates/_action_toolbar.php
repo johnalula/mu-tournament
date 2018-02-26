@@ -18,6 +18,12 @@
 						<?php echo __('Cancel') ?>
 					</button>
 				</li>
+				<li class="">
+					<a href="<?php echo url_for('tournament/index') ?>" title="<?php echo __('Back to Tournament List') ?>" id="backToTournament" class="" >
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/details') ?>">
+						<?php echo __('List') ?>
+					</a>
+				</li>
 			<?php endif; ?>
 			 
 		<?php endif; ?>

@@ -1,5 +1,5 @@
 <div class="ui-panel-form-box ui-main-panel-form-box-margin" id="">   
-	<form class="form-horizontal" id="createCategoryForm" role="form" action="" method=""> 
+	<form class="form-horizontal" id="createTournamentForm" role="form" action="" method=""> 
 		<input type="hidden" class="form-control" id="test_id" name="test_id" value="">
 		<div class="ui-row" id=""> 
 			<div class="ui-panel-grid-form12" id=""> 
@@ -34,9 +34,9 @@
 						<label for="lastname" class="col-sm-101 control-label"><?php echo __('Status') ?>:</label>
 						<div class="col-sm-201">
 							 <select id="status" name="tournament[status]" class="form-control" title="<?php echo __('Tournament Status') ?>">
-								<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_type): ?>								 
+								<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_status): ?>								 
 									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultTournamentStatus () ? 'selected':'' ?> >
-										<?php echo $_type ?>
+										<?php echo $_status ?>
 									</option>								 
 								<?php endforeach; ?>
 							</select>

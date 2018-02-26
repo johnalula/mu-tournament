@@ -1,0 +1,167 @@
+GameCategory:
+  GameCategory_1:
+    token_id: 341c1177f4286f39dc5459bec11eb33d74c132f7
+    category_type: null
+    category_name: Athletics
+    alias: ATHLETICS
+    active_flag: true
+    status: '1'
+    description: 'Athletics (  )'
+    created_at: '2018-02-26 21:56:47'
+    updated_at: '2018-02-26 21:56:47'
+  GameCategory_2:
+    token_id: 9e106f8274d37a472d8bf46829420b2f38cffa42
+    category_type: null
+    category_name: 'Bascket Ball'
+    alias: BASCKET_BALL
+    active_flag: true
+    status: '1'
+    description: 'Bascket ball (  )'
+    created_at: '2018-02-26 21:57:03'
+    updated_at: '2018-02-26 21:57:03'
+  GameCategory_3:
+    token_id: 255e4773f136bd797a9117487ac82873df8202ca
+    category_type: null
+    category_name: 'Hand Ball'
+    alias: HAND_BALL
+    active_flag: true
+    status: '1'
+    description: 'Hand ball (  )'
+    created_at: '2018-02-26 21:57:33'
+    updated_at: '2018-02-26 21:57:33'
+  GameCategory_4:
+    token_id: 7cc7ced923556ded9efad4a275f6dc42290e516f
+    category_type: null
+    category_name: 'Volly Ball'
+    alias: VOLLY_BALL
+    active_flag: true
+    status: '1'
+    description: 'Volly ball (  )'
+    created_at: '2018-02-26 21:57:44'
+    updated_at: '2018-02-26 21:57:44'
+  GameCategory_5:
+    token_id: 0b3840d40ff2e4a519fb18e2e06afc60c9821a31
+    category_type: null
+    category_name: Football
+    alias: FOOTBALL
+    active_flag: true
+    status: '1'
+    description: 'Football (  )'
+    created_at: '2018-02-26 21:57:55'
+    updated_at: '2018-02-26 21:57:55'
+  GameCategory_6:
+    token_id: 23703b5e4e5e77b71fc8976d9bb2ee0f8c02df9f
+    category_type: null
+    category_name: 'Ground Tennis'
+    alias: GROUND_TENNIS
+    active_flag: true
+    status: '1'
+    description: 'Ground tennis (  )'
+    created_at: '2018-02-26 21:58:09'
+    updated_at: '2018-02-26 21:58:09'
+  GameCategory_7:
+    token_id: 1f886772ef447fa66fd7eebf0d171526ca1064bb
+    category_type: null
+    category_name: 'Table Tennis'
+    alias: TABLE_TENNIS
+    active_flag: true
+    status: '1'
+    description: 'Table tennis (  )'
+    created_at: '2018-02-26 21:58:17'
+    updated_at: '2018-02-26 21:58:17'
+  GameCategory_8:
+    token_id: 6a46b97339e723aff4e138dd25e9b1f953b64a3c
+    category_type: null
+    category_name: Badmenten
+    alias: BADMENTEN
+    active_flag: true
+    status: '1'
+    description: 'Badmenten (  )'
+    created_at: '2018-02-26 21:58:33'
+    updated_at: '2018-02-26 21:58:33'
+Tournament:
+  Tournament_1:
+    token_id: 67a74306b06d0c01624fe0d0249a570f4d093747
+    org_token_id: null
+    name: 'African Universities Sport Festival'
+    alias: AUSF
+    season: '1'
+    start_date: 02/23/2018
+    effective_date: ''
+    end_date: 02/28/2018
+    active_flag: true
+    status: '1'
+    description: null
+    created_at: '2018-02-23 20:20:48'
+    updated_at: '2018-02-23 20:20:48'
+  Tournament_2:
+    token_id: 67a74306b06d0c01624fe0d0249a570f4d093747
+    org_token_id: null
+    name: 'Ethiopia Sport Festivals'
+    alias: ESF
+    season: '1'
+    start_date: 02/23/2018
+    effective_date: ''
+    end_date: 04/24/2018
+    active_flag: false
+    status: '8'
+    description: null
+    created_at: '2018-02-23 20:38:19'
+    updated_at: '2018-02-23 20:38:19'
+Team:
+  Team_1:
+    token_id: 6d8819a85c22612333e3111b47dcf6d56e2b39ec
+    country_id: '44'
+    team_name: 'Nirobi University'
+    alias: NU
+    team_city: Nirobi
+    team_logo: null
+    start_date: 02/24/2018
+    end_date: null
+    active_flag: true
+    status: '1'
+    description: null
+    created_at: '2018-02-24 20:56:45'
+    updated_at: '2018-02-24 20:56:45'
+  Team_2:
+    token_id: 78d046156b9c88cb068883876c2f7b3781937431
+    country_id: '67'
+    team_name: 'Harare University'
+    alias: HU
+    team_city: Harare
+    team_logo: null
+    start_date: 02/24/2018
+    end_date: null
+    active_flag: true
+    status: '1'
+    description: null
+    created_at: '2018-02-24 20:57:14'
+    updated_at: '2018-02-24 20:57:14'
+  Team_3:
+    token_id: ea9f90e18e97bbc70135dbf70148e3e7bf7ac4c8
+    country_id: '67'
+    team_name: 'Jimma Uniersity'
+    alias: EJU
+    team_city: Jimma
+    team_logo: null
+    start_date: 02/24/2018
+    end_date: null
+    active_flag: true
+    status: '1'
+    description: null
+    created_at: '2018-02-24 21:28:24'
+    updated_at: '2018-02-24 21:28:24'
+  Team_4:
+    token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    country_id: '67'
+    team_name: 'Mekelle University'
+    alias: ETMU
+    team_city: Mekelle
+    team_logo: null
+    start_date: 02/24/2018
+    end_date: null
+    active_flag: true
+    status: '1'
+    description: null
+    created_at: '2018-02-24 21:28:50'
+    updated_at: '2018-02-24 21:28:50'

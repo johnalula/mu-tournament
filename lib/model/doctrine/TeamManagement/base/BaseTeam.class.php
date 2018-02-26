@@ -8,8 +8,11 @@
  * @property string $token_id
  * @property integer $org_id
  * @property integer $tournament_id
+ * @property integer $country_id
  * @property string $team_name
  * @property string $alias
+ * @property string $team_city
+ * @property string $team_logo
  * @property string $start_date
  * @property string $end_date
  * @property boolean $active_flag
@@ -45,11 +48,22 @@ abstract class BaseTeam extends sfDoctrineRecord
         $this->hasColumn('tournament_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('country_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('team_name', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
              ));
         $this->hasColumn('alias', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('team_city', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('team_logo', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
              ));

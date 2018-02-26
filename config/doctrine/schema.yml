@@ -48,11 +48,16 @@ GameCategory:
   columns:
     token_id: { type: string(100) }    
     org_id: { type: integer } 
-    category_type: { type: integer } 
+    tournament_id: { type: integer } 
+    category_type: { type: integer }  
+    category_name: { type: string(255) }
+    alias: { type: string(50) } }  
     active_flag: { type: boolean, default: true } 
+    status: { type: integer} 
     description:  { type: string(255) }    
   relations:  
-    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes }     
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes }   
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentGameCategorys }   
  
  
 SportGame:
@@ -151,8 +156,11 @@ Team:
     token_id: { type: string(100) }    
     org_id: { type: integer }
     tournament_id: { type: integer }
+    country_id: { type: integer }
     team_name: { type: string(255) }
     alias: { type: string(50) } }   
+    team_city: { type: string(50) } }   
+    team_logo: { type: string(50) } }   
     start_date: { type: string(100) }
     end_date: { type: string(100) }  
     active_flag: { type: boolean, default: true } 

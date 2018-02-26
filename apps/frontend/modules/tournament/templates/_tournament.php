@@ -1,3 +1,4 @@
+
 <div class="ui-panel-container" id="" style="border:0px solid #f0f;"> 
 	<div class="ui-panel-grid-box" id="" style="border:0px solid #f0f;"> 
 		<!-- First panel --> 
@@ -32,7 +33,7 @@
 					</div  
 					<!--    End of toolbar      -->
 					<div class="ui-panel-grid-list" id="product"> 
-						<?php include_partial('list', array( '_products' => $_products, '_countProducts' => $_countProducts )) ?> 
+						<?php include_partial('list', array( '_tournaments' => $_tournaments, '_countTournaments' => $_countTournaments )) ?> 
 					</div> <!-- ui-panel-content -->  
 				</div><!-- ui-panel-content-box -->
 				

@@ -649,4 +649,48 @@ class SystemCore {
 		
 		//return UserCore::$_SUPER_ADMINISTRATOR;
 	}
+	public static function processSystemModuleID ( $_id ) 
+	{ 
+		return  ($_id < 1000 ? ($_id < 100 ? ($_id < 10 ? '000':'00'):'0'):'').$_id; 
+	}
+	public static function processAlias ( $_value ) 
+	{ 
+		return trim(strtoupper(str_replace(' ', '_', $_value))); 
+	}
+	public static function makeObjectAlias ($_object) 
+	{ 
+		return trim(strtoupper(str_replace(' ', '_', $_object))); 
+	}
+	public static function processDescription ( $_value, $_description ) 
+	{ 
+		return $_value ? trim(ucfirst($_value)).' ( '.trim($_description).' )':trim($_description);
+	}
+	public static function processDataID ( $_id ) 
+	{ 
+		return  ($_id < 1000 ? ($_id < 100 ? ($_id < 10 ? '000':'00'):'0'):'').$_id; 
+	}
+	public static function makeTokenURL ( $_ID, $_tokenID, $_idName=null ) 
+	{ 
+		return  (($_idName ? ($_idName.'='.$_ID):('id'.'='.$_ID)).'&token_id='.substr(trim($_tokenID), 0, 16).'&ext_id='.substr(trim($_tokenID), 24, 8).'&opt_id='.substr(trim($_tokenID), 16, 8)); 
+	}
+	public static function makeSystemInitialCode ( $_codeType, $_initialNumber ) 
+	{ 
+		return  ((self::$_REFERENCE == $_codeType) || (self::$_INVOICE == $_codeType) || (self::$_RECEIPT == $_codeType)) ? self::processReferenceInitialNumber (trim($_initialNumber)):self::processCodeInitialNumber (trim($_initialNumber)); 
+	}
+	public static function makeSystemFullCode ( $_prefixCode, $_lastCode ) 
+	{ 
+		return  (trim($_prefixCode).'-'.trim($_lastCode)); 
+	}
+	public static function processTokenID ( $_tokenID, $_optID, $_extID ) 
+	{ 
+		return  (trim($_tokenID).trim($_optID).trim($_extID)); 
+	}
+	public static function makeStringExplode ( $_strValue ) 
+	{ 
+		return  (explode(',', $_strValue)); 
+	}
+	public static function makeAlias ( $_alias )
+	{
+		return trim(strtoupper(str_replace(' ', '_', $_alias))); 
+	}
 }

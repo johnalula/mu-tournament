@@ -26,7 +26,7 @@
 								</div><!-- end of ui-filter-list -->
 							</div><!-- end of ui-filter-list -->
 						</div>
-					</div  
+					</div>
 					<!--    End of toolbar      -->
 					<div class="ui-panel-form-content"> 
 						<?php include_partial('form', array('_units' => $_units)) ?> 
