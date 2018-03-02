@@ -6,7 +6,7 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
-			<th class="ui-th-left-text" title="<?php echo __('Category Name') ?>"><?php echo  __('Category Name') ?></th>   
+			<th class="ui-th-left-text" title="<?php echo __('Round Type Name') ?>"><?php echo  __('Round Type Name') ?></th>   
 			<th class="ui-th-left-text" style="" title="<?php echo __('Category Alias') ?>"><?php echo  __('Alias') ?></th>   
 			<th class="ui-th-left-text" style="" title="<?php echo __('Category Group') ?>"><?php echo  __('Description') ?></th>   
 			<th class="ui-th-left-text" style="" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
@@ -16,48 +16,48 @@
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-product" name="ui-total-data-list-product" value="<?php echo count($_countTournaments) ?>">
-	  <?php foreach ( $_gameCategorys as $_key => $_gameCategory ): ?>
+	  <?php foreach ( $_sportGames as $_key => $_sportGame ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<a href="<?php echo url_for('game_category/view?category_id='.$_gameCategory->id.'&token_id='.$_gameCategory->token_id) ?>" >	
-					<?php echo SystemCore::processDataID($_gameCategory->id) ?>
+				<a href="<?php echo url_for('game_category/view?category_id='.$_sportGame->id.'&token_id='.$_sportGame->token_id) ?>" >	
+					<?php echo SystemCore::processDataID($_sportGame->id) ?>
 				</a>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-11"> 
-				<a href="<?php echo url_for('game_category/view?category_id='.$_gameCategory->id.'&token_id='.$_gameCategory->token_id) ?>" >	
-					<?php echo $_gameCategory->categoryName  ?>
+				<a href="<?php echo url_for('game_category/view?category_id='.$_sportGame->id.'&token_id='.$_sportGame->token_id) ?>" >	
+					<?php echo $_sportGame->sportGameName  ?>
 				</a>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-11">
-				<?php echo $_gameCategory->categoryAlias ?> 
+				<?php echo $_sportGame->sportGameAlias ?> 
 			</td>
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo Wordlimit::Wordlimiter($_gameCategory->description, 5) ?>
+				<?php echo Wordlimit::Wordlimiter($_sportGame->description, 5) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<span rel="<?php echo $_gameCategory->id ?>" class="ui-table-status-small-icon" id="<?php echo $_gameCategory->id ?>">
-					<img title="<?php echo $_gameCategory->categoryName ?>" src="<?php echo image_path($_gameCategory->id ? 'status/approved':'status/disabled')  ?>"> 
+				<span rel="<?php echo $_sportGame->id ?>" class="ui-table-status-small-icon" id="<?php echo $_sportGame->id ?>">
+					<img title="<?php echo $_sportGame->sportGameName ?>" src="<?php echo image_path($_sportGame->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
 			<td class="ui-table-action ui-table-list-action-box-3">
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">   
 						<li>
-							<a href="<?php echo url_for('game_category/view?category_id='.$_gameCategory->id.'&token_id='.$_gameCategory->token_id) ?>" >	
-								<img title="<?php echo __('View Game Category').' ( '.' Task '.' #:'.$_gameCategory->id ?> )" src="<?php echo image_path('icons/view') ?>">			
+							<a href="<?php echo url_for('game_category/view?category_id='.$_sportGame->id.'&token_id='.$_sportGame->token_id) ?>" >	
+								<img title="<?php echo __('View Game Category').' ( '.' Task '.' #:'.$_sportGame->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
 						</li> 
 						<li>  
-							<a href="<?php echo url_for('game_category/edit?category_id='.$_gameCategory->id.'&token_id='.$_gameCategory->token_id) ?>" >	
-								<img title="<?php echo __('Edit Game Category').' ( '.' Task '.' #:'.$_gameCategory->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
+							<a href="<?php echo url_for('game_category/edit?category_id='.$_sportGame->id.'&token_id='.$_sportGame->token_id) ?>" >	
+								<img title="<?php echo __('Edit Game Category').' ( '.' Task '.' #:'.$_sportGame->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
 							</a>    
 						</li> 
 						<li>   
-							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_gameCategory->id ?>" onclick="Javascript:deleteProduct(<?php echo $_gameCategory->id ?>);" rel="<?php echo $_gameCategory->token_id ?>">	
-							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_gameCategory->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
+							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_sportGame->id ?>" onclick="Javascript:deleteProduct(<?php echo $_sportGame->id ?>);" rel="<?php echo $_sportGame->token_id ?>">	
+							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_sportGame->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
 							</a>  
 						</li> 
 					</ul>

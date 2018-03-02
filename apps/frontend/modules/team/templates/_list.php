@@ -50,7 +50,7 @@
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_team->id ?>" class="ui-table-status-small-icon" id="<?php echo $_team->id ?>">
-					<img title="<?php echo $_team->name ?>" src="<?php echo image_path($_team->id ? 'status/approved':'status/disabled')  ?>"> 
+					<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
 			<td class="ui-table-action ui-table-list-action-box-4">

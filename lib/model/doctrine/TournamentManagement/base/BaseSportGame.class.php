@@ -7,15 +7,12 @@
  * 
  * @property string $token_id
  * @property integer $org_id
- * @property integer $tournament_id
- * @property integer $sport_game_type_id
+ * @property integer $sport_game_category_id
+ * @property integer $distance_type
  * @property string $name
  * @property string $alias
- * @property integer $envent_type
- * @property integer $distance_category
- * @property integer $distance
- * @property integer $distance_measurement
- * @property integer $double_single_type
+ * @property integer $game_distance
+ * @property integer $game_distance_measurement
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
@@ -23,7 +20,8 @@
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
- * @property Tournament $Tournament
+ * @property GameCategory $GameCategory
+ * @property Organization $Organization
  * @property Doctrine_Collection $sportGameMatchFixtures
  * 
  * @package    mu-TMS
@@ -43,10 +41,10 @@ abstract class BaseSportGame extends sfDoctrineRecord
         $this->hasColumn('org_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('tournament_id', 'integer', null, array(
+        $this->hasColumn('sport_game_category_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('sport_game_type_id', 'integer', null, array(
+        $this->hasColumn('distance_type', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('name', 'string', 255, array(
@@ -57,19 +55,10 @@ abstract class BaseSportGame extends sfDoctrineRecord
              'type' => 'string',
              'length' => 50,
              ));
-        $this->hasColumn('envent_type', 'integer', null, array(
+        $this->hasColumn('game_distance', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('distance_category', 'integer', null, array(
-             'type' => 'integer',
-             ));
-        $this->hasColumn('distance', 'integer', null, array(
-             'type' => 'integer',
-             ));
-        $this->hasColumn('distance_measurement', 'integer', null, array(
-             'type' => 'integer',
-             ));
-        $this->hasColumn('double_single_type', 'integer', null, array(
+        $this->hasColumn('game_distance_measurement', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('start_date', 'string', 100, array(
@@ -103,8 +92,13 @@ abstract class BaseSportGame extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Tournament', array(
-             'local' => 'tournament_id',
+        $this->hasOne('GameCategory', array(
+             'local' => 'sport_game_category_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('Organization', array(
+             'local' => 'org_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

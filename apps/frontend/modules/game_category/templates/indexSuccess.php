@@ -1,6 +1,6 @@
 
 <div class="ui-content-page">
-	<?php include_partial('game_category', array( '_sportGameCategories' => $_sportGameCategories, '_countSportGameCategories' => $_countSportGameCategories )) ?> 
+	<?php include_partial('game_category', array( '_gameCategorys' => $_gameCategorys, '_countSportGameCategorys' => $_countSportGameCategorys )) ?> 
 </div>		  
        
 <!--- ************************  -->

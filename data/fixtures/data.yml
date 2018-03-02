@@ -1,9 +1,444 @@
+RoundType:
+  RoundType_1:
+    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    round_type: '1'
+    round_number: '1'
+    name: 'Round One'
+    alias: ROUND_ONE
+    active_flag: true
+    status: '2'
+    description: 'Round One ( ada fasdf a asdf )'
+    created_at: '2018-02-27 22:03:48'
+    updated_at: '2018-02-27 22:03:48'
+  RoundType_2:
+    token_id: 1ade1521b38d85983a4d543da12fd533947fcb37
+    round_type: '1'
+    round_number: '2'
+    name: 'Round Two'
+    alias: ROUND_TWO
+    active_flag: true
+    status: '2'
+    description: 'Round Two ( asdfas dfasdf )'
+    created_at: '2018-02-27 22:04:18'
+    updated_at: '2018-02-27 22:04:18'
+  RoundType_3:
+    token_id: 80b490ba980e9095c44fde607dedbf30f75c96e6
+    round_type: '1'
+    round_number: '3'
+    name: 'Round Three'
+    alias: ROUND_THREE
+    active_flag: true
+    status: '2'
+    description: 'Round Three ( asdfas dfasdf )'
+    created_at: '2018-02-27 22:04:35'
+    updated_at: '2018-02-27 22:04:35'
+  RoundType_4:
+    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    round_type: '1'
+    round_number: '4'
+    name: 'Round Four'
+    alias: ROUND_FOUR
+    active_flag: true
+    status: '2'
+    description: 'Round Four ( asd asdfa sdf )'
+    created_at: '2018-02-27 22:05:35'
+    updated_at: '2018-02-27 22:05:35'
+  RoundType_5:
+    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    round_type: '1'
+    round_number: '5'
+    name: 'Round Five'
+    alias: ROUND_FIVE
+    active_flag: true
+    status: '2'
+    description: 'Round Four ( asd asdfa sdf )'
+    created_at: '2018-02-27 22:05:35'
+    updated_at: '2018-02-27 22:05:35'
+  RoundType_6:
+    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    round_type: '1'
+    round_number: '6'
+    name: 'Round Six'
+    alias: ROUND_SIX
+    active_flag: true
+    status: '2'
+    description: 'Round Four ( asd asdfa sdf )'
+    created_at: '2018-02-27 22:05:35'
+    updated_at: '2018-02-27 22:05:35'
+  RoundType_7:
+    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    round_type: '1'
+    round_number: '7'
+    name: 'Round Seven'
+    alias: ROUND_SEVEN
+    active_flag: true
+    status: '2'
+    description: 'Round Four ( asd asdfa sdf )'
+    created_at: '2018-02-27 22:05:35'
+    updated_at: '2018-02-27 22:05:35'
+  RoundType_8:
+    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    round_type: '1'
+    round_number: '8'
+    name: 'Round Eight'
+    alias: ROUND_EIGHT
+    active_flag: true
+    status: '2'
+    description: 'Round Four ( asd asdfa sdf )'
+    created_at: '2018-02-27 22:05:35'
+    updated_at: '2018-02-27 22:05:35'
+  RoundType_9:
+    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    round_type: '1'
+    round_number: '9'
+    name: 'Round Nine'
+    alias: ROUND_NINE
+    active_flag: true
+    status: '2'
+    description: 'Round Four ( asd asdfa sdf )'
+    created_at: '2018-02-27 22:05:35'
+    updated_at: '2018-02-27 22:05:35'
+  RoundType_10:
+    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    round_type: '1'
+    round_number: '10'
+    name: 'Round Ten'
+    alias: ROUND_TEN
+    active_flag: true
+    status: '2'
+    description: 'Round Four ( asd asdfa sdf )'
+    created_at: '2018-02-27 22:05:35'
+    updated_at: '2018-02-27 22:05:35'
+  RoundType_11:
+    token_id: bdf7fcbb4342ffcaac522f4477886b917bb899a7
+    round_type: '2'
+    round_number: null
+    name: 'Quarter Final'
+    alias: QUARTER_FINAL
+    active_flag: true
+    status: '2'
+    description: 'Quarter Final ( fasdfasdfa sdfad )'
+    created_at: '2018-02-27 22:06:02'
+    updated_at: '2018-02-27 22:06:02'
+  RoundType_12:
+    token_id: fd1fd1044593f935180e5a90f998c633e433c26a
+    round_type: '3'
+    round_number: null
+    name: 'Semi Final'
+    alias: SEMI_FINAL
+    active_flag: true
+    status: '2'
+    description: 'Semi Final ( asdfas dfasdf asdf )'
+    created_at: '2018-02-27 22:07:51'
+    updated_at: '2018-02-27 22:07:51'
+  RoundType_13:
+    token_id: 51a386c611d4c1cc9e159da68650b8205b0ac41f
+    round_type: '4'
+    round_number: null
+    name: Final
+    alias: FINAL
+    active_flag: true
+    status: '2'
+    description: 'Final ( asdfa asdf )'
+    created_at: '2018-02-27 22:21:34'
+    updated_at: '2018-02-27 22:21:34'
+SportGame:
+  SportGame_1:
+    token_id: b10a16dc9f1f0a2709d6d6814e41147e78df6979
+    GameCategory: GameCategory_1
+    distance_type: '1'
+    name: 'Sprint 60m'
+    alias: ''
+    game_distance: '60'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Sprint 60m ( asdfasfasdf )'
+    created_at: '2018-03-02 21:53:58'
+    updated_at: '2018-03-02 21:53:58'
+  SportGame_2:
+    token_id: 4b85ed38379d39ee8f4ec5b2f5f7aa851351f4d1
+    GameCategory: GameCategory_1
+    distance_type: '1'
+    name: 'Sprint 100M'
+    alias: ''
+    game_distance: '100'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Sprint 100M ( dfasdfasdf )'
+    created_at: '2018-03-02 21:54:18'
+    updated_at: '2018-03-02 21:54:18'
+  SportGame_3:
+    token_id: e844d80307581d2bd2bbf394b09d7f56784a59a8
+    GameCategory: GameCategory_1
+    distance_type: '1'
+    name: 'Sprint 200M'
+    alias: ''
+    game_distance: '200'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Sprint 200M ( asdfasd fasdfasd )'
+    created_at: '2018-03-02 21:57:55'
+    updated_at: '2018-03-02 21:57:55'
+  SportGame_4:
+    token_id: d6add34d82e6e6154aee3914a7779459b29b42e0
+    GameCategory: GameCategory_1
+    distance_type: '1'
+    name: 'Sprint 400M'
+    alias: ''
+    game_distance: '400'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Sprint 400M ( asdfasd fasdf )'
+    created_at: '2018-03-02 21:59:05'
+    updated_at: '2018-03-02 21:59:05'
+  SportGame_5:
+    token_id: 2fd7184d572f4025f43ae683b516c8544c58e49d
+    GameCategory: GameCategory_1
+    distance_type: '2'
+    name: 'Middle Distance 800M'
+    alias: ''
+    game_distance: '800'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Middle Distance 800M ( adfasdfasdfasdf )'
+    created_at: '2018-03-02 21:59:38'
+    updated_at: '2018-03-02 21:59:38'
+  SportGame_6:
+    token_id: 52d7922451b79b1aed7c3e4ac8db8c9a4e638ead
+    GameCategory: GameCategory_1
+    distance_type: '2'
+    name: 'Middle Distance 800M'
+    alias: ''
+    game_distance: '1500'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Middle Distance 800M ( asdfasdfasdf )'
+    created_at: '2018-03-02 22:00:06'
+    updated_at: '2018-03-02 22:00:06'
+  SportGame_7:
+    token_id: adec1e314ef0625c218686d389727c37c54eb9f8
+    GameCategory: GameCategory_1
+    distance_type: '2'
+    name: 'Middle Distance 3000M'
+    alias: ''
+    game_distance: '3000'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Middle Distance 3000M ( asdfhajksdhfasdfasd asdf )'
+    created_at: '2018-03-02 22:00:46'
+    updated_at: '2018-03-02 22:00:46'
+  SportGame_8:
+    token_id: 0fda36569b6459978333d67c82e4ccad83950d3f
+    GameCategory: GameCategory_1
+    distance_type: '3'
+    name: 5000M
+    alias: ''
+    game_distance: '5000'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: '5000M ( asdfasdfasdf )'
+    created_at: '2018-03-02 22:01:44'
+    updated_at: '2018-03-02 22:01:44'
+  SportGame_9:
+    token_id: fe949f12ce240eb3caeef7077f8fb670424fba20
+    GameCategory: GameCategory_1
+    distance_type: '3'
+    name: 1000M
+    alias: ''
+    game_distance: '1000'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: '1000M ( asdfasdfasdfasdf )'
+    created_at: '2018-03-02 22:02:02'
+    updated_at: '2018-03-02 22:02:02'
+  SportGame_10:
+    token_id: 92a27cf326e3e894008ae76933dcadeb2ebc60bc
+    GameCategory: GameCategory_1
+    distance_type: '5'
+    name: 3000M
+    alias: ''
+    game_distance: '3000'
+    game_distance_measurement: '1'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: '3000M ( sdfas fasdf asdf )'
+    created_at: '2018-03-02 22:02:40'
+    updated_at: '2018-03-02 22:02:40'
+  SportGame_11:
+    token_id: 1bd489717e734b18878c4b93443a5beb20e48b81
+    GameCategory: GameCategory_2
+    distance_type: '100'
+    name: 'Bascket Ball'
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '100'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Bascket Ball ( asdfasdfasdfasdf )'
+    created_at: '2018-03-02 22:03:02'
+    updated_at: '2018-03-02 22:03:02'
+  SportGame_12:
+    token_id: 4a65b5b1f5a8c758e45e036f9763c40ec3bc7e07
+    GameCategory: GameCategory_3
+    distance_type: '100'
+    name: 'Hand Ball'
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '100'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Hand Ball ( adfasdfasdfasdf )'
+    created_at: '2018-03-02 22:03:16'
+    updated_at: '2018-03-02 22:03:16'
+  SportGame_13:
+    token_id: cf4c8c9beba645c5cb5dcb20e45e9f8fb1f33c8e
+    GameCategory: GameCategory_4
+    distance_type: '100'
+    name: 'Volly Ball'
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '100'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Volly Ball ( afdasfkl asjkldfasdf )'
+    created_at: '2018-03-02 22:03:35'
+    updated_at: '2018-03-02 22:03:35'
+  SportGame_14:
+    token_id: 816c8ab988e6bb44052a6cc82391cc605f74eb21
+    GameCategory: GameCategory_6
+    distance_type: '100'
+    name: 'Ground Tennis'
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '100'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Ground Tennis ( asdasdfasfasfasdf )'
+    created_at: '2018-03-02 22:03:48'
+    updated_at: '2018-03-02 22:03:48'
+  SportGame_15:
+    token_id: 2a7d0631b89e4325442e0263a96691984d003802
+    GameCategory: GameCategory_7
+    distance_type: '100'
+    name: 'Table Tennis'
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '100'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Table Tennis ( asdfad fasdf asdf )'
+    created_at: '2018-03-02 22:04:05'
+    updated_at: '2018-03-02 22:04:05'
+  SportGame_16:
+    token_id: 6d04e386a459ed21cbde644f42a66eb16796c2dd
+    GameCategory: GameCategory_8
+    distance_type: '100'
+    name: Badmenten
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '100'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Badmenten ( adfasdf asd fasdf sdf )'
+    created_at: '2018-03-02 22:04:19'
+    updated_at: '2018-03-02 22:04:19'
+  SportGame_17:
+    token_id: 0077401f137c4cfaa7bc58b3288df045a4237cb2
+    GameCategory: GameCategory_5
+    distance_type: '100'
+    name: Football
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '100'
+    start_date: 03/02/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Football ( sdfasdf asdfasdf asdf )'
+    created_at: '2018-03-02 22:04:38'
+    updated_at: '2018-03-02 22:04:38'
 GameCategory:
   GameCategory_1:
     token_id: 341c1177f4286f39dc5459bec11eb33d74c132f7
     category_type: null
     category_name: Athletics
     alias: ATHLETICS
+    measurement_flag: true
     active_flag: true
     status: '1'
     description: 'Athletics (  )'
@@ -14,6 +449,7 @@ GameCategory:
     category_type: null
     category_name: 'Bascket Ball'
     alias: BASCKET_BALL
+    measurement_flag: true
     active_flag: true
     status: '1'
     description: 'Bascket ball (  )'
@@ -24,6 +460,7 @@ GameCategory:
     category_type: null
     category_name: 'Hand Ball'
     alias: HAND_BALL
+    measurement_flag: true
     active_flag: true
     status: '1'
     description: 'Hand ball (  )'
@@ -34,6 +471,7 @@ GameCategory:
     category_type: null
     category_name: 'Volly Ball'
     alias: VOLLY_BALL
+    measurement_flag: true
     active_flag: true
     status: '1'
     description: 'Volly ball (  )'
@@ -44,6 +482,7 @@ GameCategory:
     category_type: null
     category_name: Football
     alias: FOOTBALL
+    measurement_flag: true
     active_flag: true
     status: '1'
     description: 'Football (  )'
@@ -54,6 +493,7 @@ GameCategory:
     category_type: null
     category_name: 'Ground Tennis'
     alias: GROUND_TENNIS
+    measurement_flag: true
     active_flag: true
     status: '1'
     description: 'Ground tennis (  )'
@@ -64,6 +504,7 @@ GameCategory:
     category_type: null
     category_name: 'Table Tennis'
     alias: TABLE_TENNIS
+    measurement_flag: true
     active_flag: true
     status: '1'
     description: 'Table tennis (  )'
@@ -74,6 +515,7 @@ GameCategory:
     category_type: null
     category_name: Badmenten
     alias: BADMENTEN
+    measurement_flag: true
     active_flag: true
     status: '1'
     description: 'Badmenten (  )'

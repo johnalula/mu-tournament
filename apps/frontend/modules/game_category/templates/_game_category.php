@@ -6,8 +6,8 @@
 			<div class="ui-panel-grid">
 				<div class="ui-panel-header-default">
 					<h2 class="ui-theme-panel-header">
-						<img src="<?php echo image_path('settings/product') ?>" title="<?php echo __('Sport Games Management') ?>">
-						<?php echo __('Game Categories') ?>
+						<img src="<?php echo image_path('settings/category') ?>" title="<?php echo __('Sport Games Category Management') ?>">
+						<?php echo __('Sport Game Categories') ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -33,14 +33,14 @@
 					</div  
 					<!--    End of toolbar      -->
 					<div class="ui-panel-grid-list" id="product"> 
-						<?php include_partial('list', array( '_teams' => $_teams, '_countTeams' => $_countTeams )) ?> 
+						<?php include_partial('list', array( '_gameCategorys' => $_gameCategorys, '_countSportGameCategorys' => $_countSportGameCategorys )) ?> 
 					</div> <!-- ui-panel-content -->  
 				</div><!-- ui-panel-content-box -->
 				
 				<div class="ui-panel-footer-default">
 					<div class="ui-panel-list-pagination-default">
 						<div class="ui-panel-list-pagination">
-							xx
+							<?php include_partial('global/pagination', array('_total_data'=>$_countSportGameCategorys, '_pager'=> 'game_category')) ?>
 						</div>
 					</div>
 				</div>

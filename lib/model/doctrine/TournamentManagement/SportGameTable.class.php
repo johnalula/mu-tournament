@@ -16,4 +16,156 @@ class SportGameTable extends PluginSportGameTable
     {
         return Doctrine_Core::getTable('SportGame');
     }
+    //
+	public static function processNew ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_status, $_description, $_userID, $_userTokenID  )
+	{
+		 $_flag = true;
+
+			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
+			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
+			$_tournament = self::processSave ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_status, $_description );
+		
+		return $_tournament;
+	}
+	//
+	public static function processCreate ( )
+	{
+		
+	} 
+	public static function processSave ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_status, $_description )
+	{
+		//try {
+			//if(!$_orgID || !$_name) return false;
+    	
+			$_token = trim($_orgTokenID).trim($_sportGameName).trim($_sportGameAlias).trim($_startDate).rand('11111', '99999'); 
+			$_startDate = date('m/d/Y', time());
+			$_nw = new SportGame (); 
+			$_nw->token_id = sha1(md5(trim($_token))); 
+			//$_nw->org_id = trim($_orgID); 
+			//$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
+			$_nw->sport_game_category_id = trim($_categoryID); 
+			$_nw->distance_type = trim($_gameDistanceType); 
+			$_nw->game_distance_measurement = trim($_measurementType); 
+			$_nw->game_distance = trim($_gameDistance); 
+			$_nw->name = ucwords(trim($_sportGameName)); 
+			$_nw->alias = trim($_sportGameAlias); 
+			$_nw->start_date = trim($_startDate); 
+			$_nw->active_flag = true;  
+			$_nw->status = trim(TournamentCore::$_PENDING);   
+			$_nw->description = SystemCore::processDescription ( trim($_sportGameName), trim($_description) );  
+			$_nw->save(); 
+			
+			return $_nw; 
+		//} catch ( Exception $e) {
+	    //  return false; 
+		//}
+	} 
+	public static function processEdit ( )
+	{
+		
+	} 
+	//
+	public static function processUpdate ( )
+	{
+		   
+	} 
+	//
+	public static function processDelete( ) 
+   {	
+		 
+	}
+	//
+	public static function appendPartialQueryFields ( ) 
+	{		
+		 
+	}
+	//
+	public static function appendCandidateQueryFields ( ) 
+	{		
+		 
+	}
+	public static function appendQueryFields ( ) 
+	{		
+		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.active_flag as activeFlag, 
+		";	
+		return $_queryFileds;
+	}
+	//
+  // process list selection function 
+   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_categoryID=null, $_gameTypeID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("SportGame sprtGm") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				//->innerJoin("sprtGm.Organization org on sprtGm.org_id = org.id ")   
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("sprtGm.id ASC")
+				->where("sprtGm.id IS NOT NULL");
+				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("sprtGm.org_id = ? AND sprtGm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGm.active_flag = ?", $_activeFlag);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("sprtGm.category_name LIKE ? OR sprtGm.alias LIKE ? OR sprtGm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	//
+   public static function processAll ($_orgID=null, $_orgTokenID=null, $_keyword=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("SportGame sprtGm") 
+				//->innerJoin("sprtGm.Campus cmps on sprtGm.campus_id = cmps.id ")  
+				//->innerJoin("sprtGm.Organization org on sprtGm.org_id = org.id ")   
+				->orderBy("sprtGm.id ASC")
+				->where("sprtGm.id IS NOT NULL");
+				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("sprtGm.org_id = ? AND sprtGm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGm.active_flag = ?", $_activeFlag);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("sprtGm.category_name LIKE ? OR sprtGm.alias LIKE ? OR sprtGm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	//
+   public static function processCandidates ( ) 
+   {
+		 
+	}
+	//
+   public static function processObject( ) 
+   {
+		
+	}  
+	//
+   public static function makeObject ( ) 
+   {
+		 
+	} 
+	 
+	
+	/*********************************************************
+	********** Candidate selection process *******************
+	**********************************************************/
+	
+	//
+	public static function processCandidatePersonSelection ( ) 
+   { 
+		
+	}  
+	
+	/*********************************************************
+	********** Candidate filtering process *******************
+	**********************************************************/
+	
+	public static function processRoleSelection ()
+	{
+		 
+	}
 }

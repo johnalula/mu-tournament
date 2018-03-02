@@ -159,10 +159,12 @@ class TournamentCore {
 	public static $_RELAY = 6;
 	public static $_JUMPS = 7;
 	public static $_THROWS = 8;
-	public static $_HALF_MARATHON = 9;
-	public static $_MARATHON = 10;
-	public static $_OTHER_DISTANCE = 11;
-	public static $_DISTANCE_TYPES = array ( 1 => "Sprints", 2 => "Middle Distance", 3 => "Long Distance", 4 => "Hardless", 5 => "Steeplechase", 6 => "Relay",7 => "Jumps", 8 => "Throws", 9 => "Half Marathon", 10 => "Marathon", 11 => "Other" );
+	public static $_CROSS_COUNTRY = 9;
+	public static $_HALF_MARATHON = 10;
+	public static $_MARATHON = 11;
+	public static $_OTHER_DISTANCE = 12;
+	
+	public static $_DISTANCE_TYPES = array ( 1 => "Sprints", 2 => "Middle Distance", 3 => "Long Distance", 4 => "Hardless", 5 => "Steeplechase", 6 => "Relay",7 => "Jumps", 8 => "Throws", 9 => "Cross Country", 10 => "Half Marathon", 11 => "Marathon", 12 => "Other" );
 
 	public static function processDistanceTypes() 
 	{
@@ -200,6 +202,7 @@ class TournamentCore {
 			return $_e; 
 	  }   
 	}
+	
 	public static function processDistanceTypeIcon ($_distance) 
 	{
 		switch($_distance) {			
@@ -227,6 +230,9 @@ class TournamentCore {
 			case self::$_THROWS:
 				return 'throws';
 			break;
+			case self::$_CROSS_COUNTRY:
+				return 'cross_country';
+			break;
 			case self::$_HALF_MARATHON:
 				return 'half_marathon';
 			break;
@@ -237,18 +243,7 @@ class TournamentCore {
 				return 'other';
 			break;
 		}
-	} 
-	public static function processManuscriptCodeID ( $_codeNumber )
-	{
-		try {
-			
-			$_currentYear = date('y', time());
-			return 'IJBDS-'.$_currentYear.'-'.$_codeNumber; 
-			
-		} catch ( Exception $e ) {
-			return null; 
-		}    
-	}
+	}  
 	
 	
 	/*********************************************/
@@ -259,7 +254,7 @@ class TournamentCore {
 	public static $_FINAL = 4;
 	public static $_OTHER_ROUND = 5; 
 
-	public static $_ROUND_TYPES = array ( 1 => 'Round', 2 => 'Quarter Final', 3 => 'Semi Final', 4 => 'Final', 5 => 'None');
+	public static $_ROUND_TYPES = array ( 1 => 'Round', 2 => 'Quarter Final', 3 => 'Semi Final', 4 => 'Final', 5 => 'Other');
 	
 	public static function processRounds ( ) 
 	{
@@ -320,6 +315,122 @@ class TournamentCore {
 			break;
 			case self::$_OTHER_ROUND:
 				return 'None';
+			break; 
+		}
+	}
+	/*********************************************/
+	
+	public static $_ONE = 1;
+	public static $_TWO = 2;
+	public static $_THREE = 3;
+	public static $_FOUR = 4;
+	public static $_FIVE = 5; 
+	public static $_SIX = 6;
+	public static $_SEVEN = 7;
+	public static $_EIGHT = 8;
+	public static $_NINE = 9;
+	public static $_TEN = 10; 
+	public static $_ELEVEN = 11; 
+	public static $_TWELVE = 12; 
+	public static $_THIRTEEN = 13; 
+	public static $_FOURTEEN = 14; 
+	public static $_FIFTEEN = 15; 
+	public static $_SIXTEEN = 16; 
+
+	public static $_ROUND_NUMBERS = array ( 1 => 'One', 2 => 'Two', 3 => 'Three', 4 => 'Four', 5 => 'Five', 6 => 'Six', 7 => 'Seven', 8 => 'Eight', 9 => 'Nine', 10 => 'Ten', 11 => 'Eleven', 12 => 'Twelve', 13 => 'Thirteen', 14 => 'Fourteen', 15 => 'Fifteen', 16 => 'Sixteen');
+	
+	public static function processRoundNumbers ( ) 
+	{
+		 try {
+				return self::$_ROUND_NUMBERS; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processRoundNumberID ( $_value ) 
+	{
+		try {
+			foreach( self::$_ROUND_NUMBERS as $_key=> $_round ){
+				if( strcmp($_round, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processRoundNumberValue ($_id )
+	{
+		try {
+			foreach( self::$_ROUND_NUMBERS as $_key=> $_round ){
+			  if( $_key == $_id )
+					return $_round; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultRoundNumber ( )
+	{
+		 try {
+				return self::$_ONE; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processRoundNumberIcon ($_round) 
+	{
+		switch($_round) {			
+			case self::$_ONE:
+				return 'one';
+			break;
+			case self::$_TWO:
+				return 'two';
+			break;
+			case self::$_THREE:
+				return 'three';
+			break;
+			case self::$_FOUR:
+				return 'four';
+			break;
+			case self::$_FIVE:
+				return 'five';
+			break; 
+			case self::$_SIX:
+				return 'six';
+			break;
+			case self::$_SEVEN:
+				return 'seven';
+			break;
+			case self::$_EIGHT:
+				return 'eight';
+			break;
+			case self::$_NINE:
+				return 'nine';
+			break;
+			case self::$_TEN:
+				return 'ten';
+			break; 
+			case self::$_ELEVEN:
+				return 'eleven';
+			break; 
+			case self::$_TWELVE:
+				return 'twelve';
+			break;
+			case self::$_THIRTEEN:
+				return 'thirteen';
+			break;
+			case self::$_FOURTEEN:
+				return 'fourteen';
+			break;
+			case self::$_FIFTEEN:
+				return 'fifteen';
+			break;
+			case self::$_SIXTEEN:
+				return 'sixteen';
 			break; 
 		}
 	}
@@ -392,5 +503,264 @@ class TournamentCore {
 		}
 	}
 	
+	/*********************************************/
+	
+	public static $_SINGLE = 1;
+	public static $_PAIR = 2;
+	public static $_MULTIPLE = 3;
+	public static $_OTHER_PLAYING = 4; 
 
+	public static $_PLAYER_SQUADE = array ( 1 => 'Single Player', 2 => 'Pair Player', 3 => 'Multiple Players', 4 =>  'None');
+	
+	public static function processPlayerSquades ( ) 
+	{
+		 try {
+				return self::$_PLAYER_SQUADE; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processPlayerSquadeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_PLAYER_SQUADE as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processPlayerSquadeValue ($_id )
+	{
+		try {
+			foreach( self::$_PLAYER_SQUADE as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultPlayerSquade ( )
+	{
+		 try {
+				return self::$_OTHER_PLAYING; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processPlayerSquadeIcon ($_event) 
+	{
+		switch($_event) {			
+			case self::$_SINGLE:
+				return 'single_player';
+			break;
+			case self::$_PAIR:
+				return 'pair_players';
+			break;
+			case self::$_MULTIPLE:
+				return 'multiple_players';
+			break;
+			case self::$_OTHER_EVENT:
+				return 'none';
+			break; 
+		}
+	}
+	/*********************************************/
+	
+	public static $_LONG = 1;
+	public static $_TRIPLE = 2;
+	public static $_HIGH = 3;
+	public static $_OTHER_JUMP = 4; 
+
+	public static $_JUMP_TYPES = array ( 1 => 'Long Jump', 2 => 'Triple Jump',3 =>  'High Jump',4 =>  'Other');
+	
+	public static function processJumpTypes ( ) 
+	{
+		 try {
+				return self::$_JUMP_TYPES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processJumpTypeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_JUMP_TYPES as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processJumpTypeValue ($_id )
+	{
+		try {
+			foreach( self::$_JUMP_TYPES as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultJumpType ( )
+	{
+		 try {
+				return self::$_METER; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processJumpTypeAlias ($_event) 
+	{
+		switch($_event) {			
+			case self::$_METER:
+				return 'M';
+			break;
+			case self::$_KILO_METERL:
+				return 'KM';
+			break;
+			case self::$_OTHER_MEASUREMENT:
+				return 'other';
+			break; 
+		}
+	}
+	public static function processJumpTypeIcon ($_event) 
+	{
+		switch($_event) {			
+			case self::$_LONG:
+				return 'long_jump';
+			break;
+			case self::$_TRIPLE:
+				return 'triple_jump';
+			break;
+			case self::$_HIGH:
+				return 'high_jump';
+			break;
+			case self::$_OTHER_MEASUREMENT:
+				return 'other';
+			break; 
+		}
+	}
+	/*********************************************/
+	
+	public static $_METER = 1;
+	public static $_KILO_METERL = 2;
+	public static $_OTHER_MEASUREMENT = 3; 
+
+	public static $_DISTANCE_MEASUREMENTS = array ( 1 => 'Meter', 2 => 'Kilometer',4 =>  'Other');
+	
+	public static function processDistanceMeasurements ( ) 
+	{
+		 try {
+				return self::$_DISTANCE_MEASUREMENTS; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processDistanceMeasurementID ( $_value ) 
+	{
+		try {
+			foreach( self::$_DISTANCE_MEASUREMENTS as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processDistanceMeasurementValue ($_id )
+	{
+		try {
+			foreach( self::$_DISTANCE_MEASUREMENTS as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultDistanceMeasurement ( )
+	{
+		 try {
+				return self::$_METER; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processDistanceMeasurementAlias ($_event) 
+	{
+		switch($_event) {			
+			case self::$_METER:
+				return 'M';
+			break;
+			case self::$_KILO_METERL:
+				return 'KM';
+			break;
+			case self::$_OTHER_MEASUREMENT:
+				return 'other';
+			break; 
+		}
+	}
+	public static function processDistanceMeasurementIcon ($_event) 
+	{
+		switch($_event) {			
+			case self::$_METER:
+				return 'single_player';
+			break;
+			case self::$_KILO_METERL:
+				return 'pair_players';
+			break;
+			case self::$_OTHER_MEASUREMENT:
+				return 'other';
+			break; 
+		}
+	}
+	
+
+/************************************************/
+
+	public static function makeSportGameName ($_event) 
+	{
+		switch($_event) {			
+			case self::$_METER:
+				return 'M';
+			break;
+			case self::$_KILO_METERL:
+				return 'KM';
+			break;
+			case self::$_OTHER_MEASUREMENT:
+				return 'other';
+			break; 
+		}
+	}
+	public static function makeSportGameAlias ($_gameType, $_gameDistance, $_measurement) 
+	{
+		switch($_event) {			
+			case self::$_METER:
+				return 'M';
+			break;
+			case self::$_KILO_METERL:
+				return 'KM';
+			break;
+			case self::$_OTHER_MEASUREMENT:
+				return 'other';
+			break; 
+		}
+	}
 }

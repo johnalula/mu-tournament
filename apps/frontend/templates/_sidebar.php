@@ -81,7 +81,7 @@
 		<div class="ui-sidebar-nav ui-accordion-box ui-display-none" id="ui-panel-3">
 			<ul class="nav nav-sidebar">
 				<li>
-					<a href="<?php echo url_for('game/index') ?>">
+					<a href="<?php echo url_for('game_category/index') ?>">
 						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/school') ?>">
 						<?php echo __('Categories') ?>
 					</a>

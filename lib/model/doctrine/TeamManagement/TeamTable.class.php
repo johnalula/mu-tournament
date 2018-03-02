@@ -81,13 +81,13 @@ class TeamTable extends PluginTeamTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "tm.id, tm.name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.active_flag as activeFlag, 
+		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.active_flag as activeFlag, 
 		";	
 		return $_queryFileds;
 	}
 	//
   // process list selection function 
-   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_season=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -104,7 +104,7 @@ class TeamTable extends PluginTeamTable
 				if(!is_null($_exclusion))  $_qry = $_qry->andWhereNotIn("tm.id", $_exclusion ); 
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
-						$_qry = $_qry->andWhere("tm.name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+						$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
 				
 			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
 

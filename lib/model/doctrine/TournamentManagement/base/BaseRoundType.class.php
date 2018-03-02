@@ -8,9 +8,11 @@
  * @property string $token_id
  * @property integer $org_id
  * @property integer $round_type
+ * @property integer $round_number
  * @property string $name
  * @property string $alias
  * @property boolean $active_flag
+ * @property integer $status
  * @property string $description
  * @property Organization $Organization
  * 
@@ -34,6 +36,9 @@ abstract class BaseRoundType extends sfDoctrineRecord
         $this->hasColumn('round_type', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('round_number', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('name', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
@@ -45,6 +50,9 @@ abstract class BaseRoundType extends sfDoctrineRecord
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => true,
+             ));
+        $this->hasColumn('status', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('description', 'string', 255, array(
              'type' => 'string',

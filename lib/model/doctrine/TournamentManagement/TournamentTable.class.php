@@ -17,7 +17,7 @@ class TournamentTable extends PluginTournamentTable
         return Doctrine_Core::getTable('Tournament');
     }
     
-    //
+   //
 	public static function processNew ( $_orgID, $_orgTokenID,  $_tournamentName, $_tournamentAlias, $_tournamentSeason, $_startDate, $_effectiveDate, $_endDate, $_status, $_description, $_userID, $_userTokenID  )
 	{
 		 $_flag = true;

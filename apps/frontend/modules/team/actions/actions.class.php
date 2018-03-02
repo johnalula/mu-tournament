@@ -21,7 +21,7 @@ class teamActions extends sfActions
 		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
 		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
-		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
+		$this->_teams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
 	}
 	
 	public function executeNew(sfWebRequest $request)

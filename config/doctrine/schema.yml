@@ -32,62 +32,15 @@ RoundType:
     token_id: { type: string(100) }    
     org_id: { type: integer } 
     round_type: { type: integer }   
+    round_number: { type: integer }   
     name: { type: string(255) }
     alias: { type: string(50) } 
-    active_flag: { type: boolean, default: true } 
-    description:  { type: string(255) }    
-  relations:  
-    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationRoundTypes }     
- 
- 
-GameCategory:
-  package: TournamentManagement
-  tableName: mutms_tbl_game_category
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    org_id: { type: integer } 
-    tournament_id: { type: integer } 
-    category_type: { type: integer }  
-    category_name: { type: string(255) }
-    alias: { type: string(50) } }  
     active_flag: { type: boolean, default: true } 
     status: { type: integer} 
     description:  { type: string(255) }    
   relations:  
-    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes }   
-    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentGameCategorys }   
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationRoundTypes }     
  
- 
-SportGame:
-  package: TournamentManagement
-  tableName: mutms_tbl_sport_game
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    org_id: { type: integer }
-    tournament_id: { type: integer } 
-    sport_game_type_id: { type: integer } 
-    name: { type: string(255) }
-    alias: { type: string(50) } }  
-    envent_type: { type: integer } 
-    distance_category: { type: integer } 
-    distance: { type: integer } 
-    distance_measurement: { type: integer } 
-    double_single_type: { type: integer } 
-    start_date: { type: string(100) }
-    effective_date: { type: string(100) }
-    end_date: { type: string(100) }  
-    roundable_flag: { type: boolean } 
-    active_flag: { type: boolean, default: true } 
-    status: { type: integer, default: 1  } 
-    description:  { type: clob }  
-  relations:  
-    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentGames }  
-
-############  General Setting ####################
    
 GroupType:
   package: TournamentManagement
@@ -101,7 +54,73 @@ GroupType:
     active_flag: { type: boolean, default: true } 
     description:  { type: string(255) }    
   relations:  
-    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes }     
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes } 
+    
+GameCategory:
+  package: TournamentManagement
+  tableName: mutms_tbl_game_category
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    org_id: { type: integer } 
+    category_type: { type: integer }  
+    category_name: { type: string(255) }
+    alias: { type: string(50) } }  
+    measurement_flag: { type: boolean, default: true } 
+    active_flag: { type: boolean, default: true } 
+    status: { type: integer} 
+    description:  { type: string(255) }    
+  relations:  
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes }   
+
+############  General Setting ####################
+
+SportGameType:
+  package: TournamentManagement
+  tableName: mutms_tbl_sport_game_type
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    org_id: { type: integer } 
+    distance_type: { type: integer }  
+    distance_type_name: { type: string(255) }
+    alias: { type: string(50) } }  
+    distance: { type: integer } 
+    distance_measurement: { type: integer } 
+    active_flag: { type: boolean, default: true } 
+    status: { type: integer} 
+    description:  { type: string(255) }    
+  relations:  
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes }   
+    
+SportGame:
+  package: TournamentManagement
+  tableName: mutms_tbl_sport_game
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    org_id: { type: integer }
+    sport_game_category_id: { type: integer } 
+    distance_type: { type: integer }  
+    name: { type: string(255) }
+    alias: { type: string(50) } }  
+    game_distance: { type: integer } 
+    game_distance_measurement: { type: integer } 
+    start_date: { type: string(100) }
+    effective_date: { type: string(100) }
+    end_date: { type: string(100) }  
+    roundable_flag: { type: boolean } 
+    active_flag: { type: boolean, default: true } 
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    GameCategory: { onDelete: CASCADE, local: sport_game_category_id, foreign: id, foreignAlias: categorySportGames }  
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationSportGames }   
+
+############  General Setting ####################
  
 SportGameGroup:
   package: TournamentManagement

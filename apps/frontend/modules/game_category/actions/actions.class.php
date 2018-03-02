@@ -21,7 +21,7 @@ class game_categoryActions extends sfActions
 		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
 		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
-		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
+		$this->_gameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_tournamentID, $_activeFlag, $_keyword, 0, 10 );
 	}
 	
 	public function executeNew(sfWebRequest $request)
@@ -29,6 +29,22 @@ class game_categoryActions extends sfActions
 		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
 		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		
+	}
+	public function executeCreateGameCategory(sfWebRequest $request)
+	{
+		$_categoryName = $request->getParameter('category_name');	
+		$_categoryAlias = $request->getParameter('category_alias');	
+		$_description = $request->getParameter('description');	
+				
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_userID = $this->getUser()->getAttribute('userID');
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+	
+		$_flag =  GameCategoryTable::processNew ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_status, $_description, $_userID, $_userTokenID  );  
+				 
+		return $_flag ? true:false;
 		
 	}
 	public function executeView(sfWebRequest $request)
@@ -49,22 +65,6 @@ class game_categoryActions extends sfActions
 		
 	}
 	
-	public function executeCreateGameCategory(sfWebRequest $request)
-	{
-		$_categoryName = $request->getParameter('category_name');	
-		$_categoryAlias = $request->getParameter('category_alias');	
-		$_description = $request->getParameter('description');	
-				
-		$_orgID = $this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
-		$_userID = $this->getUser()->getAttribute('userID');
-		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
-	
-		$_flag =  GameCategoryTable::processNew ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_description, $_userID, $_userTokenID  );  
-				 
-		return $_flag ? true:false;
-		
-	}
 	public function executeCandidateParentCategory(sfWebRequest $request)
 	{
 		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
