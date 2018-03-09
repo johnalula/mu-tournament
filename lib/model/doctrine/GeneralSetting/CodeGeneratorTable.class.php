@@ -16,4 +16,154 @@ class CodeGeneratorTable extends PluginCodeGeneratorTable
     {
         return Doctrine_Core::getTable('CodeGenerator');
     }
+    //
+	public static function proccessCreate ( $_orgID, $_orgTokenID, $_prefixCode, $_initialNumber, $_codeType, $_canRecreate, $_activeFlag, $_applicableFlag, $_defaultFlag, $_description, $_userID )
+	{
+		if(!$_prefixCode && !$_initialNumber) return false;
+		
+		$_alias = str_replace(' ', '_', $_prefixCode); 
+		$_thisCode = trim($_prefixCode);
+		$_thisAlias = empty($_prefixCode) ? trim(strtoupper($_alias)):trim(strtoupper($_prefixCode));
+		//$_codeExist = self::processExistence ( $_orgID, $_orgTokenID, $_thisCode, $_thisAlias);
+		
+		//if($_codeExist) return false;
+
+		$_token = trim($_orgTokenID).trim($_prefixCode).trim($_initialNumber).rand('11111', '99999'); 
+		$_nw = new CodeGenerator ();  
+		$_nw->token_id = md5(sha1($_token));  
+		$_nw->org_id = trim($_orgID);
+		$_nw->org_token_id = md5(sha1(trim($_orgTokenID))); 
+		$_nw->prefix_code = strtoupper(trim($_prefixCode));
+		$_nw->alias = empty($_prefixCode) ? trim(strtoupper($_alias)):trim(strtoupper($_prefixCode)); ;
+		$_nw->initial_number = SystemCore::makeSystemInitialCode ( trim($_codeType), trim($_initialNumber));  
+		$_nw->last_code = SystemCore::makeSystemInitialCode ( trim($_codeType), trim($_initialNumber));  
+		$_nw->can_recreate_deleted = trim($_canRecreate); 
+		$_nw->code_type = trim($_codeType);  
+		$_nw->applicable_flag = trim($_applicableFlag);  
+		$_nw->default_flag = trim($_defaultFlag);  
+		$_nw->active_flag = trim($_activeFlag);  
+		$_nw->description = SystemCore::processDescription ( $_thisAlias, $_description );  
+		$_nw->save(); 
+			
+		$_flag = $_defaultFlag ? $_nw->makeDefault ( $_orgID, $_orgTokenID, $_codeType ):true;
+			
+		return $_nw&&$_flag; 
+	}
+	
+	public static function appendQueryFields ( ) 
+	{
+		$_minus = '-';
+		$queryFileds = "cod.id, cod.token_id as tokenID, cod.prefix_code as prefixCode, cod.alias as codeAlias, cod.code_type as codeType, cod.initial_number as initialNumber, cod.last_code as lastCode, cod.default_flag as defaultFlag, cod.deleted_code as deletedCode, cod.applicable_flag as applicableFlag, cod.active_flag as activeFlag, cod.can_recreate_deleted as canRecreateDeletedCode, cod.has_deleted as hasDeletedCode, cod.created_at as createdAt, cod.updated_at as updatedAt,
+		(cod.prefix_code"."-"."cod.initial_number) as fullPrefixCode,
+		(cod.initial_number = cod.last_code) as canEditCode,
+		
+		org.name as orgName,
+		
+		";		
+		return $queryFileds;
+	}
+	//
+   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_codeType=null, $_defaultFlag=null, $_exclusion=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("CodeGenerator cod") 
+			->innerJoin("cod.Organization org on cod.org_id = org.id ")   
+			->offset($_offset)
+			->limit($_limit) 
+			->orderBy("cod.id ASC")
+			->where("cod.id IS NOT NULL AND cod.trashed_flag IS NOT TRUE");
+			if(!is_null($_orgID)) $_qry = $_qry->andWhere("cod.org_id = ? AND cod.org_token_id = ?", array($_orgID, $_orgTokenID));
+			if(!is_null($_codeType))	$_qry = $_qry->addWhere("cod.code_type = ?", $_codeType);  
+			if(!is_null($_isDefault))	$_qry = $_qry->addWhere("cod.default_flag = ?", $_defaultFlag); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$_qry = $_qry->andWhere("cod.prefix_code LIKE ? OR cod.alias LIKE ? OR cod.description LIKE ?", array($_keyword, $_keyword, $_keyword)); 
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count ( $_qry ) <= 0 ? null : $_qry ); 
+	}
+	//
+   public static function processAll ( $_orgID=null, $_orgTokenID=null, $_codeType=null, $_defaultFlag=null, $_exclusion=null, $_keyword=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("CodeGenerator cod") 
+			->innerJoin("cod.Organization org on cod.org_id = org.id ")   
+			->orderBy("cod.id DESC")
+			->where("cod.id IS NOT NULL");
+			if(!is_null($_orgID)) $_qry = $_qry->andWhere("cod.org_id = ? AND cod.org_token_id = ?", array($_orgID, $_orgTokenID));
+			if(!is_null($_codeType))	$_qry = $_qry->addWhere("cod.code_type = ?", $_codeType);  
+			if(!is_null($_isDefault))	$_qry = $_qry->addWhere("cod.default_flag = ?", $_defaultFlag); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$_qry = $_qry->andWhere("cod.prefix_code LIKE ? OR cod.alias LIKE ? OR cod.description LIKE ?", array($_keyword, $_keyword, $_keyword)); 
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count ( $_qry ) <= 0 ? null : $_qry ); 
+	}
+	//
+	public static function processObject( $_orgID=null, $_orgTokenID=null, $_codeID, $_tokenID ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("CodeGenerator cod")  
+			->innerJoin("cod.Organization org on cod.org_id = org.id ")   
+			->where("cod.id = ? AND cod.token_id = ?", array($_codeID, $_tokenID ));
+			if(!is_null($_orgID)) $_qry = $_qry->andWhere("cod.org_id = ? AND cod.org_token_id = ?", array($_orgID, $_orgTokenID));
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( !$_qry ? null:$_qry ); 
+		
+	}
+	public static function processDefaultSelection ( $_orgID=null, $_orgTokenID=null, $_codeType=null, $_defaultFlag=true ) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("CodeGenerator cod")  
+			->leftJoin("cod.Organization org on cod.org_id = org.id ")    
+			->where("cod.id IS NOT NULL AND cod.active_flag IS TRUE AND cod.default_flag = ?", $_defaultFlag);
+			//if(!is_null($_orgID)) $_qry = $_qry->andWhere("cod.org_id = ? AND cod.org_token_id = ?", array($_orgID, $_orgTokenID));
+			if(!is_null($_codeType))	$_qry = $_qry->addWhere("cod.code_type = ?", $_codeType); 
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}
+	public static function processDefault ( $_orgID=null, $_codeType=null) 
+   {
+		$_qry = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("CodeGenerator cod")  
+			->innerJoin("cod.Organization org on cod.org_id = org.id ")    
+			->where("cod.id IS NOT NULL AND cod.active_flag IS TRUE AND cod.default_flag  IS TRUE");
+			if(!is_null($_orgID)) $_qry = $_qry->andWhere("cod.org_id = ? ",  $_orgID );
+			if(!is_null($_codeType))	$_qry = $_qry->addWhere("cod.code_type = ?", $_codeType); 
+			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( count($_qry) <= 0 ? null:$_qry ); 
+	}
+	public static function processCodeGenerating () 
+   {  
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("CodeGenerator cod")  
+			->innerJoin("cod.Organization org on cod.org_id = org.id ")    
+			->where("cod.default_flag=? ", array($_default))
+			->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( ! $q ? null : $q );  
+	} 
+	public static function processExistence ( $_orgID, $_orgTokenID, $_name, $_alias) 
+   {
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("CodeGenerator cod") 
+			->innerJoin("cod.Organization org on cod.org_id = org.id ")    
+			->where("cod.prefix_code LIKE ? AND cod.alias LIKE ? AND cod.org_id = ? AND cod.org_token_id = ? ", array($_name, $_alias, $_orgID, $_orgTokenID))
+			->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
+		return ( count ( $q ) <= 0 ? null : $q ); 
+	}
 }

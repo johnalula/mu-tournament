@@ -16,7 +16,7 @@ class GameCategoryTable extends PluginGameCategoryTable
     {
         return Doctrine_Core::getTable('GameCategory');
     }
-    //
+   //
 	public static function processNew ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_status, $_description, $_userID, $_userTokenID  )
 	{
 		 $_flag = true;

@@ -13,6 +13,7 @@
  * @property string $alias
  * @property integer $game_distance
  * @property integer $game_distance_measurement
+ * @property integer $sport_game_number
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
@@ -59,6 +60,9 @@ abstract class BaseSportGame extends sfDoctrineRecord
              'type' => 'integer',
              ));
         $this->hasColumn('game_distance_measurement', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('sport_game_number', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('start_date', 'string', 100, array(

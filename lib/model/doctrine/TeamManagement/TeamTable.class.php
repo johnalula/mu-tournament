@@ -121,9 +121,18 @@ class TeamTable extends PluginTeamTable
 		 
 	}
 	//
-   public static function processObject( ) 
-   {
-		
+	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_teamID, $_tokenID ) 
+	{
+			$_qry = Doctrine_Query::create()
+					->select(self::appendQueryFields())
+					->from("Team tm") 
+					//->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
+					//->innerJoin("tm.Organization org on tm.org_id = org.id ")     
+				->where("tm.id = ? AND tm.token_id = ? ", array($_teamID, $_tokenID ));
+				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
    public static function makeObject ( ) 

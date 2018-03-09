@@ -16,6 +16,7 @@
  * @property string $description
  * @property Organization $Organization
  * @property Doctrine_Collection $categorySportGames
+ * @property Doctrine_Collection $gameCategoryTournamentMatch
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -71,6 +72,10 @@ abstract class BaseGameCategory extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('SportGame as categorySportGames', array(
+             'local' => 'id',
+             'foreign' => 'sport_game_category_id'));
+
+        $this->hasMany('TournamentMatch as gameCategoryTournamentMatch', array(
              'local' => 'id',
              'foreign' => 'sport_game_category_id'));
 

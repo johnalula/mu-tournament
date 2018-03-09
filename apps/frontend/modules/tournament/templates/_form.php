@@ -56,7 +56,7 @@
 						</div>
 						<label for="lastname" class="col-sm-101 control-label"><?php echo __('End Date') ?>:</label>
 						<div class="col-sm-201">
-							  <div class="input-group"> 
+							<div class="input-group"> 
 								<input class="form-control" id="end_date" name="tournament[end_date]" type="text" placeholder="<?php echo __('Date') ?>" value="<?php echo date('m/d/Y', time()) ?>" title="<?php echo __('Tournament End Date') ?>" readonly>
 								<span class="input-group-btn">
 									<button class="btn btn-default ui-button-img" type="button">

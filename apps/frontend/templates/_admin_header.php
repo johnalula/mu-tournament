@@ -40,7 +40,7 @@
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo __('Matchs') ?><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="<?php echo url_for('home/index') ?>"><?php echo __('Mach') ?></a></li>
+						<li><a href="<?php echo url_for('match/index') ?>"><?php echo __('Mach') ?></a></li>
 						<li><a href="<?php echo url_for('home/index') ?>"><?php echo __('Match Fixtures') ?></a></li>
 						<li><a href="<?php echo url_for('home/index') ?>"><?php echo __('Match Table') ?></a></li>
 						<li role="separator" class="divider"></li>

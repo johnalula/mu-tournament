@@ -11,10 +11,12 @@
  * @property integer $round_number
  * @property string $name
  * @property string $alias
+ * @property boolean $default_flag
  * @property boolean $active_flag
  * @property integer $status
  * @property string $description
  * @property Organization $Organization
+ * @property Doctrine_Collection $roundTypeMatchFixtures
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -47,6 +49,10 @@ abstract class BaseRoundType extends sfDoctrineRecord
              'type' => 'string',
              'length' => 50,
              ));
+        $this->hasColumn('default_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => true,
@@ -67,6 +73,10 @@ abstract class BaseRoundType extends sfDoctrineRecord
              'local' => 'org_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('MatchFixture as roundTypeMatchFixtures', array(
+             'local' => 'id',
+             'foreign' => 'match_round_type_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

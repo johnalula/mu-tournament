@@ -1,3 +1,76 @@
+GroupType:
+  GroupType_1:
+    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    group_type_id: '1'
+    group_number: '1'
+    alias: GROUP_ONE
+    active_flag: true
+    description: 'Group One ( ada fasdf a asdf )'
+    created_at: '2018-02-27 22:03:48'
+    updated_at: '2018-02-27 22:03:48'
+  GroupType_2:
+    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    group_type_id: '2'
+    group_number: '2'
+    alias: GROUP_TWO
+    active_flag: true
+    description: 'Group two ( ada fasdf a asdf )'
+    created_at: '2018-02-27 22:03:48'
+    updated_at: '2018-02-27 22:03:48'
+  GroupType_3:
+    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    group_type_id: '3'
+    group_number: '3'
+    alias: GROUP_THREE
+    active_flag: true
+    description: 'Group Three ( ada fasdf a asdf )'
+    created_at: '2018-02-27 22:03:48'
+    updated_at: '2018-02-27 22:03:48'
+  GroupType_4:
+    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    group_type_id: '4'
+    group_number: '4'
+    alias: GROUP_FOUR
+    active_flag: true
+    description: 'Group Four ( ada fasdf a asdf )'
+    created_at: '2018-02-27 22:03:48'
+    updated_at: '2018-02-27 22:03:48'
+  GroupType_5:
+    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    group_type_id: '5'
+    group_number: '5'
+    alias: GROUP_FIVE
+    active_flag: true
+    description: 'Group Five ( ada fasdf a asdf )'
+    created_at: '2018-02-27 22:03:48'
+    updated_at: '2018-02-27 22:03:48'
+  GroupType_6:
+    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    group_type_id: '6'
+    group_number: '6'
+    alias: GROUP_SIX
+    active_flag: true
+    description: 'Group Six ( ada fasdf a asdf )'
+    created_at: '2018-02-27 22:03:48'
+    updated_at: '2018-02-27 22:03:48'
+  GroupType_7:
+    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    group_type_id: '7'
+    group_number: '7'
+    alias: GROUP_SEVEN
+    active_flag: true
+    description: 'Group Seven ( ada fasdf a asdf )'
+    created_at: '2018-02-27 22:03:48'
+    updated_at: '2018-02-27 22:03:48'
+  GroupType_8:
+    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    group_type_id: '8'
+    group_number: '8'
+    alias: GROUP_EIGHT
+    active_flag: true
+    description: 'Group Eight ( ada fasdf a asdf )'
+    created_at: '2018-02-27 22:03:48'
+    updated_at: '2018-02-27 22:03:48'
 RoundType:
   RoundType_1:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
@@ -5,6 +78,7 @@ RoundType:
     round_number: '1'
     name: 'Round One'
     alias: ROUND_ONE
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Round One ( ada fasdf a asdf )'
@@ -16,6 +90,7 @@ RoundType:
     round_number: '2'
     name: 'Round Two'
     alias: ROUND_TWO
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Round Two ( asdfas dfasdf )'
@@ -27,6 +102,7 @@ RoundType:
     round_number: '3'
     name: 'Round Three'
     alias: ROUND_THREE
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Round Three ( asdfas dfasdf )'
@@ -38,6 +114,7 @@ RoundType:
     round_number: '4'
     name: 'Round Four'
     alias: ROUND_FOUR
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Round Four ( asd asdfa sdf )'
@@ -49,6 +126,7 @@ RoundType:
     round_number: '5'
     name: 'Round Five'
     alias: ROUND_FIVE
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Round Four ( asd asdfa sdf )'
@@ -60,6 +138,7 @@ RoundType:
     round_number: '6'
     name: 'Round Six'
     alias: ROUND_SIX
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Round Four ( asd asdfa sdf )'
@@ -71,6 +150,7 @@ RoundType:
     round_number: '7'
     name: 'Round Seven'
     alias: ROUND_SEVEN
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Round Four ( asd asdfa sdf )'
@@ -82,6 +162,7 @@ RoundType:
     round_number: '8'
     name: 'Round Eight'
     alias: ROUND_EIGHT
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Round Four ( asd asdfa sdf )'
@@ -93,6 +174,7 @@ RoundType:
     round_number: '9'
     name: 'Round Nine'
     alias: ROUND_NINE
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Round Four ( asd asdfa sdf )'
@@ -115,6 +197,7 @@ RoundType:
     round_number: null
     name: 'Quarter Final'
     alias: QUARTER_FINAL
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Quarter Final ( fasdfasdfa sdfad )'
@@ -126,6 +209,7 @@ RoundType:
     round_number: null
     name: 'Semi Final'
     alias: SEMI_FINAL
+    default_flag: false
     active_flag: true
     status: '2'
     description: 'Semi Final ( asdfas dfasdf asdf )'
@@ -137,6 +221,7 @@ RoundType:
     round_number: null
     name: Final
     alias: FINAL
+    default_flag: true
     active_flag: true
     status: '2'
     description: 'Final ( asdfa asdf )'
@@ -283,9 +368,9 @@ SportGame:
     token_id: fe949f12ce240eb3caeef7077f8fb670424fba20
     GameCategory: GameCategory_1
     distance_type: '3'
-    name: 1000M
+    name: 10000M
     alias: ''
-    game_distance: '1000'
+    game_distance: '10000'
     game_distance_measurement: '1'
     start_date: 03/02/2018
     effective_date: null
@@ -527,7 +612,7 @@ Tournament:
     org_token_id: null
     name: 'African Universities Sport Festival'
     alias: AUSF
-    season: '1'
+    season: '2018'
     start_date: 02/23/2018
     effective_date: ''
     end_date: 02/28/2018
@@ -541,7 +626,7 @@ Tournament:
     org_token_id: null
     name: 'Ethiopia Sport Festivals'
     alias: ESF
-    season: '1'
+    season: '2017'
     start_date: 02/23/2018
     effective_date: ''
     end_date: 04/24/2018
@@ -607,3 +692,276 @@ Team:
     description: null
     created_at: '2018-02-24 21:28:50'
     updated_at: '2018-02-24 21:28:50'
+CodeGenerator:
+  CodeGenerator_1:
+    token_id: ee5bb3a6124bae087ac3f5d732d94947
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    prefix_code: MTCH
+    alias: MTCH
+    initial_number: '0001'
+    last_code: '0001'
+    deleted_code: null
+    can_recreate_deleted: true
+    code_type: '7'
+    has_deleted: false
+    default_flag: true
+    applicable_flag: true
+    active_flag: true
+    description: 'MTCH ( Match generated code )'
+    created_at: '2016-01-21 01:24:51'
+    updated_at: '2016-11-14 20:04:53'
+  CodeGenerator_2:
+    token_id: 72dde968a5a73deedf42cf8cd72c471a
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    prefix_code: TM
+    alias: TM
+    initial_number: '0001'
+    last_code: '0001'
+    deleted_code: null
+    can_recreate_deleted: true
+    code_type: '5'
+    has_deleted: false
+    default_flag: true
+    applicable_flag: true
+    active_flag: true
+    description: 'TM ( Team generated code )'
+    created_at: '2016-01-21 01:25:09'
+    updated_at: '2016-11-14 20:37:34'
+  CodeGenerator_3:
+    token_id: 96eb453e89c4eda5131e060fdda16f67
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    prefix_code: PLR
+    alias: PLR
+    initial_number: '00001'
+    last_code: '00001'
+    deleted_code: null
+    can_recreate_deleted: true
+    code_type: '6'
+    has_deleted: false
+    default_flag: true
+    applicable_flag: true
+    active_flag: true
+    description: 'PLR ( Player generated code )'
+    created_at: '2016-01-21 01:25:28'
+    updated_at: '2016-11-12 21:37:15'
+  CodeGenerator_4:
+    token_id: 1059f6ebd28b54934732dce3d48a2721
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    prefix_code: TRNMT
+    alias: TRNMT
+    initial_number: '001'
+    last_code: '001'
+    deleted_code: null
+    can_recreate_deleted: true
+    code_type: '2'
+    has_deleted: false
+    default_flag: true
+    applicable_flag: true
+    active_flag: true
+    description: 'TRNMT ( Tournament generated code )'
+    created_at: '2016-01-21 01:25:55'
+    updated_at: '2016-01-21 23:59:43'
+  CodeGenerator_5:
+    token_id: 80f14629d01dc4b0d7073752f1020eda
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    prefix_code: GRP
+    alias: GRP
+    initial_number: '0001'
+    last_code: '0001'
+    deleted_code: null
+    can_recreate_deleted: true
+    code_type: '4'
+    has_deleted: false
+    default_flag: true
+    applicable_flag: true
+    active_flag: true
+    description: 'GRP ( Group generated code )'
+    created_at: '2016-01-21 01:26:19'
+    updated_at: '2016-01-21 01:26:19'
+Party: {  }
+Organization:
+  Organization_1:
+    token_id: 94f12f125643718e20d329aef595bc3e
+    org_id: null
+    org_token_id: null
+    name: 'North Star ICT Solutions'
+    alias: NSICTS
+    party_code_number: -
+    status: '1'
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    trashed_flag: false
+    trashed_on: null
+    description: 'North Star ICT Solutions (My own company)'
+    type: '1'
+    representative_id: null
+    title: null
+    father_name: null
+    grand_father_name: null
+    full_name: null
+    gender: null
+    date_of_birth: null
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: null
+    access_activation_key: null
+    created_at: '2016-01-18 20:01:20'
+    updated_at: '2016-01-18 20:01:20'
+Person:
+  Person_2:
+    token_id: 8996f322088d3d2e8d805da32d3cd057
+    org_id: '1'
+    org_token_id: 94f12f125643718e20d329aef595bc3e
+    Party: Organization_1
+    name: John
+    alias: null
+    party_code_number: ''
+    status: '1'
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    trashed_flag: false
+    trashed_on: null
+    description: null
+    type: '2'
+    representative_id: null
+    title: null
+    father_name: Haftom
+    grand_father_name: Hagos
+    full_name: 'John Haftom Hagos'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: Mekelle
+    religion: null
+    ethnicity: null
+    nationality: '67'
+    access_activation_key: null
+    created_at: '2016-01-18 20:22:15'
+    updated_at: '2016-01-18 20:22:15'
+    
+User:
+  User_1:
+    token_id: 61bc72d70942289ccc5a669fcbd93af4
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    Person: Person_2
+    person_token_id: 8996f322088d3d2e8d805da32d3cd057
+    username: admin
+    password: 0c7540eb7e65b553ec1ba6b20de79608
+    full_password: 39a7608a6476f0dc3707b636d05fa233
+    access_activation_key: null
+    UserRole: UserRole_1
+    UserGroup: UserGroup_1
+    permission_mode: '1'
+    has_logged_in: false
+    last_login_date: null
+    active_flag: true
+    blocked_flag: false
+    activated_key_flag: false
+    super_admin_flag: true
+    default_super_admin_flag: true
+    default_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Admin user account (Super administrator )'
+    created_at: '2016-01-18 21:34:53'
+    updated_at: '2016-01-18 21:34:53'
+  User_2:
+    token_id: 8472f7298438000dc139bb40d8847011
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    Person: Person_2
+    person_token_id: 8996f322088d3d2e8d805da32d3cd057
+    username: john
+    password: 1c1c27cdde1aac445ce1bcb2c61f154d
+    full_password: ac49c8e0da36745081f16b0b933aa54b
+    access_activation_key: null
+    UserRole: UserRole_2
+    UserGroup: UserGroup_2
+    permission_mode: '1'
+    has_logged_in: false
+    last_login_date: null
+    active_flag: true
+    blocked_flag: false
+    activated_key_flag: false
+    super_admin_flag: true
+    default_super_admin_flag: false
+    default_flag: false
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'John user account (Administrator user of the system )'
+    created_at: '2016-01-18 21:36:29'
+    updated_at: '2016-01-18 21:36:29'
+    
+UserRole:
+  UserRole_1:
+    token_id: c52c17f9f01314f0823741ecd683f1f2
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    user_role_name: 'Super Administrator'
+    user_role_type_id: '1'
+    alias: SUPER_ADMINISTRATOR
+    active_flag: true
+    default_flag: false
+    trashed_flag: false
+    trashed_on: null
+    description: 'Super Administrator user role (Sdfg sdfgsdfg )'
+    created_at: '2016-03-15 01:00:30'
+    updated_at: '2016-03-15 01:00:30'
+  UserRole_2:
+    token_id: d575ae0d827d28181913b18439ac60ab
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    user_role_name: Administrator
+    user_role_type_id: '2'
+    alias: ADMINISTRATOR
+    active_flag: true
+    default_flag: false
+    trashed_flag: false
+    trashed_on: null
+    description: 'Administrator user role (Sdfg sdfgsdfg )'
+    created_at: '2016-03-15 01:01:19'
+    updated_at: '2016-03-15 01:01:19'
+
+UserGroup:
+  UserGroup_1:
+    token_id: 311bb7024364b698d134e090ce9b788b
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    UserRole: UserRole_1
+    name: 'Super Administrator'
+    ui_theme_color_setting: '1'
+    ui_language_setting: '1'
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Super Administrator user group (Sfg sdfgsdf gsdfg )'
+    created_at: '2016-03-15 01:11:16'
+    updated_at: '2016-03-15 01:11:16'
+  UserGroup_2:
+    token_id: ebf25a6f1219f8382599f6daaab8b9b1
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    UserRole: UserRole_2
+    name: Administrator
+    ui_theme_color_setting: '1'
+    ui_language_setting: '1'
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Administrator user group (Sfg sdfgsdf gsdfg )'
+    created_at: '2016-03-15 01:11:38'
+    updated_at: '2016-03-15 01:11:38'

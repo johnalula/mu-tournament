@@ -83,7 +83,7 @@ class TournamentTable extends PluginTournamentTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "trnmnt.id, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.active_flag as activeFlag, 
+		 $_queryFileds = "trnmnt.id, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.active_flag as activeFlag, 
 		";	
 		return $_queryFileds;
 	}
@@ -123,15 +123,48 @@ class TournamentTable extends PluginTournamentTable
 		 
 	}
 	//
-   public static function processObject( ) 
-   {
-		
+   public static function processObject ( $_orgID=null, $_orgTokenID=null, $_tournamentID, $_tokenID ) 
+	{
+			$_qry = Doctrine_Query::create()
+					->select(self::appendQueryFields())
+					->from("Tournament trnmnt") 
+					//->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
+					//->innerJoin("tm.Organization org on tm.org_id = org.id ")     
+				->where("trnmnt.id = ? AND trnmnt.token_id = ? ", array($_tournamentID, $_tokenID ));
+				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeObject ( ) 
-   {
-		 
-	} 
+   public static function makeObject ( $_orgID=null, $_tournamentID, $_tokenID  ) 
+	{
+			$_qry = Doctrine_Query::create()
+					->select(self::appendQueryFields())
+					->from("Tournament trnmnt") 
+					//->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
+					//->innerJoin("tm.Organization org on tm.org_id = org.id ")     
+				->where("trnmnt.id = ? AND trnmnt.token_id = ? ", array($_tournamentID, $_tokenID ));
+				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
+	}  
+	//
+   public static function makeCandidateObject ( $_orgID=null, $_activeFlag ) 
+	{
+			$_qry = Doctrine_Query::create()
+					->select(self::appendQueryFields())
+					->from("Tournament trnmnt") 
+					//->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
+					//->innerJoin("tm.Organization org on tm.org_id = org.id ")  
+					->where("trnmnt.id IS NOT NULL");
+				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("trnmnt.active_flag = ?", $_activeFlag);
+				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
+	}  
 	 
 	
 	/*********************************************************

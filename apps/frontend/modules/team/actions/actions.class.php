@@ -33,19 +33,25 @@ class teamActions extends sfActions
 	}
 	public function executeView(sfWebRequest $request)
 	{
-		$_productID = $request->getParameter('product_id');	
-		$_productTokenID = $request->getParameter('token_id');	
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		$_teamID = $request->getParameter('team_id');	
+		$_tokenID = $request->getParameter('token_id');	
+		//$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
-		$this->_product = ItemProductTable::processObject( $_orgID, sha1(md5($_orgTokenID)), $_productID, $_productTokenID );
-		$_itemClassID = $this->_product->categoryClassID;
-		$this->_inventoryItems = ItemProductTable::processCandidateInventory ( $_productID, sha1(md5($_productTokenID)), $_itemType, true, $_productStatus, $_status, $_keyword, 0, 25 );
-		$this->_soldInventoryItems = ItemProductTable::processCandidateInventoryItems ( $_productID, $_productTokenID, $_itemClassID, $_itemType, 0, 25 );
-		//$this->_soldStockItems = ItemProductTable::processCandidateInventoryItems ( $_taskID, sha1(md5($_tokenID)), PropertyCore::$_STOCK_ITEM, $_itemType, 0, 15 );
-		//$this->_productPriceLevels = ItemProductTable::processCandidateProductPriceComponents ( $_productID, sha1(md5($_productTokenID)), $_productPriceType, $_exclusion, 0, 10 );
-		//$this->_units = UnitTable::processAll ( $_orgID, md5(sha1($_orgTokenID)), $_isDefault, $_exclusion, $_keyword);
+		$this->_team = TeamTable::processObject ( $_orgID, $_orgTokenID, $_teamID, $_tokenID ) ;
+		
+	}
+	public function executeSetting(sfWebRequest $request)
+	{
+		$_teamID = $request->getParameter('team_id');	
+		$_tokenID = $request->getParameter('token_id');	
+		//$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		
+		$this->_team = TeamTable::processObject ( $_orgID, $_orgTokenID, $_teamID, $_tokenID ) ;
+		$this->_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 10  ) ;
 		
 	}
 	

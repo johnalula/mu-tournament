@@ -436,12 +436,128 @@ class TournamentCore {
 	}
 	/*********************************************/
 	
+	public static $_GROUP_ONE = 1;
+	public static $_GROUP_TWO = 2;
+	public static $_GROUP_THREE = 3;
+	public static $_GROUP_FOUR = 4;
+	public static $_GROUP_FIVE = 5; 
+	public static $_GROUP_SIX = 6;
+	public static $_GROUP_SEVEN = 7;
+	public static $_GROUP_EIGHT = 8;
+	public static $_GROUP_NINE = 9;
+	public static $_GROUP_TEN = 10; 
+	public static $_GROUP_ELEVEN = 11; 
+	public static $_GROUP_TWELVE = 12; 
+	public static $__GROUPTHIRTEEN = 13; 
+	public static $_GROUP_FOURTEEN = 14; 
+	public static $_GROUP_FIFTEEN = 15; 
+	public static $_GROUP_SIXTEEN = 16; 
+
+	public static $_GROUP_NUMBERS = array ( 1 => 'One', 2 => 'Two', 3 => 'Three', 4 => 'Four', 5 => 'Five', 6 => 'Six', 7 => 'Seven', 8 => 'Eight', 9 => 'Nine', 10 => 'Ten', 11 => 'Eleven', 12 => 'Twelve', 13 => 'Thirteen', 14 => 'Fourteen', 15 => 'Fifteen', 16 => 'Sixteen');
+	
+	public static function processGroupNumbers ( ) 
+	{
+		 try {
+				return self::$_GROUP_NUMBERS; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processGroupNumberID ( $_value ) 
+	{
+		try {
+			foreach( self::$_GROUP_NUMBERS as $_key=> $_group ){
+				if( strcmp($_group, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processGroupNumberValue ($_id )
+	{
+		try {
+			foreach( self::$_GROUP_NUMBERS as $_key=> $_group ){
+			  if( $_key == $_id )
+					return $_group; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultGroupNumber ( )
+	{
+		 try {
+				return self::$_GROUP_ONE; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processGroupNumberIcon ($_round) 
+	{
+		switch($_round) {			
+			case self::$_GROUP_ONE:
+				return 'one';
+			break;
+			case self::$_GROUP_TWO:
+				return 'two';
+			break;
+			case self::$_GROUP_THREE:
+				return 'three';
+			break;
+			case self::$_GROUP_FOUR:
+				return 'four';
+			break;
+			case self::$_GROUPFIVE:
+				return 'five';
+			break; 
+			case self::$_GROUP_SIX:
+				return 'six';
+			break;
+			case self::$_GROUP_SEVEN:
+				return 'seven';
+			break;
+			case self::$_GROUP_EIGHT:
+				return 'eight';
+			break;
+			case self::$_GROUP_NINE:
+				return 'nine';
+			break;
+			case self::$_GROUP_TEN:
+				return 'ten';
+			break; 
+			case self::$_GROUP_ELEVEN:
+				return 'eleven';
+			break; 
+			case self::$_GROUP_TWELVE:
+				return 'twelve';
+			break;
+			case self::$_GROUP_THIRTEEN:
+				return 'thirteen';
+			break;
+			case self::$_GROUP_FOURTEEN:
+				return 'fourteen';
+			break;
+			case self::$_GROUP_FIFTEEN:
+				return 'fifteen';
+			break;
+			case self::$_GROUP_SIXTEEN:
+				return 'sixteen';
+			break; 
+		}
+	}
+	/*********************************************/
+	
 	public static $_TRACK = 1;
 	public static $_FIELD = 2;
 	public static $_ROAD = 3;
 	public static $_OTHER_EVENT = 4; 
 
-	public static $_EVENT_TYPES = array ( 1 => 'Track Event', 2 => 'Field Event', 3 => 'Road EVent', 4 =>  'None');
+	public static $_EVENT_TYPES = array ( 1 => 'Track', 2 => 'Field', 3 => 'Road', 4 =>  'None');
 	
 	public static function processEventTypes ( ) 
 	{
@@ -510,21 +626,21 @@ class TournamentCore {
 	public static $_MULTIPLE = 3;
 	public static $_OTHER_PLAYING = 4; 
 
-	public static $_PLAYER_SQUADE = array ( 1 => 'Single Player', 2 => 'Pair Player', 3 => 'Multiple Players', 4 =>  'None');
+	public static $_PLAYER_MODE = array ( 1 => 'Single Player', 2 => 'Pair Player', 3 => 'Multiple Players', 4 =>  'None');
 	
-	public static function processPlayerSquades ( ) 
+	public static function processPlayerModes ( ) 
 	{
 		 try {
-				return self::$_PLAYER_SQUADE; 
+				return self::$_PLAYER_MODE; 
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
 	}
 	
-	public static function processPlayerSquadeID ( $_value ) 
+	public static function processPlayerModeID ( $_value ) 
 	{
 		try {
-			foreach( self::$_PLAYER_SQUADE as $_key => $_event ){
+			foreach( self::$_PLAYER_MODE as $_key => $_event ){
 				if( strcmp($_event, $_value) == 0 )
 					return $_key; 
 			}
@@ -534,10 +650,10 @@ class TournamentCore {
 		}
 	}
 
-	public static function processPlayerSquadeValue ($_id )
+	public static function processPlayerModeValue ($_id )
 	{
 		try {
-			foreach( self::$_PLAYER_SQUADE as $_key => $_event ){
+			foreach( self::$_PLAYER_MODE as $_key => $_event ){
 			  if( $_key == $_id )
 					return $_event; 
 			}
@@ -546,7 +662,7 @@ class TournamentCore {
 			return null; 
 		}
 	}
-	public static function processDefaultPlayerSquade ( )
+	public static function processDefaultPlayerMode ( )
 	{
 		 try {
 				return self::$_OTHER_PLAYING; 
@@ -554,7 +670,7 @@ class TournamentCore {
 			return $_e; 
 	  }   
 	}
-	public static function processPlayerSquadeIcon ($_event) 
+	public static function processPlayerModeIcon ($_event) 
 	{
 		switch($_event) {			
 			case self::$_SINGLE:
@@ -571,6 +687,72 @@ class TournamentCore {
 			break; 
 		}
 	}
+	
+	/*********************************************/
+	
+	public static $_PAIR_TEAM = 1;
+	public static $_MULTIPLE_TEAM = 1;
+	public static $_OTHER_MODE = 3; 
+
+	public static $_PARTICIPANT_TEAM_MODES = array ( 1 => 'Pair Team', 2 => 'Multiple Teams', 4 =>  'Other Mode');
+	
+	public static function processParticipantTeamModes ( ) 
+	{
+		 try {
+				return self::$_PARTICIPANT_TEAM_MODES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processParticipantTeamModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_PARTICIPANT_TEAM_MODES as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processParticipantTeamModeValue ($_id )
+	{
+		try {
+			foreach( self::$_PARTICIPANT_TEAM_MODES as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultParticipantTeamMode ( )
+	{
+		 try {
+				return self::$_OTHER_MODE; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processParticipantTeamModeIcon ($_event) 
+	{
+		switch($_event) {			
+			case self::$_PAIR_TEAM:
+				return 'pair_team';
+			break;
+			case self::$_MULTIPLE_TEAM:
+				return 'multiple_players';
+			break;
+			case self::$_OTHER_MODE:
+				return 'none';
+			break; 
+		}
+	}
+	
 	/*********************************************/
 	
 	public static $_LONG = 1;
@@ -733,6 +915,65 @@ class TournamentCore {
 	}
 	
 
+
+/************************************************/
+	public static $_MEN = 1; 
+	public static $_WOMEN = 2; 
+	
+	public static $_GENDERS = array ( 1 => "Men", 2 => "Women" );
+	
+	public static function processGenders ( ) 
+	{
+	  try {
+				return  self::$_GENDERS; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }        
+	}
+	public static function processGenderID ( $_value ) 
+	{
+		try {
+			foreach( self::$_GENDERS as $_key => $_gender ) {
+				if( strcmp($_gender, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}        
+	}
+	
+	public static function processGenderValue ( $_id )
+	{
+		try {
+				foreach( self::$_GENDERS as $_key => $_gender ) {
+					if( $_key == $_id )
+						return $_gender; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}    
+	}
+	public static function processDefaultGender ()
+	{
+		try {
+				return  self::$_MEN; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }     
+	}
+	public static function processGenderAlias ($_gender)
+	{
+		switch($_gender) {			
+			case self::$_MEN:
+				return 'M';
+			break;	
+			case self::$_WOMEN:
+				return 'W';
+			break; 
+		}
+	} 
 /************************************************/
 
 	public static function makeSportGameName ($_event) 

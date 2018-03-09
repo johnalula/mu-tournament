@@ -1,6 +1,136 @@
 <?php 
 class SystemCore {
- 
+	
+	public static $_DASHBOARD = 1;
+	public static $_TOURNAMENT = 2;
+	public static $_GAME = 3;
+	public static $_GROUP = 4;
+	public static $_TEAM = 5;  
+	public static $_PLAYER = 6;  
+	public static $_MATCH = 7;  
+	public static $_ORGANIZATION = 8; 
+	public static $_GENERAL_SETTING = 9;
+	public static $_SYSTEM_SETTING = 10;
+	public static $_ADMINISTRATOR = 11; 
+	public static $_REPORT = 12;
+	
+	public static $_CODE_TYPES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Game", 4 => "Group", 5 => "Team", 6 => "Player", 7 => "Match", 8 => "Organization", 9 => "General Setting", 10 => "System Setting", 11 => "Administrator", 12 => "Report" );
+	
+	public static function processSystemCodeTypeID ( $_id ) 
+	{ 
+		return  ($_id < 1000 ? ($_id < 100 ? ($_id < 10 ? '000':'00'):'0'):'').$_id; 
+	}
+		
+	public static function processCodeTypes () 
+	{
+		return self::$_CODE_TYPES;
+	}
+	public static function processCodeTypeID ( $_value ) 
+	{
+	  try {
+			foreach( self::$_CODE_TYPES as $_key => $_type ){
+			  if( strcmp($_type, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 	
+		} catch ( Exception $e ) {
+			return null; 
+		}        
+	}
+	public static function processCodeTypeValue ( $_id )
+	{
+		try {
+			foreach( self::$_CODE_TYPES as $_key=> $_type ){
+			  if( $_key == $_id )
+					return $_type; 
+			}
+			return null; 
+		} catch ( Exception $e ) {
+			return null; 
+		}    
+	}
+	public static function processDefaultCodeType ( )
+	{
+		try {
+				return self::$_TOURNAMENT; 
+			} catch ( Exception $e ) {
+			return $e; 
+		}   
+	}
+	public static function processCodeTypeAlias ($_codeType) 
+	{ 
+		switch($_codeType) {			
+			case self::$_DASHBOARD:
+				return 'DSBRD';
+			break;
+			case self::$_TOURNAMENT:
+				return 'TRNMT';
+			break;
+			case self::$_GAME:
+				return 'GM';
+			break; 
+			case self::$_GROUP:
+				return 'GRP';
+			break;
+			case self::$_TEAM:
+				return 'TM';
+			break;
+			case self::$_PLAYER:
+				return 'PLR';
+			break;
+			case self::$_MATCH:
+				return 'MTCH';
+			break;
+			case self::$_ORGANIZATION:
+				return 'ORG';
+			break;
+			case self::$_REPORT:
+				return 'RPRT';
+			break; 
+		}
+	}
+	public static function processCodeTypeIcon ($_codeType) 
+	{ 
+		switch($_codeType) {			
+			case self::$_DASHBOARD:
+				return 'dashboard';
+			break;
+			case self::$_TOURNAMENT:
+				return 'tournament';
+			break;
+			case self::$_GAME:
+				return 'game';
+			break; 
+			case self::$_GROUP:
+				return 'group';
+			break;
+			case self::$_TEAM:
+				return 'team';
+			break;
+			case self::$_PLAYER:
+				return 'player';
+			break;
+			case self::$_MATCH:
+				return 'match';
+			break;
+			case self::$_ORGANIZATION:
+				return 'organization';
+			break;
+			case self::$_GENERAL_SETTING:
+				return 'general_setting';
+			break;
+			case self::$_SYSTEM_SETTING:
+				return 'system_setting';
+			break; 
+			case self::$_ADMINISTRATION:
+				return 'administration';
+			break;
+			case self::$_REPORT:
+				return 'report';
+			break; 
+		}
+	}
+	
 	public static $_ACTIVATE = 1;
 	public static $_BLOCK = 2; 
 	public static $_DELETE = 3; 
@@ -87,175 +217,7 @@ class SystemCore {
 		}
 	} 	
 	
-	public static $_DASHBOARD = 1;
-	public static $_REGISTRATION = 2;
-	public static $_PURCHASE = 3;
-	public static $_ACQUISITION = 4; 
-	public static $_SALES = 5;
-	public static $_PAYMENT = 6;
-	public static $_RECEIPT = 7;
-	public static $_EXPENSE = 8;
-	public static $_INCOME = 9;
-	public static $_REQUEST = 10;
-	public static $_ACCOUNT = 11;
-	public static $_PRODUCT = 12;
-	public static $_CUSTOMER = 13;
-	public static $_ORGANIZATION = 14; 
-	public static $_GENERAL_SETTING = 15;
-	public static $_SYSTEM_SETTING = 16;
-	public static $_ADMINISTRATION = 17; 
-	public static $_REPORT = 18;
 	
-	public static $_MODULES = array (1 => "Dashboard",  2 => "Registration", 3 => "Purchase", 4 => "Acquisition", 5 => "Sales", 6 => "Payment", 7 => "Receipt", 8 => "Expense", 9 => "Income", 10 => "Request", 11 => "Account", 12 => "Product", 13 => "Customer", 14 => "Organization", 15 => "General Setting", 16 => "System Setting", 17 => "Administration", 18 => "Report" );
-	
-	public static function processModules ( ) 
-	{
-	  try {
-				return  self::$_MODULES; 
-			} catch ( Exception $e ) {
-			return null; 
-	  }        
-	}
-	
-	public static function processModuleID ( $_value )
-	{
-		try {
-			foreach( self::$_MODULES as $_key=> $_module ) {
-				if( strcmp($_module, $_value) == 0 )
-					return $_key; 
-			}
-			return null; 
-		} catch ( Exception $e ) {
-			return null; 
-		}        
-	}
-	
-	public static function processModuleValue ( $_id )
-	{
-		try {
-			foreach( self::$_MODULES as $_key=> $_module ){
-				if( $_key == $_id )
-					return $_module; 
-		}
-			return null; 
-		} catch ( Exception $e ) {
-			return null; 
-		}    
-	}
-	 
-	public static function processDefaultModule ()
-	{
-		try {
-				return  self::$_DASHBOARD; 
-			} catch ( Exception $e ) {
-			return null; 
-	  }     
-	}
-	public static function processModuleDefaultStatus ($_isDefault) 
-	{
-		if($_isDefault){		 
-				return 'Default'; 
-		}  
-	}
-	public static function processModuleAccessibleStatusIcon ($_status) 
-	{
-		if($_status){		 
-				return 'active_module'; 
-		} else {
-				return 'disabled_module';
-		}
-	}
-	public static function processModuleAccessibleStatus ($_status) 
-	{
-		if($_status){		 
-				return 'Active'; 
-		} else {
-				return 'Inactive';
-		}
-	}
-	public static function processModuleApplicableStatus ($_status) 
-	{
-		if($_status){		 
-				return 'Enabled'; 
-		} else {
-				return 'Disabled';
-		}
-	}
-	public static function processModuleApplicableStatusIcon ($_status) 
-	{
-		if($_status){		 
-				return 'apply'; 
-		} else {
-				return 'disabled';
-		}
-	}
-	public static function processModuleDefaultIcon ($_icon) 
-	{
-		if($_icon){		 
-				return 'default'; 
-		} else {
-				return 'inactive_default';
-		}
-	}
-	public static function processModuleIcon ($_module) 
-	{ 
-		switch($_module) {			
-			case self::$_DASHBOARD:
-				return 'dashboard';
-			break;
-			case self::$_REGISTRATION:
-				return 'registration';
-			break;
-			case self::$_PURCHASE:
-				return 'purchase';
-			break; 
-			case self::$_ACQUISITION:
-				return 'acquisition';
-			break;
-			case self::$_SALES:
-				return 'sales';
-			break;
-			case self::$_PAYMENT:
-				return 'payment';
-			break;
-			case self::$_RECEIPT:
-				return 'receipt';
-			break;
-			case self::$_EXPENSE:
-				return 'expense';
-			break;
-			case self::$_INCOME:
-				return 'income';
-			break;
-			case self::$_REQUEST:
-				return 'request';
-			break;
-			case self::$_ACCOUNT:
-				return 'account';
-			break;
-			case self::$_PRODUCT:
-				return 'product';
-			break; 
-			case self::$_CUSTOMER:
-				return 'customer';
-			break; 
-			case self::$_ORGANIZATION:
-				return 'organization';
-			break;
-			case self::$_GENERAL_SETTING:
-				return 'general_setting';
-			break;
-			case self::$_SYSTEM_SETTING:
-				return 'system_setting';
-			break; 
-			case self::$_ADMINISTRATION:
-				return 'administration';
-			break;
-			case self::$_REPORT:
-				return 'report';
-			break; 
-		}
-	}
 	public static $_CREATE = 1;
 	public static $_UPDATE = 2;
 	public static $_READ = 3;

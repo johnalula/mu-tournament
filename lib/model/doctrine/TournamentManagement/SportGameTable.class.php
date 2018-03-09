@@ -87,6 +87,7 @@ class SportGameTable extends PluginSportGameTable
 	public static function appendQueryFields ( ) 
 	{		
 		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.active_flag as activeFlag, 
+								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,
 		";	
 		return $_queryFileds;
 	}
@@ -104,6 +105,7 @@ class SportGameTable extends PluginSportGameTable
 				->orderBy("sprtGm.id ASC")
 				->where("sprtGm.id IS NOT NULL");
 				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("sprtGm.org_id = ? AND sprtGm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_categoryID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_categoryID);    
 				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGm.active_flag = ?", $_activeFlag);    
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )

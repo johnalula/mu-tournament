@@ -6,13 +6,15 @@ class ModuleCore {
 	public static $_GAME = 3;
 	public static $_GROUP = 4;
 	public static $_TEAM = 5;  
-	public static $_ORGANIZATION = 6; 
-	public static $_GENERAL_SETTING = 7;
-	public static $_SYSTEM_SETTING = 8;
-	public static $_ADMINISTRATION = 9; 
-	public static $_REPORT = 10;
+	public static $_PLAYER = 6;  
+	public static $_MATCH = 7;  
+	public static $_ORGANIZATION = 8; 
+	public static $_GENERAL_SETTING = 9;
+	public static $_SYSTEM_SETTING = 10;
+	public static $_ADMINISTRATOR = 11; 
+	public static $_REPORT = 12;
 	
-	public static $_MODULES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Game", 4 => "Group", 5 => "Team", 6 => "Organization", 7 => "General Setting", 8 => "System Setting", 9 => "Administration", 10 => "Report" );
+	public static $_MODULES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Game", 4 => "Group", 5 => "Team", 6 => "Player", 7 => "Match", 8 => "Organization", 9 => "General Setting", 10 => "System Setting", 11 => "Administrator", 12 => "Report" );
 	
 	public static function processModules ( ) 
 	{
@@ -121,6 +123,12 @@ class ModuleCore {
 			case self::$_TEAM:
 				return 'team';
 			break;
+			case self::$_PLAYER:
+				return 'player';
+			break;
+			case self::$_MATCH:
+				return 'match';
+			break;
 			case self::$_ORGANIZATION:
 				return 'organization';
 			break;
@@ -138,5 +146,99 @@ class ModuleCore {
 			break; 
 		}
 	} 
+	
+	
+	public static function makeModuleActionURL($_modleName, $_action, $_object)
+	{
+		if(is_null($_modleName) || is_null($_action) || is_null($_object)) {
+			return false;
+		} 
+		return ($_modleName.'/'.$_action.'?match_id='.$_object->id.'&token_id='.$_object->token_id);
+	}
+	public static function makeModuleOrderActionURL ($_modleName, $_action, $_object)
+	{
+		if(is_null($_modleName) || is_null($_action) || is_null($_object)) {
+			return false;
+		} 
+		return ($_modleName.'/'.$_action.'?match_id='.$_object->taskID.'&token_id='.$_object->taskTokenID);
+	}
+	public static function makeModuleURLAction($_modleName, $_IDName, $_action, $_object)
+	{
+		if(is_null($_modleName) || is_null($_action) || is_null($_object)) {
+			return false;
+		} 
+		return ($_modleName.'/'.$_action.'?'.$_IDName.'='.$_object->id.'&token_id='.$_object->token_id);
+	}
+	public static function makeModuleURL($_modleName, $_action)
+	{
+		if(is_null($_modleName) || is_null($_action)) {
+			return false;
+		} 
+		return ($_modleName.'/'.$_action);
+	}
+	public static function makeBackwardNavigation($_action)
+	{
+		switch($_action) {			
+			case 'view':
+				return 'index';
+			break;
+			case 'edit':
+				return 'index';
+			break;
+			case 'order':
+				return 'view';
+			break; 
+			case 'itemization':
+				return 'order';
+			break;
+			case 'complete':
+				return 'itemization';
+			break;
+		}
+	}
+	public static function makeForwardNavigation($_action)
+	{
+		switch($_action) {			
+			case 'view':
+				return 'order';
+			break;
+			case 'edit':
+				return 'order';
+			break;
+			case 'order':
+				return 'itemization';
+			break;  
+		}
+	}
+	public static function makeBackwardNavigationURL($_modleName, $_action, $_object)
+	{
+		if(is_null($_modleName) || is_null($_action) || is_null($_object)) {
+			return false;
+		} 
+		$_navAction = self::makeBackwardNavigation($_action);
+		if($_navAction == 'index') {
+			return ($_modleName.'/'.$_navAction);
+		}
+		return ($_modleName.'/'.$_navAction.'?match_id='.$_object->id.'&token_id='.$_object->token_id);
+	}
+	public static function makeForwardNavigationURL($_modleName, $_action, $_object)
+	{
+		if(is_null($_modleName) || is_null($_action) || is_null($_object)) {
+			return false;
+		} 
+		$_navAction = self::makeForwardNavigation($_action);
+		return ($_modleName.'/'.$_navAction.'?match_id='.$_object->id.'&token_id='.$_object->token_id);
+	}
+	
+	public static function makeSettingActionURL($_modleName, $_action, $_object, $_moduleAction)
+	{
+		if(is_null($_modleName) || is_null($_action) || is_null($_object)) {
+			return false;
+		} 
+		$_action = $_action.'_'.$_moduleAction;
+		$_urlID = $_moduleAction.'_id';
+		
+		return ($_modleName.'/'.$_action.'?'.$_urlID.'='.$_object->id.'&token_id='.$_object->token_id);
+	}
 
 }

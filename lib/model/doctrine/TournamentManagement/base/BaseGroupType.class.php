@@ -7,10 +7,14 @@
  * 
  * @property string $token_id
  * @property integer $org_id
- * @property integer $group_type
+ * @property integer $group_type_id
+ * @property string $group_number
+ * @property string $alias
  * @property boolean $active_flag
  * @property string $description
  * @property Organization $Organization
+ * @property GroupType $GroupType
+ * @property Doctrine_Collection $MatchFixture
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -29,8 +33,17 @@ abstract class BaseGroupType extends sfDoctrineRecord
         $this->hasColumn('org_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('group_type', 'integer', null, array(
+        $this->hasColumn('group_type_id', 'integer', 8, array(
              'type' => 'integer',
+             'length' => 8,
+             ));
+        $this->hasColumn('group_number', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('alias', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
@@ -49,6 +62,14 @@ abstract class BaseGroupType extends sfDoctrineRecord
              'local' => 'org_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasOne('GroupType', array(
+             'local' => 'group_type_id',
+             'foreign' => 'id'));
+
+        $this->hasMany('MatchFixture', array(
+             'local' => 'id',
+             'foreign' => 'group_type_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

@@ -8,7 +8,9 @@
  * @property string $token_id
  * @property integer $org_id
  * @property integer $tournament_id
+ * @property string $tournament_token_id
  * @property integer $country_id
+ * @property string $team_number
  * @property string $team_name
  * @property string $alias
  * @property string $team_city
@@ -48,8 +50,16 @@ abstract class BaseTeam extends sfDoctrineRecord
         $this->hasColumn('tournament_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('tournament_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
         $this->hasColumn('country_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('team_number', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
              ));
         $this->hasColumn('team_name', 'string', 255, array(
              'type' => 'string',

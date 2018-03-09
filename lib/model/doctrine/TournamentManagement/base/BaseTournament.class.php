@@ -21,6 +21,7 @@
  * @property Doctrine_Collection $tournamentGroups
  * @property Doctrine_Collection $tournamentGroupMembers
  * @property Doctrine_Collection $tournamentTeams
+ * @property Doctrine_Collection $tournamentMatchs
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -97,6 +98,10 @@ abstract class BaseTournament extends sfDoctrineRecord
              'foreign' => 'tournament_id'));
 
         $this->hasMany('Team as tournamentTeams', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('TournamentMatch as tournamentMatchs', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
