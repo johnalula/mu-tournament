@@ -40,8 +40,8 @@ class TournamentTable extends PluginTournamentTable
 			$_startDate = date('m/d/Y', time());
 			$_nw = new Tournament (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
-			//$_nw->org_id = trim($_orgID); 
-			//$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
+			$_nw->org_id = trim($_orgID); 
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
 			$_nw->name = trim($_tournamentName); 
 			$_nw->alias = trim($_tournamentAlias); 
 			$_nw->season = trim($_tournamentSeason);  

@@ -1,12 +1,33 @@
-<?php
-	//math_game_type_name=Athletics (Athletics ) - Athletics&math_game_type_id=1&math_game_type_token_id=67a74306b06d0c01624fe0d0249a570f4d093747&tournament_id=1&tournament_token_id=67a74306b06d0c01624fe0d0249a570f4d093747&sport_game_name=5000M (Athletics)&sport_game_id=8&sport_game_token_id=0fda36569b6459978333d67c82e4ccad83950d3f&match_venue=Mekelle Tigray Stadium&event_type=1&gender_category=1&player_mode=3&match_round=13&match_status=1&match_date=03/07/2018&match_group=1&description=sdfa sdfasdf asdf asdf as;
+<?php if($sf_user->isAuthenticated()): 	 
+	if($sf_user->isAuthenticated()): 	 
+?> 
+
+<div class="ui-page-box">
+	<div class="ui-main-content-box" >
+		<div class="ui-detail-tab-list ui-grid-content-container-box" >
+			<div id="ui-tab-three" class="ui-tab" style="">
+				<?php include_partial('match', array( '_tournamentMatchs' => $_tournamentMatchs, '_countSportGames' => $_countSportGames )) ?> 
+			</div><!-- end of ui-tab-three-->
+		</div> <!-- end of ui-detail-tab-list -->
+		<div class="ui-clear-fix"></div>
+	</div> <!-- end of ui-main-list-default -->
 	
-	//$_flag =  MatchFixtureTable::processNew ( $_orgID, $_orgTokenID, 1, '67a74306b06d0c01624fe0d0249a570f4d093747', 8, '0fda36569b6459978333d67c82e4ccad83950d3f', '5000M (Athletics)', $_matchRoundID, 1, 1, 3, 'Mekelle Tigray Stadium', 1, '03/07/2018', 1, 'dfa dfasdfa sdfasdf', $_userID, $_userTokenID  );  
-?>
-<div class="ui-content-page">
-	<?php include_partial('match', array( '_sportGames' => $_sportGames, '_countSportGames' => $_countSportGames )) ?> 
 </div>		  
-       
+ 
+<?php else: ?> 
+	<div class="ui-error-container" id="ui-error-box" >
+		<?php echo include_partial('global/credential_denied', array()) ?>
+	</div>  
+<?php endif; ?>
+
+<?php else: ?>
+
+	<div class="ui-success-container" id="ui-success-box" >
+		<?php echo include_partial('global/authorization_denied', array()) ?>
+	</div>
+<?php endif; ?>         
+<!--- ************************  -->
+ 
 <!--- ************************  -->
 
 <div class="modal fade" id="processAjaxLoadergModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 

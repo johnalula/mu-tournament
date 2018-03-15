@@ -134,7 +134,7 @@ class UserTable extends PluginUserTable
 	public static function appendQueryFields ( ) 
 	{		
 		$_queryFileds = "usr.id as userID, usr.token_id as tokenID, usr.username as userName, usr.password as password,
-						usr.group_id as groupID, usr.user_role_id as userRoleID, usr.super_admin_flag as isSuperAdmin, usr.default_super_admin_flag as isDefaultSuperAdmin,  usr.access_activation_key as accessActivationKey, usr.org_id as orgID, usr.org_token_id as orgTokenID, usr.person_id as personID, usr.person_token_id as personTokenID, usr.status as userStatus, usr.permission_mode as permissionMode, usr.created_at as createdAt, usr.updated_at as updatedAt, usr.active_flag as activeFlag, usr.blocked_flag as blockedFlag, usr.default_flag as defaultFlag, usr.has_logged_in as hasLoggedIn, usr.last_login_date as lastLoginDate,
+						usr.group_id as groupID, usr.user_role_id as userRoleID, usr.super_admin_flag as isSuperAdmin, usr.default_super_admin_flag as isDefaultSuperAdmin, usr.access_activation_key as accessActivationKey, usr.org_id as orgID, usr.org_token_id as orgTokenID, usr.person_id as personID, usr.person_token_id as personTokenID, usr.status as userStatus, usr.permission_mode as permissionMode, usr.created_at as createdAt, usr.updated_at as updatedAt, usr.active_flag as activeFlag, usr.blocked_flag as blockedFlag, usr.default_flag as defaultFlag, usr.has_logged_in as hasLoggedIn, usr.last_login_date as lastLoginDate,
 						grp.name as userGroupName, grp.name as groupName, grp.id as userGroupID,
 						prt.full_name as personFullName, prt.id as partyPersonID, prt.token_id as partyPersonTokenID, prt.status as personStatus, 
 						org.name as organizationName, org.alias as organizationAlias,
@@ -240,7 +240,6 @@ class UserTable extends PluginUserTable
 			->from("User usr")   
 			->innerJoin("usr.UserGroup grp on usr.group_id = grp.id ")   
 			->innerJoin("usr.Person prt on usr.person_id = prt.id ")   
-			->innerJoin("usr.UserRole usrRole on usr.user_role_id = usrRole.id ")
 			->where("usr.person_id=? AND usr.person_token_id=? AND usr.org_id = ? AND usr.org_token_id = ?", array($_personID, $_personTokenID, $_orgID, $_orgTokenID))
 			->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
 		return ( !$_qry ? null:$_qry ); 
@@ -269,9 +268,9 @@ class UserTable extends PluginUserTable
 				->select(self::appendQueryFields())
 				->from("User usr")   
 				->leftJoin("usr.UserGroup grp on usr.group_id = grp.id ")   
-				->leftJoin("usr.Organization org on usr.org_id = org.id ")   
-				->leftJoin("usr.Person prt on usr.person_id = prt.id ")   
-				->leftJoin("usr.UserRole usrRole on usr.user_role_id = usrRole.id ") 
+				->innerJoin("usr.Organization org on usr.org_id = org.id ")   
+				->innerJoin("usr.Person prt on usr.person_id = prt.id ")   
+				->innerJoin("usr.UserRole usrRole on usr.user_role_id = usrRole.id ") 
 				->where("usr.username = ? AND usr.password = ? AND usr.full_password = ?", array($_userName, $_password, $_fullPassword))
 				->andWhere("usr.active_flag IS TRUE AND usr.blocked_flag IS NOT TRUE")
 				->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);

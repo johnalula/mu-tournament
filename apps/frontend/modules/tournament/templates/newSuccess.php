@@ -1,15 +1,33 @@
-<?php
-	//ournament_name=asdfasdf&tournament_alias=asdfasdf&season=1&status=1&start_date=02/23/2018&end_date=02/28/2018&description=asdfasdfasdfad asdfasdf
-	//processSave ( $_orgID, $_orgTokenID,  $_tournamentName, $_tournamentAlias, $_tournamentSeason, $_startDate, $_effectiveDate, $_endDate, $_description )
+<?php if($sf_user->isAuthenticated()): 	 
+	if($sf_user->isAuthenticated()): 	 
+?> 
+
+<div class="ui-page-box">
+	<div class="ui-main-content-box" >
+		<div class="ui-detail-tab-list ui-grid-content-container-box" >
+			<div id="ui-tab-three" class="ui-tab" style="">
+				<?php include_partial('new', array( '_tournaments' => $_tournaments, '_countTournament' => $_countTournament )) ?> 
+			</div><!-- end of ui-tab-three-->
+		</div> <!-- end of ui-detail-tab-list -->
+		<div class="ui-clear-fix"></div>
+	</div> <!-- end of ui-main-list-default -->
 	
-	//$_flag =  TournamentTable::processNew ( $_orgID, $_orgTokenID,  'asdfasdf', 'asdfasdf', '2018', '02/23/2018', $_effectiveDate, '02/28/2018', 1, $_description, $_userID, $_userTokenID  ); 
-	//$_flag =  TournamentTable::processSave ( $_orgID, $_orgTokenID,  'asdfasdf', 'asdfasdf', '2018', '02/23/2018', $_effectiveDate, '02/28/2018', $_description ); 
-?>
-<div class="ui-content-page">
-	<?php include_partial('new', array( '_products' => $_products, '_countProducts' => $_countProducts, '_productClasses' => $_productClasses )) ?> 
 </div>		  
-       
-<!--- ************************  -->
+ 
+<?php else: ?> 
+	<div class="ui-error-container" id="ui-error-box" >
+		<?php echo include_partial('global/credential_denied', array()) ?>
+	</div>  
+<?php endif; ?>
+
+<?php else: ?>
+
+	<div class="ui-success-container" id="ui-success-box" >
+		<?php echo include_partial('global/authorization_denied', array()) ?>
+	</div>
+<?php endif; ?>         
+ 
+ <!--- ************************  -->
 
 <div class="modal fade" id="processAjaxLoadergModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
 	<div class="modal-dialog-xxsm">

@@ -7,7 +7,9 @@
 					<h2 class="ui-theme-panel-header">
 						<img src="<?php echo image_path('settings/group') ?>" title="<?php echo __('Team Management') ?>">
 						<span class="ui-header-status-icon">
-							 
+							<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
+							<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->confirmFlag ? 'status/approved':'status/disabled')  ?>"> 
+							<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
 						<?php echo __('Team').' ( Name: '.$_team->teamName.' ID #:'.$_team->id.' )'  ?>
 					</h2>
@@ -22,7 +24,7 @@
 				<!-- Begining of toolbar -->
 					<div class="ui-toolbar-menu-box ui-panel-content-border">
 						<div class="ui-toolbar-menu">
-							<?php include_partial('team_toolbar', array()) ?> 
+							<?php include_partial('action_toolbar', array()) ?> 
 						</div>
 					</div>
 					<!--    End of toolbar      -->
@@ -44,13 +46,13 @@
 												<li class="active">
 													<a href="#ui-main-tab-one" data-toggle="tab">
 														<img class="" src="<?php echo image_path('settings/courses') ?>">
-														<?php echo __('Team Members') ?>
+														<?php echo __('Game Participation') ?>
 													</a>
 												</li> 
 												<li class="">
 													<a href="#ui-main-tab-two" data-toggle="tab">
 														<img class="" src="<?php echo image_path('settings/fee') ?>">
-														<?php echo __('Game Participation') ?>
+														<?php echo __('Team Members') ?>
 													</a>
 												</li>  
 											</ul>
@@ -65,7 +67,7 @@
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															<?php include_partial('team_member_toolbar', array()) ?> 
+															<?php include_partial('game_participation_toolbar', array()) ?> 
 														</div> 
 													</div><!-- end of ui-filter-list -->
 												</div>
@@ -73,7 +75,7 @@
 											<!--    End of toolbar      -->
 											<div id="ui-list-collapsible-panel-two">
 												<div class="ui-panel-grid-list-form ui-panel-form-border">
-													<?php include_partial('team_member_form', array('_serializedItems' => $_serializedItems, '_units' => $_units )) ?> 
+													<?php include_partial('game_participation_form', array('_team' => $_team )) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											
@@ -81,8 +83,8 @@
 												<div class="ui-panel-footer-default-box ui-panel-footer-default-box-border">
 													<div class="ui-panel-footer-default-header ui-panel-footer-default-header-border">
 														<h2 class="ui-theme-panel-header-title">
-															<img src="<?php echo image_path('settings/category') ?>" title="<?php echo __('Products') ?>">
-															<?php echo __('Team Members') ?>
+															<img src="<?php echo image_path('settings/category') ?>" title="<?php echo __('Team Game Participation') ?>">
+															<?php echo __('Game Participation') ?>
 														</h2> 
 													</div>
 												</div><!-- ui-panel-footer-default -->
@@ -90,7 +92,7 @@
 						
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('team_member_list', array('_productFeatures' => $_productFeatures )) ?> 
+													<?php include_partial('game_participation_list', array('_teamGameParticipations' => $_teamGameParticipations,'_countGameParticipations' => $_countGameParticipations )) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 										</div><!-- end of ui-tab-content --> 
@@ -110,7 +112,7 @@
 												<!--    End of toolbar      -->
 												<div id="ui-list-collapsible-panel-two">
 													<div class="ui-panel-grid-list-form ui-panel-form-border">
-														<?php include_partial('game_participation_form', array('_serializedItems' => $_serializedItems, '_units' => $_units )) ?> 
+														<?php include_partial('team_member_form', array('_serializedItems' => $_serializedItems )) ?> 
 													</div>		
 												</div><!-- ui-tab-panel-grid -->
 												
@@ -118,8 +120,8 @@
 													<div class="ui-panel-footer-default-box ui-panel-footer-default-box-border">
 														<div class="ui-panel-footer-default-header ui-panel-footer-default-header-border">
 															<h2 class="ui-theme-panel-header-title">
-																<img src="<?php echo image_path('settings/category') ?>" title="<?php echo __('Products') ?>">
-																<?php echo __('Game Partcipation') ?>
+																<img src="<?php echo image_path('settings/category') ?>" title="<?php echo __('Team Members') ?>">
+																<?php echo __('Team Members') ?>
 															</h2> 
 														</div>
 													</div><!-- ui-panel-footer-default -->
@@ -127,7 +129,7 @@
 							
 												<div id="ui-list-collapsible-panel-five">
 													<div class="ui-tab-panel-grid">
-														<?php include_partial('game_participation_list', array('_productFeatures' => $_productFeatures )) ?> 
+														<?php include_partial('team_member_list', array('_productFeatures' => $_productFeatures )) ?> 
 													</div>		
 												</div><!-- ui-tab-panel-grid -->
 												

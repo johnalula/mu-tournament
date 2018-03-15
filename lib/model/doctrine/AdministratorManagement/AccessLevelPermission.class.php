@@ -164,8 +164,8 @@ class AccessLevelPermission extends PluginAccessLevelPermission
 		$this->save();
 	}
 	
-	public function processDefaultUserAccessLevel($_userRole)
-	{ 
+	public function processDefaultUserAccessLevel( $_userRole )
+	{  
 		switch($_userRole) {			
 			case UserCore::$_SUPER_ADMINISTRATOR:
 				return $this->makeDefaultAccessLevel ( $_key );
@@ -176,16 +176,25 @@ class AccessLevelPermission extends PluginAccessLevelPermission
 			case UserCore::$_GENERAL_MANAGER:
 				$this->access_level = PermissionCore::processDefaultAccessLevel();
 			break;
+			case UserCore::$_DIRECTOR:
+				$this->access_level = PermissionCore::processDefaultAccessLevel();
+			break;
 			case UserCore::$_FINANCE_OFFICER:
 				$this->access_level = PermissionCore::processDefaultAccessLevel();
 			break;
-			case UserCore::$_SUPERVISOR:
+			case UserCore::$_CLASS_TEACHER_INSTRUCTOR:
 				$this->access_level = PermissionCore::processDefaultAccessLevel();
 			break;
-			case UserCore::$_SALES_PERSON:
+			case UserCore::$_UNIT_LEADER_INSTRUCTOR:
 				$this->access_level = PermissionCore::processDefaultAccessLevel();
 			break;
-			case UserCore::$_PURCHASER:
+			case UserCore::$_TEACHER:
+				$this->access_level = PermissionCore::processDefaultAccessLevel();
+			break;
+			case UserCore::$_STUDENT:
+				$this->access_level = PermissionCore::processDefaultAccessLevel();
+			break;
+			case UserCore::$_PARENT:
 				$this->access_level = PermissionCore::processDefaultAccessLevel();
 			break;
 			case UserCore::$_OPERATOR:
@@ -194,7 +203,7 @@ class AccessLevelPermission extends PluginAccessLevelPermission
 			case UserCore::$_CASHIER:
 				$this->access_level = PermissionCore::processDefaultAccessLevel();
 			break;
-			case UserCore::$_FINANCE_AND_CASHIER:
+			case UserCore::$_ANONYMOUS:
 				$this->access_level = PermissionCore::processDefaultAccessLevel();
 			break; 
 			case UserCore::$_OTHER_ROLE:

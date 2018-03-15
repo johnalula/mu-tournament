@@ -185,10 +185,11 @@ Team:
     team_name: { type: string(255) }
     alias: { type: string(50) } }   
     team_city: { type: string(50) } }   
-    team_number: { type: string(50) } }   
-    team_logo: { type: string(50) } }   
+    total_member: { type: string(50) } }   
+    team_logo: { type: string(255) } }   
     start_date: { type: string(100) }
     end_date: { type: string(100) }  
+    confirm_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: true } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
@@ -221,15 +222,23 @@ TeamGameParticipation:
     Timestampable: ~
   columns:
     token_id: { type: string(100) }    
-    team_id: { type: integer }
-    player_name: { type: string(255) }
-    player_role_id: { type: integer } }   
-    player_number: { type: integer } }   
-    active_flag: { type: boolean, default: true } 
+    team_id: { type: integer } 
+    team_token_id: { type: string(100) } 
+    sport_game_category_id: { type: integer } 
+    sport_game_id: { type: integer } 
+    sport_game_token_id: { type: string(100) } 
+    number_of_players: { type: integer } 
+    gender_category_id: { type: integer } 
+    event_type: { type: integer } 
+    player_mode: { type: integer } 
+    confirm_flag: { type: boolean, default: false } 
+    active_flag: { type: boolean, default: false } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamParticipantPersons }  
+    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamGameParticipations }  
+    GameCategory: { onDelete: CASCADE, local: sport_game_category_id, foreign: id, foreignAlias: gameCategoryTeamPartcipation }    
+    SportGame: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: sportGameTeamPartcipation }     
  
 TeamDetail:
   package: TeamManagement
@@ -254,7 +263,9 @@ TournamentMatch:
   actAs:
     Timestampable: ~
   columns:
-    token_id: { type: string(100) }    
+    token_id: { type: string(100) }      
+    org_id: { type: integer }
+    org_token_id: { type: string(100) }  
     tournament_id: { type: integer } 
     tournament_token_id: { type: string(100) } 
     sport_game_category_id: { type: integer } 
@@ -269,6 +280,7 @@ TournamentMatch:
     status: { type: integer, default: 1  } 
     description:  { type: string(255) }    
   relations:  
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationTournamentMatchs }
     Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentMatchs }     
     GameCategory: { onDelete: CASCADE, local: sport_game_category_id, foreign: id, foreignAlias: gameCategoryTournamentMatch }     
  

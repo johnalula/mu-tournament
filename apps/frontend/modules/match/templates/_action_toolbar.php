@@ -49,12 +49,6 @@
 			<?php if(($sf_request->getParameter('match_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
 				<?php if($sf_request->getParameter('action') == 'fixture'): ?>
 					<li class="">
-						<a href="<?php echo url_for('match/new') ?>" title="<?php echo __('Create New Team') ?>" id="createNewTeam" class="" >
-							<img class="navbar-nav-img" src="<?php echo image_path('pagination/previous_page') ?>">
-							<?php echo __('Back') ?>
-						</a>
-					</li>	  
-					<li class="">
 						<button title="<?php echo __('Save Match Fixture Information') ?>" id="createTournamentMatchFixture" class="ui-disabled-toolbar-btn" disabled >
 							<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
 							<?php echo __('Save') ?>
@@ -67,9 +61,9 @@
 						</button>
 					</li>
 					<li class="">
-						<a class="" href="<?php echo url_for(ModuleCore::makeModuleURLAction('match', 'match_id', 'participant_team', $_object)) ?>">
-							<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
-							<?php echo __('Next') ?>
+						<a href="<?php echo url_for('match/index') ?>" title="<?php echo __('Back to Match List') ?>" id="backToMatchList" class="" >
+							<img class="navbar-nav-img" src="<?php echo image_path('settings/to_do_list') ?>">
+							<?php echo __('List') ?>
 						</a>
 					</li>	 
 				<?php endif; ?>

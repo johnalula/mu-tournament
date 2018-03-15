@@ -23,6 +23,7 @@
  * @property clob $description
  * @property GameCategory $GameCategory
  * @property Organization $Organization
+ * @property Doctrine_Collection $sportGameTeamPartcipation
  * @property Doctrine_Collection $sportGameMatchFixtures
  * 
  * @package    mu-TMS
@@ -105,6 +106,10 @@ abstract class BaseSportGame extends sfDoctrineRecord
              'local' => 'org_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('TeamGameParticipation as sportGameTeamPartcipation', array(
+             'local' => 'id',
+             'foreign' => 'sport_game_id'));
 
         $this->hasMany('MatchFixture as sportGameMatchFixtures', array(
              'local' => 'id',

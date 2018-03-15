@@ -12,8 +12,136 @@ class SystemLogFileTable extends PluginSystemLogFileTable
      *
      * @return object SystemLogFileTable
      */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('SystemLogFile');
-    }
+	public static function getInstance()
+	{
+		return Doctrine_Core::getTable('SystemLogFile');
+	}
+	public static function processNew ( $_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc )
+	{
+			$_user = UserTable::makeObject ( $_userID, $_userTokenID ); 
+			$_moduleType = $_modulePartyType ? $_modulePartyType:'module';
+			$_actionDate = date('m/d/Y h:i:s A', time());
+			$_actionTime = date('h:i:s A',time()); 
+			$_pcIPAddress =  ip2long(gethostbyname($_SERVER['REMOTE_ADDR'])); 
+			$_hostName =  trim($_SERVER['SERVER_NAME']); 
+			$_documentRoot =  trim($_SERVER['DOCUMENT_ROOT']); 
+			$_phpSelf =  trim($_SERVER['PHP_SELF']); 
+			$_browserType =  trim($_SERVER['HTTP_USER_AGENT']); 
+			$_actionDataValue = trim(SystemCore::processSystemActionDataValue ( $_actionID, $_actionDesc )); 
+			$_actionData = trim(SystemCore::processSystemActionValue ( $_user->userName, $_actionID, $_actionDataValue, $_actionObject, $_pcIPAddress));  
+			$_desc = trim(' from [ IP: '.gethostbyname($_SERVER['REMOTE_ADDR']).' ] at [Date: '.date('D M d, Y h:i:s A', strtotime($_actionDate)).']'); 
+			$_description = trim(SystemCore::processSystemActionDescriptionValue($_actionID, $_user->userName, trim($_actionDataValue)).' '.$_desc); 
+			
+			$_logFile = self::processCreate ( $_orgID, $_orgTokenID, $_user, $_moduleID, $_hostName, $_phpSelf, $_documentRoot, $_actionID, $_actionData, $_actionDate, $_actionTime, $_pcIPAddress, $_browserType, $_description );
+			
+		return $_logFile ? true:false; 
+	}
+	public static function processCreate ( $_orgID, $_orgTokenID, $_userID, $_moduleID, $_hostName, $_phpSelf, $_documentRoot, $_actionID, $_actionData, $_actionDate, $_actionTime, $_pcIPAddress, $_browserType, $_description )
+	{ 
+			$_token = trim($_orgTokenID).trim($_actionData).trim($_pcIPAddress).rand('11111', '99999'); 
+			$_nw = new SystemLogFile();  
+			$_nw->token_id = md5(sha1($_token));
+			$_nw->org_id = trim($_orgID);
+			$_nw->org_token_id = md5(sha1(trim($_orgTokenID))); 
+			$_nw->user_id = trim($_userID); 
+			$_nw->module_id = empty($moduleID) ? trim($_moduleID):trim($moduleID); 
+			$_nw->static_module_id = trim($_moduleID); 
+			$_nw->host_name = trim($_hostName); 
+			$_nw->php_self = trim($_phpSelf); 
+			$_nw->document_root = trim($_documentRoot); 
+			$_nw->browser_type = trim($_browserType); 
+			$_nw->action_type_id = trim($_actionID);
+			$_nw->action_time = trim($_actionTime);
+			$_nw->action_date = trim($_actionDate);
+			$_nw->action_data = trim($_actionData); 
+			$_nw->pc_ip_address = trim($_pcIPAddress); 
+			$_nw->description = trim($_description); 
+			$_nw->save(); 
+
+		return $_nw; 
+	}
+	//
+	public static function appendQueryFields ( ) 
+	{
+		$_queryFileds = "log.*, log.token_id as tokenID, log.user_id as userID, usr.username as userName, log.action_date as activityDate, log.action_time as activityTime, log.action_type_id as activityAction, log.action_data as actionData, log.pc_ip_address as IPAddress, log.created_at as createdAt, log.updated_at as updatedAt,
+		log.static_module_id as staticModuleID, modstt.module_type_id as moduleTypeID, log.browser_type as browserType,
+		prt.full_name as employeeFullName, prt.id as employeeID, prt.token_id as employeeTokenID, prt.parent_id as parentID, prt.parent_token_id as parentTokenID, prt.party_type as partyType, prt.status as personStatus, 
+		org.name as organizationName,
+		grp.name as userGroupName, usrRole.user_role_name as userRoleName,
+		prtRel.position_role_id as personPositionID,
+		";
+		return $_queryFileds;
+	}
+	//
+	public static function processSelection ( $_orgID, $_orgTokenID, $_userID=null, $_userTokenID=null, $_moduleID=null, $_keyword=null, $_offset=0, $_limit=10) 
+	{
+		$_qry= Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("SystemLogFile log") 
+			->innerJoin("log.User usr on usr.id = log.user_id")
+			->innerJoin("usr.UserGroup grp on grp.id = usr.group_id")
+			->innerJoin("usr.UserRole usrRole on usrRole.id = usr.user_role_id")
+			->innerJoin("usr.Person prt on usr.person_id = prt.id ")   
+			->innerJoin("prt.partyRelationships prtRel") 
+			->innerJoin("log.ModuleSetting modstt on log.module_id = modstt.id ")    
+			->innerJoin("log.Organization org on log.org_id = org.id ")   
+			->offset($_offset)
+			->limit($_limit)
+			->orderBy("log.id DESC")
+			->where("log.org_id = ? AND log.org_token_id = ?", array($_orgID, $_orgTokenID)); 
+			if(!is_null($_userID)) $_qry = $_qry->andWhere("log.user_id = ? AND log.user_token_id = ? ", array($_userID, $_userTokenID));
+			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("log.module_id=?", $_moduleID);
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$_qry = $_qry->andWhere("log.pc_ip_address LIKE ? OR log.description LIKE ? OR usr.username LIKE ?", array($_keyword,$_keyword,$_keyword));
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count ($_qry) <= 0 ? null:$_qry); 
+	}
+	//
+	public static function processAll ( $_orgID, $_orgTokenID, $_userID=null, $_userTokenID=null, $_moduleID=null, $_keyword=null) 
+	{
+		$_qry= Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("SystemLogFile log") 
+			->innerJoin("log.User usr on usr.id = log.user_id") 
+			->innerJoin("usr.UserGroup grp on grp.id = usr.group_id")
+			->innerJoin("usr.UserRole usrRole on usrRole.id = usr.user_role_id")
+			->innerJoin("usr.Person prt on usr.person_id = prt.id ")  
+			->innerJoin("prt.partyRelationships prtRel") 
+			->innerJoin("log.ModuleSetting modstt on log.module_id = modstt.id ")  
+			->innerJoin("log.Organization org on log.org_id = org.id ")    
+			->orderBy("log.id DESC")
+			->where("log.org_id = ? AND log.org_token_id = ?", array($_orgID, $_orgTokenID));
+			if(!is_null($_userID)) $_qry = $_qry->andWhere("log.user_id = ? AND log.user_token_id = ? ", array($_userID, $_userTokenID));
+			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("log.module_id=?", $_moduleID);
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$_qry = $_qry->andWhere("log.pc_ip_address LIKE ? OR log.description LIKE ? OR usr.username LIKE ?", array($_keyword,$_keyword,$_keyword));
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count ($_qry) <= 0 ? null:$_qry); 
+	}
+	//
+	public static function processObject ( $_orgID, $_orgTokenID, $_logID, $_logTokenID ) 
+	{
+		$_qry= Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("SystemLogFile log") 
+			->innerJoin("log.User usr on usr.id = log.user_id")
+			->innerJoin("usr.UserGroup grp on grp.id = usr.group_id")
+			->innerJoin("usr.UserRole usrRole on usrRole.id = usr.user_role_id")
+			->innerJoin("usr.Person prt on usr.person_id = prt.id ")   
+			->innerJoin("prt.partyRelationships prtRel") 
+			->innerJoin("log.ModuleSetting modstt on log.module_id = modstt.id ")  
+			->innerJoin("log.Organization org on log.org_id = org.id ")      
+			->orderBy("log.id DESC")
+			->where("log.id = ? AND log.token_id = ? AND log.org_id = ? AND log.org_token_id = ?", array( $_logID, $_logTokenID, $_orgID, $_orgTokenID ))
+			->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( !$_qry ? null:$_qry ); 
+	}
+	public static function processCandidates() 
+	{
+	}
 }

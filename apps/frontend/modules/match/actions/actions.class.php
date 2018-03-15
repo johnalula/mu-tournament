@@ -65,7 +65,7 @@ class matchActions extends sfActions
 		}  else {
 			$this->getUser()->setFlash('process_success', true);
 		}
-		$this->redirect('match/edit?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id);
+		$this->redirect('match/fixture?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id);
 		
 	}
 	public function executeEdit(sfWebRequest $request)
@@ -92,7 +92,7 @@ class matchActions extends sfActions
 		
 		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, $_orgTokenID, $_matchID, $_tokenID );
 		$this->_activeTournament = TournamentTable::makeCandidateObject ( $_orgID, $_activeFlag ) ;
-		$this->_matchFixtures = MatchFixtureTable::processSelection ( $_orgID=null, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  ) ;
+		$this->_matchFixtures = MatchFixtureTable::processCandidates ( $_tournamentID, $_matchID, sha1(md5($_tokenID)), $_categoryID, $_keyword, $_exclusion, $_activeFlag, 0, 20  ) ;
 		//$this->_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  ) ;
 		$this->_candidateRounds = RoundTypeTable::processAll ( $_orgID, $_orgTokenID, $_type, $_keyword, true) ;
 		$this->_candidateGroups = GroupTypeTable::processAll ( $_orgID, $_orgTokenID, $_keyword, true) ;
@@ -175,48 +175,30 @@ class matchActions extends sfActions
 		
 		return $this->renderPartial('sport_games/candidate_sport_game', array('_candidateSportGames' => $_candidateSportGames, '_countCandidateSportGames' => $_countCandidateSportGames));	  
 	}
-	public function executeCandidateAccountChars(sfWebRequest $request)
+	public function executeCandidateTeams(sfWebRequest $request)
 	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
+		$_categoryID = $request->getParameter('sport_game_category');	
+		//$_tokenID = $request->getParameter('token_id');	
+		$_offset = $request->getParameter('offset');	
+		$_limit = $request->getParameter('limit');	
+		
+		
+		//$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		//$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 35;			 
+		if(!$_limit || $_limit=='' ) $_limit = 20;			 
 
-		$_candidateAccountCharts = GeneralLedgerAccountTable::processCandidateSelection ( $_orgID, $_glAccountTypeID, $_exclusion, $_defaultFlag, $_status, $_keyword, 0, 25 );
+		$_candidateParticipantTeams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, $_offset, $_limit ); 
+		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
 		
-		return $this->renderPartial('candidate_gl_account_charts', array('_candidateAccountCharts' => $_candidateAccountCharts, '_countCandidates' => $_countCandidateStudents));	    
+		return $this->renderPartial('team/candidate_team', array('_candidateTeams' => $_candidateParticipantTeams, '_countCandidateSportGames' => $_countCandidateSportGames));	  
 	}
+	
 	
 	/************  Candidate Navigation Selection Functions **************/
 	
-	
-	public function executeCandidateInventoryItemDetail(sfWebRequest $request)
-	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
-		
-		$_inventoryItemID = $request->getParameter("inventory_item_id");
-		$_inventoryItemTokenID = $request->getParameter("inventory_item_token_id");
-		//$_keyword = '%' . $_keyword . '%';
-		
-		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 35;			 
-		if(!$_classID || $_classID == '' ) $_classID = null;			 
-		if(!$_keyword || $_keyword == '' ) $_keyword = null;			 
-		
-		$_inventoryItem = InventoryItemTable::processObject( $_inventoryItemID, $_inventoryItemTokenID ) ;
-		
-		if (!$_inventoryItem)
-		{
-			return $this->renderPartial('global/error', array('_products' => $_products));
-		}
-			
-		return $this->renderPartial('inventory_item/item_detail', array('_inventoryItem' => $_inventoryItem));
-
-	}
 	
 	public function executeSearch(sfWebRequest $request)
 	{

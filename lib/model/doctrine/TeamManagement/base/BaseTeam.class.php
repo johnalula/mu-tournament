@@ -14,9 +14,11 @@
  * @property string $team_name
  * @property string $alias
  * @property string $team_city
+ * @property string $total_member
  * @property string $team_logo
  * @property string $start_date
  * @property string $end_date
+ * @property boolean $confirm_flag
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
@@ -24,6 +26,7 @@
  * @property Tournament $Tournament
  * @property Doctrine_Collection $teamGroupMembers
  * @property Doctrine_Collection $teamParticipantPersons
+ * @property Doctrine_Collection $teamGameParticipations
  * @property Doctrine_Collection $teamsTeamDetails
  * @property Doctrine_Collection $teamMatchParticipants
  * @property Doctrine_Collection $MatchResult
@@ -57,9 +60,9 @@ abstract class BaseTeam extends sfDoctrineRecord
         $this->hasColumn('country_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('team_number', 'string', 50, array(
+        $this->hasColumn('team_number', 'string', 255, array(
              'type' => 'string',
-             'length' => 50,
+             'length' => 255,
              ));
         $this->hasColumn('team_name', 'string', 255, array(
              'type' => 'string',
@@ -73,9 +76,13 @@ abstract class BaseTeam extends sfDoctrineRecord
              'type' => 'string',
              'length' => 50,
              ));
-        $this->hasColumn('team_logo', 'string', 50, array(
+        $this->hasColumn('total_member', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
+             ));
+        $this->hasColumn('team_logo', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
         $this->hasColumn('start_date', 'string', 100, array(
              'type' => 'string',
@@ -84,6 +91,10 @@ abstract class BaseTeam extends sfDoctrineRecord
         $this->hasColumn('end_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('confirm_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
@@ -116,6 +127,10 @@ abstract class BaseTeam extends sfDoctrineRecord
              'foreign' => 'team_id'));
 
         $this->hasMany('TeamParticipants as teamParticipantPersons', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
+
+        $this->hasMany('TeamGameParticipation as teamGameParticipations', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 

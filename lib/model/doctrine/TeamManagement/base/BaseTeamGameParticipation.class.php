@@ -7,13 +7,21 @@
  * 
  * @property string $token_id
  * @property integer $team_id
- * @property string $player_name
- * @property integer $player_role_id
- * @property integer $player_number
+ * @property string $team_token_id
+ * @property integer $sport_game_category_id
+ * @property integer $sport_game_id
+ * @property string $sport_game_token_id
+ * @property integer $number_of_players
+ * @property integer $gender_category_id
+ * @property integer $event_type
+ * @property integer $player_mode
+ * @property boolean $confirm_flag
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
  * @property Team $Team
+ * @property GameCategory $GameCategory
+ * @property SportGame $SportGame
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -32,19 +40,39 @@ abstract class BaseTeamGameParticipation extends sfDoctrineRecord
         $this->hasColumn('team_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('player_name', 'string', 255, array(
+        $this->hasColumn('team_token_id', 'string', 100, array(
              'type' => 'string',
-             'length' => 255,
+             'length' => 100,
              ));
-        $this->hasColumn('player_role_id', 'integer', null, array(
+        $this->hasColumn('sport_game_category_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('player_number', 'integer', null, array(
+        $this->hasColumn('sport_game_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('sport_game_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
+        $this->hasColumn('number_of_players', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('gender_category_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('event_type', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('player_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('confirm_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
-             'default' => true,
+             'default' => false,
              ));
         $this->hasColumn('status', 'integer', null, array(
              'type' => 'integer',
@@ -60,6 +88,16 @@ abstract class BaseTeamGameParticipation extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Team', array(
              'local' => 'team_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('GameCategory', array(
+             'local' => 'sport_game_category_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('SportGame', array(
+             'local' => 'sport_game_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

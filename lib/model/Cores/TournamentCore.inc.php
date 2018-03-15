@@ -919,8 +919,82 @@ class TournamentCore {
 /************************************************/
 	public static $_MEN = 1; 
 	public static $_WOMEN = 2; 
+	public static $_MIXED = 3; 
 	
-	public static $_GENDERS = array ( 1 => "Men", 2 => "Women" );
+	public static $_GENDERS = array ( 1 => "Men", 2 => "Women", 3 => "Mixed" );
+	public static $_PLAYER_GENDERS = array ( 1 => "Men", 2 => "Women");
+	
+	public static function processPlayerGender ( ) 
+	{
+	  try {
+				return  self::$_PLAYER_GENDERS; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }        
+	}
+	public static function processGenders ( ) 
+	{
+	  try {
+				return  self::$_GENDERS; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }        
+	}
+	public static function processGenderID ( $_value ) 
+	{
+		try {
+			foreach( self::$_GENDERS as $_key => $_gender ) {
+				if( strcmp($_gender, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}        
+	}
+	
+	public static function processGenderValue ( $_id )
+	{
+		try {
+				foreach( self::$_GENDERS as $_key => $_gender ) {
+					if( $_key == $_id )
+						return $_gender; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}    
+	}
+	public static function processDefaultGender ()
+	{
+		try {
+				return  self::$_MEN; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }     
+	}
+	public static function processGenderAlias ($_gender)
+	{
+		switch($_gender) {			
+			case self::$_MEN:
+				return 'M';
+			break;	
+			case self::$_WOMEN:
+				return 'W';
+			break; 
+			case self::$_MIXED:
+				return 'MX';
+			break; 
+		}
+	} 
+	
+	/************************************************/
+	
+	/*public static $_MEN = 1; 
+	public static $_WOMEN = 2; 
+	public static $_MIXED = 3; 
+	
+	public static $_GENDERS = array ( 1 => "Men", 2 => "Women", 3 => "Mixed" );
 	
 	public static function processGenders ( ) 
 	{
@@ -972,8 +1046,12 @@ class TournamentCore {
 			case self::$_WOMEN:
 				return 'W';
 			break; 
+			case self::$_MIXED:
+				return 'MX';
+			break; 
 		}
-	} 
+	}
+	*/
 /************************************************/
 
 	public static function makeSportGameName ($_event) 

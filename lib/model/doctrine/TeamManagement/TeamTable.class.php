@@ -39,8 +39,8 @@ class TeamTable extends PluginTeamTable
 			$_startDate = date('m/d/Y', time());
 			$_nw = new Team (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
-			//$_nw->org_id = trim($_orgID); 
-			//$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
+			$_nw->org_id = trim($_orgID); 
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
 			$_nw->team_name = trim($_teamName); 
 			$_nw->alias = trim($_teamAlias); 
 			$_nw->country_id = trim($_teamCountry);  
@@ -81,7 +81,7 @@ class TeamTable extends PluginTeamTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.active_flag as activeFlag, 
+		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.confirm_flag as confirmFlag, tm.active_flag as activeFlag, 
 		";	
 		return $_queryFileds;
 	}

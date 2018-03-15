@@ -27,7 +27,7 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 				
 			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
 			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
-			$_tournamentMatch = self::processSave ( $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_matchNumber, $_matchSeason, $_teamMode, $_matchDate, $_status, $_description );
+			$_tournamentMatch = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_matchNumber, $_matchSeason, $_teamMode, $_matchDate, $_status, $_description );
 		
 		return $_tournamentMatch;
 	}
@@ -36,16 +36,16 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	{
 		
 	} 
-	public static function processSave ( $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_matchNumber, $_matchSeason, $_teamMode, $_matchDate, $_status, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_matchNumber, $_matchSeason, $_teamMode, $_matchDate, $_status, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
-			$_token = trim($_tournamentTokenID).trim($_sportGameCategoryID).trim($_matchDate).rand('11111', '99999'); 
+			$_token = trim($_tournamentTokenID).trim($_orgTokenID).trim($_matchDate).rand('11111', '99999'); 
 			$_startDate = date('m/d/Y', time());
 			$_nw = new TournamentMatch (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
-			//$_nw->org_id = trim($_orgID); 
-			//$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
+			$_nw->org_id = trim($_orgID); 
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
 			$_nw->tournament_id = trim($_tournamentID); 
 			$_nw->tournament_token_id = sha1(md5(trim($_tournamentTokenID)));  
 			$_nw->sport_game_category_id = trim($_sportGameCategoryID); 

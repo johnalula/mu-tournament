@@ -10,6 +10,7 @@
  * @property Doctrine_Collection $organizationGroupTypes
  * @property Doctrine_Collection $organizationSportGames
  * @property Doctrine_Collection $organizationTeams
+ * @property Doctrine_Collection $organizationTournamentMatchs
  * @property Doctrine_Collection $organizationSystemConfigs
  * @property Doctrine_Collection $organizationCodeGenerators
  * @property Doctrine_Collection $organizationUsers
@@ -44,6 +45,10 @@ abstract class BaseOrganization extends Party
              'foreign' => 'org_id'));
 
         $this->hasMany('Team as organizationTeams', array(
+             'local' => 'id',
+             'foreign' => 'org_id'));
+
+        $this->hasMany('TournamentMatch as organizationTournamentMatchs', array(
              'local' => 'id',
              'foreign' => 'org_id'));
 

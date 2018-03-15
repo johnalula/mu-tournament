@@ -58,17 +58,19 @@
 
 .ui-page-box {
 	border:0px solid #f00!important;
-	padding:10px 5px 50px 5px;  
+	padding:10px 0px 50px 0px;  
 }
 .ui-main-content-box {
-	border:1px solid #689ff1!important;
+	border:0px solid #f00!important;
 }
 .ui-panel-container { 
 	width:100%;  
-	padding-top:0px;
+	padding-top:5px;
+}
+.ui-grid-box { 
 }
 .ui-panel-grid-box {
-	padding:0px 0px 3px 0px;   
+	padding:0px 0px 0px 0px;   
 }
 .ui-panel-grid-box:before,
 .ui-panel-grid-box:after {
@@ -79,16 +81,14 @@
   clear: both;
 }
 .ui-panel-grid {
+	background:#fff!important; 
 	border:1px solid #689ff1!important; 
 	margin-bottom:10px!important;
 	margin-top:0px!important;
 	padding:1px!important;
 	-webkit-border-radius:3px 3px 0px 0px;
 	-moz-border-radius:3px 3px 0px 0px;
-	border-radius:3px 3px 0px 0px;
-	-webkit-box-shadow: 0 0px 2px #cacaca;
-	-moz-box-shadow: 0 0px 2px #cacaca;
-	box-shadow: 0 0px 2px #cacaca;
+	border-radius:3px 3px 0px 0px; 
 }
 [class*="ui-panel-box"] {
 	float: left; 
@@ -1213,10 +1213,7 @@ s.ui-panel-grid-list-form table thead tr th.ui-th-center-text {
 	padding:4px 13px 13px 4px!important;
 }
 .ui-main-panel-form-box-margin { 
-	padding:0px 21px 8px 0px!important;
-}
-.ui-main-panel-form-margin { 
-	padding:4px 21px 8px 0px!important;
+	padding:0px 18px 8px 0px!important;
 }
 .ui-panel-form-box:before,
 .ui-panel-form-box:after {
@@ -3904,54 +3901,6 @@ td.ui-grid-right-text {
 	box-shadow:  0px 0px 1px #b8b8b8!important; 
 }
 .ui-toolbar ul.ui-toolbar-action li button:hover { 
-	margin:0px 5px 0px 0px!important;  
-	background:none!important;
-	border:1px solid #888!important; 
-	-webkit-border-radius:3px 3px 3px 3px!important;
-	-moz-border-radius:3px 3px 3px 3px!important;
-	border-radius:3px 3px 3px 3px!important;
-	background-color: #f6fafc!important; 
-	background: -moz-linear-gradient(100% 100% 90deg, #cbddea, #f6fafc)!important;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6fafc), to(#cbddea))!important;
-	background: -webkit-linear-gradient(#cbddea, #f6fafc)!important;
-	background: -o-linear-gradient(#cbddea, #f6fafc)!important; 
-	-webkit-box-shadow:  0px 0px 1px #b8b8b8!important;
-	-moz-box-shadow:  0px 0px 1px #b8b8b8!important;
-	box-shadow:  0px 0px 1px #b8b8b8!important; 
-}
-.ui-toolbar ul.ui-toolbar-action li.ui-nav-button a { 
-	margin:0px 5px 0px 0px!important;  
-	background:none!important;
-	border:1px solid #888!important; 
-	-webkit-border-radius:3px 3px 3px 3px!important;
-	-moz-border-radius:3px 3px 3px 3px!important;
-	border-radius:3px 3px 3px 3px!important;
-	background-color: #f6fafc!important; 
-	background: -moz-linear-gradient(100% 100% 90deg, #cbddea, #f6fafc)!important;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6fafc), to(#cbddea))!important;
-	background: -webkit-linear-gradient(#cbddea, #f6fafc)!important;
-	background: -o-linear-gradient(#cbddea, #f6fafc)!important; 
-	-webkit-box-shadow:  0px 0px 1px #b8b8b8!important;
-	-moz-box-shadow:  0px 0px 1px #b8b8b8!important;
-	box-shadow:  0px 0px 1px #b8b8b8!important; 
-}
-.ui-toolbar ul.ui-toolbar-action li.ui-nav-button a:hover { 
-	margin:0px 5px 0px 0px!important;  
-	background:none!important;
-	border:1px solid #888!important; 
-	-webkit-border-radius:3px 3px 3px 3px!important;
-	-moz-border-radius:3px 3px 3px 3px!important;
-	border-radius:3px 3px 3px 3px!important;
-	background-color: #f6fafc!important; 
-	background: -moz-linear-gradient(100% 100% 90deg, #cbddea, #f6fafc)!important;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6fafc), to(#cbddea))!important;
-	background: -webkit-linear-gradient(#cbddea, #f6fafc)!important;
-	background: -o-linear-gradient(#cbddea, #f6fafc)!important; 
-	-webkit-box-shadow:  0px 0px 1px #b8b8b8!important;
-	-moz-box-shadow:  0px 0px 1px #b8b8b8!important;
-	box-shadow:  0px 0px 1px #b8b8b8!important; 
-}
-.ui-toolbar ul.ui-toolbar-action li.ui-nav-button button { 
 	margin:0px 5px 0px 0px!important;  
 	background:none!important;
 	border:1px solid #888!important; 

@@ -14,6 +14,8 @@ abstract class BaseTournamentMatchFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'token_id'               => new sfWidgetFormFilterInput(),
+      'org_id'                 => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Organization'), 'add_empty' => true)),
+      'org_token_id'           => new sfWidgetFormFilterInput(),
       'tournament_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Tournament'), 'add_empty' => true)),
       'tournament_token_id'    => new sfWidgetFormFilterInput(),
       'sport_game_category_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('GameCategory'), 'add_empty' => true)),
@@ -33,6 +35,8 @@ abstract class BaseTournamentMatchFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'token_id'               => new sfValidatorPass(array('required' => false)),
+      'org_id'                 => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Organization'), 'column' => 'id')),
+      'org_token_id'           => new sfValidatorPass(array('required' => false)),
       'tournament_id'          => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Tournament'), 'column' => 'id')),
       'tournament_token_id'    => new sfValidatorPass(array('required' => false)),
       'sport_game_category_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('GameCategory'), 'column' => 'id')),
@@ -69,6 +73,8 @@ abstract class BaseTournamentMatchFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'                     => 'Number',
       'token_id'               => 'Text',
+      'org_id'                 => 'ForeignKey',
+      'org_token_id'           => 'Text',
       'tournament_id'          => 'ForeignKey',
       'tournament_token_id'    => 'Text',
       'sport_game_category_id' => 'ForeignKey',

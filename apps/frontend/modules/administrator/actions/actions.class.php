@@ -17,6 +17,30 @@ class administratorActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    
+  }
+  public function executeUser(sfWebRequest $request)
+  {
+    
+  }
+  public function executeUser_group(sfWebRequest $request)
+  {
+    
+  }
+  public function executeUser_role(sfWebRequest $request)
+  {
+    
+  }
+  public function executeAccess_level(sfWebRequest $request)
+  {
+    
+  }
+  public function executeModule(sfWebRequest $request)
+  {
+    
+  }
+  public function executeActivity_log(sfWebRequest $request)
+  {
+    
   }
 }

@@ -1,54 +1,54 @@
-
-<div class="ui-panel-container" id="" style="border:0px solid #f0f;"> 
-	<div class="ui-panel-grid-box" id="" style="border:0px solid #f0f;"> 
+<div class="ui-panel-container" id=""> 
+	<div class="ui-panel-grid-box" id=""> 
 		<!-- First panel --> 
-		<div class="col-sm-121" id="">  
-			<div class="ui-panel-grid">
-				<div class="ui-panel-header-default">
-					<h2 class="ui-theme-panel-header">
-						<img src="<?php echo image_path('settings/product') ?>" title="<?php echo __('Tournament Management') ?>">
-						<?php echo __('Tournament') ?>
-					</h2>
-					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
-						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
-						<span id="ui-panel-form-down-arrow" class="ui-minimize-arrow ui-display-none"><img src="<?php echo image_path('icons/arrow_down') ?>"></span>	
-					</div>
-				</div><!-- ui-panel-header-default -->
-				<div class="" id="ui-list-collapsible-panel-one">
-					<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
-				<!-- Begining of toolbar -->
-					<div class="ui-toolbar-menu-box  ui-toolbar-border">
-						<div class="ui-toolbar-menu">
-							<div id="" class="navbar-collapse ui-toolbar">
-									<div class="row">
-										<div class="col-sm-6">
-											<?php include_partial('tournament_toolbar', array()) ?> 
-										</div>
-										<div class="col-sm-6">
-											<?php include_partial('filter', array( '_productClasses' => $_productClasses )) ?> 
-										</div>
+		<div class="col-sm-12" id="" style="">  
+			<div class="ui-panel-grid" style="">
+				<div class="ui-grid-box" id="" style=""> 
+				
+					<div class="ui-panel-header-default">
+						<h2 class="ui-theme-panel-header">
+							<img src="<?php echo image_path('settings/product') ?>" title="<?php echo __('Tournament Management') ?>">
+							<?php echo __('Tournaments') ?>
+						</h2>
+						<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
+							<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
+							<span id="ui-panel-form-down-arrow" class="ui-minimize-arrow ui-display-none"><img src="<?php echo image_path('icons/arrow_down') ?>"></span>	
+						</div>
+					</div><!-- ui-panel-header-default -->
+					
+					<div class="" id="ui-list-collapsible-panel-one">
+						<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
+					<!-- Begining of toolbar -->
+						<div class="ui-toolbar-menu-box  ui-toolbar-border">
+							<div class="ui-toolbar-menu">
+								<div id="" class="navbar-collapse ui-toolbar">
+									<div class="">
+										<?php include_partial('tournament_toolbar', array()) ?> 
+									</div>
+									<div class="">
+										<?php include_partial('filter', array( )) ?> 
 									</div><!-- end of ui-filter-list -->
-							</div><!-- end of ui-filter-list -->
-						</div>
-					</div  
-					<!--    End of toolbar      -->
-					<div class="ui-panel-grid-list" id="product"> 
-						<?php include_partial('list', array( '_tournaments' => $_tournaments, '_countTournaments' => $_countTournaments )) ?> 
-					</div> <!-- ui-panel-content -->  
-				</div><!-- ui-panel-content-box -->
-				
-				<div class="ui-panel-footer-default">
-					<div class="ui-panel-list-pagination-default">
-						<div class="ui-panel-list-pagination">
-							xx
+								</div><!-- end of ui-filter-list -->
+							</div>
+						</div  
+						<!--    End of toolbar      -->
+						<div class="ui-panel-grid-list" id="product"> 
+							<?php include_partial('list', array( '_tournaments' => $_tournaments, '_countTournaments' => $_countTournaments )) ?> 
+						</div> <!-- ui-panel-content -->  
+					</div><!-- ui-panel-content-box -->
+					
+					<div class="ui-panel-footer-default">
+						<div class="ui-panel-list-pagination-default">
+							<div class="ui-panel-list-pagination">
+								<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'product')) ?>
+							</div>
 						</div>
 					</div>
-				</div>
-				
-			</div><!-- end of ui-panel-grid -->
+					
+				</div><!-- end of ui-panel-box5 -->   
+			</div><!-- end of ui-panel-box5 -->   
 		</div><!-- end of ui-panel-box5 -->   
 		<!-- First panel --> 
-		
 		<div class="clearFix"></div>		
 	</div><!-- end of ui-panel-grid-box -->
 </div><!-- end of ui-panel-container -->   

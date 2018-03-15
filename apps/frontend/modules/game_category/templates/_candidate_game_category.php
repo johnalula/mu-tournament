@@ -1,4 +1,4 @@
-<div class="table-responsive" id="ui-modal-data-table-list-candidate-parent-categorys"> 
+<div class="table-responsive" id="ui-modal-data-table-list-candidate-game-categorys"> 
 	<table class="ui-grid-table">
 	  <thead>
 		 <tr>

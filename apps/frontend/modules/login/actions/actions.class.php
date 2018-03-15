@@ -15,9 +15,13 @@ class loginActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
- public function executeIndex(sfWebRequest $request)
+	public function executeIndex(sfWebRequest $request)
 	{
 		$this->setLayout('login'); 
+	}
+	public function executeHome(sfWebRequest $request)
+	{
+		$this->redirect('home/index');
 	}
 	public function executeLogin(sfWebRequest $request)
 	{

@@ -269,22 +269,8 @@ class ModuleSettingTable extends PluginModuleSettingTable
 			->select(self::appendQueryFields())
 			->from("ModuleSetting mod") 
 			->innerJoin("mod.Organization org on mod.org_id = org.id ")    
-			->where("mod.module_type_id = ? ", $_moduleID);
-			if(!is_null($_orgID)) $_qry = $_qry->addWhere("mod.org_id = ? AND mod.org_token_id = ? ", array($_orgID, $_orgTokenID));
-			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
-			
-		return ( !$_qry ? null:$_qry ); 
-	}
-	//
-	public static function processCandidateModule ( $_orgID, $_orgTokenID, $_moduleID ) 
-   {
-		$_qry = Doctrine_Query::create()
-			->select(self::appendQueryFields())
-			->from("ModuleSetting mod") 
-			->innerJoin("mod.Organization org on mod.org_id = org.id ")    
-			->where("mod.module_type_id = ? ", $_moduleID);
-			if(!is_null($_orgID)) $_qry = $_qry->addWhere("mod.org_id = ? AND mod.org_token_id = ? ", array($_orgID, $_orgTokenID));
-			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			->where("mod.module_type_id=? AND mod.org_id = ? AND mod.org_token_id = ? ", array($_moduleID, $_orgID, $_orgTokenID))
+			->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
 			
 		return ( !$_qry ? null:$_qry ); 
 	}
