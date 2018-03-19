@@ -1,6 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_ADMINISTRATION)):
-   $_pageTitle = "Module Setting Management";$_imageName = "module";  
+	if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR)):
 ?> 
 
 <div class="ui-page-box">

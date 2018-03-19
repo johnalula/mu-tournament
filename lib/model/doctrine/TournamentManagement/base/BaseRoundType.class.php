@@ -7,6 +7,7 @@
  * 
  * @property string $token_id
  * @property integer $org_id
+ * @property string $org_token_id
  * @property integer $round_type
  * @property integer $round_number
  * @property string $name
@@ -34,6 +35,10 @@ abstract class BaseRoundType extends sfDoctrineRecord
              ));
         $this->hasColumn('org_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('org_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
              ));
         $this->hasColumn('round_type', 'integer', null, array(
              'type' => 'integer',

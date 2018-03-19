@@ -15,6 +15,7 @@ abstract class BaseSportGameTypeFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'token_id'             => new sfWidgetFormFilterInput(),
       'org_id'               => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Organization'), 'add_empty' => true)),
+      'org_token_id'         => new sfWidgetFormFilterInput(),
       'distance_type'        => new sfWidgetFormFilterInput(),
       'distance_type_name'   => new sfWidgetFormFilterInput(),
       'alias'                => new sfWidgetFormFilterInput(),
@@ -30,6 +31,7 @@ abstract class BaseSportGameTypeFormFilter extends BaseFormFilterDoctrine
     $this->setValidators(array(
       'token_id'             => new sfValidatorPass(array('required' => false)),
       'org_id'               => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Organization'), 'column' => 'id')),
+      'org_token_id'         => new sfValidatorPass(array('required' => false)),
       'distance_type'        => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'distance_type_name'   => new sfValidatorPass(array('required' => false)),
       'alias'                => new sfValidatorPass(array('required' => false)),
@@ -62,6 +64,7 @@ abstract class BaseSportGameTypeFormFilter extends BaseFormFilterDoctrine
       'id'                   => 'Number',
       'token_id'             => 'Text',
       'org_id'               => 'ForeignKey',
+      'org_token_id'         => 'Text',
       'distance_type'        => 'Number',
       'distance_type_name'   => 'Text',
       'alias'                => 'Text',

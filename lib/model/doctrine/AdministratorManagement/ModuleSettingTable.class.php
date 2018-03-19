@@ -301,6 +301,12 @@ class ModuleSettingTable extends PluginModuleSettingTable
 			
 		return ( count($_qry) <= 0 ? null:$_qry ); 
 	}  
+	
+	
+	/*********************************************************
+	********** Candidate selestion function process *****************
+	*********************************************************/ 
+	
 	//
 	public static function processCandidate ( $_orgID, $_orgTokenID ) 
    { 

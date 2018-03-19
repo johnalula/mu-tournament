@@ -11,7 +11,7 @@
 		 </tr>
 	  </thead>
 	  <tbody>
-	   <?php foreach ( $_modules as $_key => $_module ): ?>
+	   <?php foreach ( $_candidateModules as $_key => $_module ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_module.'$'.ModuleCore::processModuleValue($_module).'$'.strtoupper(ModuleCore::processModuleIcon($_module)) ?>">

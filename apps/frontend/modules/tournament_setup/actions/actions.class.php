@@ -52,6 +52,10 @@ class tournament_setupActions extends sfActions
 		$_measurementType = $request->getParameter('sport_game_measurement');	
 		$_sportGameName = $request->getParameter('sport_game_type_name');	
 		$_sportGameAlias = $request->getParameter('sport_game_type_alias');	
+		$_throwTypeMode = $request->getParameter('sport_game_throw_type');	
+		$_jumpTypeMOde = $request->getParameter('sport_game_jump_type_mode');	
+		$_playerMode = $request->getParameter('sport_game_player_mode');	
+		$_teamMode = $request->getParameter('sport_game_team_mode');	
 		$_description = $request->getParameter('description');	
 				
 		$_orgID = $this->getUser()->getAttribute('orgID');
@@ -59,7 +63,7 @@ class tournament_setupActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  SportGameTable::processNew ( _orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_status, $_description, $_userID, $_userTokenID  );  
+		$_flag =  SportGameTable::processNew ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_throwTypeMode, $_jumpTypeMOde, $_playerMode, $_teamMode, $_status, $_description, $_userID, $_userTokenID  );  
 				 
 		return $_flag ? true:false;
 		

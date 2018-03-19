@@ -25,13 +25,14 @@
  * @property Organization $Organization
  * @property Tournament $Tournament
  * @property Doctrine_Collection $teamGroupMembers
- * @property Doctrine_Collection $teamParticipantPersons
  * @property Doctrine_Collection $teamGameParticipations
+ * @property Doctrine_Collection $TeamParticipants
  * @property Doctrine_Collection $teamsTeamDetails
  * @property Doctrine_Collection $teamMatchParticipants
  * @property Doctrine_Collection $MatchResult
  * @property Doctrine_Collection $teamMatchTables
  * @property Doctrine_Collection $teamMatchFixtureDetails
+ * @property Doctrine_Collection $TournamentMedalAwards
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -122,15 +123,15 @@ abstract class BaseTeam extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('GroupMembers as teamGroupMembers', array(
-             'local' => 'id',
-             'foreign' => 'team_id'));
-
-        $this->hasMany('TeamParticipants as teamParticipantPersons', array(
+        $this->hasMany('TeamGroup as teamGroupMembers', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 
         $this->hasMany('TeamGameParticipation as teamGameParticipations', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
+
+        $this->hasMany('TeamParticipants', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 
@@ -151,6 +152,10 @@ abstract class BaseTeam extends sfDoctrineRecord
              'foreign' => 'team_id'));
 
         $this->hasMany('MatchFixtureDetail as teamMatchFixtureDetails', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
+
+        $this->hasMany('TournamentMedalAwards', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 

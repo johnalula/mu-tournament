@@ -10,7 +10,7 @@
 				<tr>
 					<td>
 						<span class="ui-sidebar-content-sm">
-							nn
+							<?php echo $sf_user->getAttribute('userName').' ( '.Wordlimit::wordLimiterShort($sf_user->getAttribute('userRoleName'),2).' )' ?>
 						</span>
 					</td>
 				</tr>
@@ -33,6 +33,7 @@
 			</table>
 		</div>
 	</div> 
+	<?php if($sf_user->canAccess(ModuleCore::$_TOURNAMENT)): ?>
 	<div class="ui-sidebar-nav-box">
 		<h2 class="ui-sidebar-header">
 			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/student') ?>">
@@ -70,7 +71,8 @@
 			</ul>
 		</div>
 	</div> 
-	
+	<?php endif; ?>
+	<?php if($sf_user->canAccess(ModuleCore::$_GAME) || $sf_user->canAccess(ModuleCore::$_MATCH)): ?>
 	<div class="ui-sidebar-nav-box">
 		<h2 class="ui-sidebar-header">
 			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/organization') ?>">
@@ -113,7 +115,8 @@
 			</ul>
 		</div>
 	</div> 
-	
+	<?php endif; ?>
+	<?php if($sf_user->canAccess(ModuleCore::$_TEAM)): ?>
 	<div class="ui-sidebar-nav-box">
 		<h2 class="ui-sidebar-header">
 			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/group') ?>">
@@ -137,26 +140,15 @@
 				</li> 
 				<li>
 					<a href="<?php echo url_for('employee/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/employee') ?>">
-						<?php echo __('Employees') ?>
-					</a>
-				</li>  
-				<li>
-					<a href="<?php echo url_for('vendor/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/vendor') ?>">
-						<?php echo __('Vendor') ?>
-					</a>
-				</li>  
-				<li>
-					<a href="<?php echo url_for('customer/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/customer') ?>">
-						<?php echo __('Customer') ?>
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/people') ?>">
+						<?php echo __('People') ?>
 					</a>
 				</li>  
 			</ul>
 		</div>
 	</div> 
- 
+	<?php endif; ?>
+	<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>
 	<div class="ui-sidebar-nav-box">
 		<h2 class="ui-sidebar-header">
 			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/organization') ?>">
@@ -181,25 +173,14 @@
 				<li>
 					<a href="<?php echo url_for('employee/index') ?>">
 						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/employee') ?>">
-						<?php echo __('Employees') ?>
+						<?php echo __('People') ?>
 					</a>
-				</li>  
-				<li>
-					<a href="<?php echo url_for('vendor/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/vendor') ?>">
-						<?php echo __('Vendor') ?>
-					</a>
-				</li>  
-				<li>
-					<a href="<?php echo url_for('customer/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/customer') ?>">
-						<?php echo __('Customer') ?>
-					</a>
-				</li>  
+				</li>   
 			</ul>
 		</div>
 	</div> 
-	
+	<?php endif; ?>
+	<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>
 	<div class="ui-sidebar-nav-box">
 		<h2 class="ui-sidebar-header">
 			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/user_administration') ?>">
@@ -242,6 +223,7 @@
 			</ul>
 		</div>
 	</div> 
+	<?php endif; ?>
 	<div class="ui-sidebar-nav-box">
 		<h2 class="ui-sidebar-header">
 			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/reports') ?>">

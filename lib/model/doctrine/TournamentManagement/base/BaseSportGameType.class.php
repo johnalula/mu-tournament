@@ -7,6 +7,7 @@
  * 
  * @property string $token_id
  * @property integer $org_id
+ * @property string $org_token_id
  * @property integer $distance_type
  * @property string $distance_type_name
  * @property string $alias
@@ -33,6 +34,10 @@ abstract class BaseSportGameType extends sfDoctrineRecord
              ));
         $this->hasColumn('org_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('org_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
              ));
         $this->hasColumn('distance_type', 'integer', null, array(
              'type' => 'integer',

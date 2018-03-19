@@ -22,6 +22,7 @@
  * @property Doctrine_Collection $tournamentGroupMembers
  * @property Doctrine_Collection $tournamentTeams
  * @property Doctrine_Collection $tournamentMatchs
+ * @property Doctrine_Collection $tournamentMedalAwards
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -93,7 +94,7 @@ abstract class BaseTournament extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
-        $this->hasMany('GroupMembers as tournamentGroupMembers', array(
+        $this->hasMany('TeamGroup as tournamentGroupMembers', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
@@ -102,6 +103,10 @@ abstract class BaseTournament extends sfDoctrineRecord
              'foreign' => 'tournament_id'));
 
         $this->hasMany('TournamentMatch as tournamentMatchs', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('TournamentMedalAwards as tournamentMedalAwards', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 

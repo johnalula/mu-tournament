@@ -78,31 +78,23 @@
 <script>
 	$('#status').change(function(e) {
 		$("#createTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		$("#cancelTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn"); 
 		return false;
 	});  
 	 
 	$('#tournament_name').keyup(function(e) {
 		$("#createTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		$("#cancelTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn"); 
 		return false;
 	});
 	$('#tournament_alias').keyup(function(e) {
 		$("#createTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		$("#cancelTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn"); 
 		return false;
 	});
 	$('#description').keyup(function(e) {
 		$("#createTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		$("#cancelTournament").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn"); 
 		return false;
 	});
 	$( "#start_date" ).datepicker({  

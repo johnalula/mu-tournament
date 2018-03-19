@@ -1,16 +1,33 @@
-<?php
-	//ournament_name=asdfasdf&tournament_alias=asdfasdf&season=1&status=1&start_date=02/23/2018&end_date=02/28/2018&description=asdfasdfasdfad asdfasdf
-	//processSave ( $_orgID, $_orgTokenID,  $_tournamentName, $_tournamentAlias, $_tournamentSeason, $_startDate, $_effectiveDate, $_endDate, $_description )
+
+<?php if($sf_user->isAuthenticated()): 	 
+	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT)):
+?> 
+
+<div class="ui-page-box">
+	<div class="ui-main-content-box" >
+		<div class="ui-detail-tab-list ui-grid-content-container-box" >
+			<div id="ui-tab-three" class="ui-tab" style="">
+				<?php include_partial('tournament_setup', array( '_sportGames' => $_sportGames, '_gameCategorys' => $_gameCategorys,  '_countGameCategorys' => $_countGameCategorys, '_gameRounds' => $_gameRounds )) ?> 
+			</div><!-- end of ui-tab-three-->
+		</div> <!-- end of ui-detail-tab-list -->
+		<div class="ui-clear-fix"></div>
+	</div> <!-- end of ui-main-list-default -->
 	
-	//$_flag =  TournamentTable::processNew ( $_orgID, $_orgTokenID,  'asdfasdf', 'asdfasdf', '2018', '02/23/2018', $_effectiveDate, '02/28/2018', 1, $_description, $_userID, $_userTokenID  ); 
-	//$_flag =  TournamentTable::processSave ( $_orgID, $_orgTokenID,  'asdfasdf', 'asdfasdf', '2018', '02/23/2018', $_effectiveDate, '02/28/2018', $_description ); 
-	//$_flag =  TeamTable::processNew ( $_orgID, $_orgTokenID,  'Nirobi University', 'NU', 44, 'Nirobi', $_description, $_userID, $_userTokenID  );  
-	//$_flag =  RoundTypeTable::processNew ( $_orgID, $_orgTokenID, 'Round One', $_roundTypeAlias, 1, 1, $_description, $_userID, $_userTokenID  );  
-?>
-<div class="ui-content-page">
-	<?php include_partial('tournament_setup', array( '_sportGames' => $_sportGames, '_gameCategorys' => $_gameCategorys,  '_countGameCategorys' => $_countGameCategorys, '_gameRounds' => $_gameRounds )) ?> 
 </div>		  
-       
+ 
+<?php else: ?> 
+	<div class="ui-error-container" id="ui-error-box" >
+		<?php echo include_partial('global/credential_denied', array()) ?>
+	</div>  
+<?php endif; ?>
+
+<?php else: ?>
+
+	<div class="ui-success-container" id="ui-success-box" >
+		<?php echo include_partial('global/authorization_denied', array()) ?>
+	</div>
+<?php endif; ?>         
+          
 <!--- ************************  -->
 
 <div class="modal fade" id="processAjaxLoadergModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
@@ -41,8 +58,8 @@
 		var formName = 'createSportGameForm';
 		var data = $("form#createSportGameForm").serialize();
 		var datas = generateValidData (formName);
-		processEntry(datas, url )
-		//alert(datas);
+		//processEntry(datas, url )
+		alert(datas);
 		return true; 
 	});
 	$('#createGameRoundType').click(function(){

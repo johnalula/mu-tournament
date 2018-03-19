@@ -12,6 +12,7 @@
  * @property integer $user_role_type_id
  * @property string $alias
  * @property boolean $active_flag
+ * @property boolean $applicable_flag
  * @property boolean $default_flag
  * @property boolean $trashed_flag
  * @property string $trashed_on
@@ -54,6 +55,10 @@ abstract class BaseUserRole extends sfDoctrineRecord
              'length' => 100,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('applicable_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));

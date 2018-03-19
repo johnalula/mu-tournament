@@ -33,6 +33,7 @@
  * @property Doctrine_Collection $matchFixtureParticipants
  * @property Doctrine_Collection $matchFixtureResults
  * @property Doctrine_Collection $matchFixtureDetails
+ * @property Doctrine_Collection $matchFixtureTournamentMedalAwards
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -155,6 +156,10 @@ abstract class BaseMatchFixture extends sfDoctrineRecord
              'foreign' => 'match_fixture_id'));
 
         $this->hasMany('MatchFixtureDetail as matchFixtureDetails', array(
+             'local' => 'id',
+             'foreign' => 'match_fixture_id'));
+
+        $this->hasMany('TournamentMedalAwards as matchFixtureTournamentMedalAwards', array(
              'local' => 'id',
              'foreign' => 'match_fixture_id'));
 

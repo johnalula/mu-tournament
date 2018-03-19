@@ -1,7 +1,9 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->isAuthenticated()): 	 
+	if($sf_user->isAuthenticated()): 	
+	
+	
 ?> 
-
+ 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >

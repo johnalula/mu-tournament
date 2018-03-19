@@ -104,7 +104,28 @@ class teamActions extends sfActions
 		return $_flag ? true:false;
 	}
 	
-	
+	public function executeUploadTeamLogo(sfWebRequest $request)
+	{
+		$_studentNumber = $_POST['student_number'];
+		$_studentID = $_POST['student_id'];
+		$_studentTokenID = $_POST['student_token_id'];
+		$_uploadedPhotoFileName = $_FILES['student_photo_file']['name'];
+		$_uploadedPhotoFileType = $_FILES['student_photo_file']['type'];
+		$_uploadedPhotoFileTempName = $_FILES['student_photo_file']['tmp_name'];
+		$_newUploadedFileName = strtolower($_uploadedPhotoFileName);	
+		$_uploadedFileName = str_replace(' ', '_', $_newUploadedFileName);
+		$_uploadedDirectory = $_SERVER['DOCUMENT_ROOT'].'/uploads/student_photo/2008/'.$_uploadedFileName ;
+
+		$_success = @move_uploaded_file($_FILES["student_photo_file"]["tmp_name"], $_uploadedDirectory);
+		
+		if(!$_success){ 
+			$this->getUser()->setFlash('process_fail', true);
+		}  else {
+			$this->getUser()->setFlash('process_success', true);
+		}
+		
+		$this->redirect('student/photo?student_id='.$_studentID.'&token_id='.$_studentTokenID);
+	}
 	/************  Candidate Navigation Selection Functions **************/
 	
 	

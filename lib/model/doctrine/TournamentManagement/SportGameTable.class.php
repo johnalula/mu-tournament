@@ -17,13 +17,18 @@ class SportGameTable extends PluginSportGameTable
         return Doctrine_Core::getTable('SportGame');
     }
     //
-	public static function processNew ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_status, $_description, $_userID, $_userTokenID  )
+	public static function processNew ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_throwTypeMode, $_jumpTypeMode, $_playerMode, $_teamMode, $_status, $_description, $_userID, $_userTokenID  )
 	{
 		 $_flag = true;
-
+				
+				
+			$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_GAME, true  ); 
+			$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
+			$_sportGameNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeInitialNumber($_codeNumber);
+				
 			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
 			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
-			$_tournament = self::processSave ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_status, $_description );
+			$_tournament = self::processSave ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_throwTypeMode, $_jumpTypeMode, $_playerMode, $_teamMode, $_status, $_description );
 		
 		return $_tournament;
 	}
@@ -32,7 +37,7 @@ class SportGameTable extends PluginSportGameTable
 	{
 		
 	} 
-	public static function processSave ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_status, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_throwTypeMode, $_jumpTypeMode, $_playerMode, $_teamMode, $_status, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -41,12 +46,17 @@ class SportGameTable extends PluginSportGameTable
 			$_startDate = date('m/d/Y', time());
 			$_nw = new SportGame (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
-			//$_nw->org_id = trim($_orgID); 
-			//$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
+			$_nw->org_id = trim($_orgID); 
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
 			$_nw->sport_game_category_id = trim($_categoryID); 
 			$_nw->distance_type = trim($_gameDistanceType); 
 			$_nw->game_distance_measurement = trim($_measurementType); 
 			$_nw->game_distance = trim($_gameDistance); 
+			$_nw->sport_game_number = trim($_sportGameNumber); 
+			$_nw->player_mode = trim($_playerMode); 
+			$_nw->playing_team_mode = trim($_teamMode); 
+			$_nw->jump_type_mode = trim($_jumpTypeMode); 
+			$_nw->throws_type = trim($_throwTypeMode); 
 			$_nw->name = ucwords(trim($_sportGameName)); 
 			$_nw->alias = trim($_sportGameAlias); 
 			$_nw->start_date = trim($_startDate); 

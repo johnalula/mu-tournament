@@ -162,9 +162,10 @@ class TournamentCore {
 	public static $_CROSS_COUNTRY = 9;
 	public static $_HALF_MARATHON = 10;
 	public static $_MARATHON = 11;
-	public static $_OTHER_DISTANCE = 12;
+	public static $_WHEELCHAIR_RACING = 12;
+	public static $_OTHER_DISTANCE = 13;
 	
-	public static $_DISTANCE_TYPES = array ( 1 => "Sprints", 2 => "Middle Distance", 3 => "Long Distance", 4 => "Hardless", 5 => "Steeplechase", 6 => "Relay",7 => "Jumps", 8 => "Throws", 9 => "Cross Country", 10 => "Half Marathon", 11 => "Marathon", 12 => "Other" );
+	public static $_DISTANCE_TYPES = array ( 1 => "Sprints", 2 => "Middle Distance", 3 => "Long Distance", 4 => "Hardless", 5 => "Steeplechase", 6 => "Relay",7 => "Jumps", 8 => "Throws", 9 => "Cross Country", 10 => "Half Marathon", 11 => "Marathon", 12 => "Wheelchair Racing", 13 => "Other" );
 
 	public static function processDistanceTypes() 
 	{
@@ -238,6 +239,9 @@ class TournamentCore {
 			break;
 			case self::$_MARATHON:
 				return 'marathon';
+			break;
+			case self::$_WHEELCHAIR_RACING:
+				return 'wheelchair_racing';
 			break;
 			default:
 				return 'other';
@@ -315,6 +319,98 @@ class TournamentCore {
 			break;
 			case self::$_OTHER_ROUND:
 				return 'None';
+			break; 
+		}
+	}
+	/*********************************************/
+	
+	public static $_FIN = 1;
+	public static $_DNF = 2;
+	public static $_DNS = 3;
+	public static $_DISQ = 4;
+	public static $_OTHER_STATUS = 5; 
+
+	public static $_COMPETITION_STATUSES = array ( 1 => 'Finished', 2 => 'Did Not Finish', 3 => 'Did Not Start', 4 => 'Disqualified', 5 => 'Other Status');
+	
+	public static function processCompetitionStatuses ( ) 
+	{
+		 try {
+				return self::$_ROUND_TYPES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processCompetitionStatusID ( $_value ) 
+	{
+		try {
+			foreach( self::$_ROUND_TYPES as $_key=> $_round ){
+				if( strcmp($_round, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processCompetitionStatusValue ($_id )
+	{
+		try {
+			foreach( self::$_ROUND_TYPES as $_key=> $_round ){
+			  if( $_key == $_id )
+					return $_round; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultCompetitionStatus ( )
+	{
+		 try {
+				return self::$_ROUND; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processCompetitionStatusAlias ($_round) 
+	{
+		switch($_round) {			
+			case self::$_FIN:
+				return 'FIN';
+			break;
+			case self::$_DNF:
+				return 'DNF';
+			break;
+			case self::$_DNS:
+				return 'DNS';
+			break;
+			case self::$_DISQ:
+				return 'DISQ';
+			break;
+			case self::$_OTHER_STATUS:
+				return 'OTHER';
+			break; 
+		}
+	}
+	public static function processCompetitionStatusIcon ($_round) 
+	{
+		switch($_round) {			
+			case self::$_FIN:
+				return 'FIN';
+			break;
+			case self::$_DNF:
+				return 'DNF';
+			break;
+			case self::$_DNS:
+				return 'DNS';
+			break;
+			case self::$_DISQ:
+				return 'DISQ';
+			break;
+			case self::$_OTHER_STATUS:
+				return 'OTHER';
 			break; 
 		}
 	}
@@ -623,10 +719,11 @@ class TournamentCore {
 	
 	public static $_SINGLE = 1;
 	public static $_PAIR = 2;
-	public static $_MULTIPLE = 3;
-	public static $_OTHER_PLAYING = 4; 
+	public static $_TRIPLE = 3;
+	public static $_MULTIPLE = 4;
+	public static $_OTHER_PLAYING = 5; 
 
-	public static $_PLAYER_MODE = array ( 1 => 'Single Player', 2 => 'Pair Player', 3 => 'Multiple Players', 4 =>  'None');
+	public static $_PLAYER_MODE = array ( 1 => 'Single Player', 2 => 'Pair Player', 3 => 'Triple Players', 4 => 'Multiple Players', 5 =>  'Other');
 	
 	public static function processPlayerModes ( ) 
 	{
@@ -677,6 +774,9 @@ class TournamentCore {
 				return 'single_player';
 			break;
 			case self::$_PAIR:
+				return 'pair_players';
+			break;
+			case self::$_TRIPLE:
 				return 'pair_players';
 			break;
 			case self::$_MULTIPLE:
@@ -756,7 +856,7 @@ class TournamentCore {
 	/*********************************************/
 	
 	public static $_LONG = 1;
-	public static $_TRIPLE = 2;
+	public static $_TRIPLE_JUMP = 2;
 	public static $_HIGH = 3;
 	public static $_OTHER_JUMP = 4; 
 
@@ -803,34 +903,93 @@ class TournamentCore {
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
-	}
-	public static function processJumpTypeAlias ($_event) 
-	{
-		switch($_event) {			
-			case self::$_METER:
-				return 'M';
-			break;
-			case self::$_KILO_METERL:
-				return 'KM';
-			break;
-			case self::$_OTHER_MEASUREMENT:
-				return 'other';
-			break; 
-		}
-	}
+	} 
 	public static function processJumpTypeIcon ($_event) 
 	{
 		switch($_event) {			
 			case self::$_LONG:
 				return 'long_jump';
 			break;
-			case self::$_TRIPLE:
+			case self::$_TRIPLE_JUMP:
 				return 'triple_jump';
 			break;
 			case self::$_HIGH:
 				return 'high_jump';
 			break;
 			case self::$_OTHER_MEASUREMENT:
+				return 'other';
+			break; 
+		}
+	}
+	/*********************************************/
+	
+	public static $_SHOT_PUT = 1;
+	public static $_DISCUS = 2;
+	public static $_HAMMER = 3;
+	public static $_JAVLINE = 4; 
+	public static $_OTHER_THROW = 5; 
+
+	public static $_THROW_TYPES = array ( 1 => 'Shot Put', 2 => 'Discus',3 =>  'Hammer', 4 =>  'Javline', 5 =>  'Other');
+	
+	public static function processThrowTypes ( ) 
+	{
+		 try {
+				return self::$_THROW_TYPES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processThrowTypeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_THROW_TYPES as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processThrowTypeValue ($_id )
+	{
+		try {
+			foreach( self::$_THROW_TYPES as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultThrowType ( )
+	{
+		 try {
+				return self::$_SHOT_PUT; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	 
+	public static function processThrowTypeIcon ($_type) 
+	{
+		switch($_type) {			
+			case self::$_SHOT_PUT:
+				return 'shot_put';
+			break;
+			case self::$_DISCUS:
+				return 'discus';
+			break;
+			case self::$_HAMMER:
+				return 'hammer';
+			break;
+			case self::$_JAVLINE:
+				return 'javline';
+			break; 
+			case self::$_OTHER_THROW:
 				return 'other';
 			break; 
 		}

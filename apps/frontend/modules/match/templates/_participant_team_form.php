@@ -1,4 +1,3 @@
-
 <div class="ui-panel-form-box ui-main-panel-form-box-margin" id="">   
 	<form class="form-horizontal" id="createMatchParticipantTeamForm" role="form" action="" method=""> 
 		<input type="hidden" class="form-control" id="test_id" name="test_id" value="">

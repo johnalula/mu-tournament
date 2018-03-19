@@ -11,20 +11,22 @@ class myUser extends sfBasicSecurityUser
 		
 		$this->setAttribute('userID', $_user->id);
 		$this->setAttribute('userTokenID', $_user->tokenID);
-		$this->setAttribute('empID', $_user->personID);
-		$this->setAttribute('empTokenID', $_user->personTokenID);
+		$this->setAttribute('personID', $_user->personID);
+		$this->setAttribute('personTokenID', $_user->personTokenID);
 		$this->setAttribute('orgID', $_user->orgID);
 		$this->setAttribute('orgTokenID', $_user->orgTokenID); 
 		$this->setAttribute('userName', $_user->userName);
+		$this->setAttribute('userRoleName', $_user->userRoleName);
 		$this->setAttribute('organizationName', $_user->organizationName);
 		$this->setAttribute('organizationAlias', $_user->organizationAlias); 
-		$this->setAttribute('employeeFullName', $_user->personFullName);
+		$this->setAttribute('personFullName', $_user->personFullName);
 		$this->setAttribute('defaultSuperAdmin', $_user->defaultSuperAdmin);
 		$this->setAttribute('domainSuperAdmin', $_user->domainSuperAdmin);
 		$this->setAttribute('isSuperAdminUser', $_user->isSuperAdmin);
 		$this->setAttribute('isNormalUser', $_user->normalUser);
 		$this->setAttribute('isDefaultUser', $_user->defaultFlag); 
 		$this->setAttribute('userRoleID', $_user->userRoleID); 
+		$this->setAttribute('userRoleTypeID', $_user->userRoleTypeID); 
 		$this->setAttribute('logindate', date('m/d/Y H:i:s', time()));  
 		
 		/*if($_user->normalUser ) {
@@ -37,32 +39,20 @@ class myUser extends sfBasicSecurityUser
 	public function processCredential ( $_userRole )
 	{ 
 		switch($_userRole) {			
+			case UserCore::$_SUPER_ADMINISTRATOR:
+				return $this->addCredential('ADMINISTRATOR');
+			break;
 			case UserCore::$_ADMINISTRATOR:
 				return $this->addCredential('ADMINISTRATOR');
 			break;
-			case UserCore::$_GENERAL_MANAGER:
-				return $this->addCredential('GENERAL_MANAGER');
+			case UserCore::$_AUTHOR:
+				return $this->addCredential('AUTHOR');
 			break;
-			case UserCore::$_FINANCE_OFFICER:
-				return $this->addCredential('FINANCE_OFFICER');
+			case UserCore::$_EDITOR:
+				return $this->addCredential('EDITOR');
 			break;
-			case UserCore::$_SUPERVISOR:
-				return $this->addCredential('SUPERVISOR');
-			break;
-			case UserCore::$_SALES_PERSON:
-				return $this->addCredential('SALES_PERSON');
-			break;
-			case UserCore::$_PURCHASER:
-				return $this->addCredential('PURCHASER');
-			break;
-			case UserCore::$_OPERATOR:
-				return $this->addCredential('OPERATOR');
-			break;
-			case UserCore::$_CASHIER:
-				return $this->addCredential('CASHIER');
-			break;
-			case UserCore::$_FINANCE_AND_CASHIER:
-				return $this->addCredential('FINANCE_AND_CASHIER');
+			case UserCore::$_MODERATOR:
+				return $this->addCredential('MODERATOR');
 			break;
 			case UserCore::$_ANONYMOUS:
 				return $this->addCredential('ANONYMOUS');
@@ -162,6 +152,7 @@ class myUser extends sfBasicSecurityUser
 			
 		return false; 
 	}
+	
 	public function canView($_moduleID)
 	{
 		$flag = true;
@@ -174,7 +165,41 @@ class myUser extends sfBasicSecurityUser
 		}
 		if($_permission->activeFlag) {
 			switch($_permission->accessLevel) {			
-				case PermissionCore::$VIEW:
+				case PermissionCore::$_VIEW:
+					return true; 
+				break;
+				case PermissionCore::$_ADD:
+					return true; 
+				break; 
+				case PermissionCore::$_EDIT:
+					return true; 
+				break; 
+				case PermissionCore::$_ADD_AND_EDIT:
+					return true; 
+				break; 
+				case PermissionCore::$_APPROVE:
+					return false; 
+				break;  
+				case PermissionCore::$_FULL_ACCESS:
+					return false; 
+				break;  
+			}
+		}
+		return false; 
+	}
+	public function canManage($_moduleID)
+	{
+		$flag = true;
+		$_permission = $this->processAccessLevel($_moduleID);  
+		if($this->isSuperAdmin()) { 
+			return true;	
+		}	
+		if(!$_permission->applicableFlag) { 
+			return false; 
+		}
+		if($_permission->activeFlag) {
+			switch($_permission->accessLevel) {			
+				case PermissionCore::$_VIEW:
 					return true; 
 				break;
 				case PermissionCore::$_ADD:
@@ -188,10 +213,7 @@ class myUser extends sfBasicSecurityUser
 				break; 
 				case PermissionCore::$_APPROVE:
 					return true; 
-				break; 
-				case PermissionCore::$PAY:
-					return true; 
-				break; 
+				break;  
 				case PermissionCore::$_FULL_ACCESS:
 					return true; 
 				break;  
@@ -279,28 +301,6 @@ class myUser extends sfBasicSecurityUser
 			
 		return false; 
 	}
-	public function canPay($_moduleID)
-	{
-		$_permission = $this->processAccessLevel($_moduleID);  
-		if($this->isSuperAdmin()) { 
-			return true;	
-		}	
-		if(!$_permission->applicableFlag) { 
-			return false; 
-		}
-		if($_permission->activeFlag) {
-			switch($_permission->accessLevel) {			
-				case PermissionCore::$_APPROVE:
-					return true; 
-				break;   
-				case PermissionCore::$_FULL_ACCESS:
-					return true; 
-				break;  
-			}
-		}
-			
-		return false; 
-	}
 	public function canAddEdit($_moduleID)
 	{
 		$_permission = $this->processAccessLevel($_moduleID);  
@@ -325,27 +325,6 @@ class myUser extends sfBasicSecurityUser
 		}
 		return false; 
 	} 
-	public function canReject($_moduleID)
-	{
-		$_permission = $this->processAccessLevel($_moduleID);  
-		if($this->isSuperAdmin()) { 
-			return true;	
-		}	
-		if(!$_permission->applicableFlag) { 
-			return false; 
-		}
-		if($_permission->activeFlag) {
-			switch($_permission->accessLevel) {			
-				case PermissionCore::$_APPROVE:
-					return true; 
-				break; 
-				case PermissionCore::$_FULL_ACCESS:
-					return true; 
-				break;   
-			}
-		}
-		return false; 
-	}
 	public function canDelete($_moduleID)
 	{
 		$_permission = $this->processAccessLevel($_moduleID);  

@@ -7,6 +7,7 @@
  * 
  * @property string $token_id
  * @property integer $org_id
+ * @property string $org_token_id
  * @property integer $group_type_id
  * @property string $group_number
  * @property string $alias
@@ -14,6 +15,7 @@
  * @property string $description
  * @property Organization $Organization
  * @property GroupType $GroupType
+ * @property Doctrine_Collection $SportGameGroup
  * @property Doctrine_Collection $MatchFixture
  * 
  * @package    mu-TMS
@@ -32,6 +34,10 @@ abstract class BaseGroupType extends sfDoctrineRecord
              ));
         $this->hasColumn('org_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('org_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
              ));
         $this->hasColumn('group_type_id', 'integer', 8, array(
              'type' => 'integer',
@@ -66,6 +72,10 @@ abstract class BaseGroupType extends sfDoctrineRecord
         $this->hasOne('GroupType', array(
              'local' => 'group_type_id',
              'foreign' => 'id'));
+
+        $this->hasMany('SportGameGroup', array(
+             'local' => 'id',
+             'foreign' => 'group_type_id'));
 
         $this->hasMany('MatchFixture', array(
              'local' => 'id',

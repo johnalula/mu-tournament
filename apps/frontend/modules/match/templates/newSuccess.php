@@ -1,5 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->isAuthenticated()): 	 
+	if($sf_user->canAccess(ModuleCore::$_MATCH)):
 ?> 
 
 <form class="form-horizontal" role="form" action="<?php echo url_for('match/createTournamentMatch') ?>" id="createTournamentMatchForm" name="createTournamentMatchForm" method="post"> 

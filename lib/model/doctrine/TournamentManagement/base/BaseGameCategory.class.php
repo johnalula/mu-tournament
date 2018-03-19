@@ -7,6 +7,7 @@
  * 
  * @property string $token_id
  * @property integer $org_id
+ * @property string $org_token_id
  * @property integer $category_type
  * @property string $category_name
  * @property string $alias
@@ -35,6 +36,10 @@ abstract class BaseGameCategory extends sfDoctrineRecord
              ));
         $this->hasColumn('org_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('org_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
              ));
         $this->hasColumn('category_type', 'integer', null, array(
              'type' => 'integer',

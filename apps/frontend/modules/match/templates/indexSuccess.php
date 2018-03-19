@@ -1,5 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->isAuthenticated()): 	 
+	if($sf_user->canAccess(ModuleCore::$_MATCH)):
 ?> 
 
 <div class="ui-page-box">

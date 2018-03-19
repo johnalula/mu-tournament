@@ -15,6 +15,7 @@ abstract class BaseRoundTypeFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'token_id'     => new sfWidgetFormFilterInput(),
       'org_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Organization'), 'add_empty' => true)),
+      'org_token_id' => new sfWidgetFormFilterInput(),
       'round_type'   => new sfWidgetFormFilterInput(),
       'round_number' => new sfWidgetFormFilterInput(),
       'name'         => new sfWidgetFormFilterInput(),
@@ -30,6 +31,7 @@ abstract class BaseRoundTypeFormFilter extends BaseFormFilterDoctrine
     $this->setValidators(array(
       'token_id'     => new sfValidatorPass(array('required' => false)),
       'org_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Organization'), 'column' => 'id')),
+      'org_token_id' => new sfValidatorPass(array('required' => false)),
       'round_type'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'round_number' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'name'         => new sfValidatorPass(array('required' => false)),
@@ -62,6 +64,7 @@ abstract class BaseRoundTypeFormFilter extends BaseFormFilterDoctrine
       'id'           => 'Number',
       'token_id'     => 'Text',
       'org_id'       => 'ForeignKey',
+      'org_token_id' => 'Text',
       'round_type'   => 'Number',
       'round_number' => 'Number',
       'name'         => 'Text',

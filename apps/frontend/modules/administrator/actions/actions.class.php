@@ -21,7 +21,11 @@ class administratorActions extends sfActions
   }
   public function executeUser(sfWebRequest $request)
   {
-    
+		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		
+		$this->_systemUsers = UserTable::processSelection ( $_orgID, $_orgTokenID, $_groupID, $_userRole, $_status, $_exclusion, $_keyword, 0, 20 );
   }
   public function executeUser_group(sfWebRequest $request)
   {
@@ -37,7 +41,7 @@ class administratorActions extends sfActions
   }
   public function executeModule(sfWebRequest $request)
   {
-    
+     $this->_systemModules = ModuleSettingTable::processSelection ( $_orgID, $_orgTokenID, $_applicableFlag, $_activeFlag, $_exclusion,  $_keyword, 0, 20 );
   }
   public function executeActivity_log(sfWebRequest $request)
   {

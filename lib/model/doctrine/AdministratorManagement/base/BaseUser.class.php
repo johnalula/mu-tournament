@@ -25,6 +25,7 @@
  * @property boolean $default_flag
  * @property boolean $active_flag
  * @property boolean $blocked_flag
+ * @property boolean $enabled_flag
  * @property boolean $login_flag
  * @property integer $status
  * @property boolean $trashed_flag
@@ -121,6 +122,10 @@ abstract class BaseUser extends sfDoctrineRecord
              'default' => false,
              ));
         $this->hasColumn('blocked_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('enabled_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));

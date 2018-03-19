@@ -613,11 +613,12 @@ span.has-input-error {
 .ui-red-text {
 	color:#f00!important; 
 	font-size: 11px!important;
-	padding: 1px 1px 1px 1px!important; 
-	vertical-align: top!important;
+	padding: 1px 0px 1px 1px!important; 
+	vertical-align: middle!important;
 	font-weight: bold!important; 
 	text-align: center; 
 	margin-left: 1px!important; 
+	margin-top: 2px!important; 
 }
 .navbar-form {
 	margin-right:1px!important;

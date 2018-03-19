@@ -36,17 +36,17 @@ class UserTable extends PluginUserTable
 	public static function processCreate ( $_orgID, $_orgTokenID, $_partyID, $_partyTokenID, $_userRoleID,$_userRoleTypeID, $_userGroupID, $_userName, $_userPassword, $_activationKey, $_userStatus, $_description )
 	{
 		$_token = trim($_userName).trim($_password).trim($_orgTokenID).rand('11111', '99999');
-		$_fullPassword = strtolower(trim($_userName)).md5(sha1(trim($_userPassword)));
+		$_fullPassword = md5(sha1(strtoupper(trim($_userName)).trim($_userPassword)));
 		
 		$_nw = new User ();  
-		$_nw->token_id = md5(sha1($_token));  
+		$_nw->token_id = sha1(md5($_token));  
 		$_nw->org_id = trim($_orgID);
 		$_nw->org_token_id = trim($_orgTokenID);
 		$_nw->person_id = trim($_partyID); 
 		$_nw->person_token_id = trim($_partyTokenID); 
 		$_nw->username = strtolower(trim($_userName));
-		$_nw->password = md5(sha1(trim($_userPassword)));
-		$_nw->full_password = md5(sha1(trim($_fullPassword)));
+		$_nw->password = sha1(md5(trim($_userPassword)));
+		$_nw->full_password = sha1(md5(trim($_fullPassword)));
 		$_nw->user_role_id = trim($_userRoleID); 
 		if($_userGroupID) {
 			$_nw->group_id = trim($_userGroupID);  
@@ -54,10 +54,11 @@ class UserTable extends PluginUserTable
 		$_nw->permission_mode = trim(UserCore::$_USER_PERMISSION); 
 		$_nw->access_activation_key = trim($_activationKey); 
 		$_nw->status = $_userStatus ? trim($_userStatus):UserCore::$_ACTIVE; 
-		$_nw->ui_theme_color_setting = $_userStatus ? trim($_userThemeColor):UserCore::$_ACTIVE; 
+		//$_nw->ui_theme_color_setting = $_userStatus ? trim($_userThemeColor):UserCore::$_ACTIVE; 
 		$_nw->active_flag = ($_userStatus == UserCore::$_ACTIVE || $_userStatus == UserCore::$_PENDING) ? true:false; 
+		$_nw->enabled_flag = ($_userStatus == UserCore::$_ACTIVE || $_userStatus == UserCore::$_PENDING) ? true:false; 
 		$_nw->blocked_flag = $_userStatus == UserCore::$_BLOCKED ? true:false; 
-		$_nw->has_activation_key_flag = $_activationKey ? true:false; 
+		//$_nw->has_activation_key_flag = $_activationKey ? true:false; 
 		$_nw->has_logged_in = false; 
 		$_nw->super_admin_flag = (($_userRoleTypeID == UserCore::$_SUPER_ADMINISTRATOR) || $_userRoleTypeID == UserCore::$_ADMINISTRATOR ) ? true:false;
 		$_nw->default_super_admin_flag = ($_userRoleTypeID == UserCore::$_SUPER_ADMINISTRATOR ) ? true:false;
@@ -259,22 +260,22 @@ class UserTable extends PluginUserTable
 		return ( !$_qry ? null:$_qry ); 
 	} 
 	//
-	public static function processLogin ( $_userName, $_password )
+	public static function processLogin ( $_userName, $_userPassword )
 	{
-		$_fullPassword = md5(sha1(strtolower(trim($_userName)).md5(sha1(trim($_password))))); 
-		$_password = md5(sha1($_password));
-		$_userName = trim($_userName); 
-		$_qry = Doctrine_Query::create()
-				->select(self::appendQueryFields())
-				->from("User usr")   
-				->leftJoin("usr.UserGroup grp on usr.group_id = grp.id ")   
-				->innerJoin("usr.Organization org on usr.org_id = org.id ")   
-				->innerJoin("usr.Person prt on usr.person_id = prt.id ")   
-				->innerJoin("usr.UserRole usrRole on usr.user_role_id = usrRole.id ") 
-				->where("usr.username = ? AND usr.password = ? AND usr.full_password = ?", array($_userName, $_password, $_fullPassword))
-				->andWhere("usr.active_flag IS TRUE AND usr.blocked_flag IS NOT TRUE")
-				->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
-		
+			$_fullPassword = sha1(md5(md5(sha1(strtoupper(trim($_userName)).trim($_userPassword))))); 
+			$_userPassword = sha1(md5($_userPassword));
+			$_userName = trim($_userName); 
+			$_qry = Doctrine_Query::create()
+					->select(self::appendQueryFields())
+					->from("User usr")   
+					->leftJoin("usr.UserGroup grp on usr.group_id = grp.id ")   
+					->innerJoin("usr.Organization org on usr.org_id = org.id ")   
+					->innerJoin("usr.Person prt on usr.person_id = prt.id ")   
+					->innerJoin("usr.UserRole usrRole on usr.user_role_id = usrRole.id ") 
+					->where("usr.username = ? AND usr.password = ? AND usr.full_password = ?", array($_userName, $_userPassword, $_fullPassword))
+					->andWhere("usr.active_flag IS TRUE AND usr.blocked_flag IS NOT TRUE")
+					->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+			
 		return ( ! $_qry ? null : $_qry ); 
 	} 
 	

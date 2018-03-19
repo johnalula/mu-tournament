@@ -12,6 +12,7 @@
  * @property string $module_name
  * @property string $alias
  * @property integer $default_access_level_type_id
+ * @property boolean $enabled_flag
  * @property boolean $applicable_flag
  * @property boolean $active_flag
  * @property boolean $default_flag
@@ -56,6 +57,10 @@ abstract class BaseModuleSetting extends sfDoctrineRecord
              ));
         $this->hasColumn('default_access_level_type_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('enabled_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('applicable_flag', 'boolean', null, array(
              'type' => 'boolean',

@@ -156,4 +156,48 @@ Class UserCore {
 		}
 	}
 	
+	//
+	public static $_USER_PERMISSION = 1;
+	public static $_GROUP_PERMISSION = 2; 
+
+	public static $_USER_PERMISSION_MODES = array (1 => 'User Permission', 2 => 'Group Permission');
+ 
+	public static function processSystemUserPermissionModes ( ) 
+	{
+		return self::$_USER_PERMISSION_MODES; 
+	}
+	public static function processSystemUserPermissionModeID ( $value ) 
+	{
+		try {
+			foreach( self::$_USER_PERMISSION_MODES as $_key=> $_permission ) {
+			  if( strcmp($_permission, $_value) == 0 )
+					return $_key; 
+			}
+				return null; 
+		} catch ( Exception $e ) {
+				return null; 
+		}
+	}
+
+	public static function processSystemUserPermissionModeValue ($_id ) 
+	{
+		try {
+			foreach( self::$_USER_PERMISSION_MODES as $_key=> $_permission ) {
+			  if( $_key == $_id )
+					return $_permission; 
+			}
+				return null;              
+		} catch ( Exception $e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultSystemUserPermissionMode ( )
+	{
+		 try {
+				return self::$_USER_PERMISSION; 
+			} catch ( Exception $e ) {
+			return $e; 
+	  }   
+	}
+
 }

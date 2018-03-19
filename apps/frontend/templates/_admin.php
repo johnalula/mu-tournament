@@ -56,32 +56,39 @@
 									<img class="navbar-img" src="<?php echo image_path('settings/student') ?>"><?php echo __('Tournament') ?>
 								</a>
 							</li> 
+							<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>
 							<li>
 								<a href="<?php echo url_for('tournament_setup/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/gear') ?>"><?php echo __('Setup') ?>
 								</a>
 							</li>
+							<?php endif; ?>
 							<li>
 								<a href="<?php echo url_for('tournament_setup/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/gear') ?>"><?php echo __('Sport Games') ?>
 								</a>
 							</li>
 							<li role="separator" class="divider"></li> 
+							
+							<?php if($sf_user->canAccess(ModuleCore::$_GROUP) ): ?>
 							<li class="">
-								<a href="<?php echo url_for('game_category/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/team_group') ?>"><?php echo __('Groups') ?>
+								<a href="<?php echo url_for('team_group/index') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/team_group') ?>"><?php echo __('Team Groups') ?>
 								</a>
 							</li>
+							<?php endif; ?>
 							<li class="">
 								<a href="<?php echo url_for('game_category/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/category') ?>"><?php echo __('Game Setup') ?>
 								</a>
 							</li>
+							<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>
 							<li class="<?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
 								<a href="<?php echo url_for('tournament/round_types') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/school_setting') ?>"><?php echo __('Round Setup') ?>
 								</a>
 							</li> 
+							<?php endif; ?>
 						</ul>
 					</li>  
 					<li class="dropdown <?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
@@ -153,6 +160,7 @@
 							
 						</ul>
 					</li>   
+					<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>
 					<li class="dropdown <?php echo ($sf_request->getParameter('module') == 'school' || $sf_request->getParameter('module') == 'school_setting' || $sf_request->getParameter('module') == 'campus' ) ? 'active':'' ?>">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							<img class="navbar-nav-img" src="<?php echo image_path('settings/system_setting') ?>"><span class="ui-hot-key"></span>
@@ -161,13 +169,13 @@
 						<ul class="dropdown-menu"> 
 							<li class="<?php echo ($sf_request->getParameter('module') == 'system_setting') ? 'active':'' ?>">
 								<a href="<?php echo url_for('school/calendar') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/system_setting') ?>"><?php echo __('System Info') ?>
+									<img class="navbar-img" src="<?php echo image_path('settings/system_setting') ?>"><?php echo __('Manage') ?>
 								</a>
 							</li> 
 							<li role="separator" class="divider"></li> 
 							<li class="<?php echo ($sf_request->getParameter('module') == 'currency') ? 'active':'' ?>">
 								<a href="<?php echo url_for('system_setting/currency') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/currency') ?>"><?php echo __('Manage Users') ?>
+									<img class="navbar-img" src="<?php echo image_path('settings/currency') ?>"><?php echo __('Users') ?>
 								</a>
 							</li>
 							<li>
@@ -198,6 +206,7 @@
 							</li> 
 						</ul>
 					</li>  
+					<?php endif; ?>
 					<li class="dropdown">
 						<a href="<?php echo url_for('report/index') ?>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							<img class="navbar-nav-img" src="<?php echo image_path('settings/reports') ?>"><span class="ui-hot-key">R</span><?php echo __('eport') ?><span class="caret"></span>

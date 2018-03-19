@@ -22,6 +22,7 @@
  * @property Team $Team
  * @property GameCategory $GameCategory
  * @property SportGame $SportGame
+ * @property Doctrine_Collection $teamGameParticipantPersons
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -100,6 +101,10 @@ abstract class BaseTeamGameParticipation extends sfDoctrineRecord
              'local' => 'sport_game_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('TeamParticipants as teamGameParticipantPersons', array(
+             'local' => 'id',
+             'foreign' => 'game_participation_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

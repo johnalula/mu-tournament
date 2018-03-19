@@ -15,6 +15,8 @@ abstract class BaseSportGameGroupFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'token_id'            => new sfWidgetFormFilterInput(),
       'tournament_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Tournament'), 'add_empty' => true)),
+      'sport_game_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SportGame'), 'add_empty' => true)),
+      'group_type_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('GroupType'), 'add_empty' => true)),
       'group_name'          => new sfWidgetFormFilterInput(),
       'alias'               => new sfWidgetFormFilterInput(),
       'total_group_numbers' => new sfWidgetFormFilterInput(),
@@ -30,6 +32,8 @@ abstract class BaseSportGameGroupFormFilter extends BaseFormFilterDoctrine
     $this->setValidators(array(
       'token_id'            => new sfValidatorPass(array('required' => false)),
       'tournament_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Tournament'), 'column' => 'id')),
+      'sport_game_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('SportGame'), 'column' => 'id')),
+      'group_type_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('GroupType'), 'column' => 'id')),
       'group_name'          => new sfValidatorPass(array('required' => false)),
       'alias'               => new sfValidatorPass(array('required' => false)),
       'total_group_numbers' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
@@ -62,6 +66,8 @@ abstract class BaseSportGameGroupFormFilter extends BaseFormFilterDoctrine
       'id'                  => 'Number',
       'token_id'            => 'Text',
       'tournament_id'       => 'ForeignKey',
+      'sport_game_id'       => 'ForeignKey',
+      'group_type_id'       => 'ForeignKey',
       'group_name'          => 'Text',
       'alias'               => 'Text',
       'total_group_numbers' => 'Number',

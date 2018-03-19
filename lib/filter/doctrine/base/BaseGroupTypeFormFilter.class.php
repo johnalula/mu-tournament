@@ -15,6 +15,7 @@ abstract class BaseGroupTypeFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'token_id'      => new sfWidgetFormFilterInput(),
       'org_id'        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Organization'), 'add_empty' => true)),
+      'org_token_id'  => new sfWidgetFormFilterInput(),
       'group_type_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('GroupType'), 'add_empty' => true)),
       'group_number'  => new sfWidgetFormFilterInput(),
       'alias'         => new sfWidgetFormFilterInput(),
@@ -27,6 +28,7 @@ abstract class BaseGroupTypeFormFilter extends BaseFormFilterDoctrine
     $this->setValidators(array(
       'token_id'      => new sfValidatorPass(array('required' => false)),
       'org_id'        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Organization'), 'column' => 'id')),
+      'org_token_id'  => new sfValidatorPass(array('required' => false)),
       'group_type_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('GroupType'), 'column' => 'id')),
       'group_number'  => new sfValidatorPass(array('required' => false)),
       'alias'         => new sfValidatorPass(array('required' => false)),
@@ -56,6 +58,7 @@ abstract class BaseGroupTypeFormFilter extends BaseFormFilterDoctrine
       'id'            => 'Number',
       'token_id'      => 'Text',
       'org_id'        => 'ForeignKey',
+      'org_token_id'  => 'Text',
       'group_type_id' => 'ForeignKey',
       'group_number'  => 'Text',
       'alias'         => 'Text',

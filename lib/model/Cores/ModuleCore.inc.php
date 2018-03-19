@@ -138,8 +138,8 @@ class ModuleCore {
 			case self::$_SYSTEM_SETTING:
 				return 'system_setting';
 			break; 
-			case self::$_ADMINISTRATION:
-				return 'administration';
+			case self::$_ADMINISTRATOR:
+				return 'administrator';
 			break;
 			case self::$_REPORT:
 				return 'report';

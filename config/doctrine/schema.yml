@@ -31,6 +31,7 @@ RoundType:
   columns:
     token_id: { type: string(100) }    
     org_id: { type: integer } 
+    org_token_id: { type: string(100) }  
     round_type: { type: integer }   
     round_number: { type: integer }   
     name: { type: string(255) }
@@ -51,6 +52,7 @@ GroupType:
   columns:
     token_id: { type: string(100) }    
     org_id: { type: integer } 
+    org_token_id: { type: string(100) }  
     group_type_id: { type: integer } 
     group_number: { type: string(255) }
     alias: { type: string(50) } }  
@@ -67,6 +69,7 @@ GameCategory:
   columns:
     token_id: { type: string(100) }    
     org_id: { type: integer } 
+    org_token_id: { type: string(100) }  
     category_type: { type: integer }  
     category_name: { type: string(255) }
     alias: { type: string(50) } }  
@@ -87,6 +90,7 @@ SportGameType:
   columns:
     token_id: { type: string(100) }    
     org_id: { type: integer } 
+    org_token_id: { type: string(100) }  
     distance_type: { type: integer }  
     distance_type_name: { type: string(255) }
     alias: { type: string(50) } }  
@@ -106,6 +110,7 @@ SportGame:
   columns:
     token_id: { type: string(100) }    
     org_id: { type: integer }
+    org_token_id: { type: integer }
     sport_game_category_id: { type: integer } 
     distance_type: { type: integer }  
     name: { type: string(255) }
@@ -113,6 +118,10 @@ SportGame:
     game_distance: { type: integer } 
     game_distance_measurement: { type: integer } 
     sport_game_number: { type: integer } 
+    player_mode: { type: integer } 
+    playing_team_mode: { type: integer } 
+    jump_type_mode: { type: integer } 
+    throws_type: { type: integer } 
     start_date: { type: string(100) }
     effective_date: { type: string(100) }
     end_date: { type: string(100) }  
@@ -134,6 +143,8 @@ SportGameGroup:
   columns:
     token_id: { type: string(100) }    
     tournament_id: { type: integer }
+    sport_game_id: { type: integer }
+    group_type_id: { type: string(255) }
     group_name: { type: string(255) }
     alias: { type: string(50) } }   
     total_group_numbers: { type: integer } 
@@ -143,12 +154,12 @@ SportGameGroup:
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentGroups }  
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentGroups }   
+    SportGame: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: sportGameGroupMembers }  
  
- 
-GroupMembers:
+TeamGroup:
   package: GameSetting
-  tableName: mutms_tbl_group_members
+  tableName: mutms_tbl_team_group
   actAs:
     Timestampable: ~
   columns:
@@ -163,9 +174,27 @@ GroupMembers:
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    SportGameGroup: { onDelete: CASCADE, local: sport_game_group_id, foreign: id, foreignAlias: sportGameGroupMembers }  
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentGroupMembers } 
     Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamGroupMembers }  
-    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentGroupMembers }  
+ 
+ 
+TeamGroupMembers:
+  package: GameSetting
+  tableName: mutms_tbl_team_group_members
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    team_group_id: { type: integer }
+    person_id: { type: integer }
+    start_date: { type: string(100) }
+    effective_date: { type: string(100) }  
+    end_date: { type: string(100) }  
+    active_flag: { type: boolean, default: true } 
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personGroupMembers }  
  
 
 ############  Team Management ####################
@@ -196,25 +225,7 @@ Team:
   relations:  
     Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationTeams }  
     Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentTeams }  
- 
 
-TeamParticipants:
-  package: TeamManagement
-  tableName: mutms_tbl_team_participants
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    team_id: { type: integer }
-    player_name: { type: string(255) }
-    player_role_id: { type: integer } }   
-    player_number: { type: integer } }   
-    active_flag: { type: boolean, default: true } 
-    status: { type: integer, default: 1  } 
-    description:  { type: clob }  
-  relations:  
-    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamParticipantPersons }  
- 
 TeamGameParticipation:
   package: TeamManagement
   tableName: mutms_tbl_team_game_participation
@@ -239,7 +250,27 @@ TeamGameParticipation:
     Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamGameParticipations }  
     GameCategory: { onDelete: CASCADE, local: sport_game_category_id, foreign: id, foreignAlias: gameCategoryTeamPartcipation }    
     SportGame: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: sportGameTeamPartcipation }     
- 
+
+TeamParticipants:
+  package: TeamManagement
+  tableName: mutms_tbl_team_participants
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    game_participation_id: { type: integer }
+    team_id: { type: integer }
+    person_id: { type: integer }
+    player_name: { type: string(255) }
+    player_role_id: { type: integer } }   
+    player_number: { type: integer } }   
+    active_flag: { type: boolean, default: true } 
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    TeamGameParticipation: { onDelete: CASCADE, local: game_participation_id, foreign: id, foreignAlias: teamGameParticipantPersons }  
+    Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personTeamParticipants }  
+  
 TeamDetail:
   package: TeamManagement
   tableName: mutms_tbl_team_detail
@@ -407,6 +438,67 @@ MatchFixtureDetail:
     MatchFixture: { onDelete: CASCADE, local: match_fixture_id, foreign: id, foreignAlias: matchFixtureDetails } 
  
 
+ 
+############  Party Management ####################
+
+TournamentRankTable:
+  package: TournamentManagement
+  tableName: mutms_tbl_tournament_rank_table
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    team_id: { type: integer }
+    person_id: { type: integer }
+    rank: { type: integer }
+    total_medal_award: { type: integer }
+    game_win: { type: integer }
+    game_draw: { type: integer }
+    game_lost: { type: integer }
+    goal_for: { type: integer }
+    goal_againest: { type: integer }
+    goal_difference: { type: integer }
+    points: { type: integer }
+    active_flag: { type: boolean, default: true }
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    Game: { onDelete: CASCADE, local: game_id, foreign: id, foreignAlias: gameMatchTables } 
+    Group: { onDelete: CASCADE, local: group_id, foreign: id, foreignAlias: groupMatchTables } 
+    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamMatchTables } 
+    Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personMatchTables } 
+
+TournamentMedalAwards:
+  package: TournamentManagement
+  tableName: mutms_tbl_tournament_medal_awards
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    tournament_id: { type: integer }
+    team_id: { type: integer }
+    tournament_award_id: { type: integer }
+    match_fixture_id: { type: integer }
+    person_id: { type: integer }
+    rank: { type: integer }
+    medal_award_type: { type: integer }
+    total_medal_award: { type: integer }
+    game_win: { type: integer }
+    game_draw: { type: integer }
+    game_lost: { type: integer }
+    goal_for: { type: integer }
+    goal_againest: { type: integer }
+    goal_difference: { type: integer }
+    points: { type: integer }
+    active_flag: { type: boolean, default: true }
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentMedalAwards } 
+    MatchFixture: { onDelete: CASCADE, local: match_fixture_id, foreign: id, foreignAlias: matchFixtureTournamentMedalAwards } 
+    TournamentRankTable: { onDelete: CASCADE, local: tournament_award_id, foreign: id, foreignAlias: tournamentRankTableMedalAwards } 
+    Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personMatchTables } 
+ 
  
 ############  Party Management ####################
 
@@ -631,6 +723,7 @@ User:
     default_flag: { type: boolean, default: false }
     active_flag: { type: boolean, default: false }
     blocked_flag: { type: boolean, default: false }
+    enabled_flag: { type: boolean, default: false }
     login_flag: { type: boolean, default: false }
     status: { type: integer }
     trashed_flag: { type: boolean, default: 0 } 
@@ -677,6 +770,7 @@ UserRole:
     user_role_type_id: { type: integer } 
     alias: { type: string(100) }  
     active_flag: { type: boolean, default: false }
+    applicable_flag: { type: boolean, default: false }
     default_flag: { type: boolean, default: false } 
     trashed_flag: { type: boolean, default: 0 } 
     trashed_on: { type: string(100) }
@@ -686,7 +780,7 @@ UserRole:
 
 AccessLevelPermission:
   package: AdministratorManagement
-  tableName: mutms_tbl_access_level_permission
+  tableName: eASsys_tbl_access_level_permission
   actAs:
     Timestampable: ~
   columns: 
@@ -704,6 +798,7 @@ AccessLevelPermission:
     UserRole: { onDelete: CASCADE, local: user_role_id, foreign: id, foreignAlias: userRoleAccessPermissions } 
     ModuleSetting: { onDelete: CASCADE, local: module_setting_id, foreign: id, foreignAlias: moduleUserRoleAccessPermissions } 
  
+ 
 ModuleSetting:
   package: AdministratorManagement
   tableName: mutms_tbl_module_setting 
@@ -717,6 +812,7 @@ ModuleSetting:
     module_name: { type: string(150) } 
     alias: { type: string(100) } 
     default_access_level_type_id: { type: integer } 
+    enabled_flag: { type: boolean, default: false }
     applicable_flag: { type: boolean, default: false }
     active_flag: { type: boolean, default: false }
     default_flag: { type: boolean, default: false }  
