@@ -7,7 +7,7 @@
  * 
  * @property string $token_id
  * @property integer $org_id
- * @property integer $org_token_id
+ * @property string $org_token_id
  * @property integer $sport_game_category_id
  * @property integer $distance_type
  * @property string $name
@@ -16,7 +16,7 @@
  * @property integer $game_distance_measurement
  * @property integer $sport_game_number
  * @property integer $player_mode
- * @property integer $playing_team_mode
+ * @property integer $contestant_team_mode
  * @property integer $jump_type_mode
  * @property integer $throws_type
  * @property string $start_date
@@ -28,8 +28,9 @@
  * @property clob $description
  * @property GameCategory $GameCategory
  * @property Organization $Organization
- * @property Doctrine_Collection $sportGameGroupMembers
+ * @property Doctrine_Collection $sportGameSportGameGroups
  * @property Doctrine_Collection $sportGameTeamPartcipation
+ * @property Doctrine_Collection $TeamMemberParticipant
  * @property Doctrine_Collection $sportGameMatchFixtures
  * 
  * @package    mu-TMS
@@ -49,8 +50,9 @@ abstract class BaseSportGame extends sfDoctrineRecord
         $this->hasColumn('org_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('org_token_id', 'integer', null, array(
-             'type' => 'integer',
+        $this->hasColumn('org_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
              ));
         $this->hasColumn('sport_game_category_id', 'integer', null, array(
              'type' => 'integer',
@@ -78,7 +80,7 @@ abstract class BaseSportGame extends sfDoctrineRecord
         $this->hasColumn('player_mode', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('playing_team_mode', 'integer', null, array(
+        $this->hasColumn('contestant_team_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('jump_type_mode', 'integer', null, array(
@@ -128,11 +130,15 @@ abstract class BaseSportGame extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('SportGameGroup as sportGameGroupMembers', array(
+        $this->hasMany('SportGameGroup as sportGameSportGameGroups', array(
              'local' => 'id',
              'foreign' => 'sport_game_id'));
 
         $this->hasMany('TeamGameParticipation as sportGameTeamPartcipation', array(
+             'local' => 'id',
+             'foreign' => 'sport_game_id'));
+
+        $this->hasMany('TeamMemberParticipant', array(
              'local' => 'id',
              'foreign' => 'sport_game_id'));
 

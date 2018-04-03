@@ -5,9 +5,10 @@
 			<th></th>
 			<th class="" style="text-align:center!important;"><?php echo __('ID') ?></th>
 			<th class="ui-th-left-text"><?php echo __('Name') ?></th>
+			<th class="" style=""><?php echo __('Type') ?></th>
 			<th class="" style=""><?php echo __('Category') ?></th>
-			<th class="ui-th-center-text"><?php echo __('Class') ?></th>
-			<th class="ui-th-center-text"><?php echo __('Group') ?></th>
+			<th class="ui-th-center-text"><?php echo __('Player Mode') ?></th>
+			<th class="ui-th-center-text"><?php echo __('Team Mode') ?></th>
 			<th class="ui-th-left-text"><?php echo __('Description') ?></th>
 			<th class="" style="text-align:center!important;"><?php echo __('Status') ?></th>
 			<th></th>
@@ -23,16 +24,19 @@
 				<?php echo SystemCore::processDataID($_candidateSportGame->id) ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-1">
-				<?php echo $_candidateSportGame->sportGameName ?>
+				<?php echo $_candidateSportGame->sportGameName  ?>
 			</td>
-			<td class="ui-td-left-text ui-td-xsmall-2">
+			<td class="ui-td-left-text ui-td-xsmall-1">
+				<?php echo TournamentCore::processDistanceTypeValue($_candidateSportGame->sportGameType) ?>
+			</td>
+			<td class="ui-td-left-text ui-td-xsmall-1">
 				<?php echo $_candidateSportGame->gameCategoryName ?>
 			</td>
 			<td class="ui-td-left-text ui-td-xsmall-01">
-				<?php echo $_candidateSportGame->id ?>
+				<?php echo TournamentCore::processPlayerModeValue($_candidateSportGame->playerMode) ?>
 			</td>
 			<td class="ui-td-left-text ui-td-xsmall-01">
-				<?php echo $_candidateSportGame->id ?>
+				<?php echo TournamentCore::processContestantTeamModeValue($_candidateSportGame->contestantTeamMode) ?>
 			</td>
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo $_candidateSportGame->description ?>

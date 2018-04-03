@@ -1,16 +1,16 @@
 <?php
 class PersonCore {
 		
-	public static $_OWNER = 1; 
-	public static $_FAMILY_MEMBER = 2; 
-	public static $_EMPLOYEE = 3; 
-	public static $_INSTRUCTOR = 4; 
-	public static $_STUDENT = 5; 
-	public static $_PARENT = 6; 
-	public static $_CONTACT_PERSON	= 7;  
+	public static $_EMPLOYEE = 1; 
+	public static $_CONTESTANT = 2; 
+	public static $_COACH = 3; 
+	public static $_TEAM_MEMBER = 4; 
+	public static $_TEAM_LEADER = 5; 
+	public static $_REPRESENTATIVE = 6; 
+	public static $_REFEREE = 7; 
 	public static $_OTHER_PERSON_ROLE = 8;  
 	
-	public static $_PERSON_ROLES = array ( 1 => "owner", 2 => "Family Member", 3 => "Employee" , 4 => "Instructor" , 5 => "Student",  6 => "Parent", 7 => "Contact Person", 8 => "Other Person Role");
+	public static $_PERSON_ROLES = array ( 1 => "Employee", 2 => "Contestant/Player", 3 => "Coach" , 4 => "Team Member" , 5 => "Team Leader", 6 => "Representative", 7 => "Referee", 8 => "Other Role");
 		
 	public static function processPersonRoles ( ) 
 	{
@@ -48,7 +48,7 @@ class PersonCore {
 	public static function processDefaultPersonRole ()
 	{
 		try {
-				return  self::$_EMPLOYEE; 
+				return  self::$_PLAYER; 
 			} catch ( Exception $e ) {
 			return null; 
 	  }     
@@ -56,27 +56,27 @@ class PersonCore {
 	public static function processPersonRoleIcon ($_role)
 	{
 		switch($_role) {			
-			case self::$_OWNER:
-				return 'owner';
-			break;	
-			case self::$_FAMILY_MEMBER:
-				return 'family_member';
-			break;
 			case self::$_EMPLOYEE:
 				return 'employee';
-			break; 
-			case self::$_INSTRUCTOR:
-				return 'instructor';
+			break;	
+			case self::$_CONTESTANT:
+				return 'contestant';
 			break;
-			case self::$_STUDENT:
-				return 'student';
+			case self::$_COACH:
+				return 'coach';
 			break; 
-			case self::$_PARENT:
-				return 'parent';
-			break; 
-			case self::$_CONTACT_PERSON:
-				return 'contact_person';
-			break; 
+			case self::$_TEAM_MEMBER:
+				return 'team_member';
+			break;
+			case self::$_TEAM_LEADER:
+				return 'team_leader';
+			break;
+			case self::$_REPRESENTATIVE:
+				return 'representative';
+			break;
+			case self::$_REFEREE:
+				return 'referee';
+			break;  
 			case self::$_OTHER_PERSON_ROLE:
 				return 'other_person_role';
 			break;
@@ -211,42 +211,42 @@ class PersonCore {
 	  }     
 	}
 	
-	public static $ACTIVE =  1; 
-	public static $BLOCKED =  2; 	
-	public static $TERMINATED = 3;  
-	public static $OTHER_STATUS = 4;  
+	public static $_ACTIVE =  1; 
+	public static $_BLOCKED =  2; 	
+	public static $_TERMINATED = 3;  
+	public static $_OTHER_STATUS = 4;  
 
-	public static $ALL_STATUSES = array ( 1 => "Active", 2 => "Blocked" , 3 => "Terminated" , 4 => "Other Status");
+	public static $_ALL_STATUSES = array ( 1 => "Active", 2 => "Blocked" , 3 => "Terminated" , 4 => "Other Status");
 	
 	public static function processPartytatus() 
 	{
-		return self::$ALL_STATUSES;
+		return self::$_ALL_STATUSES;
 	}
 	
-	public static function processPartyStatusID ( $value ) 
+	public static function processPartyStatusID ( $_value ) 
 	{
 		try {
-				foreach( self::$ALL_STATUSES as $key=> $status ){
-					if( strcmp($status, $value) == 0 )
-					  return $key; 
+				foreach( self::$_ALL_STATUSES as $_key=> $_status ){
+					if( strcmp($_status, $_value) == 0 )
+					  return $_key; 
 			}
 		
-			 return $OTHER; 
-	  } catch ( Exception $e ) {
-			return $OTHER; 
+			 return $_OTHER_STATUS; 
+	  } catch ( Exception $_e ) {
+			return $_OTHER_STATUS; 
 	  }
 	}
 
-	public static function processPartyStatusValue ( $id )
+	public static function processPartyStatusValue ( $_id )
 	{
 		try{
-				foreach( self::$ALL_STATUSES as $key=> $status ){
-				  if( $key == $id )
-						return $status; 
+				foreach( self::$_ALL_STATUSES as $_key=> $_status ){
+				  if( $_key == $_id )
+						return $_status; 
 			}
-			 return $ACTIVE; 
-	  } catch ( Exception $e ) {
-			 return $ACTIVE; 
+			 return $_ACTIVE; 
+	  } catch ( Exception $_e ) {
+			 return $_ACTIVE; 
 	  }
 	}
 	

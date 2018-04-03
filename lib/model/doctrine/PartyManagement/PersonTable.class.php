@@ -16,4 +16,220 @@ class PersonTable extends PluginPersonTable
     {
         return Doctrine_Core::getTable('Person');
     }
+    //
+	public static function processNew ( $_orgID, $_orgTokenID, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_partyGender, $_nationality, $_partyRelationShipRole, $_partyRole, $_partyRelationShip, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_email, $_addressRemark, $_description, $_partyCode, $_userID )  
+	{
+		$_flag = true;
+		//$_codeConfig = CodeGeneratorTable::processDefaultSelection ( $_orgID, $_orgTokenID, $_partyCodeID, true );	
+		//$_generatedCodeNumber = PartyTable::generateCode($_orgID, $_orgTokenID, $_codeConfig );
+		$_partyFullName = ucfirst(trim($_firstName)).' '.ucfirst(trim($_middleName)).' '.ucfirst(trim($_lastName));
+		
+		$_party = self::processSave ( $_orgID, $_orgTokenID, $_partyFullName, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_partyGender, $_nationality, $_partyType, $_partyCode, $_description );
+		
+		/*if($_party) {
+			$_flag = PartyRoleTable::processCreate ( $_party, $_partyRole, $_partySubRole, $_organizationUnit, $_partyType  );
+			$_flag = PartyRelationshipTable::processCreate ( $_party, $_partyRelationShip, $_partyPositionRole, $_partyRelationShipRole );
+			
+			if($_partyAddressOne && ($_phoneNumberOne || $_mobileNumberOne)) {
+				$_flag = PartyContactTable::processCreate ( $_party, $_addressTabia, $_addressSubCity, $_partyCityProvince, $_partyRegion, $_partyCountry, $_partyTINNumber, $_identificationType, $_IDNumber, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_houseNumber, $_streetNumber, $_email, $_website, $_addressRemark, $_contactType );
+			}
+		}*/
+		//$_flag = $_flag&&$_codeConfig->makeCodeSetup ( $_codeConfig->lastCode ); 
+		
+		return $_party; 
+	}
+	//
+	public static function processSave ( $_orgID, $_orgTokenID, $_partyFullName, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_partyGender, $_nationality, $_partyType, $_partyCode, $_description ) 
+	{ 
+		
+		$_token = trim($_orgTokenID).trim($_parentTokenID).trim($_partyFullName).trim($_firstName).rand('11111', '99999'); 
+		$_nw = new Person(); 
+		$_nw->token_id = md5(sha1($_token));  
+		$_nw->org_id = trim($_orgID);
+		$_nw->org_token_id = trim($_orgTokenID);
+		if($_parentOrganizationID) {
+			$_nw->parent_id = trim($_parentOrganizationID); 
+		}  
+		$_nw->party_code_number = trim($_generatedCodeNumber); 
+		$_nw->name = ucfirst(trim($_firstName));
+		$_nw->middle_name = ucfirst(trim($_middleName));
+		$_nw->last_name = ucfirst(trim($_lastName));
+		$_nw->full_name = ucwords(trim($_partyFullName)); 
+		$_nw->date_of_birth = trim($_dateOfBirth); 
+		$_nw->nationality = trim($_nationality); 
+		$_nw->gender = trim($_partyGender); 
+		$_nw->status = empty($_empStatus) ? PartyCore::$_ACTIVE:trim($_empStatus);  
+		$_nw->description = ucfirst(trim($_partyFullName).' ('.trim($_description).')'); 
+		$_nw->save();   
+		
+		return $_nw; 
+	}
+
+	public static function processUpdate ($_orgID, $_orgTokenID, $_partyID, $_tokenID, $_parentID, $_parentTokenID, $_empName, $_empFatherName, $_empGFatherName, $_empFullName, $_dateOfBirth, $_placeOfBirth, $_empPosition, $_empRole, $_employmentType, $_empGender,$_empCityProvince, $_empCountry, $_description, $_userID, $_userTokenID )
+	{
+		$_flag = true;
+		if(empty($_empName) || !isset($_empName) || trim($_empName) == '') return false;
+		if(empty($_empFatherName) || !isset($_empFatherName) || trim($_empFatherName) == '') return false;
+		
+		$_q = Doctrine_Query::create( )
+			->update('Person prt')
+			->set('prt.parent_id', '?', trim($_parentID))
+			->set('prt.parent_token_id', '?', trim($_parentTokenID)) 
+			->set('prt.name', '?', trim($_empName))
+			->set('prt.middle_name', '?', ucwords(trim($_empFatherName)))
+			->set('prt.last_name', '?', ucwords(trim($_empGFatherName)))
+			->set('prt.full_name', '?', ucwords(trim($_empFullName)))
+			->set('prt.position', '?', trim($_empPosition))  
+			->set('prt.employment_type', '?', trim($_employmentType)) 
+			->set('prt.birth_date', '?', trim($_dateOfBirth))
+			->set('prt.place_of_birth', '?', trim($_placeOfBirth))
+			->set('prt.nationality', '?', trim($_empCountry))
+			->set('prt.country', '?', ucwords(trim($_empCountry)))
+			->set('prt.city', '?', trim($_empCityProvince))
+			->set('prt.gender', '?', trim($_empGender)) 
+			->set('prt.party_role', '?', trim($_empRole)) 
+			->set('prt.party_type', '?', trim($_employmentType))  
+			->set('prt.status', '?', PartyCore::$ACTIVE) 
+			->set('prt.description', '?', ucfirst(trim($_description)))   
+			->where('prt.id = ? AND prt.token_id = ? AND prt.org_id = ? AND prt.org_token_id = ?', array($_partyID, $_tokenID, $_orgID, $_orgTokenID))
+			->execute();	
+			
+			$_actionID = SystemCore::$UPDATE;
+			$_moduleName  = ModuleCore::processModuleValue(ModuleCore::$EMPLOYEE); 
+			$_moduleID  = ModuleCore::$EMPLOYEE;  
+			$_modulePartyType  = 'Update employee ID: '.$_partyID;  
+			
+			$_flag2 = SystemLogFileTable::processCreate ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_modulePartyType);
+		
+		return $_flag;   
+	}
+   //
+	public static function appendPartialQueryFields ( )  {
+		$_queryFileds = "prt.id, prt.token_id as tokenID, prt.org_id as orgID, prt.org_token_id as orgTokenID, prt.parent_id as parentID, prt.parent_token_id as parentTokenID, prt.name as name, prt.middle_name as fatherName, prt.last_name as grandFatherName, prt.full_name as fullName,prt.date_of_birth as dateOfBirth, prt.place_of_birth as placeOfBirth, prt.party_code_number as personCodeNumber, prnt.type as partyType, 
+		prtorg.name as orgName, 
+		(EXISTS (SELECT usracc.id FROM User usracc WHERE usracc.person_id = prt.id AND usracc.person_token_id = prt.token_id )) as hasUserAccount	,
+		((SELECT usracc1.username FROM User usracc1 WHERE usracc1.person_id = prt.id AND usracc1.person_token_id = prt.token_id )) as userName,	
+		 
+		";
+		return $_queryFileds;
+	}
+   //
+	public static function appendQueryFields ( )  {
+		$queryFileds = "prt.id, prt.token_id as tokenID, prt.org_id as orgID, prt.org_token_id as orgTokenID,	
+		prt.name as name, prt.middle_name as fatherName, prt.last_name as grandFatherName, prt.full_name as fullName, prt.date_of_birth as dateOfBirth, prt.place_of_birth as placeOfBirth, prt.party_code_number as personCodeNumber,
+		prnt.name as parentName, prnt.alias as parentAlias, 
+		prtRol.party_role_type as personRoleType,
+		(SELECT (prtRl1.party_role_type) FROM PartyRole prtRl1 WHERE prtRl1.party_id = prt.id AND prtRl1.party_token_id = ".md5."(".sha1."("."prt.token_id)) AND prtRl1.default_flag IS TRUE AND prtRl1.active_flag IS TRUE ) as activePartyRoleTypeID,
+		 
+		";
+		return $queryFileds;
+	}
+	public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_partyRole=null, $_partyRelationShip=null, $_status=null, $_exclusion=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	{
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())				
+			->from("Person prt")  
+			->innerJoin("prt.Party prnt on prt.parent_id = prnt.id")   
+			->innerJoin("prt.Party prtorg on prt.org_id = prtorg.id")     
+			->innerJoin("prt.partyContactAddresses cntAdd")   
+			->innerJoin("prt.partyRelationships prtRship")   
+			->innerJoin("prt.partyRoles prtRol")   
+			->offset($_offset)
+			->limit($_limit)   
+			->orderBy("prt.name ASC")
+			->where("prt.default_flag IS NOT TRUE OR prt.active_flag IS TRUE AND prt.trashed_flag IS NOT TRUE");
+			if(!is_null($_orgID)) $q = $q->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+			if(!is_null($_partyRole)) $q = $q->andWhere("prt.party_role = ? ", $_partyRole);
+			//if(!is_null($_partyRelationShip)) $q = $q->andWhere("prt.relationship_type_id = ? ", $_partyRelationShip);
+			if(!is_null($_status)) $q = $q->andWhere("prt.status=?", $_status);
+			if(! is_null($_exclusion)) $q = $q->andWhereNotIn("prt.id ", $_exclusion ); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$q = $q->andWhere("prt.full_name LIKE ? OR prt.description LIKE ?", array($_keyword, $_keyword));
+			$q = $q->execute( ); 
+		return ( count ( $q ) <= 0 ? null : $q ); 
+	}
+	public static function processAll ( $_orgID=null, $_orgTokenID=null, $_partyRole=null, $_partyRelationShip=null, $_status=null, $_exclusion=null, $_keyword=null ) 
+	{
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())				
+			->from("Person prt")  
+			->innerJoin("prt.Party prnt on prt.parent_id = prnt.id")   
+			->innerJoin("prt.Party prtorg on prt.org_id = prtorg.id")   
+			->innerJoin("prt.partyContactAddresses cntAdd")   
+			->innerJoin("prt.partyRelationships prtRship")   
+			->innerJoin("prt.partyRoles prtRol")      
+			->orderBy("prt.name ASC")
+			->where("prt.default_flag IS NOT TRUE AND prt.trashed_flag IS NOT TRUE");
+			if(!is_null($_orgID)) $q = $q->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+			if(!is_null($_partyRole)) $q = $q->andWhere("prt.party_role = ? ", $_partyRole);
+			//if(!is_null($_partyRelationShip)) $q = $q->andWhere("prt.relationship_type_id = ? ", $_partyRelationShip);
+			if(!is_null($_status)) $q = $q->andWhere("prt.status=?", $_status);
+			if(! is_null($_exclusion)) $q = $q->andWhereNotIn("prt.id ", $_exclusion ); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$q = $q->andWhere("prt.full_name LIKE ? OR prt.description LIKE ?", array($_keyword, $_keyword));
+			$q = $q->execute( ); 
+		return ( count ( $q ) <= 0 ? null : $q ); 
+	} 
+	public static function processObject ( $_orgID, $_orgTokenID, $_partyID, $_partyTokenID ) 
+	{
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())				
+			->from("Person prt")  
+			->innerJoin("prt.Party prnt on prt.parent_id = prnt.id")   
+			->innerJoin("prt.Party prtorg on prt.org_id = prtorg.id")     
+			->innerJoin("prt.partyContactAddresses cntAdd")   
+			->innerJoin("prt.partyRelationships prtRship")   
+			->innerJoin("prt.partyRoles prtRol")      		 
+			->where("prt.id=? AND prt.token_id=? AND prt.org_id = ? AND prt.org_token_id = ?", array($_partyID, $_partyTokenID, $_orgID, $_orgTokenID))
+			->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+		return (! $q ? null : $q ); 	
+	}
+   public static function processCandidates ( $_orgID=null, $_orgTokenID=null, $_partyRole=null, $_exclusion=null, $_status=null, $_keyword=null ) 
+	{
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())				
+			->from("Person prt")  
+			->leftJoin("prt.Party prnt on prt.parent_id = prnt.id")   
+			->leftJoin("prt.Party prtorg on prt.org_id = prtorg.id")     
+			->leftJoin("prt.partyContactAddresses cntAdd")   
+			->leftJoin("prt.partyRelationships prtRship")   
+			->leftJoin("prt.partyRoles prtRol")    
+			->orderBy("prt.name ASC")
+			->where("prt.default_flag IS NOT TRUE OR prt.active_flag IS TRUE AND prt.trashed_flag IS NOT TRUE");
+			if(!is_null($_orgID)) $q = $q->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+			if(!is_null($_partyRole)) $q = $q->andWhere("prt.party_role = ? ", $_partyRole);
+			if(!is_null($_status)) $q = $q->andWhere("prt.status=?", $_status);
+			if(! is_null($_exclusion)) $q = $q->andWhereNotIn("prt.id ", $_exclusion ); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$q = $q->andWhere("prt.full_name LIKE ? OR prt.description LIKE ?", array($_keyword, $_keyword));
+			$q = $q->execute( ); 
+		return ( count ( $q ) <= 0 ? null : $q ); 
+	}
+   public static function processCandidateSelection ( $_orgID=null, $_orgTokenID=null, $_partyRole=null, $_exclusion=null, $_status=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	{
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())				
+			->from("Person prt")  
+			->leftJoin("prt.Party prnt on prt.parent_id = prnt.id")   
+			->leftJoin("prt.Party prtorg on prt.org_id = prtorg.id")     
+			->leftJoin("prt.partyContactAddresses cntAdd")   
+			->leftJoin("prt.partyRelationships prtRship")   
+			->leftJoin("prt.partyRoles prtRol")    
+			->offset($_offset)
+			->limit($_limit)   
+			->orderBy("prt.name ASC")
+			->where("prt.default_flag IS NOT TRUE OR prt.active_flag IS TRUE AND prt.trashed_flag IS NOT TRUE");
+			if(!is_null($_orgID)) $q = $q->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+			if(!is_null($_partyRole)) $q = $q->andWhere("prt.party_role = ? ", $_partyRole);
+			if(!is_null($_status)) $q = $q->andWhere("prt.status=?", $_status);
+			if(! is_null($_exclusion)) $q = $q->andWhereNotIn("prt.id ", $_exclusion ); 
+			if(!is_null($_keyword))
+				if(strcmp(trim($_keyword), "") != 0 )
+					$q = $q->andWhere("prt.full_name LIKE ? OR prt.description LIKE ?", array($_keyword, $_keyword));
+			$q = $q->execute( ); 
+		return ( count ( $q ) <= 0 ? null : $q ); 
+	}
 }

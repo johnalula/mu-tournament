@@ -25,7 +25,7 @@ class tournament_setupActions extends sfActions
 		$this->_countGameCategorys = GameCategoryTable::processAll ( $_orgID, $_orgTokenID, $_keyword );
 		$this->_gameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 15 );
 		$this->_gameRounds = RoundTypeTable::processSelection ( $_orgID, $_orgTokenID, $_type, $_keyword, 0, 15 );
-		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 15 );
+		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20 );
   }
   
   public function executeCreateGameCategory(sfWebRequest $request)
@@ -46,6 +46,8 @@ class tournament_setupActions extends sfActions
 	}
   public function executeCreateSportGame(sfWebRequest $request)
 	{
+		//sport_game_category=1&sprt_game_type=1&sport_game_throw_type=&sport_game_jump_type_mode=&sport_game_measurement=1&sport_game_distance=200&sport_game_player_mode=4&sport_game_team_mode=2&sport_game_type_name=200M&description=sfgs fg sfg sfg sfdgfsfg sfg
+		
 		$_categoryID = $request->getParameter('sport_game_category');	
 		$_gameDistanceType = $request->getParameter('sprt_game_type');	
 		$_gameDistance = $request->getParameter('sport_game_distance');	

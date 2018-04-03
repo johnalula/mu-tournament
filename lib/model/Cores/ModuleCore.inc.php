@@ -8,13 +8,15 @@ class ModuleCore {
 	public static $_TEAM = 5;  
 	public static $_PLAYER = 6;  
 	public static $_MATCH = 7;  
-	public static $_ORGANIZATION = 8; 
-	public static $_GENERAL_SETTING = 9;
-	public static $_SYSTEM_SETTING = 10;
-	public static $_ADMINISTRATOR = 11; 
-	public static $_REPORT = 12;
+	public static $_TEAM_GROUP = 8;  
+	public static $_MEDAL_AWARD = 9;  
+	public static $_ORGANIZATION = 10; 
+	public static $_GENERAL_SETTING = 11;
+	public static $_SYSTEM_SETTING = 12;
+	public static $_ADMINISTRATOR = 13; 
+	public static $_REPORT = 14;
 	
-	public static $_MODULES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Game", 4 => "Group", 5 => "Team", 6 => "Player", 7 => "Match", 8 => "Organization", 9 => "General Setting", 10 => "System Setting", 11 => "Administrator", 12 => "Report" );
+	public static $_MODULES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Game", 4 => "Group", 5 => "Team", 6 => "Player", 7 => "Match", 8 => "Team Group", 9 => "Medal Award", 10 => "Organization", 11 => "General Setting", 12 => "System Setting", 13 => "Administrator", 14 => "Report" );
 	
 	public static function processModules ( ) 
 	{
@@ -128,6 +130,12 @@ class ModuleCore {
 			break;
 			case self::$_MATCH:
 				return 'match';
+			break;
+			case self::$_TEAM_GROUP:
+				return 'team_group';
+			break;
+			case self::$_MEDAL_AWARD:
+				return 'medal_award';
 			break;
 			case self::$_ORGANIZATION:
 				return 'organization';

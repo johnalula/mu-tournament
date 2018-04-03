@@ -58,8 +58,8 @@
 		var formName = 'createSportGameForm';
 		var data = $("form#createSportGameForm").serialize();
 		var datas = generateValidData (formName);
-		//processEntry(datas, url )
-		alert(datas);
+		processEntry(datas, url )
+		//alert(datas);
 		return true; 
 	});
 	$('#createGameRoundType').click(function(){

@@ -36,7 +36,7 @@
 				<?php echo $_team->teamAlias ?> 
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_team->id ?>
+				<?php echo $_team->hasGameParticipation ? 'True':'False' ?>
 			</td>
 			
 			<td class="ui-td-center-text ui-td-xsmall-00">

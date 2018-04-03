@@ -6,8 +6,8 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
-			<th class="ui-th-left-text" title="<?php echo __('Round Type Name') ?>"><?php echo  __('Round Type Name') ?></th>   
-			<th class="ui-th-left-text" style="" title="<?php echo __('Category Alias') ?>"><?php echo  __('Alias') ?></th>   
+			<th class="ui-th-left-text" title="<?php echo __('Round Type Name') ?>"><?php echo  __('Sport Game') ?></th>   
+			<th class="ui-th-left-text" style="" title="<?php echo __('Category Alias') ?>"><?php echo  __('Type') ?></th>   
 			<th class="ui-th-left-text" style="" title="<?php echo __('Category Group') ?>"><?php echo  __('Description') ?></th>   
 			<th class="ui-th-left-text" style="" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
 			<th class="ui-th-left-text" style=""><?php echo  __('Action') ?></th>  
@@ -26,13 +26,13 @@
 					<?php echo SystemCore::processDataID($_sportGame->id) ?>
 				</a>
 			</td> 
-			<td class="ui-td-left-text ui-td-xsmall-11"> 
+			<td class="ui-td-left-text ui-td-xlarg">
 				<a href="<?php echo url_for('game_category/view?category_id='.$_sportGame->id.'&token_id='.$_sportGame->token_id) ?>" >	
-					<?php echo $_sportGame->sportGameName  ?>
+					<?php echo $_sportGame->sportGameName.' ( '.TournamentCore::processDistanceTypeValue($_sportGame->sportGameType).' )'  ?>
 				</a>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-11">
-				<?php echo $_sportGame->sportGameAlias ?> 
+				<?php echo $_sportGame->gameCategoryName ?> 
 			</td>
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo Wordlimit::Wordlimiter($_sportGame->description, 5) ?>

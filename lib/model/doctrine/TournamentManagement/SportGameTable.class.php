@@ -25,7 +25,8 @@ class SportGameTable extends PluginSportGameTable
 			$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_GAME, true  ); 
 			$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
 			$_sportGameNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeInitialNumber($_codeNumber);
-				
+			
+			//$_sportGameTypeName = $_sportGameName ? $_sportGameName:(TournamentCore::processTypeExclusion ());
 			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
 			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
 			$_tournament = self::processSave ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_throwTypeMode, $_jumpTypeMode, $_playerMode, $_teamMode, $_status, $_description );
@@ -54,7 +55,7 @@ class SportGameTable extends PluginSportGameTable
 			$_nw->game_distance = trim($_gameDistance); 
 			$_nw->sport_game_number = trim($_sportGameNumber); 
 			$_nw->player_mode = trim($_playerMode); 
-			$_nw->playing_team_mode = trim($_teamMode); 
+			$_nw->contestant_team_mode = trim($_teamMode); 
 			$_nw->jump_type_mode = trim($_jumpTypeMode); 
 			$_nw->throws_type = trim($_throwTypeMode); 
 			$_nw->name = ucwords(trim($_sportGameName)); 
@@ -96,8 +97,8 @@ class SportGameTable extends PluginSportGameTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.active_flag as activeFlag, 
-								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,
+		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.distance_type as sportGameType, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.player_mode as playerMode, sprtGm.active_flag as activeFlag, 
+								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias, gmCat.category_type as gameCategoryType,
 		";	
 		return $_queryFileds;
 	}

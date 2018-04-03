@@ -20,10 +20,13 @@ class MatchFixtureTable extends PluginMatchFixtureTable
 	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchSportGameID, $_matchSportGameTokenID, $_sportGameName, $_matchRoundID, $_genderCategory, $_eventType, $_playerMode, $_matchVenue, $_matchGroup, $_matchTime, $_matchDate, $_matchStatus, $_description, $_userID, $_userTokenID  )
 	{
 		 $_flag = true;
-
+			$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_MATCH, true  ); 
+			$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
+			$_matchNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeInitialNumber($_codeNumber);
+				
 			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
 			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
-			$_matchFixture = self::processSave ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchSportGameID, $_matchSportGameTokenID, $_sportGameName, $_matchRoundID, $_genderCategory, $_eventType, $_playerMode, $_matchVenue, $_matchGroup, $_matchTime, $_matchDate, $_matchStatus, $_description );
+			$_matchFixture = self::processSave ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchSportGameID, $_matchSportGameTokenID, $_matchNumber, $_sportGameName, $_matchRoundID, $_genderCategory, $_eventType, $_playerMode, $_matchVenue, $_matchGroup, $_matchTime, $_matchDate, $_matchStatus, $_description );
 		
 		return $_matchFixture ? true:false;
 	}
@@ -32,7 +35,7 @@ class MatchFixtureTable extends PluginMatchFixtureTable
 	{
 		
 	} 
-	public static function processSave ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchSportGameID, $_matchSportGameTokenID, $_sportGameName, $_matchRoundID, $_genderCategory, $_eventType, $_playerMode, $_matchVenue, $_matchGroup, $_matchTime, $_matchDate, $_matchStatus, $_description )
+	public static function processSave ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchSportGameID, $_matchSportGameTokenID, $_matchNumber, $_sportGameName, $_matchRoundID, $_genderCategory, $_eventType, $_playerMode, $_matchVenue, $_matchGroup, $_matchTime, $_matchDate, $_matchStatus, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -47,11 +50,12 @@ class MatchFixtureTable extends PluginMatchFixtureTable
 			if($_matchRoundID) {
 			$_nw->match_round_type_id = trim($_matchRoundID  ); 
 			}
-			$_nw->group_type_id = trim($_matchGroup); 
+			//$_nw->group_type_id = trim($_matchGroup); 
 			$_nw->gender_category_id = trim($_genderCategory); 
 			$_nw->event_type = trim($_eventType); 
 			$_nw->player_mode = trim($_playerMode); 
 			$_nw->match_venue = trim($_matchVenue); 
+			$_nw->tournament_match_number = trim($_matchNumber); 
 			$_nw->match_time = trim($_matchTime); 
 			$_nw->match_date = trim($_matchDate); 
 			$_nw->start_date = $_matchDate ? trim($_matchDate):trim($_startDate); 
@@ -91,7 +95,7 @@ class MatchFixtureTable extends PluginMatchFixtureTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "mtchFix.id, mtchFix.match_round_type_id as matchRoundTypeID, mtchFix.event_type as matchEventType, mtchFix.player_mode as matchPlayerMode, mtchFix.match_venue as matchVenue, mtchFix.gender_category_id as genderCategoryID, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.group_type_id as groupID, mtchFix.active_flag as activeFlag, 
+		 $_queryFileds = "mtchFix.id, mtchFix.match_round_type_id as matchRoundTypeID, mtchFix.event_type as matchEventType, mtchFix.player_mode as matchPlayerMode, mtchFix.match_venue as matchVenue, mtchFix.gender_category_id as genderCategoryID, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.id as groupID, mtchFix.active_flag as activeFlag, 
 								trnmtMtch.id as tournamentMatchID,
 								sprtGm.id as sportGameID, sprtGm.token_id as sportGameTokenID, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias,
 								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,

@@ -23,8 +23,8 @@
  * @property string $type
  * @property integer $representative_id
  * @property string $title
- * @property string $father_name
- * @property string $grand_father_name
+ * @property string $middle_name
+ * @property string $last_name
  * @property string $full_name
  * @property integer $gender
  * @property string $date_of_birth
@@ -117,11 +117,11 @@ abstract class BaseParty extends sfDoctrineRecord
              'type' => 'string',
              'length' => 40,
              ));
-        $this->hasColumn('father_name', 'string', 100, array(
+        $this->hasColumn('middle_name', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('grand_father_name', 'string', 100, array(
+        $this->hasColumn('last_name', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
              ));

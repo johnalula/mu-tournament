@@ -23,7 +23,7 @@
 							<div class="ui-toolbar-menu">
 								<div id="" class="navbar-collapse ui-toolbar">
 									<div class="col-sm-6">
-										<?php include_partial('group_toolbar', array()) ?> 
+										<?php include_partial('action_toolbar', array()) ?> 
 									</div>
 									<div class="col-sm-6">
 										<?php include_partial('filter', array( )) ?> 
@@ -33,7 +33,7 @@
 						</div  
 						<!--    End of toolbar      -->
 						<div class="ui-panel-grid-list" id="product"> 
-							<?php include_partial('list', array( '_teamGroups' => $_teamGroups, '_countTeamGroups' => $_countTeamGroups )) ?> 
+							<?php include_partial('list', array( '_sportGameTeamGroups' => $_sportGameTeamGroups, '_countTeamGroups' => $_countTeamGroups )) ?> 
 						</div> <!-- ui-panel-content -->  
 					</div><!-- ui-panel-content-box -->
 					

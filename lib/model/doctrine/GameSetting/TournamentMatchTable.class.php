@@ -16,7 +16,7 @@ class TournamentMatchTable extends PluginTournamentMatchTable
     {
         return Doctrine_Core::getTable('TournamentMatch');
     }
-    //
+   //
 	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_matchSeason, $_teamMode, $_matchDate, $_status, $_description, $_userID, $_userTokenID  )
 	{
 		 $_flag = true;

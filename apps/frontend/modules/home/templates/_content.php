@@ -51,16 +51,4 @@
 		</div>
 	</div>
 </div>
-<script>
-	$(document).ready(function() { 
-		
-		setInterval(function() { 
-			var url = '<?php echo url_for('home/selectTournamentMatchFixtures')?>'; 
-			var data = '';
-			$("#ui-data-content").load(url, data); 
-			//alert('data'+data);
-        }, 1000); 
-		 
-	});
-	
-</script>
+

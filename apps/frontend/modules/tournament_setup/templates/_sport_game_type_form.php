@@ -12,7 +12,7 @@
 						<label class="col-sm-21 control-label"><?php echo __('Category') ?>:<span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 
 							<select id="sport_game_category" name="sport_game_type[sport_game_category]" class="form-control" title="<?php echo __('Sport Game Category') ?>">
-								<option value="100" selected  > <?php echo 'Select Game Category ...' ?> </option>
+								<option value="" selected  > <?php echo 'Select Game Category ...' ?> </option>
 								<?php foreach($_countGameCategorys as $_key => $_countGameCategory): ?>								 
 									<option value="<?php echo $_countGameCategory->id ?>"  >
 										<?php echo $_countGameCategory->categoryName ?>
@@ -25,7 +25,7 @@
 						<label class="col-sm-21 control-label"><?php echo __('Game Type') ?>: <span class="ui-red-text">&nbsp;</span></label>
 						<div class="col-sm-40"> 
 							<select id="sprt_game_type" name="sport_game_type[sprt_game_type]" class="form-control" title="<?php echo __('Game Type') ?>">
-								<option value="100" selected  ><?php echo 'Select Game Type ...' ?></option>
+								<option value="" selected  ><?php echo 'Select Game Type ...' ?></option>
 								<?php foreach(TournamentCore::processDistanceTypes() as $_key => $_roundNumber): ?>								 
 									<option value="<?php echo $_key ?>"  >
 										<?php echo $_roundNumber ?>
@@ -38,7 +38,7 @@
 						<label class="col-sm-21 control-label"><?php echo __('Throws Type') ?>: <span class="ui-red-text">&nbsp;</span></label>
 						<div class="col-sm-212">
 							<select id="sport_game_throw_type" name="sport_game_type[sport_game_throw_type]" class="form-control" title="<?php echo __('Game Throw Type') ?>">
-								<option value="100" selected  ><?php echo 'Select Throw Type ...' ?></option>
+								<option value="" selected  ><?php echo 'Select Throw Type ...' ?></option>
 								<?php foreach(TournamentCore::processThrowTypes() as $_key => $_type): ?>								 
 									<option value="<?php echo $_key ?>"  >
 										<?php echo $_type ?>
@@ -49,7 +49,7 @@
 						<label class="col-sm-122 control-label" title="<?php echo __('Game Mode') ?>"><?php echo __('Jump type') ?>:</label>
 						<div class="col-sm-212">
 							<select id="sport_game_jump_type_mode" name="sport_game_type[sport_game_jump_type_mode]" class="form-control" title="<?php echo __('Jump Type Mode') ?>">
-								<option value="100" selected  ><?php echo 'Select Jump Type ...' ?></option>
+								<option value="" selected  ><?php echo 'Select Jump Type ...' ?></option>
 								<?php foreach(TournamentCore::processJumpTypes() as $_key => $_event): ?>								 
 									<option value="<?php echo $_key ?>"  >
 										<?php echo $_event ?>
@@ -62,7 +62,7 @@
 						<label class="col-sm-21 control-label"><?php echo __('Measurement') ?>: &nbsp;</label>
 						<div class="col-sm-212">
 							<select id="sport_game_measurement" name="sport_game_type[sport_game_measurement]" class="form-control" title="<?php echo __('Measurement') ?>">
-								<option value="100" selected  ><?php echo 'Select Measure. ...' ?></option>
+								<option value="" selected  ><?php echo 'Select Measure. ...' ?></option>
 								<?php foreach(TournamentCore::processDistanceMeasurements() as $_key => $_event): ?>								 
 									<option value="<?php echo $_key ?>"  >
 										<?php echo $_event ?>
@@ -79,7 +79,7 @@
 						<label class="col-sm-21 control-label"><?php echo __('Player Mode') ?>: <span class="ui-red-text">&nbsp;</span></label>
 						<div class="col-sm-212">
 							<select id="sport_game_player_mode" name="sport_game_type[sport_game_player_mode]" class="form-control" title="<?php echo __('Player Mode') ?>">
-								<option value="100" selected  ><?php echo 'Select Player Mode ...' ?></option>
+								<option value="" selected  ><?php echo 'Select Player Mode ...' ?></option>
 								<?php foreach(TournamentCore::processPlayerModes() as $_key => $_type): ?>								 
 									<option value="<?php echo $_key ?>"  >
 										<?php echo $_type ?>
@@ -90,7 +90,7 @@
 						<label class="col-sm-122 control-label" title="<?php echo __('Team Mode') ?>"><?php echo __('Team Mode') ?>:</label>
 						<div class="col-sm-212">
 							<select id="sport_game_team_mode" name="sport_game_type[sport_game_team_mode]" class="form-control" title="<?php echo __('Team Mode') ?>">
-								<option value="100" selected  ><?php echo 'Select Team Mode ...' ?></option>
+								<option value="" selected  ><?php echo 'Select Team Mode ...' ?></option>
 								<?php foreach(TournamentCore::processParticipantTeamModes() as $_key => $_mode): ?>								 
 									<option value="<?php echo $_key ?>"  >
 										<?php echo $_mode ?>

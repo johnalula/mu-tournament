@@ -81,19 +81,22 @@ class TeamTable extends PluginTeamTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.confirm_flag as confirmFlag, tm.active_flag as activeFlag, 
+		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirm_flag as confirmFlag, tm.active_flag as activeFlag, 
+		 trnmnt.id as tournamentID,
+		 
+		 (EXISTS (SELECT tmGmPrtn.id FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 
 		";	
 		return $_queryFileds;
 	}
 	//
-  // process list selection function 
+	// process list selection function 
    public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("Team tm") 
-				//->innerJoin("tm.Campus cmps on tm.campus_id = cmps.id ")  
-				//->innerJoin("tm.Organization org on tm.org_id = org.id ")   
+				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
+				->innerJoin("tm.Organization org on tm.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit) 
 				->orderBy("tm.id ASC")
@@ -116,9 +119,28 @@ class TeamTable extends PluginTeamTable
 		  
 	}
 	//
-   public static function processCandidates ( ) 
+   public static function processCandidates ( $_orgID=null, $_orgTokenID=null, $_torunamentID=null, $_keyword=null, $_exclusion=null, $_activeFlag=null, $_offset=0, $_limit=10 ) 
    {
-		 
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("Team tm") 
+				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
+				->innerJoin("tm.Organization org on tm.org_id = org.id ")   
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("tm.id ASC")
+				->where("tm.id IS NOT NULL");
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("tm.org_id = ? AND tm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_torunamentID)) $_qry = $_qry->addWhere("tm.tournament_id = ?", $_torunamentID);    
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
+				if(!is_null($_exclusion))  $_qry = $_qry->andWhereNotIn("tm.id", $_exclusion ); 
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
 	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_teamID, $_tokenID ) 
@@ -126,11 +148,11 @@ class TeamTable extends PluginTeamTable
 			$_qry = Doctrine_Query::create()
 					->select(self::appendQueryFields())
 					->from("Team tm") 
-					//->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
-					//->innerJoin("tm.Organization org on tm.org_id = org.id ")     
-				->where("tm.id = ? AND tm.token_id = ? ", array($_teamID, $_tokenID ));
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
-				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+					->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
+					->innerJoin("tm.Organization org on tm.org_id = org.id ")  
+					->where("tm.id = ? AND tm.token_id = ? ", array($_teamID, $_tokenID ));
+					//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+					$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
@@ -146,9 +168,23 @@ class TeamTable extends PluginTeamTable
 	**********************************************************/
 	
 	//
-	public static function processCandidatePersonSelection ( ) 
+	public static function processCandidateSportGameParticipation ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_genderCategory, $_offset, $_limit ) 
    { 
+		/*$_sportGameParticipations = TeamGameParticipationTable::processAll ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion );
+		//return TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion, $_offset, $_limit) ;;
 		
+		if(!$_sportGameParticipations) { return false; }   
+		$_exclusion = array();   
+		foreach($_sportGameParticipations as $_sportGame) {
+			if($_sportGame->genderCategoryID != $_genderCategory ) {
+				if( $_sportGame->genderCategoryID !== TournamentCore::$_BOTH_GENDER ) {
+					$_exclusion[] = $_sportGame->id;
+				} 
+			} 
+		} */
+		
+		return TeamGameParticipationTable::processCandidateSelection ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit);
+		//return TeamGameParticipationTable::processAll ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion );
 	}  
 	
 	/*********************************************************
@@ -159,4 +195,69 @@ class TeamTable extends PluginTeamTable
 	{
 		 
 	}
+	
+	// process candidate selection function 
+	public static function processCandidateProductPriceComponents ( $_productID=null, $_productTokenID=null, $_productPriceType=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
+   {
+		$_productPrices = ProductPriceComponentTable::processAll ( $_productID, $_productTokenID, $_productPriceType, $_exclusion, $_status, $_keyword);
+		if(!$_productPrices) { return false; }   
+		$_exclusion = array();   
+		foreach($_productPrices as $_productPrice) {
+			if(!$_productPrice->hasActiveInventoryItem ) {
+				$_exclusion[] = $_productPrice->id;
+			} 
+		} 
+		
+		return ProductPriceComponentTable::processCandidates ( $_productID, $_productTokenID, $_productPriceType, $_exclusion, $_status, $_keyword, $_offset, $_limit);
+	} 
+	
+	
+	// process list selection function 
+   public static function processCandidateInventory ( $_productID, $_productTokenID, $_itemType=null, $_presentFlag=null, $_productStatus=null, $_status=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {  
+		return InventoryItemTable::processCandidateProductInventoryItems ( $_productID, $_productTokenID, $_itemType, $_presentFlag, $_productStatus, $_status, $_keyword, $_offset, $_limit );
+	}
+   public static function processCountCandidateInventory ( $_productID, $_productTokenID, $_itemType=null, $_presentFlag=null, $_productStatus=null, $_status=null, $_keyword=null ) 
+   {  
+		return InventoryItemTable::processCountCandidateProductInventoryItems ( $_productID, $_productTokenID, $_itemType, $_presentFlag, $_productStatus, $_status, $_keyword );
+	}
+	// process list selection function 
+   public static function processCandidateSoldInventory ( $_productID=null, $_productTokenID=null, $_exclusion=null, $_itemType=null, $_presentFlag=null, $_productStatus=null, $_status=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   { 
+		$_inclusions = array();
+		$_productCategorys = ProductCategoryTable::processCandidateSelection ( $_orgID, $_orgTokenID, $_productID, $_productTokenID );
+		 
+		foreach($_productCategorys as $_key => $_productCategory) {
+			//$_tokenID = md5(sha1($_productCategory->token_id));
+			$_inventoryItems = ProductDecompositionTable::processCandidateInventory ( $_orgID, $_orgTokenID, $_productCategory->product_id, $_productCategory->product_token_id );
+			
+			foreach($_inventoryItems as $_key => $_inventoryItem ) {
+				$_inclusions[]= $_inventoryItem->id;
+			}
+		}
+	
+		return InventoryItemTable::processCandidateSelection ( $_categoryID, $_inclusions, $_exclusion, $_itemType, $_presentFlag, $_productStatus, $_status, $_keyword, $_offset, $_limit );
+	}
+   public static function processCountCandidateSoldInventory ( $_productID=null, $_productTokenID=null, $_exclusion=null, $_itemType=null, $_presentFlag=null, $_productStatus=null, $_status=null, $_keyword=null ) 
+   { 
+		$_inclusions = array();
+		$_productCategorys = ProductCategoryTable::processCandidateSelection ( $_orgID, $_orgTokenID, $_productID, $_productTokenID );
+		 
+		foreach($_productCategorys as $_key => $_productCategory) {
+			$_inventoryItems = ProductDecompositionTable::processCandidateInventory ( $_orgID, $_orgTokenID, $_productCategory->product_id, $_productCategory->product_token_id );
+			
+			foreach($_inventoryItems as $_key => $_inventoryItem ) {
+				$_inclusions[]= $_inventoryItem->id;
+			}
+		}
+	
+		return InventoryItemTable::processCountCandidate ( $_categoryID, $_inclusions, $_exclusion, $_itemType, $_presentFlag, $_productStatus, $_status, $_keyword );
+	}
+	
+	// process candidate selection function 
+	public static function processCandidateInventoryItems ( $_prodcutID=null, $_prodcutTokenID=null, $_itemClassID=null, $_itemType=null, $_offset=0, $_limit=10 ) 
+   {
+		
+		return InvoiceItemOrderTable::processCandidates ( $_prodcutID, $_prodcutTokenID, $_itemClassID, $_itemType, $_exclusion, $_status, $_keyword, $_offset, $_limit );
+	} 
 }

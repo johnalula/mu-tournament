@@ -1,5 +1,5 @@
 <div class="ui-login-box" id="ui-login-box" style="" >
-	<div class="ui-login-panel8" id="" style="" >
+	<div class="ui-login-panel81" id="" style="" >
 		<?php include_partial('list', array()) ?> 
 	</div><!-- end of ui-login-panel -->
 	<div class="ui-login-panel4" id="" style="" >

@@ -260,7 +260,7 @@ class UserTable extends PluginUserTable
 		return ( !$_qry ? null:$_qry ); 
 	} 
 	//
-	public static function processLogin ( $_userName, $_userPassword )
+	public static function processLogin ( $_userName, $_userPassword, $_userRole )
 	{
 			$_fullPassword = sha1(md5(md5(sha1(strtoupper(trim($_userName)).trim($_userPassword))))); 
 			$_userPassword = sha1(md5($_userPassword));
@@ -273,8 +273,10 @@ class UserTable extends PluginUserTable
 					->innerJoin("usr.Person prt on usr.person_id = prt.id ")   
 					->innerJoin("usr.UserRole usrRole on usr.user_role_id = usrRole.id ") 
 					->where("usr.username = ? AND usr.password = ? AND usr.full_password = ?", array($_userName, $_userPassword, $_fullPassword))
-					->andWhere("usr.active_flag IS TRUE AND usr.blocked_flag IS NOT TRUE")
-					->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
+					->andWhere("usr.active_flag IS TRUE AND usr.blocked_flag IS NOT TRUE");
+					if(!is_null($_userRole)) $_qry = $_qry->andWhere("usrRole.user_role_type_id = ?", $_userRole);
+					
+					$_qry=$_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
 			
 		return ( ! $_qry ? null : $_qry ); 
 	} 

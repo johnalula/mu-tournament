@@ -8,6 +8,7 @@
  * @property string $token_id
  * @property integer $match_fixture_id
  * @property integer $sport_game_group_id
+ * @property integer $group_type_id
  * @property integer $team_id
  * @property string $effective_date
  * @property boolean $active_flag
@@ -35,6 +36,9 @@ abstract class BaseMatchParticipants extends sfDoctrineRecord
              'type' => 'integer',
              ));
         $this->hasColumn('sport_game_group_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('group_type_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('team_id', 'integer', null, array(

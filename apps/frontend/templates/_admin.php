@@ -69,14 +69,6 @@
 								</a>
 							</li>
 							<li role="separator" class="divider"></li> 
-							
-							<?php if($sf_user->canAccess(ModuleCore::$_GROUP) ): ?>
-							<li class="">
-								<a href="<?php echo url_for('team_group/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/team_group') ?>"><?php echo __('Team Groups') ?>
-								</a>
-							</li>
-							<?php endif; ?>
 							<li class="">
 								<a href="<?php echo url_for('game_category/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/category') ?>"><?php echo __('Game Setup') ?>
@@ -152,12 +144,13 @@
 									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('People') ?>
 								</a>
 							</li> 
-							<li class="<?php echo ($sf_request->getParameter('module') == 'customer') ? 'active':'' ?>">
-								<a href="<?php echo url_for('customer/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/customer') ?>"><?php echo __('Customer') ?>
+							<?php if($sf_user->canAccess(ModuleCore::$_GROUP) ): ?>
+							<li class="">
+								<a href="<?php echo url_for('team_group/index') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/team_group') ?>"><?php echo __('Team Groups') ?>
 								</a>
-							</li>  
-							
+							</li>
+							<?php endif; ?> 
 						</ul>
 					</li>   
 					<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>

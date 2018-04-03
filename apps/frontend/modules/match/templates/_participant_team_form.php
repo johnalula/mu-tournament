@@ -62,6 +62,29 @@
 							</select>
 						</div>
 					</div>  
+					
+					<div class="form-group">
+						<label class="col-sm-21 control-label"><?php echo __('Sport Game') ?>: <span class="ui-red-text">*</span></label>
+						<div class="col-sm-40"> 
+							<div class="input-group">
+								<input type="text" class="form-control">
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-default	dropdown-toggle" data-toggle="dropdown">
+										Select
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu pull-right">
+										<li><a href="#">Action</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+										<li class="divider"></li>
+										<li><a href="#">Separated link</a></li>
+									</ul>
+								</div><!-- /btn-group -->
+							</div><!-- /input-group -->
+
+						</div>
+					</div> 
 					<div class="form-group">
 						<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>:&nbsp;</label>
 						<div class="col-sm-40"> 

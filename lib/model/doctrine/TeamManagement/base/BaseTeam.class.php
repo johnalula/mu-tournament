@@ -7,6 +7,7 @@
  * 
  * @property string $token_id
  * @property integer $org_id
+ * @property string $org_token_id
  * @property integer $tournament_id
  * @property string $tournament_token_id
  * @property integer $country_id
@@ -16,6 +17,7 @@
  * @property string $team_city
  * @property string $total_member
  * @property string $team_logo
+ * @property string $flag_logo_alias
  * @property string $start_date
  * @property string $end_date
  * @property boolean $confirm_flag
@@ -26,7 +28,7 @@
  * @property Tournament $Tournament
  * @property Doctrine_Collection $teamGroupMembers
  * @property Doctrine_Collection $teamGameParticipations
- * @property Doctrine_Collection $TeamParticipants
+ * @property Doctrine_Collection $teamMemberParticipants
  * @property Doctrine_Collection $teamsTeamDetails
  * @property Doctrine_Collection $teamMatchParticipants
  * @property Doctrine_Collection $MatchResult
@@ -50,6 +52,10 @@ abstract class BaseTeam extends sfDoctrineRecord
              ));
         $this->hasColumn('org_id', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('org_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
              ));
         $this->hasColumn('tournament_id', 'integer', null, array(
              'type' => 'integer',
@@ -84,6 +90,10 @@ abstract class BaseTeam extends sfDoctrineRecord
         $this->hasColumn('team_logo', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
+             ));
+        $this->hasColumn('flag_logo_alias', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
              ));
         $this->hasColumn('start_date', 'string', 100, array(
              'type' => 'string',
@@ -123,7 +133,7 @@ abstract class BaseTeam extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('TeamGroup as teamGroupMembers', array(
+        $this->hasMany('SportGameTeamGroup as teamGroupMembers', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 
@@ -131,7 +141,7 @@ abstract class BaseTeam extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'team_id'));
 
-        $this->hasMany('TeamParticipants', array(
+        $this->hasMany('TeamMemberParticipant as teamMemberParticipants', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 

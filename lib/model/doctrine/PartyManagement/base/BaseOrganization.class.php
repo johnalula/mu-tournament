@@ -36,7 +36,7 @@ abstract class BaseOrganization extends Party
              'local' => 'id',
              'foreign' => 'org_id'));
 
-        $this->hasMany('GroupType as organizationGroupTypes', array(
+        $this->hasMany('GameGroupType as organizationGroupTypes', array(
              'local' => 'id',
              'foreign' => 'org_id'));
 

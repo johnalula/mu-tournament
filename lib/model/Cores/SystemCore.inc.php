@@ -133,7 +133,7 @@ class SystemCore {
 	
 	public static $_ACTIVATE = 1;
 	public static $_BLOCK = 2; 
-	public static $_DELETE = 3; 
+	public static $_DELETED = 3; 
 	public static $_TERMINATE = 4; 
 	public static $_COMPLETE_DELETE = 5; 
 	public static $_RESTORE = 6; 
@@ -205,7 +205,7 @@ class SystemCore {
 			case self::$_BLOCK:
 				return 'reject';
 			break;
-			case self::$_DELETE:
+			case self::$_DELETED:
 				return 'delete';
 			break;
 			case self::$_RESTORE:
@@ -221,7 +221,7 @@ class SystemCore {
 	public static $_CREATE = 1;
 	public static $_UPDATE = 2;
 	public static $_READ = 3;
-	public static $DELETE = 4;
+	public static $_DELETE = 4;
 	public static $_LOGIN = 5;
 	public static $_LOGOUT = 6;
 	public static $_APPROVE = 7;
@@ -326,6 +326,16 @@ class SystemCore {
 			break;
 		}  
 	} 
+	public static function processTournamentSeason ()
+	{
+		$_season = array();
+		for( $_i=2005;$_i<2030; $_i++){
+				$_season[] = $_i;
+			}
+			 
+		return $_season;  
+	}
+	
 	
 	public static $_COUNTRIES = array ( 
 	1 => "AFGHANISTAN, ISLAMIC STATE OF", 2 => "ALBANIA", 3 => "ALGERIA ", 4 => "AMERICAN SAMOA", 5 => "ANDORRA", 6 => "ANGOLA", 7 => "ANGUILLA", 8 => "ANTARCTICA", 9 => "ANTIGUA AND BARBUDA", 10 => "ARGENTINA", 11 => "ARMENIA ", 12 => "ARUBA  ", 13 => "AUSTRALIA ", 14 => "AUSTRIA", 15 => "AZERBAIDJAN", 16 => "BAHAMAS", 17 => "BAHRAIN", 18 => "BANGLADESH", 19 => "BARBADOS", 20 => "BELARUS", 21 => "BELGIUM", 22 => "BELIZE", 23 => "BENIN", 24 => "BERMUDA", 25 => "BHUTAN", 26 => "BOLIVIA", 27 => "BOSNIA-HERZEGOVINA", 28 => "BOTSWANA", 29 => "BOUVET ISLAND", 30 => "BRAZIL", 31 => "BRITISH INDIAN OCEAN TERRITORY", 32 => "BRUNEI DARUSSALAM", 33 => "BULGARIA", 34 => "BURKINA FASO", 1 => "BURUNDI", 35 => "CAMBODIA", 36 => "CAMEROON", 37 => "CANADA", 38 => "CAPE VERDE", 39 => "CAYMAN ISLANDS", 40 => "CENTRAL AFRICAN REPUBLIC", 41 => "CHAD", 42 => "CHILE", 43 => "CHINA", 44 => "HRISTMAS ISLAND", 45 => "COCOS (KEELING) ISLANDS", 46 => "COLOMBIA", 47 => "COMOROS", 48 => "CONGO", 49 => "DEMOCRATIC REPUBLIC OF CONGO", 50 => "COOK ISLANDS", 51 => "COSTA RICA", 52 => "CROATIA", 53 => "CUBA", 54 => "CYPRUS", 55 => "CZECH REPUBLIC", 56 => "DENMARK", 57 => "DJIBOUTI", 58 => "DOMINICA", 59 => "DOMINICAN REPUBLIC", 60 => "EAST TIMOR", 61 => "ECUADOR", 62 => "EGYPT", 63 => "EL SALVADOR", 64 => "EQUATORIAL GUINEA", 65 => "ERITREA", 66 => "ESTONIA", 67 => "ETHIOPIA", 68 => "FALKLAND", 69 => "ICLANDS", 70 => "FAROE ISLANDS", 71 => "FIJI", 72 => "FINLAND", 73 => "United Kingdom", 74 => "United States of America"	);
@@ -548,10 +558,7 @@ class SystemCore {
 			break;
 			case UserCore::$_EDITOR:
 				return 'author/profile?author_id='.$_authorID;
-			break;
-			case UserCore::$_REVIEWER:
-				return 'reviewing/profile?author_id='.$_authorID;
-			break;  
+			break; 
 		}
 	}
 	public static function makeHomeURL($_userRoleID, $_authorID)

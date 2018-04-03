@@ -9,7 +9,9 @@ class TournamentCore {
 	public static $_ROUNDING = 6;
 	public static $_FINALIZED = 7;
 	public static $_COMPLETED = 8;
-	public static $_TOURNAMENT_STATUS = array ( 1 => "Pending", 2 => "Active", 3 => "Not Playe", 4 => "Played", 5 => "Postpond", 6 => "Rounding", 7 => "Finalized", 8 => "Completed" );
+	public static $_CONFIRMED = 9;
+	
+	public static $_TOURNAMENT_STATUS = array ( 1 => "Pending", 2 => "Active", 3 => "Not Playe", 4 => "Played", 5 => "Postpond", 6 => "Rounding", 7 => "Finalized", 8 => "Completed", 9 => "Confirmed" );
 
 	public static function processTournamentStatuses() 
 	{
@@ -154,7 +156,7 @@ class TournamentCore {
 	public static $_SPRINTS = 1;
 	public static $_MIDDLE_DISTANCE = 2;
 	public static $_LONG_DISTANCE = 3;
-	public static $_HARDLES = 4;
+	public static $_HURDLES = 4;
 	public static $_STEEPLE_CHASE = 5; 
 	public static $_RELAY = 6;
 	public static $_JUMPS = 7;
@@ -165,7 +167,7 @@ class TournamentCore {
 	public static $_WHEELCHAIR_RACING = 12;
 	public static $_OTHER_DISTANCE = 13;
 	
-	public static $_DISTANCE_TYPES = array ( 1 => "Sprints", 2 => "Middle Distance", 3 => "Long Distance", 4 => "Hardless", 5 => "Steeplechase", 6 => "Relay",7 => "Jumps", 8 => "Throws", 9 => "Cross Country", 10 => "Half Marathon", 11 => "Marathon", 12 => "Wheelchair Racing", 13 => "Other" );
+	public static $_DISTANCE_TYPES = array ( 1 => "Sprints", 2 => "Middle Distance", 3 => "Long Distance", 4 => "Hurdless", 5 => "Steeplechase", 6 => "Relay",7 => "Jumps", 8 => "Throws", 9 => "Cross Country", 10 => "Half Marathon", 11 => "Marathon", 12 => "Wheelchair Racing", 13 => "Other" );
 
 	public static function processDistanceTypes() 
 	{
@@ -216,8 +218,8 @@ class TournamentCore {
 			case self::$_LONG_DISTANCE:
 				return 'long_distance';
 			break; 
-			case self::$_HARDLES:
-				return 'hardles';
+			case self::$_HURDLES:
+				return 'hurdles';
 			break;
 			case self::$_STEEPLE_CHASE:
 				return 'steeplechase';
@@ -248,7 +250,192 @@ class TournamentCore {
 			break;
 		}
 	}  
+	public static function processDistanceTypeAlias ($_distance) 
+	{
+		switch($_distance) {			
+			case self::$_SPRINTS:
+				return 'Running';
+			break;
+			case self::$_MIDDLE_DISTANCE:
+				return 'Running';
+			break;
+			case self::$_LONG_DISTANCE:
+				return 'Running';
+			break; 
+			case self::$_HURDLES:
+				return 'Hurdles';
+			break;
+			case self::$_STEEPLE_CHASE:
+				return 'Steeplechase';
+			break;
+			case self::$_RELAY:
+				return 'Relay';
+			break;
+			case self::$_JUMPS:
+				return 'Jumps';
+			break;
+			case self::$_THROWS:
+				return 'Throws';
+			break;
+			case self::$_CROSS_COUNTRY:
+				return 'Running';
+			break;
+			case self::$_HALF_MARATHON:
+				return 'Running';
+			break;
+			case self::$_MARATHON:
+				return 'Running';
+			break;
+			case self::$_WHEELCHAIR_RACING:
+				return 'wheelchair_racing';
+			break;
+			default:
+				return false;
+			break;
+		}
+	}  
+	public static function processTypeExclusion ($_distance) 
+	{
+		switch($_distance) {			
+			case self::$_SPRINTS:
+				return true;
+			break;
+			case self::$_MIDDLE_DISTANCE:
+				return true;
+			break;
+			case self::$_LONG_DISTANCE:
+				return true;
+			break; 
+			case self::$_HURDLES:
+				return true;
+			break;
+			case self::$_STEEPLE_CHASE:
+				return true;
+			break;
+			case self::$_RELAY:
+				return true;
+			break;
+			case self::$_JUMPS:
+				return true;
+			break;
+			case self::$_THROWS:
+				return true;
+			break;
+			case self::$_CROSS_COUNTRY:
+				return true;
+			break;
+			case self::$_HALF_MARATHON:
+				return true;
+			break;
+			case self::$_MARATHON:
+				return true;
+			break;
+			case self::$_WHEELCHAIR_RACING:
+				return true;
+			break;
+			default:
+				return false;
+			break;
+		}
+	}  
+	public static function processJumpExclusion ($_distance) 
+	{
+		switch($_distance) {	 
+			case self::$_JUMPS:
+				return true;
+			break; 
+			default:
+				return false;
+			break;
+		}
+	}  
+	public static function processThrowExclusion ($_distance) 
+	{
+		switch($_distance) {	 
+			case self::$_JUMPS:
+				return true;
+			break; 
+			default:
+				return false;
+			break;
+		}
+	}  
 	
+	/************************************************/
+	
+	public static $_RUNNING_ATHLETICS = 1;
+	public static $_HURDLES_ATHLETICS = 2;
+	public static $_STEEPLE_CHASE_ATHLETICS = 3; 
+	public static $_RELAY_ATHLETICS = 4;
+	public static $_JUMPS_ATHLETICS = 5;
+	public static $_THROWS_ATHLETICS = 6;
+	public static $_OTHER_ATHLETICS = 7;
+	
+	public static $_ATHLETICS_TYPES = array ( 1 => "Running", 2  => "Hurdless", 3 => "Steeplechase", 4 => "Relay", 5 => "Jumps", 6 => "Throws", 7 => "Other" );
+
+	public static function processAthleticsTypes() 
+	{
+		return self::$_ATHLETICS_TYPES;
+	}
+	public static function processAthleticsTypeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_ATHLETICS_TYPES as $_key => $_distance ) {
+				if( strcmp($_distance, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}        
+	}
+	public static function processAthleticsTypeValue ( $_id )
+	{
+		try {
+			foreach( self::$_ATHLETICS_TYPES as $_key => $_distance ) {
+				if( $_key == $_id )
+					return $_distance; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}    
+	}
+	public static function processDefaultAthleticsType ( )
+	{
+		 try {
+				return self::$_RUNNING; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processAthleticsTypeIcon ($_distance) 
+	{
+		switch($_distance) {			
+			case self::$_RUNNING_ATHLETICS:
+				return 'running';
+			break; 
+			case self::$_HURDLES_ATHLETICS:
+				return 'hurdles';
+			break;
+			case self::$_STEEPLE_CHASE_ATHLETICS:
+				return 'steeplechase';
+			break;
+			case self::$_RELAY_ATHLETICS:
+				return 'relay';
+			break;
+			case self::$_JUMPS_ATHLETICS:
+				return 'jumps';
+			break;
+			case self::$_THROWS_ATHLETICS:
+				return 'throws';
+			break; 
+			default:
+				return 'other';
+			break;
+		}
+	}  
 	
 	/*********************************************/
 	
@@ -325,12 +512,13 @@ class TournamentCore {
 	/*********************************************/
 	
 	public static $_FIN = 1;
-	public static $_DNF = 2;
+	public static $_QFD = 2;
 	public static $_DNS = 3;
-	public static $_DISQ = 4;
-	public static $_OTHER_STATUS = 5; 
+	public static $_DNF = 4;
+	public static $_DISQ = 5;
+	public static $_OTHER_STATUS = 6; 
 
-	public static $_COMPETITION_STATUSES = array ( 1 => 'Finished', 2 => 'Did Not Finish', 3 => 'Did Not Start', 4 => 'Disqualified', 5 => 'Other Status');
+	public static $_COMPETITION_STATUSES = array ( 1 => 'Finished', 2 => 'Qualified', 3 => 'Did Not Start', 4 => 'Did Not Finish', 5 => 'Disqualified', 6 => 'Other Status');
 	
 	public static function processCompetitionStatuses ( ) 
 	{
@@ -380,6 +568,9 @@ class TournamentCore {
 			case self::$_FIN:
 				return 'FIN';
 			break;
+			case self::$_QFD:
+				return 'QFD';
+			break;
 			case self::$_DNF:
 				return 'DNF';
 			break;
@@ -399,6 +590,9 @@ class TournamentCore {
 		switch($_round) {			
 			case self::$_FIN:
 				return 'FIN';
+			break;
+			case self::$_QFD:
+				return 'QFD';
 			break;
 			case self::$_DNF:
 				return 'DNF';
@@ -651,9 +845,9 @@ class TournamentCore {
 	public static $_TRACK = 1;
 	public static $_FIELD = 2;
 	public static $_ROAD = 3;
-	public static $_OTHER_EVENT = 4; 
+	public static $_COMBINED = 4; 
 
-	public static $_EVENT_TYPES = array ( 1 => 'Track', 2 => 'Field', 3 => 'Road', 4 =>  'None');
+	public static $_EVENT_TYPES = array ( 1 => 'Track', 2 => 'Field', 3 => 'Road', 4 =>  'Combined');
 	
 	public static function processEventTypes ( ) 
 	{
@@ -709,8 +903,8 @@ class TournamentCore {
 			case self::$_ROAD:
 				return 'Road Event';
 			break;
-			case self::$_OTHER_EVENT:
-				return 'Other EVEnt';
+			case self::$_COMBINED:
+				return 'Combined EVEnt';
 			break; 
 		}
 	}
@@ -791,24 +985,23 @@ class TournamentCore {
 	/*********************************************/
 	
 	public static $_PAIR_TEAM = 1;
-	public static $_MULTIPLE_TEAM = 1;
-	public static $_OTHER_MODE = 3; 
+	public static $_MULTIPLE_TEAM = 2;
 
-	public static $_PARTICIPANT_TEAM_MODES = array ( 1 => 'Pair Team', 2 => 'Multiple Teams', 4 =>  'Other Mode');
+	public static $_CONTESTANT_TEAM_MODES = array ( 1 => 'Pair Team', 2 => 'Multiple Teams' );
 	
-	public static function processParticipantTeamModes ( ) 
+	public static function processContestantTeamModes ( ) 
 	{
 		 try {
-				return self::$_PARTICIPANT_TEAM_MODES; 
+				return self::$_CONTESTANT_TEAM_MODES; 
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
 	}
 	
-	public static function processParticipantTeamModeID ( $_value ) 
+	public static function processContestantTeamModeID ( $_value ) 
 	{
 		try {
-			foreach( self::$_PARTICIPANT_TEAM_MODES as $_key => $_event ){
+			foreach( self::$_CONTESTANT_TEAM_MODES as $_key => $_event ){
 				if( strcmp($_event, $_value) == 0 )
 					return $_key; 
 			}
@@ -818,10 +1011,10 @@ class TournamentCore {
 		}
 	}
 
-	public static function processParticipantTeamModeValue ($_id )
+	public static function processContestantTeamModeValue ($_id )
 	{
 		try {
-			foreach( self::$_PARTICIPANT_TEAM_MODES as $_key => $_event ){
+			foreach( self::$_CONTESTANT_TEAM_MODES as $_key => $_event ){
 			  if( $_key == $_id )
 					return $_event; 
 			}
@@ -830,7 +1023,7 @@ class TournamentCore {
 			return null; 
 		}
 	}
-	public static function processDefaultParticipantTeamMode ( )
+	public static function processDefaultContestantTeamMode ( )
 	{
 		 try {
 				return self::$_OTHER_MODE; 
@@ -838,7 +1031,7 @@ class TournamentCore {
 			return $_e; 
 	  }   
 	}
-	public static function processParticipantTeamModeIcon ($_event) 
+	public static function processContestantTeamModeIcon ($_event) 
 	{
 		switch($_event) {			
 			case self::$_PAIR_TEAM:
@@ -858,9 +1051,9 @@ class TournamentCore {
 	public static $_LONG = 1;
 	public static $_TRIPLE_JUMP = 2;
 	public static $_HIGH = 3;
-	public static $_OTHER_JUMP = 4; 
+	public static $_POLE_VAULT = 4;
 
-	public static $_JUMP_TYPES = array ( 1 => 'Long Jump', 2 => 'Triple Jump',3 =>  'High Jump',4 =>  'Other');
+	public static $_JUMP_TYPES = array ( 1 => 'Long Jump', 2 => 'Triple Jump', 3 =>  'High Jump', 4 =>  'Pole Vault');
 	
 	public static function processJumpTypes ( ) 
 	{
@@ -916,8 +1109,8 @@ class TournamentCore {
 			case self::$_HIGH:
 				return 'high_jump';
 			break;
-			case self::$_OTHER_MEASUREMENT:
-				return 'other';
+			case self::$_POLE_VAULT:
+				return 'pole_vault';
 			break; 
 		}
 	}
@@ -927,9 +1120,8 @@ class TournamentCore {
 	public static $_DISCUS = 2;
 	public static $_HAMMER = 3;
 	public static $_JAVLINE = 4; 
-	public static $_OTHER_THROW = 5; 
 
-	public static $_THROW_TYPES = array ( 1 => 'Shot Put', 2 => 'Discus',3 =>  'Hammer', 4 =>  'Javline', 5 =>  'Other');
+	public static $_THROW_TYPES = array ( 1 => 'Shot Put', 2 => 'Discus',3 =>  'Hammer', 4 =>  'Javline' );
 	
 	public static function processThrowTypes ( ) 
 	{
@@ -988,10 +1180,7 @@ class TournamentCore {
 			break;
 			case self::$_JAVLINE:
 				return 'javline';
-			break; 
-			case self::$_OTHER_THROW:
-				return 'other';
-			break; 
+			break;  
 		}
 	}
 	/*********************************************/
@@ -1076,11 +1265,13 @@ class TournamentCore {
 
 
 /************************************************/
+
 	public static $_MEN = 1; 
 	public static $_WOMEN = 2; 
-	public static $_MIXED = 3; 
+	public static $_BOTH_GENDER = 3; 
+	public static $_MIXED = 4; 
 	
-	public static $_GENDERS = array ( 1 => "Men", 2 => "Women", 3 => "Mixed" );
+	public static $_GENDERS = array ( 1 => "Men", 2 => "Women", 3 => "Both Gender", 4 => "Mixed" );
 	public static $_PLAYER_GENDERS = array ( 1 => "Men", 2 => "Women");
 	
 	public static function processPlayerGender ( ) 
@@ -1140,6 +1331,9 @@ class TournamentCore {
 			break;	
 			case self::$_WOMEN:
 				return 'W';
+			break; 
+			case self::$_BOTH_GENDER:
+				return 'Both';
 			break; 
 			case self::$_MIXED:
 				return 'MX';

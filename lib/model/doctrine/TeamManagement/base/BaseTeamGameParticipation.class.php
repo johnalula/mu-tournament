@@ -102,9 +102,9 @@ abstract class BaseTeamGameParticipation extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('TeamParticipants as teamGameParticipantPersons', array(
+        $this->hasMany('TeamMemberParticipant as teamGameParticipantPersons', array(
              'local' => 'id',
-             'foreign' => 'game_participation_id'));
+             'foreign' => 'sport_game_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

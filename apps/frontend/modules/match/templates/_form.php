@@ -17,7 +17,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Game Type') ?>"><?php echo __('Game Type') ?>:</label>
+					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Game Type') ?>"><?php echo __('Game Type') ?>:<span class="ui-red-text">*</span></label>
 					<div class="col-sm-40"> 
 						<div class="input-group">
 							<input type="text" class="form-control " id="sport_game_category_name" name="tournament_match[sport_game_category_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateSportGameCategoryModal"  disabled>
@@ -36,18 +36,18 @@
 					<div class="col-sm-23">
 						<select id="match_season" name="tournament_match[match_season]" class="form-control" title="<?php echo __('Tournament Season') ?>">
 							<option value="100" selected  ><?php echo 'Select Season ...' ?></option>
-							<?php foreach(TournamentCore::processParticipantTeamModes() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>"  >
-									<?php echo $_matchStatus ?>
+							<?php foreach(SystemCore::processTournamentSeason() as $_key => $_season): ?>								 
+								<option value="<?php echo $_season ?>" <?php echo $_season == date('Y', time()) ? 'selected':'' ?> >
+									<?php echo $_season.' ( '.$_season.'/'.($_season+1).' )'?>
 								</option>								 
 							<?php endforeach; ?>
 						</select>
 					</div>
-					<label class="col-sm-01 control-label" title="<?php echo __('Participant Teams Mode') ?>"><?php echo __('Mode') ?>:</label>
+					<label class="col-sm-01 control-label" title="<?php echo __('Participant Teams Mode') ?>"><?php echo __('Mode') ?>:<span class="ui-red-text">*</span></label>
 					<div class="col-sm-23">
 						<select id="participant_team_mode" name="tournament_match[participant_team_mode]" class="form-control" title="<?php echo __('Participant Teams Mode') ?>">
-							<option value="100" selected  ><?php echo 'Select Team Mode ...' ?></option>
-							<?php foreach(TournamentCore::processParticipantTeamModes() as $_key => $_matchStatus): ?>								 
+							<option value="" selected  ><?php echo 'Select Team Mode ...' ?></option>
+							<?php foreach(TournamentCore::processContestantTeamModes() as $_key => $_matchStatus): ?>								 
 								<option value="<?php echo $_key ?>"  >
 									<?php echo $_matchStatus ?>
 								</option>								 
@@ -61,7 +61,7 @@
 						<select id="match_status" name="tournament_match[match_status]" class="form-control" title="<?php echo __('Match Status') ?>">
 							<option value="" selected  ><?php echo 'Select Status ...' ?></option>
 							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>"  >
+								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PENDING ? 'selected':'' ?> >
 									<?php echo $_matchStatus ?>
 								</option>								 
 							<?php endforeach; ?>

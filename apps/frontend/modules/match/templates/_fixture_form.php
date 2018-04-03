@@ -34,6 +34,12 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-sm-21 control-label" title="<?php echo __('Match Venue') ?>"><?php echo __('Match Venue') ?>:&nbsp;</label>
+						<div class="col-sm-40"> 
+							<input type="text" class="form-control " id="match_venue" name="match_fixture[match_venue]" placeholder="<?php echo __('Match Venue') ?>" title="<?php echo __('Match Venue') ?>" value="" >
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-sm-21 control-label"><?php echo __('Event Type') ?>:&nbsp;</label>
 						<div class="col-sm-23">
 							<select id="event_type" name="match_fixture[event_type]" class="form-control" title="<?php echo __('Event Type') ?>">
@@ -80,31 +86,7 @@
 								<?php endforeach; ?>
 							</select>
 						</div>
-					</div>  
-					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Group') ?>:&nbsp;</label>
-						<div class="col-sm-23">
-							 <select id="match_group" name="match_fixture[match_group]" class="form-control" title="<?php echo __('Match Group') ?>">
-								<option value="100" selected  ><?php echo 'Select Group ...' ?></option>
-								<?php foreach(TournamentCore::processGroupNumbers () as $_key => $_groupNumber): ?>								 
-									<option value="<?php echo $_key ?>"  >
-										<?php echo $_groupNumber ?>
-									</option>								 
-								<?php endforeach; ?>
-							</select>
-						</div>
-						<label class="col-sm-01 control-label" title="<?php echo __('Match Status') ?>"><?php echo __('Status') ?>:</label>
-						<div class="col-sm-23">
-							<select id="match_status" name="match_fixture[match_status]" class="form-control" title="<?php echo __('Match Status') ?>">
-								<option value="100" selected  ><?php echo 'Select Status ...' ?></option>
-								<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-									<option value="<?php echo $_key ?>"  >
-										<?php echo $_matchStatus ?>
-									</option>								 
-								<?php endforeach; ?>
-							</select>
-						</div>
-					</div> 
+					</div>   
 					<div class="form-group">
 						<label class="col-sm-21 control-label"><?php echo __('Match Time') ?> :&nbsp;</label>
 						<div class="col-sm-23">

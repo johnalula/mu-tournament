@@ -25,7 +25,7 @@
 					<div class="ui-panel-content-box">
 						<div class="ui-panel-detail-form-container" style=""> 
 							<div class="ui-panel-form-content"> 
-								<?php include_partial('form', array( )) ?> 
+								<?php include_partial('form', array('_candidateGroups' => $_candidateGroups,'_activeTournament' => $_activeTournament,'_candidateGameCategorys' => $_candidateGameCategorys) ) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
 						

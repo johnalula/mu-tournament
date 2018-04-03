@@ -8,94 +8,95 @@
 					<?php echo __('Team Group') ?>
 				</legend>
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Tournament') ?>"><?php echo __('Tournament') ?>:</label>
+					<label class="col-sm-21 control-label" title="<?php echo __('Tournament') ?>"><?php echo __('Tournament') ?>: <span class="ui-red-text">&nbsp;</span></label>
 					<div class="col-sm-40"> 
-						<input type="text" class="form-control" id="tournament_name" name="tournament_match[tournament_name]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->tournamentName.' ('.$_activeTournament->tournamentAlias.' ) - '.$_activeTournament->tournamentSeason ?>" disabled >
-						<input type="hidden" class="form-control" id="tournament_token_id" name="tournament_match[tournament_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->token_id ?>"  >
-						<input type="hidden" class="form-control" id="tournament_id" name="tournament_match[tournament_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->id ?>"  >
-						<input type="hidden" class="form-control" id="match_season" name="tournament_match[match_season]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->tournamentSeason ?>"  >
+						<input type="text" class="form-control" id="tournament_name" name="team_group[tournament_name]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->tournamentName.' ('.$_activeTournament->tournamentAlias.' ) - '.$_activeTournament->tournamentSeason ?>" disabled >
+						<input type="hidden" class="form-control" id="tournament_token_id" name="team_group[tournament_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->token_id ?>"  >
+						<input type="hidden" class="form-control" id="tournament_id" name="team_group[tournament_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->id ?>"  >
+						<input type="hidden" class="form-control" id="match_season" name="team_group[match_season]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->tournamentSeason ?>"  >
 					</div>
-				</div>
+				</div> 
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Sport Games') ?>"><?php echo __('Sport Game') ?>:</label>
+					<label class="col-sm-21 control-label" title="<?php echo __('Sport Games Type') ?>"><?php echo __('Game Type') ?>: <span class="ui-red-text">*</span></label>
+					<div class="col-sm-40"> 
+						<select id="game_category" name="team_group[game_category]" class="form-control" title="<?php echo __('Match Group') ?>">
+							<option value="" selected  ><?php echo 'Select Category ...' ?></option>
+							<?php foreach($_candidateGameCategorys as $_key => $_candidateGameCategory): ?>								 
+								<option value="<?php echo $_candidateGameCategory->id ?>"  >
+									<?php echo $_candidateGameCategory->categoryName ?>
+								</option>								 
+							<?php endforeach; ?>
+						</select>
+					</div>
+				</div> 
+				<div class="form-group">
+					<label class="col-sm-21 control-label"><?php echo __('Sport Game') ?>: <span class="ui-red-text">*</span></label>
 					<div class="col-sm-40"> 
 						<div class="input-group">
-							<input type="text" class="form-control " id="sport_game_category_name" name="tournament_match[sport_game_category_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateSportGameCategoryModal"  disabled>
-							<input type="hidden" class="form-control" id="sport_game_category_id" name="tournament_match[sport_game_category_id]" placeholder="" value="">
-							<input type="hidden" class="form-control" id="sport_game_category_token_id" name="tournament_match[sport_game_category_token_id]" value=""> 
+							<input type="text" class="form-control " id="sport_game_full_name" name="team_group[sport_game_full_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateSportGameModal"  disabled>
+							<input type="hidden" class="form-control" id="sport_game_id" name="team_group[sport_game_id]" placeholder="" value="">
+							<input type="hidden" class="form-control" id="sport_game_token_id" name="team_group[sport_game_token_id]" value=""> 
+							<input type="hidden" class="form-control" id="sport_game_category_name" name="team_group[sport_game_category_name]" value=""> 
 							<span class="input-group-btn">
-								<button class="btn btn-default selectCandidateSportGameCategory" type="button" data-toggle="modal" data-target="#candidateSportGameCategoryModal" title="<?php echo __('Candidat Sport Game Category') ?>">
+								<button class="btn btn-default selectCandidateSportGame" type="button" data-toggle="modal" data-target="#candidateSportGameModal" title="<?php echo __('Candidat Sport Game') ?>" disabled>
 									<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 								</button>
 							</span>
 						</div><!-- /input-group -->
 					</div>
-				</div>
+				</div>  
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Sport Games') ?>"><?php echo __('Sport Game') ?>:</label>
+					<label class="col-sm-21 control-label"><?php echo __('Group') ?>: <span class="ui-red-text">*</span></label>
 					<div class="col-sm-40"> 
-						<select id="match_group" name="match_fixture[match_group]" class="form-control" title="<?php echo __('Match Group') ?>">
-							<option value="100" selected  ><?php echo 'Select Group ...' ?></option>
-							<?php foreach(TournamentCore::processGroupNumbers () as $_key => $_groupNumber): ?>								 
-								<option value="<?php echo $_key ?>"  >
-									<?php echo $_groupNumber ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Season') ?>"><?php echo __('Season') ?>:</label>
-					<div class="col-sm-23">
-						<select id="match_season" name="tournament_match[match_season]" class="form-control" title="<?php echo __('Tournament Season') ?>">
-							<option value="100" selected  ><?php echo 'Select Season ...' ?></option>
-							<?php foreach(TournamentCore::processParticipantTeamModes() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>"  >
-									<?php echo $_matchStatus ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
-					</div>
-					<label class="col-sm-01 control-label" title="<?php echo __('Participant Teams Mode') ?>"><?php echo __('Mode') ?>:</label>
-					<div class="col-sm-23">
-						<select id="participant_team_mode" name="tournament_match[participant_team_mode]" class="form-control" title="<?php echo __('Participant Teams Mode') ?>">
-							<option value="100" selected  ><?php echo 'Select Team Mode ...' ?></option>
-							<?php foreach(TournamentCore::processParticipantTeamModes() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>"  >
-									<?php echo $_matchStatus ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
-					</div>
-				</div> 
-				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Match Status') ?>"><?php echo __('Status') ?>:</label>
-					<div class="col-sm-23">
-						<select id="match_status" name="tournament_match[match_status]" class="form-control" title="<?php echo __('Match Status') ?>">
-							<option value="" selected  ><?php echo 'Select Status ...' ?></option>
-							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>"  >
-									<?php echo $_matchStatus ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
-					</div>
-					<label class="col-sm-01 control-label" title="<?php echo __('Touirnament Match Date') ?>"><?php echo __('Date') ?>:</label>
-					<div class="col-sm-23">
-						<div class="input-group"> 
-							<input class="form-control" id="match_date" name="tournament_match[match_date]" type="text" placeholder="<?php echo __('Date') ?>" value="<?php echo date('m/d/Y', time()) ?>" title="<?php echo __('Match Date') ?>" readonly>
-							<span class="input-group-btn">
-									<button class="btn btn-default " type="button" data-toggle="modal" data-target="#" title="<?php echo __('Candidat Sport Game Category') ?>">
-									<img class="btn-img" src="<?php echo image_path('icons/calendar_small') ?>" >
+						<div class="input-group">
+							<input type="text" class="form-control" id="sport_game_group_type_name" name="team_group[sport_game_group_type_name]" placeholder="<?php echo __('Group Type') ?>" title="<?php echo __('Sport Game Group Type') ?>" readonly>
+							<input type="hidden" class="form-control" id="sport_game_group_type_id" name="team_group[sport_game_group_type_id]" >
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-default	dropdown-toggle" data-toggle="dropdown">
+									Select Group
+									<span class="caret"></span>
 								</button>
-							</span> 
-						</div>
+								<ul class="dropdown-menu pull-right">
+									<?php foreach($_candidateGroups as $_key => $_candidateGroup): ?>		
+										<li class="selectSportGameGroupType" rel="<?php echo $_candidateGroup->id ?>" id="<?php echo $_candidateGroup->groupName ?>">
+											<a href="#"><?php echo $_candidateGroup->id.'. '.$_candidateGroup->groupName ?></a>
+										</li> 			 
+									<?php endforeach; ?>
+								</ul>
+							</div><!-- /btn-group -->
+						</div><!-- /input-group -->
+
 					</div>
 				</div> 
+				
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>:</label>
+					<label class="col-sm-21 control-label" title="<?php echo __('Contestant Team Mode') ?>"><?php echo __('Mode') ?>: <span class="ui-red-text">&nbsp;</span></label>
+					<div class="col-sm-23">
+						<select id="contestant_team_mode" name="team_group[contestant_team_mode]" class="form-control" title="<?php echo __('Contestant Team Mode') ?>">
+							<option value="" selected  ><?php echo 'Select Gender ...' ?></option>
+							<?php foreach(TournamentCore::processContestantTeamModes() as $_key => $_mode): ?>								 
+								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PAIR_TEAM ? 'selected':'' ?> >
+									<?php echo $_mode ?>
+								</option>								 
+							<?php endforeach; ?>
+						</select>
+					</div>
+					<label class="col-sm-01 control-label" title="<?php echo __('Gender Category') ?>"><?php echo __('Gender') ?>:</label>
+					<div class="col-sm-23">
+						<select id="gender_category" name="team_group[gender_category]" class="form-control" title="<?php echo __('Gender Category') ?>">
+							<option value="" selected  ><?php echo 'Select Gender ...' ?></option>
+							<?php foreach(TournamentCore::processPlayerGender() as $_key => $_gender): ?>								 
+								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultGender () ? 'selected':'' ?> >
+									<?php echo $_gender ?>
+								</option>								 
+							<?php endforeach; ?>
+						</select>
+					</div>
+				</div>  
+				<div class="form-group">
+					<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>: <span class="ui-red-text">&nbsp;</span></label>
 					<div class="col-sm-40"> 
-						<textarea class="form-control form-control-lg" rows=4 id="description" name="tournament_match[description]" placeholder="<?php echo __('Description') ?>" title="<?php echo __('Description') ?>" ></textarea>
+						<textarea class="form-control form-control-md" rows=4 id="description" name="team_group[description]" placeholder="<?php echo __('Description') ?>" title="<?php echo __('Description') ?>" ></textarea>
 					</div>
 				</div>
 			</fieldset> 
@@ -106,30 +107,23 @@
  
 <script>
 	 
-	$('#match_status').change(function(e) {
-		$("#createTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+	$('#game_category').change(function(e) {
+		$("#createTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		$("#cancelTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		$(".selectCandidateSportGame").removeAttr("disabled") ;
+		return false;
+	});  
+	$('#team_group_id').change(function(e) {
+		$("#createTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		$("#cancelTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	});  
 	 
 	
 	$('#description').keyup(function(e) {
-		$("#createTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		$("#createTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		$("#cancelTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
-	});
-	$( "#match_date" ).datepicker({  
-		yearRange: "2005:2020", 
-		changeYear: true,
-		buttonImage: '<?php echo image_path('icons/calendar_small') ?>'
-		/*$("#createTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");*/
 	}); 
 	 
 </script>

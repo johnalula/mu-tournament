@@ -18,8 +18,8 @@ Organization:
     type: '1'
     representative_id: null
     title: null
-    father_name: null
-    grand_father_name: null
+    middle_name: null
+    last_name: null
     full_name: null
     gender: null
     date_of_birth: null
@@ -50,8 +50,8 @@ Person:
     type: '2'
     representative_id: null
     title: null
-    father_name: Haftom
-    grand_father_name: Hagos
+    middle_name: Haftom
+    last_name: Hagos
     full_name: 'John Haftom Hagos'
     gender: '1'
     date_of_birth: ''
@@ -81,8 +81,8 @@ Person:
     type: '2'
     representative_id: null
     title: null
-    father_name: Haftom
-    grand_father_name: Hagos
+    middle_name: Haftom
+    last_name: Hagos
     full_name: 'Yohannes Haftom Hagos'
     gender: '1'
     date_of_birth: ''
@@ -112,8 +112,8 @@ Person:
     type: '2'
     representative_id: null
     title: null
-    father_name: Birhane
-    grand_father_name: Tesfay
+    middle_name: Birhane
+    last_name: Tesfay
     full_name: 'Mokenen Birhane Tesfay'
     gender: '1'
     date_of_birth: ''
@@ -143,8 +143,8 @@ Person:
     type: '2'
     representative_id: null
     title: null
-    father_name: Hadush
-    grand_father_name: Kidane
+    middle_name: Hadush
+    last_name: Kidane
     full_name: 'Berhe Hadush Kidane'
     gender: '1'
     date_of_birth: ''
@@ -155,6 +155,216 @@ Person:
     access_activation_key: null
     created_at: '2016-01-18 20:22:15'
     updated_at: '2016-01-18 20:22:15'
+  Person_6:
+    token_id: 5fade8d000b3549539ddfc6041a90376
+    org_id: '1'
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    name: Philimon
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Philimon Hadgu Kahsay (sdfg sfdg sdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Hadgu
+    last_name: Kahsay
+    full_name: 'Philimon Hadgu Kahsay'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-03-28 20:54:01'
+    updated_at: '2018-03-28 20:54:01'
+  Person_7:
+    token_id: 19dd58e1470f8df31cb4d4874aa23c9f
+    org_id: '1'
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    name: Rahwa
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Rahwa Gidey Meles (sdf gsdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Gidey
+    last_name: Meles
+    full_name: 'Rahwa Gidey Meles'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-03-28 20:55:02'
+    updated_at: '2018-03-28 20:55:02'
+  Person_8:
+    token_id: 335b21b80a04bc582ca13f34ea1a99c3
+    org_id: '1'
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    name: Lemlem
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Lemlem Kiros Berhe (sdfg sdfg sdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Kiros
+    last_name: Berhe
+    full_name: 'Lemlem Kiros Berhe'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-03-28 21:08:39'
+    updated_at: '2018-03-28 21:08:39'
+  Person_9:
+    token_id: a1c7dd15f83eed3c2c52f3c8edf8c687
+    org_id: '1'
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    name: Belete
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Belete Kidane Mehur (adf asdfa sdf sf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Kidane
+    last_name: Mehur
+    full_name: 'Belete Kidane Mehur'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-03-28 21:09:17'
+    updated_at: '2018-03-28 21:09:17'
+  Person_10:
+    token_id: 3ff551e1ffd585121a5585539aaf18c5
+    org_id: '1'
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    name: Uhuru
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Uhuru Kiga Jackson (dgsdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Kiga
+    last_name: Jackson
+    full_name: 'Uhuru Kiga Jackson'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-03-28 21:23:38'
+    updated_at: '2018-03-28 21:23:38'
+  Person_11:
+    token_id: e44c32e788362b3da0ab8a6a89d4eb67
+    org_id: '1'
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    name: Ruth
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Ruth Desney Machare (sdfg sdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Desney
+    last_name: Machare
+    full_name: 'Ruth Desney Machare'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-03-28 21:24:10'
+    updated_at: '2018-03-28 21:24:10'
+  Person_12:
+    token_id: 96604b6083bf182462b57c23adc16ae7
+    org_id: '1'
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    name: Beko
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Beko Goerge James (asdfasdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Goerge
+    last_name: James
+    full_name: 'Beko Goerge James'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-03-28 21:24:38'
+    updated_at: '2018-03-28 21:24:38'
 UserGroup:
   UserGroup_1:
     token_id: 311bb7024364b698d134e090ce9b788b
@@ -309,7 +519,7 @@ AccessLevelPermission:
     created_at: '2016-03-15 01:00:31'
     updated_at: '2016-03-15 01:00:31'
   AccessLevelPermission_8:
-    token_id: 5d749e5d0ed0ba2bf73bb65f9e3e8963
+    token_id: 3716e964ae86bb592f0ef261fb71d125
     UserRole: UserRole_1
     ModuleSetting: ModuleSetting_8
     access_level: '6'
@@ -322,7 +532,7 @@ AccessLevelPermission:
     created_at: '2016-03-15 01:00:31'
     updated_at: '2016-03-15 01:00:31'
   AccessLevelPermission_9:
-    token_id: 53d172011ee47eeaabff81dd7574a771
+    token_id: 3716e964ae86bb592f0ef261fb71d125
     UserRole: UserRole_1
     ModuleSetting: ModuleSetting_9
     access_level: '6'
@@ -335,7 +545,7 @@ AccessLevelPermission:
     created_at: '2016-03-15 01:00:31'
     updated_at: '2016-03-15 01:00:31'
   AccessLevelPermission_10:
-    token_id: 6e2804bd1705071a84a8a089163dc2de
+    token_id: 5d749e5d0ed0ba2bf73bb65f9e3e8963
     UserRole: UserRole_1
     ModuleSetting: ModuleSetting_10
     access_level: '6'
@@ -348,7 +558,7 @@ AccessLevelPermission:
     created_at: '2016-03-15 01:00:31'
     updated_at: '2016-03-15 01:00:31'
   AccessLevelPermission_11:
-    token_id: 8b08001f767b6ebda8045efb8841f37f
+    token_id: 53d172011ee47eeaabff81dd7574a771
     UserRole: UserRole_1
     ModuleSetting: ModuleSetting_11
     access_level: '6'
@@ -361,7 +571,7 @@ AccessLevelPermission:
     created_at: '2016-03-15 01:00:31'
     updated_at: '2016-03-15 01:00:31'
   AccessLevelPermission_12:
-    token_id: 6caeba385602e0a90ee5084b7f60b9e6
+    token_id: 6e2804bd1705071a84a8a089163dc2de
     UserRole: UserRole_1
     ModuleSetting: ModuleSetting_12
     access_level: '6'
@@ -374,6 +584,32 @@ AccessLevelPermission:
     created_at: '2016-03-15 01:00:31'
     updated_at: '2016-03-15 01:00:31'
   AccessLevelPermission_13:
+    token_id: 8b08001f767b6ebda8045efb8841f37f
+    UserRole: UserRole_1
+    ModuleSetting: ModuleSetting_13
+    access_level: '6'
+    can_add: true
+    can_delete: true
+    can_edit: true
+    can_view: true
+    can_approve: true
+    description: 'Super Administrator user role access control'
+    created_at: '2016-03-15 01:00:31'
+    updated_at: '2016-03-15 01:00:31'
+  AccessLevelPermission_14:
+    token_id: 6caeba385602e0a90ee5084b7f60b9e6
+    UserRole: UserRole_1
+    ModuleSetting: ModuleSetting_14
+    access_level: '6'
+    can_add: true
+    can_delete: true
+    can_edit: true
+    can_view: true
+    can_approve: true
+    description: 'Super Administrator user role access control'
+    created_at: '2016-03-15 01:00:31'
+    updated_at: '2016-03-15 01:00:31'
+  AccessLevelPermission_15:
     token_id: 93d717e1ca4f6522a18ff98492775668
     UserRole: UserRole_3
     ModuleSetting: ModuleSetting_1
@@ -383,10 +619,10 @@ AccessLevelPermission:
     can_edit: true
     can_view: true
     can_approve: true
-    description: 'Super Administrator user role access control'
+    description: 'Author user role access control'
     created_at: '2016-03-15 01:00:30'
     updated_at: '2016-03-15 01:00:30'
-  AccessLevelPermission_14:
+  AccessLevelPermission_16:
     token_id: 00599e4626f8f1231887b414676669e9
     UserRole: UserRole_3
     ModuleSetting: ModuleSetting_2
@@ -396,36 +632,36 @@ AccessLevelPermission:
     can_edit: false
     can_view: true
     can_approve: false
-    description: 'Super Administrator user role access control'
-    created_at: '2016-03-15 01:00:30'
-    updated_at: '2016-03-15 01:00:30'
-  AccessLevelPermission_15:
-    token_id: 1e829844d18d72dfe3265eb851aa24b8
-    UserRole: UserRole_3
-    ModuleSetting: ModuleSetting_3
-    access_level: '1'
-    can_add: false
-    can_delete: false
-    can_edit: false
-    can_view: true
-    can_approve: false
-    description: 'Super Administrator user role access control'
-    created_at: '2016-03-15 01:00:30'
-    updated_at: '2016-03-15 01:00:30'
-  AccessLevelPermission_16:
-    token_id: c9d171a1bf8cc147f3d62c754c1aa1e7
-    UserRole: UserRole_3
-    ModuleSetting: ModuleSetting_4
-    access_level: '1'
-    can_add: false
-    can_delete: false
-    can_edit: false
-    can_view: true
-    can_approve: false
-    description: 'Super Administrator user role access control'
+    description: 'Author user role access control'
     created_at: '2016-03-15 01:00:30'
     updated_at: '2016-03-15 01:00:30'
   AccessLevelPermission_17:
+    token_id: 1e829844d18d72dfe3265eb851aa24b8
+    UserRole: UserRole_3
+    ModuleSetting: ModuleSetting_3
+    access_level: '6'
+    can_add: true
+    can_delete: true
+    can_edit: true
+    can_view: true
+    can_approve: true
+    description: 'Author user role access control'
+    created_at: '2016-03-15 01:00:30'
+    updated_at: '2016-03-15 01:00:30'
+  AccessLevelPermission_18:
+    token_id: c9d171a1bf8cc147f3d62c754c1aa1e7
+    UserRole: UserRole_3
+    ModuleSetting: ModuleSetting_4
+    access_level: '6'
+    can_add: true
+    can_delete: true
+    can_edit: true
+    can_view: true
+    can_approve: true
+    description: 'Author user role access control'
+    created_at: '2016-03-15 01:00:30'
+    updated_at: '2016-03-15 01:00:30'
+  AccessLevelPermission_19:
     token_id: 49e7e7abc4f960ce4b33fd31d663bd62
     UserRole: UserRole_3
     ModuleSetting: ModuleSetting_5
@@ -435,10 +671,10 @@ AccessLevelPermission:
     can_edit: true
     can_view: true
     can_approve: true
-    description: 'Super Administrator user role access control'
+    description: 'Author user role access control'
     created_at: '2016-03-15 01:00:30'
     updated_at: '2016-03-15 01:00:30'
-  AccessLevelPermission_18:
+  AccessLevelPermission_20:
     token_id: 6143a0a24ac2ccf495b0b3b1aa65c18f
     UserRole: UserRole_3
     ModuleSetting: ModuleSetting_6
@@ -448,10 +684,10 @@ AccessLevelPermission:
     can_edit: true
     can_view: true
     can_approve: true
-    description: 'Super Administrator user role access control'
+    description: 'Author user role access control'
     created_at: '2016-03-15 01:00:30'
     updated_at: '2016-03-15 01:00:30'
-  AccessLevelPermission_19:
+  AccessLevelPermission_21:
     token_id: 3716e964ae86bb592f0ef261fb71d125
     UserRole: UserRole_3
     ModuleSetting: ModuleSetting_7
@@ -461,36 +697,36 @@ AccessLevelPermission:
     can_edit: true
     can_view: true
     can_approve: true
-    description: 'Super Administrator user role access control'
-    created_at: '2016-03-15 01:00:31'
-    updated_at: '2016-03-15 01:00:31'
-  AccessLevelPermission_20:
-    token_id: 5d749e5d0ed0ba2bf73bb65f9e3e8963
-    UserRole: UserRole_3
-    ModuleSetting: ModuleSetting_8
-    access_level: '7'
-    can_add: false
-    can_delete: false
-    can_edit: false
-    can_view: false
-    can_approve: false
-    description: 'Super Administrator user role access control'
-    created_at: '2016-03-15 01:00:31'
-    updated_at: '2016-03-15 01:00:31'
-  AccessLevelPermission_21:
-    token_id: 53d172011ee47eeaabff81dd7574a771
-    UserRole: UserRole_3
-    ModuleSetting: ModuleSetting_9
-    access_level: '7'
-    can_add: false
-    can_delete: false
-    can_edit: false
-    can_view: false
-    can_approve: false
-    description: 'Super Administrator user role access control'
+    description: 'Author user role access control'
     created_at: '2016-03-15 01:00:31'
     updated_at: '2016-03-15 01:00:31'
   AccessLevelPermission_22:
+    token_id: 5d749e5d0ed0ba2bf73bb65f9e3e8963
+    UserRole: UserRole_3
+    ModuleSetting: ModuleSetting_8
+    access_level: '6'
+    can_add: true
+    can_delete: true
+    can_edit: true
+    can_view: true
+    can_approve: true
+    description: 'Author user role access control'
+    created_at: '2016-03-15 01:00:31'
+    updated_at: '2016-03-15 01:00:31'
+  AccessLevelPermission_23:
+    token_id: 53d172011ee47eeaabff81dd7574a771
+    UserRole: UserRole_3
+    ModuleSetting: ModuleSetting_9
+    access_level: '6'
+    can_add: true
+    can_delete: true
+    can_edit: true
+    can_view: true
+    can_approve: true
+    description: 'Author user role access control'
+    created_at: '2016-03-15 01:00:31'
+    updated_at: '2016-03-15 01:00:31'
+  AccessLevelPermission_24:
     token_id: 6e2804bd1705071a84a8a089163dc2de
     UserRole: UserRole_3
     ModuleSetting: ModuleSetting_10
@@ -500,10 +736,10 @@ AccessLevelPermission:
     can_edit: false
     can_view: false
     can_approve: false
-    description: 'Super Administrator user role access control'
+    description: 'Author user role access control'
     created_at: '2016-03-15 01:00:31'
     updated_at: '2016-03-15 01:00:31'
-  AccessLevelPermission_23:
+  AccessLevelPermission_25:
     token_id: 8b08001f767b6ebda8045efb8841f37f
     UserRole: UserRole_3
     ModuleSetting: ModuleSetting_11
@@ -513,13 +749,39 @@ AccessLevelPermission:
     can_edit: false
     can_view: false
     can_approve: false
-    description: 'Super Administrator user role access control'
+    description: 'Author user role access control'
     created_at: '2016-03-15 01:00:31'
     updated_at: '2016-03-15 01:00:31'
-  AccessLevelPermission_24:
+  AccessLevelPermission_26:
     token_id: 6caeba385602e0a90ee5084b7f60b9e6
     UserRole: UserRole_3
     ModuleSetting: ModuleSetting_12
+    access_level: '7'
+    can_add: false
+    can_delete: false
+    can_edit: false
+    can_view: false
+    can_approve: false
+    description: 'Author user role access control'
+    created_at: '2016-03-15 01:00:31'
+    updated_at: '2016-03-15 01:00:31'
+  AccessLevelPermission_27:
+    token_id: 6caeba385602e0a90ee5084b7f60b9e6
+    UserRole: UserRole_3
+    ModuleSetting: ModuleSetting_13
+    access_level: '7'
+    can_add: false
+    can_delete: false
+    can_edit: false
+    can_view: false
+    can_approve: false
+    description: 'Author user role access control'
+    created_at: '2016-03-15 01:00:31'
+    updated_at: '2016-03-15 01:00:31'
+  AccessLevelPermission_28:
+    token_id: 6caeba385602e0a90ee5084b7f60b9e6
+    UserRole: UserRole_3
+    ModuleSetting: ModuleSetting_14
     access_level: '6'
     can_add: true
     can_delete: true
@@ -538,7 +800,7 @@ ModuleSetting:
     module_name: Dashboard
     alias: DASHBOARD
     default_access_level_type_id: '6'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: true
@@ -555,7 +817,7 @@ ModuleSetting:
     module_name: Tournament
     alias: TOURNAMENT
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -572,7 +834,7 @@ ModuleSetting:
     module_name: Game
     alias: GAME
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -589,7 +851,7 @@ ModuleSetting:
     module_name: Group
     alias: GROUP
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -606,7 +868,7 @@ ModuleSetting:
     module_name: Team
     alias: TEAM
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -623,7 +885,7 @@ ModuleSetting:
     module_name: Player
     alias: PLAYER
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -640,7 +902,7 @@ ModuleSetting:
     module_name: Match
     alias: MATCH
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -650,6 +912,40 @@ ModuleSetting:
     created_at: '2018-03-16 21:09:12'
     updated_at: '2018-03-16 21:09:12'
   ModuleSetting_8:
+    token_id: 4d81c06ccfcd74e8fe258032becd0d27
+    Organization: Organization_1
+    org_token_id: 5af6701adeca150b4a9ef43bfcb5799c
+    module_type_id: '8'
+    module_name: 'Team Group'
+    alias: TEAM_GROUP
+    default_access_level_type_id: '1'
+    enabled_flag: true
+    applicable_flag: true
+    active_flag: true
+    default_flag: false
+    trashed_flag: false
+    trashed_on: null
+    description: 'Team Group ( sdfgsdfgsdfg )'
+    created_at: '2018-03-16 21:09:12'
+    updated_at: '2018-03-16 21:09:12'
+  ModuleSetting_9:
+    token_id: 4d81c06ccfcd74e8fe258032becd0d27
+    Organization: Organization_1
+    org_token_id: 5af6701adeca150b4a9ef43bfcb5799c
+    module_type_id: '9'
+    module_name: 'Medal Award'
+    alias: MEDAL_AWARD
+    default_access_level_type_id: '1'
+    enabled_flag: true
+    applicable_flag: true
+    active_flag: true
+    default_flag: false
+    trashed_flag: false
+    trashed_on: null
+    description: 'Match ( sdfgsdfgsdfg )'
+    created_at: '2018-03-16 21:09:12'
+    updated_at: '2018-03-16 21:09:12'
+  ModuleSetting_10:
     token_id: 17981624c337b8e3edc8cfe77ed01e37
     Organization: Organization_1
     org_token_id: 5af6701adeca150b4a9ef43bfcb5799c
@@ -657,7 +953,7 @@ ModuleSetting:
     module_name: Organization
     alias: ORGANIZATION
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -666,7 +962,7 @@ ModuleSetting:
     description: 'Organization ( sdfgsdf gsdfg )'
     created_at: '2018-03-16 21:09:21'
     updated_at: '2018-03-16 21:09:21'
-  ModuleSetting_9:
+  ModuleSetting_11:
     token_id: 4b7113a9b5aeda49c07f99c1ab7f8d37
     Organization: Organization_1
     org_token_id: 5af6701adeca150b4a9ef43bfcb5799c
@@ -674,7 +970,7 @@ ModuleSetting:
     module_name: 'General Setting'
     alias: GENERAL_SETTING
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -683,7 +979,7 @@ ModuleSetting:
     description: 'General Setting ( sdfgsdfgsdfg )'
     created_at: '2018-03-16 21:09:31'
     updated_at: '2018-03-16 21:09:31'
-  ModuleSetting_10:
+  ModuleSetting_12:
     token_id: 79ffe4977ed434a8108b14e965620eb0
     Organization: Organization_1
     org_token_id: 5af6701adeca150b4a9ef43bfcb5799c
@@ -691,7 +987,7 @@ ModuleSetting:
     module_name: 'System Setting'
     alias: SYSTEM_SETTING
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -700,7 +996,7 @@ ModuleSetting:
     description: 'System Setting ( asdfasdfasdf )'
     created_at: '2018-03-16 21:09:55'
     updated_at: '2018-03-16 21:09:55'
-  ModuleSetting_11:
+  ModuleSetting_13:
     token_id: 49b9d42cea33b4afe52e6df78fb66b1b
     Organization: Organization_1
     org_token_id: 5af6701adeca150b4a9ef43bfcb5799c
@@ -708,7 +1004,7 @@ ModuleSetting:
     module_name: Administrator
     alias: ADMINISTRATOR
     default_access_level_type_id: '1'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -717,7 +1013,7 @@ ModuleSetting:
     description: 'Administrator ( sfgsdfgsdfgsdfg )'
     created_at: '2018-03-16 21:10:01'
     updated_at: '2018-03-16 21:10:01'
-  ModuleSetting_12:
+  ModuleSetting_14:
     token_id: 7fd1a956619ab1387f11c83d205a3944
     Organization: Organization_1
     org_token_id: 5af6701adeca150b4a9ef43bfcb5799c
@@ -725,7 +1021,7 @@ ModuleSetting:
     module_name: Report
     alias: REPORT
     default_access_level_type_id: '6'
-    enabled_flag: false
+    enabled_flag: true
     applicable_flag: true
     active_flag: true
     default_flag: false
@@ -830,7 +1126,7 @@ User:
     person_token_id: 8996f322088d3d2e8d805da32d3cd057
     username: moke
     password: 03caaadd5366be3336786a449a9283def8f06ef4
-    full_password: bb8a1b2d9e6c3abe1730c12fca6d1bf94ed46e6c 
+    full_password: bb8a1b2d9e6c3abe1730c12fca6d1bf94ed46e6c
     access_activation_key: ''
     UserRole: UserRole_4
     UserGroup: UserGroup_4
@@ -930,6 +1226,8 @@ UserRole:
 RoundType:
   RoundType_1:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '1'
     round_number: '1'
     name: 'Round One'
@@ -942,6 +1240,8 @@ RoundType:
     updated_at: '2018-02-27 22:03:48'
   RoundType_2:
     token_id: 1ade1521b38d85983a4d543da12fd533947fcb37
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '1'
     round_number: '2'
     name: 'Round Two'
@@ -954,6 +1254,8 @@ RoundType:
     updated_at: '2018-02-27 22:04:18'
   RoundType_3:
     token_id: 80b490ba980e9095c44fde607dedbf30f75c96e6
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '1'
     round_number: '3'
     name: 'Round Three'
@@ -966,6 +1268,8 @@ RoundType:
     updated_at: '2018-02-27 22:04:35'
   RoundType_4:
     token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '1'
     round_number: '4'
     name: 'Round Four'
@@ -978,6 +1282,8 @@ RoundType:
     updated_at: '2018-02-27 22:05:35'
   RoundType_5:
     token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '1'
     round_number: '5'
     name: 'Round Five'
@@ -990,6 +1296,8 @@ RoundType:
     updated_at: '2018-02-27 22:05:35'
   RoundType_6:
     token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '1'
     round_number: '6'
     name: 'Round Six'
@@ -1002,6 +1310,8 @@ RoundType:
     updated_at: '2018-02-27 22:05:35'
   RoundType_7:
     token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '1'
     round_number: '7'
     name: 'Round Seven'
@@ -1014,6 +1324,8 @@ RoundType:
     updated_at: '2018-02-27 22:05:35'
   RoundType_8:
     token_id: e7060e4514a698f4995d0703d6106626a66d5a33
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '1'
     round_number: '8'
     name: 'Round Eight'
@@ -1023,9 +1335,11 @@ RoundType:
     status: '2'
     description: 'Round Four ( asd asdfa sdf )'
     created_at: '2018-02-27 22:05:35'
-    updated_at: '2018-02-27 22:05:35' 
+    updated_at: '2018-02-27 22:05:35'
   RoundType_9:
     token_id: bdf7fcbb4342ffcaac522f4477886b917bb899a7
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '2'
     round_number: null
     name: 'Quarter Final'
@@ -1038,6 +1352,8 @@ RoundType:
     updated_at: '2018-02-27 22:06:02'
   RoundType_10:
     token_id: fd1fd1044593f935180e5a90f998c633e433c26a
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '3'
     round_number: null
     name: 'Semi Final'
@@ -1050,6 +1366,8 @@ RoundType:
     updated_at: '2018-02-27 22:07:51'
   RoundType_11:
     token_id: 51a386c611d4c1cc9e159da68650b8205b0ac41f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     round_type: '4'
     round_number: null
     name: Final
@@ -1062,314 +1380,586 @@ RoundType:
     updated_at: '2018-02-27 22:21:34'
 SportGame:
   SportGame_1:
-    token_id: b10a16dc9f1f0a2709d6d6814e41147e78df6979
+    token_id: 4591e46d3be4d0d6ab41033d465344213b54e716
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     GameCategory: GameCategory_1
     distance_type: '1'
-    name: '60m'
-    alias: ''
-    game_distance: '60'
-    game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
-    effective_date: null
-    end_date: null
-    roundable_flag: null
-    active_flag: true
-    status: '1'
-    description: 'Sprint 60m ( asdfasfasdf )'
-    created_at: '2018-03-02 21:53:58'
-    updated_at: '2018-03-02 21:53:58'
-  SportGame_2:
-    token_id: 4b85ed38379d39ee8f4ec5b2f5f7aa851351f4d1
-    GameCategory: GameCategory_1
-    distance_type: '1'
-    name: '100M'
-    alias: ''
-    game_distance: '100'
-    game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
-    effective_date: null
-    end_date: null
-    roundable_flag: null
-    active_flag: true
-    status: '1'
-    description: 'Sprint 100M ( dfasdfasdf )'
-    created_at: '2018-03-02 21:54:18'
-    updated_at: '2018-03-02 21:54:18'
-  SportGame_3:
-    token_id: e844d80307581d2bd2bbf394b09d7f56784a59a8
-    GameCategory: GameCategory_1
-    distance_type: '1'
-    name: '200M'
+    name: 200M
     alias: ''
     game_distance: '200'
     game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
+    sport_game_number: '0'
+    player_mode: '0'
+    contestant_team_mode: '0'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Sprint 200M ( asdfasd fasdfasd )'
-    created_at: '2018-03-02 21:57:55'
-    updated_at: '2018-03-02 21:57:55'
-  SportGame_4:
-    token_id: d6add34d82e6e6154aee3914a7779459b29b42e0
+    description: '200M ( sdfg sdfg sfg sdfg sdfg )'
+    created_at: '2018-03-21 20:32:55'
+    updated_at: '2018-03-21 20:32:55'
+  SportGame_2:
+    token_id: d8641040a47780ccf9926e9cbb0655948f5311e4
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     GameCategory: GameCategory_1
     distance_type: '1'
-    name: '400M'
+    name: 400M
     alias: ''
     game_distance: '400'
     game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Sprint 400M ( asdfasd fasdf )'
-    created_at: '2018-03-02 21:59:05'
-    updated_at: '2018-03-02 21:59:05'
-  SportGame_5:
-    token_id: 2fd7184d572f4025f43ae683b516c8544c58e49d
+    description: '400M ( sfd gsdfg sdfg sdfg )'
+    created_at: '2018-03-21 20:33:35'
+    updated_at: '2018-03-21 20:33:35'
+  SportGame_3:
+    token_id: c1cc05308787e71c4a6f1ab93384127ac2fc9cde
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_1
+    distance_type: '1'
+    name: 100M
+    alias: ''
+    game_distance: '100'
+    game_distance_measurement: '1'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: '100M ( sdfg sdfg sdfgs dfg )'
+    created_at: '2018-03-21 20:34:08'
+    updated_at: '2018-03-21 20:34:08'
+  SportGame_4:
+    token_id: dedad721e93b877cecb6306b76ed9ec9c76192cf
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     GameCategory: GameCategory_1
     distance_type: '2'
-    name: '800M'
+    name: 800M
     alias: ''
     game_distance: '800'
     game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Middle Distance 800M ( adfasdfasdfasdf )'
-    created_at: '2018-03-02 21:59:38'
-    updated_at: '2018-03-02 21:59:38'
-  SportGame_6:
-    token_id: 52d7922451b79b1aed7c3e4ac8db8c9a4e638ead
+    description: '800M ( sdfg sdfg sdfg sdfg s )'
+    created_at: '2018-03-21 20:35:50'
+    updated_at: '2018-03-21 20:35:50'
+  SportGame_5:
+    token_id: d20970dbac2df5623a97ac9f615571339ce9b021
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     GameCategory: GameCategory_1
     distance_type: '2'
-    name: '1500M'
+    name: 1500M
     alias: ''
     game_distance: '1500'
     game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Middle Distance 1500M ( asdfasdfasdf )'
-    created_at: '2018-03-02 22:00:06'
-    updated_at: '2018-03-02 22:00:06'
-  SportGame_7:
-    token_id: adec1e314ef0625c218686d389727c37c54eb9f8
+    description: '1500M ( sfgsfdg sfdgsfgsdfg )'
+    created_at: '2018-03-21 20:36:26'
+    updated_at: '2018-03-21 20:36:26'
+  SportGame_6:
+    token_id: e78175062b004898c06366d411cea5e90c3210b3
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     GameCategory: GameCategory_1
     distance_type: '2'
-    name: '3000M'
+    name: 3000M
     alias: ''
     game_distance: '3000'
     game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Middle Distance 3000M ( asdfhajksdhfasdfasd asdf )'
-    created_at: '2018-03-02 22:00:46'
-    updated_at: '2018-03-02 22:00:46'
-  SportGame_8:
-    token_id: 0fda36569b6459978333d67c82e4ccad83950d3f
+    description: '3000M ( sdfg sdfg sdfgs dfg )'
+    created_at: '2018-03-21 20:37:20'
+    updated_at: '2018-03-21 20:37:20'
+  SportGame_7:
+    token_id: 82dcbbb47c5fec8c2902f76c22f43a12f93f2f05
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     GameCategory: GameCategory_1
     distance_type: '3'
     name: 5000M
     alias: ''
     game_distance: '5000'
     game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: '5000M ( asdfasdfasdf )'
-    created_at: '2018-03-02 22:01:44'
-    updated_at: '2018-03-02 22:01:44'
-  SportGame_9:
-    token_id: fe949f12ce240eb3caeef7077f8fb670424fba20
+    description: '5000M ( adfa sdf asdf asdf asdf )'
+    created_at: '2018-03-21 20:37:50'
+    updated_at: '2018-03-21 20:37:50'
+  SportGame_8:
+    token_id: a97a1018b87f0ca22c678c5af478496c85667de5
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     GameCategory: GameCategory_1
     distance_type: '3'
     name: 10000M
     alias: ''
     game_distance: '10000'
     game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: '1000M ( asdfasdfasdfasdf )'
-    created_at: '2018-03-02 22:02:02'
-    updated_at: '2018-03-02 22:02:02'
-  SportGame_10:
-    token_id: 92a27cf326e3e894008ae76933dcadeb2ebc60bc
+    description: '10000M ( sgdf gsdfg sdfg )'
+    created_at: '2018-03-21 20:38:17'
+    updated_at: '2018-03-21 20:38:17'
+  SportGame_9:
+    token_id: 6e5d77dc21a02bc778317a5f13691b7e2c83201c
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     GameCategory: GameCategory_1
-    distance_type: '5'
+    distance_type: '4'
+    name: 400M
+    alias: ''
+    game_distance: '400'
+    game_distance_measurement: '1'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: '400M ( asdfasdfa sdf asdf )'
+    created_at: '2018-03-21 20:39:03'
+    updated_at: '2018-03-21 20:39:03'
+  SportGame_10:
+    token_id: e411146f509b193a1a181301bc487a0902ab587c
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_1
+    distance_type: '4'
     name: 3000M
     alias: ''
     game_distance: '3000'
     game_distance_measurement: '1'
-    sport_game_number: null
-    start_date: 03/02/2018
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: '3000M ( sdfas fasdf asdf )'
-    created_at: '2018-03-02 22:02:40'
-    updated_at: '2018-03-02 22:02:40'
+    description: '3000M ( asdf asdf asdf )'
+    created_at: '2018-03-21 20:39:52'
+    updated_at: '2018-03-21 20:39:52'
   SportGame_11:
-    token_id: 1bd489717e734b18878c4b93443a5beb20e48b81
-    GameCategory: GameCategory_2
-    distance_type: '100'
-    name: 'Bascketball'
+    token_id: 778b47e6298f3894932f1d2065862b07d9779296
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_1
+    distance_type: '6'
+    name: 4x400M
     alias: ''
-    game_distance: '0'
-    game_distance_measurement: '100'
-    sport_game_number: null
-    start_date: 03/02/2018
+    game_distance: '400'
+    game_distance_measurement: '1'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Bascket Ball ( asdfasdfasdfasdf )'
-    created_at: '2018-03-02 22:03:02'
-    updated_at: '2018-03-02 22:03:02'
+    description: '4x400M ( sfgs gsdfg sdfgs dg )'
+    created_at: '2018-03-21 20:41:27'
+    updated_at: '2018-03-21 20:41:27'
   SportGame_12:
-    token_id: 4a65b5b1f5a8c758e45e036f9763c40ec3bc7e07
-    GameCategory: GameCategory_3
-    distance_type: '100'
-    name: 'Handball'
+    token_id: 7a9731f355a7d2bbb829fd39e2bc24a33e2f1812
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_1
+    distance_type: '7'
+    name: 'Long Jump'
     alias: ''
     game_distance: '0'
-    game_distance_measurement: '100'
-    sport_game_number: null
-    start_date: 03/02/2018
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '1'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Handball ( adfasdfasdfasdf )'
-    created_at: '2018-03-02 22:03:16'
-    updated_at: '2018-03-02 22:03:16'
+    description: 'Long Jump ( asdfas dfasd )'
+    created_at: '2018-03-21 20:42:03'
+    updated_at: '2018-03-21 20:42:03'
   SportGame_13:
-    token_id: cf4c8c9beba645c5cb5dcb20e45e9f8fb1f33c8e
-    GameCategory: GameCategory_4
-    distance_type: '100'
-    name: 'Vollyball'
+    token_id: 6ee92fd4362e609466d7766ecb88c809aa800113
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_1
+    distance_type: '7'
+    name: 'Triple Jump'
     alias: ''
     game_distance: '0'
-    game_distance_measurement: '100'
-    sport_game_number: null
-    start_date: 03/02/2018
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '2'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Vollyball ( afdasfkl asjkldfasdf )'
-    created_at: '2018-03-02 22:03:35'
-    updated_at: '2018-03-02 22:03:35'
+    description: 'Triple Jump ( asdf asdfasd fasdf )'
+    created_at: '2018-03-21 20:42:35'
+    updated_at: '2018-03-21 20:42:35'
   SportGame_14:
-    token_id: 816c8ab988e6bb44052a6cc82391cc605f74eb21
-    GameCategory: GameCategory_6
-    distance_type: '100'
-    name: 'Ground Tennis'
+    token_id: eee1e75894ac0b75b198b495b26453cd2e4671d0
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_1
+    distance_type: '7'
+    name: 'High Jump'
     alias: ''
     game_distance: '0'
-    game_distance_measurement: '100'
-    sport_game_number: null
-    start_date: 03/02/2018
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '3'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Ground Tennis ( asdasdfasfasfasdf )'
-    created_at: '2018-03-02 22:03:48'
-    updated_at: '2018-03-02 22:03:48'
+    description: 'High Jump ( fasdf asdf asdf )'
+    created_at: '2018-03-21 20:43:00'
+    updated_at: '2018-03-21 20:43:00'
   SportGame_15:
-    token_id: 2a7d0631b89e4325442e0263a96691984d003802
-    GameCategory: GameCategory_7
-    distance_type: '100'
-    name: 'Table Tennis'
+    token_id: ce012e1a8a41cb62a2b0b88ab2c0f5f8c92f7a63
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_1
+    distance_type: '8'
+    name: 'Shot Put'
     alias: ''
     game_distance: '0'
-    game_distance_measurement: '100'
-    sport_game_number: null
-    start_date: 03/02/2018
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '1'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Table Tennis ( asdfad fasdf asdf )'
-    created_at: '2018-03-02 22:04:05'
-    updated_at: '2018-03-02 22:04:05'
+    description: 'Shot Put ( dfa dfasdf asdf asdf )'
+    created_at: '2018-03-21 20:43:31'
+    updated_at: '2018-03-21 20:43:31'
   SportGame_16:
-    token_id: 6d04e386a459ed21cbde644f42a66eb16796c2dd
-    GameCategory: GameCategory_8
-    distance_type: '100'
-    name: Badmenten
+    token_id: 3dc356e470435d5164f17c787ce9d4756737789c
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_1
+    distance_type: '7'
+    name: 'Discus Throw'
     alias: ''
     game_distance: '0'
-    game_distance_measurement: '100'
-    sport_game_number: null
-    start_date: 03/02/2018
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '2'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Badmenten ( adfasdf asd fasdf sdf )'
-    created_at: '2018-03-02 22:04:19'
-    updated_at: '2018-03-02 22:04:19'
+    description: 'Discus Throw ( asdf asd asdfsdf )'
+    created_at: '2018-03-21 20:43:56'
+    updated_at: '2018-03-21 20:43:56'
   SportGame_17:
-    token_id: 0077401f137c4cfaa7bc58b3288df045a4237cb2
+    token_id: 889575cc642a98e069b936bc767ce79dd1ba2688
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_1
+    distance_type: '8'
+    name: 'Hammer Throw'
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '2'
+    jump_type_mode: '0'
+    throws_type: '3'
+    start_date: 03/21/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Hammer Throw ( asdfasdf )'
+    created_at: '2018-03-21 20:44:25'
+    updated_at: '2018-03-21 20:44:25'
+  SportGame_18:
+    token_id: 6419bc2981d08c596ecdda55e8a5dd3ffd712fd7
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_2
+    distance_type: '0'
+    name: Basketball
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '1'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Basketball ( adfasdfadf )'
+    created_at: '2018-03-21 20:45:22'
+    updated_at: '2018-03-21 20:45:22'
+  SportGame_19:
+    token_id: 4f3de6eba34ecfbf6232f31ecddc8dc6d9579564
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_3
+    distance_type: '0'
+    name: Handball
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '1'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Handball ( afasdfasdf )'
+    created_at: '2018-03-21 20:45:40'
+    updated_at: '2018-03-21 20:45:40'
+  SportGame_20:
+    token_id: 341d156b8feb7ebdb471364928901b1349440446
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_4
+    distance_type: '0'
+    name: Vollyball
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '1'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Vollyball (  )'
+    created_at: '2018-03-21 20:46:01'
+    updated_at: '2018-03-21 20:46:01'
+  SportGame_21:
+    token_id: b27686bd4174a5ddacf38c678751cdd4aab33174
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     GameCategory: GameCategory_5
-    distance_type: '100'
+    distance_type: '0'
     name: Football
     alias: ''
     game_distance: '0'
-    game_distance_measurement: '100'
-    sport_game_number: null
-    start_date: 03/02/2018
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '1'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
     effective_date: null
     end_date: null
     roundable_flag: null
     active_flag: true
     status: '1'
-    description: 'Football ( sdfasdf asdfasdf asdf )'
-    created_at: '2018-03-02 22:04:38'
-    updated_at: '2018-03-02 22:04:38'
+    description: 'Football ( adfasdfasdf )'
+    created_at: '2018-03-21 20:46:17'
+    updated_at: '2018-03-21 20:46:17'
+  SportGame_22:
+    token_id: 0a36213a69a85de89fbb41e8eaa260976ff2cce7
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_6
+    distance_type: '0'
+    name: 'Ground Tennis'
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '1'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Ground Tennis (  )'
+    created_at: '2018-03-21 20:46:38'
+    updated_at: '2018-03-21 20:46:38'
+  SportGame_23:
+    token_id: aee1cd50252a4ef50c0e1b7b7315435dac82cfc2
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_7
+    distance_type: '0'
+    name: 'Table Tennis'
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '1'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Table Tennis (  )'
+    created_at: '2018-03-21 20:47:05'
+    updated_at: '2018-03-21 20:47:05'
+  SportGame_24:
+    token_id: 538a586a945257e832d572a4b1421a8b12c386e4
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    GameCategory: GameCategory_8
+    distance_type: '0'
+    name: Badmenten
+    alias: ''
+    game_distance: '0'
+    game_distance_measurement: '0'
+    sport_game_number: '0'
+    player_mode: '4'
+    contestant_team_mode: '1'
+    jump_type_mode: '0'
+    throws_type: '0'
+    start_date: 03/21/2018
+    effective_date: null
+    end_date: null
+    roundable_flag: null
+    active_flag: true
+    status: '1'
+    description: 'Badmenten (  )'
+    created_at: '2018-03-21 20:47:21'
+    updated_at: '2018-03-21 20:47:21'
 GameCategory:
   GameCategory_1:
     token_id: 341c1177f4286f39dc5459bec11eb33d74c132f7
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     category_type: null
     category_name: Athletics
     alias: ATHLETICS
@@ -1381,8 +1971,10 @@ GameCategory:
     updated_at: '2018-02-26 21:56:47'
   GameCategory_2:
     token_id: 9e106f8274d37a472d8bf46829420b2f38cffa42
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     category_type: null
-    category_name: 'Bascketball'
+    category_name: Bascketball
     alias: BASCKETBALL
     measurement_flag: true
     active_flag: true
@@ -1392,8 +1984,10 @@ GameCategory:
     updated_at: '2018-02-26 21:57:03'
   GameCategory_3:
     token_id: 255e4773f136bd797a9117487ac82873df8202ca
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     category_type: null
-    category_name: 'Handball'
+    category_name: Handball
     alias: HANDBALL
     measurement_flag: true
     active_flag: true
@@ -1403,8 +1997,10 @@ GameCategory:
     updated_at: '2018-02-26 21:57:33'
   GameCategory_4:
     token_id: 7cc7ced923556ded9efad4a275f6dc42290e516f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     category_type: null
-    category_name: 'Vollyball'
+    category_name: Vollyball
     alias: VOLLYBALL
     measurement_flag: true
     active_flag: true
@@ -1414,6 +2010,8 @@ GameCategory:
     updated_at: '2018-02-26 21:57:44'
   GameCategory_5:
     token_id: 0b3840d40ff2e4a519fb18e2e06afc60c9821a31
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     category_type: null
     category_name: Football
     alias: FOOTBALL
@@ -1425,6 +2023,8 @@ GameCategory:
     updated_at: '2018-02-26 21:57:55'
   GameCategory_6:
     token_id: 23703b5e4e5e77b71fc8976d9bb2ee0f8c02df9f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     category_type: null
     category_name: 'Ground Tennis'
     alias: GROUND_TENNIS
@@ -1436,6 +2036,8 @@ GameCategory:
     updated_at: '2018-02-26 21:58:09'
   GameCategory_7:
     token_id: 1f886772ef447fa66fd7eebf0d171526ca1064bb
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     category_type: null
     category_name: 'Table Tennis'
     alias: TABLE_TENNIS
@@ -1447,6 +2049,8 @@ GameCategory:
     updated_at: '2018-02-26 21:58:17'
   GameCategory_8:
     token_id: 6a46b97339e723aff4e138dd25e9b1f953b64a3c
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     category_type: null
     category_name: Badmenten
     alias: BADMENTEN
@@ -1459,7 +2063,8 @@ GameCategory:
 Tournament:
   Tournament_1:
     token_id: 67a74306b06d0c01624fe0d0249a570f4d093747
-    org_token_id: null
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     name: 'African Universities Sport Festival'
     alias: AUSF
     season: '2018'
@@ -1473,7 +2078,8 @@ Tournament:
     updated_at: '2018-02-23 20:20:48'
   Tournament_2:
     token_id: 67a74306b06d0c01624fe0d0249a570f4d093747
-    org_token_id: null
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     name: 'Ethiopia Sport Festivals'
     alias: ESF
     season: '2017'
@@ -1500,67 +2106,107 @@ Tournament:
     description: null
     created_at: '2018-03-11 21:24:17'
     updated_at: '2018-03-11 21:24:17'
-GroupType:
-  GroupType_1:
+GameGroupType:
+  GameGroupType_1:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    group_category_id: null
+    group_name: 'Group One'
     group_number: '1'
     alias: GROUP_ONE
+    default_flag: true
     active_flag: true
     description: 'Group One ( ada fasdf a asdf )'
     created_at: '2018-02-27 22:03:48'
     updated_at: '2018-02-27 22:03:48'
-  GroupType_2:
+  GameGroupType_2:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    group_category_id: null
+    group_name: 'Group Two'
     group_number: '2'
     alias: GROUP_TWO
+    default_flag: false
     active_flag: true
     description: 'Group two ( ada fasdf a asdf )'
     created_at: '2018-02-27 22:03:48'
     updated_at: '2018-02-27 22:03:48'
-  GroupType_3:
+  GameGroupType_3:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    group_category_id: null
+    group_name: 'Group Three'
     group_number: '3'
     alias: GROUP_THREE
+    default_flag: false
     active_flag: true
     description: 'Group Three ( ada fasdf a asdf )'
     created_at: '2018-02-27 22:03:48'
     updated_at: '2018-02-27 22:03:48'
-  GroupType_4:
+  GameGroupType_4:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    group_category_id: null
+    group_name: 'Group Four'
     group_number: '4'
     alias: GROUP_FOUR
+    default_flag: false
     active_flag: true
     description: 'Group Four ( ada fasdf a asdf )'
     created_at: '2018-02-27 22:03:48'
     updated_at: '2018-02-27 22:03:48'
-  GroupType_5:
+  GameGroupType_5:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    group_category_id: null
+    group_name: 'Group Five'
     group_number: '5'
     alias: GROUP_FIVE
+    default_flag: false
     active_flag: true
     description: 'Group Five ( ada fasdf a asdf )'
     created_at: '2018-02-27 22:03:48'
     updated_at: '2018-02-27 22:03:48'
-  GroupType_6:
+  GameGroupType_6:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    group_category_id: null
+    group_name: 'Group Six'
     group_number: '6'
     alias: GROUP_SIX
+    default_flag: false
     active_flag: true
     description: 'Group Six ( ada fasdf a asdf )'
     created_at: '2018-02-27 22:03:48'
     updated_at: '2018-02-27 22:03:48'
-  GroupType_7:
+  GameGroupType_7:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    group_category_id: null
+    group_name: 'Group Seven'
     group_number: '7'
     alias: GROUP_SEVEN
+    default_flag: false
     active_flag: true
     description: 'Group Seven ( ada fasdf a asdf )'
     created_at: '2018-02-27 22:03:48'
     updated_at: '2018-02-27 22:03:48'
-  GroupType_8:
+  GameGroupType_8:
     token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
+    group_category_id: null
+    group_name: 'Group Eight'
     group_number: '8'
     alias: GROUP_EIGHT
+    default_flag: false
     active_flag: true
     description: 'Group Eight ( ada fasdf a asdf )'
     created_at: '2018-02-27 22:03:48'
@@ -1568,6 +2214,8 @@ GroupType:
 Team:
   Team_1:
     token_id: 6d8819a85c22612333e3111b47dcf6d56e2b39ec
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '44'
@@ -1577,6 +2225,7 @@ Team:
     team_city: Nirobi
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1587,6 +2236,8 @@ Team:
     updated_at: '2018-02-24 20:56:45'
   Team_2:
     token_id: 78d046156b9c88cb068883876c2f7b3781937431
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
@@ -1596,6 +2247,7 @@ Team:
     team_city: Harare
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1606,15 +2258,18 @@ Team:
     updated_at: '2018-02-24 20:57:14'
   Team_3:
     token_id: ea9f90e18e97bbc70135dbf70148e3e7bf7ac4c8
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0003
     team_name: 'Jimma Uniersity'
-    alias: EJU
+    alias: JU-ET
     team_city: Jimma
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1625,15 +2280,18 @@ Team:
     updated_at: '2018-02-24 21:28:24'
   Team_4:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0004
     team_name: 'Mekelle University'
-    alias: ETMU
+    alias: MU-ET
     team_city: Mekelle
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1644,15 +2302,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_5:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0005
     team_name: 'Haromaya University'
-    alias: ETHRU
+    alias: HRU-ET
     team_city: Haromaya
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1663,15 +2324,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_6:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0006
     team_name: 'Adigrat University'
-    alias: ETADU
+    alias: ADU-ET
     team_city: Adigrat
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1682,15 +2346,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_7:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0007
     team_name: 'Arba Minch University'
-    alias: ETAMU
+    alias: AMU-ET
     team_city: Arbaminch
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1701,15 +2368,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_8:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0008
     team_name: 'Axum University'
-    alias: ETAXU
+    alias: AXU-ET
     team_city: Mekelle
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1720,15 +2390,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_9:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0009
     team_name: 'Raya University'
-    alias: ETRU
+    alias: RU-ET
     team_city: Machew
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1739,15 +2412,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_10:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0010
     team_name: 'Kombolcha University'
-    alias: ETKU
+    alias: KU-ET
     team_city: Kombolcha
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1758,15 +2434,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_11:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0011
     team_name: 'Bahirdar University'
-    alias: ETBU
-    team_city: Mekelle
+    alias: BU-ET
+    team_city: Bahirdar
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1777,15 +2456,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_12:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0012
     team_name: 'Welega University'
-    alias: ETWU
+    alias: WU-ET
     team_city: Welega
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1796,15 +2478,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_13:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
-    team_number: TM-0013
-    team_name: 'Semera University'
-    alias: ETSU
-    team_city: Semera
+    team_number: TM-0015
+    team_name: 'Wollo University'
+    alias: WLU-ET
+    team_city: Dessie
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1815,15 +2500,18 @@ Team:
     updated_at: '2018-02-24 21:28:50'
   Team_14:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
+    Organization: Organization_1
+    org_token_id: 888c7b2ba334afab386292b4dce20fca6041839f
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
     country_id: '67'
     team_number: TM-0014
     team_name: 'Welkite University'
-    alias: ETWKU
+    alias: WKU-ET
     team_city: Welkite
     total_member: null
     team_logo: null
+    flag_logo_alias: null
     start_date: 02/24/2018
     end_date: null
     confirm_flag: false
@@ -1832,25 +2520,885 @@ Team:
     description: null
     created_at: '2018-02-24 21:28:50'
     updated_at: '2018-02-24 21:28:50'
-  Team_13:
-    token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
-    Tournament: Tournament_1
-    tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
-    team_number: TM-0015
-    team_name: 'Wollo University'
-    alias: ETWLU
-    team_city: Dessie
-    total_member: null
-    team_logo: null
-    start_date: 02/24/2018
-    end_date: null
-    confirm_flag: false
+TeamMemberParticipant:
+  TeamMemberParticipant_1:
+    token_id: f49b169235d4f5df5b6ce62233b0fa76cad7387b
+    TeamGameParticipation: TeamGameParticipation_1
+    sport_game_token_id: a87eb71dcf9bc50b40650e313e122d936a4818b9
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_6
+    person_token_id: 6a05a0a0ceaadca0258191e4ecb6130e6550cde6
+    member_full_name: 'Philimon Hadgu Kahsay'
+    member_role_id: '2'
+    member_number: '0'
+    active_flag: true
+    status: '2'
+    description: 'Philimon Hadgu Kahsay ( sfgsdfg )'
+    created_at: '2018-03-28 20:54:01'
+    updated_at: '2018-03-28 20:54:01'
+  TeamMemberParticipant_2:
+    token_id: 4b0d1e334d651fc0834c4654d7e297f0a7c1a11b
+    TeamGameParticipation: TeamGameParticipation_2
+    sport_game_token_id: 939ffb20c54cdfb36deefb096255788faad573da
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_7
+    person_token_id: 97b5126642521b0c9e062ab64a4197ea1c036ea7
+    member_full_name: 'Rahwa Gidey Meles'
+    member_role_id: '2'
+    member_number: '0'
+    active_flag: true
+    status: '2'
+    description: 'Rahwa Gidey Meles ( sdfg sdfg sdfg )'
+    created_at: '2018-03-28 20:55:02'
+    updated_at: '2018-03-28 20:55:02'
+  TeamMemberParticipant_3:
+    token_id: 8b99257b3143bc3210fb675b69d9b08fa5b76dac
+    TeamGameParticipation: TeamGameParticipation_4
+    sport_game_token_id: 98accb05c40dcee2a4f690b59dfc8cc7ab8f2533
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_8
+    person_token_id: 7ce26c1c948189e5a27acf661b98361721b900b8
+    member_full_name: 'Lemlem Kiros Berhe'
+    member_role_id: '2'
+    member_number: '0'
     active_flag: true
     status: '1'
-    description: null
-    created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-02-24 21:28:50' 
+    description: 'Lemlem Kiros Berhe ( s dfgsdfg )'
+    created_at: '2018-03-28 21:08:39'
+    updated_at: '2018-03-28 21:08:39'
+  TeamMemberParticipant_4:
+    token_id: 225041cafec83263c7fdb86d6053bf9b1768fd3b
+    TeamGameParticipation: TeamGameParticipation_9
+    sport_game_token_id: 4348c3a970eb3099ee44ecdd7942c15307005edf
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_9
+    person_token_id: e654e3809d5cde0fd42ebbc8248dc2fe20cfb88a
+    member_full_name: 'Belete Kidane Mehur'
+    member_role_id: '2'
+    member_number: '0'
+    active_flag: true
+    status: '1'
+    description: 'Belete Kidane Mehur ( sdfgsdfgsdfg )'
+    created_at: '2018-03-28 21:09:17'
+    updated_at: '2018-03-28 21:09:17'
+  TeamMemberParticipant_5:
+    token_id: b02f2b0de69ad6bcb60efa055ec0da4c24d8bca1
+    TeamGameParticipation: TeamGameParticipation_11
+    sport_game_token_id: 01236eaf538ebdcb5e80bde8a0457d7c6af12518
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    Person: Person_10
+    person_token_id: 7ce5f61caf473e7db1566aef4cccb756321fecf6
+    member_full_name: 'Uhuru Kiga Jackson'
+    member_role_id: '2'
+    member_number: '0'
+    active_flag: true
+    status: '2'
+    description: 'Uhuru Kiga Jackson ( sdf gsdfg sdfg )'
+    created_at: '2018-03-28 21:23:38'
+    updated_at: '2018-03-28 21:23:38'
+  TeamMemberParticipant_6:
+    token_id: e8fdc72d796562fd4173f09c70b5825676217e81
+    TeamGameParticipation: TeamGameParticipation_12
+    sport_game_token_id: 53c9b826f762056cd8f732f3112ba60841dc96d0
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    Person: Person_11
+    person_token_id: 8bd6b1d0841a1e5cff0a0896dad72ea2f0c95822
+    member_full_name: 'Ruth Desney Machare'
+    member_role_id: '2'
+    member_number: '0'
+    active_flag: true
+    status: '1'
+    description: 'Ruth Desney Machare ( asdfasdfasdf )'
+    created_at: '2018-03-28 21:24:10'
+    updated_at: '2018-03-28 21:24:10'
+  TeamMemberParticipant_7:
+    token_id: 2b5e91fdc9b3804f8e104658f7ab9a86ae29a170
+    TeamGameParticipation: TeamGameParticipation_13
+    sport_game_token_id: daf9202e0eaa25b44a5e2b1082086de184b643b2
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    Person: Person_12
+    person_token_id: 741566c50c67e4809c72b086cd1d16d7f6e19a8c
+    member_full_name: 'Beko Goerge James'
+    member_role_id: '2'
+    member_number: '0'
+    active_flag: true
+    status: '1'
+    description: 'Beko Goerge James ( sgsfgsdfg )'
+    created_at: '2018-03-28 21:24:38'
+    updated_at: '2018-03-28 21:24:38'
+TeamGameParticipation:
+  TeamGameParticipation_1:
+    token_id: a87eb71dcf9bc50b40650e313e122d936a4818b9
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '2'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsdfgsdfgsdfg )'
+    created_at: '2018-03-27 19:34:28'
+    updated_at: '2018-03-27 19:34:28'
+  TeamGameParticipation_2:
+    token_id: 939ffb20c54cdfb36deefb096255788faad573da
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '1'
+    gender_category_id: '2'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsdfgsdfg )'
+    created_at: '2018-03-27 19:34:45'
+    updated_at: '2018-03-27 19:34:45'
+  TeamGameParticipation_3:
+    token_id: 98c96d7796cd5645e4a4cd5d0fd960fa27500fbd
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '3'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfgsdfgsdfg )'
+    created_at: '2018-03-27 19:35:19'
+    updated_at: '2018-03-27 19:35:19'
+  TeamGameParticipation_4:
+    token_id: f411ee6fb50e179c26248ff48e57ed73a0b87459
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '2'
+    gender_category_id: '2'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfgsdfgsfgsfg )'
+    created_at: '2018-03-27 19:35:40'
+    updated_at: '2018-03-27 19:35:40'
+  TeamGameParticipation_5:
+    token_id: 36d96f7668209512046e34d29c0316370736077d
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_2
+    SportGame: SportGame_18
+    sport_game_token_id: d357cafe060ee3b7b5812e72903e7e4d61d3ca11
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '2'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Bascketball (BASCKETBALL) - Basketball (Bascketball) ( sdfasdfasdfasdf )'
+    created_at: '2018-03-27 19:35:59'
+    updated_at: '2018-03-27 19:35:59'
+  TeamGameParticipation_6:
+    token_id: b96657a322cd6266dec0742b72a9f125ac30f7c9
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_3
+    SportGame: SportGame_19
+    sport_game_token_id: 59335f3f78ab222a55fc6e4f7caf29dab0fb84fa
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '2'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Handball (HANDBALL) - Handball (Handball) ( asdfasdf )'
+    created_at: '2018-03-27 19:36:17'
+    updated_at: '2018-03-27 19:36:17'
+  TeamGameParticipation_7:
+    token_id: 11cea32bfae5ba709c65053c6b02fb83393dada5
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_4
+    SportGame: SportGame_20
+    sport_game_token_id: b3a3d8457ab1b3f9f2cb6f23671d9860a6da1caf
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '2'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Vollyball (VOLLYBALL) - Vollyball (Vollyball) ( dgsdfgsdfg )'
+    created_at: '2018-03-27 19:36:36'
+    updated_at: '2018-03-27 19:36:36'
+  TeamGameParticipation_8:
+    token_id: 222173f2ad8883bad2337a20f7fc47a3015279ca
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_6
+    SportGame: SportGame_22
+    sport_game_token_id: 7ce4397a275c27162db8d32ac3016eafb841aaba
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '2'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis (Ground Tennis) ( sdfgsfgsdfg )'
+    created_at: '2018-03-27 19:36:55'
+    updated_at: '2018-03-27 19:36:55'
+  TeamGameParticipation_9:
+    token_id: 571fe77035959b56b40b2ec9a4a3f9036be3af25
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_7
+    SportGame: SportGame_23
+    sport_game_token_id: 45bed800ab5dad8ff7d357321a47fab78ac168f0
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '2'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( asdf asdf asdf )'
+    created_at: '2018-03-27 19:37:12'
+    updated_at: '2018-03-27 19:37:12'
+  TeamGameParticipation_10:
+    token_id: c96fd0cfe8c16c13e7be67f77a9b9ff60c223fc7
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_5
+    SportGame: SportGame_21
+    sport_game_token_id: 80ba29d15e4bc08360dc56029d20a0969082c8da
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '2'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Football (FOOTBALL) - Football (Football) ( asdf asdf asdf asdf )'
+    created_at: '2018-03-27 19:37:37'
+    updated_at: '2018-03-27 19:37:37'
+  TeamGameParticipation_11:
+    token_id: 2837ea9c7d6d83de02dfcde3b87ec985bdc37f7f
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '2'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsdfgsdfgsdfg )'
+    created_at: '2018-03-28 21:22:03'
+    updated_at: '2018-03-28 21:22:03'
+  TeamGameParticipation_12:
+    token_id: 53a2d51197d28916f004cc86d31f59041293442c
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '2'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfgsdfgsdfg )'
+    created_at: '2018-03-28 21:22:28'
+    updated_at: '2018-03-28 21:22:28'
+  TeamGameParticipation_13:
+    token_id: 3ef5e2531977a903c2531d38dec5916419035f33
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    GameCategory: GameCategory_1
+    SportGame: SportGame_5
+    sport_game_token_id: aa95a7799ae741115de28cb46a2285d9173359c9
+    number_of_players: '3'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 1500M (Athletics) ( sdfgsdfgsdfg )'
+    created_at: '2018-03-28 21:23:04'
+    updated_at: '2018-03-28 21:23:04'
+  TeamGameParticipation_14:
+    token_id: e9c8b396a782b9a910ac6e8d73e4c1ddbb78e3c4
+    Team: Team_2
+    team_token_id: 631a8f1f5891676f1629444f59b18eab460aea61
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '2'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( asdf asdf asdf )'
+    created_at: '2018-03-31 21:12:56'
+    updated_at: '2018-03-31 21:12:56'
+  TeamGameParticipation_15:
+    token_id: 9b65a3b4e40ab096b63dfb764794a9bb63921ba3
+    Team: Team_2
+    team_token_id: 631a8f1f5891676f1629444f59b18eab460aea61
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '2'
+    gender_category_id: '2'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sfsdfgsdfg )'
+    created_at: '2018-03-31 21:13:13'
+    updated_at: '2018-03-31 21:13:13'
+  TeamGameParticipation_16:
+    token_id: 80f072b4b60b29ce64e28e8dcd0c5ca70e54da86
+    Team: Team_2
+    team_token_id: 631a8f1f5891676f1629444f59b18eab460aea61
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfasdfasdf )'
+    created_at: '2018-03-31 21:13:26'
+    updated_at: '2018-03-31 21:13:26'
+  TeamGameParticipation_17:
+    token_id: 305c18468275fd2890c9ff1048b8b090fdb5d365
+    Team: Team_5
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '4'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsfgsdfg sdfgsfg )'
+    created_at: '2018-03-31 21:13:56'
+    updated_at: '2018-03-31 21:13:56'
+  TeamGameParticipation_18:
+    token_id: d88e1062b481dbb7502fca962c8d848200206444
+    Team: Team_5
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '3'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( safdadsf adsf asdf )'
+    created_at: '2018-03-31 21:14:14'
+    updated_at: '2018-03-31 21:14:14'
+  TeamGameParticipation_19:
+    token_id: 01cfdc1c8566d339b242626fab1730216db57300
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_4
+    sport_game_token_id: 459093f114e1e0e14e5661db25371e5a0e46b293
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 800M (Athletics) ( afasdf asdf )'
+    created_at: '2018-03-31 21:14:36'
+    updated_at: '2018-03-31 21:14:36'
+  TeamGameParticipation_20:
+    token_id: 8313311038a72ea73f7f4dce24863e653d72ec81
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) (  )'
+    created_at: '2018-03-31 21:14:50'
+    updated_at: '2018-03-31 21:14:50'
+  TeamGameParticipation_21:
+    token_id: 3c99bec52d65676109142fbf272e236c6f11009b
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) (  )'
+    created_at: '2018-03-31 21:15:02'
+    updated_at: '2018-03-31 21:15:02'
+  TeamGameParticipation_22:
+    token_id: 4cbc8dc5102087a8c6678ec6494e8bacff9272e0
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_5
+    SportGame: SportGame_21
+    sport_game_token_id: 80ba29d15e4bc08360dc56029d20a0969082c8da
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Football (FOOTBALL) - Football (Football) (  )'
+    created_at: '2018-03-31 21:15:14'
+    updated_at: '2018-03-31 21:15:14'
+  TeamGameParticipation_23:
+    token_id: 8c0127bcde6ab2965fe3d8ab6b787ed8169851a8
+    Team: Team_7
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfasdfa )'
+    created_at: '2018-03-31 21:15:38'
+    updated_at: '2018-03-31 21:15:38'
+  TeamGameParticipation_24:
+    token_id: 3d91016257cbc8a70f63934542526e3e8711a720
+    Team: Team_7
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) (  )'
+    created_at: '2018-03-31 21:15:51'
+    updated_at: '2018-03-31 21:15:51'
+  TeamGameParticipation_25:
+    token_id: 512f6d74be596967efbdd089d9ab842035e5c5e7
+    Team: Team_7
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_5
+    SportGame: SportGame_21
+    sport_game_token_id: 80ba29d15e4bc08360dc56029d20a0969082c8da
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Football (FOOTBALL) - Football (Football) ( sdfg sdfg sdfg )'
+    created_at: '2018-03-31 21:16:05'
+    updated_at: '2018-03-31 21:16:05'
+  TeamGameParticipation_26:
+    token_id: 97487e94f8cc997f9de97c34e47a55a8963caa45
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( asd asdf asdf )'
+    created_at: '2018-03-31 21:18:41'
+    updated_at: '2018-03-31 21:18:41'
+  TeamGameParticipation_27:
+    token_id: c5bc9001668fec7d430b82bc032a9e9fd5dca2b7
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdsdfgsdfg )'
+    created_at: '2018-03-31 21:20:43'
+    updated_at: '2018-03-31 21:20:43'
+  TeamGameParticipation_28:
+    token_id: a71a9c7c21ae043bc4858f39baf75b8ca34a2d58
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_3
+    SportGame: SportGame_19
+    sport_game_token_id: 59335f3f78ab222a55fc6e4f7caf29dab0fb84fa
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Handball (HANDBALL) - Handball (Handball) ( sdfgsdfg )'
+    created_at: '2018-03-31 21:21:06'
+    updated_at: '2018-03-31 21:21:06'
+  TeamGameParticipation_29:
+    token_id: 35bd8ba7ef71d0b052781183c70b2696ae694ecc
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_6
+    SportGame: SportGame_22
+    sport_game_token_id: 7ce4397a275c27162db8d32ac3016eafb841aaba
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis (Ground Tennis) ( sdfgsdfgsdf )'
+    created_at: '2018-03-31 21:21:18'
+    updated_at: '2018-03-31 21:21:18'
+  TeamGameParticipation_30:
+    token_id: 904cb14a8ced114bf899691b361df4c12cde7321
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_7
+    SportGame: SportGame_23
+    sport_game_token_id: 45bed800ab5dad8ff7d357321a47fab78ac168f0
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( adfasdfasdfa asdfasdf )'
+    created_at: '2018-03-31 21:21:31'
+    updated_at: '2018-03-31 21:21:31'
+  TeamGameParticipation_31:
+    token_id: 2a13d24e8e8ddcfba215d3531b1322bb4467a842
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_5
+    SportGame: SportGame_21
+    sport_game_token_id: 80ba29d15e4bc08360dc56029d20a0969082c8da
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Football (FOOTBALL) - Football (Football) ( fasdf asdfasdadfadf )'
+    created_at: '2018-03-31 21:21:51'
+    updated_at: '2018-03-31 21:21:51'
+  TeamGameParticipation_32:
+    token_id: 3e5ee4af633650cbf4ed654f7f309ef389b1acdc
+    Team: Team_9
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( asdfasdf )'
+    created_at: '2018-03-31 21:22:58'
+    updated_at: '2018-03-31 21:22:58'
+  TeamGameParticipation_33:
+    token_id: a856896847315c89aacfb1b3db9297b330ee4696
+    Team: Team_9
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( asd fasdfa sdf )'
+    created_at: '2018-03-31 21:23:13'
+    updated_at: '2018-03-31 21:23:13'
+  TeamGameParticipation_34:
+    token_id: 0f95068cf3bbce1eb96f55f18af50a004dfe8180
+    Team: Team_9
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_5
+    SportGame: SportGame_21
+    sport_game_token_id: 80ba29d15e4bc08360dc56029d20a0969082c8da
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '2'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Football (FOOTBALL) - Football (Football) ( fdas fasdf asdf )'
+    created_at: '2018-03-31 21:23:37'
+    updated_at: '2018-03-31 21:23:37'
+  TeamGameParticipation_35:
+    token_id: 69a7d725a1d4bb6945539d08e7fabaa3d78a8ab1
+    Team: Team_14
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( asd fasdf asdf )'
+    created_at: '2018-03-31 21:24:02'
+    updated_at: '2018-03-31 21:24:02'
+  TeamGameParticipation_36:
+    token_id: 681ab95820cffa54d26290e7da86f7de652061a3
+    Team: Team_14
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfasdf asdfasdf )'
+    created_at: '2018-03-31 21:24:17'
+    updated_at: '2018-03-31 21:24:17'
+  TeamGameParticipation_37:
+    token_id: 44c0c82349ee7852ff99318a651b91fc2382bd85
+    Team: Team_13
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) (  )'
+    created_at: '2018-03-31 21:29:55'
+    updated_at: '2018-03-31 21:29:55'
+  TeamGameParticipation_38:
+    token_id: 92af238039b900fe2d8673ad8c2ebe5d386265d7
+    Team: Team_13
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) (  )'
+    created_at: '2018-03-31 21:30:09'
+    updated_at: '2018-03-31 21:30:09'
+  TeamGameParticipation_39:
+    token_id: 2b72f6d7c9757392d578c9dae09227825fa949ce
+    Team: Team_12
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_7
+    sport_game_token_id: 6860f8f030fdef3fafaaa073d95525f1e5b30d06
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 5000M (Athletics) (  )'
+    created_at: '2018-03-31 21:30:46'
+    updated_at: '2018-03-31 21:30:46'
+  TeamGameParticipation_40:
+    token_id: cb918f6b96bc16fdcdf340dd80b30c23226c04b0
+    Team: Team_12
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_8
+    sport_game_token_id: d59e3076a5655455de7582cafb51d9d69cdedd6c
+    number_of_players: '0'
+    gender_category_id: '3'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Athletics (ATHLETICS) - 10000M (Athletics) (  )'
+    created_at: '2018-03-31 21:31:04'
+    updated_at: '2018-03-31 21:31:04'
+  TeamGameParticipation_41:
+    token_id: a86d296f48dca2e32388b8106baf9ec50a27ce97
+    Team: Team_12
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_2
+    SportGame: SportGame_18
+    sport_game_token_id: d357cafe060ee3b7b5812e72903e7e4d61d3ca11
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Bascketball (BASCKETBALL) - Basketball (Bascketball) (  )'
+    created_at: '2018-03-31 21:31:19'
+    updated_at: '2018-03-31 21:31:19'
+  TeamGameParticipation_42:
+    token_id: ed8ce96fc1ef69cd62d7074bd9261a18ddcded61
+    Team: Team_12
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_5
+    SportGame: SportGame_21
+    sport_game_token_id: 80ba29d15e4bc08360dc56029d20a0969082c8da
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Football (FOOTBALL) - Football (Football) (  )'
+    created_at: '2018-03-31 21:31:31'
+    updated_at: '2018-03-31 21:31:31'
+  TeamGameParticipation_43:
+    token_id: bf1d220a0bdbe417628efd270912f7440c55b628
+    Team: Team_11
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_5
+    SportGame: SportGame_21
+    sport_game_token_id: 80ba29d15e4bc08360dc56029d20a0969082c8da
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Football (FOOTBALL) - Football (Football) (  )'
+    created_at: '2018-03-31 21:31:55'
+    updated_at: '2018-03-31 21:31:55'
+  TeamGameParticipation_44:
+    token_id: 7738245d0eb94957dc1b9d0794e91fa0cb910711
+    Team: Team_11
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_6
+    SportGame: SportGame_22
+    sport_game_token_id: 7ce4397a275c27162db8d32ac3016eafb841aaba
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis (Ground Tennis) (  )'
+    created_at: '2018-03-31 21:32:08'
+    updated_at: '2018-03-31 21:32:08'
+  TeamGameParticipation_45:
+    token_id: 9a5f4cafcdb0df06085def7b496e088764a8842e
+    Team: Team_11
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_7
+    SportGame: SportGame_23
+    sport_game_token_id: 45bed800ab5dad8ff7d357321a47fab78ac168f0
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '1'
+    player_mode: '4'
+    confirm_flag: false
+    active_flag: false
+    status: '1'
+    description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) (  )'
+    created_at: '2018-03-31 21:32:21'
+    updated_at: '2018-03-31 21:32:21'
 CodeGenerator:
   CodeGenerator_1:
     token_id: ee5bb3a6124bae087ac3f5d732d94947
@@ -1928,24 +3476,6 @@ CodeGenerator:
     token_id: 80f14629d01dc4b0d7073752f1020eda
     Organization: Organization_1
     org_token_id: 900ce258a604de13fb2d4dafddd78688
-    prefix_code: GRP
-    alias: GRP
-    initial_number: '0001'
-    last_code: '0001'
-    deleted_code: null
-    can_recreate_deleted: true
-    code_type: '4'
-    has_deleted: false
-    default_flag: true
-    applicable_flag: true
-    active_flag: true
-    description: 'GRP ( Group generated code )'
-    created_at: '2016-01-21 01:26:19'
-    updated_at: '2016-01-21 01:26:19'
-  CodeGenerator_5:
-    token_id: 80f14629d01dc4b0d7073752f1020eda
-    Organization: Organization_1
-    org_token_id: 900ce258a604de13fb2d4dafddd78688
     prefix_code: SGM
     alias: SGM
     initial_number: '0001'
@@ -1960,3 +3490,21 @@ CodeGenerator:
     description: 'SGM ( Sport Game generated code )'
     created_at: '2016-01-21 01:26:19'
     updated_at: '2016-01-21 01:26:19'
+  CodeGenerator_6:
+    token_id: 80f14629d01dc4b0d7073752f1020eda
+    Organization: Organization_1
+    org_token_id: 900ce258a604de13fb2d4dafddd78688
+    prefix_code: GRP
+    alias: GRP
+    initial_number: '0001'
+    last_code: '0001'
+    deleted_code: null
+    can_recreate_deleted: true
+    code_type: '4'
+    has_deleted: false
+    default_flag: true
+    applicable_flag: true
+    active_flag: true
+    description: 'SGM ( Sport Game generated code )'
+    created_at: '2016-01-21 01:26:19'
+    updated_at: '2018-03-31 19:37:32'

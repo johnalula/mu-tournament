@@ -11,7 +11,7 @@
 							<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->confirmFlag ? 'status/approved':'status/disabled')  ?>"> 
 							<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Team').' ( Name: '.$_team->teamName.' ID #:'.$_team->id.' )'  ?>
+						<?php echo __('Team').' ( Name: '.$_team->teamName.' ID #:'.$_team->teamNumber.' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -32,11 +32,10 @@
 					<div class="ui-panel-content-box">
 						<div class="ui-panel-detail-form-container" id=""> 
 							<div class="ui-panel-content-detail"> 
-								<?php include_partial('team_detail', array('_team' => $_team)) ?> 
+								<?php include_partial('team_view', array('_team' => $_team)) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
-						
-						
+
 						<div class="ui-panel-tab-container-box"> 
 							<div class="ui-panel-main-tab-box"> 
 								<div class="ui-tabs" id="ui-tabs">
@@ -45,13 +44,13 @@
 											<ul class="nav nav-tabs ui-main-tab">
 												<li class="active">
 													<a href="#ui-main-tab-one" data-toggle="tab">
-														<img class="" src="<?php echo image_path('settings/courses') ?>">
+														<img class="" src="<?php echo image_path('settings/team') ?>">
 														<?php echo __('Game Participation') ?>
 													</a>
 												</li> 
 												<li class="">
 													<a href="#ui-main-tab-two" data-toggle="tab">
-														<img class="" src="<?php echo image_path('settings/fee') ?>">
+														<img class="" src="<?php echo image_path('settings/team') ?>">
 														<?php echo __('Team Members') ?>
 													</a>
 												</li>  
@@ -104,7 +103,7 @@
 													<div class="ui-toolbar-menu">
 														<div id="" class="navbar-collapse ui-toolbar">
 															<div class="">
-																<?php include_partial('game_participation_toolbar', array()) ?> 
+																<?php include_partial('team_member_toolbar', array()) ?> 
 															</div> 
 														</div><!-- end of ui-filter-list -->
 													</div>
@@ -112,7 +111,7 @@
 												<!--    End of toolbar      -->
 												<div id="ui-list-collapsible-panel-two">
 													<div class="ui-panel-grid-list-form ui-panel-form-border">
-														<?php include_partial('team_member_form', array('_serializedItems' => $_serializedItems )) ?> 
+														<?php include_partial('team_member_form', array('_team' => $_team )) ?> 
 													</div>		
 												</div><!-- ui-tab-panel-grid -->
 												
@@ -129,7 +128,7 @@
 							
 												<div id="ui-list-collapsible-panel-five">
 													<div class="ui-tab-panel-grid">
-														<?php include_partial('team_member_list', array('_productFeatures' => $_productFeatures )) ?> 
+														<?php include_partial('team_member_list', array( '_memberParticipants' => $_memberParticipants )) ?> 
 													</div>		
 												</div><!-- ui-tab-panel-grid -->
 												

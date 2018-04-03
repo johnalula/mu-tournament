@@ -35,7 +35,8 @@ class loginActions extends sfActions
 		$_userLogin = $request->getParameter('user-login');
 		$_userAccount = $_userLogin['user_account'];
 		$_userPassword = $_userLogin['password'];  
-		$_user = UserTable::processLogin ( $_userAccount, $_userPassword );
+		$_userRole = $_userLogin['user_role'];  
+		$_user = UserTable::processLogin ( $_userAccount, $_userPassword, $_userRole );
 		if($_user) {	
 			/*if ($_user->activeFlag && $_user->hasActivationKey) {
 				$this->getUser()->setAuthenticated(false);
@@ -63,7 +64,7 @@ class loginActions extends sfActions
 			$this->getUser()->setAuthenticated(false);
 			$this->getUser()->setFlash('login_failure', true);
 			 
-			$this->forward('login', 'index');
+			$this->forward('login', 'login');
 		}
 	}	  
 

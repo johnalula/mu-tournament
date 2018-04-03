@@ -6,7 +6,7 @@
 				<fieldset  class="ui-form-fieldset-frame">
 					<legend class="ui-form-legend">
 						<img src="<?php echo image_path('icons/add_icon') ?>" title="<?php echo __('Team Information') ?>">
-						<?php echo __('Team') ?>
+						<?php echo __('Game Participation') ?>
 					</legend>
 					<div class="form-group">
 						<label class="col-sm-20 control-label"><?php echo __('Game Type') ?>: <span class="ui-red-text">*</span></label>
@@ -26,6 +26,19 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-sm-20 control-label" title="<?php echo __('Sport Games Type') ?>"><?php echo __('Game Type') ?>: <span class="ui-red-text">*</span></label>
+						<div class="col-sm-40"> 
+							<select id="game_category" name="team_group[game_category]" class="form-control" title="<?php echo __('Match Group') ?>">
+								<option value="" selected  ><?php echo 'Select Category ...' ?></option>
+								<?php foreach($_candidateGameCategorys as $_key => $_candidateGameCategory): ?>								 
+									<option value="<?php echo $_candidateGameCategory->id ?>"  >
+										<?php echo $_candidateGameCategory->categoryName ?>
+									</option>								 
+								<?php endforeach; ?>
+							</select>
+						</div>
+					</div> 
+					<div class="form-group">
 						<label class="col-sm-20 control-label"><?php echo __('Sport Game') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 
 							<div class="input-group">
@@ -44,7 +57,7 @@
 						<label class="col-sm-20 control-label"><?php echo __('Event Type') ?>:</label>
 						<div class="col-sm-23">
 							<select id="event_type" name="sport_game_participation[event_type]" class="form-control" title="<?php echo __('Event Type') ?>">
-								<option value="100" selected  ><?php echo 'Select Event ...' ?></option>
+								<option value="" selected  ><?php echo 'Select Event ...' ?></option>
 								<?php foreach(TournamentCore::processEventTypes() as $_key => $_eventType): ?>								 
 									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultEventType () ? 'selected':'' ?> >
 										<?php echo $_eventType ?>
@@ -55,7 +68,7 @@
 						<label class="col-sm-01 control-label" title="<?php echo __('Gender Category') ?>"><?php echo __('Gender') ?>:</label>
 						<div class="col-sm-23">
 							<select id="gender_category" name="sport_game_participation[gender_category]" class="form-control" title="<?php echo __('Gender Category') ?>">
-								<option value="100" selected  ><?php echo 'Select Gender ...' ?></option>
+								<option value="" selected  ><?php echo 'Select Gender ...' ?></option>
 								<?php foreach(TournamentCore::processGenders() as $_key => $_gender): ?>								 
 									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultGender () ? 'selected':'' ?> >
 										<?php echo $_gender ?>
@@ -72,9 +85,9 @@
 						<label class="col-sm-01 control-label"><?php echo __('Mode') ?>:</label>
 						<div class="col-sm-23">
 							 <select id="player_mode" name="match_fixture[player_mode]" class="form-control" title="<?php echo __('Mode') ?>">
-								<option value="100" selected  ><?php echo 'Select Player Mode ...' ?></option>
+								<option value="" selected  ><?php echo 'Select Player Mode ...' ?></option>
 								<?php foreach(TournamentCore::processPlayerModes() as $_key => $_mode): ?>								 
-									<option value="<?php echo $_key ?>"  >
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_MULTIPLE ? 'selected':'' ?> >
 										<?php echo $_mode ?>
 									</option>								 
 								<?php endforeach; ?>

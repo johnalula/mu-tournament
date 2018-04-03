@@ -16,4 +16,200 @@ class PartyContactTable extends PluginPartyContactTable
     {
         return Doctrine_Core::getTable('PartyContact');
     }
+    // 
+	public static function processCreate ( $_party, $_addressTabia, $_addressSubCity, $_partyCityProvince, $_partyRegion, $_partyCountry, $_partyTINNumber, $_identificationType, $_IDNumber, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_houseNumber, $_streetNumber, $_email, $_website, $_addressRemark )
+	{
+		//try {
+			
+			$_flag = true;  
+			
+			$_token = trim($_mobileNumberOne).trim($_partyAddressOne).trim($_party->token_id).trim($_party->name).rand('11111', '99999');
+			$_startDate = date('m/d/Y', time()); 
+			$_nw = new PersonalContact(); 
+			$_nw->token_id = md5(sha1($_token)); 
+			$_nw->party_id = trim($_party->id);
+			$_nw->party_token_id = md5(sha1(trim($_party->token_id)));  
+			$_nw->from_date = trim($_startDate);
+			$_nw->address_one = trim($_partyAddressOne); 
+			$_nw->mobile_number_one = (('+251').intval(trim($_mobileNumberOne)));
+			$_nw->mobile_number_two = (('+251').intval(trim($_mobileNumberTwo)));
+			$_nw->home_phone_number = (('+251').intval(trim($_phoneNumberTwo)));
+			$_nw->office_phone_number = (('+251').intval(trim($_phoneNumberOne)));
+			$_nw->pobox = trim($_pobox);
+			$_nw->fax = (('+251').intval(trim($_faxNumber)));
+			$_nw->email = trim($_email); 
+			$_nw->website = trim($_website); 
+			$_nw->tin_number = trim($_partyTINNumber); 
+			$_nw->identification_type = trim($_identificationType); 
+			$_nw->identification_number = trim($_IDNumber); 
+			$_nw->tabia = trim($_addressTabia); 
+			$_nw->sub_city = trim($_addressSubCity); 
+			$_nw->city = trim($_partyCityProvince); 
+			$_nw->region = trim($_partyRegion); 
+			$_nw->country = trim($_partyCountry); 
+			$_nw->street_number = trim($_streetNumber);
+			$_nw->house_number = trim($_houseNumber);
+			$_nw->active_flag = true;     
+			$_nw->default_flag = true;     
+			$_nw->status = $_status ? $_status:trim(PartyCore::$_ACTIVE);  
+			$_nw->description = ucfirst(trim($_party->name).' contact address ( '.trim($_addressRemark).')');  
+			$_nw->save();   
+	
+			return $_nw ? true:false; 
+		//} catch ( Exception $e) {
+	    //  return false; 
+		//}
+	}
+
+	public static function processUpdate ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_addressID, $_addressTokenID, $_addressOne, $_addressTwo, $_streetNumber, $_houseNumber, $_mobileNumber, $_phoneNumber, $_pobox, $_faxNumber, $_email, $_webSite, $_tinNumber, $_idNumber, $_passportNumber, $_partyCityProvince, $_partyCountry, $_activeFlag, $_description, $_userID, $_userTokenID, $_partyType)
+	{
+		$q = Doctrine_Query::create( )
+			->update('PersonalContact prtadd')
+			->set('prtadd.address_one', '?', trim($_addressOne))
+			->set('prtadd.address_two', '?', trim($_addressTwo))
+			->set('prtadd.street_number', '?', trim($_streetNumber))
+			->set('prtadd.house_number', '?', trim($_houseNumber))
+			->set('prtadd.mobile_number', '?', trim($_mobileNumber))
+			->set('prtadd.phone_number', '?', trim($_phoneNumber))
+			->set('prtadd.pobox', '?', trim($_pobox))
+			->set('prtadd.fax', '?', trim($_faxNumber))
+			->set('prtadd.email', '?', trim($_email))
+			->set('prtadd.website', '?', trim($_webSite))
+			->set('prtadd.tin_number', '?', trim($_tinNumber)) 
+			->set('prtadd.passport_number', '?', trim($_passportNumber)) 
+			->set('prtadd.id_number', '?', trim($_idNumber)) 
+			->set('prtadd.city', '?', trim($_partyCityProvince)) 
+			->set('prtadd.country', '?', trim($_partyCountry)) 
+			->set('prtadd.description', '?', trim($_description)) 
+			->where('prtadd.id = ? AND prtadd.token_id = ?', array($_addressID, $_addressTokenID))
+			->execute();	
+			
+		$_actionID = SystemCore::$UPDATE;
+		$_moduleName  = ModuleCore::processModuleValue($_partyType); 
+		$_moduleID  = $_partyType;  
+		$_modulePartyType  = 'Update Cotact Address ID: '.$_addressID;  
+		
+		$_flag1 = SystemLogFileTable::processCreate ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_modulePartyType);
+		
+		return ( $q > 0 );   
+	}
+	//
+   public static function processDelete ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_partyID, $_partyTokenID, $_addressID, $_addressTokenID, $_userID, $_userTokenID )
+   {
+		$_flag = true;
+		$_addressObject = self::processObject ( $_partyID, $_partyTokenID, $_addressID, $_addressTokenID );
+		if(!$_addressObject) { $_flag = false; }
+		$_flag = $_addressObject->delete();
+
+		$_actionID = SystemCore::$DELETE;
+		$_moduleName  = ModuleCore::processModuleValue(ModuleCore::$ORGANIZATION); 
+		$_moduleID  = ModuleCore::$ORGANIZATION;  
+		$_modulePartyType  = 'Delete Cotact Address ID: '.$_addressID;  
+		
+		$_flag1 = SystemLogFileTable::processCreate ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_modulePartyType);
+		
+		return $_flag&&$_flag1;
+	}
+	//
+   public static function processDefault ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_partyID, $_partyTokenID, $_addressID, $_addressTokenID, $_userID, $_userTokenID )
+   {
+		$_flag = true;
+		$_addressObject = self::processObject ( $_partyID, $_partyTokenID, $_addressID, $_addressTokenID );
+		if(!$_addressObject) { $_flag = false; }
+		$_flag = $_addressObject->makeActiveContactAddress ($_partyID, $_partyTokenID);
+
+		$_actionID = SystemCore::$UPDATE;
+		$_moduleName  = ModuleCore::processModuleValue(ModuleCore::$ORGANIZATION); 
+		$_moduleID  = ModuleCore::$ORGANIZATION;  
+		$_modulePartyType  = 'Make Default Cotact Address ID: '.$_addressID;  
+		
+		$_flag1 = SystemLogFileTable::processCreate ( $_orgID, $_orgTokenID, $_parentID, $_parentTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_modulePartyType);
+		
+		return $_flag&&$_flag1;
+	}
+   
+   public static function appendQueryFields ( )  {
+		$queryFileds = "prtadd.*, prtadd.token_id as tokenID, prtadd.party_id as partyID, prtadd.party_token_id as partyTokenID, 
+		prtadd.address_one as addressOne, prtadd.address_two as addressTwo, prtadd.tin_number as tinNumber, prtadd.identification_number as idNumber, prtadd.address_one as addressOne, prtadd.address_one as addressOne, prtadd.house_number as houseNumber, prtadd.street_number as streetNumber, prtadd.home_phone_number as phoneNumber, prtadd.office_phone_number as officePhoneNumber, prtadd.mobile_number_one as mobileNumber, prtadd.created_at as createdAt, prtadd.updated_at as updatedAt, prtadd.active_flag as activeAddress, 
+		(prtadd.active_flag=false AND prtadd.status !=".PersonCore::$ACTIVE.") as canDelete,
+		prt.party_code_number as partyCodeNumber, prt.name as partyName, prt.father_name as fatherName, prt.grand_father_name as grandFatherName, prt.full_name as fullName, prt.org_id as orgID, prt.org_token_id as orgTokenID, prtadd.created_at as createdAt, prtadd.updated_at as updatedAt
+		
+		";
+		return $queryFileds;
+	}
+	//
+	public static function processSelection ( $_partyID, $_partyTokenID, $_activeFlag=null, $_status=null, $_keyword=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
+	{
+		$q = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("PersonalContact prtadd")   
+				->leftJoin("prtadd.Party prt on prtadd.party_id = prt.id")   
+				->offset($_offset)
+				->limit($_limit)
+				->where("prtadd.id IS NOT NULL AND prtadd.trashed_flag IS NOT TRUE")
+				->andWhere("prtadd.party_id = ? AND prtadd.party_token_id = ?", array($_partyID, $_partyTokenID));
+				if(!is_null($_activeFlag)) $q = $q->andWhere("prtadd.is_active_address = ? ", $_activeFlag);
+				if(!is_null($_status)) $q = $q->andWhere("prtadd.status=?", $_status);
+				if(! is_null($_exclusion)) $q = $q->andWhereNotIn("prt.id ", $_exclusion ); 
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 ) $q = $q->andWhere("prtadd.address_one LIKE ? AND prtadd.phone_number LIKE ? AND prtadd.mobile_number LIKE ? AND prtadd.email LIKE ? AND prtadd.description LIKE ?", array( $_keyword, $_keyword, $_keyword, $_keyword, $_keyword));
+				$q = $q->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+		return ( count ( $q ) <= 0 ? null : $q ); 
+	}
+	public static function processAll ( $_partyID, $_partyTokenID, $_activeFlag=null, $_status=null, $_keyword=null, $_exclusion=null) 
+	{
+		$q = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("PersonalContact prtadd")   
+				->leftJoin("prtadd.Party prt on prtadd.party_id = prt.id")   
+				->offset($_offset)
+				->limit($_limit)
+				->where("prtadd.id IS NOT NULL AND prtadd.trashed_flag IS NOT TRUE")
+				->andWhere("prtadd.party_id = ? AND prtadd.party_token_id = ?", array($_partyID, $_partyTokenID));
+				if(!is_null($_activeFlag)) $q = $q->andWhere("prtadd.is_active_address = ? ", $_activeFlag);
+				if(!is_null($_status)) $q = $q->andWhere("prtadd.status=?", $_status);
+				if(! is_null($_exclusion)) $q = $q->andWhereNotIn("prt.id ", $_exclusion ); 
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 ) $q = $q->andWhere("prtadd.address_one LIKE ? AND prtadd.phone_number LIKE ? AND prtadd.mobile_number LIKE ? AND prtadd.email LIKE ? AND prtadd.description LIKE ?", array( $_keyword, $_keyword, $_keyword, $_keyword, $_keyword));
+				$q = $q->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+		return ( count ( $q ) <= 0 ? null : $q ); 
+	}
+	public static function processObject($_partyID, $_partyTokenID, $_ID, $_tokenID) 
+	{
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("PersonalContact prtadd")   
+			->leftJoin("prtadd.Party prt on prtadd.party_id = prt.id")    		 
+			->where("prtadd.id=? AND prtadd.token_id=? AND prtadd.party_id=? AND prtadd.party_token_id=?", array($_ID, $_tokenID, $_partyID, $_partyTokenID))
+			->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+		return (! $q ? null : $q ); 	
+	}
+	public static function processCandidate ( $_partyID, $_partyTokenID, $_activeFlag ) 
+	{
+		$q = Doctrine_Query::create()
+			->select(self::appendQueryFields())
+			->from("PersonalContact prtadd")   
+			->leftJoin("prtadd.Party prt on prtadd.party_id = prt.id")    		 
+			->where("prtadd.party_id = ? AND prtadd.party_token_id = ?", array($_partyID, $_partyTokenID))
+			->andWhere("prtadd.is_active_address = ? ", $_activeFlag)
+			->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+		return (! $q ? null : $q ); 		
+	} 
+	//
+	public static function processCandidateSelection ( $_partyID, $_contactType=null, $_activeFlag=null, $_status=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
+	{
+		$q = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("PersonalContact prtadd")   
+				->leftJoin("prtadd.Party prt on prtadd.party_id = prt.id")   
+				->offset($_offset)
+				->limit($_limit)
+				->where("prtadd.id IS NOT NULL")
+				->andWhere("prtadd.party_id = ? ", $_partyID);
+				if(!is_null($_activeFlag)) $q = $q->andWhere("prtadd.is_active_address = ? ", $_activeFlag);
+				if(!is_null($_status)) $q = $q->andWhere("prtadd.status=?", $_status);
+				if(! is_null($_exclusion)) $q = $q->andWhereNotIn("prt.id ", $_exclusion );
+				
+		return ( count ( $q ) <= 0 ? null : $q ); 
+	}
 }

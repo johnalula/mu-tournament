@@ -10,9 +10,10 @@
  * @property string $tournament_match_token_id
  * @property integer $sport_game_id
  * @property string $sport_game_token_id
- * @property integer $group_type_id
+ * @property integer $sport_game_group_id
  * @property integer $match_round_type_id
  * @property integer $gender_category_id
+ * @property integer $round_mode
  * @property integer $event_type
  * @property integer $player_mode
  * @property string $match_venue
@@ -29,7 +30,7 @@
  * @property TournamentMatch $TournamentMatch
  * @property SportGame $SportGame
  * @property RoundType $RoundType
- * @property GroupType $GroupType
+ * @property SportGameGroup $SportGameGroup
  * @property Doctrine_Collection $matchFixtureParticipants
  * @property Doctrine_Collection $matchFixtureResults
  * @property Doctrine_Collection $matchFixtureDetails
@@ -63,14 +64,16 @@ abstract class BaseMatchFixture extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('group_type_id', 'integer', 8, array(
+        $this->hasColumn('sport_game_group_id', 'integer', null, array(
              'type' => 'integer',
-             'length' => 8,
              ));
         $this->hasColumn('match_round_type_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('gender_category_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('round_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('event_type', 'integer', null, array(
@@ -143,9 +146,10 @@ abstract class BaseMatchFixture extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('GroupType', array(
-             'local' => 'group_type_id',
-             'foreign' => 'id'));
+        $this->hasOne('SportGameGroup', array(
+             'local' => 'sport_game_group_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('MatchParticipants as matchFixtureParticipants', array(
              'local' => 'id',

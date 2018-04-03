@@ -6,74 +6,69 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
+			<th class="ui-th-left-text" title="<?php echo __('Product Name') ?>"><?php echo  __('Member Name') ?></th>   
 			<th class="" style="text-align:left!important;"><?php echo __('Prod').' #' ?></th>
-			<th class="ui-th-left-text" title="<?php echo __('Product Name') ?>"><?php echo  __('Product Name') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Name') ?>"><?php echo  __('UOM') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Qnt on SO') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Qnt on Hand') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Group') ?>"><?php echo  __('Unit Price') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('Action') ?></th>  
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Member Role') ?>"><?php echo  __('Role') ?></th>   
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Event') ?></th>  
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Type') ?></th>  
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Group') ?>"><?php echo  __('Type') ?></th>   
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
+			<th class="ui-th-left-text" style="text-align:left!important;"><?php echo  __('Action') ?></th>  
 			<th></th>
 		 </tr>
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-product" name="ui-total-data-list-product" value="<?php echo count($_countTournaments) ?>">
-	  <?php foreach ( $_teams as $_key => $_team ): ?>
+	  <?php foreach ( $_memberParticipants as $_key => $_memberParticipant ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<a href="<?php echo url_for('category/view?category_id='.$_team->id.'&token_id='.$_team->token_id) ?>" >	
-					<?php echo SystemCore::processDataID($_team->id) ?>
+				<a href="<?php echo url_for('category/view?category_id='.$_memberParticipant->id.'&token_id='.$_memberParticipant->token_id) ?>" >	
+					<?php echo SystemCore::processDataID($_memberParticipant->id) ?>
 				</a>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
-				<?php echo $_team->teamName  ?>
+				<?php echo $_memberParticipant->memberFullName  ?>
 			</td> 
-			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_team->teamAlias ?> 
-			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_team->id ?>
+				<?php echo $_memberParticipant->id ?>
 			</td>
 			
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_team->id ?>
+				<?php echo $_memberParticipant->id ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_team->id ?>
+				<?php echo $_memberParticipant->id ?>
 			</td> 
 			<td class="ui-td-right-text ui-td-xsmall-00">
-				<?php echo number_format($_team->id,2)  ?>
+				 <?php echo $_memberParticipant->id ?> 
+			</td>  
+			<td class="ui-td-left-text ui-td-xlarg">
+				 <?php echo $_memberParticipant->description ?> 
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<span rel="<?php echo $_team->id ?>" class="ui-table-status-small-icon" id="<?php echo $_team->id ?>">
-					<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->id ? 'status/approved':'status/disabled')  ?>"> 
+				<span rel="<?php echo $_memberParticipant->id ?>" class="ui-table-status-small-icon" id="<?php echo $_memberParticipant->id ?>">
+					<img title="<?php echo $_memberParticipant->memberFullName ?>" src="<?php echo image_path($_memberParticipant->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
-			<td class="ui-table-action ui-table-list-action-box-4">
+			<td class="ui-table-action ui-table-list-action-box-3">
 				<div class="ui-table-list-action " id="">
-					<ul class="ui-table-action-menu">  
+					<ul class="ui-table-action-menu">   
 						<li>
-							<a href="<?php echo url_for('team/setting?team_id='.$_team->id.'&token_id='.$_team->token_id) ?>" >	
-								<img title="<?php echo __('View Team Setting').' ( '.' Task '.' #:'.$_team->id ?> )" src="<?php echo image_path('icons/setting_large') ?>">			
-							</a>
-						</li> 
-						<li>
-							<a href="<?php echo url_for('team/view?team_id='.$_team->id.'&token_id='.$_team->token_id) ?>" >	
-								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_team->id ?> )" src="<?php echo image_path('icons/view') ?>">			
+							<a href="<?php echo url_for('team/view?team_id='.$_memberParticipant->id.'&token_id='.$_memberParticipant->token_id) ?>" >	
+								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_memberParticipant->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
 						</li> 
 						<li>  
-							<a href="<?php echo url_for('team/edit?team_id='.$_team->id.'&token_id='.$_team->token_id) ?>" >	
-								<img title="<?php echo __('Edit Team').' ( '.' Task '.' #:'.$_team->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
+							<a href="<?php echo url_for('team/edit?team_id='.$_memberParticipant->id.'&token_id='.$_memberParticipant->token_id) ?>" >	
+								<img title="<?php echo __('Edit Team').' ( '.' Task '.' #:'.$_memberParticipant->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
 							</a>    
 						</li> 
 						<li>   
-							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_team->id ?>" onclick="Javascript:deleteProduct(<?php echo $_team->id ?>);" rel="<?php echo $_team->token_id ?>">	
-							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_team->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
+							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_memberParticipant->id ?>" onclick="Javascript:deleteProduct(<?php echo $_memberParticipant->id ?>);" rel="<?php echo $_memberParticipant->token_id ?>">	
+							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_memberParticipant->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
 							</a>  
 						</li> 
 					</ul>
