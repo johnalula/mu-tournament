@@ -48,16 +48,16 @@ class teamActions extends sfActions
 	{
 		$_teamID = $request->getParameter('team_id');	
 		$_tokenID = $request->getParameter('token_id');	
-		//$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
 		$this->_team = TeamTable::processObject ( $_orgID, $_orgTokenID, $_teamID, $_tokenID ) ;
-		$this->_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 10  ) ;
-		$this->_teamGameParticipations = TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_keyword, $_exclusion, 0, 20  ) ;
-		$this->_memberParticipants = TeamMemberParticipantTable::processSelection( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_keyword, $_exclusion, 0, 20  ) ;
-		//$this->_teamGameParticipations = TeamTable::processCandidateSportGameParticipation ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, 0, 20  ) ;
-		$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 10  ); 
+		//$this->_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 10  ) ;
+		$this->_gameParticipations = TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_keyword, $_exclusion, 0, 20  ) ;
+		$this->_memberParticipants = TeamMemberParticipantTable::processSelection( $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_sportGameID, $_sportGameTokenID, $_keyword, $_exclusion, 0, 20  ) ;
+		//$this->_teamGameParticipations = TeamTable::processCandidateTeamGameParticipation ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, $_keyword, 0, 20  ) ;
+		//$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 10  ); 
 		
 	}
 	
@@ -133,27 +133,49 @@ class teamActions extends sfActions
 		return $_flag ? true:false;
 	}
 	
-	public function executeUploadTeamLogo(sfWebRequest $request)
+	public function executeCreateTeamLogo(sfWebRequest $request)
 	{
-		$_studentNumber = $_POST['student_number'];
-		$_studentID = $_POST['student_id'];
-		$_studentTokenID = $_POST['student_token_id'];
-		$_uploadedPhotoFileName = $_FILES['student_photo_file']['name'];
-		$_uploadedPhotoFileType = $_FILES['student_photo_file']['type'];
-		$_uploadedPhotoFileTempName = $_FILES['student_photo_file']['tmp_name'];
-		$_newUploadedFileName = strtolower($_uploadedPhotoFileName);	
+		$_manuCode = $_POST['manuscript_journal_code'];
+		$_authorID = $_POST['manuscript_author_id'];
+		$_manuscriptID = $_POST['team_id'];
+		$_tokenID = $_POST['team_token_id'];
+		$_uploadedFileName = $_FILES['file_name']['name'];
+		$_uploadedFileType = $_FILES['file_name']['type'];
+		$_uploadedFileTempName = $_FILES['file_name']['tmp_name'];
+		$_newUploadedFileName = strtolower($_uploadedFileName);	
 		$_uploadedFileName = str_replace(' ', '_', $_newUploadedFileName);
-		$_uploadedDirectory = $_SERVER['DOCUMENT_ROOT'].'/uploads/student_photo/2008/'.$_uploadedFileName ;
+		$_fileFullPath = $_SERVER['DOCUMENT_ROOT'].'/uploads/team/team_logo' ;
+		$_newPath = date('Y', time());
+		$_newFilePath = $_fileFullPath ."/" .$_newPath;
+		/*if(!file_exists($_newFilePath)) { 
+			exec("mkdir -p ${dir}/$_newFilePath");
+			chmod("${dir}/$_newFilePath",0777);
+			chown("${dir}/$_newFilePath","johnzalula");
+			chgrp("${dir}/$_newFilePath","johnzalula");
+		}*/
+		$_fileUploadedPath = 'web/uploads/team/team_logo' ;
+		$_fileUploadedFullPath = $_SERVER['DOCUMENT_ROOT'].'/uploads/team/team_logo' ;
+		$_teamLogoFileNamePath = $_newFilePath.'/'.$_uploadedFileName ;
+		$_description = $_uploadedFileName.' uploaded file' ;
 
-		$_success = @move_uploaded_file($_FILES["student_photo_file"]["tmp_name"], $_uploadedDirectory);
+		//id/6/sc/sumit_manuscript/manu_code/100006/nst/2
+		//$_author = AuthorTable::processObject ($_authorID) ;
 		
-		if(!$_success){ 
-			$this->getUser()->setFlash('process_fail', true);
-		}  else {
-			$this->getUser()->setFlash('process_success', true);
-		}
+		//$_manusctiptJournal = ArticleJournalTable::makeActiveCandidateObject ( $_manuscriptID, $_tokenID, $_manuCode);
+		$_teamLogo = TeamTable::processLogoUploading ( $_teamID, $_teamTokenID, $_uploadedFileType, $_uploadedFileName, $_teamLogoFileNamePath, $_newFilePath, $_description);
 		
-		$this->redirect('student/photo?student_id='.$_studentID.'&token_id='.$_studentTokenID);
+		
+		$_success = @move_uploaded_file($_FILES["file_name"]["tmp_name"], $_teamLogoFileNamePath);
+		
+		
+		//$_dirt = $_SERVER['DOCUMENT_ROOT'].'/uploads/manuscript_files/' ;
+		
+		//$path = $_dirt . "/" .date('Y', time());
+		//mkdir($_dirt, 0777);
+
+		
+		
+		$this->redirect('team/setting?id='.$_teamID.'&token_id='.$_teamTokenID);
 	}
 	/************  Candidate Navigation Selection Functions **************/
 	
@@ -186,7 +208,7 @@ class teamActions extends sfActions
 		//$_tokenID = $request->getParameter('token_id');	
 		$_offset = $request->getParameter('offset');	
 		$_limit = $request->getParameter('limit');	
-		//$_keyword = $request->getParameter('keyword');	
+		$_keyword = $request->getParameter('keyword');	
 		
 		
 		/*$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
@@ -203,10 +225,10 @@ class teamActions extends sfActions
 	}
 	public function executeCandidateMemberSportGames(sfWebRequest $request)
 	{
-		$_teamID = $request->getParameter('team_id');	
-		$_tokenID = $request->getParameter('team_token_id');	
+		$_teamID = $request->getParameter('member_team_id');	
+		$_tokenID = $request->getParameter('member_team_token_id');	
 		$_tournamentID = $request->getParameter('tournament_id');	
-		//$_genderCategory = $request->getParameter('gender_category_id');	
+		$_genderCategory = $request->getParameter('gender_category_id');	
 		//$_tokenID = $request->getParameter('token_id');	
 		$_offset = $request->getParameter('offset');	
 		$_limit = $request->getParameter('limit');	
@@ -220,12 +242,11 @@ class teamActions extends sfActions
 		if(!$_offset || $_offset=='')	$_offset = 0;			
 		if(!$_limit || $_limit=='' ) $_limit = 20;			 
 
-		//$_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, $_offset, $_limit ); 
-		//$_candidateSportGames = TeamTable::processCandidateSportGameParticipation ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_offset, $_limit );
-		$_teamGameParticipations = TeamTable::processCandidateSportGameParticipation ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, $_offset, $_limit  );
+		//$_teamGameParticipations = TeamTable::processCandidateSportGameParticipation ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, $_offset, $_limit  );
+		$_teamGameParticipations = TeamTable::processCandidateTeamGameParticipation ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, $_keyword, $_offset, $_limit  );
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
 		
-		return $this->renderPartial('candidate_game_participation_list', array('_teamGameParticipations' => $_teamGameParticipations, '_countCandidateSportGames' => $_countCandidateSportGames));	  
+		return $this->renderPartial('candidate_game_participation_list', array('_candidateTeams' => $_teamGameParticipations, '_countCandidateSportGames' => $_countCandidateSportGames));	  
 	}
 	
 	public function executeSearch(sfWebRequest $request)

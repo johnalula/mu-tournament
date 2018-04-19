@@ -3,7 +3,7 @@ class ModuleCore {
  	
 	public static $_DASHBOARD = 1;
 	public static $_TOURNAMENT = 2;
-	public static $_GAME = 3;
+	public static $_SPORT_GAME = 3;
 	public static $_GROUP = 4;
 	public static $_TEAM = 5;  
 	public static $_PLAYER = 6;  
@@ -116,7 +116,7 @@ class ModuleCore {
 			case self::$_TOURNAMENT:
 				return 'tournament';
 			break;
-			case self::$_GAME:
+			case self::$_SPORT_GAME:
 				return 'game';
 			break; 
 			case self::$_GROUP:

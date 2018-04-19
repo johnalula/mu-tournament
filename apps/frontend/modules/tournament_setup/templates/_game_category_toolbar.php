@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav ui-toolbar-action">
 	<li class="">
-		<a href="<?php echo url_for('game_category/new') ?>" title="<?php echo __('Create New Game Category') ?>" id="createNewGameCategory" class="" >
+		<a href="<?php echo url_for('game_category/new') ?>" title="<?php echo __('Create New Game Category') ?>" id="createGameCategory" class="" >
 			<img class="navbar-nav-img" src="<?php echo image_path('icons/add') ?>">
 			<?php echo __('New') ?>
 		</a>

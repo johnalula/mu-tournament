@@ -25,7 +25,6 @@
  * @property integer $status
  * @property clob $description
  * @property Tournament $Tournament
- * @property MatchFixture $MatchFixture
  * @property TournamentRankTable $TournamentRankTable
  * @property Person $Person
  * @property Team $Team
@@ -108,11 +107,6 @@ abstract class BaseTournamentMedalAwards extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('Tournament', array(
              'local' => 'tournament_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
-
-        $this->hasOne('MatchFixture', array(
-             'local' => 'match_fixture_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

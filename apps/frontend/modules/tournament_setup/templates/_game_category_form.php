@@ -19,6 +19,30 @@
 						<div class="col-sm-40"> 
 							 <input type="text" class="form-control" id="category_alias"	name="game_category[category_alias]"	placeholder="<?php echo __('Alias') ?>">
 						</div>
+					</div>  
+					<div class="form-group">
+						<label class="col-sm-21 control-label"><?php echo __('Team Mode') ?>: <span class="ui-red-text">&nbsp;</span></label>
+						<div class="col-sm-212">
+							<select id="participant_team_mode" name="game_category[participant_team_mode]" class="form-control" title="<?php echo __('Team Mode') ?>">
+								<option value="" selected  ><?php echo 'Select Mode ...' ?></option>
+								<?php foreach(TournamentCore::processContestantTeamModes() as $_key => $_mode): ?>								 
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PAIR_TEAM ? 'selected':'' ?> >
+										<?php echo $_mode ?>
+									</option>								 
+								<?php endforeach; ?>
+							</select>
+						</div>
+						<label class="col-sm-122 control-label" title="<?php echo __('Category Status') ?>"><?php echo __('Status') ?>:</label>
+						<div class="col-sm-212">
+							<select id="category_status" name="game_category[category_status]" class="form-control" title="<?php echo __('Category Status') ?>">
+								<option value="" selected  ><?php echo 'Select Status ...' ?></option>
+								<?php foreach(SystemCore::ProcessBatchActionTypes() as $_key => $_status): ?>								 
+									<option value="<?php echo $_key ?>" <?php echo $_key == SystemCore::$_ACTIVATE ? 'selected':'' ?> >
+										<?php echo $_status ?>
+									</option>								 
+								<?php endforeach; ?>
+							</select>
+						</div>
 					</div> 
 					<div class="form-group">
 						<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>:&nbsp;</label>
@@ -34,41 +58,25 @@
 </div> 
 
 <script>
-	$('#sport_game_type_name').keyup(function(e) {
-		$("#createSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+	$('#category_name').keyup(function(e) {
+		$("#createGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		$("#cancelGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	});
-	$('#sport_game_category').change(function() {
-		$("#createSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		//document.getElementById("round_name").value = $(this).val()';
+	$('#category_alias').keyup(function(e) {
+		$("#createGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		$("#cancelGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		return false;
+	});
+	$('#participant_team_mode').change(function() {
+		$("#createGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		$("#cancelGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 		
-	});
-	$('#sport_game_type').change(function() {
-		$("#createSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});
-	$('#sport_game_measurement').change(function() {
-		$("#createSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});
-	$('#sport_game_distance').keyup(function(e) {
-		$("#createSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});
-	$('#sport_game_type_alias').keyup(function(e) {
-		$("#createSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});
+	}); 
 	$('#description').keyup(function(e) {
-		$("#createSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		$("#createGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		$("#cancelGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	});
 	 

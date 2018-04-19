@@ -13,12 +13,15 @@
  * @property integer $sport_game_category_id
  * @property string $match_number
  * @property string $match_season
- * @property integer $participant_team_mode
+ * @property integer $round_type_mode
+ * @property integer $contestant_team_mode
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
  * @property boolean $roundable_flag
+ * @property boolean $complete_flag
  * @property boolean $active_flag
+ * @property integer $approval_status
  * @property integer $status
  * @property string $description
  * @property Organization $Organization
@@ -65,7 +68,10 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('participant_team_mode', 'integer', null, array(
+        $this->hasColumn('round_type_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('contestant_team_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('start_date', 'string', 100, array(
@@ -84,9 +90,17 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
              'type' => 'boolean',
              'default' => false,
              ));
+        $this->hasColumn('complete_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
-             'default' => true,
+             'default' => false,
+             ));
+        $this->hasColumn('approval_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('status', 'integer', null, array(
              'type' => 'integer',
@@ -116,7 +130,7 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('MatchFixture as tournamentMatchMatchFixtures', array(
+        $this->hasMany('TournamentMatchFixture as tournamentMatchMatchFixtures', array(
              'local' => 'id',
              'foreign' => 'tournament_match_id'));
 

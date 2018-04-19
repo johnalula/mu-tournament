@@ -17,17 +17,18 @@ class TournamentMatchTable extends PluginTournamentMatchTable
         return Doctrine_Core::getTable('TournamentMatch');
     }
    //
-	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_matchSeason, $_teamMode, $_matchDate, $_status, $_description, $_userID, $_userTokenID  )
+	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_tournamentMatchName, $_contestantTeamMode, $_matchDate, $_status, $_description, $_userID, $_userTokenID )
 	{
 		 $_flag = true;
 			
 				$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_MATCH, true  ); 
 				$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
 				$_matchNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeInitialNumber($_codeNumber);
+				//$_roundableFlag = (($_matchRoundMode == TournamentCore::$_FIRST_ROUND )|| ($_matchRoundMode == TournamentCore::$_FIRST_ROUND )) ? true:false;
 				
 			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
 			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
-			$_tournamentMatch = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_matchNumber, $_matchSeason, $_teamMode, $_matchDate, $_status, $_description );
+			$_tournamentMatch = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_tournamentMatchName, $_matchNumber, $_contestantTeamMode, $_matchDate, $_status, $_description );
 		
 		return $_tournamentMatch;
 	}
@@ -36,7 +37,7 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	{
 		
 	} 
-	public static function processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_matchNumber, $_matchSeason, $_teamMode, $_matchDate, $_status, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_tournamentMatchName, $_matchNumber, $_contestantTeamMode, $_matchDate, $_status, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -50,12 +51,12 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 			$_nw->tournament_token_id = sha1(md5(trim($_tournamentTokenID)));  
 			$_nw->sport_game_category_id = trim($_sportGameCategoryID); 
 			$_nw->match_number = trim($_matchNumber); 
-			$_nw->match_season = trim($_matchSeason); 
-			$_nw->participant_team_mode = trim($_teamMode); 
+			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->start_date = $_matchDate ? trim($_matchDate):trim($_startDate); 
 			$_nw->active_flag = true;  
-			$_nw->status = $_status ? trim($_status):TournamentCore::$_PENDING;   
-			$_nw->description = SystemCore::processDescription ( trim($_sportGameCategoryName), trim($_description) );  
+			$_nw->approval_status = TournamentCore::$_INITIATED;   
+			$_nw->status = $_status ? trim($_status):TournamentCore::$_INITIATED;   
+			$_nw->description = SystemCore::processDescription ( (trim($_tournamentMatchName).' '.trim($_sportGameCategoryName)), trim($_description) );  
 			$_nw->save(); 
 			
 			return $_nw; 

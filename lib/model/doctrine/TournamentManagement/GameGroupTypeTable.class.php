@@ -127,12 +127,30 @@ class GameGroupTypeTable extends PluginGameGroupTypeTable
 
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
-	//
-   public static function processCandidates ( ) 
+	// process list selection function 
+   public static function processCandidates ( $_orgID=null, $_orgTokenID=null, $_keyword=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
    {
-		 
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("GameGroupType grp")  
+				//->innerJoin("grp.Organization org on grp.org_id = org.id ")   
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("grp.id ASC")
+				->where("grp.id IS NOT NULL");
+				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("grp.org_id = ? AND grp.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("grp.active_flag = ?", $_activeFlag);    
+				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("grp.id ", $_exclusion );     
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("grp.group_number LIKE ? OR grp.alias LIKE ? OR grp.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
-  //
+	//
+    
 	public static function processObject ( $_orgID=null, $_groupID, $_tokenID ) 
 	{
 			$_qry = Doctrine_Query::create()

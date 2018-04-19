@@ -7,7 +7,7 @@
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('tournament_setup', array( '_sportGames' => $_sportGames, '_gameCategorys' => $_gameCategorys,  '_countGameCategorys' => $_countGameCategorys, '_gameRounds' => $_gameRounds )) ?> 
+				<?php include_partial('tournament_setup', array( '_gameCategorys' => $_gameCategorys, '_groupTypes' => $_groupTypes,  '_countGameCategorys' => $_countGameCategorys, '_gameRounds' => $_gameRounds )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>

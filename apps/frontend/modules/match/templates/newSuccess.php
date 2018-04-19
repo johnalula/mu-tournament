@@ -28,54 +28,63 @@
 <?php endif; ?>         
 
 <!--- ************************  -->
-
-
+ 
 <!-- Modal -->
 <div class="modal fade" id="candidateSportGameCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <form id="insertModalOneData">
 	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-content-container">
-				<div class="modal-header modal-header-info">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h4 class="modal-title" id="myModalLabel">
-						<?php echo __('Candidate Categories') ?>
-					</h4>
-				</div>
-				<div class="modal-content-body">
-					<div class="ui-toolbar-menu-box">
-						<div class="ui-toolbar-menu">
-							<div id="" class="navbar-collapse ui-toolbar">
-								<div class="">
-									<?php include_partial('partials/insert_toolbar', array('_object' => $_task)) ?> 
+		<div class="modal-content"> 
+			 <div class="ui-modal-panel-container1" id=""> 
+				<div class="ui-panel-grid-box" id=""> 
+					<!-- First panel -->  
+						<div class="ui-panel-grid">
+							<div class="ui-panel-header-default">
+								<h2 class="ui-theme-panel-header">
+									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group Management') ?>">
+									<span class="ui-header-status-icon"> 
+									</span>
+									<?php echo __('Candidate Sport Game Types')   ?>
+								</h2>
+								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 								</div>
-								<div class="">
-									<?php include_partial('partials/modal_filter', array( )) ?> 
-								</div><!-- end of ui-filter-list -->
-							</div><!-- end of ui-filter-list -->
-						</div>
-					</div>
-					<div class="modal-body">
-						<div class="ui-panel-content-box ">
-							<div class="ui-panel-grid-list">
-								<?php include_partial('game_category/candidate_game_category', array( '_candidateGameCategorys' => $_candidateGameCategorys )) ?> 
-							</div>
-						</div>  
-					</div> 	
-				</div>
-				
-				<div class="modal-footer-container">
-					<div class="ui-panel-footer-default-box-top-border">
-						<div class="modal-footer">
-							&nbsp;
-						</div>  
-					</div><!-- ui-panel-footer-default -->			
-				</div><!-- /.modal-content -->
+							</div><!-- ui-panel-header-default -->
+							<div class="" id="ui-list-collapsible-panel-one">
+								<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
+							<!-- Begining of toolbar -->
+								<div class="ui-toolbar-menu-box ui-panel-content-border">
+									<div class="ui-toolbar-menu">
+										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_candidateSportGames)) ?> 
+									</div>
+								</div>
+								<!--    End of toolbar      -->
+								<div class="ui-panel-content-box">
+									<div class="ui-panel-content-box ">
+										<div class="ui-panel-grid-list"> 
+											<?php include_partial('game_category/candidate_game_category', array( '_candidateGameCategorys' => $_candidateGameCategorys )) ?> 
+										</div>
+									</div> 
+									
+									<div class="ui-panel-footer-default">
+										<div class="ui-panel-list-pagination-default">
+											<div class="ui-panel-list-pagination">
+												<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
+											</div>
+										</div>
+									</div>
+											
+								</div> 			
+							</div><!-- ui-panel-content-box --> 
+						</div><!-- end of ui-panel-grid --> 
+					<!-- First panel --> 
+					<div class="clearFix"></div>		
+				</div><!-- end of ui-panel-grid-box --> 
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </form>
 </div><!-- /.modal -->
+
 
 <!--- ************************  -->
 
@@ -100,7 +109,7 @@
 		var datas = generateValidData (formName);
 		//processEntry(datas, url )
 		alert(datas);
-		return true; 
+		return false; 
 	}); 
 	$('#createTournamentMatchFooter').click(function(){
 		var url = '<?php echo url_for('team/createTeam')?>'; 
@@ -122,11 +131,10 @@
 			var listArr = input.split("$"); 
 			document.getElementById("sport_game_category_id").value = listArr[0];
 			document.getElementById("sport_game_category_token_id").value = listArr[1];  
+			document.getElementById("contestant_team_mode").value = listArr[4];  
 			document.getElementById("sport_game_category_name").value = listArr[2]+' ('+listArr[3]+')';    
 			$("#createTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 			$("#cancelTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$("#createTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			$('#candidateSportGameCategoryModal').modal('hide');
 		return e.preventDefault();
 	});

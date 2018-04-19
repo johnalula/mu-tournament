@@ -17,12 +17,12 @@ class GameCategoryTable extends PluginGameCategoryTable
         return Doctrine_Core::getTable('GameCategory');
     }
    //
-	public static function processNew ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_status, $_description, $_userID, $_userTokenID  )
+	public static function processNew ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_categoryStatus, $_description, $_userID, $_userTokenID  )
 	{
 		 $_flag = true;
 
 			$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
-			$_tournament = self::processSave ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_status, $_description );
+			$_tournament = self::processSave ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_categoryStatus, $_description );
 		
 		return $_tournament;
 	}
@@ -31,7 +31,7 @@ class GameCategoryTable extends PluginGameCategoryTable
 	{
 		
 	} 
-	public static function processSave ( $_orgID, $_orgTokenID,  $_categoryName, $_categoryAlias, $_status, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_categoryStatus, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -40,12 +40,13 @@ class GameCategoryTable extends PluginGameCategoryTable
 			$_startDate = date('m/d/Y', time());
 			$_nw = new GameCategory (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
-			//$_nw->org_id = trim($_orgID); 
-			//$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
+			$_nw->org_id = trim($_orgID); 
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
 			$_nw->category_name = ucwords(trim($_categoryName)); 
 			$_nw->alias = trim($_categoryAlias); 
+			$_nw->contestant_team_mode = trim($_teamMode); 
 			$_nw->active_flag = true;  
-			$_nw->status = trim(TournamentCore::$_PENDING);   
+			$_nw->status = $_categoryStatus ? $_categoryStatus:trim(SystemCore::$_ACTIVATE);   
 			$_nw->description = SystemCore::processDescription ( trim($_categoryName), trim($_description) );  
 			$_nw->save(); 
 			
@@ -80,7 +81,7 @@ class GameCategoryTable extends PluginGameCategoryTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "cat.id, cat.category_name as categoryName, cat.alias as categoryAlias, cat.active_flag as activeFlag, 
+		 $_queryFileds = "cat.id, cat.category_name as categoryName, cat.alias as categoryAlias, cat.contestant_team_mode as contestantTeamMode, cat.default_flag as defaultFlag, cat.active_flag as activeFlag, 
 		";	
 		return $_queryFileds;
 	}

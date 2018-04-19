@@ -17,19 +17,29 @@ class SportGameTable extends PluginSportGameTable
         return Doctrine_Core::getTable('SportGame');
     }
     //
-	public static function processNew ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_throwTypeMode, $_jumpTypeMode, $_playerMode, $_teamMode, $_status, $_description, $_userID, $_userTokenID  )
+	public static function processNew ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryTokenID, $_gameCategoryName, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_contestantTeamMode, $_sportGameStatus, $_description, $_userID, $_userTokenID )
 	{
 		 $_flag = true;
 				
 				
-			$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_GAME, true  ); 
+			$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_SPORT_GAME, true  ); 
 			$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
 			$_sportGameNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeInitialNumber($_codeNumber);
 			
 			//$_sportGameTypeName = $_sportGameName ? $_sportGameName:(TournamentCore::processTypeExclusion ());
 			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
 			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
-			$_tournament = self::processSave ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_throwTypeMode, $_jumpTypeMode, $_playerMode, $_teamMode, $_status, $_description );
+			$_tournament = self::processSave ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryTokenID, $_gameCategoryName, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_contestantTeamMode, $_sportGameStatus, $_description );
+		
+			$_codeConfig->makeCodeSetup ( $_codeConfig->lastCode ); 
+			
+			/*$_actionID = SystemCore::$_UPDATE; 
+			$_moduleID  = ModuleCore::$_PRODUCT;  
+			$_actionObject  = 'Product ID: '.$_product->id;  
+			$_actionDesc  = 'Product - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_PRODUCT).' ]';  
+			
+			$_flag5 = SystemLogFileTable::processNew ( $_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);*/
+			
 		
 		return $_tournament;
 	}
@@ -38,32 +48,32 @@ class SportGameTable extends PluginSportGameTable
 	{
 		
 	} 
-	public static function processSave ( $_orgID, $_orgTokenID,  $_categoryID, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_throwTypeMode, $_jumpTypeMode, $_playerMode, $_teamMode, $_status, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryTokenID, $_gameCategoryName, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_contestantTeamMode, $_sportGameStatus, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
-    	
 			$_token = trim($_orgTokenID).trim($_sportGameName).trim($_sportGameAlias).trim($_startDate).rand('11111', '99999'); 
 			$_startDate = date('m/d/Y', time());
 			$_nw = new SportGame (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
 			$_nw->org_id = trim($_orgID); 
 			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
-			$_nw->sport_game_category_id = trim($_categoryID); 
+			$_nw->sport_game_category_id = trim($_gameCategoryID); 
 			$_nw->distance_type = trim($_gameDistanceType); 
 			$_nw->game_distance_measurement = trim($_measurementType); 
 			$_nw->game_distance = trim($_gameDistance); 
 			$_nw->sport_game_number = trim($_sportGameNumber); 
-			$_nw->player_mode = trim($_playerMode); 
-			$_nw->contestant_team_mode = trim($_teamMode); 
+			$_nw->sport_game_type_mode = trim($_sportGameTypeMode); 
+			$_nw->contestant_mode = trim($_contestantMode); 
+			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->jump_type_mode = trim($_jumpTypeMode); 
-			$_nw->throws_type = trim($_throwTypeMode); 
+			$_nw->throw_type_mode = trim($_throwTypeMode); 
 			$_nw->name = ucwords(trim($_sportGameName)); 
 			$_nw->alias = trim($_sportGameAlias); 
-			$_nw->start_date = trim($_startDate); 
+			$_nw->start_date = trim($_startDate);  
 			$_nw->active_flag = true;  
-			$_nw->status = trim(TournamentCore::$_PENDING);   
-			$_nw->description = SystemCore::processDescription ( trim($_sportGameName), trim($_description) );  
+			$_nw->status = $_sportGameStatus ? $_sportGameStatus:trim(TournamentCore::$_PENDING);   
+			$_nw->description = SystemCore::processDescription ( (trim($_gameCategoryName).' - '.trim($_sportGameName)), trim($_description) );  
 			$_nw->save(); 
 			
 			return $_nw; 
@@ -97,7 +107,7 @@ class SportGameTable extends PluginSportGameTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.distance_type as sportGameType, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.player_mode as playerMode, sprtGm.active_flag as activeFlag, 
+		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.sport_game_number as sportGameNumber, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.active_flag as activeFlag, 
 								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias, gmCat.category_type as gameCategoryType,
 		";	
 		return $_queryFileds;
@@ -110,13 +120,13 @@ class SportGameTable extends PluginSportGameTable
 				->select(self::appendQueryFields())
 				->from("SportGame sprtGm") 
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				//->innerJoin("sprtGm.Organization org on sprtGm.org_id = org.id ")   
+				->innerJoin("sprtGm.Organization org on sprtGm.org_id = org.id ")   
 				->offset($_offset)
 				->limit($_limit) 
 				->orderBy("sprtGm.id ASC")
 				->where("sprtGm.id IS NOT NULL");
 				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("sprtGm.org_id = ? AND sprtGm.org_token_id = ? ", array($_orgID, $_orgTokenID));
-				if(!is_null($_categoryID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_categoryID);    
+				if(!is_null($_categoryID)) $_qry = $_qry->addWhere("sprtGm.sport_game_category_id = ?", $_categoryID);    
 				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGm.active_flag = ?", $_activeFlag);    
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
@@ -152,15 +162,55 @@ class SportGameTable extends PluginSportGameTable
 		 
 	}
 	//
-   public static function processObject( ) 
-   {
-		
+  //
+	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_sportGameID, $_tokenID ) 
+	{
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("SportGame sprtGm") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("sprtGm.Organization org on sprtGm.org_id = org.id ")   
+				->where("sprtGm.id = ? AND sprtGm.token_id = ? ", array($_sportGameID, $_tokenID ));
+				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("trnmt.org_id = ? AND trnmt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeObject ( ) 
-   {
-		 
-	} 
+   public static function makeObject ( $_orgID=null, $_matchID, $_tokenID  ) 
+	{
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("SportGameGroup gmGrp") 
+				->innerJoin("gmGrp.Tournament trnmt on gmGrp.tournament_id = trnmt.id ") 
+				->innerJoin("gmGrp.GameGroupType grpTyp on gmGrp.game_group_type_id = grpTyp.id ")  
+				->innerJoin("gmGrp.SportGame sprtGm on gmGrp.sport_game_id = sprtGm.id ") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")     
+				->where("gmGrp.id = ? AND gmGrp.token_id = ? ", array($_matchID, $_tokenID ));
+				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
+	}  
+	//
+   public static function makeCandidateObject ( $_orgID=null, $_activeFlag ) 
+	{
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("SportGameGroup gmGrp") 
+				->innerJoin("gmGrp.Tournament trnmt on gmGrp.tournament_id = trnmt.id ") 
+				->innerJoin("gmGrp.GameGroupType grpTyp on gmGrp.game_group_type_id = grpTyp.id ")  
+				->innerJoin("gmGrp.SportGame sprtGm on gmGrp.sport_game_id = sprtGm.id ") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")     
+				->where("gmGrp.id IS NOT NULL");
+				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("gmGrp.active_flag = ?", $_activeFlag);
+				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
+	}  
 	 
 	
 	/*********************************************************

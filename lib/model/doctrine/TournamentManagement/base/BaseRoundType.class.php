@@ -79,7 +79,7 @@ abstract class BaseRoundType extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('MatchFixture as roundTypeMatchFixtures', array(
+        $this->hasMany('TournamentMatchFixture as roundTypeMatchFixtures', array(
              'local' => 'id',
              'foreign' => 'match_round_type_id'));
 

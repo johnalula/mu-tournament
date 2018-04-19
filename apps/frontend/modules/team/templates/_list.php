@@ -46,7 +46,7 @@
 				<?php echo $_team->id ?>
 			</td> 
 			<td class="ui-td-right-text ui-td-xsmall-00">
-				<?php echo number_format($_team->id,2)  ?>
+				<?php echo number_format($_team->description,2)  ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_team->id ?>" class="ui-table-status-small-icon" id="<?php echo $_team->id ?>">

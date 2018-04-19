@@ -7,30 +7,46 @@
 					<legend class="ui-form-legend">
 						<img src="<?php echo image_path('icons/add_icon') ?>" title="<?php echo __('Tournament Match Fixture Information') ?>">
 						<?php echo __('Match Fixture') ?>
-					</legend>
+					</legend> 
 					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Game Type') ?>: <span class="ui-red-text">*</span></label>
-						<div class="col-sm-40"> 
-								<input type="text" class="form-control" id="math_game_type_name" name="match_fixture[math_game_type_name]" placeholder="<?php echo __('Game Type') ?>" value="<?php echo $_tournamentMatch->gameCategoryName.' ('.$_tournamentMatch->gameCategoryName.' ) - '.$_tournamentMatch->gameCategoryName ?>" disabled >
-								<input type="hidden" class="form-control" id="math_game_type_id" name="match_fixture[math_game_type_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->gameCategoryID ?>"  >
-								<input type="hidden" class="form-control" id="math_game_type_token_id" name="match_fixture[math_game_type_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->gameCategoryTokenID ?>"  >
-								<input type="hidden" class="form-control" id="tournament_match_id" name="match_fixture[tournament_match_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->id ?>"  >
-								<input type="hidden" class="form-control" id="tournament_match_token_id" name="match_fixture[tournament_match_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->token_id ?>"  >
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Sport Game') ?>: <span class="ui-red-text">*</span></label>
+						<label class="col-sm-21 control-label"><?php echo __('Match Fixture') ?>: <span class="ui-red-text">&nbsp;</span></label>
 						<div class="col-sm-40"> 
 							<div class="input-group">
-								<input type="text" class="form-control " id="sport_game_name" name="match_fixture[sport_game_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateSportGameModal"  disabled>
-								<input type="hidden" class="form-control" id="sport_game_id" name="match_fixture[sport_game_id]" placeholder="" value="">
-								<input type="hidden" class="form-control" id="sport_game_token_id" name="match_fixture[sport_game_token_id]" value=""> 
+								<input type="text" class="form-control " id="parent_match_fixture_name" name="match_fixture[parent_match_fixture_name]" placeholder="<?php echo __('Candidate Parent Match Fixture') ?>" title="<?php echo __('Candidate Parent Match Fixture') ?>" value="" data-toggle="modal" data-target="#candidateParentMatchFixtureModal"  disabled>
+								<input type="hidden" class="form-control" id="parent_match_fixture_id" name="match_fixture[parent_match_fixture_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="parent_match_fixture_token_id" name="match_fixture[parent_match_fixture_token_id]" value=""> 
+								
+								<input type="hidden" class="form-control" id="sport_game_type_id" name="match_fixture[sport_game_type_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->gameCategoryID ?>"  >
+								<input type="hidden" class="form-control" id="sport_game_type_token_id" name="match_fixture[sport_game_type_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->gameCategoryTokenID ?>"  >
+								<input type="hidden" class="form-control" id="tournament_match_id" name="match_fixture[tournament_match_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->id ?>"  >
+								<input type="hidden" class="form-control" id="tournament_match_token_id" name="match_fixture[tournament_match_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->token_id ?>"  >
+								
 								<span class="input-group-btn">
-									<button class="btn btn-default selectCandidateSportGame" type="button" data-toggle="modal" data-target="#candidateSportGameModal" title="<?php echo __('Candidat Sport Game') ?>">
+									<button class="btn btn-default selectCandidateParentMatchFixture" type="button" data-toggle="modal" data-target="#candidateParentMatchFixtureModal" title="<?php echo __('Candidat Parent Match Fixture') ?>">
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 									</button>
 								</span>
 							</div><!-- /input-group -->
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-21 control-label"><?php echo __('Team Groups') ?>: <span class="ui-red-text">*</span></label>
+						<div class="col-sm-40"> 
+							<div class="input-group">
+								<input type="text" class="form-control " id="sport_game_team_group_name" name="match_fixture[sport_game_team_group_name]" placeholder="<?php echo __('Candidate Sport Game Team Group') ?>" title="<?php echo __('Candidate Sport Game Team Group') ?>" value="" data-toggle="modal" data-target="#candidateSportGameTeamGroupModal"  disabled>
+								<input type="hidden" class="form-control" id="sport_game_team_group_id" name="match_fixture[sport_game_team_group_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="sport_game_team_group_token_id" name="match_fixture[sport_game_team_group_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="group_type_id" name="match_fixture[group_type_id]" value=""> 
+								<input type="hidden" class="form-control" id="gender_category_id" name="match_fixture[gender_category_id]" value=""> 
+								<input type="hidden" class="form-control" id="contestant_team_mode" name="match_fixture[contestant_team_mode]" value=""> 
+								<span class="input-group-btn">
+									<button class="btn btn-default selectCandidateSportGameTeamGroup" type="button" data-toggle="modal" data-target="#candidateSportGameTeamGroupModal" title="<?php echo __('Candidate Sport Game Team Group') ?>">
+										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
+									</button>
+								</span>
+							</div><!-- /input-group -->
+							<span class="required-error ui-display-none" id="last_name_required"><?php echo __("Required Field!") ?></span>
+							<span class="invalid-error ui-display-none" id="last_name_invalid"><?php echo __("Invalid Input!") ?></span>
 						</div>
 					</div>
 					<div class="form-group">
@@ -40,59 +56,48 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Event Type') ?>:&nbsp;</label>
+						<label class="col-sm-21 control-label"><?php echo __('Round Mode') ?>:&nbsp;</label>
+						<div class="col-sm-23">
+							<select id="tournament_match_round_mode" name="tournament_match[tournament_match_round_mode]" class="form-control" title="<?php echo __('Tournament Match Round Mode') ?>">
+								<option value=""  ><?php echo 'Select Mode ...' ?></option>
+								<?php foreach(TournamentCore::processMatchRoundModes() as $_key => $_round): ?>								 
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultMatchRoundMode() ? 'selected':'' ?> >
+										<?php echo $_round ?>
+									</option>								 
+								<?php endforeach; ?>
+							</select>
+						</div>
+						<label class="col-sm-01 control-label" title="<?php echo __('Event Type') ?>"><?php echo __('Event') ?>:</label>
 						<div class="col-sm-23">
 							<select id="event_type" name="match_fixture[event_type]" class="form-control" title="<?php echo __('Event Type') ?>">
-								<option value="100" selected  ><?php echo 'Select Event ...' ?></option>
+								<option value=""  ><?php echo 'Select Event ...' ?></option>
 								<?php foreach(TournamentCore::processEventTypes() as $_key => $_eventType): ?>								 
-									<option value="<?php echo $_key ?>"  >
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultEventType() ? 'selected':'' ?> > 
 										<?php echo $_eventType ?>
 									</option>								 
 								<?php endforeach; ?>
 							</select>
 						</div>
-						<label class="col-sm-01 control-label" title="<?php echo __('Gender Category') ?>"><?php echo __('Gender') ?>:</label>
-						<div class="col-sm-23">
-							<select id="gender_category" name="match_fixture[gender_category]" class="form-control" title="<?php echo __('Gender Category') ?>">
-								<option value="100" selected  ><?php echo 'Select Gender ...' ?></option>
-								<?php foreach(TournamentCore::processGenders() as $_key => $_gender): ?>								 
-									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultGender () ? 'selected':'' ?> >
-										<?php echo $_gender ?>
-									</option>								 
-								<?php endforeach; ?>
-							</select>
-						</div>
-					</div> 
+					</div>  
 					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Player Mode') ?>:&nbsp;</label>
-						<div class="col-sm-23">
-							 <select id="player_mode" name="match_fixture[player_mode]" class="form-control" title="<?php echo __('Player Mode') ?>">
-								<option value="100" selected  ><?php echo 'Select Player Mode ...' ?></option>
-								<?php foreach(TournamentCore::processPlayerModes() as $_key => $_mode): ?>								 
-									<option value="<?php echo $_key ?>"  >
-										<?php echo $_mode ?>
-									</option>								 
-								<?php endforeach; ?>
-							</select>
-						</div>
-						<label class="col-sm-01 control-label" title="<?php echo __('Match Round') ?>"><?php echo __('Round') ?>:</label>
-						<div class="col-sm-23">
-							<select id="match_round" name="match_fixture[match_round]" class="form-control" title="<?php echo __('Match Round') ?>">
-								<option value="" selected  ><?php echo 'Select Round ...' ?></option>
-								<?php foreach($_candidateRounds as $_key => $_round): ?>								 
-									<option value="<?php echo $_round->id ?>"  >
-										<?php echo $_round->roundTypeName ?>
-									</option>								 
-								<?php endforeach; ?>
-							</select>
+						<label class="col-sm-21 control-label"><?php echo __('Round') ?>: <span class="ui-red-text">*</span></label>
+						<div class="col-sm-40"> 
+							<div class="input-group">
+								<input type="text" class="form-control " id="round_type_name" name="match_fixture[round_type_name]" placeholder="<?php echo __('Candidate Round Type') ?>" title="<?php echo __('Candidate Round Type') ?>" value="" data-toggle="modal" data-target="#candidateRoundTypeModal"  disabled required>
+								<input type="hidden" class="form-control" id="round_type_id" name="match_fixture[round_type_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="round_type_token_id" name="match_fixture[round_type_token_id]" value=""> 
+								<span class="input-group-btn">
+									<button class="btn btn-default selectCandidateRoundType" type="button" data-toggle="modal" data-target="#candidateRoundTypeModal" title="<?php echo __('Candidat Round Type') ?>" disabled>
+										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
+									</button>
+								</span>
+							</div><!-- /input-group -->
+							<span class="required-error ui-display-none" id="last_name_required"><?php echo __("Required Field!") ?></span>
+							<span class="invalid-error ui-display-none" id="last_name_invalid"><?php echo __("Invalid Input!") ?></span>
 						</div>
 					</div>   
 					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Match Time') ?> :&nbsp;</label>
-						<div class="col-sm-23">
-							<input type="text" class="form-control" id="match_time"	name="match_fixture[match_time]"	placeholder="<?php echo __('Match Time') ?>">
-						</div>
-						<label class="col-sm-01 control-label"><?php echo __('Date') ?>:</label>
+						<label class="col-sm-21 control-label"><?php echo __('Match Date') ?>:</label>
 						<div class="col-sm-23">
 							 <div class="input-group"> 
 								<input class="form-control" id="match_date" name="match_fixture[match_date]" type="text" placeholder="<?php echo __('Match Date') ?>" value="<?php echo date('m/d/Y', time()) ?>" title="<?php echo __('Match Date') ?>" readonly>
@@ -103,7 +108,11 @@
 								</span> 
 							</div>
 						</div>
-					</div> 
+						<label class="col-sm-01 control-label"><?php echo __('Time') ?> :&nbsp;</label>
+						<div class="col-sm-23">
+							 <input type="text" class="form-control" id="match_time"	name="match_fixture[match_time]"	placeholder="<?php echo __('Match Time') ?>">
+						</div>
+					</div>  
 					<div class="form-group">
 						<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>:&nbsp;</label>
 						<div class="col-sm-40"> 

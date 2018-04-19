@@ -11,7 +11,8 @@
  * @property integer $category_type
  * @property string $category_name
  * @property string $alias
- * @property boolean $measurement_flag
+ * @property integer $contestant_team_mode
+ * @property boolean $default_flag
  * @property boolean $active_flag
  * @property integer $status
  * @property string $description
@@ -52,9 +53,12 @@ abstract class BaseGameCategory extends sfDoctrineRecord
              'type' => 'string',
              'length' => 50,
              ));
-        $this->hasColumn('measurement_flag', 'boolean', null, array(
+        $this->hasColumn('contestant_team_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('default_flag', 'boolean', null, array(
              'type' => 'boolean',
-             'default' => true,
+             'default' => false,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',

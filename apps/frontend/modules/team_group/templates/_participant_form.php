@@ -12,7 +12,9 @@
 						<label class="col-sm-20 control-label"><?php echo __('Team') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 
 								<div class="input-group">
-								<input type="text" class="form-control " id="member_team_name" name="team_group_member_participant[member_team_name]" placeholder="<?php echo __('Candidate Team') ?>" title="<?php echo __('Candidate Team') ?>" value="" data-toggle="modal" data-target="#candidateGroupMemberTeamModal"  disabled>
+								<input type="text" class="form-control " id="member_team_name" name="team_group_member_participant[member_team_name]" placeholder="<?php echo __('Candidate Team Member Participant') ?>" title="<?php echo __('Candidate Team Member Participant') ?>" value="" data-toggle="modal" data-target="#candidateGroupMemberTeamModal"  disabled>
+								<input type="hidden" class="form-control" id="group_member_team_id" name="team_group_member_participant[group_member_team_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="group_member_team_token_id" name="team_group_member_participant[group_member_team_token_id]" value=""> 
 								<input type="hidden" class="form-control" id="member_team_id" name="team_group_member_participant[member_team_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="member_team_token_id" name="team_group_member_participant[member_team_token_id]" value=""> 
 								<input type="hidden" class="form-control" id="team_group_id" name="team_group_member_participant[team_group_id]" value="<?php echo $_sportGameTeamGroup->id ?>"> 
@@ -32,11 +34,12 @@
 						<label class="col-sm-20 control-label"><?php echo __('Participant') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 
 								<div class="input-group">
-								<input type="text" class="form-control " id="member_team_name" name="team_group_member_participant[member_participant_name]" placeholder="<?php echo __('Candidate Team') ?>" title="<?php echo __('Candidate Team') ?>" value="" data-toggle="modal" data-target="#candidateGroupMemberTeamParticipantModal"  disabled>
-								<input type="hidden" class="form-control" id="member_team_id" name="team_group_member_participant[member_participant_id]" placeholder="" value="">
-								<input type="hidden" class="form-control" id="member_team_token_id" name="team_group_member_participant[member_participant_token_id]" value=""> 
+								<input type="text" class="form-control " id="member_participant_name" name="team_group_member_participant[member_participant_name]" placeholder="<?php echo __('Candidate Team') ?>" title="<?php echo __('Candidate Team') ?>" value="" data-toggle="modal" data-target="#candidateGroupMemberTeamParticipantModal"  disabled>
+								<input type="hidden" class="form-control" id="member_participant_id" name="team_group_member_participant[member_participant_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="member_participant_token_id" name="team_group_member_participant[member_participant_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="member_participant_role_id" name="team_group_member_participant[member_participant_role_id]" value=""> 
 								<span class="input-group-btn">
-									<button class="btn btn-default selectCandidateGroupMemberTeamParticipant" type="button" data-toggle="modal" data-target="#candidateGroupMemberTeamParticipantModal" title="<?php echo __('Candidat Sport Game') ?>">
+									<button class="btn btn-default selectCandidateGroupMemberTeamParticipant" type="button" data-toggle="modal" data-target="#candidateGroupMemberTeamParticipantModal" title="<?php echo __('Candidat Sport Game') ?>" disabled>
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 									</button>
 								</span>
@@ -46,10 +49,10 @@
 					<div class="form-group">
 						<label class="col-sm-20 control-label"><?php echo __('Status') ?>: <span class="ui-red-text">&nbsp;</span></label>
 						<div class="col-sm-23">
-							<select id="team_status" name="team_group_member_participant[team_status]" class="form-control" title="<?php echo __('Team Status') ?>">
+							<select id="member_participant_status" name="team_group_member_participant[member_participant_status]" class="form-control" title="<?php echo __('Team Status') ?>">
 								<option value="100" selected  ><?php echo 'Select Status ...' ?></option>
 								<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_teamStatus): ?>								 
-									<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::processDefaultTournamentStatus () ? 'selected':'' ?> >
+									<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_PENDING ? 'selected':'' ?> >
 										<?php echo $_teamStatus ?>
 									</option>								 
 								<?php endforeach; ?>
@@ -70,7 +73,7 @@
 					<div class="form-group">
 						<label class="col-sm-20 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>:&nbsp;</label>
 						<div class="col-sm-40"> 
-							<textarea class="form-control form-control-md" rows=3 id="description" name="match_fixture[description]" placeholder="<?php echo __('Description') ?>" title="<?php echo __('Description') ?>" ></textarea>
+							<textarea class="form-control form-control-sm" rows=3 id="description" name="match_fixture[description]" placeholder="<?php echo __('Description') ?>" title="<?php echo __('Description') ?>" ></textarea>
 						</div>
 					</div>
 				</fieldset> 
@@ -81,38 +84,19 @@
 </div> 
 
 <script>
-	$('#event_type').change(function(e) {
+	$('#member_participant_status').change(function(e) {
 		$("#createTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 		$("#cancelTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		//alert('asdfa');
 		return false;
 	});  
-	$('#player_mode').change(function(e) {
-		$("#createTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});  
-	$('#gender_category').change(function(e) {
-		$("#createTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});  
-	$('#match_round').change(function(e) {
-		$("#createTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});  
+	 
 	$('#matchteam_status').change(function(e) {
 		$("#createTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 		$("#cancelTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	});  
-	  
-	$('#description').keyup(function(e) {
-		$("#createTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});
+	   
 	$( "#start_date" ).datepicker({  
 		yearRange: "2005:2020", 
 		changeYear: true,

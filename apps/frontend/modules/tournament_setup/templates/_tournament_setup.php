@@ -14,19 +14,19 @@
 										<li class="active selesctCandidateCourseSubject" id="selesctCandidateCourseSubject">
 											<a href="#ui-main-tab-one" data-toggle="tab">
 												<img class="" src="<?php echo image_path('settings/curriculum') ?>">
-												<?php echo __('Sport Games') ?>
+												<?php echo __('Game Category') ?>
 											</a>
 										</li> 
 										<li class="selectCandidateActiveCourses" id="selectCandidateActiveCourses">
 											<a href="#ui-main-tab-two" data-toggle="tab">
 												<img class="" src="<?php echo image_path('settings/courses') ?>">
-												<?php echo __('Sport Category') ?>
+												<?php echo __('Game Rounds') ?>
 											</a>
 										</li>  
 										<li class="selectCourseAssessmentTypes" id="selectCourseAssessmentTypes">
 											<a href="#ui-main-tab-three" data-toggle="tab">
 												<img class="" src="<?php echo image_path('settings/assessment_type') ?>">
-												<?php echo __('Game Rounds') ?>
+												<?php echo __('Group Types') ?>
 											</a>
 										</li>  
 									</ul>
@@ -41,19 +41,19 @@
 										<!-- Begining of toolbar -->
 										<div class="ui-toolbar-menu-box">
 											<div class="ui-toolbar-menu">
-												<?php include_partial('sport_game_type_action_toolbar', array()) ?> 
+												<?php include_partial('game_category_action_toolbar', array()) ?> 
 											</div>
 										</div>
 										<!--    End of toolbar      -->
 										<div class="ui-panel-form-content-box ui-tab-panel-form-box"> 
-											<?php include_partial('sport_game_type_form', array('_countGameCategorys' => $_countGameCategorys)) ?> 
+											<?php include_partial('game_category_form', array()) ?> 
 										</div> <!-- ui-panel-content -->
 									
 										<div class="ui-tab-panel-default-header-box">
 											<div class="ui-tab-panel-default-header">
 												<h2 class="ui-theme-panel-header-title">
 													<img src="<?php echo image_path('settings/curriculum') ?>" title="<?php echo __('Course subject management') ?>">
-													<?php echo __('Sport Games') ?>
+													<?php echo __('Game Categories') ?>
 												</h2>
 												<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 													<span id="ui--tab-panel-content-up-arrow-two" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -71,7 +71,7 @@
 											</div>
 											<div class="ui-panel-content-box ">
 												<div class="ui-tab-panel-grid">  
-													<?php include_partial('sport_game_type_list', array('_sportGames' => $_sportGames)) ?> 
+													<?php include_partial('game_category_list', array('_gameCategorys' => $_gameCategorys)) ?> 
 												</div>
 											</div>  
 										</div><!-- ui-panel-footer-default -->	
@@ -84,19 +84,19 @@
 										<!-- Begining of toolbar -->
 										<div class="ui-toolbar-menu-box">
 											<div class="ui-toolbar-menu">
-												<?php include_partial('game_category_action_toolbar', array()) ?> 
+												<?php include_partial('game_round_action_toolbar', array()) ?> 
 											</div>
 										</div>
 									<!--    End of toolbar      -->
 										<div class="ui-panel-form-content-box ui-tab-panel-form-box"> 
-											<?php include_partial('game_category_form', array()) ?> 
+											<?php include_partial('round_form', array()) ?> 
 										</div> <!-- ui-panel-content -->
 									
 										<div class="ui-tab-panel-default-header-box">
 											<div class="ui-tab-panel-default-header">
 												<h2 class="ui-theme-panel-header-title">
-													<img src="<?php echo image_path('settings/curriculum') ?>" title="<?php echo __('Course management') ?>">
-													<?php echo __('Sport Game Categories') ?>
+													<img src="<?php echo image_path('settings/curriculum') ?>" title="<?php echo __('Round Type Management') ?>">
+													<?php echo __('Round Types') ?>
 												</h2>
 												<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-two" style="">	
 													<span id="ui-tab-panel-contentup-arrow-two" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>	
@@ -109,12 +109,12 @@
 											<div class="ui-tab-separater"></div>
 											<div class="ui-toolbar-menu-box">
 												<div class="ui-toolbar-menu">
-													2
+													 
 												</div>
 											</div>
 											<div class="ui-panel-content-box ">
 												<div class="ui-tab-panel-grid">  
-													<?php include_partial('game_category_list', array('_gameCategorys' => $_gameCategorys)) ?> 
+													<?php include_partial('round_list', array('_gameRounds' => $_gameRounds)) ?> 
 												</div>
 											</div>  
 										</div><!-- ui-panel-footer-default -->	
@@ -132,14 +132,14 @@
 										</div>
 										<!--    End of toolbar      -->
 										<div class="ui-panel-form-content-box ui-tab-panel-form-box"> 
-											<?php include_partial('round_form', array()) ?> 
+											<?php include_partial('group_type_form', array()) ?> 
 										</div> <!-- ui-panel-content -->
 									
 										<div class="ui-tab-panel-default-header-box">
 											<div class="ui-tab-panel-default-header">
 												<h2 class="ui-theme-panel-header-title">
 													<img src="<?php echo image_path('settings/assessment_types') ?>" title="<?php echo __('Game Round Management') ?>">
-													<?php echo __('Game Rounds') ?>
+													<?php echo __('Group Types') ?>
 												</h2>
 												<div class="ui-panel-content-minimize opened" id="ui-list-collaps-tab-panel-three" style="">	
 													<span id="ui--tab-panel-content-up-arrow-three" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -157,7 +157,7 @@
 											</div>
 											<div class="ui-panel-content-box ">
 												<div class="ui-tab-panel-grid">  
-													<?php include_partial('round_list', array('_gameRounds' => $_gameRounds)) ?> 
+													<?php include_partial('group_type_list', array('_groupTypes' => $_groupTypes)) ?> 
 												</div>
 											</div>  
 										</div><!-- ui-panel-footer-default -->

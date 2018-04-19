@@ -12,16 +12,17 @@
 						<label class="col-sm-20 control-label"><?php echo __('Team') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 
 								<div class="input-group">
-								<input type="text" class="form-control " id="member_team_name" name="team_group_member[member_team_name]" placeholder="<?php echo __('Candidate Team') ?>" title="<?php echo __('Candidate Team') ?>" value="" data-toggle="modal" data-target="#candidateGroupMemberTeamModal"  disabled>
+								<input type="text" class="form-control " id="member_team_name" name="team_group_member[member_team_name]" placeholder="<?php echo __('Candidate Team') ?>" title="<?php echo __('Candidate Team') ?>" value="" data-toggle="modal" data-target="#candidateGroupMemberTeamModal"  disabled required >
 								<input type="hidden" class="form-control" id="member_team_id" name="team_group_member[member_team_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="member_team_token_id" name="team_group_member[member_team_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="tournament_id" name="team_group_member[tournament_id]" value="<?php echo $_sportGameTeamGroup->tournament_id ?>"> 
 								<input type="hidden" class="form-control" id="team_group_id" name="team_group_member[team_group_id]" value="<?php echo $_sportGameTeamGroup->id ?>"> 
 								<input type="hidden" class="form-control" id="team_group_token_id" name="team_group_member[team_group_token_id]" value="<?php echo $_sportGameTeamGroup->token_id ?>"> 
 								<input type="hidden" class="form-control" id="sport_game_id" name="team_group_member[sport_game_id]" value="<?php echo $_sportGameTeamGroup->sportGameID ?>"> 
 								<input type="hidden" class="form-control" id="sport_game_token_id" name="team_group_member[sport_game_token_id]" value="<?php echo $_sportGameTeamGroup->sportGameTokenID ?>"> 
 								<input type="hidden" class="form-control" id="gender_category_id" name="team_group_member[gender_category_id]" value="<?php echo $_sportGameTeamGroup->groupGenderCategoryID ?>"> 
 								<span class="input-group-btn">
-									<button class="btn btn-default selectCandidateGroupMemberTeam" type="button" data-toggle="modal" data-target="#candidateGroupMemberTeamModal" title="<?php echo __('Candidat Sport Game') ?>">
+									<button class="btn btn-default selectCandidateGroupParticipantTeam" type="button" data-toggle="modal" data-target="#candidateGroupMemberTeamModal" title="<?php echo __('Candidat Sport Game') ?>">
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 									</button>
 								</span>

@@ -7,12 +7,12 @@
 				
 					<div class="ui-panel-header-default">
 						<h2 class="ui-theme-panel-header">
-							<span class="ui-header-status-icon">
-								<img src="<?php echo image_path('settings/product') ?>" title="<?php echo __('Match Fixture Management') ?>">
-								<img title="<?php echo $_tournamentMatch->matchNumber ?>" src="<?php echo image_path('status/pending')  ?>"> 
-								<img title="<?php echo $_tournamentMatch->matchNumber ?>" src="<?php echo image_path('status/active')  ?>"> 
-							</span>
-							<?php echo __('Tournament Match Fixtures') ?>
+							<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
+						<span class="ui-header-status-icon">
+							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
+							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
+						</span>
+						<?php echo __('Match Fixture').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
 						</h2>
 						<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 							<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		

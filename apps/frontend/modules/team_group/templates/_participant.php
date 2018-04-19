@@ -10,7 +10,7 @@
 							<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 							<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Team Group').' ( Name: '.$_sportGameTeamGroup->sportGameGroupName.' - Code #:'.$_sportGameTeamGroup->sportGameGroupCode.' )'  ?>
+						<?php echo __('Team Group').' ( Sport Game: '.$_sportGameTeamGroup->sportGameName.' ('.TournamentCore::processGenderValue($_sportGameTeamGroup->groupGenderCategoryID).') - Group: '.TournamentCore::processGroupNumberValue($_sportGameTeamGroup->groupNumber).' - Code #:'.$_sportGameTeamGroup->sportGameGroupCode.' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -42,7 +42,7 @@
 						
 						<div class="ui-panel-content-box ">
 							<div class="ui-panel-grid-list"> 
-								<?php include_partial('participant_list', array('_groupMemberTeams' => $_groupMemberTeams)) ?> 
+								<?php include_partial('participant_list', array('_candidateTeamMemberParticipants' => $_candidateTeamMemberParticipants)) ?> 
 							</div>
 						</div> 
 						

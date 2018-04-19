@@ -15,8 +15,8 @@ class competitionActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->forward('default', 'module');
-  }
+	public function executeIndex(sfWebRequest $request)
+	{
+
+	}
 }

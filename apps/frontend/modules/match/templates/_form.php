@@ -1,5 +1,4 @@
 <div class="ui-panel-form-box ui-main-panel-form-box-margin" id="">   
-	<input type="hidden" class="form-control" id="test_id" name="test_id" value="">
 	<div class="ui-row" id=""> 
 		<div class="ui-panel-grid-form12" id=""> 
 			<fieldset  class="ui-form-fieldset-frame">
@@ -23,6 +22,7 @@
 							<input type="text" class="form-control " id="sport_game_category_name" name="tournament_match[sport_game_category_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateSportGameCategoryModal"  disabled>
 							<input type="hidden" class="form-control" id="sport_game_category_id" name="tournament_match[sport_game_category_id]" placeholder="" value="">
 							<input type="hidden" class="form-control" id="sport_game_category_token_id" name="tournament_match[sport_game_category_token_id]" value=""> 
+							<input type="hidden" class="form-control" id="contestant_team_mode" name="tournament_match[contestant_team_mode]" value=""> 
 							<span class="input-group-btn">
 								<button class="btn btn-default selectCandidateSportGameCategory" type="button" data-toggle="modal" data-target="#candidateSportGameCategoryModal" title="<?php echo __('Candidat Sport Game Category') ?>">
 									<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
@@ -30,36 +30,12 @@
 							</span>
 						</div><!-- /input-group -->
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Season') ?>"><?php echo __('Season') ?>:</label>
-					<div class="col-sm-23">
-						<select id="match_season" name="tournament_match[match_season]" class="form-control" title="<?php echo __('Tournament Season') ?>">
-							<option value="100" selected  ><?php echo 'Select Season ...' ?></option>
-							<?php foreach(SystemCore::processTournamentSeason() as $_key => $_season): ?>								 
-								<option value="<?php echo $_season ?>" <?php echo $_season == date('Y', time()) ? 'selected':'' ?> >
-									<?php echo $_season.' ( '.$_season.'/'.($_season+1).' )'?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
-					</div>
-					<label class="col-sm-01 control-label" title="<?php echo __('Participant Teams Mode') ?>"><?php echo __('Mode') ?>:<span class="ui-red-text">*</span></label>
-					<div class="col-sm-23">
-						<select id="participant_team_mode" name="tournament_match[participant_team_mode]" class="form-control" title="<?php echo __('Participant Teams Mode') ?>">
-							<option value="" selected  ><?php echo 'Select Team Mode ...' ?></option>
-							<?php foreach(TournamentCore::processContestantTeamModes() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>"  >
-									<?php echo $_matchStatus ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
-					</div>
 				</div> 
 				<div class="form-group">
 					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Match Status') ?>"><?php echo __('Status') ?>:</label>
 					<div class="col-sm-23">
 						<select id="match_status" name="tournament_match[match_status]" class="form-control" title="<?php echo __('Match Status') ?>">
-							<option value="" selected  ><?php echo 'Select Status ...' ?></option>
+							<option value=""  ><?php echo 'Select Status ...' ?></option>
 							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
 								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PENDING ? 'selected':'' ?> >
 									<?php echo $_matchStatus ?>
@@ -96,8 +72,6 @@
 	$('#match_status').change(function(e) {
 		$("#createTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 		$("#cancelTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	});  
 	 
@@ -105,8 +79,6 @@
 	$('#description').keyup(function(e) {
 		$("#createTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 		$("#cancelTournamentMatch").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	});
 	$( "#match_date" ).datepicker({  

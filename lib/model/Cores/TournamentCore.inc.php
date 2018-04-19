@@ -1,17 +1,19 @@
 <?php 
 class TournamentCore {
  
-	public static $_PENDING = 1;
-	public static $_ACTIVE = 2;
-	public static $_NOT_PLAYED = 3;
-	public static $_PLAYED = 4;
-	public static $_POSTPOND = 5;
-	public static $_ROUNDING = 6;
-	public static $_FINALIZED = 7;
-	public static $_COMPLETED = 8;
-	public static $_CONFIRMED = 9;
+	public static $_INITIATED = 1;
+	public static $_PENDING = 2;
+	public static $_ACTIVE = 3;
+	public static $_APPROVED = 4;
+	public static $_NOT_PLAYED = 5;
+	public static $_PLAYED = 6;
+	public static $_CONFIRMED = 7;
+	public static $_POSTPOND = 8;
+	public static $_ROUNDING = 9;
+	public static $_FINALIZED = 10;
+	public static $_COMPLETED = 11;
 	
-	public static $_TOURNAMENT_STATUS = array ( 1 => "Pending", 2 => "Active", 3 => "Not Playe", 4 => "Played", 5 => "Postpond", 6 => "Rounding", 7 => "Finalized", 8 => "Completed", 9 => "Confirmed" );
+	public static $_TOURNAMENT_STATUS = array ( 1 => "Initiated", 2 => "Pending", 3 => "Active", 4 => "Approved", 5 => "Not Played", 6 => "Played", 7 => "Confirmed", 8 => "Postpond", 9 => "Rounding", 10 => "Finalized", 11 => "Completed" );
 
 	public static function processTournamentStatuses() 
 	{
@@ -43,7 +45,7 @@ class TournamentCore {
 	}
 	public static function processDefaultTournamentStatus () 
 	{
-		return self::$_PENDING;
+		return self::$_INITIATED;
 	}
 	public static function processTournamentStatusIcon ($_status) 
 	{
@@ -54,11 +56,17 @@ class TournamentCore {
 			case self::$_ACTIVE:
 				return 'active';
 			break; 
+			case self::$_APPROVED:
+				return 'approved';
+			break; 
 			case self::$_NOT_PLAYED:
 				return 'not_played';
 			break;
 			case self::$_PLAYED:
 				return 'played';
+			break;
+			case self::$_CONFIRMED:
+				return 'confirmed';
 			break;
 			case self::$_POSTPOND:
 				return 'postpond';
@@ -167,7 +175,7 @@ class TournamentCore {
 	public static $_WHEELCHAIR_RACING = 12;
 	public static $_OTHER_DISTANCE = 13;
 	
-	public static $_DISTANCE_TYPES = array ( 1 => "Sprints", 2 => "Middle Distance", 3 => "Long Distance", 4 => "Hurdless", 5 => "Steeplechase", 6 => "Relay",7 => "Jumps", 8 => "Throws", 9 => "Cross Country", 10 => "Half Marathon", 11 => "Marathon", 12 => "Wheelchair Racing", 13 => "Other" );
+	public static $_DISTANCE_TYPES = array ( 1 => "Sprint", 2 => "Middle Distance", 3 => "Long Distance", 4 => "Hurdless", 5 => "Steeplechase", 6 => "Relay",7 => "Jumps", 8 => "Throws", 9 => "Cross Country", 10 => "Half Marathon", 11 => "Marathon", 12 => "Wheelchair Racing", 13 => "Other" );
 
 	public static function processDistanceTypes() 
 	{
@@ -210,7 +218,7 @@ class TournamentCore {
 	{
 		switch($_distance) {			
 			case self::$_SPRINTS:
-				return 'sprints';
+				return 'sprint';
 			break;
 			case self::$_MIDDLE_DISTANCE:
 				return 'middle_distance';
@@ -364,11 +372,11 @@ class TournamentCore {
 	/************************************************/
 	
 	public static $_RUNNING_ATHLETICS = 1;
-	public static $_HURDLES_ATHLETICS = 2;
+	public static $_HURDLE_ATHLETICS = 2;
 	public static $_STEEPLE_CHASE_ATHLETICS = 3; 
 	public static $_RELAY_ATHLETICS = 4;
-	public static $_JUMPS_ATHLETICS = 5;
-	public static $_THROWS_ATHLETICS = 6;
+	public static $_JUMP_ATHLETICS = 5;
+	public static $_THROW_ATHLETICS = 6;
 	public static $_OTHER_ATHLETICS = 7;
 	
 	public static $_ATHLETICS_TYPES = array ( 1 => "Running", 2  => "Hurdless", 3 => "Steeplechase", 4 => "Relay", 5 => "Jumps", 6 => "Throws", 7 => "Other" );
@@ -416,7 +424,7 @@ class TournamentCore {
 			case self::$_RUNNING_ATHLETICS:
 				return 'running';
 			break; 
-			case self::$_HURDLES_ATHLETICS:
+			case self::$_HURDLE_ATHLETICS:
 				return 'hurdles';
 			break;
 			case self::$_STEEPLE_CHASE_ATHLETICS:
@@ -425,10 +433,10 @@ class TournamentCore {
 			case self::$_RELAY_ATHLETICS:
 				return 'relay';
 			break;
-			case self::$_JUMPS_ATHLETICS:
+			case self::$_JUMP_ATHLETICS:
 				return 'jumps';
 			break;
-			case self::$_THROWS_ATHLETICS:
+			case self::$_THROW_ATHLETICS:
 				return 'throws';
 			break; 
 			default:
@@ -1338,6 +1346,69 @@ class TournamentCore {
 			case self::$_MIXED:
 				return 'MX';
 			break; 
+		}
+	} 
+/************************************************/
+
+	public static $_FIRST_ROUND = 1; 
+	public static $_NEXT_ROUND = 2; 
+	public static $_FINAL_ROUND = 3; 
+	
+	public static $_ROUND_MODES = array ( 1 => "First Round", 2 => "Next Round", 3 => "Final Round" );
+	
+	public static function processMatchRoundModes ( ) 
+	{
+	  try {
+				return  self::$_ROUND_MODES; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }        
+	} 
+	public static function processMatchRoundModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_ROUND_MODES as $_key => $_round ) {
+				if( strcmp($_round, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}        
+	}
+	
+	public static function processMatchRoundModeValue ( $_id )
+	{
+		try {
+				foreach( self::$_ROUND_MODES as $_key => $_round ) {
+					if( $_key == $_id )
+						return $_round; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}    
+	}
+	public static function processDefaultMatchRoundMode ()
+	{
+		try {
+				return  self::$_FIRST_ROUND; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }     
+	}
+	public static function processMatchRoundModeAlias ($_round)
+	{
+		switch($_round) {			
+			case self::$_FIRST_ROUND:
+				return 'M';
+			break;	
+			case self::$_NEXT_ROUND:
+				return 'W';
+			break; 
+			case self::$_FINAL_ROUND:
+				return 'Both';
+			break;  
 		}
 	} 
 	

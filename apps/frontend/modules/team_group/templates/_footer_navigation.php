@@ -43,6 +43,17 @@
 			<?php endif; ?>
 		<?php endif; ?>
 		
+		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+			<?php if($sf_request->getParameter('action') == 'complete'): ?>
+				<li class="ui-nav-button">
+					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'team_group_id', 'participant', $_object)) ?>">
+						<img class="navbar-nav-img" src="<?php echo image_path('pagination/previous_page') ?>">
+						<?php echo __('Back') ?>
+					</a>
+				</li>	   
+			<?php endif; ?>
+		<?php endif; ?>
+		
 	<?php endif; ?> 
 	
 </ul>
@@ -55,7 +66,7 @@
 		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
 			<?php if($sf_request->getParameter('action') == 'edit'): ?>
 				<li class="ui-nav-button">
-					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'match_id', 'member', $_object)) ?>">
+					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'team_group_id', 'member', $_object)) ?>">
 						<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
 						<?php echo __('Next') ?>
 					</a>
@@ -76,12 +87,32 @@
 		
 		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
 			<?php if($sf_request->getParameter('action') == 'participant'): ?>
-				<li class="ui-nav-button ">
-					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'team_group_id', 'member', $_object)) ?>">
-						<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
-						<?php echo __('Complete') ?>
+				<li class="ui-nav-button">
+					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'team_group_id', 'complete', $_object)) ?>">
+						<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
+						<?php echo __('Next') ?>
 					</a>
 				</li>	 
+			<?php endif; ?>
+		<?php endif; ?>
+		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+			<?php if($sf_request->getParameter('action') == 'complete'): ?>
+				<?php if($_object->activeTeamGroup && $_object->activeApprovalTeamGroup && !$_object->activeFlag ): ?>
+					<li class="ui-nav-button ">
+						<button id="footerApproveTeamGrouping"  class="ui-nav-active-btn"  title="<?php echo __('Complete Team Grouping').' ( Name: '.$_object->sportGameGroupName.' - Code #: '.$_object->sportGameGroupCode.' )' ?>">
+							<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
+							<?php echo __('Approve') ?>
+						</button> 
+					</li>	 
+				<?php endif; ?>
+				<?php if($_object->activeTeamGroup && $_object->approvedApprovalTeamGroup && $_object->activeFlag ): ?>
+					<li class="ui-nav-button ">
+						<button id="footerCompleteTeamGrouping"  class="ui-nav-active-btn"  title="<?php echo __('Complete Team Grouping').' ( Name: '.$_object->sportGameGroupName.' - Code #: '.$_object->sportGameGroupCode.' )' ?>">
+								<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
+								<?php echo __('Complete') ?>
+							</button> 
+					</li>	 
+				<?php endif; ?>
 			<?php endif; ?>
 		<?php endif; ?>
 		

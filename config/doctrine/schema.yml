@@ -74,7 +74,8 @@ GameCategory:
     category_type: { type: integer }  
     category_name: { type: string(255) }
     alias: { type: string(50) } }  
-    measurement_flag: { type: boolean, default: true } 
+    contestant_team_mode: { type: integer } 
+    default_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: true } 
     status: { type: integer} 
     description:  { type: string(255) }    
@@ -82,27 +83,7 @@ GameCategory:
     Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes }   
 
 ############  General Setting ####################
-
-SportGameType:
-  package: TournamentManagement
-  tableName: mutms_tbl_sport_game_type
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    org_id: { type: integer } 
-    org_token_id: { type: string(100) }  
-    distance_type: { type: integer }  
-    distance_type_name: { type: string(255) }
-    alias: { type: string(50) } }  
-    distance: { type: integer } 
-    distance_measurement: { type: integer } 
-    active_flag: { type: boolean, default: true } 
-    status: { type: integer} 
-    description:  { type: string(255) }    
-  relations:  
-    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes }   
-    
+   
 SportGame:
   package: TournamentManagement
   tableName: mutms_tbl_sport_game
@@ -118,15 +99,16 @@ SportGame:
     alias: { type: string(50) } }  
     game_distance: { type: integer } 
     game_distance_measurement: { type: integer } 
-    sport_game_number: { type: integer } 
-    player_mode: { type: integer } 
+    sport_game_number: { type: string(50) }
+    sport_game_type_mode: { type: integer } 
+    contestant_mode: { type: integer } 
     contestant_team_mode: { type: integer } 
     jump_type_mode: { type: integer } 
-    throws_type: { type: integer } 
+    throw_type_mode: { type: integer } 
     start_date: { type: string(100) }
     effective_date: { type: string(100) }
     end_date: { type: string(100) }  
-    roundable_flag: { type: boolean } 
+    default_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: true } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
@@ -134,97 +116,6 @@ SportGame:
     GameCategory: { onDelete: CASCADE, local: sport_game_category_id, foreign: id, foreignAlias: categorySportGames }  
     Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationSportGames }   
 
-############  General Setting ####################
-  
- 
-SportGameGroup:
-  package: GameSetting
-  tableName: mutms_tbl_sport_game_group
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    tournament_id: { type: integer }
-    sport_game_id: { type: integer }
-    sport_game_token_id: { type: string(100) }   
-    game_group_type_id: { type: integer }
-    gender_category_id: { type: integer }
-    group_code: { type: string(50) }
-    group_name: { type: string(255) }
-    alias: { type: string(50) } }   
-    total_group_numbers: { type: integer } 
-    contestant_team_mode: { type: integer } 
-    start_date: { type: string(100) }
-    end_date: { type: string(100) }  
-    active_flag: { type: boolean, default: true } 
-    status: { type: integer, default: 1  } 
-    description:  { type: clob }  
-  relations:  
-    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentSportGamesGroups }   
-    SportGame: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: sportGameSportGameGroups }  
-    GameGroupType: { onDelete: CASCADE, local: game_group_type_id, foreign: id, foreignAlias: gameGroupTypeSportGameGroups }  
-
-
-MultipleContestantTeamGroup:
-  package: GameSetting
-  inheritance:
-    extends: SportGameGroup
-    type: concrete
-    keyField: type
-    keyValue: 1
-  columns: 
-    
-PairContestantTeamGroup:
-  package: GameSetting 
-  inheritance:
-    extends: SportGameGroup
-    type: concrete
-    keyField: type
-    keyValue: 2  
-  columns:  
- 
-SportGameTeamGroup:
-  package: GameSetting
-  tableName: mutms_tbl_sport_game_team_group
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    sport_game_group_id: { type: integer }
-    sport_game_group_token_id: { type: integer }
-    team_id: { type: integer }
-    team_token_id: { type: string(100) }   
-    start_date: { type: string(100) }
-    effective_date: { type: string(100) }  
-    end_date: { type: string(100) }  
-    active_flag: { type: boolean, default: true } 
-    status: { type: integer, default: 1  } 
-    description:  { type: clob }  
-  relations:  
-    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamGroupMembers }  
-    SportGameGroup: { onDelete: CASCADE, local: sport_game_group_id, foreign: id, foreignAlias: sportGameTeamGroups }  
- 
- 
-GroupTeamMemberParticipant:
-  package: GameSetting
-  tableName: mutms_tbl_group_team_member
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    team_group_id: { type: integer }
-    person_id: { type: integer }
-    start_date: { type: string(100) }
-    effective_date: { type: string(100) }  
-    end_date: { type: string(100) }  
-    active_flag: { type: boolean, default: true } 
-    status: { type: integer, default: 1  } 
-    description:  { type: clob }  
-  relations:  
-    Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personGroupTeamMemberParticipants }  
-    SportGameTeamGroup: { onDelete: CASCADE, local: team_group_id, foreign: id, foreignAlias: sportGameTeamGroupTeamMemberParticipants }  
- 
- 
 ############  Team Management ####################
 
 Team:
@@ -244,8 +135,16 @@ Team:
     alias: { type: string(50) } }   
     team_city: { type: string(50) } }   
     total_member: { type: string(50) } }   
-    team_logo: { type: string(255) } }   
-    flag_logo_alias: { type: string(50) } }   
+    team_logo_alias: { type: string(50) } }     
+    team_logo_file_type: { type: string(255) }
+    team_logo_file_name:  { type: string(255) }  
+    team_logo_file_name_path:  { type: string(255) }  
+    team_logo_file_full_path:  { type: string(255) }   
+    team_country_flag_alias: { type: string(50) } }     
+    team_country_flag_file_type: { type: string(255) }
+    team_country_flag_file_name:  { type: string(255) }  
+    team_country_flag_file_name_path:  { type: string(255) }  
+    team_country_flag_file_full_path:  { type: string(255) }   
     start_date: { type: string(100) }
     end_date: { type: string(100) }  
     confirm_flag: { type: boolean, default: false } 
@@ -288,21 +187,22 @@ TeamMemberParticipant:
     Timestampable: ~
   columns:
     token_id: { type: string(100) }    
-    sport_game_id: { type: integer }
-    sport_game_token_id: { type: string(100) }    
+    team_game_participation_id: { type: integer }
+    team_game_participation_token_id: { type: string(100) }    
     team_id: { type: integer }
     team_token_id: { type: string(100) }    
     person_id: { type: integer }
     person_token_id: { type: string(100) }    
     member_full_name: { type: string(255) }
     member_role_id: { type: integer } }   
+    gender_category_id: { type: integer } }   
     member_number: { type: integer } }   
     active_flag: { type: boolean, default: true } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
     Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamMemberParticipants }  
-    TeamGameParticipation: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: teamGameParticipantPersons }  
+    TeamGameParticipation: { onDelete: CASCADE, local: team_game_participation_id, foreign: id, foreignAlias: teamGameParticipantPersons }  
     Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personTeamParticipants }  
   
 TeamDetail:
@@ -318,6 +218,113 @@ TeamDetail:
     description:  { type: clob }  
   relations:  
     Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamsTeamDetails }  
+
+
+############  Sport Game Group Setting ####################
+  
+ 
+SportGameGroup:
+  package: TeamGroupSetting
+  tableName: mutms_tbl_sport_game_group
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    tournament_id: { type: integer }
+    sport_game_id: { type: integer }
+    sport_game_token_id: { type: string(100) }   
+    game_group_type_id: { type: integer }
+    gender_category_id: { type: integer }
+    group_code: { type: string(50) }
+    group_name: { type: string(255) }
+    alias: { type: string(50) } }   
+    total_group_members: { type: integer } 
+    contestant_team_mode: { type: integer } 
+    start_date: { type: string(100) }
+    effective_date: { type: string(100) }  
+    end_date: { type: string(100) }  
+    complete_flag: { type: boolean, default: false } 
+    active_flag: { type: boolean, default: false } 
+    approval_status: { type: integer, default: 1  } 
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentSportGamesGroups }   
+    SportGame: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: sportGameSportGameGroups }  
+    GameGroupType: { onDelete: CASCADE, local: game_group_type_id, foreign: id, foreignAlias: gameGroupTypeSportGameGroups }  
+
+MultipleContestantTeamGroup:
+  package: TeamGroupSetting
+  inheritance:
+    extends: SportGameGroup
+    type: concrete
+    keyField: type
+    keyValue: 1
+  columns: 
+    
+PairContestantTeamGroup:
+  package: TeamGroupSetting 
+  inheritance:
+    extends: SportGameGroup
+    type: concrete
+    keyField: type
+    keyValue: 2  
+  columns:  
+ 
+SportGameTeamGroup:
+  package: TeamGroupSetting
+  tableName: mutms_tbl_sport_game_team_group
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }     
+    tournament_id: { type: integer }
+    sport_game_group_id: { type: integer }
+    sport_game_group_token_id: { type: string(100) }   
+    team_id: { type: integer }
+    team_token_id: { type: string(100) }   
+    start_date: { type: string(100) }
+    effective_date: { type: string(100) }  
+    end_date: { type: string(100) }  
+    active_flag: { type: boolean  } 
+    completed_flag: { type: boolean  } 
+    approval_status: { type: integer, default: 1  } 
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentSportGamesTeamGroups }   
+    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamGroupMembers }  
+    SportGameGroup: { onDelete: CASCADE, local: sport_game_group_id, foreign: id, foreignAlias: sportGameTeamGroups }  
+ 
+TeamGroupMemberParticipant:
+  package: TeamGroupSetting
+  tableName: mutms_tbl_team_group_member_participant
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    sport_game_group_id: { type: integer }
+    sport_game_group_token_id: { type: string(100) }   
+    group_member_team_id: { type: integer }
+    group_member_team_token_id: { type: string(100) }   
+    team_member_participant_id: { type: integer }
+    team_member_participant_token_id: { type: string(100) }   
+    member_role_id: { type: integer } }   
+    start_date: { type: string(100) }
+    effective_date: { type: string(100) }  
+    end_date: { type: string(100) }  
+    confirm_flag: { type: boolean, default: 0 } 
+    active_flag: { type: boolean, default: 0 } 
+    standing_status: { type: integer, default: 1 } 
+    contestant_status: { type: integer, default: 1 } 
+    approval_status: { type: integer, default: 1 } 
+    status: { type: integer, default: 1 } 
+    description:  { type: clob }  
+  relations:  
+    SportGameGroup: { onDelete: CASCADE, local: sport_game_group_id, foreign: id, foreignAlias: sportGameGroupMemberParticipants }  
+    TeamMemberParticipant: { onDelete: CASCADE, local: team_member_participant_id, foreign: id, foreignAlias: teamTeamGroupMemberParticipans }  
+    SportGameTeamGroup: { onDelete: CASCADE, local: group_member_team_id, foreign: id, foreignAlias: sportGameTeamGroupTeamMemberParticipants }  
+ 
  
  
 ############  Match Management ####################
@@ -336,12 +343,15 @@ TournamentMatch:
     sport_game_category_id: { type: integer } 
     match_number: { type: string(100) }
     match_season: { type: string(100) } 
-    participant_team_mode: { type: integer } 
+    round_type_mode: { type: integer } 
+    contestant_team_mode: { type: integer } 
     start_date: { type: string(100) }
     effective_date: { type: string(100) }  
     end_date: { type: string(100) }  
     roundable_flag: { type: boolean, default: false } 
-    active_flag: { type: boolean, default: true } 
+    complete_flag: { type: boolean, default: false } 
+    active_flag: { type: boolean, default: false } 
+    approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: string(255) }    
   relations:  
@@ -349,23 +359,25 @@ TournamentMatch:
     Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentMatchs }     
     GameCategory: { onDelete: CASCADE, local: sport_game_category_id, foreign: id, foreignAlias: gameCategoryTournamentMatch }     
  
-MatchFixture:
+TournamentMatchFixture:
   package: GameSetting
-  tableName: mutms_tbl_match_fixture
+  tableName: mutms_tbl_tournament_match_fixture
   actAs:
     Timestampable: ~
   columns:
     token_id: { type: string(100) }    
     tournament_match_id: { type: integer } 
     tournament_match_token_id: { type: string(100) } 
+    parent_match_fixture_id: { type: integer } 
+    parent_match_fixture_token_id: { type: string(100) } 
     sport_game_id: { type: integer } 
     sport_game_token_id: { type: string(100) } 
     sport_game_group_id: { type: integer } 
-    match_round_type_id: { type: integer }  
+    match_round_type_id: { type: integer } 
     gender_category_id: { type: integer } 
-    round_mode: { type: integer } 
+    match_fixture_round_mode: { type: integer } 
     event_type: { type: integer } 
-    player_mode: { type: integer } 
+    contestant_mode: { type: integer } 
     match_venue: { type: string(100) } 
     tournament_match_number: { type: string(100) } 
     match_date: { type: string(100) }
@@ -373,104 +385,70 @@ MatchFixture:
     start_date: { type: string(100) }
     effective_date: { type: string(100) }  
     end_date: { type: string(100) }  
+    parent_flag: { type: boolean, default: false } 
+    inheritable_flag: { type: boolean, default: false } 
     roundable_flag: { type: boolean, default: false } 
-    active_flag: { type: boolean, default: true } 
+    active_flag: { type: boolean, default: false } 
+    complete_flag: { type: boolean, default: false } 
+    approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: string(255) }    
   relations:  
     TournamentMatch: { onDelete: CASCADE, local: tournament_match_id, foreign: id, foreignAlias: tournamentMatchMatchFixtures }     
     SportGame: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: sportGameMatchFixtures }     
     RoundType: { onDelete: CASCADE, local: match_round_type_id, foreign: id, foreignAlias: roundTypeMatchFixtures }     
+    TournamentMatchFixture: { onDelete: CASCADE, local: parent_match_fixture_id, foreign: id, foreignAlias: matchFixtureParentFixtures }     
     SportGameGroup: { onDelete: CASCADE, local: sport_game_group_id, foreign: id, foreignAlias: roundTypeMatchFixtures }     
     
-MatchParticipants:
+TournamentMatchParticipantTeam:
   package: GameSetting
-  tableName: mutms_tbl_match_participants
+  tableName: mutms_tbl_tournament_match_participant_team
   actAs:
     Timestampable: ~
   columns:
     token_id: { type: string(100) }    
     match_fixture_id: { type: integer }
+    match_fixture_token_id: { type: string(100) } 
     sport_game_group_id: { type: integer }
-    group_type_id: { type: integer } 
-    team_id: { type: integer }
+    sport_game_group_token_id: { type: string(100) } 
+    sport_game_team_group_id: { type: integer } 
     effective_date: { type: string(100) }
-    active_flag: { type: boolean, default: true } 
+    confirm_flag: { type: boolean, default: false } 
+    active_flag: { type: boolean, default: false } 
+    approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    SportGameGroup: { onDelete: CASCADE, local: sport_game_group_id, foreign: id, foreignAlias: matchParticipantSportGameGroups } 
-    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamMatchParticipants }  
-    MatchFixture: { onDelete: CASCADE, local: match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipants }  
+    SportGameGroup: { onDelete: CASCADE, local: sport_game_group_id, foreign: id, foreignAlias: sportGameGroupMatchParticipantTeams } 
+    SportGameTeamGroup: { onDelete: CASCADE, local: sport_game_team_group_id, foreign: id, foreignAlias: sportGameTeamGroupMatchTeamParticipants } 
+    TournamentMatchFixture: { onDelete: CASCADE, local: match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipants }  
   
-MatchResult:
+TournamentMatchParticipant:
   package: GameSetting
-  tableName: mutms_tbl_match_result
+  tableName: mutms_tbl_tournament_match_participant
   actAs:
     Timestampable: ~
   columns:
     token_id: { type: string(100) }    
     match_fixture_id: { type: integer }
+    match_fixture_token_id: { type: string(100) } 
+    tournament_match_participant_team_id: { type: integer }
     sport_game_group_id: { type: integer }
-    team_id: { type: integer }
-    start_date: { type: string(100) }
-    effective_date: { type: string(100) }  
-    end_date: { type: string(100) }  
-    active_flag: { type: boolean, default: true } 
+    team_group_member_participant_id: { type: integer }
+    effective_date: { type: string(100) }
+    confirm_flag: { type: boolean, default: 0 } 
+    active_flag: { type: boolean, default: 0 } 
+    standing_status: { type: integer, default: 1 } 
+    contestant_status: { type: integer, default: 1 } 
+    approval_status: { type: integer, default: 1 } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    MatchFixture: { onDelete: CASCADE, local: match_fixture_id, foreign: id, foreignAlias: matchFixtureResults } 
-    SportGameGroup: { onDelete: CASCADE, local: sport_game_group_id, foreign: id, foreignAlias: matchResultSportGameGroups } 
+    TeamGroupMemberParticipant: { onDelete: CASCADE, local: team_group_member_participant_id, foreign: id, foreignAlias: teamGroupMemberParticipantMatchParticipants }  
+    TournamentMatchFixture: { onDelete: CASCADE, local: match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipants }  
+    TournamentMatchParticipantTeam: { onDelete: CASCADE, local: tournament_match_participant_team_id, foreign: id, foreignAlias: tournamentMatchParticipantTeamMemberParticipants }  
+  
  
-MatchTable:
-  package: GameSetting
-  tableName: mutms_tbl_match_table
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    game_id: { type: integer }
-    group_id: { type: integer }
-    team_id: { type: integer }
-    person_id: { type: integer }
-    position: { type: integer }
-    palayed: { type: integer }
-    game_win: { type: integer }
-    game_draw: { type: integer }
-    game_lost: { type: integer }
-    goal_for: { type: integer }
-    goal_againest: { type: integer }
-    goal_difference: { type: integer }
-    points: { type: integer }
-    active_flag: { type: boolean, default: true }
-    status: { type: integer, default: 1  } 
-    description:  { type: clob }  
-  relations:  
-    Game: { onDelete: CASCADE, local: game_id, foreign: id, foreignAlias: gameMatchTables } 
-    Group: { onDelete: CASCADE, local: group_id, foreign: id, foreignAlias: groupMatchTables } 
-    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamMatchTables } 
-    Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personMatchTables } 
- 
- 
-MatchFixtureDetail:
-  package: GameSetting
-  tableName: mutms_tbl_match_fixture_detail
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    match_fixture_id: { type: integer }
-    team_id: { type: integer }
-    person_id: { type: integer }
-    effective_date: { type: string(100) }  
-    event: { type: string(100) }  
-    event_type_id: { type: integer }
-    status: { type: integer, default: 1  } 
-    description:  { type: clob }  
-  relations:  
-    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamMatchFixtureDetails } 
-    MatchFixture: { onDelete: CASCADE, local: match_fixture_id, foreign: id, foreignAlias: matchFixtureDetails } 
 
  
 ############  Party Management ####################
@@ -534,6 +512,59 @@ TournamentMedalAwards:
     Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personMatchTables } 
  
  
+############  Party Management ####################
+
+TournamentNews:
+  package: TournamentManagement
+  tableName: mutms_tbl_tournament_news
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(64) }    
+    org_id: { type: integer }
+    org_token_id: { type: string(100) } 
+    tournament_id: { type: integer }
+    tournament_event_type: { type: integer }
+    news_full_title: { type: string(255) }  
+    tournament_news_file_type: { type: string(255) }
+    tournament_news_file_name:  { type: string(255) }  
+    tournament_news_file_name_path:  { type: string(255) }  
+    tournament_news_file_full_path:  { type: string(255) }
+    published_date: { type: string(100) } 
+    edited_date: { type: string(100) } 
+    active_flag: { type: boolean, default: false }
+    featured_flag: { type: boolean, default: false }
+    archived_flag: { type: boolean, default: false }
+    status: { type: integer, default: 1 }
+    description:  { type: clob }
+  relations:
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationTournamentNews }  
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentTournamentNews } 
+    
+TournamentProgram:
+  package: TournamentManagement
+  tableName: mutms_tbl_tournament_programs
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(64) }    
+    org_id: { type: integer }
+    org_token_id: { type: string(100) } 
+    tournament_id: { type: integer }
+    program_full_title: { type: string(255) }
+    event_date: { type: string(100) } 
+    effective_date: { type: string(100) } 
+    start_date: { type: string(100) } 
+    end_date: { type: string(100) } 
+    active_flag: { type: boolean, default: false }
+    featured_flag: { type: boolean, default: false }
+    archived_flag: { type: boolean, default: false }
+    status: { type: integer, default: 1 }
+    description:  { type: clob }
+  relations:
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationTournamentPrograms }  
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentTournamentPrograms } 
+
 ############  Party Management ####################
 
 Party:

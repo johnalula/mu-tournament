@@ -3,18 +3,20 @@ class SystemCore {
 	
 	public static $_DASHBOARD = 1;
 	public static $_TOURNAMENT = 2;
-	public static $_GAME = 3;
+	public static $_SPORT_GAME = 3;
 	public static $_GROUP = 4;
 	public static $_TEAM = 5;  
-	public static $_PLAYER = 6;  
+	public static $_CONTESTANT = 6;  
 	public static $_MATCH = 7;  
-	public static $_ORGANIZATION = 8; 
-	public static $_GENERAL_SETTING = 9;
-	public static $_SYSTEM_SETTING = 10;
-	public static $_ADMINISTRATOR = 11; 
-	public static $_REPORT = 12;
+	public static $_TEAM_GROUP = 8;  
+	public static $_MEDAL_AWARD = 9;  
+	public static $_ORGANIZATION = 10; 
+	public static $_GENERAL_SETTING = 11;
+	public static $_SYSTEM_SETTING = 12;
+	public static $_ADMINISTRATOR = 13; 
+	public static $_REPORT = 14;
 	
-	public static $_CODE_TYPES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Game", 4 => "Group", 5 => "Team", 6 => "Player", 7 => "Match", 8 => "Organization", 9 => "General Setting", 10 => "System Setting", 11 => "Administrator", 12 => "Report" );
+	public static $_CODE_TYPES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Game", 4 => "Group", 5 => "Team", 6 => "Contestant", 7 => "Match", 8 => "Team Group", 9 => "Medal Award", 10 => "Organization", 11 => "General Setting", 12 => "System Setting", 13 => "Administrator", 14 => "Report" );
 	
 	public static function processSystemCodeTypeID ( $_id ) 
 	{ 
@@ -61,44 +63,12 @@ class SystemCore {
 	{ 
 		switch($_codeType) {			
 			case self::$_DASHBOARD:
-				return 'DSBRD';
-			break;
-			case self::$_TOURNAMENT:
-				return 'TRNMT';
-			break;
-			case self::$_GAME:
-				return 'GM';
-			break; 
-			case self::$_GROUP:
-				return 'GRP';
-			break;
-			case self::$_TEAM:
-				return 'TM';
-			break;
-			case self::$_PLAYER:
-				return 'PLR';
-			break;
-			case self::$_MATCH:
-				return 'MTCH';
-			break;
-			case self::$_ORGANIZATION:
-				return 'ORG';
-			break;
-			case self::$_REPORT:
-				return 'RPRT';
-			break; 
-		}
-	}
-	public static function processCodeTypeIcon ($_codeType) 
-	{ 
-		switch($_codeType) {			
-			case self::$_DASHBOARD:
 				return 'dashboard';
 			break;
 			case self::$_TOURNAMENT:
 				return 'tournament';
 			break;
-			case self::$_GAME:
+			case self::$_SPORT_GAME:
 				return 'game';
 			break; 
 			case self::$_GROUP:
@@ -113,6 +83,12 @@ class SystemCore {
 			case self::$_MATCH:
 				return 'match';
 			break;
+			case self::$_TEAM_GROUP:
+				return 'team_group';
+			break;
+			case self::$_MEDAL_AWARD:
+				return 'medal_award';
+			break;
 			case self::$_ORGANIZATION:
 				return 'organization';
 			break;
@@ -122,8 +98,55 @@ class SystemCore {
 			case self::$_SYSTEM_SETTING:
 				return 'system_setting';
 			break; 
-			case self::$_ADMINISTRATION:
-				return 'administration';
+			case self::$_ADMINISTRATOR:
+				return 'administrator';
+			break;
+			case self::$_REPORT:
+				return 'report';
+			break; 
+		}
+	}
+	public static function processCodeTypeIcon ($_codeType) 
+	{ 
+		switch($_codeType) {			
+			case self::$_DASHBOARD:
+				return 'dashboard';
+			break;
+			case self::$_TOURNAMENT:
+				return 'tournament';
+			break;
+			case self::$_SPORT_GAME:
+				return 'game';
+			break; 
+			case self::$_GROUP:
+				return 'group';
+			break;
+			case self::$_TEAM:
+				return 'team';
+			break;
+			case self::$_PLAYER:
+				return 'player';
+			break;
+			case self::$_MATCH:
+				return 'match';
+			break;
+			case self::$_TEAM_GROUP:
+				return 'team_group';
+			break;
+			case self::$_MEDAL_AWARD:
+				return 'medal_award';
+			break;
+			case self::$_ORGANIZATION:
+				return 'organization';
+			break;
+			case self::$_GENERAL_SETTING:
+				return 'general_setting';
+			break;
+			case self::$_SYSTEM_SETTING:
+				return 'system_setting';
+			break; 
+			case self::$_ADMINISTRATOR:
+				return 'administrator';
 			break;
 			case self::$_REPORT:
 				return 'report';
@@ -134,42 +157,50 @@ class SystemCore {
 	public static $_ACTIVATE = 1;
 	public static $_BLOCK = 2; 
 	public static $_DELETED = 3; 
-	public static $_TERMINATE = 4; 
+	public static $_DISABLE = 4; 
 	public static $_COMPLETE_DELETE = 5; 
 	public static $_RESTORE = 6; 
 	public static $_GENERATE_PDF = 7; 
 
-	public static $ALL_BATCH_ACTIONS = array (1 => 'Activate', 2 => 'Block', 3 => 'Delete', 4 => 'Teminate', 5 => 'Complete Delete', 6 => 'Restore');
-	public static $TRAHSED_BATCH_ACTIONS = array (5 => 'Delete', 6 => 'Restore');
-	public static $_BATCH_ACTIONS = array (1 => 'Activate', 2 => 'Block', 3 => 'Delete', 4 => 'Teminate');
+	public static $_ALL_BATCH_ACTIONS = array (1 => 'Activate', 2 => 'Block', 3 => 'Delete', 4 => 'Disable', 5 => 'Complete Delete', 6 => 'Restore');
+	public static $_TRAHSED_BATCH_ACTIONS = array (5 => 'Delete', 6 => 'Restore');
+	public static $_BATCH_ACTIONS = array (1 => 'Activate', 2 => 'Block', 3 => 'Delete', 4 => 'Disable');
 
 	public static function processAllBatchActions ()
 	{
 	  try {
-				return  self::$ALL_BATCH_ACTIONS; 
+				return  self::$_ALL_BATCH_ACTIONS; 
 			} catch ( Exception $e ) {
 			return null; 
 	  }        
 	}
-	public static function ProcessBatchActionS ($_action)
+	public static function ProcessBatchActionTypes ()
+	{
+	   try {
+				return  self::$_BATCH_ACTIONS; 
+			} catch ( Exception $e ) {
+			return null; 
+		}
+	}
+	public static function ProcessBatchActions ($_action)
 	{
 	   if($_action == 'trashed') {			
-			return self::$TRAHSED_BATCH_ACTIONS;
+			return self::$_TRAHSED_BATCH_ACTIONS;
 		} else {
 			return self::$_BATCH_ACTIONS;
 		}
 	}
 	
-	public static function processBatchActionID ( $value ) 
+	public static function processBatchActionID ( $_value ) 
 	{
 		try {
-			foreach( self::$ALL_BATCH_ACTIONS as $key=> $action ) {
-				if( strcmp($action, $value) == 0 ) {
-					return $key; 
+			foreach( self::$_ALL_BATCH_ACTIONS as $_key=> $_action ) {
+				if( strcmp($_action, $_value) == 0 ) {
+					return $_key; 
 				}
 			}
 			return null; 
-		} catch ( Exception $e ) {
+		} catch ( Exception $_e ) {
 			return null; 
 		}
 	}
@@ -177,13 +208,13 @@ class SystemCore {
 	public static function processBatchActionValue ($_id )
 	{
 		try {
-			foreach( self::$ALL_BATCH_ACTIONS as $key=> $action ) {
-			  if( $key == $_id ) {
-					return $action;
+			foreach( self::$_ALL_BATCH_ACTIONS as $_key=> $_action ) {
+			  if( $_key == $_id ) {
+					return $_action;
 				} 
 			}
 			return null;       
-		} catch ( Exception $e ) {
+		} catch ( Exception $_e ) {
 			return null; 
 		}
 	}
@@ -191,14 +222,14 @@ class SystemCore {
 	{
 		try {
 				return  self::$_ACTIVATE; 
-			} catch ( Exception $e ) {
+			} catch ( Exception $_e ) {
 			return null; 
 	  }     
 	}
 	
-	public static function processBatchActionIcon ($action) 
+	public static function processBatchActionIcon ($_action) 
 	{
-		switch($action) {			
+		switch($_action) {			
 			case self::$_ACTIVATE:
 				return 'approve';
 			break;
@@ -206,6 +237,9 @@ class SystemCore {
 				return 'reject';
 			break;
 			case self::$_DELETED:
+				return 'delete';
+			break;
+			case self::$_DISABLE:
 				return 'delete';
 			break;
 			case self::$_RESTORE:
@@ -336,6 +370,66 @@ class SystemCore {
 		return $_season;  
 	}
 	
+	/*********************************************/
+	
+	public static $_SINGLE_DATA = 1;
+	public static $_MULTIPLE_DATA = 2;
+
+	public static $_DATA_CREATION_MODES = array ( 1 => 'Single Data', 2 => 'Multiple Data');
+	
+	public static function processDataCreationModes ( ) 
+	{
+		 try {
+				return self::$_DATA_CREATION_MODES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processDataCreationModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_DATA_CREATION_MODES as $_key => $_mode ){
+				if( strcmp($_mode, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processDataCreationModeValue ($_id )
+	{
+		try {
+			foreach( self::$_DATA_CREATION_MODES as $_key => $_mode ){
+			  if( $_key == $_id )
+					return $_mode; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultDataCreationMode ( )
+	{
+		 try {
+				return self::$_DATA_CREATION_MODES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processDataCreationModeIcon ($_mode) 
+	{
+		switch($_mode) {			
+			case self::$_SINGLE_DATA:
+				return 'single_data';
+			break; 
+			case self::$_MULTIPLE_DATA:
+				return 'multiple_data';
+			break; 
+		}
+	}
 	
 	public static $_COUNTRIES = array ( 
 	1 => "AFGHANISTAN, ISLAMIC STATE OF", 2 => "ALBANIA", 3 => "ALGERIA ", 4 => "AMERICAN SAMOA", 5 => "ANDORRA", 6 => "ANGOLA", 7 => "ANGUILLA", 8 => "ANTARCTICA", 9 => "ANTIGUA AND BARBUDA", 10 => "ARGENTINA", 11 => "ARMENIA ", 12 => "ARUBA  ", 13 => "AUSTRALIA ", 14 => "AUSTRIA", 15 => "AZERBAIDJAN", 16 => "BAHAMAS", 17 => "BAHRAIN", 18 => "BANGLADESH", 19 => "BARBADOS", 20 => "BELARUS", 21 => "BELGIUM", 22 => "BELIZE", 23 => "BENIN", 24 => "BERMUDA", 25 => "BHUTAN", 26 => "BOLIVIA", 27 => "BOSNIA-HERZEGOVINA", 28 => "BOTSWANA", 29 => "BOUVET ISLAND", 30 => "BRAZIL", 31 => "BRITISH INDIAN OCEAN TERRITORY", 32 => "BRUNEI DARUSSALAM", 33 => "BULGARIA", 34 => "BURKINA FASO", 1 => "BURUNDI", 35 => "CAMBODIA", 36 => "CAMEROON", 37 => "CANADA", 38 => "CAPE VERDE", 39 => "CAYMAN ISLANDS", 40 => "CENTRAL AFRICAN REPUBLIC", 41 => "CHAD", 42 => "CHILE", 43 => "CHINA", 44 => "HRISTMAS ISLAND", 45 => "COCOS (KEELING) ISLANDS", 46 => "COLOMBIA", 47 => "COMOROS", 48 => "CONGO", 49 => "DEMOCRATIC REPUBLIC OF CONGO", 50 => "COOK ISLANDS", 51 => "COSTA RICA", 52 => "CROATIA", 53 => "CUBA", 54 => "CYPRUS", 55 => "CZECH REPUBLIC", 56 => "DENMARK", 57 => "DJIBOUTI", 58 => "DOMINICA", 59 => "DOMINICAN REPUBLIC", 60 => "EAST TIMOR", 61 => "ECUADOR", 62 => "EGYPT", 63 => "EL SALVADOR", 64 => "EQUATORIAL GUINEA", 65 => "ERITREA", 66 => "ESTONIA", 67 => "ETHIOPIA", 68 => "FALKLAND", 69 => "ICLANDS", 70 => "FAROE ISLANDS", 71 => "FIJI", 72 => "FINLAND", 73 => "United Kingdom", 74 => "United States of America"	);

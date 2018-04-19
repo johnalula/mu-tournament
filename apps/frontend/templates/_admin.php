@@ -45,9 +45,9 @@
 							</li>
 						</ul>
 					</li>  
-					<li class="dropdown <?php echo ($sf_request->getParameter('module') == 'product') ? 'active':'' ?>">
+					<li class="dropdown <?php echo ($sf_request->getParameter('module') == 'tournament') ? 'active':'' ?>">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							<img class="navbar-nav-img" src="<?php echo image_path('settings/setting') ?>">
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/tools') ?>">
 							<span class="ui-hot-key"></span><?php echo __('Tournament') ?><span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">  
@@ -55,32 +55,40 @@
 								<a href="<?php echo url_for('tournament/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/student') ?>"><?php echo __('Tournament') ?>
 								</a>
-							</li> 
-							<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>
+							</li>  
 							<li>
 								<a href="<?php echo url_for('tournament_setup/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/gear') ?>"><?php echo __('Setup') ?>
+									<img class="navbar-img" src="<?php echo image_path('icons/wrench') ?>"><?php echo __('Game Setup') ?>
 								</a>
-							</li>
-							<?php endif; ?>
+							</li> 
 							<li>
-								<a href="<?php echo url_for('tournament_setup/index') ?>">
+								<a href="<?php echo url_for('sport_games/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/gear') ?>"><?php echo __('Sport Games') ?>
 								</a>
 							</li>
-							<li role="separator" class="divider"></li> 
 							<li class="">
 								<a href="<?php echo url_for('game_category/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/category') ?>"><?php echo __('Game Setup') ?>
-								</a>
-							</li>
-							<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>
-							<li class="<?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
-								<a href="<?php echo url_for('tournament/round_types') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/school_setting') ?>"><?php echo __('Round Setup') ?>
+									<img class="navbar-img" src="<?php echo image_path('settings/category') ?>"><?php echo __('Sport Game Category') ?>
 								</a>
 							</li> 
-							<?php endif; ?>
+							<li class="">
+								<a href="<?php echo url_for('game_category/index') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/category') ?>"><?php echo __('Group Type') ?>
+								</a>
+							</li> 
+							<li class="<?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
+								<a href="<?php echo url_for('tournament/round_types') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/school_setting') ?>"><?php echo __('Round Type') ?>
+								</a>
+							</li>  
+							<li role="separator" class="divider"></li> 
+							<?php if($sf_user->canAccess(ModuleCore::$_GROUP) ): ?>
+							<li class="">
+								<a href="<?php echo url_for('team_group/index') ?>">
+									<img class="navbar-img" src="<?php echo image_path('icons/groups') ?>"><?php echo __('Team Groups') ?>
+								</a>
+							</li>
+							<?php endif; ?> 
 						</ul>
 					</li>  
 					<li class="dropdown <?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
@@ -107,12 +115,12 @@
 							<li role="separator" class="divider"></li> 
 							<li class="">
 								<a href="<?php echo url_for('student/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/student') ?>"><?php echo __('Active Matchs') ?>
+									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('Team Standings') ?>
 								</a>
 							</li>
 							<li class="">
 								<a href="<?php echo url_for('student/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/student') ?>"><?php echo __('Finished Matchs') ?>
+									<img class="navbar-img" src="<?php echo image_path('settings/student') ?>"><?php echo __('Awards') ?>
 								</a>
 							</li>
 							<li class="<?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
@@ -136,7 +144,7 @@
 							<li role="separator" class="divider"></li>  
 							<li>
 								<a href="<?php echo url_for('organization/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/department') ?>"><?php echo __('Players') ?>
+									<img class="navbar-img" src="<?php echo image_path('settings/department') ?>"><?php echo __('Contestants') ?>
 								</a>
 							</li>
 							<li class="">
@@ -144,13 +152,6 @@
 									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('People') ?>
 								</a>
 							</li> 
-							<?php if($sf_user->canAccess(ModuleCore::$_GROUP) ): ?>
-							<li class="">
-								<a href="<?php echo url_for('team_group/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/team_group') ?>"><?php echo __('Team Groups') ?>
-								</a>
-							</li>
-							<?php endif; ?> 
 						</ul>
 					</li>   
 					<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>

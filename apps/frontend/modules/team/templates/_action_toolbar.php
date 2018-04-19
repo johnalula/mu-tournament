@@ -33,9 +33,15 @@
 					</button>
 				</li>	
 				<li class="">
-					<button title="<?php echo __('Cancel Team Information') ?>" id="cancelTeam" class="ui-disabled-toolbar-btn" disabled>
-						<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
-						<?php echo __('Cancel') ?>
+					<button title="<?php echo __('Cancel Team Information') ?>"  class=""  data-toggle="modal" data-target="#candidateTeamLogoModal">
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/add') ?>">
+						<?php echo __('Add Logo') ?>
+					</button>
+				</li>
+				<li class="">
+					<button title="<?php echo __('Cancel Team Information') ?>" id="cancelTeamCountryFlag" class="">
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/add_cross') ?>">
+						<?php echo __('Add Flag') ?>
 					</button>
 				</li>
 				<li class="">

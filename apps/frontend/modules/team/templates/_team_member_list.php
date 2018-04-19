@@ -7,7 +7,7 @@
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
 			<th class="ui-th-left-text" title="<?php echo __('Product Name') ?>"><?php echo  __('Member Name') ?></th>   
-			<th class="" style="text-align:left!important;"><?php echo __('Prod').' #' ?></th>
+			<th class="" style="text-align:left!important;"><?php echo __('Sport Game')  ?></th>
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Member Role') ?>"><?php echo  __('Role') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Event') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Type') ?></th>  
@@ -33,17 +33,17 @@
 				<?php echo $_memberParticipant->memberFullName  ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_memberParticipant->id ?>
+				<?php echo $_memberParticipant->sportGameName.' - '.$_memberParticipant->gameCategoryName ?>
 			</td>
 			
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_memberParticipant->id ?>
+				<?php echo PersonCore::processPersonRoleValue($_memberParticipant->memberRoleID) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_memberParticipant->id ?>
+				<?php echo TournamentCore::processEventTypeValue($_memberParticipant->eventType) ?>
 			</td> 
 			<td class="ui-td-right-text ui-td-xsmall-00">
-				 <?php echo $_memberParticipant->id ?> 
+				 <?php echo $_memberParticipant->genderCategoryID ?> 
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
 				 <?php echo $_memberParticipant->description ?> 

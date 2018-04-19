@@ -11,7 +11,7 @@
 							<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->confirmFlag ? 'status/approved':'status/disabled')  ?>"> 
 							<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Team').' ( Name: '.$_team->teamName.' ID #:'.$_team->teamNumber.' )'  ?>
+						<?php echo __('Team').' ( Name: '.$_team->teamName.' - Country: '.SystemCore::processCountryAliasValue($_team->teamCountry).' - ID #: '.$_team->teamNumber.' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -91,9 +91,16 @@
 						
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('game_participation_list', array('_teamGameParticipations' => $_teamGameParticipations,'_countGameParticipations' => $_countGameParticipations )) ?> 
+													<?php include_partial('game_participation_list', array('_gameParticipations' => $_gameParticipations,'_countGameParticipations' => $_countGameParticipations )) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
+											<div class="ui-panel-footer-default">
+												<div class="ui-panel-list-pagination-default">
+													<div class="ui-panel-list-pagination">
+														<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
+													</div>
+												</div>
+											</div>
 										</div><!-- end of ui-tab-content --> 
 										
 										<div id="ui-main-tab-two" class="tab-pane">
@@ -132,6 +139,14 @@
 													</div>		
 												</div><!-- ui-tab-panel-grid -->
 												
+												<div class="ui-panel-footer-default">
+													<div class="ui-panel-list-pagination-default">
+														<div class="ui-panel-list-pagination">
+															<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
+														</div>
+													</div>
+												</div>
+												
 											</div><!-- ui-panel-footer-default -->
 										</div><!-- end of ui-tab-content --> 
 										
@@ -142,10 +157,7 @@
 							</div><!-- end of ui-main-tab-box --> 
 							
 						</div><!-- end of ui-panel-footer-default-box --> 
-						
-						<div class="ui-panel-footer-default-box">
-						&nbsp;
-						</div><!-- ui-panel-footer-default -->
+						 
 						
 					</div><!-- end of ui-panel-content-box --> 
 								

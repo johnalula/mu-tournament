@@ -18,10 +18,13 @@
  * @property integer $status
  * @property clob $description
  * @property Organization $Organization
- * @property Doctrine_Collection $tournamentSportGamesGroups
  * @property Doctrine_Collection $tournamentTeams
+ * @property Doctrine_Collection $tournamentSportGamesGroups
+ * @property Doctrine_Collection $tournamentSportGamesTeamGroups
  * @property Doctrine_Collection $tournamentMatchs
  * @property Doctrine_Collection $tournamentMedalAwards
+ * @property Doctrine_Collection $tournamentTournamentNews
+ * @property Doctrine_Collection $tournamentTournamentPrograms
  * 
  * @package    mu-TMS
  * @subpackage model
@@ -89,11 +92,15 @@ abstract class BaseTournament extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
+        $this->hasMany('Team as tournamentTeams', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
         $this->hasMany('SportGameGroup as tournamentSportGamesGroups', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
-        $this->hasMany('Team as tournamentTeams', array(
+        $this->hasMany('SportGameTeamGroup as tournamentSportGamesTeamGroups', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
@@ -102,6 +109,14 @@ abstract class BaseTournament extends sfDoctrineRecord
              'foreign' => 'tournament_id'));
 
         $this->hasMany('TournamentMedalAwards as tournamentMedalAwards', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('TournamentNews as tournamentTournamentNews', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('TournamentProgram as tournamentTournamentPrograms', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 

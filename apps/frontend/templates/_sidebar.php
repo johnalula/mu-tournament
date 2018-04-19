@@ -68,11 +68,24 @@
 						<?php echo __('Purchase Order') ?>
 					</a>
 				</li> 
+				<li role="separator" class="ui-sidebar-divider"></li>  
+				<li>
+					<a href="<?php echo url_for('news_and_events/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">
+						<?php echo __('News') ?>
+					</a>
+				</li>  
+				<li>
+					<a href="<?php echo url_for('news_and_events/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">
+						<?php echo __('Events') ?>
+					</a>
+				</li> 
 			</ul>
 		</div>
 	</div> 
 	<?php endif; ?>
-	<?php if($sf_user->canAccess(ModuleCore::$_GAME) || $sf_user->canAccess(ModuleCore::$_MATCH)): ?>
+	<?php if($sf_user->canAccess(ModuleCore::$_SPORT_GAME) || $sf_user->canAccess(ModuleCore::$_MATCH)): ?>
 	<div class="ui-sidebar-nav-box">
 		<h2 class="ui-sidebar-header">
 			<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/organization') ?>">

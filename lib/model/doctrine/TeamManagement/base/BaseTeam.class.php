@@ -16,8 +16,16 @@
  * @property string $alias
  * @property string $team_city
  * @property string $total_member
- * @property string $team_logo
- * @property string $flag_logo_alias
+ * @property string $team_logo_alias
+ * @property string $team_logo_file_type
+ * @property string $team_logo_file_name
+ * @property string $team_logo_file_name_path
+ * @property string $team_logo_file_full_path
+ * @property string $team_country_flag_alias
+ * @property string $team_country_flag_file_type
+ * @property string $team_country_flag_file_name
+ * @property string $team_country_flag_file_name_path
+ * @property string $team_country_flag_file_full_path
  * @property string $start_date
  * @property string $end_date
  * @property boolean $confirm_flag
@@ -26,14 +34,11 @@
  * @property clob $description
  * @property Organization $Organization
  * @property Tournament $Tournament
- * @property Doctrine_Collection $teamGroupMembers
  * @property Doctrine_Collection $teamGameParticipations
  * @property Doctrine_Collection $teamMemberParticipants
  * @property Doctrine_Collection $teamsTeamDetails
- * @property Doctrine_Collection $teamMatchParticipants
- * @property Doctrine_Collection $MatchResult
+ * @property Doctrine_Collection $teamGroupMembers
  * @property Doctrine_Collection $teamMatchTables
- * @property Doctrine_Collection $teamMatchFixtureDetails
  * @property Doctrine_Collection $TournamentMedalAwards
  * 
  * @package    mu-TMS
@@ -87,13 +92,45 @@ abstract class BaseTeam extends sfDoctrineRecord
              'type' => 'string',
              'length' => 50,
              ));
-        $this->hasColumn('team_logo', 'string', 255, array(
+        $this->hasColumn('team_logo_alias', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('team_logo_file_type', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
              ));
-        $this->hasColumn('flag_logo_alias', 'string', 50, array(
+        $this->hasColumn('team_logo_file_name', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('team_logo_file_name_path', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('team_logo_file_full_path', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('team_country_flag_alias', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
+             ));
+        $this->hasColumn('team_country_flag_file_type', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('team_country_flag_file_name', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('team_country_flag_file_name_path', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('team_country_flag_file_full_path', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
              ));
         $this->hasColumn('start_date', 'string', 100, array(
              'type' => 'string',
@@ -133,10 +170,6 @@ abstract class BaseTeam extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('SportGameTeamGroup as teamGroupMembers', array(
-             'local' => 'id',
-             'foreign' => 'team_id'));
-
         $this->hasMany('TeamGameParticipation as teamGameParticipations', array(
              'local' => 'id',
              'foreign' => 'team_id'));
@@ -149,19 +182,11 @@ abstract class BaseTeam extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'team_id'));
 
-        $this->hasMany('MatchParticipants as teamMatchParticipants', array(
+        $this->hasMany('SportGameTeamGroup as teamGroupMembers', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 
-        $this->hasMany('MatchResult', array(
-             'local' => 'id',
-             'foreign' => 'team_id'));
-
-        $this->hasMany('MatchTable as teamMatchTables', array(
-             'local' => 'id',
-             'foreign' => 'team_id'));
-
-        $this->hasMany('MatchFixtureDetail as teamMatchFixtureDetails', array(
+        $this->hasMany('TournamentRankTable as teamMatchTables', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 

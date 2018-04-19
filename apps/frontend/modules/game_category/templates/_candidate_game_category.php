@@ -16,7 +16,7 @@
 	   <?php foreach ( $_candidateGameCategorys as $_key => $_candidateGameCategory ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateGameCategory->id.'$'.$_candidateGameCategory->token_id.'$'.$_candidateGameCategory->categoryName.'$'.$_candidateGameCategory->categoryAlias.'$'.$_candidateGameCategory->id ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateGameCategory->id.'$'.$_candidateGameCategory->token_id.'$'.$_candidateGameCategory->categoryName.'$'.$_candidateGameCategory->categoryAlias.'$'.$_candidateGameCategory->contestantTeamMode ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<?php echo SystemCore::processDataID($_candidateGameCategory->id) ?> 

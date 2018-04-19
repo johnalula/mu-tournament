@@ -55,6 +55,20 @@ class TeamTable extends PluginTeamTable
 	    //  return false; 
 		//}
 	} 
+	public static function processLogoUploading ( $_teamID, $_teamTokenID, $_uploadedFileType, $_uploadedFileName, $_teamLogoFileNamePath, $_newFilePath, $_description )
+	{ 
+    
+		$_qry = Doctrine_Query::create( )
+					->update('TeamTable tm')  
+					->set('tm.team_logo_file_type', '?', trim($_uploadedFileType)) 
+					->set('tm.team_logo_file_name', '?', trim($_uploadedFileName)) 
+					->set('tm.team_logo_file_name_path', '?', trim($_teamLogoFileNamePath)) 
+					->set('tm.team_logo_file_full_path', '?', trim($_newFilePath)) 
+					->where('tm.id = ? AND tm.token_id = ?', array($_teamID, $_teamTokenID))
+					->execute();	
+		 
+			return $_qry; 
+	} 
 	public static function processEdit ( )
 	{
 		
@@ -85,6 +99,8 @@ class TeamTable extends PluginTeamTable
 		 trnmnt.id as tournamentID,
 		 
 		 (EXISTS (SELECT tmGmPrtn.id FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 
+		 
+		  
 		";	
 		return $_queryFileds;
 	}
@@ -95,7 +111,8 @@ class TeamTable extends PluginTeamTable
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("Team tm") 
-				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
+				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
+				//->leftJoin("tm.teamGameParticipations itmSpGmPrtn") 
 				->innerJoin("tm.Organization org on tm.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit) 
@@ -170,6 +187,25 @@ class TeamTable extends PluginTeamTable
 	//
 	public static function processCandidateSportGameParticipation ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_genderCategory, $_offset, $_limit ) 
    { 
+		/*$_sportGameParticipations = TeamGameParticipationTable::processAll ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion );
+		//return TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion, $_offset, $_limit) ;;
+		
+		if(!$_sportGameParticipations) { return false; }   
+		$_exclusion = array();   
+		foreach($_sportGameParticipations as $_sportGame) {
+			if($_sportGame->genderCategoryID != $_genderCategory ) {
+				if( $_sportGame->genderCategoryID !== TournamentCore::$_BOTH_GENDER ) {
+					$_exclusion[] = $_sportGame->id;
+				} 
+			} 
+		} */
+		
+		return TeamGameParticipationTable::processCandidateSelection ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit);
+		//return TeamGameParticipationTable::processAll ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion );
+	}  
+	//
+	public static function processCandidateTeamGameParticipation ( $_orgID=null, $_tournamentID=null, $_teamID=null, $_teamTokenID=null, $_gameTypeID=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {  
 		/*$_sportGameParticipations = TeamGameParticipationTable::processAll ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion );
 		//return TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion, $_offset, $_limit) ;;
 		

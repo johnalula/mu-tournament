@@ -7,12 +7,13 @@
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
 			<th class="" style="text-align:left!important;"><?php echo __('Game').' #' ?></th>
-			<th class="ui-th-left-text" title="<?php echo __('Sport Game Type Name') ?>"><?php echo  __('Game Type') ?></th>   
+			<th class="ui-th-left-text" title="<?php echo __('Sport Game Type Name') ?>"><?php echo  __('Sport Game') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Team Group') ?>"><?php echo  __('Group') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Gender Category') ?>"><?php echo  __('Gender') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Team Mode') ?>"><?php echo  __('Team Mode') ?></th>  
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Total Group Members') ?>"><?php echo  __('Member #') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Description') ?>"><?php echo  __('Description') ?></th>   
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Team Group Status') ?>"><?php echo  __('Status') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;"><?php echo  __('Action') ?></th>  
 			<th></th>
 		 </tr>
@@ -33,17 +34,20 @@
 				<?php echo $_sportGameTeamGroup->sportGameGroupCode  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-2">
-				<?php echo $_sportGameTeamGroup->gameCategoryName ?>
+				<?php echo $_sportGameTeamGroup->sportGameName.' - '.$_sportGameTeamGroup->gameCategoryName.'- '.($_sportGameTeamGroup->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_sportGameTeamGroup->sportGameTypeMode)):$_sportGameTeamGroup->sportGameName) ?>
 			</td>
 			
 			<td class="ui-td-left-text ui-td-xsmall-00">
-				<?php echo $_sportGameTeamGroup->sportGameGroupName ?>
+				<?php echo $_sportGameTeamGroup->groupTypeName ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo TournamentCore::processGenderValue($_sportGameTeamGroup->groupGenderCategoryID) ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-00">
 				<?php echo TournamentCore::processContestantTeamModeValue($_sportGameTeamGroup->contestantTeamMode)  ?>
+			</td>  
+			<td class="ui-td-center-text ui-td-xsmall-00">
+				<?php echo $_sportGameTeamGroup->totalGroupMemberTeams  ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo $_sportGameTeamGroup->description ?> 
@@ -81,13 +85,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=9></td>
+			<td class="ui-table-td-footer" colspan=10></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=11>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=12>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

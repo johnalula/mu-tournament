@@ -40,14 +40,14 @@ class matchActions extends sfActions
 	public function executeCreateTournamentMatch(sfWebRequest $request)
 	{
 		$_tournamentMatch = $request->getParameter('tournament_match');
-		$_matchSportGameName = $_tournamentMatch['tournament_name'];	
+		$_tournamentMatchName = $_tournamentMatch['tournament_name'];	
 		$_tournamentID = $_tournamentMatch['tournament_id'];	
 		$_tournamentTokenID = $_tournamentMatch['tournament_token_id'];	
 		$_sportGameCategoryName = $_tournamentMatch['sport_game_category_name'];	
 		$_sportGameCategoryID = $_tournamentMatch['sport_game_category_id'];	
-		$_sportGameTokenID = $_tournamentMatch['sport_game_category_token_id'];	
-		$_matchSeason = $_tournamentMatch['match_season'];	 
-		$_teamMode = $_tournamentMatch['participant_team_mode'];	 
+		$_sportGameCategoryTokenID = $_tournamentMatch['sport_game_category_token_id'];	
+		$_matchRoundMode = $_tournamentMatch['tournament_match_round_mode'];	 
+		$_contestantTeamMode = $_tournamentMatch['contestant_team_mode'];	 
 		$_status = $_tournamentMatch['match_status'];	 
 		$_matchDate = $_tournamentMatch['match_date'];	 
 		$_description = $_tournamentMatch['description'];	
@@ -57,7 +57,7 @@ class matchActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_tournamentMatch =  TournamentMatchTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_matchSeason, $_teamMode, $_matchDate, $_status, $_description, $_userID, $_userTokenID);  
+		$_tournamentMatch =  TournamentMatchTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_tournamentMatchName, $_contestantTeamMode, $_matchDate, $_status, $_description, $_userID, $_userTokenID );  
 				 
 		if(!$_tournamentMatch){ 
 			$this->getUser()->setFlash('process_fail', true);
@@ -92,28 +92,41 @@ class matchActions extends sfActions
 		
 		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, $_orgTokenID, $_matchID, $_tokenID );
 		$this->_activeTournament = TournamentTable::makeCandidateObject ( $_orgID, $_activeFlag ) ;
-		$this->_matchFixtures = MatchFixtureTable::processCandidates ( $_tournamentID, $_matchID, sha1(md5($_tokenID)), $_categoryID, $_keyword, $_exclusion, $_activeFlag, 0, 20  ) ;
+		$this->_matchFixtures = TournamentMatchFixtureTable::processCandidates ( $_tournamentID, $_matchID, sha1(md5($_tokenID)), $_categoryID, $_keyword, $_exclusion, $_activeFlag, 0, 20  ) ;
+		
+		$this->_sportGameTeamGroups =  SportGameGroupTable::processSelection ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentID, $_gameTypeID, $_genderCategoryID, $_groupID, $_keyword, 0, 20 ); 
+		
 		//$this->_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  ) ;
-		$this->_candidateRounds = RoundTypeTable::processAll ( $_orgID, $_orgTokenID, $_type, $_keyword, true) ;
-		$this->_candidateGroups = GroupTypeTable::processAll ( $_orgID, $_orgTokenID, $_keyword, true) ;
+		$this->_candidateRoundTypes = RoundTypeTable::processAll ( $_orgID, $_orgTokenID, $_type, $_keyword, true) ;
+		//$this->_candidateGroups = GroupTypeTable::processAll ( $_orgID, $_orgTokenID, $_keyword, true) ;
 		
 	}
 	public function executeCreateTournamentMatchFixture(sfWebRequest $request)
 	{
-		$_sportGameName = $request->getParameter('sport_game_name');	
+		
 		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
 		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
+		
+		$_parentMatchID = $request->getParameter('parent_match_fixture_id');	
+		$_parentMatchTokenID = $request->getParameter('parent_match_fixture_token_id');	
 		$_matchGameTypeID = $request->getParameter('math_game_type_id');	
 		$_matchGameTypeTokenID = $request->getParameter('math_game_type_token_id');	
+		
+		$_teamGroupName = $request->getParameter('sport_game_team_group_name');	
+		$_teamGroupID = $request->getParameter('sport_game_team_group_id');	
+		$_teamGroupTokenID = $request->getParameter('sport_game_team_group_token_id');	
+		
 		$_matchSportGameID = $request->getParameter('sport_game_id');	
 		$_matchSportGameTokenID = $request->getParameter('sport_game_token_id');	
+		$_matchRoundTypeID = $request->getParameter('match_round_type_id');	
 		$_matchVenue = $request->getParameter('match_venue');	 
 		$_eventType = $request->getParameter('event_type');	 
 		$_genderCategory = $request->getParameter('gender_category');	 
-		$_playerMode = $request->getParameter('player_mode');	 
-		$_matchRoundID = $request->getParameter('match_round');	 
+		$_groupTypeID = $request->getParameter('group_type_id');	 
+		$_contestantTeamMode = $request->getParameter('contestant_team_mode');	 
+		$_matchRoundMode = $request->getParameter('tournament_match_round_mode');	 
+		
 		$_matchStatus = $request->getParameter('match_status');	 
-		$_matchGroup = $request->getParameter('match_group');	 
 		$_matchTime = $request->getParameter('match_time');	 
 		$_matchDate = $request->getParameter('match_date');	 
 		$_description = $request->getParameter('description');	
@@ -123,7 +136,7 @@ class matchActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  MatchFixtureTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchSportGameID, $_matchSportGameTokenID, $_sportGameName, $_matchRoundID, $_genderCategory, $_eventType, $_playerMode, $_matchVenue, $_matchGroup, $_matchTime, $_matchDate, $_matchStatus, $_description, $_userID, $_userTokenID  );  
+		$_flag =  TournamentMatchFixtureTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_parentMatchID, $_parentMatchTokenID, $_matchSportGameID, $_matchSportGameTokenID, $_teamGroupID, $_teamGroupTokenID, $_teamGroupName, $_matchRoundTypeID, $_matchRoundMode, $_genderCategory, $_eventType, $_contestantTeamMode, $_matchVenue, $_matchTime, $_matchDate, $_matchStatus, $_description, $_userID, $_userTokenID  );  
 				 
 		return $_flag ? true:false;
 		

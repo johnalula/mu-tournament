@@ -14,23 +14,23 @@
  * @property string $alias
  * @property integer $game_distance
  * @property integer $game_distance_measurement
- * @property integer $sport_game_number
- * @property integer $player_mode
+ * @property string $sport_game_number
+ * @property integer $sport_game_type_mode
+ * @property integer $contestant_mode
  * @property integer $contestant_team_mode
  * @property integer $jump_type_mode
- * @property integer $throws_type
+ * @property integer $throw_type_mode
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
- * @property boolean $roundable_flag
+ * @property boolean $default_flag
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
  * @property GameCategory $GameCategory
  * @property Organization $Organization
- * @property Doctrine_Collection $sportGameSportGameGroups
  * @property Doctrine_Collection $sportGameTeamPartcipation
- * @property Doctrine_Collection $TeamMemberParticipant
+ * @property Doctrine_Collection $sportGameSportGameGroups
  * @property Doctrine_Collection $sportGameMatchFixtures
  * 
  * @package    mu-TMS
@@ -74,10 +74,14 @@ abstract class BaseSportGame extends sfDoctrineRecord
         $this->hasColumn('game_distance_measurement', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('sport_game_number', 'integer', null, array(
+        $this->hasColumn('sport_game_number', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('sport_game_type_mode', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('player_mode', 'integer', null, array(
+        $this->hasColumn('contestant_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('contestant_team_mode', 'integer', null, array(
@@ -86,7 +90,7 @@ abstract class BaseSportGame extends sfDoctrineRecord
         $this->hasColumn('jump_type_mode', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('throws_type', 'integer', null, array(
+        $this->hasColumn('throw_type_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('start_date', 'string', 100, array(
@@ -101,8 +105,9 @@ abstract class BaseSportGame extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('roundable_flag', 'boolean', null, array(
+        $this->hasColumn('default_flag', 'boolean', null, array(
              'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
@@ -130,19 +135,15 @@ abstract class BaseSportGame extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('SportGameGroup as sportGameSportGameGroups', array(
-             'local' => 'id',
-             'foreign' => 'sport_game_id'));
-
         $this->hasMany('TeamGameParticipation as sportGameTeamPartcipation', array(
              'local' => 'id',
              'foreign' => 'sport_game_id'));
 
-        $this->hasMany('TeamMemberParticipant', array(
+        $this->hasMany('SportGameGroup as sportGameSportGameGroups', array(
              'local' => 'id',
              'foreign' => 'sport_game_id'));
 
-        $this->hasMany('MatchFixture as sportGameMatchFixtures', array(
+        $this->hasMany('TournamentMatchFixture as sportGameMatchFixtures', array(
              'local' => 'id',
              'foreign' => 'sport_game_id'));
 

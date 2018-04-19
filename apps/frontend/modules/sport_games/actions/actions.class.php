@@ -22,6 +22,7 @@ class sport_gamesActions extends sfActions
 		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
 		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
+		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20 ); 
 	}
 	
 	public function executeNew(sfWebRequest $request)
@@ -30,31 +31,29 @@ class sport_gamesActions extends sfActions
 		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
-	}
-	public function executeView(sfWebRequest $request)
-	{
-		$_productID = $request->getParameter('product_id');	
-		$_productTokenID = $request->getParameter('token_id');	
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
-		
-		$this->_product = ItemProductTable::processObject( $_orgID, sha1(md5($_orgTokenID)), $_productID, $_productTokenID );
-		$_itemClassID = $this->_product->categoryClassID;
-		$this->_inventoryItems = ItemProductTable::processCandidateInventory ( $_productID, sha1(md5($_productTokenID)), $_itemType, true, $_productStatus, $_status, $_keyword, 0, 25 );
-		$this->_soldInventoryItems = ItemProductTable::processCandidateInventoryItems ( $_productID, $_productTokenID, $_itemClassID, $_itemType, 0, 25 );
-		//$this->_soldStockItems = ItemProductTable::processCandidateInventoryItems ( $_taskID, sha1(md5($_tokenID)), PropertyCore::$_STOCK_ITEM, $_itemType, 0, 15 );
-		//$this->_productPriceLevels = ItemProductTable::processCandidateProductPriceComponents ( $_productID, sha1(md5($_productTokenID)), $_productPriceType, $_exclusion, 0, 10 );
-		//$this->_units = UnitTable::processAll ( $_orgID, md5(sha1($_orgTokenID)), $_isDefault, $_exclusion, $_keyword);
+		$this->_gameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 15 );
+		$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 15 ); 
+		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20 ); 
 		
 	}
 	
-	public function executeCreateTeam(sfWebRequest $request)
+	public function executeCreateTournamentSportGame(sfWebRequest $request)
 	{
-		$_teamName = $request->getParameter('team_name');	
-		$_teamAlias = $request->getParameter('team_alias');	
-		$_teamCountry = $request->getParameter('country');	 
-		$_teamCity = $request->getParameter('team_city');	 
+		$_gameCategoryName = $request->getParameter('sport_game_category_name');	
+		$_gameCategoryID = $request->getParameter('sport_game_category_id');	
+		$_gameCategoryTokenID = $request->getParameter('sport_game_category_token_id');	
+		$_contestantTeamMode = $request->getParameter('contestant_team_mode');	
+		$_sportGameTypeMode = $request->getParameter('sport_game_type_mode');	
+		$_gameDistanceType = $request->getParameter('sport_game_type');	
+		$_gameDistance = $request->getParameter('sport_game_distance');	
+		$_measurementType = $request->getParameter('sport_game_measurement');	
+		$_sportGameName = $request->getParameter('sport_game_type_name');	
+		$_sportGameAlias = $request->getParameter('sport_game_type_alias');	
+		$_throwTypeMode = $request->getParameter('sport_game_throw_type');	
+		$_jumpTypeMode = $request->getParameter('sport_game_jump_type_mode');	
+		$_contestantMode = $request->getParameter('sport_game_player_mode');	
+		$_teamMode = $request->getParameter('sport_game_team_mode');	
+		$_sportGameStatus = $request->getParameter('sport_game_status');	
 		$_description = $request->getParameter('description');	
 				
 		$_orgID = $this->getUser()->getAttribute('orgID');
@@ -62,50 +61,50 @@ class sport_gamesActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  TeamTable::processNew ( $_orgID, $_orgTokenID,  $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_description, $_userID, $_userTokenID  );  
+		$_flag =  SportGameTable::processNew ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryTokenID, $_gameCategoryName, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_contestantTeamMode, $_sportGameStatus, $_description, $_userID, $_userTokenID  );  
 				 
 		return $_flag ? true:false;
 		
 	}
-	public function executeCandidateParentCategory(sfWebRequest $request)
+	
+	public function executeView(sfWebRequest $request)
 	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
+		$_sportGameID = $request->getParameter('sport_game_id');	
+		$_tokenID = $request->getParameter('token_id');	
+		
+		//$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		
+		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
+		$this->_sportGame = SportGameTable::processObject ( $_orgID, $_orgTokenID, $_sportGameID, $_tokenID ); 
+		$this->_candidateParticipantTeams = TeamGameParticipationTable::processCandidateTeams ( $_orgID, $_tournamentID, $_sportGameID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, 0, 20 ); 
+		
+	}
+	
+	/************  Candidate Navigation Selection Functions **************/
+	
+	public function executeCandidateSportGameCategorys(sfWebRequest $request)
+	{
+		//$_categoryID = $request->getParameter('sport_game_category');	
+		//$_tokenID = $request->getParameter('token_id');	
+		$_offset = $request->getParameter('offset');	
+		$_limit = $request->getParameter('limit');	
+		
+		
+		//$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		//$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 35;			 
+		if(!$_limit || $_limit=='' ) $_limit = 20;			 
 
-		$_candidateCategorys = CategoryTable::processCandidateCategorySelection ( $_orgID, $_orgTokenID, $_groupID, $_classID, $_keyword, $_offset, $_limit ); 
+		$_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, $_offset, $_limit ); 
+		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
 		
-		return $this->renderPartial('product/candidate_parent_category', array('_candidateCategorys' => $_candidateCategorys, '_countCandidates' => $_countCandidateStudents));	  
+		return $this->renderPartial('game_category/candidate-game-categorys', array('_candidateGameCategorys' => $_candidateGameCategorys, '_countCandidateSportGames' => $_countCandidateSportGames));	  
 	}
-	public function executeCandidateProducts(sfWebRequest $request)
-	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
-		
-		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 35;			 
-
-		$_candidateCategorys = CategoryTable::processCandidateCategorySelection ( $_orgID, $_orgTokenID, $_groupID, $_classID, $_keyword, $_offset, $_limit ); 
-		
-		return $this->renderPartial('product/candidate_parent_category', array('_candidateCategorys' => $_candidateCategorys, '_countCandidates' => $_countCandidateStudents));	  
-	}
-	public function executeCandidateAccountChars(sfWebRequest $request)
-	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
-		
-		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 35;			 
-
-		$_candidateAccountCharts = GeneralLedgerAccountTable::processCandidateSelection ( $_orgID, $_glAccountTypeID, $_exclusion, $_defaultFlag, $_status, $_keyword, 0, 25 );
-		
-		return $this->renderPartial('candidate_gl_account_charts', array('_candidateAccountCharts' => $_candidateAccountCharts, '_countCandidates' => $_countCandidateStudents));	    
-	}
+	
 	
 	/************  Candidate Navigation Selection Functions **************/
 	

@@ -139,6 +139,9 @@ input.ui-input-required {
 .form-group textarea.form-control {
   height: 38px!important;
 }
+.form-group input.form-control-file {
+  height: 40px!important;
+}
 .form-group textarea.form-control-md {
   height: 50px!important;
 }

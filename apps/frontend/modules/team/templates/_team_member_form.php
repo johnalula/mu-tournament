@@ -81,7 +81,7 @@
 									<input type="hidden" class="form-control" id="member_team_id" name="member_team_id" placeholder="" value="<?php echo $_team->id ?>">
 									<input type="hidden" class="form-control" id="member_team_token_id" name="member_team_token_id" placeholder="" value="<?php echo $_team->token_id ?>">
 									<span class="input-group-btn">
-										<button class="btn btn-default selectCandidateMemberSportGame" type="button" data-toggle="modal" data-target="#candidateMemberSportGameModal" title="<?php echo __('Candidat Sport Game') ?>">
+										<button class="btn btn-default selectCandidateMemberSportGame" type="button" data-toggle="modal" data-target="#candidateMemberSportGameModal" title="<?php echo __('Candidat Sport Game') ?>" disabled>
 											<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 										</button>
 									</span>
@@ -156,11 +156,13 @@
 	$('#middle_name').keyup(function(e) {
 		$("#createTeamMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 		$("#cancelTeamMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		$(".selectCandidateMemberSportGame").removeAttr("disabled");
 		return false;
 	});
 	$('#last_name').keyup(function(e) {
 		$("#createTeamMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 		$("#cancelTeamMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		$(".selectCandidateMemberSportGame").removeAttr("disabled");
 		return false;
 	});
 	$('#description').keyup(function(e) {

@@ -1,5 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_GROUP)): 
+	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)): 
 ?> 
 
 <div class="ui-page-box">
