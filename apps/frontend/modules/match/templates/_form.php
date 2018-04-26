@@ -34,6 +34,19 @@
 				<div class="form-group">
 					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Match Status') ?>"><?php echo __('Status') ?>:</label>
 					<div class="col-sm-23">
+						<select id="tournament_match_round_mode" name="tournament_match[tournament_match_round_mode]" class="form-control" title="<?php echo __('Tournament Match Round Mode') ?>">
+								<option value=""  ><?php echo 'Select Mode ...' ?></option>
+								<?php foreach(TournamentCore::processMatchRoundModes() as $_key => $_round): ?>								 
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultMatchRoundMode() ? 'selected':'' ?> >
+										<?php echo $_round ?>
+									</option>								 
+								<?php endforeach; ?>
+							</select>
+							
+						
+					</div>
+					<label class="col-sm-01 control-label" title="<?php echo __('Touirnament Match Date') ?>"><?php echo __('Date') ?>:</label>
+					<div class="col-sm-23">
 						<select id="match_status" name="tournament_match[match_status]" class="form-control" title="<?php echo __('Match Status') ?>">
 							<option value=""  ><?php echo 'Select Status ...' ?></option>
 							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
@@ -42,17 +55,6 @@
 								</option>								 
 							<?php endforeach; ?>
 						</select>
-					</div>
-					<label class="col-sm-01 control-label" title="<?php echo __('Touirnament Match Date') ?>"><?php echo __('Date') ?>:</label>
-					<div class="col-sm-23">
-						<div class="input-group"> 
-							<input class="form-control" id="match_date" name="tournament_match[match_date]" type="text" placeholder="<?php echo __('Date') ?>" value="<?php echo date('m/d/Y', time()) ?>" title="<?php echo __('Match Date') ?>" readonly>
-							<span class="input-group-btn">
-									<button class="btn btn-default " type="button" data-toggle="modal" data-target="#" title="<?php echo __('Candidat Sport Game Category') ?>">
-									<img class="btn-img" src="<?php echo image_path('icons/calendar_small') ?>" >
-								</button>
-							</span> 
-						</div>
 					</div>
 				</div> 
 				<div class="form-group">

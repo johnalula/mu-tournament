@@ -12,4 +12,10 @@
  */
 class GameCategory extends PluginGameCategory
 {
+	public function selectCandidates ()
+	{
+		 
+		
+		return SportGameTable::processAll ($_orgID, $_orgTokenID, $this->id, true, $_keyword );
+	}	
 }

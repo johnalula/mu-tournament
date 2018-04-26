@@ -35,7 +35,7 @@
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo $_team->teamAlias ?> 
 			</td>  
-			<td class="ui-td-center-text ui-td-xsmall-0">
+			<td class="ui-td-center-text ui-td-xsmall-0 <?php echo $_team->hasGameParticipation ? '':'ui-table-bgcolor-red' ?>">
 				<?php echo $_team->hasGameParticipation ? 'True':'False' ?>
 			</td>
 			
@@ -46,7 +46,7 @@
 				<?php echo $_team->id ?>
 			</td> 
 			<td class="ui-td-right-text ui-td-xsmall-00">
-				<?php echo number_format($_team->description,2)  ?>
+				<?php echo Wordlimit::Wordlimiter($_team->description, 5) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_team->id ?>" class="ui-table-status-small-icon" id="<?php echo $_team->id ?>">

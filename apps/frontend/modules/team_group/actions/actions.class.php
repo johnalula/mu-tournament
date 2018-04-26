@@ -21,7 +21,9 @@ class team_groupActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_sportGameTeamGroups =  SportGameGroupTable::processSelection ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentID, $_gameTypeID, $_genderCategoryID, $_groupID, $_keyword, 0, 20 );  
+		//$this->_sportGameTeamGroups =  SportGameGroupTable::processSelection ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentID, $_gameTypeID, $_genderCategoryID, $_groupID, $_keyword, 0, 20 );  
+		
+		$this->_tournamentTeamGroups = TournamentSportGameGroupTable::processSelection ( $_orgID, $_orgTokenID, $_tournamentID, $_sportGameTypeID, $_keyword, 0, 20  ) ;
   }
  
   public function executeNew(sfWebRequest $request)
@@ -34,22 +36,16 @@ class team_groupActions extends sfActions
 		//$this->_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  ) ;
 		//$this->_candidateGroupTypes = GameGroupTypeTable::processAll ($_orgID, $_orgTokenID, $_keyword, $_activeFlag ) ;
   }
-  public function executeCreateTournamentTeamGroup(sfWebRequest $request)
+  public function executeCreateTournamentSportGameGroup(sfWebRequest $request)
   {
-		$_teamGroup = $request->getParameter('team_group');
-		$_tournamentID = $_teamGroup['tournament_id'];	
-		$_gameCategpry = $_teamGroup['game_category'];	 
-		$_sportGameName = $_teamGroup['sport_game_full_name'];	
-		$_sportGameTypeName = $_teamGroup['sport_game_category_name'];	
-		$_sportGameID = $_teamGroup['sport_game_id'];	
-		$_sportGameTokenID = $_teamGroup['sport_game_token_id'];	
-		$_groupTypeName = $_teamGroup['group_type_name'];	 
-		$_groupTypeID = $_teamGroup['group_type_id'];	 
-		$_contestantTeamMode = $_teamGroup['sport_game_contestant_team_mode'];	 
-		$_totalGroupMembers = $_teamGroup['total_group_members'];	 
-		$_genderCategory = $_teamGroup['gender_category'];	 
-		$_groupStatus = $_teamGroup['team_group_status'];	 
-		$_description = $_teamGroup['description'];	
+		$_tournamentTeamGroup = $request->getParameter('tournament_team_group');
+		$_tournamentID = $_tournamentTeamGroup['tournament_id'];	
+		$_gameCategoryID = $_tournamentTeamGroup['sport_game_type_id'];	 
+		$_gameCategoryTokenID = $_tournamentTeamGroup['sport_game_type_token_id'];	 
+		$_sportGameTypeName = $_tournamentTeamGroup['sport_game_type_name'];	
+		$_startDate = $_tournamentTeamGroup['start_date'];	 
+		$_groupStatus = $_tournamentTeamGroup['group_status'];	 
+		$_description = $_tournamentTeamGroup['description'];	
 		$_sportGameFullName = $_sportGameName.' - '.$_sportGameTypeName;	
 				
 		$_orgID = $this->getUser()->getAttribute('orgID');
@@ -57,18 +53,57 @@ class team_groupActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_teamGroup =  SportGameGroupTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupTypeID, $_groupTypeName, $_contestantTeamMode, $_genderCategory, $_totalGroupMembers, $_groupStatus, $_description, $_userID, $_userTokenID );  
+		$_teamGroup =  TournamentSportGameGroupTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_gameCategoryID, $_gameCategoryTokenID, $_sportGameTypeName, $_startDate, $_groupStatus, $_description, $_userID, $_userTokenID );  
 		
-		//$_teamGroup =  MultipleContestantTeamGroupTable::processNew ( $_tournamentID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupTypeID, $_groupTypeName, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_description );  
-				 
 		if(!trim($_teamGroup) && !empty($_teamGroup)) { 
 			$this->getUser()->setFlash('process_fail', true);
 			$this->redirect('team_group/new');
 		}  else {
 			$this->getUser()->setFlash('process_success', true);
-			$this->redirect('team_group/member?team_group_id='.$_teamGroup->id.'&token_id='.$_teamGroup->token_id);
+			$this->redirect('team_group/category?team_group_id='.$_teamGroup->id.'&token_id='.$_teamGroup->token_id);
 		}
 		
+  }
+  
+  public function executeCategory(sfWebRequest $request)
+  {
+		$_teamGroupID = $request->getParameter('team_group_id');	
+		$_tokenID = $request->getParameter('token_id');	
+		
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		
+		$this->_activeTournament = TournamentTable::makeCandidateObject ( $_orgID, true ) ;
+		$this->_tournamentTeamGroup = TournamentSportGameGroupTable::processObject ( $_orgID, $_orgTokenID, $_teamGroupID, $_tokenID ) ;
+		
+		$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 20  ) ;
+		//$this->_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  ) ;
+		//$this->_candidateGroupTypes = GameGroupTypeTable::processAll ($_orgID, $_orgTokenID, $_keyword, $_activeFlag ) ;
+  }
+  public function executeCreateTournamentTeamGroup(sfWebRequest $request)
+  {
+	  //game_category=1&sport_game_full_name=5000M (Athletics) - Long Distance Running&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&sport_game_category_name=Athletics&sport_game_contestant_team_mode=2&tournament_team_group__id=&tournament_team_group__token_id=&group_number=3&gender_category=1&contestant_team_mode=2&sport_game_group_status=2&description=fsdfgsdfgsdfgdfgh dfgh dfgh dfgh
+	  
+		$_tournamentID = $request->getParameter('tournament_id');	
+		$_memberTeamName = $request->getParameter('member_team_name');	
+		$_memberTeamID = $request->getParameter('member_team_id');	
+		$_memberTeamTokenID = $request->getParameter('member_team_token_id');	
+		$_teamGroupID = $request->getParameter('team_group_id');	
+		$_teamGroupTokenID = $request->getParameter('team_group_token_id');	
+		$_genderCategory = $request->getParameter('gender_category_id');	 
+		$_teamStatus = $request->getParameter('team_status');	 
+		$_entryDate = $request->getParameter('start_date');	 
+		$_description = $request->getParameter('description');	
+				
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_userID = $this->getUser()->getAttribute('userID');
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+	
+		$_flag =  SportGameTeamGroupTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_teamGroupID, $_teamGroupTokenID, $_memberTeamID, $_memberTeamTokenID, $_memberTeamName, $_entryDate, $_teamStatus, $_description, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
+				 
+		return $_flag ? true:false;
+    
   }
    public function executeEdit(sfWebRequest $request)
 	{
@@ -119,6 +154,7 @@ class team_groupActions extends sfActions
 		//$this->_candidateTeams = SportGameGroupTable::processCandidateMemberTeams ( $_orgID, $_orgTokenID, $_tournamentID, $_teamGroupID, $_teamGroupTokenID, $_sportGameID, $_genderCategory, $_keyword, 0, 20 );
 		//$this->_candidateMemberTeams = SportGameGroupTable::processCandidateMemberTeams ( $_orgID, $_orgTokenID, $_tournamentID, $_teamGroupID, $_teamGroupTokenID, $_sportGameID, $_genderCategory, $_keyword, 0, 20 );
   }
+ 
   public function executeCreateGroupMemberTeam(sfWebRequest $request)
   {
 		$_tournamentID = $request->getParameter('tournament_id');	

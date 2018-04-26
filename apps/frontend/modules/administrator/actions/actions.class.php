@@ -47,4 +47,8 @@ class administratorActions extends sfActions
   {
     
   }
+   public function executeView(sfWebRequest $request)
+  {
+
+  } 
 }

@@ -16,39 +16,39 @@
 		 </tr>
 	  </thead>
 	  <tbody>
-	   <?php foreach ( $_candidateTeams as $_key => $_candidateTeam ): ?>
+	   <?php foreach ( $_teamGameParticipations as $_key => $_teamGameParticipation ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateTeam->id.'$'.$_candidateTeam->token_id.'$'.$_candidateTeam->teamName.'$'.$_candidateTeam->teamAlias.'$'.$_candidateTeam->teamAlias ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_teamGameParticipation->id.'$'.$_teamGameParticipation->token_id.'$'.$_teamGameParticipation->sportGameName.'$'.$_teamGameParticipation->gameCategoryName.'$'.$_teamGameParticipation->teamAlias ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo SystemCore::processDataID($_candidateTeam->id) ?> 
+				<?php echo SystemCore::processDataID($_teamGameParticipation->id) ?> 
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo TournamentCore::processGenderValue($_candidateTeam->genderCategoryID)  ?>
+				<?php echo TournamentCore::processGenderValue($_teamGameParticipation->genderCategoryID)  ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xsmall-01"> 
-				<?php echo $_candidateTeam->sportGameName  ?>
+				<?php echo $_teamGameParticipation->sportGameName  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-1"> 
-				<?php echo TournamentCore::processDistanceTypeValue($_candidateTeam->sportGameDistanceTypeID).' '.($_candidateTeam->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_candidateTeam->sportGameTypeMode)):$_candidateTeam->sportGameName)   ?>
+				<?php echo TournamentCore::processDistanceTypeValue($_teamGameParticipation->sportGameDistanceTypeID).' '.($_teamGameParticipation->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_teamGameParticipation->sportGameTypeMode)):$_teamGameParticipation->sportGameName)   ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xsmall-00">
-				<?php echo $_candidateTeam->gameCategoryName  ?>
+				<?php echo $_teamGameParticipation->gameCategoryName  ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo TournamentCore::processEventTypeValue($_candidateTeam->eventType) ?>
+				<?php echo TournamentCore::processEventTypeValue($_teamGameParticipation->eventType) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_candidateTeam->totalContestantNumber ?>
+				<?php echo $_teamGameParticipation->totalContestantNumber ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_candidateTeam->description ?>
+				<?php echo $_teamGameParticipation->description ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<span rel="<?php echo $_candidateTeam->id ?>" class="ui-table-status-small-icon" id="<?php echo $_candidateTeam->id ?>">
-					<img title="<?php echo $_candidateTeam->id ?> " src="<?php echo image_path($_candidateTeam->id ? 'status/approved':'status/deny')  ?>"> 
-					<img title="<?php echo $_candidateTeam->id ?> " src="<?php echo image_path($_candidateTeam->activeFlag ? 'status/active':'status/disabled')  ?>"> 
+				<span rel="<?php echo $_teamGameParticipation->id ?>" class="ui-table-status-small-icon" id="<?php echo $_teamGameParticipation->id ?>">
+					<img title="<?php echo $_teamGameParticipation->id ?> " src="<?php echo image_path($_teamGameParticipation->id ? 'status/approved':'status/deny')  ?>"> 
+					<img title="<?php echo $_teamGameParticipation->id ?> " src="<?php echo image_path($_teamGameParticipation->activeFlag ? 'status/active':'status/disabled')  ?>"> 
 				</span>
 			</td> 
 			<td class="ui-table-td-right-border ui-table-td-xfw">

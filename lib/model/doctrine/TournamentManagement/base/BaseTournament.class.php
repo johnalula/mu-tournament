@@ -26,9 +26,9 @@
  * @property Doctrine_Collection $tournamentTournamentNews
  * @property Doctrine_Collection $tournamentTournamentPrograms
  * 
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage model
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTournament extends sfDoctrineRecord
@@ -96,7 +96,7 @@ abstract class BaseTournament extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
-        $this->hasMany('SportGameGroup as tournamentSportGamesGroups', array(
+        $this->hasMany('TournamentSportGameGroup as tournamentSportGamesGroups', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 

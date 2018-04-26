@@ -73,7 +73,7 @@ class UserRoleTable extends PluginUserRoleTable
 			$_nw = new UserRole ();  
 			$_nw->token_id = md5(sha1($_token)); 
 			$_nw->org_id = trim($_orgID);
-			$_nw->org_token_id = md5(sha1(trim($_orgTokenID)));
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));
 			$_nw->user_role_name = ucwords(trim($_userRoleName));
 			$_nw->user_role_type_id = trim($_userRoleTypeID);
 			$_nw->alias = strtoupper(trim(UserCore::processUserRoleIcon($_userRoleTypeID))); 

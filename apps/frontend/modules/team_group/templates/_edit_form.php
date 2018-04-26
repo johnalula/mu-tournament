@@ -1,11 +1,10 @@
 <div class="ui-panel-form-box ui-main-panel-form-box-margin" id="">   
-	<form class="form-horizontal" id="createGroupMemberTeamForm" role="form" action="" method=""> 
 	<input type="hidden" class="form-control" id="test_id" name="test_id" value="">
 	<div class="ui-row" id=""> 
 		<div class="ui-panel-grid-form12" id=""> 
 			<fieldset  class="ui-form-fieldset-frame">
 				<legend class="ui-form-legend">
-					<img src="<?php echo image_path('icons/edit') ?>" title="<?php echo __('Team Group Information') ?>">
+					<img src="<?php echo image_path('icons/add_icon') ?>" title="<?php echo __('Team Group Information') ?>">
 					<?php echo __('Team Group') ?>
 				</legend>
 				<div class="form-group">
@@ -34,7 +33,7 @@
 					<label class="col-sm-21 control-label"><?php echo __('Sport Game') ?>: <span class="ui-red-text">*</span></label>
 					<div class="col-sm-40"> 
 						<div class="input-group">
-							<input type="text" class="form-control " id="sport_game_full_name" name="team_group[sport_game_full_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateSportGameModal"  disabled>
+							<input type="text" class="form-control " id="sport_game_full_name" name="team_group[sport_game_full_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateSportGameModal"  disabled required >
 							<input type="hidden" class="form-control" id="sport_game_id" name="team_group[sport_game_id]" placeholder="" value="">
 							<input type="hidden" class="form-control" id="sport_game_token_id" name="team_group[sport_game_token_id]" value=""> 
 							<input type="hidden" class="form-control" id="sport_game_category_name" name="team_group[sport_game_category_name]" value=""> 
@@ -45,43 +44,31 @@
 								</button>
 							</span>
 						</div><!-- /input-group -->
+						<span class="required-error ui-display-none" id="last_name_required"><?php echo __("Required Field!") ?></span>
+						<span class="invalid-error ui-display-none" id="last_name_invalid"><?php echo __("Invalid Input!") ?></span>
 					</div>
 				</div>  
 				<div class="form-group">
 					<label class="col-sm-21 control-label"><?php echo __('Group') ?>: <span class="ui-red-text">*</span></label>
 					<div class="col-sm-40"> 
 						<div class="input-group">
-							<input type="text" class="form-control" id="sport_game_group_type_name" name="team_group[sport_game_group_type_name]" placeholder="<?php echo __('Group Type') ?>" title="<?php echo __('Sport Game Group Type') ?>" readonly>
-							<input type="hidden" class="form-control" id="sport_game_group_type_id" name="team_group[sport_game_group_type_id]" >
-							<div class="input-group-btn">
-								<button type="button" class="btn btn-default	dropdown-toggle" data-toggle="dropdown">
-									Select Group
-									<span class="caret"></span>
+							<input type="text" class="form-control " id="group_type_name" name="team_group[group_type_name]" placeholder="<?php echo __('Candidate Group Type') ?>" title="<?php echo __('Candidate Group Type') ?>" value="" data-toggle="modal" data-target="#candidateGroupTypeModal"  disabled required>
+							<input type="hidden" class="form-control" id="group_type_id" name="team_group[group_type_id]" placeholder="" value="">
+							<input type="hidden" class="form-control" id="group_type_token_id" name="team_group[group_type_token_id]" value=""> 
+							<span class="input-group-btn">
+								<button class="btn btn-default selectCandidateGroupType" type="button" data-toggle="modal" data-target="#candidateGroupTypeModal" title="<?php echo __('Candidat Group Type') ?>" disabled>
+									<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 								</button>
-								<ul class="dropdown-menu pull-right">
-									<?php foreach($_candidateGroups as $_key => $_candidateGroup): ?>		
-										<li class="selectSportGameGroupType" rel="<?php echo $_candidateGroup->id ?>" id="<?php echo $_candidateGroup->groupName ?>">
-											<a href="#"><?php echo $_candidateGroup->id.'. '.$_candidateGroup->groupName ?></a>
-										</li> 			 
-									<?php endforeach; ?>
-								</ul>
-							</div><!-- /btn-group -->
+							</span>
 						</div><!-- /input-group -->
-
+						<span class="required-error ui-display-none" id="last_name_required"><?php echo __("Required Field!") ?></span>
+						<span class="invalid-error ui-display-none" id="last_name_invalid"><?php echo __("Invalid Input!") ?></span>
 					</div>
-				</div> 
-				
+				</div>   
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Contestant Team Mode') ?>"><?php echo __('Mode') ?>: <span class="ui-red-text">&nbsp;</span></label>
+					<label class="col-sm-21 control-label" title="<?php echo __('Group Member Number') ?>"><?php echo __('Total Member #') ?>: <span class="ui-red-text">&nbsp;</span></label>
 					<div class="col-sm-23">
-						<select id="contestant_team_mode" name="team_group[contestant_team_mode]" class="form-control" title="<?php echo __('Contestant Team Mode') ?>">
-							<option value="" selected  ><?php echo 'Select Gender ...' ?></option>
-							<?php foreach(TournamentCore::processContestantTeamModes() as $_key => $_mode): ?>								 
-								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PAIR_TEAM ? 'selected':'' ?> >
-									<?php echo $_mode ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
+						<input type="text" class="form-control" id="total_group_members" name="team_group[total_group_members]" value=""  placeholder="<?php echo __('Total Group Members') ?>"> 
 					</div>
 					<label class="col-sm-01 control-label" title="<?php echo __('Gender Category') ?>"><?php echo __('Gender') ?>:</label>
 					<div class="col-sm-23">
@@ -105,7 +92,6 @@
 		</div> 
 		<div class="ui-clear-fix"></div>
 	</div> 
-	</form>
 </div> 
  
 <script>

@@ -22,7 +22,8 @@ class sport_gamesActions extends sfActions
 		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
 		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
-		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20 ); 
+		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_activeFlag, $_keyword, 1, 10 ); 
+		$this->_countSportGames = SportGameTable::processAll ($_orgID, $_orgTokenID, $_categoryID, $_activeFlag, $_keyword ); 
 	}
 	
 	public function executeNew(sfWebRequest $request)
@@ -108,58 +109,31 @@ class sport_gamesActions extends sfActions
 	
 	/************  Candidate Navigation Selection Functions **************/
 	
-	
-	public function executeCandidateInventoryItemDetail(sfWebRequest $request)
-	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
-		
-		$_inventoryItemID = $request->getParameter("inventory_item_id");
-		$_inventoryItemTokenID = $request->getParameter("inventory_item_token_id");
-		//$_keyword = '%' . $_keyword . '%';
-		
-		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 35;			 
-		if(!$_classID || $_classID == '' ) $_classID = null;			 
-		if(!$_keyword || $_keyword == '' ) $_keyword = null;			 
-		
-		$_inventoryItem = InventoryItemTable::processObject( $_inventoryItemID, $_inventoryItemTokenID ) ;
-		
-		if (!$_inventoryItem)
-		{
-			return $this->renderPartial('global/error', array('_products' => $_products));
-		}
-			
-		return $this->renderPartial('inventory_item/item_detail', array('_inventoryItem' => $_inventoryItem));
-
-	}
-	
+	 
 	public function executeSearch(sfWebRequest $request)
 	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
 		$_limit = $request->getParameter("limit");
 		$_offset = $request->getParameter("offset");
-		$_classID = $request->getParameter("class_id");
+		$_categoryID = $request->getParameter("category_id");
 		$_keyword = $request->getParameter("keyword");
 		$_keyword = '%' . $_keyword . '%';
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 35;			 
-		if(!$_classID || $_classID == '' ) $_classID = null;			 
+		if(!$_limit || $_limit=='' ) $_limit = 10;			 
+		if(!$_categoryID || $_categoryID == '' ) $_categoryID = null;			 
+		if(!$_gameTypeID || $_gameTypeID == '' ) $_gameTypeID = null;			 
 		if(!$_keyword || $_keyword == '' ) $_keyword = null;			 
 		
-		$_products = ItemProductTable::processSelection ( $_orgID, sha1(md5($_orgTokenID)), $_classID, $_exclusion, $_status, $_keyword, $_offset, $_limit );
-		$_countProducts = ItemProductTable::processAll ( $_orgID, sha1(md5($_orgTokenID)), $_classID, $_exclusion, $_status, $_keyword);
-		if (!$_products)
+		$_sportGames = SportGameTable::processSelection ( null, null, null, null, $_keyword, $_offset, $_limit );
+		$_countSportGames = SportGameTable::processAll ($_orgID, $_orgTokenID, $_categoryID, $_activeFlag, $_keyword ); 
+		/*if (!$_sportGames)
 		{
-			return $this->renderPartial('error', array('_products' => $_products));
-		}
-			
-		return $this->renderPartial('list', array('_products' => $_products, '_countProducts' => $_countProducts));
+			return $this->renderPartial('error', array('_sportGames' => $_sportGames));
+		}*/
+		return $this->renderPartial('list', array('_sportGames' => $_sportGames, '_countSportGames' => $_countSportGames));
 
 	}
 

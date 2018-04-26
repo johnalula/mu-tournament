@@ -11,20 +11,24 @@
  * @property integer $sport_game_group_id
  * @property string $sport_game_group_token_id
  * @property integer $sport_game_team_group_id
+ * @property string $sport_game_team_group_token_id
  * @property string $effective_date
+ * @property boolean $qualified_flag
+ * @property integer $qualification_status
  * @property boolean $confirm_flag
  * @property boolean $active_flag
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
+ * @property string $type
  * @property SportGameGroup $SportGameGroup
  * @property SportGameTeamGroup $SportGameTeamGroup
  * @property TournamentMatchFixture $TournamentMatchFixture
  * @property Doctrine_Collection $tournamentMatchParticipantTeamMemberParticipants
  * 
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage model
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
@@ -53,9 +57,20 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
         $this->hasColumn('sport_game_team_group_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('sport_game_team_group_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
         $this->hasColumn('effective_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('qualified_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             ));
+        $this->hasColumn('qualification_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('confirm_flag', 'boolean', null, array(
              'type' => 'boolean',
@@ -75,6 +90,21 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              ));
         $this->hasColumn('description', 'clob', null, array(
              'type' => 'clob',
+             ));
+        $this->hasColumn('type', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+
+        $this->setSubClasses(array(
+             'MultipleParticipantTeam' => 
+             array(
+              'type' => 1,
+             ),
+             'PairParticipantTeam' => 
+             array(
+              'type' => 2,
+             ),
              ));
     }
 

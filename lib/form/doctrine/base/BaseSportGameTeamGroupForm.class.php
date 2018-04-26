@@ -5,9 +5,9 @@
  *
  * @method SportGameTeamGroup getObject() Returns the current form's model object
  *
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage form
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
 abstract class BaseSportGameTeamGroupForm extends BaseFormDoctrine
@@ -27,6 +27,8 @@ abstract class BaseSportGameTeamGroupForm extends BaseFormDoctrine
       'end_date'                  => new sfWidgetFormInputText(),
       'active_flag'               => new sfWidgetFormInputCheckbox(),
       'completed_flag'            => new sfWidgetFormInputCheckbox(),
+      'qualified_flag'            => new sfWidgetFormInputCheckbox(),
+      'qualification_status'      => new sfWidgetFormInputText(),
       'approval_status'           => new sfWidgetFormInputText(),
       'status'                    => new sfWidgetFormInputText(),
       'description'               => new sfWidgetFormTextarea(),
@@ -47,6 +49,8 @@ abstract class BaseSportGameTeamGroupForm extends BaseFormDoctrine
       'end_date'                  => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'active_flag'               => new sfValidatorBoolean(array('required' => false)),
       'completed_flag'            => new sfValidatorBoolean(array('required' => false)),
+      'qualified_flag'            => new sfValidatorBoolean(array('required' => false)),
+      'qualification_status'      => new sfValidatorInteger(array('required' => false)),
       'approval_status'           => new sfValidatorInteger(array('required' => false)),
       'status'                    => new sfValidatorInteger(array('required' => false)),
       'description'               => new sfValidatorString(array('required' => false)),

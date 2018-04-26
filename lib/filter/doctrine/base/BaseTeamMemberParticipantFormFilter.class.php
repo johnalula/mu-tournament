@@ -3,9 +3,9 @@
 /**
  * TeamMemberParticipant filter form base class.
  *
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage filter
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
 abstract class BaseTeamMemberParticipantFormFilter extends BaseFormFilterDoctrine
@@ -13,41 +13,37 @@ abstract class BaseTeamMemberParticipantFormFilter extends BaseFormFilterDoctrin
   public function setup()
   {
     $this->setWidgets(array(
-      'token_id'                         => new sfWidgetFormFilterInput(),
-      'team_game_participation_id'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TeamGameParticipation'), 'add_empty' => true)),
-      'team_game_participation_token_id' => new sfWidgetFormFilterInput(),
-      'team_id'                          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Team'), 'add_empty' => true)),
-      'team_token_id'                    => new sfWidgetFormFilterInput(),
-      'person_id'                        => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Person'), 'add_empty' => true)),
-      'person_token_id'                  => new sfWidgetFormFilterInput(),
-      'member_full_name'                 => new sfWidgetFormFilterInput(),
-      'member_role_id'                   => new sfWidgetFormFilterInput(),
-      'gender_category_id'               => new sfWidgetFormFilterInput(),
-      'member_number'                    => new sfWidgetFormFilterInput(),
-      'active_flag'                      => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
-      'status'                           => new sfWidgetFormFilterInput(),
-      'description'                      => new sfWidgetFormFilterInput(),
-      'created_at'                       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'updated_at'                       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'token_id'           => new sfWidgetFormFilterInput(),
+      'team_id'            => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Team'), 'add_empty' => true)),
+      'team_token_id'      => new sfWidgetFormFilterInput(),
+      'person_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Person'), 'add_empty' => true)),
+      'person_token_id'    => new sfWidgetFormFilterInput(),
+      'gender_category_id' => new sfWidgetFormFilterInput(),
+      'member_full_name'   => new sfWidgetFormFilterInput(),
+      'member_role_id'     => new sfWidgetFormFilterInput(),
+      'member_number'      => new sfWidgetFormFilterInput(),
+      'active_flag'        => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'status'             => new sfWidgetFormFilterInput(),
+      'description'        => new sfWidgetFormFilterInput(),
+      'created_at'         => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
+      'updated_at'         => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
     ));
 
     $this->setValidators(array(
-      'token_id'                         => new sfValidatorPass(array('required' => false)),
-      'team_game_participation_id'       => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('TeamGameParticipation'), 'column' => 'id')),
-      'team_game_participation_token_id' => new sfValidatorPass(array('required' => false)),
-      'team_id'                          => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Team'), 'column' => 'id')),
-      'team_token_id'                    => new sfValidatorPass(array('required' => false)),
-      'person_id'                        => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Person'), 'column' => 'id')),
-      'person_token_id'                  => new sfValidatorPass(array('required' => false)),
-      'member_full_name'                 => new sfValidatorPass(array('required' => false)),
-      'member_role_id'                   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'gender_category_id'               => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'member_number'                    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'active_flag'                      => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
-      'status'                           => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
-      'description'                      => new sfValidatorPass(array('required' => false)),
-      'created_at'                       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
-      'updated_at'                       => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'token_id'           => new sfValidatorPass(array('required' => false)),
+      'team_id'            => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Team'), 'column' => 'id')),
+      'team_token_id'      => new sfValidatorPass(array('required' => false)),
+      'person_id'          => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Person'), 'column' => 'id')),
+      'person_token_id'    => new sfValidatorPass(array('required' => false)),
+      'gender_category_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'member_full_name'   => new sfValidatorPass(array('required' => false)),
+      'member_role_id'     => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'member_number'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'active_flag'        => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'status'             => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'description'        => new sfValidatorPass(array('required' => false)),
+      'created_at'         => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
+      'updated_at'         => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
     ));
 
     $this->widgetSchema->setNameFormat('team_member_participant_filters[%s]');
@@ -67,23 +63,21 @@ abstract class BaseTeamMemberParticipantFormFilter extends BaseFormFilterDoctrin
   public function getFields()
   {
     return array(
-      'id'                               => 'Number',
-      'token_id'                         => 'Text',
-      'team_game_participation_id'       => 'ForeignKey',
-      'team_game_participation_token_id' => 'Text',
-      'team_id'                          => 'ForeignKey',
-      'team_token_id'                    => 'Text',
-      'person_id'                        => 'ForeignKey',
-      'person_token_id'                  => 'Text',
-      'member_full_name'                 => 'Text',
-      'member_role_id'                   => 'Number',
-      'gender_category_id'               => 'Number',
-      'member_number'                    => 'Number',
-      'active_flag'                      => 'Boolean',
-      'status'                           => 'Number',
-      'description'                      => 'Text',
-      'created_at'                       => 'Date',
-      'updated_at'                       => 'Date',
+      'id'                 => 'Number',
+      'token_id'           => 'Text',
+      'team_id'            => 'ForeignKey',
+      'team_token_id'      => 'Text',
+      'person_id'          => 'ForeignKey',
+      'person_token_id'    => 'Text',
+      'gender_category_id' => 'Number',
+      'member_full_name'   => 'Text',
+      'member_role_id'     => 'Number',
+      'member_number'      => 'Number',
+      'active_flag'        => 'Boolean',
+      'status'             => 'Number',
+      'description'        => 'Text',
+      'created_at'         => 'Date',
+      'updated_at'         => 'Date',
     );
   }
 }

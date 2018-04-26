@@ -45,13 +45,19 @@
 												<li class="active">
 													<a href="#ui-main-tab-one" data-toggle="tab">
 														<img class="" src="<?php echo image_path('settings/team') ?>">
-														<?php echo __('Game Participation') ?>
+														<?php echo __('Sport Games') ?>
 													</a>
 												</li> 
 												<li class="">
 													<a href="#ui-main-tab-two" data-toggle="tab">
 														<img class="" src="<?php echo image_path('settings/team') ?>">
-														<?php echo __('Team Members') ?>
+														<?php echo __('Members') ?>
+													</a>
+												</li>  
+												<li class="">
+													<a href="#ui-main-tab-three" data-toggle="tab">
+														<img class="" src="<?php echo image_path('settings/team') ?>">
+														<?php echo __('Member Role') ?>
 													</a>
 												</li>  
 											</ul>
@@ -83,7 +89,7 @@
 													<div class="ui-panel-footer-default-header ui-panel-footer-default-header-border">
 														<h2 class="ui-theme-panel-header-title">
 															<img src="<?php echo image_path('settings/category') ?>" title="<?php echo __('Team Game Participation') ?>">
-															<?php echo __('Game Participation') ?>
+															<?php echo __('Sport Games Participation') ?>
 														</h2> 
 													</div>
 												</div><!-- ui-panel-footer-default -->
@@ -136,6 +142,53 @@
 												<div id="ui-list-collapsible-panel-five">
 													<div class="ui-tab-panel-grid">
 														<?php include_partial('team_member_list', array( '_memberParticipants' => $_memberParticipants )) ?> 
+													</div>		
+												</div><!-- ui-tab-panel-grid -->
+												
+												<div class="ui-panel-footer-default">
+													<div class="ui-panel-list-pagination-default">
+														<div class="ui-panel-list-pagination">
+															<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
+														</div>
+													</div>
+												</div>
+												
+											</div><!-- ui-panel-footer-default -->
+										</div><!-- end of ui-tab-content --> 
+										
+										<div id="ui-main-tab-three" class="tab-pane">
+											<div id="ui-list-collapsible-panel-two">
+												<!-- Begining of toolbar -->
+												<div class="ui-toolbar-menu-box">
+													<div class="ui-toolbar-menu">
+														<div id="" class="navbar-collapse ui-toolbar">
+															<div class="">
+																<?php include_partial('member_role_toolbar', array()) ?> 
+															</div> 
+														</div><!-- end of ui-filter-list -->
+													</div>
+												</div>
+												<!--    End of toolbar      -->
+												<div id="ui-list-collapsible-panel-two">
+													<div class="ui-panel-grid-list-form ui-panel-form-border">
+														<?php include_partial('member_role_form', array('_team' => $_team )) ?> 
+													</div>		
+												</div><!-- ui-tab-panel-grid -->
+												
+												<div class="ui-panel-footer-default-container">
+													<div class="ui-panel-footer-default-box ui-panel-footer-default-box-border">
+														<div class="ui-panel-footer-default-header ui-panel-footer-default-header-border">
+															<h2 class="ui-theme-panel-header-title">
+																<img src="<?php echo image_path('settings/category') ?>" title="<?php echo __('Team Members') ?>">
+																<?php echo __('Team Member Roles') ?>
+															</h2> 
+														</div>
+													</div><!-- ui-panel-footer-default -->
+												</div>
+							
+												<div id="ui-list-collapsible-panel-five">
+													<div class="ui-tab-panel-grid">
+														<?php include_partial('member_role_list', array( '_memberParticipantRoles' => $_memberParticipantRoles )) ?> 
 													</div>		
 												</div><!-- ui-tab-panel-grid -->
 												

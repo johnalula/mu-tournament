@@ -17,7 +17,7 @@ class PersonTable extends PluginPersonTable
         return Doctrine_Core::getTable('Person');
     }
     //
-	public static function processNew ( $_orgID, $_orgTokenID, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_partyGender, $_nationality, $_partyRelationShipRole, $_partyRole, $_partyRelationShip, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_email, $_addressRemark, $_description, $_partyCode, $_userID )  
+	public static function processNew ( $_orgID, $_orgTokenID, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_partyGender, $_nationality, $_partyRelationShipRole, $_partyRole, $_partyRelationShip, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_email, $_addressRemark, $_description, $_partyCode, $_userID, $_userTokenID )  
 	{
 		$_flag = true;
 		//$_codeConfig = CodeGeneratorTable::processDefaultSelection ( $_orgID, $_orgTokenID, $_partyCodeID, true );	

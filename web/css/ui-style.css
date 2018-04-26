@@ -4156,15 +4156,22 @@ td.ui-grid-right-text {
 
 /************ Tab Grid list *********/
 
+.ui-panel-grid-border { 
+	border:0px solid #689ff1!important;
+	border-top:1px solid #689ff1!important;
+	margin-top:1px!important;
+}
+
 .ui-tab-panel-grid {
-	margin-top:px!important;
+	margin-top:1px!important;
 	border:0px solid #689ff1!important;
 	border-top:1px solid #689ff1!important;
 }
 
 .ui-tab-panel-grid table { 
 	margin:0px!important;
-	border:0px solid #f00!important;
+	border:0px solid #689ff1!important;
+	border-top:1px solid #689ff1!important;
 	width:100%!important;
 	border-collapse: collapse!important;
 }

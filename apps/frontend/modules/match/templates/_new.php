@@ -8,7 +8,7 @@
 					<div class="ui-panel-header-default">
 						<h2 class="ui-theme-panel-header">
 							<img src="<?php echo image_path('settings/product') ?>" title="<?php echo __('Tournament Match Management') ?>">
-							<?php echo __('New Tournament Match') ?>
+							<?php echo __('Tournament Match') ?>
 						</h2>
 						<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 							<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		

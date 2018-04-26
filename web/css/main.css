@@ -1097,6 +1097,8 @@ a.reset_time {
   border-radius: 50%;
 }
 
-
+.ui-table-bgcolor-red {
+	background:#f00!important;
+}
 
 

@@ -13,6 +13,7 @@
  * @property integer $sport_game_category_id
  * @property string $match_number
  * @property string $match_season
+ * @property integer $tournament_match_round_mode
  * @property integer $round_type_mode
  * @property integer $contestant_team_mode
  * @property string $start_date
@@ -29,9 +30,9 @@
  * @property GameCategory $GameCategory
  * @property Doctrine_Collection $tournamentMatchMatchFixtures
  * 
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage model
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTournamentMatch extends sfDoctrineRecord
@@ -67,6 +68,9 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
         $this->hasColumn('match_season', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('tournament_match_round_mode', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('round_type_mode', 'integer', null, array(
              'type' => 'integer',

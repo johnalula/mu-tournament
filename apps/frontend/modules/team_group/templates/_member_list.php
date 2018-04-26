@@ -33,14 +33,14 @@
 				<?php echo $_groupMemberTeam->teamName  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_groupMemberTeam->teamAlias ?> 
+				<?php echo $_groupMemberTeam->token_id ?> 
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo $_groupMemberTeam->id ?>
 			</td>
 			
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_groupMemberTeam->hasGameParticipation ? 'True':'False' ?>
+				<?php echo $_groupMemberTeam->id ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo $_groupMemberTeam->id ?>

@@ -1,5 +1,6 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_SPORT_GAME)): 
+	
 ?> 
 
 <div class="ui-page-box">

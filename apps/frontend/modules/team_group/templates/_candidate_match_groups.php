@@ -19,7 +19,7 @@
 	   <?php foreach ( $_sportGameTeamGroups as $_key => $_sportGameTeamGroup ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_sportGameTeamGroup->id.'$'.$_sportGameTeamGroup->token_id.'$'.$_sportGameTeamGroup->sportGameName.'$'.$_sportGameTeamGroup->gameCategoryName.'$'.TournamentCore::processAthleticsTypeValue($_sportGameTeamGroup->sportGameTypeMode).'$'.$_sportGameTeamGroup->groupTypeName.'$'.TournamentCore::processGenderValue($_sportGameTeamGroup->groupGenderCategoryID).'$'.$_sportGameTeamGroup->groupGenderCategoryID.'$'.$_sportGameTeamGroup->contestantTeamMode.'$'.$_sportGameTeamGroup->groupTypeID ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_sportGameTeamGroup->id.'$'.$_sportGameTeamGroup->token_id.'$'.$_sportGameTeamGroup->sportGameName.'$'.$_sportGameTeamGroup->gameCategoryName.'$'.TournamentCore::processAthleticsTypeValue($_sportGameTeamGroup->sportGameTypeMode).'$'.$_sportGameTeamGroup->groupTypeName.'$'.TournamentCore::processGenderValue($_sportGameTeamGroup->groupGenderCategoryID).'$'.$_sportGameTeamGroup->groupGenderCategoryID.'$'.$_sportGameTeamGroup->contestantTeamMode.'$'.$_sportGameTeamGroup->groupTypeID.'$'.$_sportGameTeamGroup->contestantMode.'$'.$_sportGameTeamGroup->sportGameID.'$'.$_sportGameTeamGroup->sportGameTokenID ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<?php echo SystemCore::processDataID($_sportGameTeamGroup->id) ?> 

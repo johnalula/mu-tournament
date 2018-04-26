@@ -1,5 +1,6 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->isAuthenticated()): 	 
+	if($sf_user->isAuthenticated()): 	
+	//echo sha1(md5('94f12f125643718e20d329aef595bc3e')); 
 ?> 
 
 <div class="ui-page-box">

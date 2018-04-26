@@ -13,11 +13,13 @@
  * @property integer $sport_game_id
  * @property string $sport_game_token_id
  * @property integer $sport_game_group_id
+ * @property string $sport_game_group_token_id
  * @property integer $match_round_type_id
  * @property integer $gender_category_id
  * @property integer $match_fixture_round_mode
  * @property integer $event_type
  * @property integer $contestant_mode
+ * @property integer $contestant_team_mode
  * @property string $match_venue
  * @property string $tournament_match_number
  * @property string $match_date
@@ -41,9 +43,9 @@
  * @property Doctrine_Collection $matchFixtureParentFixtures
  * @property Doctrine_Collection $matchFixtureParticipants
  * 
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage model
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
@@ -79,6 +81,10 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
         $this->hasColumn('sport_game_group_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('sport_game_group_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
         $this->hasColumn('match_round_type_id', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -92,6 +98,9 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'type' => 'integer',
              ));
         $this->hasColumn('contestant_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('contestant_team_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('match_venue', 'string', 100, array(

@@ -17,12 +17,12 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
         return Doctrine_Core::getTable('TeamMemberParticipant');
     }
      //
-	public static function processNew ( $_orgID, $_orgTokenID, $_teamID, $_teamTokenID, $_sportGameID, $_sportGameTokenID, $_firstName, $_middleName, $_lastName, $_sportGameName, $_memberRole, $_memberGender, $_dateOfBirth, $_memberNumber, $_memberStatus, $_remark, $_description, $_userID, $_userTokenID )
+	public static function processNew ( $_orgID, $_orgTokenID, $_teamID, $_teamTokenID, $_firstName, $_middleName, $_lastName, $_memberRole, $_memberGender, $_dateOfBirth, $_memberNumber, $_memberStatus, $_remark, $_description, $_userID, $_userTokenID )
 	{
 		 $_flag = true;
 				
 			
-			$_person = PersonTable::processNew ( $_orgID, $_orgTokenID, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_memberGender, $_nationality, $_partyRelationShipRole, $_memberRole, $_partyRelationShip, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_email, $_addressRemark, $_description, $_partyCode, $_userID );
+			$_person = PersonTable::processNew ( $_orgID, $_orgTokenID, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_memberGender, $_nationality, $_partyRelationShipRole, $_memberRole, $_partyRelationShip, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_email, $_addressRemark, $_description, $_partyCode, $_userID, $_userTokenID );
 			//$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_GAME, true  ); 
 			//$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
 			//$_sportGameNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeInitialNumber($_codeNumber);
@@ -30,7 +30,7 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 			//$_sportGameTypeName = $_sportGameName ? $_sportGameName:(TournamentCore::processTypeExclusion ());
 			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
 			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
-			$_tournament = self::processSave ( $_person->id, $_person->token_id, $_teamID, $_teamTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameName, $_person->full_name, $_memberGender, $_memberRole, $_memberNumber, $_memberStatus, $_remark  );
+			$_tournament = self::processSave ( $_person->id, $_person->token_id, $_teamID, $_teamTokenID, $_person->full_name, $_memberGender, $_memberRole, $_memberNumber, $_memberStatus, $_remark  );
 		
 		return $_tournament;
 	}
@@ -39,17 +39,15 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 	{
 		
 	} 
-	public static function processSave ( $_personID, $_personTokenID, $_teamID, $_teamTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameName, $_memberFullName, $_memberGender, $_memberRole, $_memberNumber, $_memberStatus, $_remark )
+	public static function processSave ( $_personID, $_personTokenID, $_teamID, $_teamTokenID, $_memberFullName, $_memberGender, $_memberRole, $_memberNumber, $_memberStatus, $_remark )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
     	
-			$_token = trim($_personTokenID).trim($_teamTokenID).trim($_sportGameID).trim($_teamID).rand('11111', '99999'); 
+			$_token = trim($_personTokenID).trim($_personID).trim($_teamTokenID).trim($_teamID).rand('11111', '99999'); 
 			$_startDate = date('m/d/Y', time());
 			$_nw = new TeamMemberParticipant (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
-			$_nw->team_game_participation_id = trim($_sportGameID); 
-			$_nw->team_game_participation_token_id = sha1(md5(trim($_sportGameTokenID))); 
 			$_nw->team_id = trim($_teamID); 
 			$_nw->team_token_id = sha1(md5(trim($_teamTokenID)));  
 			$_nw->person_id = trim($_personID); 
@@ -94,12 +92,11 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "tmMbrPrt.id, tmMbrPrt.member_full_name as memberFullName, tmMbrPrt.member_role_id as memberRoleID ,
+		 $_queryFileds = "tmMbrPrt.id, tmMbrPrt.member_full_name as memberFullName, tmMbrPrt.member_role_id as memberRoleID, tmMbrPrt.gender_category_id as genderCategoryID ,
 		 
-								sprtGmPrt.id, sprtGmPrt.event_type as eventType, sprtGmPrt.player_mode as matchPlayerMode, sprtGmPrt.gender_category_id as genderCategoryID, sprtGmPrt.active_flag as activeFlag,
-								prtTm.id as teamID, prtTm.token_id as teamTokenID, prtTm.team_name as partcipantTeamName, prtTm.alias as partcipantTeamAlias,
-								sprtGm.id as sportGameID, sprtGm.token_id as sportGameTokenID, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.distance_type as sportGameTypeID,
-								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,
+								 
+								prtTm.id as teamID, prtTm.token_id as teamTokenID, prtTm.team_name as partcipantTeamName, prtTm.alias as partcipantTeamAlias, prtTm.country_id as teamCountryID,
+								 
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.id as tournamentAlias,
 								prsn.id as personID, prsn.name as memberName, prsn.middle_name as memberMiddleName, prsn.last_name as memberLastName, prsn.full_name as memberFullName,
 		";	
@@ -112,10 +109,7 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("TeamMemberParticipant tmMbrPrt") 
-				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")  
-				->innerJoin("tmMbrPrt.TeamGameParticipation sprtGmPrt on tmMbrPrt.team_game_participation_id = sprtGmPrt.id ")  
-				->innerJoin("sprtGmPrt.GameCategory gmCat on sprtGmPrt.sport_game_category_id = gmCat.id ")  
-				->innerJoin("sprtGmPrt.SportGame sprtGm on sprtGmPrt.sport_game_id = sprtGm.id ")  
+				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")   
 				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
 				->innerJoin("tmMbrPrt.Person prsn on tmMbrPrt.person_id = prsn.id ")  
 				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
@@ -224,6 +218,31 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
 						$_qry = $_qry->andWhere("prsn.full_name LIKE ? OR gmCat.category_name LIKE ? OR sprtGmPrt.id LIKE ? OR sprtGmPrt.description LIKE ?", array( $_keyword, $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	// process list selection function 
+   public static function processCandidateMembers ( $_tournamentID=null, $_teamID=null, $_teamTokenID=null, $_genderCategoryID=null, $_keyword=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TeamMemberParticipant tmMbrPrt") 
+				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")   
+				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
+				->innerJoin("tmMbrPrt.Person prsn on tmMbrPrt.person_id = prsn.id ")  
+				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("tmMbrPrt.id ASC")
+				->where("tmMbrPrt.id IS NOT NULL");
+				if(!is_null($_teamID)) $_qry = $_qry->addWhere("tmMbrPrt.team_id = ? AND tmMbrPrt.team_token_id = ? ", array($_teamID, $_teamTokenID));
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);   
+				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("tmMbrPrt.id ", $_exclusion );          
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("prsn.full_name LIKE ? OR prtTm.team_name LIKE ? OR prtTm.team_number LIKE ? OR tmMbrPrt.description LIKE ?", array( $_keyword, $_keyword, $_keyword, $_keyword));
 				
 			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
 

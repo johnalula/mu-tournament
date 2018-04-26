@@ -134,9 +134,9 @@ class AccessLevelPermissionTable extends PluginAccessLevelPermissionTable
 	} 
 	public static function appendQueryFields ( ) 
 	{		
-		$queryFileds = "acclvl.*, acclvl.access_level as accessLevel, acclvl.module_setting_id as moduleID, acclvl.can_view as canRead, acclvl.can_add as canCreate, acclvl.can_edit as canUpdate, acclvl.can_delete as canDelete, acclvl.can_approve as canApprove, modstt.applicable_flag as applicableFlag, modstt.active_flag as activeFlag, 
+		$queryFileds = "acclvl.*, acclvl.access_level as accessLevel, acclvl.module_setting_id as moduleID, acclvl.can_view as canRead, acclvl.can_add as canCreate, acclvl.can_edit as canUpdate, acclvl.can_delete as canDelete, acclvl.can_approve as canApprove, modStt.applicable_flag as applicableFlag, modStt.active_flag as activeFlag, 
 		usrRole.user_role_name as userRoleName, usrRole.user_role_type_id as userRoleTypeID, 
-		modstt.module_name as moduleName, modstt.module_type_id as moduleTypeID, modstt.default_flag as defaultFlag, modstt.applicable_flag as applicableFlag, modstt.active_flag as activeFlag,
+		modStt.module_name as moduleName, modStt.module_type_id as moduleTypeID, modStt.default_flag as defaultFlag, modStt.applicable_flag as applicableFlag, modStt.active_flag as activeFlag,
 		";
 		
 		return $queryFileds;
@@ -147,16 +147,16 @@ class AccessLevelPermissionTable extends PluginAccessLevelPermissionTable
 		$_qry = Doctrine_Query::create()
 			->select(self::appendQueryFields())
 			->from("AccessLevelPermission acclvl")       
-			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.ModuleSetting modStt on acclvl.module_setting_id = modStt.id ")    
 			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")     
 			->offset($_offset)
 			->limit($_limit) 
-			->orderBy("modstt.module_type_id ASC")
+			->orderBy("modStt.module_type_id ASC")
 			->where("acclvl.id IS NOT NULL");
 			if(!is_null($_orgID)) $_qry=$_qry->addWhere("usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_orgID, $_orgTokenID));   
 			if(!is_null($_userRoleID)) $_qry=$_qry->addWhere("acclvl.user_role_id = ? ", $_userRoleID );   
 			if(!is_null($_moduleID)) $_qry=$_qry->addWhere("acclvl.module_setting_id = ? ", $_moduleID );   
-			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modstt.module_type_id = ? ", $_moduleTypeID);
+			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modStt.module_type_id = ? ", $_moduleTypeID);
 			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
 
 		return ( count ( $_qry ) <= 0 ? null : $_qry ); 
@@ -166,14 +166,14 @@ class AccessLevelPermissionTable extends PluginAccessLevelPermissionTable
 		$_qry = Doctrine_Query::create()
 			->select(self::appendQueryFields())
 			->from("AccessLevelPermission acclvl")       
-			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.ModuleSetting modStt on acclvl.module_setting_id = modStt.id ")    
 			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")   
 			->orderBy("acclvl.id DESC")
 			->where("acclvl.trashed_flag IS NOT TRUE");
 			if(!is_null($_orgID)) $_qry=$_qry->addWhere("usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_orgID, $_orgTokenID));   
 			if(!is_null($_userID)) $_qry=$_qry->addWhere("acclvl.user_id=? AND acclvl.user_token_id=? ", array($_userID, $_userTokenID));   
 			if(!is_null($_moduleID)) $_qry=$_qry->addWhere("acclvl.module_setting_id=? AND acclvl.module_token_id=? ", array($_moduleID, $_moduleTokenID));   
-			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modstt.module_type_id = ? ", $_moduleTypeID);
+			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modStt.module_type_id = ? ", $_moduleTypeID);
 			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
 
 		return ( count ( $_qry ) <= 0 ? null : $_qry ); 
@@ -183,7 +183,7 @@ class AccessLevelPermissionTable extends PluginAccessLevelPermissionTable
 		$q = Doctrine_Query::create()
 			->select(self::appendQueryFields())
 			->from("AccessLevelPermission acclvl")       
-			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.ModuleSetting modStt on acclvl.module_setting_id = modStt.id ")    
 			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")  
 			->where("acclvl.id=? AND acclvl.token_id=? AND usrRole.org_id = ? AND usrRole.org_token_id = ?", array($_accessLevelID, $_accessLevelTokenID, $_orgID, $_orgTokenID))
 			->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
@@ -195,7 +195,7 @@ class AccessLevelPermissionTable extends PluginAccessLevelPermissionTable
 		$_qry = Doctrine_Query::create()
 			->select(self::appendQueryFields())
 			->from("AccessLevelPermission acclvl")       
-			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.ModuleSetting modStt on acclvl.module_setting_id = modStt.id ")    
 			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")   
 			->where("acclvl.id = ?", $_accessLevelID );
 			if(!is_null($_accessLevelTokenID)) $_qry = $_qry->andWhere("acclvl.token_id = ? ", $_accessLevelTokenID);
@@ -210,13 +210,13 @@ class AccessLevelPermissionTable extends PluginAccessLevelPermissionTable
 		$_qry = Doctrine_Query::create()
 			->select(self::appendQueryFields())
 			->from("AccessLevelPermission acclvl")      
-			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.ModuleSetting modStt on acclvl.module_setting_id = modStt.id ")    
 			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")   
 			->where("acclvl.id IS NOT NULL ");
 			if(!is_null($_orgID)) $_qry=$_qry->addWhere("usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_orgID, $_orgTokenID));   
 			//if(!is_null($_userRoleID)) $_qry=$_qry->addWhere("acclvl.user_role_id=? AND acclvl.user_role_token_id=? ", array($_userRoleID, $_userRoleTokenID));   
 			if(!is_null($_userRoleID)) $_qry=$_qry->addWhere("usrRole.user_role_type_id = ? ", $_userRoleID);   
-			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modstt.module_type_id = ? ", $_moduleID);
+			if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modStt.module_type_id = ? ", $_moduleID);
 				
 			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
 			
@@ -227,11 +227,11 @@ class AccessLevelPermissionTable extends PluginAccessLevelPermissionTable
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("AccessLevelPermission acclvl")       
-				->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+				->innerJoin("acclvl.ModuleSetting modStt on acclvl.module_setting_id = modStt.id ")    
 				->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")     
 				->where("acclvl.id IS NOT NULL"); 
 				if(!is_null($_userRoleID)) $_qry = $_qry->addWhere("acclvl.user_role_id = ? ", $_userRoleID);   
-				if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modstt.module_type_id = ? ", $_moduleID);
+				if(!is_null($_moduleID)) $_qry = $_qry->andWhere("modStt.module_type_id = ? ", $_moduleID);
 				
 			$_qry = $_qry->fetchOne (array(), Doctrine_Core::HYDRATE_RECORD);
 			
@@ -253,9 +253,9 @@ class AccessLevelPermissionTable extends PluginAccessLevelPermissionTable
 		$_qry = Doctrine_Query::create()
 			->select(self::appendQueryFields())
 			->from("AccessLevelPermission acclvl")       
-			->innerJoin("acclvl.ModuleSetting modstt on acclvl.module_setting_id = modstt.id ")    
+			->innerJoin("acclvl.ModuleSetting modStt on acclvl.module_setting_id = modStt.id ")    
 			->innerJoin("acclvl.UserRole usrRole on acclvl.user_role_id = usrRole.id ")  
-			->orderBy("modstt.module_type_id ASC")
+			->orderBy("modStt.module_type_id ASC")
 			->where("acclvl.id IS NOT NULL");
 			if(!is_null($_orgID)) $_qry=$_qry->addWhere("usrRole.org_id = ? AND usrRole.org_token_id = ? ", array($_orgID, $_orgTokenID));   
 			if(!is_null($_userRoleID)) $_qry=$_qry->addWhere("acclvl.user_role_id = ? ", $_userRoleID);     

@@ -8,9 +8,8 @@
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
 			<th class="ui-th-left-text" title="<?php echo __('Product Name') ?>"><?php echo  __('Member Name') ?></th>   
 			<th class="" style="text-align:left!important;"><?php echo __('Sport Game')  ?></th>
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Member Role') ?>"><?php echo  __('Role') ?></th>   
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Event') ?></th>  
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Type') ?></th>  
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Member Gender') ?>"><?php echo  __('Gender') ?></th>   
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Member Role') ?>"><?php echo  __('Role') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Group') ?>"><?php echo  __('Type') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;"><?php echo  __('Action') ?></th>  
@@ -33,20 +32,16 @@
 				<?php echo $_memberParticipant->memberFullName  ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_memberParticipant->sportGameName.' - '.$_memberParticipant->gameCategoryName ?>
+				<?php echo $_memberParticipant->id.' - '.$_memberParticipant->id ?>
 			</td>
-			
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo PersonCore::processPersonRoleValue($_memberParticipant->memberRoleID) ?>
-			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo TournamentCore::processEventTypeValue($_memberParticipant->eventType) ?>
+				<?php echo TournamentCore::processGenderValue($_memberParticipant->genderCategoryID) ?> 
 			</td> 
 			<td class="ui-td-right-text ui-td-xsmall-00">
-				 <?php echo $_memberParticipant->genderCategoryID ?> 
+				<?php echo PersonCore::processPersonRoleValue($_memberParticipant->memberRoleID) ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
-				 <?php echo $_memberParticipant->description ?> 
+				<?php echo Wordlimit::Wordlimiter($_memberParticipant->description, 5) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_memberParticipant->id ?>" class="ui-table-status-small-icon" id="<?php echo $_memberParticipant->id ?>">
@@ -80,13 +75,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=9></td>
+			<td class="ui-table-td-footer" colspan=8></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=11>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=10>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

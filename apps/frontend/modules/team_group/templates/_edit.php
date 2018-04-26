@@ -6,11 +6,7 @@
 				<div class="ui-panel-header-default">
 					<h2 class="ui-theme-panel-header">
 						<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
-						<span class="ui-header-status-icon">
-							<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
-							<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
-						</span>
-						<?php echo __('Team Group').' ( Sport Game: '.$_sportGameTeamGroup->sportGameName.' - Group: '.TournamentCore::processGroupNumberValue($_sportGameTeamGroup->groupNumber).' - Code #:'.$_sportGameTeamGroup->sportGameGroupCode.' )'  ?>
+						<?php echo __('Team Group') ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -29,36 +25,26 @@
 					<div class="ui-panel-content-box">
 						<div class="ui-panel-detail-form-container" style=""> 
 							<div class="ui-panel-form-content"> 
-								<?php include_partial('edit_form', array('_sportGameTeamGroup' => $_sportGameTeamGroup,'_activeTournament' => $_activeTournament, '_candidateGroups' => $_candidateGroups, '_candidateGameCategorys' => $_candidateGameCategorys) ) ?> 
+								<?php include_partial('form', array('_candidateGroups' => $_candidateGroups,'_activeTournament' => $_activeTournament,'_candidateGameCategorys' => $_candidateGameCategorys) ) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
 						
 						<div class="ui-panel-footer-default-box">
 							<h2 class="ui-theme-panel-header-title">
-								<img src="<?php echo image_path('settings/group') ?>" title="<?php echo __('Team Groups') ?>">
-								<?php echo __('Process Participants') ?>
+								<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Groups') ?>">
+								<?php echo __('Team Groups') ?>
 							</h2>
 						</div><!-- ui-panel-footer-default -->
 						
 						<div class="ui-panel-content-box ">
 							<div class="ui-panel-grid-list"> 
-								<?php include_partial('member_list', array('_groupMemberTeams' => $_groupMemberTeams)) ?> 
+								<?php include_partial('list', array('systemModules' => $_systemModules)) ?> 
 							</div>
 						</div> 
 						
-						 <!-- Begining of toolbar -->
-						<div class="ui-toolbar-menu-box  ui-toolbar-border">
-							<div class="ui-toolbar-menu">
-								<div id="" class="navbar-collapse ui-toolbar">
-									<div class="row">
-										<div class="col-sm-12">
-											<?php include_partial('footer_navigation', array('_object' => $_sportGameTeamGroup)) ?> 
-										</div> 
-									</div><!-- end of ui-filter-list -->
-								</div><!-- end of ui-filter-list -->
-							</div>
-						</div  
-						<!--    End of toolbar      -->
+					<div class="ui-panel-footer-default-box">
+						&nbsp;
+					</div><!-- ui-panel-footer-default -->			
 					</div> 			
 					 
 				</div><!-- ui-panel-content-box --> 

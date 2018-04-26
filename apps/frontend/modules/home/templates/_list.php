@@ -19,17 +19,17 @@
 				</td>
 				<td>
 					<a href="<?php echo url_for('competition/view?fixture_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	
-						<?php echo $_matchFixture->sportGameName.' ( '.TournamentCore::processGenderAlias($_matchFixture->genderCategoryID).' ) -'.$_matchFixture->gameCategoryName.' - '.TournamentCore::processEventTypeValue($_matchFixture->matchEventType) ?> 
+						<?php echo $_matchFixture->sportGameName.' ( '.TournamentCore::processGenderAlias($_matchFixture->id).' ) -'.$_matchFixture->id.' - '.TournamentCore::processEventTypeValue($_matchFixture->id) ?> 
 					</a>
 				</td> 
 				<td>
 					<?php echo TournamentCore::processGroupNumberValue($_matchFixture->id) ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->matchTime ?>
+					<?php echo $_matchFixture->id ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->matchDate ?>
+					<?php echo $_matchFixture->id ?>
 				</td>
 				<td>
 					<?php echo $_matchFixture->status ? 'Pending':'Active' ?>

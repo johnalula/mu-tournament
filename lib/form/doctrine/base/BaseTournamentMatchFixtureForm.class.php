@@ -5,9 +5,9 @@
  *
  * @method TournamentMatchFixture getObject() Returns the current form's model object
  *
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage form
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
 abstract class BaseTournamentMatchFixtureForm extends BaseFormDoctrine
@@ -24,11 +24,13 @@ abstract class BaseTournamentMatchFixtureForm extends BaseFormDoctrine
       'sport_game_id'                 => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SportGame'), 'add_empty' => true)),
       'sport_game_token_id'           => new sfWidgetFormInputText(),
       'sport_game_group_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SportGameGroup'), 'add_empty' => true)),
+      'sport_game_group_token_id'     => new sfWidgetFormInputText(),
       'match_round_type_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('RoundType'), 'add_empty' => true)),
       'gender_category_id'            => new sfWidgetFormInputText(),
       'match_fixture_round_mode'      => new sfWidgetFormInputText(),
       'event_type'                    => new sfWidgetFormInputText(),
       'contestant_mode'               => new sfWidgetFormInputText(),
+      'contestant_team_mode'          => new sfWidgetFormInputText(),
       'match_venue'                   => new sfWidgetFormInputText(),
       'tournament_match_number'       => new sfWidgetFormInputText(),
       'match_date'                    => new sfWidgetFormInputText(),
@@ -58,11 +60,13 @@ abstract class BaseTournamentMatchFixtureForm extends BaseFormDoctrine
       'sport_game_id'                 => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('SportGame'), 'required' => false)),
       'sport_game_token_id'           => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'sport_game_group_id'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('SportGameGroup'), 'required' => false)),
+      'sport_game_group_token_id'     => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'match_round_type_id'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('RoundType'), 'required' => false)),
       'gender_category_id'            => new sfValidatorInteger(array('required' => false)),
       'match_fixture_round_mode'      => new sfValidatorInteger(array('required' => false)),
       'event_type'                    => new sfValidatorInteger(array('required' => false)),
       'contestant_mode'               => new sfValidatorInteger(array('required' => false)),
+      'contestant_team_mode'          => new sfValidatorInteger(array('required' => false)),
       'match_venue'                   => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'tournament_match_number'       => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'match_date'                    => new sfValidatorString(array('max_length' => 100, 'required' => false)),

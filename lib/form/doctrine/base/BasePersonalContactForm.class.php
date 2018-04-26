@@ -5,9 +5,9 @@
  *
  * @method PersonalContact getObject() Returns the current form's model object
  *
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage form
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: sfDoctrineFormGeneratedInheritanceTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
 abstract class BasePersonalContactForm extends PartyContactForm

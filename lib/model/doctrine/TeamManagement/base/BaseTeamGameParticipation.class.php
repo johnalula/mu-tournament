@@ -24,9 +24,9 @@
  * @property SportGame $SportGame
  * @property Doctrine_Collection $teamGameParticipantPersons
  * 
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage model
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTeamGameParticipation extends sfDoctrineRecord
@@ -102,7 +102,7 @@ abstract class BaseTeamGameParticipation extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('TeamMemberParticipant as teamGameParticipantPersons', array(
+        $this->hasMany('TeamMemberParticipantRole as teamGameParticipantPersons', array(
              'local' => 'id',
              'foreign' => 'team_game_participation_id'));
 

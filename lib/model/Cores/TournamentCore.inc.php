@@ -1352,9 +1352,11 @@ class TournamentCore {
 
 	public static $_FIRST_ROUND = 1; 
 	public static $_NEXT_ROUND = 2; 
-	public static $_FINAL_ROUND = 3; 
+	public static $_QUALIFIED_ROUND = 3; 
+	public static $_FINAL_ROUND = 4; 
+	public static $_PLAY_OFF = 5; 
 	
-	public static $_ROUND_MODES = array ( 1 => "First Round", 2 => "Next Round", 3 => "Final Round" );
+	public static $_ROUND_MODES = array ( 1 => "First Round", 2 => "Next Round", 3 => "Qualified Round", 4 => "Final Round", 5 => "Play Off" );
 	
 	public static function processMatchRoundModes ( ) 
 	{
@@ -1401,13 +1403,19 @@ class TournamentCore {
 	{
 		switch($_round) {			
 			case self::$_FIRST_ROUND:
-				return 'M';
+				return 'first_round';
 			break;	
 			case self::$_NEXT_ROUND:
-				return 'W';
+				return 'next_round';
 			break; 
+			case self::$_QUALIFIED_ROUND:
+				return 'qualified_round';
+			break;  
 			case self::$_FINAL_ROUND:
-				return 'Both';
+				return 'final_round';
+			break;  
+			case self::$_PLAY_OFF:
+				return 'play_off';
 			break;  
 		}
 	} 

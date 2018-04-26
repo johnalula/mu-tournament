@@ -268,6 +268,36 @@ class SportGameTeamGroupTable extends PluginSportGameTeamGroupTable
 
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
+	// process list selection function 
+   public static function processCandidateParticipantTeams ( $_orgID=null, $_tournamentID=null, $_sportGameGroupID=null, $_sportGameGroupTokenID=null, $_sportGameID=null, $_keyword=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("SportGameTeamGroup gmGrpMbr") 
+				->innerJoin("gmGrpMbr.SportGameGroup gmGrp on gmGrpMbr.sport_game_group_id = gmGrp.id ") 
+				->innerJoin("gmGrpMbr.Team tmPrt on gmGrpMbr.team_id = tmPrt.id ") 
+				->innerJoin("gmGrp.Tournament trnmt on gmGrp.tournament_id = trnmt.id ")  
+				->innerJoin("gmGrp.GameGroupType grpTyp on gmGrp.game_group_type_id = grpTyp.id ")  
+				->innerJoin("gmGrp.SportGame sprtGm on gmGrp.sport_game_id = sprtGm.id ") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("gmGrpMbr.id DESC")
+				->where("gmGrpMbr.id IS NOT NULL");
+				if(!is_null($_sportGameGroupID)) $_qry = $_qry->addWhere("gmGrp.id = ? AND gmGrp.token_id = ? ", array($_sportGameGroupID, $_sportGameGroupTokenID));
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("org.id = ?", $_orgID);       
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID); 
+				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
+				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("gmGrpMbr.id ", $_exclusion );     
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("gmGrp.group_name LIKE ? OR sprtGm.name LIKE ? OR gmGrp.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
 	//
 	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_groupID, $_tokenID ) 
 	{

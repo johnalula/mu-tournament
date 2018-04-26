@@ -22,9 +22,20 @@
 		<?php endif; ?>
 		
 		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
-			<?php if($sf_request->getParameter('action') == 'member'): ?>
+			<?php if($sf_request->getParameter('action') == 'category'): ?>
 				<li class="ui-nav-button">
 					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'team_group_id', 'edit', $_object)) ?>">
+						<img class="navbar-nav-img" src="<?php echo image_path('pagination/previous_page') ?>">
+						<?php echo __('Back') ?>
+					</a>
+				</li>	  
+			<?php endif; ?>
+		<?php endif; ?>
+		
+		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+			<?php if($sf_request->getParameter('action') == 'member'): ?>
+				<li class="ui-nav-button">
+					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'team_group_id', 'category', $_object)) ?>">
 						<img class="navbar-nav-img" src="<?php echo image_path('pagination/previous_page') ?>">
 						<?php echo __('Back') ?>
 					</a>
@@ -65,6 +76,17 @@
 		
 		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
 			<?php if($sf_request->getParameter('action') == 'edit'): ?>
+				<li class="ui-nav-button">
+					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'team_group_id', 'category', $_object)) ?>">
+						<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
+						<?php echo __('Next') ?>
+					</a>
+				</li>	 
+			<?php endif; ?>
+		<?php endif; ?>
+		
+		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+			<?php if($sf_request->getParameter('action') == 'category'): ?>
 				<li class="ui-nav-button">
 					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'team_group_id', 'member', $_object)) ?>">
 						<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">

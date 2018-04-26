@@ -6,7 +6,7 @@
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('team_group', array( '_sportGameTeamGroups' => $_sportGameTeamGroups, '_countTeamGroups' => $_countTeamGroups )) ?> 
+				<?php include_partial('team_group', array( '_tournamentTeamGroups' => $_tournamentTeamGroups, '_countTeamGroups' => $_countTeamGroups )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>

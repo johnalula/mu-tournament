@@ -3,9 +3,9 @@
 /**
  * SportGameTeamGroup filter form base class.
  *
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage filter
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
 abstract class BaseSportGameTeamGroupFormFilter extends BaseFormFilterDoctrine
@@ -24,6 +24,8 @@ abstract class BaseSportGameTeamGroupFormFilter extends BaseFormFilterDoctrine
       'end_date'                  => new sfWidgetFormFilterInput(),
       'active_flag'               => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'completed_flag'            => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'qualified_flag'            => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
+      'qualification_status'      => new sfWidgetFormFilterInput(),
       'approval_status'           => new sfWidgetFormFilterInput(),
       'status'                    => new sfWidgetFormFilterInput(),
       'description'               => new sfWidgetFormFilterInput(),
@@ -43,6 +45,8 @@ abstract class BaseSportGameTeamGroupFormFilter extends BaseFormFilterDoctrine
       'end_date'                  => new sfValidatorPass(array('required' => false)),
       'active_flag'               => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'completed_flag'            => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'qualified_flag'            => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
+      'qualification_status'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'approval_status'           => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'status'                    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'description'               => new sfValidatorPass(array('required' => false)),
@@ -79,6 +83,8 @@ abstract class BaseSportGameTeamGroupFormFilter extends BaseFormFilterDoctrine
       'end_date'                  => 'Text',
       'active_flag'               => 'Boolean',
       'completed_flag'            => 'Boolean',
+      'qualified_flag'            => 'Boolean',
+      'qualification_status'      => 'Number',
       'approval_status'           => 'Number',
       'status'                    => 'Number',
       'description'               => 'Text',

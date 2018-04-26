@@ -16,6 +16,8 @@
  * @property string $end_date
  * @property boolean $active_flag
  * @property boolean $completed_flag
+ * @property boolean $qualified_flag
+ * @property integer $qualification_status
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
@@ -25,9 +27,9 @@
  * @property Doctrine_Collection $sportGameTeamGroupTeamMemberParticipants
  * @property Doctrine_Collection $sportGameTeamGroupMatchTeamParticipants
  * 
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage model
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseSportGameTeamGroup extends sfDoctrineRecord
@@ -73,6 +75,14 @@ abstract class BaseSportGameTeamGroup extends sfDoctrineRecord
              ));
         $this->hasColumn('completed_flag', 'boolean', null, array(
              'type' => 'boolean',
+             ));
+        $this->hasColumn('qualified_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => true,
+             ));
+        $this->hasColumn('qualification_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('approval_status', 'integer', null, array(
              'type' => 'integer',

@@ -33,7 +33,7 @@ class ModuleSettingTable extends PluginModuleSettingTable
 			$_nw = new ModuleSetting ();  
 			$_nw->token_id = md5(sha1($_token)); 
 			$_nw->org_id = trim($_orgID);
-			$_nw->org_token_id = md5(sha1(trim($_orgTokenID))); 
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID))); 
 			$_nw->module_name = trim(ModuleCore::processModuleValue($_moduleID));
 			$_nw->alias = trim(SystemCore::processAlias( ModuleCore::processModuleValue( $_moduleID ))); 
 			$_nw->module_type_id = trim($_moduleID);

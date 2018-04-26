@@ -3,9 +3,9 @@
 /**
  * TournamentMatchFixture filter form base class.
  *
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage filter
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
 abstract class BaseTournamentMatchFixtureFormFilter extends BaseFormFilterDoctrine
@@ -21,11 +21,13 @@ abstract class BaseTournamentMatchFixtureFormFilter extends BaseFormFilterDoctri
       'sport_game_id'                 => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SportGame'), 'add_empty' => true)),
       'sport_game_token_id'           => new sfWidgetFormFilterInput(),
       'sport_game_group_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SportGameGroup'), 'add_empty' => true)),
+      'sport_game_group_token_id'     => new sfWidgetFormFilterInput(),
       'match_round_type_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('RoundType'), 'add_empty' => true)),
       'gender_category_id'            => new sfWidgetFormFilterInput(),
       'match_fixture_round_mode'      => new sfWidgetFormFilterInput(),
       'event_type'                    => new sfWidgetFormFilterInput(),
       'contestant_mode'               => new sfWidgetFormFilterInput(),
+      'contestant_team_mode'          => new sfWidgetFormFilterInput(),
       'match_venue'                   => new sfWidgetFormFilterInput(),
       'tournament_match_number'       => new sfWidgetFormFilterInput(),
       'match_date'                    => new sfWidgetFormFilterInput(),
@@ -54,11 +56,13 @@ abstract class BaseTournamentMatchFixtureFormFilter extends BaseFormFilterDoctri
       'sport_game_id'                 => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('SportGame'), 'column' => 'id')),
       'sport_game_token_id'           => new sfValidatorPass(array('required' => false)),
       'sport_game_group_id'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('SportGameGroup'), 'column' => 'id')),
+      'sport_game_group_token_id'     => new sfValidatorPass(array('required' => false)),
       'match_round_type_id'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('RoundType'), 'column' => 'id')),
       'gender_category_id'            => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'match_fixture_round_mode'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'event_type'                    => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'contestant_mode'               => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'contestant_team_mode'          => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'match_venue'                   => new sfValidatorPass(array('required' => false)),
       'tournament_match_number'       => new sfValidatorPass(array('required' => false)),
       'match_date'                    => new sfValidatorPass(array('required' => false)),
@@ -104,11 +108,13 @@ abstract class BaseTournamentMatchFixtureFormFilter extends BaseFormFilterDoctri
       'sport_game_id'                 => 'ForeignKey',
       'sport_game_token_id'           => 'Text',
       'sport_game_group_id'           => 'ForeignKey',
+      'sport_game_group_token_id'     => 'Text',
       'match_round_type_id'           => 'ForeignKey',
       'gender_category_id'            => 'Number',
       'match_fixture_round_mode'      => 'Number',
       'event_type'                    => 'Number',
       'contestant_mode'               => 'Number',
+      'contestant_team_mode'          => 'Number',
       'match_venue'                   => 'Text',
       'tournament_match_number'       => 'Text',
       'match_date'                    => 'Text',

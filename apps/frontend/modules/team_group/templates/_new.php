@@ -6,7 +6,7 @@
 				<div class="ui-panel-header-default">
 					<h2 class="ui-theme-panel-header">
 						<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
-						<?php echo __('Team Group') ?>
+						<?php echo __('Tournament Team Group') ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -32,7 +32,7 @@
 						<div class="ui-panel-footer-default-box">
 							<h2 class="ui-theme-panel-header-title">
 								<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Groups') ?>">
-								<?php echo __('Team Groups') ?>
+								<?php echo __('Tournament Groups') ?>
 							</h2>
 						</div><!-- ui-panel-footer-default -->
 						

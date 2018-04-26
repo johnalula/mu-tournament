@@ -46,6 +46,12 @@
 				<li>
 					<a href="<?php echo url_for('tournament/index') ?>">
 						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/save') ?>">
+						<?php echo __('News and Events') ?>
+					</a>
+				</li> 
+				<li>
+					<a href="<?php echo url_for('tournament/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/save') ?>">
 						<?php echo __('Tournaments') ?>
 					</a>
 				</li> 

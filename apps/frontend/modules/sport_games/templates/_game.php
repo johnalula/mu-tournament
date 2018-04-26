@@ -33,14 +33,14 @@
 						</div  
 						<!--    End of toolbar      -->
 						<div class="ui-panel-grid-list" id="product"> 
-							<?php include_partial('list', array( '_sportGames' => $_sportGames, '_countTeamGroups' => $_countTeamGroups )) ?> 
+							<?php include_partial('list', array( '_sportGames' => $_sportGames, '_countSportGames' => $_countSportGames )) ?> 
 						</div> <!-- ui-panel-content -->  
 					</div><!-- ui-panel-content-box -->
 					
 					<div class="ui-panel-footer-default">
 						<div class="ui-panel-list-pagination-default">
 							<div class="ui-panel-list-pagination">
-								<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
+								<?php include_partial('global/pagination', array('_totalRecords' => $_countSportGames , '_pager'=> 'sport-games')) ?>
 							</div>
 						</div>
 					</div>
@@ -60,13 +60,13 @@
 		$('.next-page').click(function() {
 			 
 			var navButton =  $(this).attr('rel');
-			var serializedData = 'class_id='+$('#product_class_id').val()+'&keyword='+$('#product_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-product').value;
-			var recordURL = 'product/search';
-			var divName =  'product';
+			var serializedData = 'category_id='+$('#category_id').val()+'&keyword='+$('#keyword').val();
+			var totalLimitValue = document.getElementById('ui-total-data-list-sport-games').value;
+			var recordURL = 'sport_games/search';
+			var divName =  'sport-games';
 			//makeNavigation ();
-			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
-			//alert(result);
+			makePageNavigation (serializedData, recordURL, navButton, 'sport-games', totalLimitValue );
+			//alert(serializedData);
 			return false; 
 		});
 		$('.prev-page').click(function() {
@@ -95,13 +95,16 @@
 			var divName =  'product';
 			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
 		});
-		$('#product_keyword').keyup(function(key) {
+		$('#keyword').keyup(function(key) {
 			var navButton =  $(this).attr('rel');
-			var serializedData = 'class_id='+$('#product_class_id').val()+'&keyword='+$('#product_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-product').value;
-			var recordURL = 'product/search';
-			var divName =  'product';
-			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
+			//var serializedData = 'category_id='+$('#category_id').val()+'&keyword='+$('#keyword').val();
+			//var totalLimitValue = document.getElementById('ui-total-data-list-sport-games').value;
+			//var recordURL = 'sport_games/search';
+			//var divName =  'sport-games';
+			//makeNavigation ();
+			//makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
+			alert(navButton);
+			return false; 
 		});
 		$('#product_class_id').click(function() {
 			var navButton =  $(this).attr('rel');
@@ -110,21 +113,18 @@
 			var recordURL = 'product/search';
 			var divName =  'product';
 			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
-		});
-		/*$('#product_class_id').change(function()	 {
-			$('#product').load(
-				$(this).parents('form').attr('action'),
-				{ class_id: this.value, keyword: $('#product_keyword').val() } 
-			);
-			alert(query); 
-		});*/
+		}); 
 		$('#pagination-limit').change(function()	 {
 			var navButton =  $(this).attr('rel');
-			var serializedData = 'class_id='+$('#product_class_id').val()+'&keyword='+$('#product_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-product').value;
-			var recordURL = 'product/search';
-			var divName =  'product';
-			makePageNavigation (serializedData, recordURL, navButton, 'product', totalLimitValue );
+			var serializedData = 'category_id='+$('#category_id').val()+'&keyword='+$('#keyword').val()+'&offset='+$('#pagination-offset').val()+'&limit='+$('#pagination-limit').val();
+			//var serializedData = 'category_id='+$('#category_id').val()+'&keyword='+$('#keyword').val()+'&offset='+$('#pagination-offset').val()+'&limit='+$('#pagination-limit').val();
+			var totalLimitValue = document.getElementById('ui-total-data-list-sport-games').value;
+			var recordURL = 'sport_games/search';
+			var divName =  'sport-games';
+			//makeNavigation ();
+			makePageNavigation (serializedData, recordURL, navButton, 'sport-games', totalLimitValue );
+			//alert(serializedData);
+			return false; 
 		});
 	}); 
 </script>

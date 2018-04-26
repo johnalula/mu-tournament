@@ -19,11 +19,12 @@
  * @property Organization $Organization
  * @property Doctrine_Collection $categorySportGames
  * @property Doctrine_Collection $gameCategoryTeamPartcipation
+ * @property Doctrine_Collection $sportGameCategoryTournamentGroups
  * @property Doctrine_Collection $gameCategoryTournamentMatch
  * 
- * @package    mu-TMS
+ * @package    symfony
  * @subpackage model
- * @author     Your name here
+ * @author     John Haftom
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseGameCategory extends sfDoctrineRecord
@@ -86,6 +87,10 @@ abstract class BaseGameCategory extends sfDoctrineRecord
              'foreign' => 'sport_game_category_id'));
 
         $this->hasMany('TeamGameParticipation as gameCategoryTeamPartcipation', array(
+             'local' => 'id',
+             'foreign' => 'sport_game_category_id'));
+
+        $this->hasMany('TournamentSportGameGroup as sportGameCategoryTournamentGroups', array(
              'local' => 'id',
              'foreign' => 'sport_game_category_id'));
 

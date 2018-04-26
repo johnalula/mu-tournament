@@ -112,7 +112,6 @@ class TeamTable extends PluginTeamTable
 				->select(self::appendQueryFields())
 				->from("Team tm") 
 				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
-				//->leftJoin("tm.teamGameParticipations itmSpGmPrtn") 
 				->innerJoin("tm.Organization org on tm.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit) 
@@ -131,9 +130,26 @@ class TeamTable extends PluginTeamTable
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
-   public static function processAll ( ) 
+   public static function processAll ($_orgID=null, $_orgTokenID=null, $_activeFlag=null, $_keyword=null ) 
    {
-		  
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("Team tm") 
+				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
+				->innerJoin("tm.Organization org on tm.org_id = org.id ")  
+				->orderBy("tm.id ASC")
+				->where("tm.id IS NOT NULL");
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("tm.org_id = ? AND tm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_season)) $_qry = $_qry->addWhere("tm.season = ? ", $_season); 
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
+				if(!is_null($_exclusion))  $_qry = $_qry->andWhereNotIn("tm.id", $_exclusion ); 
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
    public static function processCandidates ( $_orgID=null, $_orgTokenID=null, $_torunamentID=null, $_keyword=null, $_exclusion=null, $_activeFlag=null, $_offset=0, $_limit=10 ) 
@@ -204,23 +220,17 @@ class TeamTable extends PluginTeamTable
 		//return TeamGameParticipationTable::processAll ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion );
 	}  
 	//
-	public static function processCandidateTeamGameParticipation ( $_orgID=null, $_tournamentID=null, $_teamID=null, $_teamTokenID=null, $_gameTypeID=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	public static function processCandidateTeamGameParticipation ( $_orgID=null, $_tournamentID=null, $_teamID=null, $_teamTokenID=null, $_memberParticipantID=null, $_sportGameCategory=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {  
-		/*$_sportGameParticipations = TeamGameParticipationTable::processAll ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion );
-		//return TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion, $_offset, $_limit) ;;
+		$_participantRoles = TeamMemberParticipantRoleTable::processCandidateMemberRoles ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_sportGameID, $_memberParticipantID, $_keyword);
 		
-		if(!$_sportGameParticipations) { return false; }   
+		//if(!$_sportGameParticipations) { return false; }   
 		$_exclusion = array();   
-		foreach($_sportGameParticipations as $_sportGame) {
-			if($_sportGame->genderCategoryID != $_genderCategory ) {
-				if( $_sportGame->genderCategoryID !== TournamentCore::$_BOTH_GENDER ) {
-					$_exclusion[] = $_sportGame->id;
-				} 
-			} 
-		} */
+		foreach($_participantRoles as $_participantRoles) {
+			$_exclusion[] = $_participantRoles->team_game_participation_id;
+		}  
 		
-		return TeamGameParticipationTable::processCandidateSelection ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit);
-		//return TeamGameParticipationTable::processAll ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_gameTypeID, $_keyword, $_exclusion );
+		return TeamGameParticipationTable::processCandidateSelection ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_sportGameCategory, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit);
 	}  
 	
 	/*********************************************************
@@ -233,67 +243,19 @@ class TeamTable extends PluginTeamTable
 	}
 	
 	// process candidate selection function 
-	public static function processCandidateProductPriceComponents ( $_productID=null, $_productTokenID=null, $_productPriceType=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
+	public static function selectCandidateMemberParticipants ( $_orgID=null, $_tournamentID=null, $_teamID=null, $_teamTokenID=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10  )
    {
-		$_productPrices = ProductPriceComponentTable::processAll ( $_productID, $_productTokenID, $_productPriceType, $_exclusion, $_status, $_keyword);
+		/*$_productPrices = ProductPriceComponentTable::processAll ( $_productID, $_productTokenID, $_productPriceType, $_exclusion, $_status, $_keyword);
 		if(!$_productPrices) { return false; }   
 		$_exclusion = array();   
 		foreach($_productPrices as $_productPrice) {
 			if(!$_productPrice->hasActiveInventoryItem ) {
 				$_exclusion[] = $_productPrice->id;
 			} 
-		} 
+		} */
 		
-		return ProductPriceComponentTable::processCandidates ( $_productID, $_productTokenID, $_productPriceType, $_exclusion, $_status, $_keyword, $_offset, $_limit);
+		return TeamMemberParticipantTable::processCandidateMembers ( $_tournamentID, $_teamID, $_teamTokenID, $_genderCategoryID, $_keyword, $_exclusion, $_offset, $_limit );
 	} 
 	
-	
-	// process list selection function 
-   public static function processCandidateInventory ( $_productID, $_productTokenID, $_itemType=null, $_presentFlag=null, $_productStatus=null, $_status=null, $_keyword=null, $_offset=0, $_limit=10 ) 
-   {  
-		return InventoryItemTable::processCandidateProductInventoryItems ( $_productID, $_productTokenID, $_itemType, $_presentFlag, $_productStatus, $_status, $_keyword, $_offset, $_limit );
-	}
-   public static function processCountCandidateInventory ( $_productID, $_productTokenID, $_itemType=null, $_presentFlag=null, $_productStatus=null, $_status=null, $_keyword=null ) 
-   {  
-		return InventoryItemTable::processCountCandidateProductInventoryItems ( $_productID, $_productTokenID, $_itemType, $_presentFlag, $_productStatus, $_status, $_keyword );
-	}
-	// process list selection function 
-   public static function processCandidateSoldInventory ( $_productID=null, $_productTokenID=null, $_exclusion=null, $_itemType=null, $_presentFlag=null, $_productStatus=null, $_status=null, $_keyword=null, $_offset=0, $_limit=10 ) 
-   { 
-		$_inclusions = array();
-		$_productCategorys = ProductCategoryTable::processCandidateSelection ( $_orgID, $_orgTokenID, $_productID, $_productTokenID );
-		 
-		foreach($_productCategorys as $_key => $_productCategory) {
-			//$_tokenID = md5(sha1($_productCategory->token_id));
-			$_inventoryItems = ProductDecompositionTable::processCandidateInventory ( $_orgID, $_orgTokenID, $_productCategory->product_id, $_productCategory->product_token_id );
-			
-			foreach($_inventoryItems as $_key => $_inventoryItem ) {
-				$_inclusions[]= $_inventoryItem->id;
-			}
-		}
-	
-		return InventoryItemTable::processCandidateSelection ( $_categoryID, $_inclusions, $_exclusion, $_itemType, $_presentFlag, $_productStatus, $_status, $_keyword, $_offset, $_limit );
-	}
-   public static function processCountCandidateSoldInventory ( $_productID=null, $_productTokenID=null, $_exclusion=null, $_itemType=null, $_presentFlag=null, $_productStatus=null, $_status=null, $_keyword=null ) 
-   { 
-		$_inclusions = array();
-		$_productCategorys = ProductCategoryTable::processCandidateSelection ( $_orgID, $_orgTokenID, $_productID, $_productTokenID );
-		 
-		foreach($_productCategorys as $_key => $_productCategory) {
-			$_inventoryItems = ProductDecompositionTable::processCandidateInventory ( $_orgID, $_orgTokenID, $_productCategory->product_id, $_productCategory->product_token_id );
-			
-			foreach($_inventoryItems as $_key => $_inventoryItem ) {
-				$_inclusions[]= $_inventoryItem->id;
-			}
-		}
-	
-		return InventoryItemTable::processCountCandidate ( $_categoryID, $_inclusions, $_exclusion, $_itemType, $_presentFlag, $_productStatus, $_status, $_keyword );
-	}
-	
-	// process candidate selection function 
-	public static function processCandidateInventoryItems ( $_prodcutID=null, $_prodcutTokenID=null, $_itemClassID=null, $_itemType=null, $_offset=0, $_limit=10 ) 
-   {
-		
-		return InvoiceItemOrderTable::processCandidates ( $_prodcutID, $_prodcutTokenID, $_itemClassID, $_itemType, $_exclusion, $_status, $_keyword, $_offset, $_limit );
-	} 
+	 
 }

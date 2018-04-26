@@ -38,7 +38,7 @@ class UserGroupTable extends PluginUserGroupTable
 			$_nw = new UserGroup ();  
 			$_nw->token_id = md5(sha1($_token)); 
 			$_nw->org_id = trim($_orgID); 
-			$_nw->org_token_id = md5(sha1(trim($_orgTokenID)));
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));
 			$_nw->user_group_role_id = trim($_groupRoleID);
 			$_nw->name = ucwords(trim($_userGroupName));  
 			$_nw->active_flag = trim($_activeFlag);   
