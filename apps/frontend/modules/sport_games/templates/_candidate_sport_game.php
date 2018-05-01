@@ -19,7 +19,7 @@
 	    <?php foreach ( $_candidateSportGames as $_key => $_candidateSportGame ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateSportGame->id.'$'.$_candidateSportGame->token_id.'$'.$_candidateSportGame->sportGameName.'$'.$_candidateSportGame->gameCategoryName.'$'.TournamentCore::processAthleticsTypeValue($_candidateSportGame->sportGameTypeMode).'$'.TournamentCore::processDistanceTypeValue($_candidateSportGame->sportGameDistanceTypeID).'$'.$_candidateSportGame->contestantTeamMode ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateSportGame->id.'$'.$_candidateSportGame->token_id.'$'.$_candidateSportGame->sportGameName.'$'.$_candidateSportGame->gameCategoryName.'$'.TournamentCore::processAthleticsTypeValue($_candidateSportGame->sportGameTypeMode).'$'.TournamentCore::processDistanceTypeValue($_candidateSportGame->sportGameDistanceTypeID).'$'.$_candidateSportGame->contestantTeamMode.'$'.$_candidateSportGame->maxSportGameGroupNumberMen.'$'.$_candidateSportGame->maxSportGameGroupNumberMen ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<?php echo SystemCore::processDataID($_candidateSportGame->id) ?> 
@@ -40,7 +40,7 @@
 				<?php echo TournamentCore::processEventTypeValue($_candidateSportGame->id) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_candidateSportGame->id ?>
+				<?php echo $_candidateSportGame->maxSportGameGroupNumberMen ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo $_candidateSportGame->description ?>

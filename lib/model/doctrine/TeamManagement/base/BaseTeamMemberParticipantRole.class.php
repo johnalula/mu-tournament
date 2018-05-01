@@ -17,6 +17,7 @@
  * @property clob $description
  * @property TeamGameParticipation $TeamGameParticipation
  * @property TeamMemberParticipant $TeamMemberParticipant
+ * @property Doctrine_Collection $teamMemberParticipantRoleParticipants
  * 
  * @package    symfony
  * @subpackage model
@@ -77,6 +78,10 @@ abstract class BaseTeamMemberParticipantRole extends sfDoctrineRecord
              'local' => 'team_member_participant_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('TournamentGroupParticipantTeamMember as teamMemberParticipantRoleParticipants', array(
+             'local' => 'id',
+             'foreign' => 'team_member_participant_role_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

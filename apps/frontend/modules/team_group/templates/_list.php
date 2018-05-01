@@ -26,12 +26,12 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<a href="<?php echo url_for('team_group/view?team_group_id='.$_tournamentTeamGroup->id.'&token_id='.$_tournamentTeamGroup->token_id) ?>" >	
+				<a href="<?php echo url_for('team_group/category?team_group_id='.$_tournamentTeamGroup->id.'&token_id='.$_tournamentTeamGroup->token_id) ?>" >	
 					<?php echo SystemCore::processDataID($_tournamentTeamGroup->id) ?>
 				</a>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-00"> 
-				<?php echo $_tournamentTeamGroup->id  ?>
+				<?php echo $_tournamentTeamGroup->tournamentGroupFullCode  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-2">
 				<?php echo $_tournamentTeamGroup->gameCategoryName.' - '.$_tournamentTeamGroup->gameCategoryName.'- '.($_tournamentTeamGroup->id ? (TournamentCore::processAthleticsTypeValue($_tournamentTeamGroup->id)):$_tournamentTeamGroup->id) ?>
@@ -50,7 +50,7 @@
 				<?php echo $_tournamentTeamGroup->id  ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_tournamentTeamGroup->description ?> 
+				<?php echo Wordlimit::Wordlimiter($_tournamentTeamGroup->description, 5) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_tournamentTeamGroup->id ?>" class="ui-table-status-small-icon" id="<?php echo $_tournamentTeamGroup->id ?>">
@@ -67,7 +67,7 @@
 							</a>
 						</li> 
 						<li>  
-							<a href="<?php echo url_for('team_group/edit?team_group_id='.$_tournamentTeamGroup->id.'&token_id='.$_tournamentTeamGroup->token_id) ?>" >	
+							<a href="<?php echo url_for('team_group/category?team_group_id='.$_tournamentTeamGroup->id.'&token_id='.$_tournamentTeamGroup->token_id) ?>" >	
 								<img title="<?php echo __('Edit Team Group').' ( '.' Group '.' #:'.$_tournamentTeamGroup->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
 							</a>    
 						</li> 

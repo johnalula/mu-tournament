@@ -1,7 +1,9 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
 	
-	//test_id=&tournament_name=African Universities Sport Festival (AUSF ) - 2018&tournament_token_id=67a74306b06d0c01624fe0d0249a570f4d093747&tournament_id=1&match_season=2018&game_category=1&sport_game_name=800M (Athletics)&sport_game_id=4&sport_game_token_id=dedad721e93b877cecb6306b76ed9ec9c76192cf&team_group_id=1&description=dfasdfasdfasdf&all-list-check-boxs=0&ui-total-data-list-product=0
+	//game_category=1&sport_game_full_name=5000M (Athletics) - Long Distance Running&tournament_id=1&tournament_group_code=GRP-001&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&sport_game_category_name=Athletics&sport_game_contestant_team_mode=2&tournament_team_group_id=1&tournament_team_group_token_id=d09b732ed39c3bbaebedb3e3d363e3fa2bb93dc0&group_number=4&gender_category=1&contestant_team_mode=2&sport_game_group_status=2&description=sfg sdf gsdfg sdfg
+	
+	//$_flag =  SportGameGroupTable::processNew ( $_orgID, $_orgTokenID, 1, 1, 'd09b732ed39c3bbaebedb3e3d363e3fa2bb93dc0', 5, 'a5b16fbdda8b5c083be1d62b23ce2380ffcf6213', '5000M (Athletics) - Long Distance Running', 2, 1, 4, 'GRP-001', 2, 'asdfasdfasdf', $_userID, $_userTokenID );  
 	
 	//$_teamGroup =  SportGameGroupTable::processNew ( $_orgID, $_orgTokenID, 1, 4, 'dedad721e93b877cecb6306b76ed9ec9c76192cf', 1, '800M (Athletics)', 'afasdf asdfa fasdf', $_userID, $_userTokenID );
 	
@@ -15,13 +17,22 @@
 	//$_candidateTeamGroups = SportGameGroupTable::processCandidateGroupTypes ( 1, 1, 5, sha1(md5('a5b16fbdda8b5c083be1d62b23ce2380ffcf6213')), $_keyword, $_activeFlag, 0, 10 );
 	//echo count($_candidateTeamGroups).' == ';
 	//echo $_tournamentTeamGroup->id.' == ';
+	//$_exclusion = array(1,2,3);
+	/*for($_i=0;$_i<4;$_i++) {
+		$_groupTypes = GameGroupTypeTable::processCandidateSelection ( $_keyword, $_exclusion, $_i, 1 );
+		foreach($_groupTypes as $_key=>$_groupType) {
+		echo $_groupType->id.' = ';
+		}
+	}*/
+	//echo count($_tournamentSportGameGroups).' == ';
+	
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('category', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_tournamentTeamGroups' => $_tournamentTeamGroups, '_candidateGroupTypes' => $_candidateGroupTypes, '_candidateGameCategorys' => $_candidateGameCategorys )) ?> 
+				<?php include_partial('category', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_tournamentSportGameGroups' => $_tournamentSportGameGroups, '_candidateGroupTypes' => $_candidateGroupTypes, '_candidateGameCategorys' => $_candidateGameCategorys )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -174,12 +185,12 @@
 
 <script>
 	$('#createTeamGroup').click(function(){
-		var url = '<?php echo url_for('team_group/createTeamGroup')?>'; 
+		var url = '<?php echo url_for('team_group/createTournamentTeamGroup')?>'; 
 		var formName = 'createTeamGroupForm';
 		var data = $("form#createTeamGroupForm").serialize();
 		var datas = generateValidData (formName);
-		//processEntry(datas, url )
-		alert(datas);
+		processEntry(datas, url )
+		//alert(datas);
 		return false; 
 	});
 	

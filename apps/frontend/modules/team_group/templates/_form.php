@@ -37,7 +37,7 @@
 						 <select id="group_status" name="tournament_team_group[group_status]" class="form-control" title="<?php echo __('Team Status') ?>">
 							<option value="" selected  ><?php echo 'Select Status ...' ?></option>
 							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_PENDING ? 'selected':'' ?> > 
+								<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_INITIATED ? 'selected':'' ?> > 
 									<?php echo $_matchStatus ?>
 								</option>								 
 							<?php endforeach; ?>
@@ -46,7 +46,7 @@
 					<label class="col-sm-01 control-label" title="<?php echo __('Date') ?>"><?php echo __('Date') ?>:</label>
 					<div class="col-sm-23">
 						<div class="input-group"> 
-							<input class="form-control" id="start_date" name="tournament_team_group[start_date]" type="text" placeholder="<?php echo __('End Date') ?>" value="" title="<?php echo __('Tournament Start Date') ?>" readonly>
+							<input class="form-control" id="start_date" name="tournament_team_group[start_date]" type="text" placeholder="<?php echo __('End Date') ?>" value="<?php echo date('m/d/Y', time()) ?>" title="<?php echo __('Tournament Start Date') ?>" readonly>
 							<span class="input-group-btn">
 								<button class="btn btn-default ui-button-img" type="button">
 									<img class="ui-addon-img" src="<?php echo image_path('icons/calendar_small') ?>" >

@@ -96,11 +96,11 @@ abstract class BaseTournament extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
-        $this->hasMany('TournamentSportGameGroup as tournamentSportGamesGroups', array(
+        $this->hasMany('TournamentTeamGroup as tournamentSportGamesGroups', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
-        $this->hasMany('SportGameTeamGroup as tournamentSportGamesTeamGroups', array(
+        $this->hasMany('TournamentGroupParticipantTeam as tournamentSportGamesTeamGroups', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 

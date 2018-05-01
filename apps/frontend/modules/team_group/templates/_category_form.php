@@ -26,13 +26,15 @@
 					<div class="col-sm-40"> 
 						<div class="input-group">
 							<input type="text" class="form-control " id="sport_game_full_name" name="team_group_category[sport_game_full_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateSportGameModal"  disabled required >
+							<input type="hidden" class="form-control" id="tournament_id" name="team_group_category[tournament_id]" placeholder="" value="<?php echo $_tournamentTeamGroup->tournament_id ?>">
+							<input type="hidden" class="form-control" id="tournament_group_code" name="team_group_category[tournament_group_code]" placeholder="" value="<?php echo $_tournamentTeamGroup->tournamentGroupCode ?>">
 							<input type="hidden" class="form-control" id="sport_game_id" name="team_group_category[sport_game_id]" placeholder="" value="">
 							<input type="hidden" class="form-control" id="sport_game_token_id" name="team_group_category[sport_game_token_id]" value=""> 
 							<input type="hidden" class="form-control" id="sport_game_category_name" name="team_group_category[sport_game_category_name]" value=""> 
 							<input type="hidden" class="form-control" id="sport_game_contestant_team_mode" name="team_group_category[sport_game_contestant_team_mode]" value=""> 
 							
-							<input type="hidden" class="form-control" id="tournament_team_group__id" name="team_group_category[tournament_team_group_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_teamGroup->id ?>"  >
-							<input type="hidden" class="form-control" id="tournament_team_group__token_id" name="team_group_category[tournament_team_group__token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_teamGroup->token_id ?>"  >
+							<input type="hidden" class="form-control" id="tournament_team_group_id" name="team_group_category[tournament_team_group_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentTeamGroup->id ?>"  >
+							<input type="hidden" class="form-control" id="tournament_team_group_token_id" name="team_group_category[tournament_team_group_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentTeamGroup->token_id ?>"  >
 							
 							<span class="input-group-btn">
 								<button class="btn btn-default selectCandidateSportGame" type="button" data-toggle="modal" data-target="#candidateSportGameModal" title="<?php echo __('Candidat Sport Game') ?>" >

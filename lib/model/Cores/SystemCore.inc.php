@@ -515,6 +515,19 @@ class SystemCore {
 		}    
 	}
 	
+	public static function makeFullCode ( $_codeNumber )
+	{
+		return trim(trim($_codeNumber).'/'.date('y', time()));
+	}
+	public static function processCodeGeneratorInitialNumber ( $_initialNumber )
+	{
+		$_initialNumber = empty($_initialNumber) ? 1:intval($_initialNumber);
+		if($_initialNumber < 10 ) $_initialNumber = '00'.$_initialNumber;
+		else if($_initialNumber < 100 ) $_initialNumber = '0'.$_initialNumber; 
+		else $_initialNumber = $_initialNumber; 
+		
+		return $_initialNumber;
+	}
 	public static function processCodeInitialNumber ( $_initialNumber )
 	{
 		$_initialNumber = empty($_initialNumber) ? 1:intval($_initialNumber);

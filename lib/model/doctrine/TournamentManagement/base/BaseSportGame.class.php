@@ -20,6 +20,7 @@
  * @property integer $contestant_team_mode
  * @property integer $jump_type_mode
  * @property integer $throw_type_mode
+ * @property integer $result_ranking_mode
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
@@ -91,6 +92,9 @@ abstract class BaseSportGame extends sfDoctrineRecord
              'type' => 'integer',
              ));
         $this->hasColumn('throw_type_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('result_ranking_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('start_date', 'string', 100, array(

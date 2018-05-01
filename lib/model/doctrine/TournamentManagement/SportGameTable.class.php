@@ -109,6 +109,8 @@ class SportGameTable extends PluginSportGameTable
 	{		
 		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.sport_game_number as sportGameNumber, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.active_flag as activeFlag, 
 								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias, gmCat.category_type as gameCategoryType,
+								
+								(SELECT MAX(sprtGmGrp1.group_number) FROM SportGameGroup sprtGmGrp1 WHERE sprtGmGrp1.sport_game_id = sprtGm.id AND sprtGmGrp1.gender_category_id=".TournamentCore::$_MEN." ) as maxSportGameGroupNumberMen, 
 		";	
 		return $_queryFileds;
 	}

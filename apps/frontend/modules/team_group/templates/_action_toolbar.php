@@ -13,6 +13,7 @@
 					</a>
 				</li> 
 			<?php endif; ?>
+			
 			<?php if($sf_request->getParameter('action') == 'new'): ?>
 				<li class="">
 					<button title="<?php echo __('Save Team Group Information') ?>" id="createTournamentTeamGroup" class="ui-disabled-toolbar-btn" disabled >
@@ -33,6 +34,7 @@
 					</a>
 				</li>
 			<?php endif; ?>
+			
 			<?php if($sf_request->getParameter('action') == 'edit'): ?>
 				<li class="">
 					<button title="<?php echo __('Save Team Group Information') ?>" id="updateTeamGroup" class="ui-disabled-toolbar-btn" disabled >
@@ -77,13 +79,13 @@
 			
 			<?php if($sf_request->getParameter('action') == 'member'): ?>
 				<li class="">
-					<button title="<?php echo __('Save Team Group Member Information') ?>" id="createTeamGroupMember" class="ui-disabled-toolbar-btn" disabled >
+					<button title="<?php echo __('Save Team Group Member Information') ?>" id="createGroupParticipantTeam" class="ui-disabled-toolbar-btn" disabled >
 						<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
 						<?php echo __('Save') ?>
 					</button>
 				</li>	
 				<li class="">
-					<button title="<?php echo __('Cancel Team Group Member Information') ?>" id="cancelTeamGroupMember" class="ui-disabled-toolbar-btn" disabled>
+					<button title="<?php echo __('Cancel Team Group Member Information') ?>" id="cancelGroupParticipantTeam" class="ui-disabled-toolbar-btn" disabled>
 						<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
 						<?php echo __('Cancel') ?>
 					</button>
@@ -98,13 +100,13 @@
 			
 			<?php if($sf_request->getParameter('action') == 'participant'): ?>
 				<li class="">
-					<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="createTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
+					<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="createGroupTeamParticipantMember" class="ui-disabled-toolbar-btn" disabled >
 						<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
 						<?php echo __('Save') ?>
 					</button>
 				</li>	 
 				<li class="">
-					<button title="<?php echo __('Cancel Team Group Member Participant Information') ?>" id="cancelTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled>
+					<button title="<?php echo __('Cancel Team Group Member Participant Information') ?>" id="cancelGroupTeamParticipantMember" class="ui-disabled-toolbar-btn" disabled>
 						<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
 						<?php echo __('Cancel') ?>
 					</button>

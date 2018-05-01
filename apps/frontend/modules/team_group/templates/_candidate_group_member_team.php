@@ -1,4 +1,4 @@
-<div class="table-responsive" id="ui-modal-data-table-list-candidate-sport-game-participation"> 
+<div class="table-responsive" id="ui-modal-data-table-list-candidate-group-member-teams"> 
 	<table class="ui-grid-table">
 	  <thead>
 		 <tr>
@@ -18,28 +18,28 @@
 	   <?php foreach ( $_candidateMemberTeams as $_key => $_candidateTeam ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateTeam->id.'$'.$_candidateTeam->token_id.'$'.$_candidateTeam->teamID.'$'.$_candidateTeam->teamTokenID.'$'.$_candidateTeam->teamName.'$'.$_candidateTeam->teamAlias.'$'.$_candidateTeam->teamAlias ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateTeam->id.'$'.$_candidateTeam->token_id.'$'.$_candidateTeam->teamID.'$'.$_candidateTeam->teamTokenID.'$'.$_candidateTeam->participantTeamName.'$'.$_candidateTeam->participantTeamAlias.'$'.SystemCore::processCountryValue($_candidateTeam->participantTeamCountry) ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<?php echo SystemCore::processDataID($_candidateTeam->id) ?> 
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo $_candidateTeam->teamNumber ?> 
+				<?php echo $_candidateTeam->participantTeamNumber ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-01"> 
-				<?php echo $_candidateTeam->teamName.' '.(TournamentCore::processDistanceTypeAlias($_candidateTeam->id) ? (' - '.TournamentCore::processDistanceTypeAlias($_candidateTeam->id)):'' )  ?>
+				<?php echo $_candidateTeam->participantTeamName  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
-				<?php echo $_candidateTeam->teamAlias ?> 
+				<?php echo $_candidateTeam->participantTeamAlias ?> 
 			</td>  
 			<td class="ui-td-left-text ui-td-xsmall-00">
-				<?php echo SystemCore::processCountryValue($_candidateTeam->teamCountry) ?>
+				<?php echo SystemCore::processCountryValue($_candidateTeam->participantTeamCountry) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-00">
 				<?php echo TournamentCore::processEventTypeValue($_candidateTeam->id) ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_candidateTeam->description ?>
+				<?php echo Wordlimit::Wordlimiter($_candidateTeam->description, 5 ) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_candidateTeam->id ?>" class="ui-table-status-small-icon" id="<?php echo $_candidateTeam->id ?>">
@@ -53,13 +53,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=7></td>
+			<td class="ui-table-td-footer" colspan=8></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=9>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=10>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

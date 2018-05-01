@@ -11,10 +11,10 @@
  * @property string $tournament_sport_game_group_token_id
  * @property integer $sport_game_id
  * @property string $sport_game_token_id
- * @property integer $game_group_type_id
  * @property integer $gender_category_id
  * @property string $group_code
  * @property string $group_name
+ * @property integer $group_number
  * @property string $alias
  * @property integer $total_group_members
  * @property integer $contestant_team_mode
@@ -26,15 +26,14 @@
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
- * @property string $type
  * @property Tournament $Tournament
- * @property TournamentSportGameGroup $TournamentSportGameGroup
+ * @property TournamentTeamGroup $TournamentTeamGroup
  * @property SportGame $SportGame
- * @property GameGroupType $GameGroupType
- * @property Doctrine_Collection $sportGameTeamGroups
- * @property Doctrine_Collection $sportGameGroupMemberParticipants
- * @property Doctrine_Collection $roundTypeMatchFixtures
- * @property Doctrine_Collection $sportGameGroupMatchParticipantTeams
+ * @property TournamentSportGameGroup $TournamentSportGameGroup
+ * @property Doctrine_Collection $TournamentGroupParticipantTeam
+ * @property Doctrine_Collection $TournamentGroupParticipantTeamMember
+ * @property Doctrine_Collection $TournamentMatchFixture
+ * @property Doctrine_Collection $TournamentMatchParticipantTeam
  * 
  * @package    symfony
  * @subpackage model
@@ -45,7 +44,7 @@ abstract class BaseSportGameGroup extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('mutms_tbl_sport_game_group');
+        $this->setTableName('mutms_tbl_tournament_sport_game_group');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
@@ -53,8 +52,9 @@ abstract class BaseSportGameGroup extends sfDoctrineRecord
         $this->hasColumn('tournament_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('tournament_sport_game_group_id', 'integer', null, array(
+        $this->hasColumn('tournament_sport_game_group_id', 'integer', 8, array(
              'type' => 'integer',
+             'length' => 8,
              ));
         $this->hasColumn('tournament_sport_game_group_token_id', 'string', 100, array(
              'type' => 'string',
@@ -67,9 +67,6 @@ abstract class BaseSportGameGroup extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('game_group_type_id', 'integer', null, array(
-             'type' => 'integer',
-             ));
         $this->hasColumn('gender_category_id', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -80,6 +77,9 @@ abstract class BaseSportGameGroup extends sfDoctrineRecord
         $this->hasColumn('group_name', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
+             ));
+        $this->hasColumn('group_number', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('alias', 'string', 50, array(
              'type' => 'string',
@@ -122,21 +122,6 @@ abstract class BaseSportGameGroup extends sfDoctrineRecord
         $this->hasColumn('description', 'clob', null, array(
              'type' => 'clob',
              ));
-        $this->hasColumn('type', 'string', 255, array(
-             'type' => 'string',
-             'length' => 255,
-             ));
-
-        $this->setSubClasses(array(
-             'MultipleContestantTeamGroup' => 
-             array(
-              'type' => 1,
-             ),
-             'PairContestantTeamGroup' => 
-             array(
-              'type' => 2,
-             ),
-             ));
     }
 
     public function setUp()
@@ -147,7 +132,7 @@ abstract class BaseSportGameGroup extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('TournamentSportGameGroup', array(
+        $this->hasOne('TournamentTeamGroup', array(
              'local' => 'tournament_sport_game_group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
@@ -157,24 +142,23 @@ abstract class BaseSportGameGroup extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('GameGroupType', array(
-             'local' => 'game_group_type_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
+        $this->hasOne('TournamentSportGameGroup', array(
+             'local' => 'tournament_sport_game_group_id',
+             'foreign' => 'id'));
 
-        $this->hasMany('SportGameTeamGroup as sportGameTeamGroups', array(
+        $this->hasMany('TournamentGroupParticipantTeam', array(
              'local' => 'id',
              'foreign' => 'sport_game_group_id'));
 
-        $this->hasMany('TeamGroupMemberParticipant as sportGameGroupMemberParticipants', array(
+        $this->hasMany('TournamentGroupParticipantTeamMember', array(
              'local' => 'id',
              'foreign' => 'sport_game_group_id'));
 
-        $this->hasMany('TournamentMatchFixture as roundTypeMatchFixtures', array(
+        $this->hasMany('TournamentMatchFixture', array(
              'local' => 'id',
              'foreign' => 'sport_game_group_id'));
 
-        $this->hasMany('TournamentMatchParticipantTeam as sportGameGroupMatchParticipantTeams', array(
+        $this->hasMany('TournamentMatchParticipantTeam', array(
              'local' => 'id',
              'foreign' => 'sport_game_group_id'));
 

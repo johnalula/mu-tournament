@@ -21,9 +21,9 @@
  * @property integer $status
  * @property clob $description
  * @property string $type
- * @property SportGameGroup $SportGameGroup
- * @property SportGameTeamGroup $SportGameTeamGroup
+ * @property TournamentSportGameGroup $TournamentSportGameGroup
  * @property TournamentMatchFixture $TournamentMatchFixture
+ * @property SportGameGroup $SportGameGroup
  * @property Doctrine_Collection $tournamentMatchParticipantTeamMemberParticipants
  * 
  * @package    symfony
@@ -47,8 +47,9 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('sport_game_group_id', 'integer', null, array(
+        $this->hasColumn('sport_game_group_id', 'integer', 8, array(
              'type' => 'integer',
+             'length' => 8,
              ));
         $this->hasColumn('sport_game_group_token_id', 'string', 100, array(
              'type' => 'string',
@@ -111,13 +112,8 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('SportGameGroup', array(
+        $this->hasOne('TournamentSportGameGroup', array(
              'local' => 'sport_game_group_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
-
-        $this->hasOne('SportGameTeamGroup', array(
-             'local' => 'sport_game_team_group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
@@ -126,7 +122,11 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('TournamentMatchParticipant as tournamentMatchParticipantTeamMemberParticipants', array(
+        $this->hasOne('SportGameGroup', array(
+             'local' => 'sport_game_group_id',
+             'foreign' => 'id'));
+
+        $this->hasMany('TournamentMatchTeamMemberParticipant as tournamentMatchParticipantTeamMemberParticipants', array(
              'local' => 'id',
              'foreign' => 'tournament_match_participant_team_id'));
 

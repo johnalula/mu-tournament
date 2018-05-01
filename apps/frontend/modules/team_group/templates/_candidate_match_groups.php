@@ -23,7 +23,8 @@
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<?php echo SystemCore::processDataID($_sportGameTeamGroup->id) ?> 
-			</td> <td class="ui-td-left-text ui-td-xsmall-00"> 
+			</td> 
+			<td class="ui-td-left-text ui-td-xsmall-00"> 
 				<?php echo $_sportGameTeamGroup->sportGameGroupCode  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-00">

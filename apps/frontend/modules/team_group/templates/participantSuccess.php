@@ -1,27 +1,25 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_GROUP)):
+	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
 	
-	//member_team_name=Mekelle University (MU-ET)&group_member_team_id=1&group_member_team_token_id=a21ee120af7cc330164bada75865ba5cbaacd6e8&member_team_id=4&member_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&team_group_id=1&team_group_token_id=efdd4da200e1e3289c1a41d6197edb5dafedb31f&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&gender_category_id=1&member_participant_name=Kidane Gebrekidan Redaei&member_participant_id=1&member_participant_token_id=d5366cd71a87a8a912608ff27a33c4ab8a04f184&member_participant_role_id=2&member_participant_status=9&start_date=04/10/2018&description=sdfgsdfgsdfg
+	//sport_game_group_name=Group One - 5000M (Men) - Running&sport_game_group_id=5&sport_game_group_token_id=5e754ee527395f5b407c18ba125a1fb53f836acd&tournament_id=1&tournament_team_group_id=1&tournament_team_group_token_id=8bed6e61e3c51bf310b141ade06f985b1b97aaf1&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&gender_category_id=1&participant_team_name=Mekelle University (MU-ET) - ETHIOPIA&participant_team_id=4&participant_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&team_status=1&start_date=04/28/2018&description=dfsfgsdfgsdfg
 	
-	//$_flag =  GroupTeamMemberParticipantTable::processNew ( 1, '94f12f125643718e20d329aef595bc3e', 1, 'a21ee120af7cc330164bada75865ba5cbaacd6e8', 1, 'd5366cd71a87a8a912608ff27a33c4ab8a04f184', $_memberTeamName, $_memberParticipantName, 2, $_entryDate, $_participantStatus, $_description, $_userID, $_userTokenID );  
+	//$_flag =  SportGameGroupParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, 1, 5, '5e754ee527395f5b407c18ba125a1fb53f836acd', 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', 'Mekelle University (MU-ET) - ETHIOPIA', 'Group One - 5000M (Men) - Running', '04/26/2018', 2, 'asdfas dfasdf', SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
 	
+	//$_flag =  SportGameTeamGroupTable::processNew ( $_orgID, $_orgTokenID, 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', 1, 'b7d28c838020d0307bcb521542e95f464cbe17c5', 'Mekelle University (MU-ET)', '04/26/2018', 1, 'sdfgsdfgsdf sdfgsdfg', SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
 	
-	//$_flag =  GroupTeamMemberParticipantTable::processNew ( 1, '94f12f125643718e20d329aef595bc3e', 1, 'b5e4dcd8aebe55c68f287d671ed55b1689b8ffb3', 13, '16006815c534cf9e84f9b79d06f36fa3ca5b0efd', 'Raya University (RU-ET)', 'Bahta Hiluf Kebede', 2, $_entryDate, $_participantStatus, 'adfadfasdf adfaf', $_userID, $_userTokenID );  
-	
-	//$_flag =  SportGameTeamGroupTable::processNew ( $_orgID, $_orgTokenID, 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', 1, '9d176ba04ea12657aa08fa28619ef937e3ae9e91', 'Mekelle University (MU-ET)', '04/26/2018', 1, 'sdfgsdfgsdf sdfgsdfg', $_userID, $_userTokenID );  
+	//$_flag =  SportGameTeamGroupTable::processNew ( $_orgID, $_orgTokenID, $_memberTeamID, $_memberTeamTokenID, $_teamGroupID, $_teamGroupTokenID, $_memberTeamName, $_entryDate, $_teamStatus, $_description, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
 	
 	//$_teamGroup =  GroupTypeTable::makeObject ( $_orgID, 1);
-	
-	//$_candidateParticipants = TeamMemberParticipantTable::processCandidateParticipants( $_tournamentID, 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', $_sportGameID, $_sportGameTokenID, $_genderCategoryID, $_keyword, $_exclusion, 0, 10 ); 
-	//echo count($_candidateTeamMemberParticipants).' = '; 
-	//echo sha1(md5('6e60f180ecab6683ae00640e0d847c1607cb050d')).' = '; 
+	//echo count($_candidateGroupMemberTeams).' = '; 
+	echo count($_candidateMemberParticipants).' = '; 
+	//echo sha1(md5('3829e68f447d9c6e723f820a44421f7e90674acf'));
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('participant', array( '_sportGameTeamGroup' => $_sportGameTeamGroup, '_groupMemberTeams' => $_groupMemberTeams, '_candidateGroups' => $_candidateGroups, '_candidateTeamMemberParticipants' => $_candidateTeamMemberParticipants )) ?> 
+				<?php include_partial('participant', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateMemberParticipants' => $_candidateMemberParticipants, '_candidateGroups' => $_candidateGroups, '_candidateGameCategorys' => $_candidateGameCategorys )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -44,7 +42,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="candidateGroupMemberTeamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="candidateTournamentSportGameGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <form id="insertModalOneData">
 	<div class="modal-dialog">
 		<div class="modal-content"> 
@@ -54,12 +52,10 @@
 						<div class="ui-panel-grid">
 							<div class="ui-panel-header-default">
 								<h2 class="ui-theme-panel-header">
-									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
-									<span class="ui-header-status-icon">
-										<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
-										<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
+									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group Management') ?>">
+									<span class="ui-header-status-icon"> 
 									</span>
-									<?php echo __('Candidate Teams').' ( Sport Game: '.$_sportGameTeamGroup->sportGameName.' - Group: '.$_sportGameTeamGroup->sportGameGroupName.' - Code #:'.$_sportGameTeamGroup->sportGameGroupCode.' )'  ?>
+									<?php echo __('Candidate Sport Games')   ?>
 								</h2>
 								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -70,14 +66,76 @@
 							<!-- Begining of toolbar -->
 								<div class="ui-toolbar-menu-box ui-panel-content-border">
 									<div class="ui-toolbar-menu">
-										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_task)) ?> 
+										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_tournamentSportGameGroups)) ?> 
 									</div>
 								</div>
 								<!--    End of toolbar      -->
 								<div class="ui-panel-content-box">
 									<div class="ui-panel-content-box ">
 										<div class="ui-panel-grid-list"> 
-											<?php include_partial('candidate_group_member_team', array('_candidateMemberTeams' => $_candidateMemberTeams)) ?> 
+											<?php include_partial('candidate_tournament_groups', array( '_tournamentSportGameGroups' => $_tournamentSportGameGroups )) ?> 
+										</div>
+									</div> 
+									
+									<div class="ui-panel-footer-default">
+										<div class="ui-panel-list-pagination-default">
+											<div class="ui-panel-list-pagination">
+												<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
+											</div>
+										</div>
+									</div>
+											
+								</div> 			
+							</div><!-- ui-panel-content-box --> 
+						</div><!-- end of ui-panel-grid --> 
+					<!-- First panel --> 
+					<div class="clearFix"></div>		
+				</div><!-- end of ui-panel-grid-box --> 
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</form>
+</div><!-- /.modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="candidateTournamentGroupMemberTeamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<form id="insertModalOneData">
+	<input type="hidden" class="form-control" id="multiple_team_group_id" name="multiple_team_group_id" value="<?php echo $sf_request->getParameter('team_group_id') ?>"> 
+	<input type="hidden" class="form-control" id="multiple_team_group_token_id" name="multiple_team_group_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
+	<input type="hidden" class="form-control" id="multiple_gender_category_id" name="multiple_gender_category_id" value="<?php echo $_sportGameTeamGroup->groupGenderCategoryID ?>"> 
+	<div class="modal-dialog">
+		<div class="modal-content"> 
+			 <div class="ui-modal-panel-container1" id=""> 
+				<div class="ui-panel-grid-box" id=""> 
+					<!-- First panel -->  
+						<div class="ui-panel-grid">
+							<div class="ui-panel-header-default">
+								<h2 class="ui-theme-panel-header">
+									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
+									<span class="ui-header-status-icon">
+									<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
+										<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
+									</span>
+									<?php echo __('Candidate Group Member Teams').' ( Type: '.$_tournamentTeamGroup->gameCategoryName.' -  Code #: '.$_tournamentTeamGroup->tournamentGroupFullCode.' - Mode : '.TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode).' )'  ?>
+								</h2>
+								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								</div>
+							</div><!-- ui-panel-header-default -->
+							<div class="" id="ui-list-collapsible-panel-one">
+								<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
+							<!-- Begining of toolbar -->
+								<div class="ui-toolbar-menu-box ui-panel-content-border">
+									<div class="ui-toolbar-menu">
+										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
+									</div>
+								</div>
+								<!--    End of toolbar      -->
+								<div class="ui-panel-content-box">
+									<div class="ui-panel-content-box ">
+										<div class="ui-panel-grid-list"> 
+											<?php include_partial('candidate_group_member_team', array('_candidateMemberTeams' => $_candidateGroupMemberTeams)) ?> 
 										</div>
 									</div> 
 									
@@ -97,8 +155,11 @@
 </div><!-- /.modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="candidateGroupMemberTeamParticipantModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="candidateGroupTeamParticipantMemberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <form id="insertModalOneData">
+	<input type="hidden" class="form-control" id="multiple_team_group_id" name="multiple_team_group_id" value="<?php echo $sf_request->getParameter('team_group_id') ?>"> 
+	<input type="hidden" class="form-control" id="multiple_team_group_token_id" name="multiple_team_group_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
+	<input type="hidden" class="form-control" id="multiple_gender_category_id" name="multiple_gender_category_id" value="<?php echo $_sportGameTeamGroup->groupGenderCategoryID ?>"> 
 	<div class="modal-dialog">
 		<div class="modal-content"> 
 			 <div class="ui-modal-panel-container1" id=""> 
@@ -109,10 +170,10 @@
 								<h2 class="ui-theme-panel-header">
 									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
 									<span class="ui-header-status-icon">
-										<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
-										<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
+									<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
+										<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
 									</span>
-									<?php echo __('Candidate Partiicipants').' ( Sport Game: '.$_sportGameTeamGroup->sportGameName.' - Group: '.$_sportGameTeamGroup->sportGameGroupName.' - Code #:'.$_sportGameTeamGroup->sportGameGroupCode.' )'  ?>
+									<?php echo __('Candidate Participants').' ( Type: '.$_tournamentTeamGroup->gameCategoryName.' -  Code #: '.$_tournamentTeamGroup->tournamentGroupFullCode.' - Mode : '.TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode).' )'  ?>
 								</h2>
 								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -123,14 +184,14 @@
 							<!-- Begining of toolbar -->
 								<div class="ui-toolbar-menu-box ui-panel-content-border">
 									<div class="ui-toolbar-menu">
-										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_task)) ?> 
+										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
 									</div>
 								</div>
 								<!--    End of toolbar      -->
 								<div class="ui-panel-content-box">
 									<div class="ui-panel-content-box ">
 										<div class="ui-panel-grid-list"> 
-											<?php include_partial('party/candidate_game_participant', array('_candidateParticipants' => $_candidateParticipants)) ?> 
+											<?php include_partial('candidate_team_member_participants', array('_candidateParticipants' => $_candidateParticipants)) ?> 
 										</div>
 									</div> 
 									
@@ -165,71 +226,127 @@
  
 
 <script>
-	$('#createTeamGroupMemberParticipant').click(function(){
-		var url = '<?php echo url_for('team_group/createTeamGroupMemberParticipant')?>'; 
-		var formName = 'createTeamGroupMemberParticipantForm';
-		var data = $("form#createTeamGroupMemberParticipantForm").serialize();
+	$('#createGroupTeamParticipantMember').click(function(){
+		var url = '<?php echo url_for('team_group/createGroupTeamParticipantMember')?>'; 
+		var formName = 'createGroupTeamParticipantMemberForm';
+		var data = $("form#createGroupTeamParticipantMemberForm").serialize();
 		var datas = generateValidData (formName);
 		processEntry(datas, url )
 		//alert(datas);
-		//$("#completeTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		return false; 
+	});  
+	$('#createMultipleCandidateModalData').click(function(){
+		var url = '<?php echo url_for('team_group/createMultipleGroupParticipantTeam')?>'; 
+		//var formName = 'insertModalOneData';
+		//var data = $("form#insertModalOneData").serialize();
+		//var datas = generateValidData (formName);
+		//processEntry(datas, url )
+		
+		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_group_name='+document.getElementById('sport_game_group_name').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value+'&team_status='+document.getElementById('team_status').value+'&start_date='+document.getElementById('start_date').value+'&description='+document.getElementById('description').value;
+		//alert(data);
+		$('#candidateGroupParticipantTeamModal').modal('hide');
+		processEntry(data, url )
 		return false; 
 	});  
 	
-	$('.selectCandidateGroupMemberTeam').click(function() {   
-		var url = '<?php echo url_for('team_group/candidateGroupMemberTeam')?>'; 
+	//*********************************/
+	$('#confirmournamentGroupParticipants').click(function(){
+		var url = '<?php echo url_for('team_group/createMultipleGroupParticipantTeam')?>';  
+		
+		var data = 'Hello' ;
+		alert(data);
+		//processEntry(data, url )
+		return false; 
+	});  
+	
+	//*********************************/
+	
+	$('.selectCandidateTournamentSportGameGroup').click(function() {   
+		var url = '<?php echo url_for('team_group/candidateTournamentGroup')?>'; 
 		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-sport-game-participation';   
-		//var data = 'tam_group_id='+document.getElementById('gender_category_id').value;
-		var data = 'team_group_id='+document.getElementById('team_group_id').value+'&team_group_token_id='+document.getElementById('team_group_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&sport_game_token_id='+document.getElementById('sport_game_token_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
+		var idName = 'candidate-tournament-groups';   
+		var data = 'team_group_id='+document.getElementById('team_group_id').value+'&team_group_token_id='+document.getElementById('team_group_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&sport_game_token_id='+document.getElementById('sport_game_token_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
 		//alert(data);
 		processDataSelection(data, idName, url );	
 		return true;	 
 	}); 
-	$('.selectCandidateGroupMemberTeamParticipant').click(function() {   
-		var url = '<?php echo url_for('team_group/candidateGroupMemberTeamParticipant')?>'; 
+	$('.selectCandidateTournamentGroupMemberTeam').click(function() {   
+		var url = '<?php echo url_for('team_group/candidateTournamentGroupMemberTeam')?>'; 
+		var navName = $(this).attr('rel'); 
+		var idName = 'candidate-group-member-teams';   
+		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&sport_game_group_id='+document.getElementById('sport_game_group_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
+		//alert(data);
+		processDataSelection(data, idName, url );	
+		return true;	 
+	}); 
+	$('.selectCandidateGroupTeamParticipantMember').click(function() {   
+		var url = '<?php echo url_for('team_group/candidateGroupTeamParticipantMember')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-team-member-participant';   
-		//var data = 'tam_group_id='+document.getElementById('gender_category_id').value;
-		var data = 'member_team_id='+document.getElementById('member_team_id').value+'&member_team_token_id='+document.getElementById('member_team_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&sport_game_token_id='+document.getElementById('sport_game_token_id').value+'&team_group_id='+document.getElementById('team_group_id').value+'&team_group_token_id='+document.getElementById('team_group_token_id').value+'&gender_category_id='+parseInt(document.getElementById('gender_category_id').value);
+		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&participant_team_id='+document.getElementById('participant_team_id').value+'&participant_team_token_id='+document.getElementById('participant_team_token_id').value+'&group_member_participant_team_id='+document.getElementById('group_member_participant_team_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
 		//alert(data);
 		processDataSelection(data, idName, url );	
 		return true;	 
 	}); 
+	 
 	
 	
 	//*********************************/
 	
-	$("#candidateGroupMemberTeamModal").submit(function(e) { 
+	$("#candidateTournamentSportGameGroupModal").submit(function(e) { 
 		if($("input[name=selectSportGameModal]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
 			var listArr = input.split("$"); 
-			document.getElementById("group_member_team_id").value = listArr[0];
-			document.getElementById("group_member_team_token_id").value = listArr[1];  
-			document.getElementById("member_team_id").value = listArr[2];
-			document.getElementById("member_team_token_id").value = listArr[3];  
-			document.getElementById("member_team_name").value = listArr[4]+' ('+listArr[5]+')';    
-			$("#createTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelTeamGroupMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$(".selectCandidateGroupMemberTeamParticipant").removeAttr("disabled") ;
-			$('#candidateGroupMemberTeamModal').modal('hide');
+			document.getElementById("sport_game_group_id").value = listArr[0];
+			document.getElementById("sport_game_group_token_id").value = listArr[1];  
+			document.getElementById("sport_game_id").value = listArr[2];  
+			document.getElementById("sport_game_token_id").value = listArr[3];  
+			document.getElementById("gender_category_id").value = listArr[9];  
+			document.getElementById("sport_game_group_name").value = listArr[4]+' - '+listArr[5]+' ('+listArr[10]+') - '+listArr[8];  
+			  
+			$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			$(".selectCandidateTournamentGroupMemberTeam").removeAttr("disabled") ;
+			$('#candidateTournamentSportGameGroupModal').modal('hide');
 		return e.preventDefault();
 	});
-	$("#candidateGroupMemberTeamParticipantModal").submit(function(e) { 
+	 
+	$("#candidateTournamentGroupMemberTeamModal").submit(function(e) { 
 		if($("input[name=selectSportGameModal]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
 			var listArr = input.split("$"); 
-			document.getElementById("member_participant_id").value = listArr[0];
-			document.getElementById("member_participant_token_id").value = listArr[1];  
-			document.getElementById("member_participant_name").value = listArr[2];    
-			document.getElementById("member_participant_role_id").value = listArr[3];    
-			$("#createTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelTeamGroupMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#candidateGroupMemberTeamParticipantModal').modal('hide');
+			document.getElementById("group_member_participant_team_id").value = listArr[0];
+			document.getElementById("group_member_participant_team_token_id").value = listArr[1]; 
+			document.getElementById("participant_team_id").value = listArr[2];
+			document.getElementById("participant_team_token_id").value = listArr[3];   
+			document.getElementById("participant_team_name").value = listArr[4]+' ('+listArr[5]+') - '+listArr[6]; 
+			   
+			$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			$(".selectCandidateGroupTeamParticipantMember").removeAttr("disabled") ;
+			$('#candidateTournamentGroupMemberTeamModal').modal('hide');
+		return e.preventDefault();
+	});
+	
+	$("#candidateGroupTeamParticipantMemberModal").submit(function(e) { 
+		if($("input[name=selectSportGameModal]:checked", this).length == 0)
+			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
+			
+			var input = $("input[name=selectCandidate]:checked", this).val();
+			var listArr = input.split("$"); 
+			document.getElementById("participant_member_role_id").value = listArr[0];
+			document.getElementById("participant_member_role_token_id").value = listArr[1];  
+			document.getElementById("participant_id").value = listArr[2];
+			document.getElementById("participant_token_id").value = listArr[3];  
+			document.getElementById("participant_name").value = listArr[4]+' ( '+listArr[6]+' )'; 
+			   
+			$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			$('#candidateGroupTeamParticipantMemberModal').modal('hide');
 		return e.preventDefault();
 	});
 	 

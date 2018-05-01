@@ -10,7 +10,7 @@
  * @author     John Haftom
  * @version    SVN: $Id: sfDoctrineFormGeneratedInheritanceTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
-abstract class BaseMultipleContestantTeamGroupForm extends SportGameGroupForm
+abstract class BaseMultipleContestantTeamGroupForm extends TournamentSportGameGroupForm
 {
   protected function setupInheritance()
   {

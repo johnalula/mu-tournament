@@ -39,6 +39,7 @@
  * @property SportGame $SportGame
  * @property RoundType $RoundType
  * @property TournamentMatchFixture $TournamentMatchFixture
+ * @property TournamentSportGameGroup $TournamentSportGameGroup
  * @property SportGameGroup $SportGameGroup
  * @property Doctrine_Collection $matchFixtureParentFixtures
  * @property Doctrine_Collection $matchFixtureParticipants
@@ -78,8 +79,9 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('sport_game_group_id', 'integer', null, array(
+        $this->hasColumn('sport_game_group_id', 'integer', 8, array(
              'type' => 'integer',
+             'length' => 8,
              ));
         $this->hasColumn('sport_game_group_token_id', 'string', 100, array(
              'type' => 'string',
@@ -188,10 +190,14 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('SportGameGroup', array(
+        $this->hasOne('TournamentSportGameGroup', array(
              'local' => 'sport_game_group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasOne('SportGameGroup', array(
+             'local' => 'sport_game_group_id',
+             'foreign' => 'id'));
 
         $this->hasMany('TournamentMatchFixture as matchFixtureParentFixtures', array(
              'local' => 'id',

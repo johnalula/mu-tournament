@@ -14,9 +14,10 @@
 	//$_candidateTeamGroups = SportGameGroupTable::processCandidateSelection ( 1, sha1(md5('94f12f125643718e20d329aef595bc3e')), 1, 5, sha1(md5('a5b16fbdda8b5c083be1d62b23ce2380ffcf6213')), $_genderCategoryID, $_keyword);
 	//$_candidateTeamGroups = SportGameGroupTable::processCandidateGroupTypes ( 1, 1, 5, sha1(md5('a5b16fbdda8b5c083be1d62b23ce2380ffcf6213')), $_keyword, $_activeFlag, 0, 10 );
 	//echo count($_candidateTeamGroups).' == ';
+	 
 ?> 
 
-<form class="form-horizontal" role="form" action="<?php echo url_for('team_group/createTournamentSportGameGroup') ?>" id="createTournamentSportGameGroup" name="createTournamentSportGameGroupForm" method="post"> 
+<form class="form-horizontal" role="form" action="<?php echo url_for('team_group/createTournamentGroup') ?>" id="createTournamentSportGameGroup" name="createTournamentSportGameGroupForm" method="post"> 
 	<div class="ui-page-box">
 		<div class="ui-main-content-box" >
 			<div class="ui-detail-tab-list ui-grid-content-container-box" >

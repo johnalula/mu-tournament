@@ -182,7 +182,7 @@ abstract class BaseTeam extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'team_id'));
 
-        $this->hasMany('SportGameTeamGroup as teamGroupMembers', array(
+        $this->hasMany('TournamentGroupParticipantTeam as teamGroupMembers', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 

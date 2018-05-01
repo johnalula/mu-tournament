@@ -8,7 +8,7 @@
  * @author     John Haftom
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedInheritanceTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
-abstract class BasePairContestantTeamGroupFormFilter extends SportGameGroupFormFilter
+abstract class BasePairContestantTeamGroupFormFilter extends TournamentSportGameGroupFormFilter
 {
   protected function setupInheritance()
   {

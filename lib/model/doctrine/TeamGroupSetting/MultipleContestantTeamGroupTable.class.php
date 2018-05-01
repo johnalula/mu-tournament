@@ -17,9 +17,9 @@ class MultipleContestantTeamGroupTable extends PluginMultipleContestantTeamGroup
         return Doctrine_Core::getTable('MultipleContestantTeamGroup');
     }
     //
-	public static function processNew ( $_tournamentID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupTypeID, $_groupTypeName, $_contestantTeamMode, $_genderCategory, $_totalGroupMembers, $_groupStatus, $_groupCode, $_description )
+	public static function processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
 	{
-			$_sportGameGroup = self::processSave ( $_tournamentID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupTypeID, $_groupTypeName, $_contestantTeamMode, $_genderCategory, $_totalGroupMembers, $_groupStatus, $_groupCode, $_description );
+			$_sportGameGroup = self::processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
 		
 		return $_sportGameGroup;
 	}
@@ -28,7 +28,7 @@ class MultipleContestantTeamGroupTable extends PluginMultipleContestantTeamGroup
 	{
 		
 	} 
-	public static function processSave ( $_tournamentID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupTypeID, $_groupTypeName, $_contestantTeamMode, $_genderCategory, $_totalGroupMembers, $_groupStatus, $_groupCode, $_description )
+	public static function processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -38,16 +38,19 @@ class MultipleContestantTeamGroupTable extends PluginMultipleContestantTeamGroup
 			$_nw = new MultipleContestantTeamGroup (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
 			$_nw->tournament_id = trim($_tournamentID); 
+			$_nw->tournament_sport_game_group_id = trim($_tournamentGroupID); 
+			$_nw->tournament_sport_game_group_token_id = sha1(md5(trim($_tournamentGroupTokenID)));  
 			$_nw->sport_game_id = trim($_sportGameID); 
 			$_nw->sport_game_token_id = sha1(md5(trim($_sportGameTokenID)));  
-			$_nw->game_group_type_id = trim($_groupTypeID); 
-			$_nw->group_name = trim($_groupTypeName); 
+			//$_nw->game_group_type_id = trim($_groupTypeID); 
+			$_nw->group_name = trim('Group '.TournamentCore::processGroupNumberValue ($_groupNumber)); 
+			$_nw->group_number = trim($_groupNumber); 
 			$_nw->group_code = trim($_groupCode); 
-			$_nw->contestant_team_mode = trim($_contestantTeamMode);
-			$_nw->total_group_members = trim($_totalGroupMembers);
+			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->gender_category_id = trim($_genderCategory); 
 			$_nw->start_date = trim($_startDate); 
 			$_nw->active_flag = false;  
+			$_nw->approval_status = $_groupStatus ? trim($_groupStatus):TournamentCore::$_PENDING;   
 			$_nw->status = $_groupStatus ? trim($_groupStatus):TournamentCore::$_PENDING;   
 			$_nw->description = SystemCore::processDescription ((trim($_sportGameFullName).' - '.trim(TournamentCore::processGenderValue($_genderCategory)).' - '.trim($_groupTypeName)), trim($_description) );  
 			$_nw->save(); 

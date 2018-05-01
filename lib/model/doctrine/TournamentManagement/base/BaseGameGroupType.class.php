@@ -16,7 +16,6 @@
  * @property boolean $active_flag
  * @property string $description
  * @property Organization $Organization
- * @property Doctrine_Collection $gameGroupTypeSportGameGroups
  * 
  * @package    symfony
  * @subpackage model
@@ -75,10 +74,6 @@ abstract class BaseGameGroupType extends sfDoctrineRecord
              'local' => 'org_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
-
-        $this->hasMany('SportGameGroup as gameGroupTypeSportGameGroups', array(
-             'local' => 'id',
-             'foreign' => 'game_group_type_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

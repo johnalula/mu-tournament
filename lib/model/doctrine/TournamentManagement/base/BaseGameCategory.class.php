@@ -90,7 +90,7 @@ abstract class BaseGameCategory extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'sport_game_category_id'));
 
-        $this->hasMany('TournamentSportGameGroup as sportGameCategoryTournamentGroups', array(
+        $this->hasMany('TournamentTeamGroup as sportGameCategoryTournamentGroups', array(
              'local' => 'id',
              'foreign' => 'sport_game_category_id'));
 
