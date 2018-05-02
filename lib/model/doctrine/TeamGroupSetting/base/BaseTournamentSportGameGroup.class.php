@@ -7,8 +7,8 @@
  * 
  * @property string $token_id
  * @property integer $tournament_id
- * @property integer $tournament_sport_game_group_id
- * @property string $tournament_sport_game_group_token_id
+ * @property integer $tournament_team_group_id
+ * @property string $tournament_team_group_token_id
  * @property integer $sport_game_id
  * @property string $sport_game_token_id
  * @property integer $gender_category_id
@@ -30,8 +30,6 @@
  * @property Tournament $Tournament
  * @property TournamentTeamGroup $TournamentTeamGroup
  * @property SportGame $SportGame
- * @property TournamentSportGameGroup $TournamentSportGameGroup
- * @property Doctrine_Collection $SportGameGroup
  * @property Doctrine_Collection $tournamentSportGameTeamGroups
  * @property Doctrine_Collection $tournamentSportGameGroupMemberParticipants
  * @property Doctrine_Collection $roundTypeMatchFixtures
@@ -54,11 +52,10 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
         $this->hasColumn('tournament_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('tournament_sport_game_group_id', 'integer', 8, array(
+        $this->hasColumn('tournament_team_group_id', 'integer', null, array(
              'type' => 'integer',
-             'length' => 8,
              ));
-        $this->hasColumn('tournament_sport_game_group_token_id', 'string', 100, array(
+        $this->hasColumn('tournament_team_group_token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
              ));
@@ -150,7 +147,7 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasOne('TournamentTeamGroup', array(
-             'local' => 'tournament_sport_game_group_id',
+             'local' => 'tournament_team_group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
@@ -159,29 +156,21 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('TournamentSportGameGroup', array(
-             'local' => 'tournament_sport_game_group_id',
-             'foreign' => 'id'));
-
-        $this->hasMany('SportGameGroup', array(
+        $this->hasMany('TournamentGroupParticipantTeam as tournamentSportGameTeamGroups', array(
              'local' => 'id',
              'foreign' => 'tournament_sport_game_group_id'));
 
-        $this->hasMany('TournamentGroupParticipantTeam as tournamentSportGameTeamGroups', array(
-             'local' => 'id',
-             'foreign' => 'sport_game_group_id'));
-
         $this->hasMany('TournamentGroupParticipantTeamMember as tournamentSportGameGroupMemberParticipants', array(
              'local' => 'id',
-             'foreign' => 'sport_game_group_id'));
+             'foreign' => 'tournament_sport_game_group_id'));
 
         $this->hasMany('TournamentMatchFixture as roundTypeMatchFixtures', array(
              'local' => 'id',
-             'foreign' => 'sport_game_group_id'));
+             'foreign' => 'tournament_sport_game_group_id'));
 
         $this->hasMany('TournamentMatchParticipantTeam as sportGameGroupMatchParticipantTeams', array(
              'local' => 'id',
-             'foreign' => 'sport_game_group_id'));
+             'foreign' => 'tournament_sport_game_group_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

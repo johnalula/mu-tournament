@@ -38,11 +38,10 @@ class MultipleContestantTeamGroupTable extends PluginMultipleContestantTeamGroup
 			$_nw = new MultipleContestantTeamGroup (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
 			$_nw->tournament_id = trim($_tournamentID); 
-			$_nw->tournament_sport_game_group_id = trim($_tournamentGroupID); 
-			$_nw->tournament_sport_game_group_token_id = sha1(md5(trim($_tournamentGroupTokenID)));  
+			$_nw->tournament_team_group_id = trim($_tournamentGroupID); 
+			$_nw->tournament_team_group_token_id = sha1(md5(trim($_tournamentGroupTokenID)));  
 			$_nw->sport_game_id = trim($_sportGameID); 
 			$_nw->sport_game_token_id = sha1(md5(trim($_sportGameTokenID)));  
-			//$_nw->game_group_type_id = trim($_groupTypeID); 
 			$_nw->group_name = trim('Group '.TournamentCore::processGroupNumberValue ($_groupNumber)); 
 			$_nw->group_number = trim($_groupNumber); 
 			$_nw->group_code = trim($_groupCode); 

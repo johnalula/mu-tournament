@@ -13,20 +13,16 @@
 class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 {
 	
-	public function checkInitiated ()
+	public function makeGroupCode ($_groupCode, $_sportGameCodeID)
 	{
-		return (($this->status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
-	}
-	public function makePending ()
-	{
-		$_flag = true;   
-			$this->approval_status = trim(TournamentCore::$_PENDING);   
-			$this->status = trim(TournamentCore::$_PENDING); 
+		$_flag = true;    
+		//if($this->pendingTeamGroup) { 
+			$this->group_code = $_groupCode.'-'.SystemCore::processCodeGeneratorInitialNumber($_sportGameCodeID).'/'.date('y', time()); 
 			$this->save();
-			
+		//}
 		return $_flag;
 	}
-	public function makeActivation ()
+	public function makeProcessActivation ()
 	{
 		$_flag = true;    
 		//if($this->pendingTeamGroup) { 
@@ -36,8 +32,16 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 		//}
 		return $_flag;
 	}
-	
-	public function makeApproval ()
+	public function makeProcessPending ()
+	{
+		$_flag = true;   
+			$this->approval_status = trim(TournamentCore::$_PENDING);   
+			$this->status = trim(TournamentCore::$_PENDING); 
+			$this->save();
+			
+		return $_flag;
+	}
+	public function makeProcessApproval ()
 	{
 		$_flag = true;   
 		$_effectiveDate = date('m/d/Y', time());  
@@ -56,7 +60,7 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 		$this->save();
 		return $_flag;
 	}
-	public function makeCompletion ()
+	public function makeProcessCompletion ()
 	{
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  

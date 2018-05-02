@@ -103,7 +103,7 @@ abstract class BaseTournamentTeamGroup extends sfDoctrineRecord
 
         $this->hasMany('SportGameGroup as tournamentGroupSportGameGroups', array(
              'local' => 'id',
-             'foreign' => 'tournament_sport_game_group_id'));
+             'foreign' => 'tournament_team_group_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

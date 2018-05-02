@@ -8,8 +8,8 @@
  * @property string $token_id
  * @property integer $match_fixture_id
  * @property string $match_fixture_token_id
- * @property integer $sport_game_group_id
- * @property string $sport_game_group_token_id
+ * @property integer $tournament_sport_game_group_id
+ * @property string $tournament_sport_game_group_token_id
  * @property integer $sport_game_team_group_id
  * @property string $sport_game_team_group_token_id
  * @property string $effective_date
@@ -23,7 +23,6 @@
  * @property string $type
  * @property TournamentSportGameGroup $TournamentSportGameGroup
  * @property TournamentMatchFixture $TournamentMatchFixture
- * @property SportGameGroup $SportGameGroup
  * @property Doctrine_Collection $tournamentMatchParticipantTeamMemberParticipants
  * 
  * @package    symfony
@@ -47,11 +46,10 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('sport_game_group_id', 'integer', 8, array(
+        $this->hasColumn('tournament_sport_game_group_id', 'integer', null, array(
              'type' => 'integer',
-             'length' => 8,
              ));
-        $this->hasColumn('sport_game_group_token_id', 'string', 100, array(
+        $this->hasColumn('tournament_sport_game_group_token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
              ));
@@ -113,7 +111,7 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasOne('TournamentSportGameGroup', array(
-             'local' => 'sport_game_group_id',
+             'local' => 'tournament_sport_game_group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
@@ -121,10 +119,6 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              'local' => 'match_fixture_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
-
-        $this->hasOne('SportGameGroup', array(
-             'local' => 'sport_game_group_id',
-             'foreign' => 'id'));
 
         $this->hasMany('TournamentMatchTeamMemberParticipant as tournamentMatchParticipantTeamMemberParticipants', array(
              'local' => 'id',
