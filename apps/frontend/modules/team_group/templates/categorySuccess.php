@@ -109,65 +109,8 @@
 	</div><!-- /.modal-dialog -->
 </form>
 </div><!-- /.modal -->
-
  
-<!-- Modal -->
-<div class="modal fade" id="candidateGroupTypeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form id="insertModalOneData">
-	<div class="modal-dialog">
-		<div class="modal-content"> 
-			 <div class="ui-modal-panel-container1" id=""> 
-				<div class="ui-panel-grid-box" id=""> 
-					<!-- First panel -->  
-						<div class="ui-panel-grid">
-							<div class="ui-panel-header-default">
-								<h2 class="ui-theme-panel-header">
-									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group Management') ?>">
-									<span class="ui-header-status-icon"> 
-									</span>
-									<?php echo __('Candidate Sport Games')   ?>
-								</h2>
-								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								</div>
-							</div><!-- ui-panel-header-default -->
-							<div class="" id="ui-list-collapsible-panel-one">
-								<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
-							<!-- Begining of toolbar -->
-								<div class="ui-toolbar-menu-box ui-panel-content-border">
-									<div class="ui-toolbar-menu">
-										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_candidateSportGames)) ?> 
-									</div>
-								</div>
-								<!--    End of toolbar      -->
-								<div class="ui-panel-content-box">
-									<div class="ui-panel-content-box ">
-										<div class="ui-panel-grid-list"> 
-											<?php include_partial('tournament_setup/candidate_group_type', array( '_candidateGroupTypes' => $_candidateGroupTypes )) ?> 
-										</div>
-									</div> 
-									
-									<div class="ui-panel-footer-default">
-										<div class="ui-panel-list-pagination-default">
-											<div class="ui-panel-list-pagination">
-												<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
-											</div>
-										</div>
-									</div>
-											
-								</div> 			
-							</div><!-- ui-panel-content-box --> 
-						</div><!-- end of ui-panel-grid --> 
-					<!-- First panel --> 
-					<div class="clearFix"></div>		
-				</div><!-- end of ui-panel-grid-box --> 
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</form>
-</div><!-- /.modal -->
-
-
+ 
 <!--- ************************  -->
 
 <div class="modal fade" id="processAjaxLoadergModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
@@ -202,30 +145,12 @@
 		//alert(data);
 		processDataSelection(data, idName, url );		 
 	}); 
-	
-	$('.selectSportGameGroupType').click(function() {   
-		var thisIDNumber = $(this).attr('rel');   
-		var thisIDName = $(this).attr('id');   
-		document.getElementById("sport_game_group_type_name").value = thisIDName;
-		document.getElementById("sport_game_group_type_id").value = thisIDNumber; 
-		//$('#createSchoolGradePaymentFee').removeAttr("disabled").removeClass("ui-action-toolbar-disabled-menu").addClass("ui-action-toolbar-enabled-menu");
-	}); 
-	
-	$('.selectCandidateGroupType').click(function() {   
-		var url = '<?php echo url_for('team_group/candidateGroupTypes')?>'; 
-		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-group-type';   
-		//var data = 'tam_group_id='+document.getElementById('gender_category_id').value;
-		var data = 'sport_game_id='+document.getElementById('sport_game_id').value+'&sport_game_token_id='+document.getElementById('sport_game_token_id').value+'&gender_category_id='+document.getElementById('gender_category').value;
-		//alert(data);
-		processDataSelection(data, idName, url );	
-		return true;	 
-	}); 
+	 
 	
 	//*********************************/
 	
 	$("#candidateSportGameModal").submit(function(e) { 
-		if($("input[name=selectSportGameModal]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
@@ -241,22 +166,7 @@
 			$('#candidateSportGameModal').modal('hide');
 		return e.preventDefault();
 	});
-	 
-	$("#candidateGroupTypeModal").submit(function(e) { 
-		if($("input[name=selectSportGameModal]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("group_type_id").value = listArr[0];
-			document.getElementById("group_type_token_id").value = listArr[1];  
-			document.getElementById("group_type_name").value = listArr[2];    
-			$("#createTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#candidateGroupTypeModal').modal('hide');
-		return e.preventDefault();
-	});
-	 
+	  
 	 
  
 </script>

@@ -28,6 +28,7 @@
  * @property string $team_country_flag_file_full_path
  * @property string $start_date
  * @property string $end_date
+ * @property boolean $grouped_flag
  * @property boolean $confirm_flag
  * @property boolean $active_flag
  * @property integer $status
@@ -139,6 +140,10 @@ abstract class BaseTeam extends sfDoctrineRecord
         $this->hasColumn('end_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('grouped_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('confirm_flag', 'boolean', null, array(
              'type' => 'boolean',

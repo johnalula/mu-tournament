@@ -3,6 +3,7 @@
 	  <thead>
 		 <tr>
 			<th></th>
+			<th class="" style="text-align:center!important;"><?php echo __('PLR') ?></th>
 			<th class="" style="text-align:center!important;"><?php echo __('ID') ?></th>
 			<th class="" style="text-align:left!important;"><?php echo __('Game').' #' ?></th>
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Team Group') ?>"><?php echo  __('Group #') ?></th>    
@@ -17,8 +18,13 @@
 	   <?php foreach ( $_tournamentSportGameGroups as $_key => $_tournamentSportGameGroup ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_tournamentSportGameGroup->id.'$'.$_tournamentSportGameGroup->token_id.'$'.$_tournamentSportGameGroup->sportGameID.'$'.$_tournamentSportGameGroup->sportGameTokenID.'$'.$_tournamentSportGameGroup->sportGameGroupName.'$'.$_tournamentSportGameGroup->sportGameName.'$'.$_tournamentSportGameGroup->gameCategoryName.'$'.TournamentCore::processDistanceTypeValue($_tournamentSportGameGroup->sportGameDistanceTypeID).'$'.TournamentCore::processAthleticsTypeValue($_tournamentSportGameGroup->sportGameTypeMode).'$'.$_tournamentSportGameGroup->groupGenderCategoryID.'$'.TournamentCore::processGenderValue($_tournamentSportGameGroup->groupGenderCategoryID) ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_tournamentSportGameGroup->id.'$'.$_tournamentSportGameGroup->token_id.'$'.$_tournamentSportGameGroup->sportGameID.'$'.$_tournamentSportGameGroup->sportGameTokenID.'$'.$_tournamentSportGameGroup->sportGameGroupName.'$'.$_tournamentSportGameGroup->sportGameName.'$'.$_tournamentSportGameGroup->gameCategoryName.'$'.TournamentCore::processDistanceTypeValue($_tournamentSportGameGroup->sportGameDistanceTypeID).'$'.TournamentCore::processAthleticsTypeValue($_tournamentSportGameGroup->sportGameTypeMode).'$'.$_tournamentSportGameGroup->groupGenderCategoryID.'$'.TournamentCore::processGenderValue($_tournamentSportGameGroup->groupGenderCategoryID).'$'.$_tournamentSportGameGroup->contestantTeamMode .'$'.$_tournamentSportGameGroup->contestantMode ?>">
 			</td>
+			<td class="ui-td-center-text ui-td-xsmall-00"> 
+				<span rel="<?php echo $_tournamentSportGameGroup->id ?>" class="ui-table-status-xsmall-icon" id="<?php echo $_tournamentSportGameGroup->id ?>">
+					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->hasGroupParticipantTeam ? 'status/approved':'status/disabled')  ?>"> 
+				</span>
+			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<?php echo SystemCore::processDataID($_tournamentSportGameGroup->id) ?> 
 			</td> 
@@ -49,13 +55,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=7></td>
+			<td class="ui-table-td-footer" colspan=8></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=9>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=10>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

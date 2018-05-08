@@ -12,14 +12,12 @@
  * @property string $tournament_token_id
  * @property integer $sport_game_category_id
  * @property string $match_number
- * @property string $match_season
  * @property integer $tournament_match_round_mode
  * @property integer $round_type_mode
  * @property integer $contestant_team_mode
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
- * @property boolean $roundable_flag
  * @property boolean $complete_flag
  * @property boolean $active_flag
  * @property integer $approval_status
@@ -65,10 +63,6 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('match_season', 'string', 100, array(
-             'type' => 'string',
-             'length' => 100,
-             ));
         $this->hasColumn('tournament_match_round_mode', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -89,10 +83,6 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
         $this->hasColumn('end_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
-             ));
-        $this->hasColumn('roundable_flag', 'boolean', null, array(
-             'type' => 'boolean',
-             'default' => false,
              ));
         $this->hasColumn('complete_flag', 'boolean', null, array(
              'type' => 'boolean',

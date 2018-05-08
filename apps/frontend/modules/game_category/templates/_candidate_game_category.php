@@ -28,7 +28,7 @@
 				<?php echo $_candidateGameCategory->categoryName ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-01">
-				<?php echo $_candidateGameCategory->id ?>
+				<?php echo $_candidateGameCategory->hasTournamentSportGames ? 'true':'false' ?>
 			</td>
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo $_candidateGameCategory->description ?>

@@ -22,7 +22,22 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 		//}
 		return $_flag;
 	}
-	public function makeProcessActivation ()
+	
+	public function checkInitiated ()
+	{
+		return (($this->approval_status ==TournamentCore::$_PENDING) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
+	}
+	
+	public function makePending ()
+	{
+		$_flag = true;   
+			$this->approval_status = trim(TournamentCore::$_ACTIVE);   
+			$this->status = trim(TournamentCore::$_PENDING); 
+			$this->save();
+			
+		return $_flag;
+	}
+	public function makeActivation ()
 	{
 		$_flag = true;    
 		//if($this->pendingTeamGroup) { 
@@ -30,15 +45,6 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 			$this->status = trim(TournamentCore::$_ACTIVE); 
 			$this->save();
 		//}
-		return $_flag;
-	}
-	public function makeProcessPending ()
-	{
-		$_flag = true;   
-			$this->approval_status = trim(TournamentCore::$_PENDING);   
-			$this->status = trim(TournamentCore::$_PENDING); 
-			$this->save();
-			
 		return $_flag;
 	}
 	public function makeProcessApproval ()

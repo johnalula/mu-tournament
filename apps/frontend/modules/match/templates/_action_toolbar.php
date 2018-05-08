@@ -100,6 +100,26 @@
 							<?php echo __('Cancel') ?>
 						</button>
 					</li>
+				<?php endif; ?> 
+				<?php if($sf_request->getParameter('action') == 'complete'): ?>
+					<li class="">
+						<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="completeTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
+							<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
+							<?php echo __('Approve') ?>
+						</button>
+					</li>	 
+					<li class="">
+						<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="completeTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
+							<img class="navbar-nav-img" src="<?php echo image_path('status/apply') ?>">
+							<?php echo __('Complete') ?>
+						</button>
+					</li>	 
+					<li class="">
+						<a href="<?php echo url_for('team_group/index') ?>" title="<?php echo __('Back to Team Group List') ?>" id="backToSportGame" class="" >
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/details') ?>">
+							<?php echo __('List') ?>
+						</a>
+					</li>
 				<?php endif; ?>
 			<?php endif; ?>
 			

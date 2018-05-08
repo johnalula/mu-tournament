@@ -19,16 +19,16 @@
 	    <?php foreach ( $_candidateMatchFixtures as $_key => $_candidateMatchFixture ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateMatchFixture->id.'$'.$_candidateMatchFixture->token_id.'$'.$_candidateMatchFixture->sportGameGroupID.'$'.$_candidateMatchFixture->sportGameGroupTokenID.'$'.$_candidateMatchFixture->sportGameName.'$'.$_candidateMatchFixture->gameCategoryName.'$'.TournamentCore::processAthleticsTypeValue($_candidateMatchFixture->sportGameTypeMode).'$'.$_candidateMatchFixture->groupTypeName.'$'.TournamentCore::processGenderValue($_candidateMatchFixture->teamGroupGenderCategoryID).'$'.$_candidateMatchFixture->groupTypeID.'$'.$_candidateMatchFixture->contestantMode.'$'.$_candidateMatchFixture->sportGameID.'$'.$_candidateMatchFixture->sportGameTokenID ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateMatchFixture->id.'$'.$_candidateMatchFixture->token_id.'$'.$_candidateMatchFixture->sportGameGroupID.'$'.$_candidateMatchFixture->sportGameGroupTokenID.'$'.$_candidateMatchFixture->sportGameName.'$'.$_candidateMatchFixture->gameCategoryName.'$'.TournamentCore::processAthleticsTypeValue($_candidateMatchFixture->sportGameTypeMode).'$'.$_candidateMatchFixture->sportGameGroupName.'$'.TournamentCore::processGenderValue($_candidateMatchFixture->teamGroupGenderCategoryID).'$'.$_candidateMatchFixture->teamGroupGenderCategoryID.'$'.$_candidateMatchFixture->contestantMode.'$'.$_candidateMatchFixture->fixtureSportGameID.'$'.$_candidateMatchFixture->sportGameTokenID ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<?php echo SystemCore::processDataID($_candidateMatchFixture->id) ?> 
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo $_candidateMatchFixture->tournamentMatchNumber ?> 
+				<?php echo $_candidateMatchFixture->tournamentMatchFixtureNumber ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_candidateMatchFixture->sportGameName.' - '.$_candidateMatchFixture->gameCategoryName.'- '.($_candidateMatchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_candidateMatchFixture->sportGameTypeMode)):$_candidateMatchFixture->sportGameName).' - '.$_candidateMatchFixture->groupTypeName.' ( '.TournamentCore::processGenderValue($_candidateMatchFixture->teamGroupGenderCategoryID).' )' ?>
+				<?php echo $_candidateMatchFixture->sportGameName.' - '.$_candidateMatchFixture->gameCategoryName.'- '.($_candidateMatchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_candidateMatchFixture->sportGameTypeMode)):$_candidateMatchFixture->sportGameName).' - '.$_candidateMatchFixture->sportGameGroupName.' ( '.TournamentCore::processGenderValue($_candidateMatchFixture->teamGroupGenderCategoryID).' )' ?>
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-01">
 				<?php echo TournamentCore::processEventTypeValue($_candidateMatchFixture->matchEventType) ?>

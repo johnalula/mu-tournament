@@ -29,6 +29,7 @@
  * @property TournamentGroupParticipantTeam $TournamentGroupParticipantTeam
  * @property TeamMemberParticipant $TeamMemberParticipant
  * @property TeamMemberParticipantRole $TeamMemberParticipantRole
+ * @property Doctrine_Collection $tournamentGroupParticipantTeamMemberMatchParticipants
  * 
  * @package    symfony
  * @subpackage model
@@ -139,6 +140,10 @@ abstract class BaseTournamentGroupParticipantTeamMember extends sfDoctrineRecord
              'local' => 'team_member_participant_role_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('TournamentMatchTeamMemberParticipant as tournamentGroupParticipantTeamMemberMatchParticipants', array(
+             'local' => 'id',
+             'foreign' => 'group_participant_team_member_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

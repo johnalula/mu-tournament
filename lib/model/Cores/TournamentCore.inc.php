@@ -1422,68 +1422,89 @@ class TournamentCore {
 	
 	/************************************************/
 	
-	/*public static $_MEN = 1; 
-	public static $_WOMEN = 2; 
-	public static $_MIXED = 3; 
+	public static $_POINT_ORDER = 1; 
+	public static $_POSITION_ORDER = 2; 
+	public static $_TIME_ORDER = 3; 
+	public static $_OTHER_ORDER = 4; 
 	
-	public static $_GENDERS = array ( 1 => "Men", 2 => "Women", 3 => "Mixed" );
+	public static $_RESULT_RANKING_MODES = array ( 1 => "Point Order", 2 => "Position Order", 3 => "Time Order", 4 => "Other Order" );
 	
-	public static function processGenders ( ) 
+	public static function processResultRankingModes ( ) 
 	{
 	  try {
-				return  self::$_GENDERS; 
-			} catch ( Exception $e ) {
+				return  self::$_RESULT_RANKING_MODES; 
+			} catch ( Exception $_e ) {
 			return null; 
 	  }        
 	}
-	public static function processGenderID ( $_value ) 
+	public static function processResultRankingModeID ( $_value ) 
 	{
 		try {
-			foreach( self::$_GENDERS as $_key => $_gender ) {
-				if( strcmp($_gender, $_value) == 0 )
+			foreach( self::$_RESULT_RANKING_MODES as $_key => $_order ) {
+				if( strcmp($_order, $_value) == 0 )
 					return $_key; 
 			}
 			return null; 
-			} catch ( Exception $e ) {
+			} catch ( Exception $_e ) {
 			return null; 
 		}        
 	}
 	
-	public static function processGenderValue ( $_id )
+	public static function processResultRankingModeValue ( $_id )
 	{
 		try {
-				foreach( self::$_GENDERS as $_key => $_gender ) {
+				foreach( self::$_RESULT_RANKING_MODES as $_key => $_order ) {
 					if( $_key == $_id )
-						return $_gender; 
+						return $_order; 
 			}
 			return null; 
-			} catch ( Exception $e ) {
+			} catch ( Exception $_e ) {
 			return null; 
 		}    
 	}
-	public static function processDefaultGender ()
+	public static function processDefaultResultRankingMode ()
 	{
 		try {
-				return  self::$_MEN; 
-			} catch ( Exception $e ) {
+				return  self::$_POINT_ORDER; 
+			} catch ( Exception $_e ) {
 			return null; 
 	  }     
 	}
-	public static function processGenderAlias ($_gender)
+	public static function processResultRankingModeIcon ($_order)
 	{
-		switch($_gender) {			
-			case self::$_MEN:
-				return 'M';
+		switch($_order) {			
+			case self::$_POINT_ORDER:
+				return 'point_order';
 			break;	
-			case self::$_WOMEN:
-				return 'W';
+			case self::$_POSITION_ORDER:
+				return 'position_order';
 			break; 
-			case self::$_MIXED:
-				return 'MX';
+			case self::$_TIME_ORDER:
+				return 'time_order';
+			break; 
+			case self::$_OTHER_ORDER:
+				return 'other_order';
 			break; 
 		}
 	}
-	*/
+	public static function processResultRankingModeAlias ($_order)
+	{
+		switch($_order) {			
+			case self::$_POINT_ORDER:
+				return 'POTOR';
+			break;	
+			case self::$_POSITION_ORDER:
+				return 'POSOR';
+			break; 
+			case self::$_TIME_ORDER:
+				return 'TMOR';
+			break; 
+			case self::$_OTHER_ORDER:
+				return 'OTOR';
+			break; 
+		}
+	}
+	
 /************************************************/
 
 	public static function makeSportGameName ($_event) 

@@ -13,7 +13,7 @@
 				<?php include_partial('team_standing', array('_participantTeams' => $_participantTeams)) ?>
 			</div><!-- /.carousel -->
 			<div class="col-sm-8">
-				<?php include_partial('fixture', array('_candidateMatchFixtures' => $_candidateMatchFixtures)) ?>
+				<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
 			</div><!-- /.col-sm -->
 		</div><!-- /.row -->
 		<div class="row">

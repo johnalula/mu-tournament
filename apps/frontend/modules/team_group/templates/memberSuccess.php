@@ -1,17 +1,6 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
 	
-	//sport_game_group_name=Group One - 5000M (Men) - Running&sport_game_group_id=5&sport_game_group_token_id=5e754ee527395f5b407c18ba125a1fb53f836acd&tournament_id=1&tournament_team_group_id=1&tournament_team_group_token_id=8bed6e61e3c51bf310b141ade06f985b1b97aaf1&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&gender_category_id=1&participant_team_name=Mekelle University (MU-ET) - ETHIOPIA&participant_team_id=4&participant_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&team_status=1&start_date=04/28/2018&description=dfsfgsdfgsdfg
-	
-	//$_flag =  SportGameGroupParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, 1, 5, '5e754ee527395f5b407c18ba125a1fb53f836acd', 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', 'Mekelle University (MU-ET) - ETHIOPIA', 'Group One - 5000M (Men) - Running', '04/26/2018', 2, 'asdfas dfasdf', SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
-	
-	//$_flag =  SportGameTeamGroupTable::processNew ( $_orgID, $_orgTokenID, 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', 1, 'b7d28c838020d0307bcb521542e95f464cbe17c5', 'Mekelle University (MU-ET)', '04/26/2018', 1, 'sdfgsdfgsdf sdfgsdfg', SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
-	
-	//$_flag =  SportGameTeamGroupTable::processNew ( $_orgID, $_orgTokenID, $_memberTeamID, $_memberTeamTokenID, $_teamGroupID, $_teamGroupTokenID, $_memberTeamName, $_entryDate, $_teamStatus, $_description, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
-	
-	//$_teamGroup =  GroupTypeTable::makeObject ( $_orgID, 1);
-	//echo count($_candidateParticipantTeams).' = '; 
-	//echo sha1(md5('3829e68f447d9c6e723f820a44421f7e90674acf'));
 ?> 
 
 <div class="ui-page-box">
@@ -182,13 +171,9 @@
 		return false; 
 	});  
 	$('#createMultipleCandidateModalData').click(function(){
-		var url = '<?php echo url_for('team_group/createMultipleGroupParticipantTeam')?>'; 
-		//var formName = 'insertModalOneData';
-		//var data = $("form#insertModalOneData").serialize();
-		//var datas = generateValidData (formName);
-		//processEntry(datas, url )
+		var url = '<?php echo url_for('team_group/createMultipleGroupParticipantTeam')?>';  
 		
-		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_group_name='+document.getElementById('sport_game_group_name').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value+'&team_status='+document.getElementById('team_status').value+'&start_date='+document.getElementById('start_date').value+'&description='+document.getElementById('description').value;
+		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_group_id='+document.getElementById('sport_game_group_id').value+'&sport_game_group_token_id='+document.getElementById('sport_game_group_token_id').value+'&sport_game_group_name='+document.getElementById('sport_game_group_name').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value+'&team_status='+document.getElementById('team_status').value+'&start_date='+document.getElementById('start_date').value+'&description='+document.getElementById('description').value;
 		//alert(data);
 		$('#candidateGroupParticipantTeamModal').modal('hide');
 		processEntry(data, url )
@@ -225,7 +210,7 @@
 	//*********************************/
 	
 	$("#candidateTournamentSportGameGroupModal").submit(function(e) { 
-		if($("input[name=selectSportGameModal]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
@@ -245,7 +230,7 @@
 	});
 	 
 	$("#candidateGroupParticipantTeamModal").submit(function(e) { 
-		if($("input[name=selectSportGameModal]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();

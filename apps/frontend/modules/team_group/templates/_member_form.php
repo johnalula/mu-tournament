@@ -15,9 +15,9 @@
 								<input type="text" class="form-control " id="sport_game_group_name" name="group_participant_team[sport_game_group_name]" placeholder="<?php echo __('Candidate Sport Game Group') ?>" title="<?php echo __('Candidate Team') ?>" value="" data-toggle="modal" data-target="#candidateTournamentSportGameGroupModal"  disabled required >
 								<input type="hidden" class="form-control" id="sport_game_group_id" name="group_participant_team[sport_game_group_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="sport_game_group_token_id" name="group_participant_team[sport_game_group_token_id]" value=""> 
-								<input type="hidden" class="form-control" id="tournament_id" name="team_group_category[tournament_id]" placeholder="" value="<?php echo $_tournamentTeamGroup->tournament_id ?>">
-								<input type="hidden" class="form-control" id="tournament_team_group_id" name="team_group_category[tournament_team_group_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentTeamGroup->id ?>"  >
-								<input type="hidden" class="form-control" id="tournament_team_group_token_id" name="team_group_category[tournament_team_group_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentTeamGroup->token_id ?>"  > 
+								<input type="hidden" class="form-control" id="tournament_id" name="group_participant_team[tournament_id]" placeholder="" value="<?php echo $_tournamentTeamGroup->tournament_id ?>">
+								<input type="hidden" class="form-control" id="tournament_team_group_id" name="group_participant_team[tournament_team_group_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentTeamGroup->id ?>"  >
+								<input type="hidden" class="form-control" id="tournament_team_group_token_id" name="group_participant_team[tournament_team_group_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentTeamGroup->token_id ?>"  > 
 							
 								<input type="hidden" class="form-control" id="sport_game_id" name="group_participant_team[sport_game_id]" value=""> 
 								<input type="hidden" class="form-control" id="sport_game_token_id" name="group_participant_team[sport_game_token_id]" value=""> 

@@ -175,7 +175,7 @@ class ModuleCore {
 		if(is_null($_modleName) || is_null($_action) || is_null($_object)) {
 			return false;
 		} 
-		return ($_modleName.'/'.$_action.'?'.$_IDName.'='.$_object->id.'&token_id='.$_object->token_id);
+		return  (($_modleName.'/'.$_action.'?'.$_IDName.'='.$_object->id.'&token_id='.$_object->token_id));
 	}
 	public static function makeModuleURL($_modleName, $_action)
 	{
@@ -183,6 +183,15 @@ class ModuleCore {
 			return false;
 		} 
 		return ($_modleName.'/'.$_action);
+	}
+	static function slugify($text)
+	{		
+		if(empty($text)) return 'n-a';
+		$text = preg_replace('/\W+/', '-', $text);
+		$text = trim($text, '-');
+		$text = strtolower($text);
+
+		return $text;
 	}
 	public static function makeBackwardNavigation($_action)
 	{

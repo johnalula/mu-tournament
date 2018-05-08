@@ -124,8 +124,20 @@
 	
 	//*********************************/
 	
+	$('.selectCandidateSportGameCategory').click(function() {   
+		var url = '<?php echo url_for('match/candidateSportGameCategory')?>'; 
+		var navName = $(this).attr('rel'); 
+		var idName = 'candidate-game-categorys';   
+		var data = '';
+		//alert(data);
+		processDataSelection(data, idName, url );	
+		return true;	 
+	}); 
+	
+	//*********************************/
+	
 	$("#candidateSportGameCategoryModal").submit(function(e) { 
-		if($("input[name=selectSportGameCategoryModal]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();

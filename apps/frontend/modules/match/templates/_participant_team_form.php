@@ -15,11 +15,15 @@
 								<input type="text" class="form-control " id="match_fixture" name="match_participant_team[match_fixture]" placeholder="<?php echo __('Candidate Match Fixture') ?>" title="<?php echo __('Candidate Match Fixture') ?>" value="" data-toggle="modal" data-target="#candidateTournamentMatchFixtureModal"  disabled>
 								<input type="hidden" class="form-control" id="match_fixture_id" name="match_participant_team[match_fixture_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="match_fixture_token_id" name="match_participant_team[match_fixture_token_id]" value=""> 
-								<input type="hidden" class="form-control" id="sport_game_group_id" name="match_participant_team[sport_game_group_id]" placeholder="" value="">
-								<input type="hidden" class="form-control" id="sport_game_group_token_id" name="match_participant_team[sport_game_group_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="tournament_sport_game_group_id" name="match_participant_team[tournament_sport_game_group_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="tournament_sport_game_group_token_id" name="match_participant_team[tournament_sport_game_group_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="gender_category_id" name="match_participant_team[gender_category_id]" value=""> 
+								
+								<input type="hidden" class="form-control" id="tournament_contestant_team_mode" name="match_participant_team[tournament_contestant_team_mode]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->contestantTeamMode ?>"  >
 								<input type="hidden" class="form-control" id="tournament_match_id" name="match_participant_team[tournament_match_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->id ?>"  >
 								<input type="hidden" class="form-control" id="tournament_match_token_id" name="match_participant_team[tournament_match_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->token_id ?>"  >
 								<input type="hidden" class="form-control" id="tournament_match_game_category_id" name="match_participant_team[tournament_match_game_category_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->sport_game_category_id ?>"  >
+								
 								<span class="input-group-btn">
 									<button class="btn btn-default selectCandidateTournamentMatchFixture" type="button" data-toggle="modal" data-target="#candidateTournamentMatchFixtureModal" title="<?php echo __('Candidat Match Fixtures') ?>">
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
@@ -37,6 +41,7 @@
 								<input type="hidden" class="form-control" id="participant_team_token_id" name="match_participant_team[participant_team_token_id]" value=""> 
 								<input type="hidden" class="form-control" id="sport_game_group_team_id" name="match_participant_team[sport_game_group_team_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="sport_game_group_team_token_id" name="match_participant_team[sport_game_group_team_token_id]" value=""> 
+								
 								<span class="input-group-btn">
 									<button class="btn btn-default selectCandidateParticipantTeam" type="button" data-toggle="modal" data-target="#candidateParticipantTeamModal" title="<?php echo __('Candidat Participant Teams') ?>" disabled >
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
@@ -48,7 +53,7 @@
 					<div class="form-group">
 						<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>:&nbsp;</label>
 						<div class="col-sm-40"> 
-							<textarea class="form-control form-control-md" rows=3 id="description" name="match_fixture[description]" placeholder="<?php echo __('Description') ?>" title="<?php echo __('Description') ?>" ></textarea>
+							<textarea class="form-control form-control-sm" rows=3 id="description" name="match_fixture[description]" placeholder="<?php echo __('Description') ?>" title="<?php echo __('Description') ?>" ></textarea>
 						</div>
 					</div>
 				</fieldset> 

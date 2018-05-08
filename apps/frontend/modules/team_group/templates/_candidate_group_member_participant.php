@@ -1,4 +1,4 @@
-<div class="table-responsive" id="ui-modal-data-table-list-candidate-team-member-participant"> 
+<div class="table-responsive" id="ui-modal-data-table-list-candidate-group-member-participant"> 
 	<table class="ui-grid-table">
 	  <thead>
 		 <tr>
@@ -38,7 +38,7 @@
 				<?php echo TournamentCore::processEventTypeValue($_candidateParticipant->id) ?>
 			</td> 
 			<td class="ui-td-right-text ui-td-xsmall-00">
-				 <?php echo $_candidateParticipant->checkPending() ? 'true':'false' ?> 
+				 <?php echo $_candidateParticipant->teamName.' -- '.$_candidateParticipant->teamID ?> 
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo Wordlimit::Wordlimiter($_candidateParticipant->description, 5) ?>

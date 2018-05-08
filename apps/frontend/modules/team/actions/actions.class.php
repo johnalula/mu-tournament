@@ -17,18 +17,16 @@ class teamActions extends sfActions
   */
    public function executeIndex(sfWebRequest $request)
 	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
 		$this->_teams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 20 );
 	}
 	
 	public function executeNew(sfWebRequest $request)
 	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
 		$this->_teams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
 		
@@ -36,10 +34,7 @@ class teamActions extends sfActions
 	public function executeView(sfWebRequest $request)
 	{
 		$_teamID = $request->getParameter('team_id');	
-		$_tokenID = $request->getParameter('token_id');	
-		//$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		$_tokenID = $request->getParameter('token_id');	 
 		
 		$this->_team = TeamTable::processObject ( $_orgID, $_orgTokenID, $_teamID, $_tokenID ) ;
 		
@@ -48,9 +43,9 @@ class teamActions extends sfActions
 	{
 		$_teamID = $request->getParameter('team_id');	
 		$_tokenID = $request->getParameter('token_id');	
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
 		$this->_team = TeamTable::processObject ( $_orgID, $_orgTokenID, $_teamID, $_tokenID ) ;
 

@@ -22,7 +22,7 @@
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('complete', array( '_sportGameTeamGroup' => $_sportGameTeamGroup, '_groupMemberTeams' => $_groupMemberTeams, '_candidateGroups' => $_candidateGroups, '_candidateTeamMemberParticipants' => $_candidateTeamMemberParticipants )) ?> 
+				<?php include_partial('complete', array( '_tournamentMatch' => $_tournamentMatch, '_matchParticipantTeams' => $_matchParticipantTeams )) ?>
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -42,113 +42,7 @@
 <?php endif; ?>         
 
 <!--- ************************  -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="candidateGroupMemberTeamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form id="insertModalOneData">
-	<div class="modal-dialog">
-		<div class="modal-content"> 
-			 <div class="ui-modal-panel-container1" id=""> 
-				<div class="ui-panel-grid-box" id=""> 
-					<!-- First panel -->  
-						<div class="ui-panel-grid">
-							<div class="ui-panel-header-default">
-								<h2 class="ui-theme-panel-header">
-									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
-									<span class="ui-header-status-icon">
-										<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
-										<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
-									</span>
-									<?php echo __('Candidate Teams').' ( Sport Game: '.$_sportGameTeamGroup->sportGameName.' - Group: '.$_sportGameTeamGroup->sportGameGroupName.' - Code #:'.$_sportGameTeamGroup->sportGameGroupCode.' )'  ?>
-								</h2>
-								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								</div>
-							</div><!-- ui-panel-header-default -->
-							<div class="" id="ui-list-collapsible-panel-one">
-								<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
-							<!-- Begining of toolbar -->
-								<div class="ui-toolbar-menu-box ui-panel-content-border">
-									<div class="ui-toolbar-menu">
-										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_task)) ?> 
-									</div>
-								</div>
-								<!--    End of toolbar      -->
-								<div class="ui-panel-content-box">
-									<div class="ui-panel-content-box ">
-										<div class="ui-panel-grid-list"> 
-											<?php include_partial('candidate_group_member_team', array('_candidateMemberTeams' => $_candidateMemberTeams)) ?> 
-										</div>
-									</div> 
-									
-									<div class="ui-panel-footer-default-box">
-										&nbsp;
-									</div><!-- ui-panel-footer-default -->			
-								</div> 			
-							</div><!-- ui-panel-content-box --> 
-						</div><!-- end of ui-panel-grid --> 
-					<!-- First panel --> 
-					<div class="clearFix"></div>		
-				</div><!-- end of ui-panel-grid-box --> 
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</form>
-</div><!-- /.modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="candidateGroupMemberTeamParticipantModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form id="insertModalOneData">
-	<div class="modal-dialog">
-		<div class="modal-content"> 
-			 <div class="ui-modal-panel-container1" id=""> 
-				<div class="ui-panel-grid-box" id=""> 
-					<!-- First panel -->  
-						<div class="ui-panel-grid">
-							<div class="ui-panel-header-default">
-								<h2 class="ui-theme-panel-header">
-									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
-									<span class="ui-header-status-icon">
-										<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
-										<img title="<?php echo $_sportGameTeamGroup->sportGameGroupName ?>" src="<?php echo image_path($_sportGameTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
-									</span>
-									<?php echo __('Candidate Partiicipants').' ( Sport Game: '.$_sportGameTeamGroup->sportGameName.' - Group: '.$_sportGameTeamGroup->sportGameGroupName.' - Code #:'.$_sportGameTeamGroup->sportGameGroupCode.' )'  ?>
-								</h2>
-								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								</div>
-							</div><!-- ui-panel-header-default -->
-							<div class="" id="ui-list-collapsible-panel-one">
-								<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
-							<!-- Begining of toolbar -->
-								<div class="ui-toolbar-menu-box ui-panel-content-border">
-									<div class="ui-toolbar-menu">
-										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_task)) ?> 
-									</div>
-								</div>
-								<!--    End of toolbar      -->
-								<div class="ui-panel-content-box">
-									<div class="ui-panel-content-box ">
-										<div class="ui-panel-grid-list"> 
-											<?php include_partial('party/candidate_game_participant', array('_candidateParticipants' => $_candidateParticipants)) ?> 
-										</div>
-									</div> 
-									
-									<div class="ui-panel-footer-default-box">
-										&nbsp;
-									</div><!-- ui-panel-footer-default -->			
-								</div> 			
-							</div><!-- ui-panel-content-box --> 
-						</div><!-- end of ui-panel-grid --> 
-					<!-- First panel --> 
-					<div class="clearFix"></div>		
-				</div><!-- end of ui-panel-grid-box --> 
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</form>
-</div><!-- /.modal -->
+ 
 
 <!--- ************************  -->
 

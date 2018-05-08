@@ -92,7 +92,6 @@ class RoundTypeTable extends PluginRoundTypeTable
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("RoundType rnd") 
-				//->innerJoin("rnd.Campus cmps on rnd.campus_id = cmps.id ")  
 				//->innerJoin("rnd.Organization org on rnd.org_id = org.id ")   
 				->offset($_offset)
 				->limit($_limit) 
@@ -136,6 +135,27 @@ class RoundTypeTable extends PluginRoundTypeTable
    public static function processCandidates ( ) 
    {
 		 
+	}
+	 public static function processCandidateSelection ( $_orgID=null, $_roundType=null, $_exclusion=null,$_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("RoundType rnd") 
+				//->innerJoin("rnd.Organization org on rnd.org_id = org.id ")   
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("rnd.id ASC")
+				->where("rnd.id IS NOT NULL");
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("rnd.org_id = ?", $_orgID);    
+				if(!is_null($_roundType)) $_qry = $_qry->addWhere("rnd.round_type = ?", $_roundType);    
+				if(!is_null($_exclusion))  $_qry = $_qry->andWhereNotIn("rnd.id", $_exclusion ); 
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("rnd.name LIKE ? OR rnd.alias LIKE ? OR rnd.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
 	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_tournamentID, $_tokenID ) 

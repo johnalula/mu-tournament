@@ -1,4 +1,4 @@
-<div class="table-responsive" id="ui-modal-data-table-list-candidate-group-type"> 
+<div class="table-responsive" id="ui-modal-data-table-list-candidate-round-type"> 
 	<table class="ui-grid-table">
 	  <thead>
 		 <tr>

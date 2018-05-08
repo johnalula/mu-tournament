@@ -12,24 +12,24 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach($_matchFixtures as $_key => $_matchFixture ): ?>
+			<?php foreach($_tournamentMatchFixtures as $_key => $_matchFixture ): ?>
 			<tr>
 				<td>
 						<?php echo $_matchFixture->id ?> 
 				</td>
 				<td>
 					<a href="<?php echo url_for('competition/view?fixture_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	
-						<?php echo $_matchFixture->sportGameName.' ( '.TournamentCore::processGenderAlias($_matchFixture->id).' ) -'.$_matchFixture->id.' - '.TournamentCore::processEventTypeValue($_matchFixture->id) ?> 
+						<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - '.$_matchFixture->sportGameGroupName.' ( '.TournamentCore::processGenderValue($_matchFixture->teamGroupGenderCategoryID).' )' ?>
 					</a>
 				</td> 
 				<td>
 					<?php echo TournamentCore::processGroupNumberValue($_matchFixture->id) ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->id ?>
+					<?php echo $_matchFixture->matchTime ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->id ?>
+					<?php echo $_matchFixture->matchDate ?>
 				</td>
 				<td>
 					<?php echo $_matchFixture->status ? 'Pending':'Active' ?>

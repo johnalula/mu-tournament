@@ -80,7 +80,7 @@
 						<select id="sport_game_group_status" name="team_group_category[sport_game_group_status]" class="form-control" title="<?php echo __('Status') ?>">
 							<option value="" selected  ><?php echo 'Select Status ...' ?></option>
 							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_PENDING ? 'selected':'' ?> > 
+								<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_INITIATED ? 'selected':'' ?> > 
 									<?php echo $_matchStatus ?>
 								</option>								 
 							<?php endforeach; ?>

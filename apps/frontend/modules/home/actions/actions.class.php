@@ -24,7 +24,7 @@ class homeActions extends sfActions
 		$this->_participantTeams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
 		//$this->_candidateTeams = TeamTable::processAll ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword);
 		//$this->_tournamentGames = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 20  ) ;
-		//$this->_tournamentMatchFixtures = TournamentMatchFixtureTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  ) ;
+		$this->_tournamentMatchFixtures = TournamentMatchFixtureTable::processCandidateSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword) ;
 		//$this->_gameCategorys = GameCategoryTable::processCandidates ($_orgID, $_orgTokenID, $_keyword, $_activeFlag );
 		//$this->_gameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 15 );;
 	}
@@ -49,7 +49,7 @@ class homeActions extends sfActions
 		if(!$_offset || $_offset=='')	$_offset = 0;			
 		if(!$_limit || $_limit=='' ) $_limit = 15;	
 		
-		$_matchFixtures = TournamentMatchFixtureTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, $_offset, $_limit );
+		$_matchFixtures = TournamentMatchFixtureTable::processCandidateSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword);
 		
 		return $this->renderPartial('content', array('_matchFixtures' => $_matchFixtures, '_countMatchFixtures' => $_countMatchFixtures));	  
 	}

@@ -148,6 +148,7 @@ Team:
     team_country_flag_file_full_path:  { type: string(255) }   
     start_date: { type: string(100) }
     end_date: { type: string(100) }  
+    grouped_flag: { type: boolean, default: false } 
     confirm_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: true } 
     status: { type: integer, default: 1  } 
@@ -196,7 +197,8 @@ TeamMemberParticipant:
     member_full_name: { type: string(255) }
     member_role_id: { type: integer }    
     member_number: { type: integer }    
-    active_flag: { type: boolean, default: true } 
+    grouped_flag: { type: boolean, default: false } 
+    active_flag: { type: boolean, default: false } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
@@ -216,7 +218,8 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: { type: string(100) }  
     member_role_id: { type: integer }   
     gender_category_id: { type: integer }     
-    active_flag: { type: boolean, default: true } 
+    grouped_flag: { type: boolean, default: false } 
+    active_flag: { type: boolean, default: false } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
@@ -407,7 +410,6 @@ TournamentGroupParticipantTeamMember:
     TeamMemberParticipantRole: { onDelete: CASCADE, local: team_member_participant_role_id, foreign: id, foreignAlias: teamMemberParticipantRoleParticipants }  
  
  
- 
 ############  Match Management ####################
    
 TournamentMatch:
@@ -423,14 +425,12 @@ TournamentMatch:
     tournament_token_id: { type: string(100) } 
     sport_game_category_id: { type: integer } 
     match_number: { type: string(100) }
-    match_season: { type: string(100) } 
     tournament_match_round_mode: { type: integer } 
     round_type_mode: { type: integer } 
     contestant_team_mode: { type: integer } 
     start_date: { type: string(100) }
     effective_date: { type: string(100) }  
     end_date: { type: string(100) }  
-    roundable_flag: { type: boolean, default: false } 
     complete_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
     approval_status: { type: integer, default: 1  } 
@@ -491,12 +491,10 @@ TournamentMatchParticipantTeam:
     Timestampable: ~
   columns:
     token_id: { type: string(100) }    
-    match_fixture_id: { type: integer }
-    match_fixture_token_id: { type: string(100) } 
-    tournament_sport_game_group_id: { type: integer }
-    tournament_sport_game_group_token_id: { type: string(100) } 
-    sport_game_team_group_id: { type: integer } 
-    sport_game_team_group_token_id: { type: string(100) } 
+    tournament_match_fixture_id: { type: integer }
+    tournament_match_fixture_token_id: { type: string(100) } 
+    group_participant_team_id: { type: integer } 
+    group_participant_team_token_id: { type: string(100) } 
     effective_date: { type: string(100) }
     qualified_flag: { type: boolean  } 
     qualification_status: { type: integer, default: 1  } 
@@ -506,9 +504,8 @@ TournamentMatchParticipantTeam:
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    TournamentSportGameGroup: { onDelete: CASCADE, local: tournament_sport_game_group_id, foreign: id, foreignAlias: sportGameGroupMatchParticipantTeams } 
-    SportGameTeamGroup: { onDelete: CASCADE, local: tournament_sport_game_team_group_id, foreign: id, foreignAlias: sportGameTeamGroupMatchTeamParticipants } 
-    TournamentMatchFixture: { onDelete: CASCADE, local: match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipants }  
+    TournamentGroupParticipantTeam: { onDelete: CASCADE, local: group_participant_team_id, foreign: id, foreignAlias: sportGameTeamGroupMatchTeamParticipants } 
+    TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipants }  
 
 MultipleParticipantTeam:
   package: GameSetting
@@ -527,6 +524,13 @@ PairParticipantTeam:
     keyField: type
     keyValue: 2  
   columns:  
+    match_venue: { type: string(100) } 
+    match_date: { type: string(100) }
+    match_time: { type: string(100) }
+    opponent_group_participant_team_id: { type: integer } 
+    opponent_group_participant_team_token_id: { type: string(100) } 
+  relations:  
+    TournamentGroupParticipantTeam: { onDelete: CASCADE, local: opponent_group_participant_team_id, foreign: id, foreignAlias: tournamentGroupParticipantOpponentTeams } 
    
 TournamentMatchTeamMemberParticipant:
   package: GameSetting
@@ -539,8 +543,8 @@ TournamentMatchTeamMemberParticipant:
     tournament_match_fixture_token_id: { type: string(100) } 
     tournament_match_participant_team_id: { type: integer }
     tournament_match_participant_team_token_id: { type: string(100) } 
-    team_group_member_participant_id: { type: integer }
-    team_group_member_participant_token_id: { type: string(100) } 
+    group_participant_team_member_id: { type: integer }
+    group_participant_team_member_token_id: { type: string(100) } 
     effective_date: { type: string(100) }
     qualified_flag: { type: boolean  } 
     qualification_status: { type: integer, default: 1  } 
@@ -552,12 +556,10 @@ TournamentMatchTeamMemberParticipant:
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    TeamGroupMemberParticipant: { onDelete: CASCADE, local: team_group_member_participant_id, foreign: id, foreignAlias: teamGroupMemberParticipantMatchParticipants }  
+    TournamentGroupParticipantTeamMember: { onDelete: CASCADE, local: group_participant_team_member_id, foreign: id, foreignAlias: tournamentGroupParticipantTeamMemberMatchParticipants }  
     TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipants }  
     TournamentMatchParticipantTeam: { onDelete: CASCADE, local: tournament_match_participant_team_id, foreign: id, foreignAlias: tournamentMatchParticipantTeamMemberParticipants }  
   
- 
-
  
 ############  Party Management ####################
 

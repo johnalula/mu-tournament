@@ -1954,6 +1954,186 @@ Person:
     access_activation_key: null
     created_at: '2018-04-25 10:55:04'
     updated_at: '2018-04-25 10:55:04'
+  Person_66:
+    token_id: 426548222d03990147d5bcca0bfb8e35
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Mebrhit
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Mebrhit Kahsay Tesfalem (dfasdfasdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Kahsay
+    last_name: Tesfalem
+    full_name: 'Mebrhit Kahsay Tesfalem'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-03 00:55:32'
+    updated_at: '2018-05-03 00:55:32'
+  Person_67:
+    token_id: d8131d65918153570471cc0d808987c8
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Rezene
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Rezene Meles Gidey (sdfgsdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Meles
+    last_name: Gidey
+    full_name: 'Rezene Meles Gidey'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-03 00:55:46'
+    updated_at: '2018-05-03 00:55:46'
+  Person_68:
+    token_id: e6422a15628cf1d8b5e9fd36c56366a0
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Gezaei
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Gezaei Reda Miruts (sdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Reda
+    last_name: Miruts
+    full_name: 'Gezaei Reda Miruts'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-03 00:59:47'
+    updated_at: '2018-05-03 00:59:47'
+  Person_69:
+    token_id: 7bcdc90e4f8e6043656bb865592c7648
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Lemlem
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Lemlem Bizen Lewolo (asfasdfasdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Bizen
+    last_name: Lewolo
+    full_name: 'Lemlem Bizen Lewolo'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-03 01:00:06'
+    updated_at: '2018-05-03 01:00:06'
+  Person_70:
+    token_id: 080eae3969752f23197abc9039302943
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Saron
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Saron Kindey Garson (dfgsdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Kindey
+    last_name: Garson
+    full_name: 'Saron Kindey Garson'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-03 01:01:54'
+    updated_at: '2018-05-03 01:01:54'
+  Person_71:
+    token_id: 3af0856575c44f630133a8e5644f0a61
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Samuel
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Samuel Jack Larson (fasdfasdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Jack
+    last_name: Larson
+    full_name: 'Samuel Jack Larson'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-03 01:02:13'
+    updated_at: '2018-05-03 01:02:13'
 UserGroup:
   UserGroup_1:
     token_id: 311bb7024364b698d134e090ce9b788b
@@ -2681,7 +2861,7 @@ User:
   User_3:
     token_id: d79839bcee38a57db1a2c2d003e44a1ced2ade4b
     Organization: Organization_1
-    org_token_id: 94f12f125643718e20d329aef595bc3e
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Person: Person_3
     person_token_id: 8996f322088d3d2e8d805da32d3cd057
     username: joni
@@ -2710,7 +2890,7 @@ User:
   User_4:
     token_id: 9a5c2763e67bac5f974bdcb7e2bb2ef563368a23
     Organization: Organization_1
-    org_token_id: 94f12f125643718e20d329aef595bc3e
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Person: Person_4
     person_token_id: 8996f322088d3d2e8d805da32d3cd057
     username: moke
@@ -2984,6 +3164,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3009,6 +3190,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3034,6 +3216,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3059,6 +3242,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3084,6 +3268,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3092,7 +3277,7 @@ SportGame:
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M ( sdfg sfgsfgsdfg )'
     created_at: '2018-04-06 20:31:08'
-    updated_at: '2018-04-16 22:24:28'
+    updated_at: '2018-05-06 19:47:46'
   SportGame_6:
     token_id: 85d8956dee40b8813e4541cf977487585a878edd
     Organization: Organization_1
@@ -3109,6 +3294,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3117,7 +3303,7 @@ SportGame:
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M ( sdfgsdfgsdfg )'
     created_at: '2018-04-06 20:31:44'
-    updated_at: '2018-04-16 22:23:01'
+    updated_at: '2018-05-06 19:49:25'
   SportGame_7:
     token_id: 296fd51afe0267a908a73fa528c03e007d23a432
     Organization: Organization_1
@@ -3134,6 +3320,7 @@ SportGame:
     contestant_team_mode: '1'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3159,6 +3346,7 @@ SportGame:
     contestant_team_mode: '1'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3167,7 +3355,7 @@ SportGame:
     status: '2'
     description: 'Football (FOOTBALL) - Football ( adfa sdfasdfa sdf )'
     created_at: '2018-04-06 20:33:39'
-    updated_at: '2018-04-16 22:28:30'
+    updated_at: '2018-05-03 19:09:51'
   SportGame_9:
     token_id: deb5fc5d274f07ae1486cb862f9f8b8d836ce285
     Organization: Organization_1
@@ -3184,6 +3372,7 @@ SportGame:
     contestant_team_mode: '1'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3192,7 +3381,7 @@ SportGame:
     status: '2'
     description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis ( fasdfa dfasdf )'
     created_at: '2018-04-06 20:33:55'
-    updated_at: '2018-04-06 20:33:55'
+    updated_at: '2018-05-03 19:29:25'
   SportGame_10:
     token_id: 88843bb737cce03a254e010ea42e1680691deb13
     Organization: Organization_1
@@ -3209,6 +3398,7 @@ SportGame:
     contestant_team_mode: '1'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3217,7 +3407,7 @@ SportGame:
     status: '2'
     description: 'Table Tennis (TABLE_TENNIS) - Table Tennis ( ad fasdfa sdf asdf )'
     created_at: '2018-04-06 20:34:13'
-    updated_at: '2018-04-19 09:42:10'
+    updated_at: '2018-05-03 19:31:35'
   SportGame_11:
     token_id: 3c73dae5ce85cb27de0dbd91bfdd4aa00fb15ef2
     Organization: Organization_1
@@ -3234,6 +3424,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3242,7 +3433,7 @@ SportGame:
     status: '3'
     description: 'Athletics (ATHLETICS) - Maraton ( sdf gsdfg sdfgsdfg )'
     created_at: '2018-04-19 20:01:29'
-    updated_at: '2018-04-19 20:01:29'
+    updated_at: '2018-05-06 19:52:17'
   SportGame_12:
     token_id: a2850b01d693710275931b2d291a99eaede24e89
     Organization: Organization_1
@@ -3259,6 +3450,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3267,7 +3459,7 @@ SportGame:
     status: '3'
     description: 'Athletics (ATHLETICS) - 3000M ( dfg sdfgsdfgsdgsdfg )'
     created_at: '2018-04-19 20:02:12'
-    updated_at: '2018-04-19 20:02:12'
+    updated_at: '2018-05-03 19:25:12'
   SportGame_13:
     token_id: 50b3a1a67f31fce5b2432e1106151ab030d0d045
     Organization: Organization_1
@@ -3284,6 +3476,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '1'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3309,6 +3502,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '2'
     throw_type_mode: '0'
+    result_ranking_mode: null
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3334,6 +3528,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '2'
+    result_ranking_mode: null
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3359,6 +3554,7 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '3'
+    result_ranking_mode: null
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -4969,6 +5165,96 @@ TeamMemberParticipant:
     description: 'Elfu Kiros Tesfay (  )'
     created_at: '2018-04-25 10:55:04'
     updated_at: '2018-04-25 10:55:04'
+  TeamMemberParticipant_62:
+    token_id: d4c773766feb19bc38f6600286c965b9cb6bc263
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_66
+    person_token_id: 69188b322a9c3fde44b8ce9d1a92f58753566990
+    gender_category_id: '2'
+    member_full_name: 'Mebrhit Kahsay Tesfalem'
+    member_role_id: '2'
+    member_number: '2'
+    active_flag: true
+    status: '2'
+    description: 'Mebrhit Kahsay Tesfalem (  )'
+    created_at: '2018-05-03 00:55:32'
+    updated_at: '2018-05-03 00:55:32'
+  TeamMemberParticipant_63:
+    token_id: 49208873f1021c8bd034ee96ff1b817dd20aa43b
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_67
+    person_token_id: f015c10f80c96e5691274a8291bb99f0136effe5
+    gender_category_id: '1'
+    member_full_name: 'Rezene Meles Gidey'
+    member_role_id: '2'
+    member_number: '2'
+    active_flag: true
+    status: '2'
+    description: 'Rezene Meles Gidey (  )'
+    created_at: '2018-05-03 00:55:46'
+    updated_at: '2018-05-03 00:55:46'
+  TeamMemberParticipant_64:
+    token_id: 67dedc1d2b5e96de9933dcf9b38ec544f5063c15
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_68
+    person_token_id: 73e248f927d0d3e69d17a31a2817c7a8ddda22f1
+    gender_category_id: '1'
+    member_full_name: 'Gezaei Reda Miruts'
+    member_role_id: '2'
+    member_number: '2'
+    active_flag: true
+    status: '2'
+    description: 'Gezaei Reda Miruts (  )'
+    created_at: '2018-05-03 00:59:47'
+    updated_at: '2018-05-03 00:59:47'
+  TeamMemberParticipant_65:
+    token_id: e725f45ae7bc2c173f3c3a639b56c6bb51035ec5
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_69
+    person_token_id: 8c610957b554dc849187bbc0345852bcdc9a7848
+    gender_category_id: '2'
+    member_full_name: 'Lemlem Bizen Lewolo'
+    member_role_id: '2'
+    member_number: '2'
+    active_flag: true
+    status: '2'
+    description: 'Lemlem Bizen Lewolo (  )'
+    created_at: '2018-05-03 01:00:06'
+    updated_at: '2018-05-03 01:00:06'
+  TeamMemberParticipant_66:
+    token_id: f6941aab9cfd9c2decb8d5589722f2173173c302
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    Person: Person_70
+    person_token_id: cdf1bef4a414525d8d97706505af32ab92fbca32
+    gender_category_id: '2'
+    member_full_name: 'Saron Kindey Garson'
+    member_role_id: '2'
+    member_number: '2'
+    active_flag: true
+    status: '2'
+    description: 'Saron Kindey Garson (  )'
+    created_at: '2018-05-03 01:01:54'
+    updated_at: '2018-05-03 01:01:54'
+  TeamMemberParticipant_67:
+    token_id: d922500165b08ed3b1826008f413ba3be0c9b5cb
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    Person: Person_71
+    person_token_id: 70e56cb24eae331407fd0fcd2ef4b945200fd8ad
+    gender_category_id: '1'
+    member_full_name: 'Samuel Jack Larson'
+    member_role_id: '2'
+    member_number: '2'
+    active_flag: true
+    status: '2'
+    description: 'Samuel Jack Larson (  )'
+    created_at: '2018-05-03 01:02:13'
+    updated_at: '2018-05-03 01:02:13'
 TeamMemberParticipantRole:
   TeamMemberParticipantRole_1:
     token_id: a99cd4235504e1a370dcabe4c6c0911b13ae02df
@@ -5945,6 +6231,84 @@ TeamMemberParticipantRole:
     description: 'Fikre Dagnew Gebre (Contestant/Player) participating in 10000M (Athletics) ( adfa sdfasdfasdf )'
     created_at: '2018-05-01 18:58:27'
     updated_at: '2018-05-01 18:58:27'
+  TeamMemberParticipantRole_76:
+    token_id: 48b0fc0395327b2f1acd642c05beb8a174c196c0
+    TeamGameParticipation: TeamGameParticipation_77
+    team_game_participation_token_id: c934a8588dde595cfb8fd6aacc3c6dc360ddba05
+    TeamMemberParticipant: TeamMemberParticipant_63
+    team_member_participant_token_id: f58108a512567cb384b8f26f8a970b972404327b
+    member_role_id: '2'
+    gender_category_id: null
+    active_flag: true
+    status: '2'
+    description: 'Rezene Meles Gidey (Contestant/Player) participating in Maraton (Athletics) ( dfgsdfgsdfgsdfg )'
+    created_at: '2018-05-03 00:58:20'
+    updated_at: '2018-05-03 00:58:20'
+  TeamMemberParticipantRole_77:
+    token_id: 73149c8281f0aa781f9b7d0a0357677c7f1a7c55
+    TeamGameParticipation: TeamGameParticipation_78
+    team_game_participation_token_id: c32b97fbc63534260145b89a092ce2a451266965
+    TeamMemberParticipant: TeamMemberParticipant_62
+    team_member_participant_token_id: 95af36cdb958b4be245fc226e35cc6b8ebd24d7c
+    member_role_id: '2'
+    gender_category_id: null
+    active_flag: true
+    status: '2'
+    description: 'Mebrhit Kahsay Tesfalem (Contestant/Player) participating in Maraton (Athletics) ( fgsdfgsdfgsdfg )'
+    created_at: '2018-05-03 00:58:46'
+    updated_at: '2018-05-03 00:58:46'
+  TeamMemberParticipantRole_78:
+    token_id: fbaa968d808df95ea5f0ce3c7514c4e1aa5e981b
+    TeamGameParticipation: TeamGameParticipation_80
+    team_game_participation_token_id: d684a5baf0cce28767201a9ab81481314c717bf0
+    TeamMemberParticipant: TeamMemberParticipant_65
+    team_member_participant_token_id: 6b89793b6db2a4816f002c3dbdcf5172d6b51113
+    member_role_id: '2'
+    gender_category_id: null
+    active_flag: true
+    status: '2'
+    description: 'Lemlem Bizen Lewolo (Contestant/Player) participating in Maraton (Athletics) ( adfasdfasdf )'
+    created_at: '2018-05-03 01:00:27'
+    updated_at: '2018-05-03 01:00:27'
+  TeamMemberParticipantRole_79:
+    token_id: d0ba3866b81e7621d5ecfd87ef9bd8366825b14e
+    TeamGameParticipation: TeamGameParticipation_79
+    team_game_participation_token_id: aab67e6cb5587d8fd18f94fdb0dfe8132003f499
+    TeamMemberParticipant: TeamMemberParticipant_64
+    team_member_participant_token_id: 56e5e27ad378faffac9894040e8a73de54fa4c71
+    member_role_id: '2'
+    gender_category_id: null
+    active_flag: true
+    status: '2'
+    description: 'Gezaei Reda Miruts (Contestant/Player) participating in Maraton (Athletics) ( fasdfasfasdf )'
+    created_at: '2018-05-03 01:00:44'
+    updated_at: '2018-05-03 01:00:44'
+  TeamMemberParticipantRole_80:
+    token_id: 6a6e3359f4bc592617033656a9921565ae53ecd5
+    TeamGameParticipation: TeamGameParticipation_81
+    team_game_participation_token_id: 5a342cab978f5952ac7ef458739f721b9a86aa92
+    TeamMemberParticipant: TeamMemberParticipant_67
+    team_member_participant_token_id: e3133ed892cc7be4c05f2061bc1b438e52e3546a
+    member_role_id: '2'
+    gender_category_id: null
+    active_flag: true
+    status: '2'
+    description: 'Samuel Jack Larson (Contestant/Player) participating in Maraton (Athletics) ( adfasdfasdf )'
+    created_at: '2018-05-03 01:02:30'
+    updated_at: '2018-05-03 01:02:30'
+  TeamMemberParticipantRole_81:
+    token_id: 6854a97f5f6f197a17a78a281c189295389169f9
+    TeamGameParticipation: TeamGameParticipation_82
+    team_game_participation_token_id: 11823e22f2eeaf070b44c949ef19bc9632f7b348
+    TeamMemberParticipant: TeamMemberParticipant_66
+    team_member_participant_token_id: 876b1f82b37a16af06163d4cd9fbb19906cb898a
+    member_role_id: '2'
+    gender_category_id: null
+    active_flag: true
+    status: '2'
+    description: 'Saron Kindey Garson (Contestant/Player) participating in Maraton (Athletics) ( asdfasdfasdfasdf )'
+    created_at: '2018-05-03 01:02:50'
+    updated_at: '2018-05-03 01:02:50'
 TeamGameParticipation:
   TeamGameParticipation_1:
     token_id: 029e9503d58b795b526e0b591959e4cf5294dd4b
@@ -7221,6 +7585,125 @@ TeamGameParticipation:
     description: 'Athletics (ATHLETICS) - 800M (Athletics) ( sfgdfgsdfg )'
     created_at: '2018-04-25 10:54:05'
     updated_at: '2018-04-25 10:54:05'
+  TeamGameParticipation_76:
+    token_id: 37d6ae164d6b6d9a59f98368aa3fcd19c194d391
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_1
+    sport_game_token_id: 2105a9178e235ddf779621accc56d626c2da91fa
+    number_of_players: '1'
+    gender_category_id: '1'
+    event_type: '0'
+    player_mode: '0'
+    confirm_flag: false
+    active_flag: false
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 400M (Athletics) ( fasdfasdf )'
+    created_at: '2018-05-03 00:55:01'
+    updated_at: '2018-05-03 00:55:01'
+  TeamGameParticipation_77:
+    token_id: 958673449b26972daf0f34755d8543e37d5a305a
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_11
+    sport_game_token_id: 35b807f945a238e187a86ecfebdc04a787fcaf42
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    player_mode: '0'
+    confirm_flag: false
+    active_flag: false
+    status: '2'
+    description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( fasdfasdf )'
+    created_at: '2018-05-03 00:57:37'
+    updated_at: '2018-05-03 00:57:37'
+  TeamGameParticipation_78:
+    token_id: e73ed4707d9be9bd994eacd114b57befd0a73600
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_11
+    sport_game_token_id: 35b807f945a238e187a86ecfebdc04a787fcaf42
+    number_of_players: '1'
+    gender_category_id: '2'
+    event_type: '0'
+    player_mode: '0'
+    confirm_flag: false
+    active_flag: false
+    status: '2'
+    description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( fadfasdf )'
+    created_at: '2018-05-03 00:57:55'
+    updated_at: '2018-05-03 00:57:55'
+  TeamGameParticipation_79:
+    token_id: 2e839a02b712627f91ca3e1c82a3a4a42d9bf87d
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_11
+    sport_game_token_id: 35b807f945a238e187a86ecfebdc04a787fcaf42
+    number_of_players: '1'
+    gender_category_id: '1'
+    event_type: '0'
+    player_mode: '0'
+    confirm_flag: false
+    active_flag: false
+    status: '2'
+    description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( sdfgsdfgsdfg )'
+    created_at: '2018-05-03 00:59:13'
+    updated_at: '2018-05-03 00:59:13'
+  TeamGameParticipation_80:
+    token_id: 2bc31fa7ad4f7960d18f05b1a7bde47fbdb12324
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_11
+    sport_game_token_id: 35b807f945a238e187a86ecfebdc04a787fcaf42
+    number_of_players: '0'
+    gender_category_id: '2'
+    event_type: '0'
+    player_mode: '0'
+    confirm_flag: false
+    active_flag: false
+    status: '2'
+    description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( adfasdfasdf )'
+    created_at: '2018-05-03 00:59:28'
+    updated_at: '2018-05-03 00:59:28'
+  TeamGameParticipation_81:
+    token_id: c619ace82578889c1d439a046725c2c2390aff31
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    GameCategory: GameCategory_1
+    SportGame: SportGame_11
+    sport_game_token_id: 35b807f945a238e187a86ecfebdc04a787fcaf42
+    number_of_players: '1'
+    gender_category_id: '1'
+    event_type: '0'
+    player_mode: '0'
+    confirm_flag: false
+    active_flag: false
+    status: '2'
+    description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( asdfasdfsf )'
+    created_at: '2018-05-03 01:01:09'
+    updated_at: '2018-05-03 01:01:09'
+  TeamGameParticipation_82:
+    token_id: bd11f18d1208d00fe9a3d75e0a20a859e3a6c2a6
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    GameCategory: GameCategory_1
+    SportGame: SportGame_11
+    sport_game_token_id: 35b807f945a238e187a86ecfebdc04a787fcaf42
+    number_of_players: '1'
+    gender_category_id: '2'
+    event_type: '0'
+    player_mode: '0'
+    confirm_flag: false
+    active_flag: false
+    status: '2'
+    description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( asdfasdfsf )'
+    created_at: '2018-05-03 01:01:09'
+    updated_at: '2018-05-03 01:01:09'
 CodeGenerator:
   CodeGenerator_1:
     token_id: ee5bb3a6124bae087ac3f5d732d94947
@@ -7228,8 +7711,8 @@ CodeGenerator:
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     prefix_code: MTCH
     alias: MTCH
-    initial_number: '0001'
-    last_code: '0001'
+    initial_number: '001'
+    last_code: '001'
     deleted_code: null
     can_recreate_deleted: true
     code_type: '7'
@@ -7264,8 +7747,8 @@ CodeGenerator:
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     prefix_code: PLR
     alias: PLR
-    initial_number: '00001'
-    last_code: '00001'
+    initial_number: '0001'
+    last_code: '0001'
     deleted_code: null
     can_recreate_deleted: true
     code_type: '6'
@@ -7300,8 +7783,8 @@ CodeGenerator:
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     prefix_code: SPGM
     alias: SPGM
-    initial_number: '0001'
-    last_code: '0017'
+    initial_number: '001'
+    last_code: '017'
     deleted_code: null
     can_recreate_deleted: true
     code_type: '3'
@@ -7319,7 +7802,7 @@ CodeGenerator:
     prefix_code: GRP
     alias: GRP
     initial_number: '001'
-    last_code: '0002'
+    last_code: '0009'
     deleted_code: null
     can_recreate_deleted: true
     code_type: '4'
@@ -7329,4 +7812,5 @@ CodeGenerator:
     active_flag: true
     description: 'Team Group ( Team Group generated code )'
     created_at: '2016-01-21 01:26:19'
-    updated_at: '2018-04-28 21:29:32' 
+    updated_at: '2018-05-06 19:42:16'
+ 

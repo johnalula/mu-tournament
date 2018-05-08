@@ -22,7 +22,7 @@
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('complete', array( '_sportGameTeamGroup' => $_sportGameTeamGroup, '_groupMemberTeams' => $_groupMemberTeams, '_candidateGroups' => $_candidateGroups, '_candidateTeamMemberParticipants' => $_candidateTeamMemberParticipants )) ?> 
+				<?php include_partial('complete', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateParticipantMembers' => $_candidateParticipantMembers )) ?>
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>

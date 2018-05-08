@@ -521,7 +521,7 @@
 	//*********************************/
 	
 	$("#candidateSportGameTypeModal").submit(function(e) { 
-		if($("input[name=selectSportGameTypeModal]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
@@ -537,7 +537,7 @@
 		return e.preventDefault();
 	});
 	$("#candidateSportGameModal").submit(function(e) { 
-		if($("input[name=selectSportGameModal]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
@@ -552,7 +552,7 @@
 		return e.preventDefault();
 	});
 	$("#candidateMemberSportGameModal").submit(function(e) { 
-		if($("input[name=selectCandidateMemberSportGame]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
@@ -568,7 +568,7 @@
 	});
 	
 	$("#candidateSportGameCategoryModal").submit(function(e) { 
-		if($("input[name=selectCandidateMemberSportGame]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
@@ -585,7 +585,7 @@
 	});
 	
 	$("#candidateMemberParticipantModal").submit(function(e) { 
-		if($("input[name=selectCandidateMemberSportGame]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();

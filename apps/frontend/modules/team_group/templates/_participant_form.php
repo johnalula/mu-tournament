@@ -105,15 +105,15 @@
 
 <script>
 	$('#member_participant_status').change(function(e) {
-		$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		//$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		//$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		//alert('asdfa');
 		return false;
 	});  
 	 
 	$('#matchteam_status').change(function(e) {
-		$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		//$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		//$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	});  
 	   

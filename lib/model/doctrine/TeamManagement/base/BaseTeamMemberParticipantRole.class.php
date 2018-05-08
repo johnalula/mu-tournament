@@ -12,6 +12,7 @@
  * @property string $team_member_participant_token_id
  * @property integer $member_role_id
  * @property integer $gender_category_id
+ * @property boolean $grouped_flag
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
@@ -53,9 +54,13 @@ abstract class BaseTeamMemberParticipantRole extends sfDoctrineRecord
         $this->hasColumn('gender_category_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('grouped_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
-             'default' => true,
+             'default' => false,
              ));
         $this->hasColumn('status', 'integer', null, array(
              'type' => 'integer',

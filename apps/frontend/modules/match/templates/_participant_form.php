@@ -5,8 +5,8 @@
 			<div class="ui-panel-grid-form12" id=""> 
 				<fieldset  class="ui-form-fieldset-frame">
 					<legend class="ui-form-legend">
-						<img src="<?php echo image_path('icons/add_icon') ?>" title="<?php echo __('Match Participant Team Information') ?>">
-						<?php echo __('Contestant') ?>
+						<img src="<?php echo image_path('icons/add_icon') ?>" title="<?php echo __('Match Participant Information') ?>">
+						<?php echo __('Participant') ?>
 					</legend>
 					<div class="form-group">
 						<label class="col-sm-21 control-label"><?php echo __('Match Fixtures') ?>: <span class="ui-red-text">*</span></label>
@@ -17,6 +17,9 @@
 								<input type="hidden" class="form-control" id="match_fixture_token_id" name="match_participant[match_fixture_token_id]" value=""> 
 								<input type="hidden" class="form-control" id="sport_game_group_id" name="match_participant[sport_game_group_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="sport_game_group_token_id" name="match_participant[sport_game_group_token_id]" value=""> 
+								<input type="text" class="form-control" id="sport_game_id" name="match_participant[sport_game_id]" placeholder="" value="">
+								<input type="text" class="form-control" id="gender_category_id" name="match_participant[gender_category_id]" placeholder="" value="">
+								
 								<input type="hidden" class="form-control" id="tournament_match_id" name="match_participant[tournament_match_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->id ?>"  >
 								<input type="hidden" class="form-control" id="tournament_match_token_id" name="match_participant[tournament_match_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->token_id ?>"  >
 								<input type="hidden" class="form-control" id="tournament_match_game_category_id" name="match_participant[tournament_match_game_category_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->sport_game_category_id ?>"  >
@@ -32,13 +35,15 @@
 						<label class="col-sm-21 control-label"><?php echo __('Team') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 
 							<div class="input-group">
-								<input type="text" class="form-control " id="participant_team_name" name="match_participant[participant_team_name]" placeholder="<?php echo __('Candidate Participant') ?>" title="<?php echo __('Candidate Participant') ?>" value="" data-toggle="modal" data-target="#candidateParticipantTeamModal"  disabled>
-								<input type="hidden" class="form-control" id="participant_team_id" name="match_participant[participant_team_id]" placeholder="" value="">
-								<input type="hidden" class="form-control" id="participant_team_token_id" name="match_participant[participant_team_token_id]" value=""> 
-								<input type="hidden" class="form-control" id="sport_game_group_team_id" name="match_participant[sport_game_group_team_id]" placeholder="" value="">
-								<input type="hidden" class="form-control" id="sport_game_group_team_token_id" name="match_participant[sport_game_group_team_token_id]" value=""> 
+								<input type="text" class="form-control " id="participant_team_name" name="match_participant[participant_team_name]" placeholder="<?php echo __('Candidate Participant') ?>" title="<?php echo __('Candidate Participant') ?>" value="" data-toggle="modal" data-target="#candidateMatchParticipantTeamModal"  disabled>
+								<input type="text" class="form-control" id="team_id" name="match_participant[team_id]" placeholder="" value="">
+								<input type="text" class="form-control" id="team_token_id" name="match_participant[team_token_id]" value=""> 
+								<input type="text" class="form-control" id="participant_team_id" name="match_participant[participant_team_id]" placeholder="" value="">
+								<input type="text" class="form-control" id="participant_team_token_id" name="match_participant[participant_team_token_id]" value=""> 
+								<input type="text" class="form-control" id="sport_game_group_team_id" name="match_participant[sport_game_group_team_id]" placeholder="" value="">
+								<input type="text" class="form-control" id="sport_game_group_team_token_id" name="match_participant[sport_game_group_team_token_id]" value=""> 
 								<span class="input-group-btn">
-									<button class="btn btn-default selectCandidateParticipantTeam" type="button" data-toggle="modal" data-target="#candidateParticipantTeamModal" title="<?php echo __('Candidat Participant') ?>" disabled >
+									<button class="btn btn-default selectCandidateMatchParticipantTeam" type="button" data-toggle="modal" data-target="#candidateMatchParticipantTeamModal" title="<?php echo __('Candidat Participant') ?>" disabled >
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 									</button>
 								</span>
@@ -49,11 +54,11 @@
 						<label class="col-sm-21 control-label"><?php echo __('Participant') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 
 							<div class="input-group">
-								<input type="text" class="form-control " id="participant_name" name="match_participant[participant_name]" placeholder="<?php echo __('Candidate Participant Team') ?>" title="<?php echo __('Candidate Participant Team') ?>" value="" data-toggle="modal" data-target="#candidateMatchParticipantModal"  disabled>
+								<input type="text" class="form-control " id="participant_name" name="match_participant[participant_name]" placeholder="<?php echo __('Candidate Participant Team') ?>" title="<?php echo __('Candidate Participant Team') ?>" value="" data-toggle="modal" data-target="#candidateMatchParticipantTeamMemberModal"  disabled>
 								<input type="hidden" class="form-control" id="participant_id" name="match_participant[participant_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="participant_token_id" name="match_participant[participant_token_id]" value=""> 
 								<span class="input-group-btn">
-									<button class="btn btn-default selectCandidateMatchParticipant" type="button" data-toggle="modal" data-target="#candidateMatchParticipantModal" title="<?php echo __('Candidat Participant Teams') ?>" disabled >
+									<button class="btn btn-default selectCandidateMatchParticipantTeamMember" type="button" data-toggle="modal" data-target="#candidateMatchParticipantTeamMemberModal" title="<?php echo __('Candidat Participant Teams') ?>" disabled >
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 									</button>
 								</span>
@@ -63,7 +68,7 @@
 					<div class="form-group">
 						<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>:&nbsp;</label>
 						<div class="col-sm-40"> 
-							<textarea class="form-control form-control-md" rows=3 id="description" name="match_fixture[description]" placeholder="<?php echo __('Description') ?>" title="<?php echo __('Description') ?>" ></textarea>
+							<textarea class="form-control form-control-sm" rows=3 id="description" name="match_fixture[description]" placeholder="<?php echo __('Description') ?>" title="<?php echo __('Description') ?>" ></textarea>
 						</div>
 					</div>
 				</fieldset> 

@@ -82,8 +82,10 @@ class GameCategoryTable extends PluginGameCategoryTable
 	public static function appendQueryFields ( ) 
 	{		
 		 $_queryFileds = "cat.id, cat.category_name as categoryName, cat.alias as categoryAlias, cat.category_type as categoryType, cat.contestant_team_mode as contestantTeamMode, cat.default_flag as defaultFlag, cat.active_flag as activeFlag, 
+		 
+			(EXISTS (SELECT sprtGm1.id FROM SportGame sprtGm1 WHERE sprtGm1.sport_game_category_id = cat.id AND sprtGm1.org_id = cat.org_id AND sprtGm1.active_flag IS TRUE )) as hasTournamentSportGames,
 		";	
-		return $_queryFileds;
+		return $_queryFileds; 
 	}
 	//
   // process list selection function 
@@ -108,7 +110,7 @@ class GameCategoryTable extends PluginGameCategoryTable
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
-   public static function processAll ($_orgID=null, $_orgTokenID=null, $_keyword=null, $_activeFlag=null ) 
+   public static function processAll ($_orgID=null, $_orgTokenID=null, $_keyword=null ) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -117,7 +119,6 @@ class GameCategoryTable extends PluginGameCategoryTable
 				->orderBy("cat.id ASC")
 				->where("cat.id IS NOT NULL");
 				if(!is_null($_orgID)) $_qry = $_qry->addWhere("cat.org_id = ? AND cat.org_token_id = ? ", array($_orgID, $_orgTokenID));
-				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("cat.active_flag = ?", $_activeFlag);    
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
 						$_qry = $_qry->andWhere("cat.category_name LIKE ? OR cat.alias LIKE ? OR cat.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
@@ -126,17 +127,20 @@ class GameCategoryTable extends PluginGameCategoryTable
 
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
-	//
-   public static function processCandidates ($_orgID=null, $_orgTokenID=null, $_keyword=null, $_activeFlag=null ) 
+	 
+	// process list selection function 
+   public static function processCandidates ( $_orgID=null, $_orgTokenID=null, $_exclusion=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("GameCategory cat")  
-				//->innerJoin("cat.Organization org on cat.org_id = org.id ")   
+				->innerJoin("cat.Organization org on cat.org_id = org.id ")   
+				->offset($_offset)
+				->limit($_limit) 
 				->orderBy("cat.id ASC")
 				->where("cat.id IS NOT NULL");
-				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("cat.org_id = ? AND cat.org_token_id = ? ", array($_orgID, $_orgTokenID));
-				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("cat.active_flag = ?", $_activeFlag);    
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("cat.org_id = ? AND cat.org_token_id = ? ", array($_orgID, $_orgTokenID));     
+				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("cat.id ", $_exclusion ); 
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
 						$_qry = $_qry->andWhere("cat.category_name LIKE ? OR cat.alias LIKE ? OR cat.description LIKE ?", array( $_keyword, $_keyword, $_keyword));

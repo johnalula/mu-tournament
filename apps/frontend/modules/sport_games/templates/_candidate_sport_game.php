@@ -43,7 +43,7 @@
 				<?php echo $_candidateSportGame->maxSportGameGroupNumberMen ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_candidateSportGame->description ?>
+				<?php echo $_candidateSportGame->maxSportGameGroupNumberWomen ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_candidateSportGame->id ?>" class="ui-table-status-small-icon" id="<?php echo $_candidateSportGame->id ?>">

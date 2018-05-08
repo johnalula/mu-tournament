@@ -14,7 +14,7 @@ class TournamentTeamGroup extends PluginTournamentTeamGroup
 {
 	public function checkInitiated ()
 	{
-		return (($this->status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
+		return (($this->approval_status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
 	}
 	public function makePending ()
 	{

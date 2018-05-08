@@ -70,7 +70,7 @@
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('participant_list', array('_candidateMemberParticipants' => $_candidateMemberParticipants)) ?> 
+													<?php include_partial('participant_list', array('_candidateParticipantMembers' => $_candidateParticipantMembers)) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											

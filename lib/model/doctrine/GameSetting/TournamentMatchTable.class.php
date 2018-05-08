@@ -23,12 +23,9 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 			
 				$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_MATCH, true  ); 
 				$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
-				$_matchNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeInitialNumber($_codeNumber);
-				//$_roundableFlag = (($_matchRoundMode == TournamentCore::$_FIRST_ROUND )|| ($_matchRoundMode == TournamentCore::$_FIRST_ROUND )) ? true:false;
+				$_matchNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeGeneratorInitialNumber($_codeNumber);
 				
-			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
-			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
-			$_tournamentMatch = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_tournamentMatchName, $_matchNumber, $_contestantTeamMode, $_matchRoundMode, $_matchDate, $_status, $_description );
+				$_tournamentMatch = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_tournamentMatchName, $_matchNumber, $_contestantTeamMode, $_matchRoundMode, $_matchDate, $_status, $_description );
 		
 		return $_tournamentMatch;
 	}
@@ -53,8 +50,9 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 			$_nw->match_number = trim($_matchNumber); 
 			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->tournament_match_round_mode = trim($_matchRoundMode); 
+			$_nw->round_type_mode = trim($_matchRoundMode); 
 			$_nw->start_date = $_matchDate ? trim($_matchDate):trim($_startDate); 
-			$_nw->active_flag = true;  
+			$_nw->active_flag = false;  
 			$_nw->approval_status = TournamentCore::$_INITIATED;   
 			$_nw->status = $_status ? trim($_status):TournamentCore::$_INITIATED;   
 			$_nw->description = SystemCore::processDescription ( (trim($_tournamentMatchName).' '.trim($_sportGameCategoryName)), trim($_description) );  
@@ -92,7 +90,7 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	public static function appendQueryFields ( ) 
 	{		
 		 $_queryFileds = "trnmtMtch.id, trnmtMtch.sport_game_category_id as matchSportGameCategoryID, trnmtMtch.match_number as matchNumber, trnmtMtch.tournament_match_round_mode as tournamentMatchRoundMode, trnmtMtch.active_flag as activeFlag, trnmtMtch.start_date as matchDate, 
-								gmCat.id as gameCategoryID, gmCat.token_id as gameCategoryTokenID, gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,
+								gmCat.id as gameCategoryID, gmCat.token_id as gameCategoryTokenID, gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias, gmCat.contestant_team_mode as contestantTeamMode,
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.alias as tournamentAlias,
 		";	
 		return $_queryFileds;
@@ -194,24 +192,52 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	 
 	
 	/*********************************************************
-	********** Candidate Selection Process *******************
+	********** Candidate selection process *******************
 	**********************************************************/
+	 
+	 /********** Candidate selection process new action *******************/
+	 
 	//
-	public static function processCandidateSportGameTeamGroups ( $_orgID=null, $_orgTokenID=null, $_tournamentID=null, $_parentMatchID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_sportGameTypeID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	public static function selectCandidateTournamentGameCategorys ( $_orgID=null, $_orgTokenID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
-		$_tournamentMatchFixtures = self::processCandidateSelections ( $_tournamentID, $_parentMatchID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameTypeID, $_keyword);
-		//if(!$_groupMemberTeams) { return false; }   
+		$_candidateCategorys = GameCategoryTable::processAll ( $_orgID, $_orgTokenID, $_keyword);
 		$_exclusion = array();   
-		foreach($_tournamentMatchFixtures as $_tournamentMatchFixture) {
-			$_exclusion[] = $_tournamentMatchFixture->sport_game_group_id;
+		foreach($_candidateCategorys as $_candidateCategory) {
+			if(!$_candidateCategory->hasTournamentSportGames) {
+				$_exclusion[] = $_candidateCategory->id;
+			}
 		} 
-	
-		return SportGameGroupTable::processCandidates ( $_orgID, $_orgTokenID, $_tournamentID, $_sportGameID, $_sportGameTokenID, $_sportGameTypeID, $_genderCategoryID, $_keyword, $_exclusion, $_offset, $_limit);
 		
-		//return TeamGameParticipationTable::processCandidateParticipants ($_tournamentID, $_teamID, $_teamTokenID, $_sportGameID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit );
+		return GameCategoryTable::processCandidates ( $_orgID, $_orgTokenID, $_exclusion, $_keyword, $_offset, $_limit ) ;
 	} 
 	
-	public static function processCandidateMatchFixtures ( $_orgID=null, $_orgTokenID=null, $_tournamentID=null, $_parentMatchID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_sportGameTypeID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	 /********** Candidate selection process fixture action *******************/
+	 
+	//
+	public static function selectCandidateTournamentSportGameGroups ( $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_tournamentFixtureID=null, $_sportGameTypeID=null, $_sportGameID=null, $_approvalStatus=null, $_status=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_candidateMatchFixtures = TournamentMatchFixtureTable::processCandidateSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword);
+		$_exclusion = array();   
+		foreach($_candidateMatchFixtures as $_candidateMatchFixture) {
+			$_exclusion[] = $_candidateMatchFixture->tournament_sport_game_group_id;
+		} 
+		
+		return TournamentSportGameGroupTable::processCandidateTournamentSportGameGroups ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameTypeID, $_sportGameID, $_keyword, $_approvalStatus, $_status, $_exclusion, $_offset, $_limit ) ;
+	} 
+	//
+	public static function selectAllCandidateParticipantGroups ( $_tournamentID=null, $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameGroupID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null ) 
+   {
+		$_groupParticipantTeams = TournamentGroupParticipantTeamTable::processCandidateParticipants($_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategoryID, $_keyword);
+		$_exclusion = array();   
+		foreach($_groupParticipantTeams as $_groupParticipantTeam) {
+			$_exclusion[] = $_groupParticipantTeam->team_id;
+		} 
+		
+		return TeamGameParticipationTable::selectCandidateParticipants ( $_tournamentID, $_teamID, $_teamTokenID, $_sportGameID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion) ;
+	} 
+	
+	//
+	public static function selectCandidateTournamentMatchRounds ( $_orgID=null,  $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_tournamentFixtureID=null, $_sportGameID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 		/*$_tournamentMatchFixtures = self::processCandidateSelections ( $_tournamentID, $_parentMatchID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameTypeID, $_keyword);
 		//if(!$_groupMemberTeams) { return false; }   
@@ -220,63 +246,71 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 			$_exclusion[] = $_tournamentMatchFixture->sport_game_group_id;
 		} */
 	
-		return TournamentMatchFixtureTable::processCandidates ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameTypeID, $_keyword, $_exclusion, $_activeFlag, $_offset, $_limit);
+		return RoundTypeTable::processCandidateSelection ( $_orgID, $_roundType, $_exclusion, $_keyword, $_offset, $_limit);
 		
 		//return TeamGameParticipationTable::processCandidateParticipants ($_tournamentID, $_teamID, $_teamTokenID, $_sportGameID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit );
 	} 
 	
+	
+	/********** Candidate Match Fixtures *******************/
 	//
-	public static function processCandidateMatchParticipantTeams ( $_orgID=null, $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_matchFixtureTokenID=null, $_sportGameGroupID=null, $_sportGameGroupTokenID=null, $_keyword, $_offset=0, $_limit=10 ) 
+	public static function selectCandidateMatchFixtures ( $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_sportGameID=null, $_sportGameTypeID=null, $_genderCategoryID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
-		$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateSelections ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_teamGroupID, $_sportGameID, $_keyword);
-		//if(!$_groupMemberTeams) { return false; }   
+		/*$_groupParticipantTeams = SportGameGroupParticipantTeamTable::processCandidateParticipants($_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_genderCategoryID, $_keyword);
+		$_exclusion = array();   
+		foreach($_groupParticipantTeams as $_groupParticipantTeam) {
+			$_exclusion[] = $_groupParticipantTeam->team_id;
+		} */
+		
+		return TournamentMatchFixtureTable::processCandidates ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword, $_exclusion,$_offset, $_limit) ;
+	} 
+	//
+	public static function selectCandidateParticipantTeams ( $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_sportGameGroupID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateParticipantSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameGroupID, $_sportGameID, $_keyword);
 		$_exclusion = array();   
 		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
-			//if(!$_productPrice->hasActiveInventoryItem ) {
-				$_exclusion[] = $_candidateParticipantTeam->sport_game_team_group_id;
-			//} 
+			$_exclusion[] = $_candidateParticipantTeam->group_participant_team_id;
 		} 
 		
-		return SportGameTeamGroupTable::processCandidateParticipantTeams ( $_orgID, $_tournamentID, $_sportGameGroupID, $_sportGameGroupTokenID, $_sportGameID, $_keyword, $_exclusion, $_offset, $_limit );
-	} 
-	
-	/*********************************************************
-	********** Candidate filtering process *******************
-	**********************************************************/
-	//
-	public static function processCandidateTournamentMatchParticipantTeams ( $_orgID=null, $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_keyword, $_offset=0, $_limit=10 ) 
-   {
-		/*$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateSelections ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_teamGroupID, $_sportGameID, $_keyword);
-		//if(!$_groupMemberTeams) { return false; }   
-		$_exclusion = array();   
-		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
-			//if(!$_productPrice->hasActiveInventoryItem ) {
-				$_exclusion[] = $_candidateParticipantTeam->sport_game_team_group_id;
-			//} 
-		} */
-		
-		return TournamentMatchParticipantTeamTable::processCandidateParticipants ( $_orgID, $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_keyword, $_exclusion, $_offset, $_limit );
+		return TournamentGroupParticipantTeamTable::processCandidateParticipantTeamSelection ( $_tournamentID, $_tournamentGroupID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit ) ;
 	} 
 	//
-	public static function processCandidateTournamentMatchParticipants ( $_tournamentID=null, $_tournamentMatchID=null, $_matchFixtureID=null, $_participantTeamID=null, $_participantTeamTokenID=null, $_sporttGameTeamGroupID=null, $_sportGameID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	public static function selectAllCandidateParticipantTeams ( $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_sportGameGroupID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null) 
    {
-		/*$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateSelections ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_teamGroupID, $_sportGameID, $_keyword);
-		//if(!$_groupMemberTeams) { return false; }   
+		$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateParticipantSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameGroupID, $_sportGameID, $_keyword);
 		$_exclusion = array();   
 		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
-			//if(!$_productPrice->hasActiveInventoryItem ) {
-				$_exclusion[] = $_candidateParticipantTeam->sport_game_team_group_id;
-			//} 
+			$_exclusion[] = $_candidateParticipantTeam->group_participant_team_id;
+		} 
+		
+		return TournamentGroupParticipantTeamTable::processAllCandidateParticipantTeamSelection ( $_tournamentID, $_tournamentGroupID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit ) ;
+	} 
+	
+	/********** Candidate Match Fixture Participants *******************/
+	//
+	public static function selectCandidateMatchFixtureParticipantTeams ( $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		/*$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateParticipantSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameGroupID, $_sportGameID, $_keyword);
+		$_exclusion = array();   
+		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
+			$_exclusion[] = $_candidateParticipantTeam->group_participant_team_id;
 		} */
 		
-		return TeamGroupMemberParticipantTable::processCandidateTournamentParticipants ($_tournamentID, $_sporttGameTeamGroupID, $_participantTeamID, $_participantTeamTokenID, $_sportGameID, $_genderCategoryID, $_keyword, $_exclusion, $_offset, $_limit );
+		return TournamentMatchParticipantTeamTable::processCandidateParticipantTeams ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameID, $_exclusion, $_keyword, $_offset, $_limit ) ;
 	} 
-	/*********************************************************
-	********** Candidate filtering process *******************
-	**********************************************************/
-	
-	public static function processRoleSelection ()
-	{
-		 
-	}
+	//
+	public static function selectCandidateParticipantTeamMembers( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_participantTeamID=null, $_participantTeamTokenID=null, $_groupMemberTeamID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		/*$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateParticipantSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameGroupID, $_sportGameID, $_keyword);
+		$_exclusion = array();   
+		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
+			$_exclusion[] = $_candidateParticipantTeam->group_participant_team_id;
+		} */
+		
+		//return TournamentGroupParticipantTeamMemberTable::processCandidateParticipantTeamMembers ($_tournamentID, $_tournamentGroupID, $_groupMemberTeamID, $_participantTeamID, $_participantTeamTokenID, $_sportGameID, $_genderCategory, $_exclusion, $_keyword, $_offset, $_limit ) ;
+		
+		return TournamentGroupParticipantTeamMemberTable::processSelection ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategoryID, $_keyword, $_offset, $_limit ) ;
+	} 
+	 
 }

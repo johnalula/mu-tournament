@@ -110,7 +110,9 @@ class SportGameTable extends PluginSportGameTable
 		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.sport_game_number as sportGameNumber, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.active_flag as activeFlag, 
 								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias, gmCat.category_type as gameCategoryType,
 								
-								(SELECT MAX(sprtGmGrp1.group_number) FROM SportGameGroup sprtGmGrp1 WHERE sprtGmGrp1.sport_game_id = sprtGm.id AND sprtGmGrp1.gender_category_id=".TournamentCore::$_MEN." ) as maxSportGameGroupNumberMen, 
+								(SELECT MAX(sprtGmGrp1.group_number) FROM TournamentSportGameGroup sprtGmGrp1 WHERE sprtGmGrp1.sport_game_id = sprtGm.id AND sprtGmGrp1.gender_category_id=".TournamentCore::$_MEN." ) as maxSportGameGroupNumberMen,
+								 
+								(SELECT MAX(sprtGmGrp2.group_number) FROM TournamentSportGameGroup sprtGmGrp2 WHERE sprtGmGrp2.sport_game_id = sprtGm.id AND sprtGmGrp2.gender_category_id=".TournamentCore::$_WOMEN." ) as maxSportGameGroupNumberWomen, 
 		";	
 		return $_queryFileds;
 	}
@@ -174,7 +176,7 @@ class SportGameTable extends PluginSportGameTable
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("sprtGm.Organization org on sprtGm.org_id = org.id ")   
 				->where("sprtGm.id = ? AND sprtGm.token_id = ? ", array($_sportGameID, $_tokenID ));
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("trnmt.org_id = ? AND trnmt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("sprtGm.org_id = ? AND sprtGm.org_token_id = ? ", array($_orgID, $_orgTokenID));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	

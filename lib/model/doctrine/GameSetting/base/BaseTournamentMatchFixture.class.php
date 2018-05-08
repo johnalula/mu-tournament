@@ -199,7 +199,7 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
 
         $this->hasMany('TournamentMatchParticipantTeam as matchFixtureParticipants', array(
              'local' => 'id',
-             'foreign' => 'match_fixture_id'));
+             'foreign' => 'tournament_match_fixture_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

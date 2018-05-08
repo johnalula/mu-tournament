@@ -765,6 +765,10 @@ s.ui-panel-grid-list table thead tr th.ui-th-center-text {
 	width:11px!important;
 	height:11px!important;
 } 
+.ui-panel-grid-list table tbody tr td span.ui-table-status-xsmall-icon img {
+	width:10px!important;
+	height:10px!important;
+} 
 .ui-panel-grid-list table tbody tr td span.ui-table-avatar-img-sm img {
 	width:20px!important;
 	height:20px!important;

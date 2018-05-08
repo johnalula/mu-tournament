@@ -44,8 +44,7 @@ class TeamMemberParticipantRoleTable extends PluginTeamMemberParticipantRoleTabl
 			$_nw->team_member_participant_id = trim($_participantID); 
 			$_nw->team_member_participant_token_id = sha1(md5(trim($_participantTokenID)));  
 			$_nw->member_role_id = trim($_memberRole); 
-			$_nw->active_flag = true;  
-			$_nw->status = $_memberStatus ? $_memberStatus:trim(PartyCore::$_ACTIVE);   
+			$_nw->status = $_memberStatus ? $_memberStatus:trim(PartyCore::$_PENDING);   
 			$_nw->description = SystemCore::processDescription ( (trim($_participantName).' participating in '.trim($_sportGameName)), trim($_description) );  
 			$_nw->save(); 
 			
@@ -250,7 +249,7 @@ class TeamMemberParticipantRoleTable extends PluginTeamMemberParticipantRoleTabl
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	// process list selection function 
-   public static function processCandidateParticipants ( $_tournamentID=null, $_teamID=null, $_teamTokenID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
+   public static function processCandidateParticipants ( $_teamID=null, $_teamTokenID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null, $_exclusion=null, $_offset=0, $_limit=10 ) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -270,7 +269,6 @@ class TeamMemberParticipantRoleTable extends PluginTeamMemberParticipantRoleTabl
 				if(!is_null($_teamID)) $_qry = $_qry->addWhere("tmMbrPrt.team_id = ? AND tmMbrPrt.team_token_id = ? ", array($_teamID, $_teamTokenID));
 				if(!is_null($_participantID)) $_qry = $_qry->addWhere("prsn.id = ?", $_participantID);   
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);   
-				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_genderCategory)) $_qry = $_qry->addWhere("sprtGmPrtn.gender_category_id = ?", $_genderCategory);    
 				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("tmMbrPrt.id ", $_exclusion );          
 				if(!is_null($_keyword) )
@@ -282,35 +280,41 @@ class TeamMemberParticipantRoleTable extends PluginTeamMemberParticipantRoleTabl
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
-	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_sportGameID, $_sportGameTokenID ) 
+	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_memberRoleID, $_memberRoleTokenID ) 
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
-				->from("TeamMemberParticipantRole tmMbrPrt") 
-				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")  
-				->innerJoin("sprtGmPrtn.Team prtTm on sprtGmPrtn.team_id = prtTm.id ")  
+				->from("TeamMemberParticipantRole tmMbrPrtRol") 
+				->innerJoin("tmMbrPrtRol.TeamGameParticipation sprtGmPrtn on tmMbrPrtRol.team_game_participation_id = sprtGmPrtn.id ")  
+				->innerJoin("tmMbrPrtRol.TeamMemberParticipant tmMbrPrt on tmMbrPrtRol.team_member_participant_id = tmMbrPrt.id ")  
+				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")   
 				->innerJoin("sprtGmPrtn.GameCategory gmCat on sprtGmPrtn.sport_game_category_id = gmCat.id ")  
 				->innerJoin("sprtGmPrtn.SportGame sprtGm on sprtGmPrtn.sport_game_id = sprtGm.id ")  
 				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
-				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
-				->where("sprtGmPrtn.id = ? AND sprtGmPrtn.token_id = ? ", array($_sportGame, $_sportGameTokenID ));
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				->innerJoin("tmMbrPrt.Person prsn on tmMbrPrt.person_id = prsn.id ")  
+				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")    
+				->where("tmMbrPrtRol.id = ? AND tmMbrPrtRol.token_id = ? ", array($_memberRoleID, $_memberRoleTokenID ));
+				if(!is_null($_orgID)) $_qry = $_qry->andWhere("trnmt.org_id = ? AND trnmt.org_token_id = ?", array($_orgID, $_orgTokenID));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeObject ( $_orgID=null, $_matchID, $_tokenID  ) 
+   public static function makeObject ( $_orgID=null, $_memberRoleID, $_memberRoleTokenID ) 
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
-				->from("TeamMemberParticipantRole sprtGmPrtn") 
-				->innerJoin("sprtGmPrtn.Tournament trnmt on sprtGmPrtn.tournament_id = trnmt.id ")  
+				->from("TeamMemberParticipantRole tmMbrPrtRol") 
+				->innerJoin("tmMbrPrtRol.TeamGameParticipation sprtGmPrtn on tmMbrPrtRol.team_game_participation_id = sprtGmPrtn.id ")  
+				->innerJoin("tmMbrPrtRol.TeamMemberParticipant tmMbrPrt on tmMbrPrtRol.team_member_participant_id = tmMbrPrt.id ")  
+				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")   
+				->innerJoin("sprtGmPrtn.GameCategory gmCat on sprtGmPrtn.sport_game_category_id = gmCat.id ")  
 				->innerJoin("sprtGmPrtn.SportGame sprtGm on sprtGmPrtn.sport_game_id = sprtGm.id ")  
-				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				//->innerJoin("tm.Organization org on tm.org_id = org.id ")     
-				->where("sprtGmPrtn.id = ? AND sprtGmPrtn.token_id = ? ", array($_matchID, $_tokenID ));
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
+				->innerJoin("tmMbrPrt.Person prsn on tmMbrPrt.person_id = prsn.id ")  
+				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")  
+				->where("tmMbrPrtRol.id = ? AND tmMbrPrtRol.token_id = ? ", array($_memberRoleID, $_memberRoleTokenID ));
+				if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? ",  $_orgID);
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	

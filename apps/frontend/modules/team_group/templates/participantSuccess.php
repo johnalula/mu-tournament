@@ -10,8 +10,8 @@
 	//$_flag =  SportGameTeamGroupTable::processNew ( $_orgID, $_orgTokenID, $_memberTeamID, $_memberTeamTokenID, $_teamGroupID, $_teamGroupTokenID, $_memberTeamName, $_entryDate, $_teamStatus, $_description, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
 	
 	//$_teamGroup =  GroupTypeTable::makeObject ( $_orgID, 1);
-	//echo count($_candidateGroupMemberTeams).' = '; 
-	echo count($_candidateMemberParticipants).' = '; 
+	//echo count($_candidateParticipants).' = '; 
+	//echo count($_candidateParticipantMembers).' = '; 
 	//echo sha1(md5('3829e68f447d9c6e723f820a44421f7e90674acf'));
 ?> 
 
@@ -19,7 +19,7 @@
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('participant', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateMemberParticipants' => $_candidateMemberParticipants, '_candidateGroups' => $_candidateGroups, '_candidateGameCategorys' => $_candidateGameCategorys )) ?> 
+				<?php include_partial('participant', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateParticipantMembers' => $_candidateParticipantMembers, '_candidateGroups' => $_candidateGroups, '_candidateGameCategorys' => $_candidateGameCategorys )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -262,16 +262,16 @@
 	//*********************************/
 	
 	$('.selectCandidateTournamentSportGameGroup').click(function() {   
-		var url = '<?php echo url_for('team_group/candidateTournamentGroup')?>'; 
+		var url = '<?php echo url_for('team_group/candidateTournamentSportGameGroup')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-tournament-groups';   
-		var data = 'team_group_id='+document.getElementById('team_group_id').value+'&team_group_token_id='+document.getElementById('team_group_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&sport_game_token_id='+document.getElementById('sport_game_token_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
+		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value+'&tournament_id='+document.getElementById('tournament_id').value;
 		//alert(data);
 		processDataSelection(data, idName, url );	
 		return true;	 
 	}); 
 	$('.selectCandidateTournamentGroupMemberTeam').click(function() {   
-		var url = '<?php echo url_for('team_group/candidateTournamentGroupMemberTeam')?>'; 
+		var url = '<?php echo url_for('team_group/candidateTournamentGroupMemberParticipantTeam')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-group-member-teams';   
 		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&sport_game_group_id='+document.getElementById('sport_game_group_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
@@ -280,7 +280,7 @@
 		return true;	 
 	}); 
 	$('.selectCandidateGroupTeamParticipantMember').click(function() {   
-		var url = '<?php echo url_for('team_group/candidateGroupTeamParticipantMember')?>'; 
+		var url = '<?php echo url_for('team_group/candidateGroupParticipantTeamMember')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-team-member-participant';   
 		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&participant_team_id='+document.getElementById('participant_team_id').value+'&participant_team_token_id='+document.getElementById('participant_team_token_id').value+'&group_member_participant_team_id='+document.getElementById('group_member_participant_team_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
@@ -294,7 +294,7 @@
 	//*********************************/
 	
 	$("#candidateTournamentSportGameGroupModal").submit(function(e) { 
-		if($("input[name=selectSportGameModal]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
@@ -306,15 +306,15 @@
 			document.getElementById("gender_category_id").value = listArr[9];  
 			document.getElementById("sport_game_group_name").value = listArr[4]+' - '+listArr[5]+' ('+listArr[10]+') - '+listArr[8];  
 			  
-			$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			//$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			//$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			$(".selectCandidateTournamentGroupMemberTeam").removeAttr("disabled") ;
 			$('#candidateTournamentSportGameGroupModal').modal('hide');
 		return e.preventDefault();
 	});
 	 
 	$("#candidateTournamentGroupMemberTeamModal").submit(function(e) { 
-		if($("input[name=selectSportGameModal]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
@@ -325,15 +325,15 @@
 			document.getElementById("participant_team_token_id").value = listArr[3];   
 			document.getElementById("participant_team_name").value = listArr[4]+' ('+listArr[5]+') - '+listArr[6]; 
 			   
-			$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			//$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			//$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			$(".selectCandidateGroupTeamParticipantMember").removeAttr("disabled") ;
 			$('#candidateTournamentGroupMemberTeamModal').modal('hide');
 		return e.preventDefault();
 	});
 	
 	$("#candidateGroupTeamParticipantMemberModal").submit(function(e) { 
-		if($("input[name=selectSportGameModal]:checked", this).length == 0)
+		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();

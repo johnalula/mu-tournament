@@ -36,7 +36,7 @@
 				<?php echo $_matchParticipantTeam->sportGameName.' ( '.TournamentCore::processGenderValue($_matchParticipantTeam->teamGroupGenderCategoryID).' )'?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
-				<?php echo $_matchParticipantTeam->teamName.' ( '.$_matchParticipantTeam->teamAlias.' )'  ?>
+				<?php echo $_matchParticipantTeam->participantTeamName.' ( '.$_matchParticipantTeam->participantTeamAlias.' )'  ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00">
 				<?php echo SystemCore::processCountryValue($_matchParticipantTeam->teamCountry) ?>

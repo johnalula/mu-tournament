@@ -18,7 +18,7 @@
 	   <?php foreach ( $_candidateMemberTeams as $_key => $_candidateTeam ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateTeam->id.'$'.$_candidateTeam->token_id.'$'.$_candidateTeam->teamID.'$'.$_candidateTeam->teamTokenID.'$'.$_candidateTeam->teamName.'$'.$_candidateTeam->teamAlias.'$'.SystemCore::processCountryValue($_candidateTeam->teamCountry) ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateTeam->id.'$'.$_candidateTeam->token_id.'$'.$_candidateTeam->teamID.'$'.$_candidateTeam->teamTokenID.'$'.$_candidateTeam->participantTeamName.'$'.$_candidateTeam->teamAlias.'$'.SystemCore::processCountryValue($_candidateTeam->teamCountry) ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<?php echo SystemCore::processDataID($_candidateTeam->id) ?> 

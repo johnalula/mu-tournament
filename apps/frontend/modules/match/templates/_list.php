@@ -58,12 +58,12 @@
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">  
 						<li>
-							<a href="<?php echo url_for('match/view?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id) ?>" >	
+							<a href="<?php echo url_for('match/fixture?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id) ?>" >	
 								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_tournamentMatch->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
 						</li> 
 						<li>  
-							<a href="<?php echo url_for('match/edit?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id) ?>" >	
+							<a href="<?php echo url_for('match/fixture?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id) ?>" >	
 								<img title="<?php echo __('Edit Team').' ( '.' Task '.' #:'.$_tournamentMatch->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
 							</a>    
 						</li> 

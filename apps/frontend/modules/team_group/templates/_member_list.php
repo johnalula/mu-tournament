@@ -42,7 +42,7 @@
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo $_groupParticipantTeam->sportGameGroupName ?>
 			</td>  
-			<td class="ui-td-left-text ui-td-xlarg">
+			<td class="ui-td-left-text ui-td-xlarg" title="<?php echo $_groupParticipantTeam->description ?>">
 				<?php echo Wordlimit::Wordlimiter($_groupParticipantTeam->description, 5 ) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
