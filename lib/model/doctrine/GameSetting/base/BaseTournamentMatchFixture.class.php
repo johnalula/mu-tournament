@@ -45,7 +45,7 @@
  * 
  * @package    symfony
  * @subpackage model
- * @author     John Haftom
+ * @author     Mekonen Berhane
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
@@ -78,8 +78,9 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('tournament_sport_game_group_id', 'integer', null, array(
+        $this->hasColumn('tournament_sport_game_group_id', 'integer', 8, array(
              'type' => 'integer',
+             'length' => 8,
              ));
         $this->hasColumn('tournament_sport_game_group_token_id', 'string', 100, array(
              'type' => 'string',
@@ -190,14 +191,13 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
 
         $this->hasOne('TournamentSportGameGroup', array(
              'local' => 'tournament_sport_game_group_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
+             'foreign' => 'id'));
 
         $this->hasMany('TournamentMatchFixture as matchFixtureParentFixtures', array(
              'local' => 'id',
              'foreign' => 'parent_match_fixture_id'));
 
-        $this->hasMany('TournamentMatchParticipantTeam as matchFixtureParticipants', array(
+        $this->hasMany('TournamentMatchFixtureGroup as matchFixtureParticipants', array(
              'local' => 'id',
              'foreign' => 'tournament_match_fixture_id'));
 

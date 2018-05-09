@@ -36,6 +36,10 @@ class userActions extends sfActions
 	{
 
 	}
+	public function executeView(sfWebRequest $request)
+	{
+
+	}
 	public function executeCreateSystemUserAccount (sfWebRequest $request)
 	{	
 		$_partyID = $request->getParameter('system_user_person_id');

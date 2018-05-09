@@ -15,6 +15,7 @@
  * @property integer $gender_category_id
  * @property integer $event_type
  * @property integer $player_mode
+ * @property boolean $grouped_flag
  * @property boolean $confirm_flag
  * @property boolean $active_flag
  * @property integer $status
@@ -26,7 +27,7 @@
  * 
  * @package    symfony
  * @subpackage model
- * @author     John Haftom
+ * @author     Mekonen Berhane
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTeamGameParticipation extends sfDoctrineRecord
@@ -66,6 +67,10 @@ abstract class BaseTeamGameParticipation extends sfDoctrineRecord
              ));
         $this->hasColumn('player_mode', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('grouped_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('confirm_flag', 'boolean', null, array(
              'type' => 'boolean',

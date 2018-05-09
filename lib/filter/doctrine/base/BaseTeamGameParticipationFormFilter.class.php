@@ -5,7 +5,7 @@
  *
  * @package    symfony
  * @subpackage filter
- * @author     John Haftom
+ * @author     Mekonen Berhane
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
 abstract class BaseTeamGameParticipationFormFilter extends BaseFormFilterDoctrine
@@ -23,6 +23,7 @@ abstract class BaseTeamGameParticipationFormFilter extends BaseFormFilterDoctrin
       'gender_category_id'     => new sfWidgetFormFilterInput(),
       'event_type'             => new sfWidgetFormFilterInput(),
       'player_mode'            => new sfWidgetFormFilterInput(),
+      'grouped_flag'           => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'confirm_flag'           => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'active_flag'            => new sfWidgetFormChoice(array('choices' => array('' => 'yes or no', 1 => 'yes', 0 => 'no'))),
       'status'                 => new sfWidgetFormFilterInput(),
@@ -42,6 +43,7 @@ abstract class BaseTeamGameParticipationFormFilter extends BaseFormFilterDoctrin
       'gender_category_id'     => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'event_type'             => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'player_mode'            => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'grouped_flag'           => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'confirm_flag'           => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'active_flag'            => new sfValidatorChoice(array('required' => false, 'choices' => array('', 1, 0))),
       'status'                 => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
@@ -78,6 +80,7 @@ abstract class BaseTeamGameParticipationFormFilter extends BaseFormFilterDoctrin
       'gender_category_id'     => 'Number',
       'event_type'             => 'Number',
       'player_mode'            => 'Number',
+      'grouped_flag'           => 'Boolean',
       'confirm_flag'           => 'Boolean',
       'active_flag'            => 'Boolean',
       'status'                 => 'Number',

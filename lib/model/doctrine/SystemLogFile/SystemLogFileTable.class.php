@@ -68,7 +68,7 @@ class SystemLogFileTable extends PluginSystemLogFileTable
 		prt.full_name as employeeFullName, prt.id as employeeID, prt.token_id as employeeTokenID, prt.parent_id as parentID, prt.parent_token_id as parentTokenID, prt.party_type as partyType, prt.status as personStatus, 
 		org.name as organizationName,
 		grp.name as userGroupName, usrRole.user_role_name as userRoleName,
-		prtRel.position_role_id as personPositionID,
+		 
 		";
 		return $_queryFileds;
 	}
@@ -82,7 +82,6 @@ class SystemLogFileTable extends PluginSystemLogFileTable
 			->innerJoin("usr.UserGroup grp on grp.id = usr.group_id")
 			->innerJoin("usr.UserRole usrRole on usrRole.id = usr.user_role_id")
 			->innerJoin("usr.Person prt on usr.person_id = prt.id ")   
-			->innerJoin("prt.partyRelationships prtRel") 
 			->innerJoin("log.ModuleSetting modstt on log.module_id = modstt.id ")    
 			->innerJoin("log.Organization org on log.org_id = org.id ")   
 			->offset($_offset)
@@ -108,7 +107,6 @@ class SystemLogFileTable extends PluginSystemLogFileTable
 			->innerJoin("usr.UserGroup grp on grp.id = usr.group_id")
 			->innerJoin("usr.UserRole usrRole on usrRole.id = usr.user_role_id")
 			->innerJoin("usr.Person prt on usr.person_id = prt.id ")  
-			->innerJoin("prt.partyRelationships prtRel") 
 			->innerJoin("log.ModuleSetting modstt on log.module_id = modstt.id ")  
 			->innerJoin("log.Organization org on log.org_id = org.id ")    
 			->orderBy("log.id DESC")
@@ -132,7 +130,6 @@ class SystemLogFileTable extends PluginSystemLogFileTable
 			->innerJoin("usr.UserGroup grp on grp.id = usr.group_id")
 			->innerJoin("usr.UserRole usrRole on usrRole.id = usr.user_role_id")
 			->innerJoin("usr.Person prt on usr.person_id = prt.id ")   
-			->innerJoin("prt.partyRelationships prtRel") 
 			->innerJoin("log.ModuleSetting modstt on log.module_id = modstt.id ")  
 			->innerJoin("log.Organization org on log.org_id = org.id ")      
 			->orderBy("log.id DESC")

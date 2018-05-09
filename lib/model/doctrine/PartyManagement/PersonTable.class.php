@@ -118,8 +118,8 @@ class PersonTable extends PluginPersonTable
 		$queryFileds = "prt.id, prt.token_id as tokenID, prt.org_id as orgID, prt.org_token_id as orgTokenID,	
 		prt.name as name, prt.middle_name as fatherName, prt.last_name as grandFatherName, prt.full_name as fullName, prt.date_of_birth as dateOfBirth, prt.place_of_birth as placeOfBirth, prt.party_code_number as personCodeNumber,
 		prnt.name as parentName, prnt.alias as parentAlias, 
-		prtRol.party_role_type as personRoleType,
-		(SELECT (prtRl1.party_role_type) FROM PartyRole prtRl1 WHERE prtRl1.party_id = prt.id AND prtRl1.party_token_id = ".md5."(".sha1."("."prt.token_id)) AND prtRl1.default_flag IS TRUE AND prtRl1.active_flag IS TRUE ) as activePartyRoleTypeID,
+		 
+		 
 		 
 		";
 		return $queryFileds;
@@ -129,11 +129,11 @@ class PersonTable extends PluginPersonTable
 		$q = Doctrine_Query::create()
 			->select(self::appendQueryFields())				
 			->from("Person prt")  
-			->innerJoin("prt.Party prnt on prt.parent_id = prnt.id")   
+			->leftJoin("prt.Party prnt on prt.parent_id = prnt.id")   
 			->innerJoin("prt.Party prtorg on prt.org_id = prtorg.id")     
-			->innerJoin("prt.partyContactAddresses cntAdd")   
-			->innerJoin("prt.partyRelationships prtRship")   
-			->innerJoin("prt.partyRoles prtRol")   
+			->leftJoin("prt.partyContactAddresses cntAdd")   
+			->leftJoin("prt.partyRelationships prtRship")   
+			->leftJoin("prt.partyRoles prtRol")   
 			->offset($_offset)
 			->limit($_limit)   
 			->orderBy("prt.name ASC")

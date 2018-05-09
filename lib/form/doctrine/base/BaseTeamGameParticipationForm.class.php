@@ -7,7 +7,7 @@
  *
  * @package    symfony
  * @subpackage form
- * @author     John Haftom
+ * @author     Mekonen Berhane
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
 abstract class BaseTeamGameParticipationForm extends BaseFormDoctrine
@@ -26,6 +26,7 @@ abstract class BaseTeamGameParticipationForm extends BaseFormDoctrine
       'gender_category_id'     => new sfWidgetFormInputText(),
       'event_type'             => new sfWidgetFormInputText(),
       'player_mode'            => new sfWidgetFormInputText(),
+      'grouped_flag'           => new sfWidgetFormInputCheckbox(),
       'confirm_flag'           => new sfWidgetFormInputCheckbox(),
       'active_flag'            => new sfWidgetFormInputCheckbox(),
       'status'                 => new sfWidgetFormInputText(),
@@ -46,6 +47,7 @@ abstract class BaseTeamGameParticipationForm extends BaseFormDoctrine
       'gender_category_id'     => new sfValidatorInteger(array('required' => false)),
       'event_type'             => new sfValidatorInteger(array('required' => false)),
       'player_mode'            => new sfValidatorInteger(array('required' => false)),
+      'grouped_flag'           => new sfValidatorBoolean(array('required' => false)),
       'confirm_flag'           => new sfValidatorBoolean(array('required' => false)),
       'active_flag'            => new sfValidatorBoolean(array('required' => false)),
       'status'                 => new sfValidatorInteger(array('required' => false)),

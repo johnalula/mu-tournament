@@ -50,7 +50,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 					for($_i=0,$_key=$_initialGroupNumber;$_i<$_groupNumber;$_i++,++$_key) {
 						$_sportGameGroup = MultipleContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_key, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
 						
-						$_sportGameGroup->makeGroupCode ($_groupCode, $_key); 
+						$_sportGameGroup->makeGroupCode ($_groupCode, $_sportGameGroup->id); 
 					}
 				//$_sportGameGroup = MultipleContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupTypeID, $_groupTypeName, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description ); 
 				break;

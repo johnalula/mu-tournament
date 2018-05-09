@@ -48,23 +48,13 @@
 					<img title="<?php echo $_teamMemberParticipant->participantTeamName ?>" src="<?php echo image_path($_teamMemberParticipant->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
-			<td class="ui-table-action ui-table-list-action-box-4">
+			<td class="ui-table-action ui-table-list-action-box-2">
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">  
-						<li>
-							<a href="<?php echo url_for('team/setting?product_id='.$_teamMemberParticipant->id.'&token_id='.$_teamMemberParticipant->token_id) ?>" >	
-								<img title="<?php echo __('View Team Setting').' ( '.' Task '.' #:'.$_teamMemberParticipant->id ?> )" src="<?php echo image_path('icons/setting_large') ?>">			
-							</a>
-						</li> 
 						<li>
 							<a href="<?php echo url_for('team/view?product_id='.$_teamMemberParticipant->id.'&token_id='.$_teamMemberParticipant->token_id) ?>" >	
 								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_teamMemberParticipant->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
-						</li> 
-						<li>  
-							<a href="<?php echo url_for('team/edit?product_id='.$_teamMemberParticipant->id.'&token_id='.$_teamMemberParticipant->token_id) ?>" >	
-								<img title="<?php echo __('Edit Team').' ( '.' Task '.' #:'.$_teamMemberParticipant->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
-							</a>    
 						</li> 
 						<li>   
 							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_teamMemberParticipant->id ?>" onclick="Javascript:deleteProduct(<?php echo $_teamMemberParticipant->id ?>);" rel="<?php echo $_teamMemberParticipant->token_id ?>">	

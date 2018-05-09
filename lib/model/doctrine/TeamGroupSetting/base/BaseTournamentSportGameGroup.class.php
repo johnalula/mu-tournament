@@ -32,11 +32,12 @@
  * @property SportGame $SportGame
  * @property Doctrine_Collection $tournamentSportGameTeamGroups
  * @property Doctrine_Collection $tournamentSportGameGroupMemberParticipants
+ * @property Doctrine_Collection $TournamentMatchFixture
  * @property Doctrine_Collection $roundTypeMatchFixtures
  * 
  * @package    symfony
  * @subpackage model
- * @author     John Haftom
+ * @author     Mekonen Berhane
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
@@ -163,7 +164,11 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'tournament_sport_game_group_id'));
 
-        $this->hasMany('TournamentMatchFixture as roundTypeMatchFixtures', array(
+        $this->hasMany('TournamentMatchFixture', array(
+             'local' => 'id',
+             'foreign' => 'tournament_sport_game_group_id'));
+
+        $this->hasMany('TournamentMatchFixtureGroup as roundTypeMatchFixtures', array(
              'local' => 'id',
              'foreign' => 'tournament_sport_game_group_id'));
 

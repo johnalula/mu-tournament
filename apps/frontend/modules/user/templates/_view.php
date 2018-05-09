@@ -30,7 +30,7 @@
 					<div class="ui-panel-content-box">
 						<div class="ui-panel-detail-form-container" id=""> 
 							<div class="ui-panel-content-detail"> 
-								<?php include_partial('team_detail', array('_team' => $_team)) ?> 
+								<?php include_partial('user_detail', array('_team' => $_team)) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
 						
@@ -65,10 +65,10 @@
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															<?php include_partial('team_toolbar', array()) ?> 
+															<?php include_partial('user_toolbar', array()) ?> 
 														</div>
 														<div class="">
-															<?php include_partial('team_filter', array()) ?> 
+															<?php include_partial('filter', array()) ?> 
 														</div><!-- end of ui-filter-list -->
 													</div><!-- end of ui-filter-list -->
 												</div>

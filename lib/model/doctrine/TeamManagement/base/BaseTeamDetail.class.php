@@ -14,7 +14,7 @@
  * 
  * @package    symfony
  * @subpackage model
- * @author     John Haftom
+ * @author     Mekonen Berhane
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTeamDetail extends sfDoctrineRecord

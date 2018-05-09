@@ -222,8 +222,8 @@
 			document.getElementById("gender_category_id").value = listArr[9];  
 			document.getElementById("sport_game_group_name").value = listArr[4]+' - '+listArr[5]+' ('+listArr[10]+') - '+listArr[8];  
 			  
-			$("#createGroupParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelGroupParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			//$("#createGroupParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			//$("#cancelGroupParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			$(".selectCandidateGroupParticipantTeam").removeAttr("disabled") ;
 			$('#candidateTournamentSportGameGroupModal').modal('hide');
 		return e.preventDefault();

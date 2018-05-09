@@ -27,6 +27,17 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 				
 				$_tournamentMatch = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_tournamentMatchName, $_matchNumber, $_contestantTeamMode, $_matchRoundMode, $_matchDate, $_status, $_description );
 		
+		/*if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_REGISTRATION;  
+				$_actionObject  = 'Registration Task ID: '.$_taskObj->id;  
+				$_actionDesc  = 'Registration Task - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_REGISTRATION).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}*/
+			
+			
 		return $_tournamentMatch;
 	}
 	//

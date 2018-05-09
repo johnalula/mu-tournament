@@ -26,11 +26,10 @@
  * @property TournamentSportGameGroup $TournamentSportGameGroup
  * @property Doctrine_Collection $tournamentGroupParticipantTeamMembers
  * @property Doctrine_Collection $sportGameTeamGroupMatchTeamParticipants
- * @property Doctrine_Collection $tournamentGroupParticipantOpponentTeams
  * 
  * @package    symfony
  * @subpackage model
- * @author     John Haftom
+ * @author     Mekonen Berhane
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
@@ -123,10 +122,6 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
         $this->hasMany('TournamentMatchParticipantTeam as sportGameTeamGroupMatchTeamParticipants', array(
              'local' => 'id',
              'foreign' => 'group_participant_team_id'));
-
-        $this->hasMany('PairParticipantTeam as tournamentGroupParticipantOpponentTeams', array(
-             'local' => 'id',
-             'foreign' => 'opponent_group_participant_team_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

@@ -1,8 +1,6 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR)):
 	
-	//processNew ( $_orgID, $_orgTokenID, $_partyID, $_partyTokenID, $_userRoleID, $_userRoleTypeID, $_userGroupID, $_userName, $_userPassword, $_activationKey, $_userStatus, $_description, $_userID , $_userTokenID )
-	//$_flag = UserTable::processNew ( $_orgID, $_orgTokenID, $_partyID, $_partyTokenID, $_userRoleID, $_userRoleTypeID, $_userGroupID, $_userName, $_userPassword, $_activationKey, $_userStatus, $_description, $_userID , $_userTokenID  );
 ?> 
 
 <div class="ui-page-box">
