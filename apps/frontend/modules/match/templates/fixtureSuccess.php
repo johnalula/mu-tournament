@@ -1,6 +1,11 @@
 
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_MATCH)):
+	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
+	
+	////parent_match_fixture_name=&parent_match_fixture_id=&parent_match_fixture_token_id=&sport_game_type_id=1&tournament_match_id=1&tournament_match_token_id=ed87b66acc88074c6b6ecbc3f7fd06f6adb49b76&tournament_match_number=MTCH-001&tournament_match_round_mode=1&tournament_sport_game_group_name=Group One - 5000M (Men) - Running - Athletics&tournament_sport_game_group_id=1&tournament_sport_game_group_token_id=e974b6a514d228b8cdb2cdca322acbd6e51d7152&gender_category_id=1&contestant_team_mode=2&contestant_mode=4&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&sport_game_venue_name=Mekelle Tigray Stadium&sport_game_group_type_id=&round_type_name=Round One&round_type_id=1&round_type_token_id=916c5f0bc4ae6af856ef40b39c4e6afa2937087f&event_type=1&match_date=05/19/2018&match_time=10:30 AM&description=sfdfgsdfgsdfgsdfgsfgsfg
+	
+	//$_flag =  TournamentMatchFixtureTable::processNew ( $_orgID, $_orgTokenID, $_parentMatchID, $_parentMatchTokenID, 1, 'ed87b66acc88074c6b6ecbc3f7fd06f6adb49b76', 1, 'e974b6a514d228b8cdb2cdca322acbd6e51d7152', 5, 'a5b16fbdda8b5c083be1d62b23ce2380ffcf6213', 'Group One - 5000M (Men) - Running - Athletics', 1, 1, 1, 1, 2, 4, 'Mekelle Tigray Stadium', 'MTCH-001', '10:30 AM', '05/19/2018', 1, 'sfdfgsdfgsdfgsdfgsfgsfg', $_userID, $_userTokenID  );  
+	
 	
 	//$_tournamentMatchFixtures = TournamentMatchFixtureTable::processCandidateSelections ( 1, $_parentMatchID, 1, sha1(md5('82bd3aa39c947e4afe24f7bf25f240f3f6adc7e8')), $_sportGameTypeID, $_keyword);
 	

@@ -18,6 +18,11 @@
 								<input type="hidden" class="form-control" id="tournament_sport_game_group_id" name="match_participant_team[tournament_sport_game_group_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="tournament_sport_game_group_token_id" name="match_participant_team[tournament_sport_game_group_token_id]" value=""> 
 								<input type="hidden" class="form-control" id="gender_category_id" name="match_participant_team[gender_category_id]" value=""> 
+								<input type="hidden" class="form-control" id="tournament_match_fixture_group_id" name="match_participant_team[tournament_match_fixture_group_id]" value=""> 
+								<input type="hidden" class="form-control" id="tournament_match_fixture_token_group_id" name="match_participant_team[tournament_match_fixture_token_group_id]" value=""> 
+								
+								<input type="hidden" class="form-control" id="contestant_team_mode" name="match_participant_team[contestant_team_mode]" value="<?php echo TournamentCore::$_PAIR_TEAM ?>"> 
+								<input type="hidden" class="form-control" id="match_fixture_contestant_team_mode" name="match_participant_team[match_fixture_contestant_team_mode]" value="<?php echo $_tournamentMatch->contestantTeamMode ?>"> 
 								
 								<input type="hidden" class="form-control" id="tournament_contestant_team_mode" name="match_participant_team[tournament_contestant_team_mode]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->contestantTeamMode ?>"  >
 								<input type="hidden" class="form-control" id="tournament_match_id" name="match_participant_team[tournament_match_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->id ?>"  >
@@ -48,6 +53,70 @@
 									</button>
 								</span>
 							</div><!-- /input-group -->
+						</div>
+					</div>  
+					<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
+					<div class="form-group">
+						<label class="col-sm-21 control-label"><?php echo __('Opponent Team') ?>: <span class="ui-red-text">*</span></label>
+						<div class="col-sm-40"> 
+							<div class="input-group">
+								<input type="text" class="form-control " id="opponent_participant_team_name" name="match_participant_team[opponent_participant_team_name]" placeholder="<?php echo __('Candidate Opponent Participant Team') ?>" title="<?php echo __('Candidate Opponent Participant Team') ?>" value="" data-toggle="modal" data-target="#candidateOpponentParticipantTeamModal"  disabled>
+								<input type="hidden" class="form-control" id="opponent_participant_team_id" name="match_participant_team[opponent_participant_team_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="opponent_participant_team_token_id" name="match_participant_team[opponent_participant_team_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="opponent_sport_game_group_team_id" name="match_participant_team[opponent_sport_game_group_team_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="opponent_sport_game_group_team_token_id" name="match_participant_team[opponent_sport_game_group_team_token_id]" value=""> 
+								
+								<span class="input-group-btn">
+									<button class="btn btn-default selectCandidateOpponentParticipantTeam" type="button" data-toggle="modal" data-target="#candidateOpponentParticipantTeamModal" title="<?php echo __('Candidat Participant Teams') ?>" disabled >
+										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
+									</button>
+								</span>
+							</div><!-- /input-group -->
+						</div>
+					</div>  
+					<?php endif; ?>
+					<div class="form-group">
+						<label class="col-sm-21 control-label" title="<?php echo __('Match Venue') ?>"><?php echo __('Match Venue') ?>:&nbsp;</label>
+						<div class="col-sm-40"> 
+							<div class="input-group">
+								<input type="text" class="form-control" id="sport_game_venue_name" name="match_participant_team[sport_game_venue_name]" placeholder="<?php echo __('Game Venue') ?>" title="<?php echo __('Sport Game Venue') ?>" <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? '':'disabled' ?>>
+								<input type="hidden" class="form-control" id="sport_game_group_type_id" name="match_participant_team[sport_game_group_type_id]" >
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-default	dropdown-toggle" data-toggle="dropdown" <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? '':'disabled' ?>>
+										Venu
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu pull-right">
+										<li class="selectSportGameMatchVenue" rel="Mekelle Tigray Stadium" id="">
+											<a href="#"><?php echo ('Mekelle Tigray Stadium') ?></a>
+										</li> 			 
+										<li class="selectSportGameMatchVenue" rel="Adi Haki Campus Stadium" id="">
+											<a href="#"><?php echo ('Adi Haki Campus Stadium') ?></a>
+										</li> 			 
+										<li class="selectSportGameMatchVenue" rel="Arid Campus Stadium" id="">
+											<a href="#"><?php echo ('Arid Campus Stadium') ?></a>
+										</li> 			 
+									</ul>
+								</div><!-- /btn-group -->
+							</div><!-- /input-group -->
+
+						</div>
+					</div>  
+					<div class="form-group">
+						<label class="col-sm-21 control-label"><?php echo __('Match Date') ?>: <span class="ui-red-text">*</span></label>
+						<div class="col-sm-23">
+							 <div class="input-group"> 
+								<input class="form-control" id="match_date" name="match_participant_team[match_date]" type="text" placeholder="<?php echo __('Match Date') ?>" value="" title="<?php echo __('Match Date') ?>" readonly required <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? '':'disabled' ?>>
+								<span class="input-group-btn">
+									<button class="btn btn-default ui-button-img" type="button">
+										<img class="ui-addon-img" src="<?php echo image_path('icons/calendar_small') ?>" >
+									</button>
+								</span> 
+							</div>
+						</div>
+						<label class="col-sm-01 control-label"><?php echo __('Time') ?>: <span class="ui-red-text">*</span></label>
+						<div class="col-sm-23">
+							 <input type="text" class="form-control" id="match_time"	name="match_participant_team[match_time]"	placeholder="<?php echo __('Match Time') ?>" required  <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? '':'disabled' ?>>
 						</div>
 					</div>  
 					<div class="form-group">

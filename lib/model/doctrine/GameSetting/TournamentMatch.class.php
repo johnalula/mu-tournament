@@ -12,6 +12,12 @@
  */
 class TournamentMatch extends PluginTournamentMatch
 { 
+	 
+	
+	public function makeFullCodeNumber ($_tournamentMatchNumber)
+	{
+		return (($_tournamentMatchNumber->approval_status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
+	}
 	public function checkInitiated ()
 	{
 		return (($this->approval_status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
@@ -60,7 +66,7 @@ class TournamentMatch extends PluginTournamentMatch
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  
 		$this->active_flag = true;  
-		$this->approval_status = trim(TournamentCore::$_COMPLETED); 
+		$this->approval_status = trim(TournamentCore::$_APPROVED); 
 		$this->status = trim(TournamentCore::$_ACTIVE);  
 		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  
 		$this->save();

@@ -15,12 +15,6 @@
 						<?php echo __('Cancel') ?>
 					</button>
 				</li>
-				<li class="">
-					<a href="<?php echo url_for('match/index') ?>" title="<?php echo __('Back to Match List') ?>" id="backToMatchList" class="" >
-						<img class="navbar-nav-img" src="<?php echo image_path('settings/to_do_list') ?>">
-						<?php echo __('List') ?>
-					</a>
-				</li>	 
 			<?php endif; ?>
 
 			<?php if(($sf_request->getParameter('match_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
@@ -59,13 +53,7 @@
 							<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
 							<?php echo __('Cancel') ?>
 						</button>
-					</li>
-					<li class="">
-						<a href="<?php echo url_for('match/index') ?>" title="<?php echo __('Back to Match List') ?>" id="backToMatchList" class="" >
-							<img class="navbar-nav-img" src="<?php echo image_path('settings/to_do_list') ?>">
-							<?php echo __('List') ?>
-						</a>
-					</li>	 
+					</li> 
 				<?php endif; ?>
 			<?php endif; ?>
 			
@@ -113,16 +101,16 @@
 							<img class="navbar-nav-img" src="<?php echo image_path('status/apply') ?>">
 							<?php echo __('Complete') ?>
 						</button>
-					</li>	 
-					<li class="">
-						<a href="<?php echo url_for('team_group/index') ?>" title="<?php echo __('Back to Team Group List') ?>" id="backToSportGame" class="" >
-							<img class="navbar-nav-img" src="<?php echo image_path('icons/details') ?>">
-							<?php echo __('List') ?>
-						</a>
-					</li>
+					</li>	  
 				<?php endif; ?>
 			<?php endif; ?>
 			
+			<li class="">
+				<a href="<?php echo url_for('match/index') ?>" title="<?php echo __('Back to Match List') ?>" id="backToMatchList" class="" >
+					<img class="navbar-nav-img" src="<?php echo image_path('settings/to_do_list') ?>">
+					<?php echo __('List') ?>
+				</a>
+			</li>	 
 		<?php endif; ?> 
 		
 	</ul>

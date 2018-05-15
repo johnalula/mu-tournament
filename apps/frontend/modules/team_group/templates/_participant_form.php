@@ -32,9 +32,22 @@
 						</div>
 					</div> 
 					<div class="form-group">
+						<label class="col-sm-20 control-label"><?php echo __('Batch Mode') ?>: <span class="ui-red-text">*</span></label>
+						<div class="col-sm-40"> 
+							<select id="member_participant_status" name="team_group_member_participant[member_participant_status]" class="form-control" title="<?php echo __('Team Status') ?>">
+								<option value="100" selected  ><?php echo 'Select Status ...' ?></option>
+								<?php foreach(TournamentCore::processDataCreationModes() as $_key => $_dataCreation): ?>								 
+									<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_INDIVIDUAL_CREATION_MODE ? 'selected':'' ?> >
+										<?php echo $_dataCreation ?>
+									</option>								 
+								<?php endforeach; ?>
+							</select>
+						</div>
+					</div> 
+					<div class="form-group">
 						<label class="col-sm-20 control-label"><?php echo __('Team') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 
-								<div class="input-group">
+							<div class="input-group">
 								<input type="text" class="form-control " id="participant_team_name" name="team_group_member_participant[participant_team_name]" placeholder="<?php echo __('Candidate Participant Team') ?>" title="<?php echo __('Candidate Group Member Team') ?>" value="" data-toggle="modal" data-target="#candidateTournamentGroupMemberTeamModal"  disabled required >
 								<input type="hidden" class="form-control" id="participant_team_id" name="team_group_member_participant[participant_team_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="participant_team_token_id" name="team_group_member_participant[participant_team_token_id]" value=""> 
@@ -51,7 +64,7 @@
 					<div class="form-group">
 						<label class="col-sm-20 control-label"><?php echo __('Participant') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 
-								<div class="input-group">
+							<div class="input-group">
 								<input type="text" class="form-control " id="participant_name" name="team_group_member_participant[participant_name]" placeholder="<?php echo __('Candidate Participant') ?>" title="<?php echo __('Candidate Participant') ?>" value="" data-toggle="modal" data-target="#candidateGroupTeamParticipantMemberModal"  disabled>
 								<input type="hidden" class="form-control" id="participant_id" name="team_group_member_participant[participant_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="participant_token_id" name="team_group_member_participant[participant_token_id]" value=""> 
@@ -64,30 +77,6 @@
 									</button>
 								</span>
 							</div><!-- /input-group -->
-						</div>
-					</div> 
-					<div class="form-group">
-						<label class="col-sm-20 control-label"><?php echo __('Status') ?>: <span class="ui-red-text">&nbsp;</span></label>
-						<div class="col-sm-23">
-							<select id="member_participant_status" name="team_group_member_participant[member_participant_status]" class="form-control" title="<?php echo __('Team Status') ?>">
-								<option value="100" selected  ><?php echo 'Select Status ...' ?></option>
-								<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_teamStatus): ?>								 
-									<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_PENDING ? 'selected':'' ?> >
-										<?php echo $_teamStatus ?>
-									</option>								 
-								<?php endforeach; ?>
-							</select>
-						</div>
-						<label class="col-sm-01 control-label" title="<?php echo __('Date') ?>"><?php echo __('Date') ?>: <span class="ui-red-text">&nbsp;</span></label>
-						<div class="col-sm-23">
-							<div class="input-group"> 
-								<input class="form-control" id="start_date" name="team_group_member_participant[start_date]" type="text" placeholder="<?php echo __('Start Date') ?>" value="<?php echo date('m/d/Y', time()) ?>" title="<?php echo __('Tournament Start Date') ?>" readonly>
-								<span class="input-group-btn">
-									<button class="btn btn-default ui-button-img" type="button">
-										<img class="ui-addon-img" src="<?php echo image_path('icons/calendar_small') ?>" >
-									</button>
-								</span> 
-							</div>
 						</div>
 					</div>  
 					<div class="form-group">
@@ -105,8 +94,9 @@
 
 <script>
 	$('#member_participant_status').change(function(e) {
-		//$("#createGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		//$("#cancelGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		if($(this).val() == 2){
+			$("#createBatchGroupTeamParticipantMember").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		}
 		//alert('asdfa');
 		return false;
 	});  

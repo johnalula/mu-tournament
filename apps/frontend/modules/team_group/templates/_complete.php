@@ -84,19 +84,19 @@
 										</div><!-- end of ui-tab-content --> 
 										
 										
-									 <!-- Begining of toolbar -->
-									<div class="ui-toolbar-menu-box  ui-toolbar-border1 ui-panel-footer-margin ui-panel-footer-border">
-										<div class="ui-toolbar-menu">
-											<div id="" class="navbar-collapse ui-toolbar">
-												<div class="row">
-													<div class="col-sm-12">
-														<?php include_partial('footer_navigation', array('_object' => $_tournamentTeamGroup)) ?> 
-													</div> 
+										 <!-- Begining of toolbar -->
+										<div class="ui-toolbar-menu-box  ui-toolbar-border1 ui-panel-footer-margin ui-panel-footer-border">
+											<div class="ui-toolbar-menu">
+												<div id="" class="navbar-collapse ui-toolbar">
+													<div class="row">
+														<div class="col-sm-12">
+															<?php include_partial('footer_navigation', array('_object' => $_tournamentTeamGroup)) ?> 
+														</div> 
+													</div><!-- end of ui-filter-list -->
 												</div><!-- end of ui-filter-list -->
-											</div><!-- end of ui-filter-list -->
-										</div>
-									</div  
-									<!--    End of toolbar      -->
+											</div>
+										</div  
+										<!--    End of toolbar      -->
 									
 										
 									</div><!-- end of ui-tab-content -->  

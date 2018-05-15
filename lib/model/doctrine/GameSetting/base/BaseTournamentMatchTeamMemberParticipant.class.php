@@ -12,13 +12,16 @@
  * @property string $tournament_match_participant_team_token_id
  * @property integer $group_participant_team_member_id
  * @property string $group_participant_team_member_token_id
+ * @property integer $match_position_order
+ * @property integer $match_result_position_order
+ * @property integer $match_result_score
+ * @property integer $match_result_time
  * @property string $effective_date
  * @property boolean $qualified_flag
- * @property integer $qualification_status
- * @property boolean $confirm_flag
+ * @property boolean $confirmed_flag
  * @property boolean $active_flag
- * @property integer $standing_status
- * @property integer $contestant_status
+ * @property integer $qualification_status
+ * @property integer $competition_status
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
@@ -61,6 +64,18 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('match_position_order', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_position_order', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_score', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_time', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('effective_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
@@ -68,23 +83,19 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
         $this->hasColumn('qualified_flag', 'boolean', null, array(
              'type' => 'boolean',
              ));
+        $this->hasColumn('confirmed_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('active_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('qualification_status', 'integer', null, array(
              'type' => 'integer',
              'default' => 1,
              ));
-        $this->hasColumn('confirm_flag', 'boolean', null, array(
-             'type' => 'boolean',
-             'default' => 0,
-             ));
-        $this->hasColumn('active_flag', 'boolean', null, array(
-             'type' => 'boolean',
-             'default' => 0,
-             ));
-        $this->hasColumn('standing_status', 'integer', null, array(
-             'type' => 'integer',
-             'default' => 1,
-             ));
-        $this->hasColumn('contestant_status', 'integer', null, array(
+        $this->hasColumn('competition_status', 'integer', null, array(
              'type' => 'integer',
              'default' => 1,
              ));

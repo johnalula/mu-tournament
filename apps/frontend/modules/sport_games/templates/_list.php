@@ -16,7 +16,7 @@
 		 </tr>
 	  </thead>
 	  <tbody>
-		<input type="text" class="form-control" id="ui-total-data-list-sport-games" name="ui-total-data-list-sport-games" value="<?php echo count($_countSportGames) ?>">
+		<input type="hidden" class="form-control" id="ui-total-data-list-sport-games" name="ui-total-data-list-sport-games" value="<?php echo count($_countSportGames) ?>">
 	  <?php foreach ( $_sportGames as $_key => $_sportGame ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">

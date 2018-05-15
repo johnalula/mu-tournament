@@ -1,20 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
-	
-	//test_id=&tournament_name=African Universities Sport Festival (AUSF ) - 2018&tournament_token_id=67a74306b06d0c01624fe0d0249a570f4d093747&tournament_id=1&match_season=2018&game_category=1&sport_game_name=800M (Athletics)&sport_game_id=4&sport_game_token_id=dedad721e93b877cecb6306b76ed9ec9c76192cf&team_group_id=1&description=dfasdfasdfasdf&all-list-check-boxs=0&ui-total-data-list-product=0
-	
-	//$_teamGroup =  SportGameGroupTable::processNew ( $_orgID, $_orgTokenID, 1, 4, 'dedad721e93b877cecb6306b76ed9ec9c76192cf', 1, '800M (Athletics)', 'afasdf asdfa fasdf', $_userID, $_userTokenID );
-	
-	//$_teamGroup =  GroupTypeTable::makeObject ( $_orgID, 1);
-	//test_id=&tournament_name=African Universities Sport Festival (AUSF ) - 2018&tournament_token_id=67a74306b06d0c01624fe0d0249a570f4d093747&tournament_id=1&match_season=2018&game_category=1&sport_game_name=5000M (Athletics)&sport_game_id=7&sport_game_token_id=82dcbbb47c5fec8c2902f76c22f43a12f93f2f05&team_group_id=1&contestant_team_mode=2&description=asdfasd fasdf&all-list-check-boxs=0&ui-total-data-list-product=0
-	
-	//$_teamGroup =  SportGameGroupTable::processNew ( $_orgID, $_orgTokenID, 1, 7, '82dcbbb47c5fec8c2902f76c22f43a12f93f2f05', 1, '5000M (Athletics)', 2, 'sfgsfgs', $_userID, $_userTokenID );  
-	//echo $_teamGroup->id.' == ';
-	
-	//$_candidateTeamGroups = SportGameGroupTable::processCandidateSelection ( 1, sha1(md5('94f12f125643718e20d329aef595bc3e')), 1, 5, sha1(md5('a5b16fbdda8b5c083be1d62b23ce2380ffcf6213')), $_genderCategoryID, $_keyword);
-	//$_candidateTeamGroups = SportGameGroupTable::processCandidateGroupTypes ( 1, 1, 5, sha1(md5('a5b16fbdda8b5c083be1d62b23ce2380ffcf6213')), $_keyword, $_activeFlag, 0, 10 );
-	//echo count($_candidateTeamGroups).' == ';
-	 
+	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)): 
 ?> 
 
 <form class="form-horizontal" role="form" action="<?php echo url_for('team_group/createTournamentGroup') ?>" id="createTournamentSportGameGroup" name="createTournamentSportGameGroupForm" method="post"> 

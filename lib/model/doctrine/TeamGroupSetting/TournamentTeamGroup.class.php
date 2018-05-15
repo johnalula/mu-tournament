@@ -41,7 +41,7 @@ class TournamentTeamGroup extends PluginTournamentTeamGroup
 		$_flag = true;   
 		$_effectiveDate = date('m/d/Y', time());  
 		$this->active_flag = true; 
-		$this->approval_status = trim(TournamentCore::$_APPROVED); 
+		$this->approval_status = trim(TournamentCore::$_ACTIVE); 
 		$this->status = trim(TournamentCore::$_ACTIVE); 
 		$this->effective_date = trim($_effectiveDate);  
 		$this->save();
@@ -60,8 +60,8 @@ class TournamentTeamGroup extends PluginTournamentTeamGroup
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  
 		$this->active_flag = true;  
-		$this->approval_status = trim(TournamentCore::$_COMPLETED); 
-		$this->status = trim(TournamentCore::$_ACTIVE);  
+		$this->approval_status = trim(TournamentCore::$_APPROVED); 
+		$this->status = trim(TournamentCore::$_COMPLETED);  
 		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  
 		$this->save();
 		return $_flag;

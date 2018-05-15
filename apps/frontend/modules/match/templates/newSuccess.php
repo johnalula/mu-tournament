@@ -1,5 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_MATCH)):
+	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
 	
 ?> 
 
@@ -87,6 +87,63 @@
 </div><!-- /.modal -->
 
 
+<!-- Modal -->
+<div class="modal fade" id="candidateParentMatchFixtureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<form id="insertModalOneData">
+	<div class="modal-dialog-xlg">
+		<div class="modal-content"> 
+			 <div class="ui-modal-panel-container1" id=""> 
+				<div class="ui-panel-grid-box" id=""> 
+					<!-- First panel -->  
+						<div class="ui-panel-grid">
+							<div class="ui-panel-header-default">
+								<h2 class="ui-theme-panel-header">
+									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group Management') ?>">
+									<span class="ui-header-status-icon">
+										<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
+										<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
+									</span>
+									<?php echo __('Candidate Match Fixture').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
+								</h2>
+								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+								</div>
+							</div><!-- ui-panel-header-default -->
+							<div class="" id="ui-list-collapsible-panel-one">
+								<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
+							<!-- Begining of toolbar -->
+								<div class="ui-toolbar-menu-box ui-panel-content-border">
+									<div class="ui-toolbar-menu">
+										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_candidateSportGames)) ?> 
+									</div>
+								</div>
+								<!--    End of toolbar      -->
+								<div class="ui-panel-content-box">
+									<div class="ui-panel-content-box ">
+										<div class="ui-panel-grid-list"> 
+											<?php include_partial('candidate_parent_match_fixtures', array( '_candidateParentMatchFixtures' => $_candidateParentMatchFixtures )) ?> 
+										</div>
+									</div> 
+									
+									<div class="ui-panel-footer-default">
+										<div class="ui-panel-list-pagination-default">
+											<div class="ui-panel-list-pagination">
+												<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
+											</div>
+										</div>
+									</div>
+											
+								</div> 			
+							</div><!-- ui-panel-content-box --> 
+						</div><!-- end of ui-panel-grid --> 
+					<!-- First panel --> 
+					<div class="clearFix"></div>		
+				</div><!-- end of ui-panel-grid-box --> 
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</form>
+</div><!-- /.modal -->
 <!--- ************************  -->
 
 <div class="modal fade" id="processAjaxLoadergModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 

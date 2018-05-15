@@ -7,7 +7,7 @@ class SystemCore {
 	public static $_GROUP = 4;
 	public static $_TEAM = 5;  
 	public static $_CONTESTANT = 6;  
-	public static $_MATCH = 7;  
+	public static $_TOURNAMENT_MATCH = 7;  
 	public static $_TEAM_GROUP = 8;  
 	public static $_MEDAL_AWARD = 9;  
 	public static $_ORGANIZATION = 10; 
@@ -16,7 +16,7 @@ class SystemCore {
 	public static $_ADMINISTRATOR = 13; 
 	public static $_REPORT = 14;
 	
-	public static $_CODE_TYPES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Game", 4 => "Group", 5 => "Team", 6 => "Contestant", 7 => "Match", 8 => "Team Group", 9 => "Medal Award", 10 => "Organization", 11 => "General Setting", 12 => "System Setting", 13 => "Administrator", 14 => "Report" );
+	public static $_CODE_TYPES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Sport Game", 4 => "Group", 5 => "Team", 6 => "Contestant", 7 => "Tournament Match", 8 => "Team Group", 9 => "Medal Award", 10 => "Organization", 11 => "General Setting", 12 => "System Setting", 13 => "Administrator", 14 => "Report" );
 	
 	public static function processSystemCodeTypeID ( $_id ) 
 	{ 
@@ -432,10 +432,13 @@ class SystemCore {
 	}
 	
 	public static $_COUNTRIES = array ( 
-	1 => "AFGHANISTAN, ISLAMIC STATE OF", 2 => "ALBANIA", 3 => "ALGERIA ", 4 => "AMERICAN SAMOA", 5 => "ANDORRA", 6 => "ANGOLA", 7 => "ANGUILLA", 8 => "ANTARCTICA", 9 => "ANTIGUA AND BARBUDA", 10 => "ARGENTINA", 11 => "ARMENIA ", 12 => "ARUBA  ", 13 => "AUSTRALIA ", 14 => "AUSTRIA", 15 => "AZERBAIDJAN", 16 => "BAHAMAS", 17 => "BAHRAIN", 18 => "BANGLADESH", 19 => "BARBADOS", 20 => "BELARUS", 21 => "BELGIUM", 22 => "BELIZE", 23 => "BENIN", 24 => "BERMUDA", 25 => "BHUTAN", 26 => "BOLIVIA", 27 => "BOSNIA-HERZEGOVINA", 28 => "BOTSWANA", 29 => "BOUVET ISLAND", 30 => "BRAZIL", 31 => "BRITISH INDIAN OCEAN TERRITORY", 32 => "BRUNEI DARUSSALAM", 33 => "BULGARIA", 34 => "BURKINA FASO", 1 => "BURUNDI", 35 => "CAMBODIA", 36 => "CAMEROON", 37 => "CANADA", 38 => "CAPE VERDE", 39 => "CAYMAN ISLANDS", 40 => "CENTRAL AFRICAN REPUBLIC", 41 => "CHAD", 42 => "CHILE", 43 => "CHINA", 44 => "HRISTMAS ISLAND", 45 => "COCOS (KEELING) ISLANDS", 46 => "COLOMBIA", 47 => "COMOROS", 48 => "CONGO", 49 => "DEMOCRATIC REPUBLIC OF CONGO", 50 => "COOK ISLANDS", 51 => "COSTA RICA", 52 => "CROATIA", 53 => "CUBA", 54 => "CYPRUS", 55 => "CZECH REPUBLIC", 56 => "DENMARK", 57 => "DJIBOUTI", 58 => "DOMINICA", 59 => "DOMINICAN REPUBLIC", 60 => "EAST TIMOR", 61 => "ECUADOR", 62 => "EGYPT", 63 => "EL SALVADOR", 64 => "EQUATORIAL GUINEA", 65 => "ERITREA", 66 => "ESTONIA", 67 => "ETHIOPIA", 68 => "FALKLAND", 69 => "ICLANDS", 70 => "FAROE ISLANDS", 71 => "FIJI", 72 => "FINLAND", 73 => "United Kingdom", 74 => "United States of America"	);
+	1 => "Algeria", 2 => "Angola", 3 => "Benin ", 4 => "Botswana", 5 => "Burkina Faso", 6 => "Burundi", 7 => "Cameroon", 8 => "Cape Verde", 9 => "Central African Republic", 10 => "Chad", 11 => "Comoros ", 12 => "Republic of the Congo-Brazzaville  ", 13 => "Democratic Republic of the Congo-Kinshasa ", 14 => "Côte d'Ivoire", 15 => "Djibouti", 16 => "Egypt", 17 => "Equatorial Guinea", 18 => "Eritrea", 19 => "Ethiopia ", 20 => "Gabon", 21 => "Gambia", 22 => "Ghana", 23 => "Guinea", 24 => "Guinea-Bissau", 25 => "Kenya", 26 => "Lesotho", 27 => "Liberia", 28 => "Libya", 29 => "Madagascar", 30 => "Malawi", 31 => "Mali", 32 => "Mauritania", 33 => "Mauritius", 34 => "Mayotte", 35 => "Morocco", 36 => "Mozambique", 37 => "Namibia", 38 => "Niger", 39 => "Nigeria", 40 => "Réunion", 41 => "Rwanda", 42 => "Saint Helena", 43 => "São Tomé and Príncipe", 44 => "Senegal", 45 => "Seychelles", 46 => "Sierra Leone", 47 => "Somalia", 48 => "South Africa", 49 => "South Sudan", 50 => "Sudan", 51 => "Swaziland", 52 => "Tanzania", 53 => "Togo", 54 => "Tunisia", 55 => "Uganda", 56 => "Democratic Republic Western Sahara", 57 => "Zambia", 58 => "Zimbabwe"	);
 	
 	public static $_COUNTRY_ALIAS = array ( 
-	1 => "AFG", 2 => "ALB", 3 => "DZA ", 4 => "ASM", 5 => "AND", 6 => "ANG", 7 => "AIA", 8 => "ATA", 9 => "ATG", 10 => "ARG", 11 => "ARM", 12 => "ABW  ", 13 => "AUS", 14 => "AUT", 15 => "AZE", 16 => "BHS", 17 => "BHR", 18 => "BGD", 19 => "BRB", 20 => "BLR", 21 => "BLG", 22 => "BLZ", 23 => "BNN", 24 => "BMU", 25 => "BTN", 26 => "BOL", 27 => "BSH", 28 => "BTW", 29 => "BVT", 30 => "BRA", 31 => "BIOT", 32 => "BRN", 33 => "BGR", 34 => "BRF", 1 => "BRD", 35 => "KCMB", 36 => "CMR", 37 => "CAN", 38 => "CPV", 39 => "CYM", 40 => "CAF", 41 => "TCD", 42 => "CHL", 43 => "CHN", 44 => "HMD", 45 => "CCK", 46 => "COL", 47 => "CMR", 48 => "COG", 49 => "COD	", 50 => "COK", 51 => "CRI", 52 => "HRV", 53 => "CUB", 54 => "CYP", 55 => "CZE", 56 => "DNK", 57 => "DJI", 58 => "DMA", 59 => "DMR", 60 => "ETMR", 61 => "ECU", 62 => "EGY", 63 => "SLV", 64 => "GNQ", 65 => "ERI", 66 => "EST", 67 => "ETH", 68 => "FLK", 69 => "ISN", 70 => "FRO", 71 => "FJI", 72 => "FIN", 73 => "UK", 74 => "USA"	);
+	1 => "Algeria", 2 => "Angola", 3 => "Benin ", 4 => "Botswana", 5 => "Burkina Faso", 6 => "BDI", 7 => "Cameroon", 8 => "Cape Verde", 9 => "Central African Republic", 10 => "Chad", 11 => "Comoros ", 12 => "Republic of the Congo-Brazzaville  ", 13 => "Democratic Republic of the Congo-Kinshasa ", 14 => "Côte d'Ivoire", 15 => "Djibouti", 16 => "EGT", 17 => "Equatorial Guinea", 18 => "ERI", 19 => "ETH ", 20 => "Gabon", 21 => "Gambia", 22 => "Ghana", 23 => "Guinea", 24 => "Guinea-Bissau", 25 => "KEN", 26 => "Lesotho", 27 => "Liberia", 28 => "Libya", 29 => "Madagascar", 30 => "Malawi", 31 => "Mali", 32 => "Mauritania", 33 => "Mauritius", 34 => "Mayotte", 35 => "MOR", 36 => "Mozambique", 37 => "Namibia", 38 => "Niger", 39 => "Nigeria", 40 => "Réunion", 41 => "Rwanda", 42 => "Saint Helena", 43 => "São Tomé and Príncipe", 44 => "Senegal", 45 => "Seychelles", 46 => "Sierra Leone", 47 => "SOM", 48 => "SA", 49 => "South Sudan", 50 => "Sudan", 51 => "Swaziland", 52 => "Tanzania", 53 => "Togo", 54 => "Tunisia", 55 => "UGA", 56 => "SADR", 57 => "Zambia", 58 => "Zimbabwe"	);
+	
+	/*public static $_COUNTRY_ALIAS = array ( 
+	1 => "AFG", 2 => "ALB", 3 => "DZA ", 4 => "ASM", 5 => "AND", 6 => "ANG", 7 => "AIA", 8 => "ATA", 9 => "ATG", 10 => "ARG", 11 => "ARM", 12 => "ABW  ", 13 => "AUS", 14 => "AUT", 15 => "AZE", 16 => "BHS", 17 => "BHR", 18 => "BGD", 19 => "BRB", 20 => "BLR", 21 => "BLG", 22 => "BLZ", 23 => "BNN", 24 => "BMU", 25 => "BTN", 26 => "BOL", 27 => "BSH", 28 => "BTW", 29 => "BVT", 30 => "BRA", 31 => "BIOT", 32 => "BRN", 33 => "BGR", 34 => "BRF", 1 => "BRD", 35 => "KCMB", 36 => "CMR", 37 => "CAN", 38 => "CPV", 39 => "CYM", 40 => "CAF", 41 => "TCD", 42 => "CHL", 43 => "CHN", 44 => "HMD", 45 => "CCK", 46 => "COL", 47 => "CMR", 48 => "COG", 49 => "COD	", 50 => "COK", 51 => "CRI", 52 => "HRV", 53 => "CUB", 54 => "CYP", 55 => "CZE", 56 => "DNK", 57 => "DJI", 58 => "DMA", 59 => "DMR", 60 => "ETMR", 61 => "ECU", 62 => "EGY", 63 => "SLV", 64 => "GNQ", 65 => "ERI", 66 => "EST", 67 => "ETH", 68 => "FLK", 69 => "ISN", 70 => "FRO", 71 => "FJI", 72 => "FIN", 73 => "UK", 74 => "USA"	);*/
 	
 	public static function processCountrys ( ) 
 	{
@@ -725,6 +728,11 @@ class SystemCore {
 		
 		//return UserCore::$_SUPER_ADMINISTRATOR;
 	}
+	
+	public static function makeFullCodeNumber ( $_codeNumber ) 
+	{ 
+		return  (trim($_codeNumber).'/'.date('y', time())); 
+	}
 	public static function processSystemModuleID ( $_id ) 
 	{ 
 		return  ($_id < 1000 ? ($_id < 100 ? ($_id < 10 ? '000':'00'):'0'):'').$_id; 
@@ -768,5 +776,28 @@ class SystemCore {
 	public static function makeAlias ( $_alias )
 	{
 		return trim(strtoupper(str_replace(' ', '_', $_alias))); 
+	}
+	public static function processSystemActionDescriptionValue ($_actionID, $_userName, $_actionObject)
+	{
+		switch($_actionID) {			
+			case self::$_LOGIN:
+				return ucfirst($_userName.' has performed '.strtoupper(self::processLogActionIcon ($_actionID)).' action to login to the system');
+			break;
+			case self::$_LOGOUT:
+				return ucfirst($_userName.' has performed '.strtoupper(self::processLogActionIcon ($_actionID)).' action to logout from the system');
+			break;
+			case self::$_CREATE:
+				return ucfirst($_userName.' has performed '.strtoupper(self::processLogActionIcon ($_actionID)).' action to create '.$_actionObject);
+			break;
+			case self::$_UPDATE:
+				return ucfirst($_userName.' has performed '.strtoupper(self::processLogActionIcon ($_actionID)).' action to '.$_actionObject);
+			break;
+			case self::$_DELETE:
+				return ucfirst($_userName.' has performed '.strtoupper(self::processLogActionIcon ($_actionID)).' action to '.$_actionObject);
+			break;
+			case self::$_APPROVE:
+				return ucfirst($_userName.' has performed '.strtoupper(self::processLogActionIcon ($_actionID)).' action to '.$_actionObject);
+			break;
+		}  
 	}
 }

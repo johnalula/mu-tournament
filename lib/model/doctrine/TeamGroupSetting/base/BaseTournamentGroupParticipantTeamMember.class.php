@@ -16,12 +16,14 @@
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
- * @property boolean $confirm_flag
+ * @property boolean $confirmed_flag
  * @property boolean $active_flag
  * @property boolean $qualified_flag
  * @property integer $qualification_status
+ * @property integer $confirmed_status
  * @property integer $standing_status
  * @property integer $contestant_status
+ * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
@@ -81,9 +83,9 @@ abstract class BaseTournamentGroupParticipantTeamMember extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('confirm_flag', 'boolean', null, array(
+        $this->hasColumn('confirmed_flag', 'boolean', null, array(
              'type' => 'boolean',
-             'default' => 0,
+             'default' => false,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
@@ -97,11 +99,19 @@ abstract class BaseTournamentGroupParticipantTeamMember extends sfDoctrineRecord
              'type' => 'integer',
              'default' => 1,
              ));
+        $this->hasColumn('confirmed_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
         $this->hasColumn('standing_status', 'integer', null, array(
              'type' => 'integer',
              'default' => 1,
              ));
         $this->hasColumn('contestant_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
+        $this->hasColumn('process_status', 'integer', null, array(
              'type' => 'integer',
              'default' => 1,
              ));

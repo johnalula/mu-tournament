@@ -13,7 +13,7 @@
 							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Match Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
+						<?php echo __('Match Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->tournamentMatchFullNumber.' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -70,7 +70,11 @@
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('participant_team_list', array('_matchParticipantTeams' => $_matchParticipantTeams)) ?> 
+													<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
+														<?php include_partial('participant_pair_team_list', array('_tournamentMatchFixtureGroups' => $_tournamentMatchFixtureGroups)) ?> 
+													<?php else: ?>
+														<?php include_partial('participant_team_list', array('_candidateMatchFixtureParticipants' => $_matchParticipantTeams)) ?> 
+													<?php endif; ?>
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											

@@ -14,6 +14,21 @@
 				</li> 
 			<?php endif; ?>
 			
+			<?php if($sf_request->getParameter('action') == 'view'): ?>
+				<li class="">
+					<a href="<?php echo url_for('team_group/new') ?>" title="<?php echo __('Add New Tournament Team Group') ?>" id="addTournamentTeamGRoup" class="" >
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/add') ?>">
+						<?php echo __('New') ?>
+					</a>
+				</li> 
+				<li class="">
+					<a href="<?php echo url_for('team_group/new') ?>" title="<?php echo __('Add New Tournament Team Group') ?>" id="addTournamentTeamGRoup" class="" >
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/add') ?>">
+						<?php echo __('List') ?>
+					</a>
+				</li> 
+			<?php endif; ?>
+			
 			<?php if($sf_request->getParameter('action') == 'new'): ?>
 				<li class="">
 					<button title="<?php echo __('Save Team Group Information') ?>" id="createTournamentTeamGroup" class="ui-disabled-toolbar-btn" disabled >
@@ -103,6 +118,12 @@
 					<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="createGroupTeamParticipantMember" class="ui-disabled-toolbar-btn" disabled >
 						<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
 						<?php echo __('Save') ?>
+					</button>
+				</li>	 
+				<li class="">
+					<button title="<?php echo __('Add Team Group Member Participant Information') ?>" id="createBatchGroupTeamParticipantMember" class="ui-disabled-toolbar-btn" disabled >
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/add') ?>">
+						<?php echo __('Batch Participant') ?>
 					</button>
 				</li>	 
 				<li class="">

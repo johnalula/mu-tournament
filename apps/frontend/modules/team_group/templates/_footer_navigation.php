@@ -1,4 +1,4 @@
-<ul class="nav navbar-nav ui-toolbar-action ">
+<ul class="nav navbar-nav ui-toolbar-action " style="margin-left:10px!important;">
 	
 	<?php if($sf_request->getParameter('module') == 'team_group'): ?>
 		<?php if($sf_request->getParameter('action') == 'new'): ?>
@@ -70,7 +70,7 @@
 </ul>
 
 <!--    ********** Right Navigation *********** -->
-<ul class="nav navbar-nav ui-toolbar-action  navbar-right">
+<ul class="nav navbar-nav ui-toolbar-action  navbar-right" style="margin-right:10px!important;">
 	
 	<?php if($sf_request->getParameter('module') == 'team_group'): ?>
 		
@@ -125,7 +125,7 @@
 		<?php endif; ?>
 		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
 			<?php if($sf_request->getParameter('action') == 'complete'): ?>
-				<?php if($_object->pendingTeamGroup && $_object->activeApprovalTeamGroup && !$_object->activeFlag ): ?>
+				<?php if($_object->pendingTeamGroup && $_object->pendingApprovalTeamGroup && !$_object->activeFlag ): ?>
 					<li class="ui-nav-button ">
 						<button id="footerApproveTeamGrouping"  class="ui-nav-active-btn"  title="<?php echo __('Complete Team Grouping').' ( Name: '.$_object->gameCategoryName.' - Code #: '.$_object->tournamentGroupFullCode.' )' ?>">
 							<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
@@ -133,7 +133,7 @@
 						</button> 
 					</li>	 
 				<?php endif; ?>
-				<?php if($_object->activeTeamGroup && $_object->approvedApprovalTeamGroup && $_object->activeFlag ): ?>
+				<?php if($_object->activeTeamGroup && $_object->activeApprovalTeamGroup && $_object->activeFlag ): ?>
 					<li class="ui-nav-button ">
 						<button id="footerCompleteTeamGrouping"  class="ui-nav-active-btn"  title="<?php echo __('Complete Team Grouping').' ( Name: '.$_object->gameCategoryName.' - Code #: '.$_object->tournamentGroupFullCode.' )' ?>">
 								<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">

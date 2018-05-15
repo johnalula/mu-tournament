@@ -9,9 +9,6 @@
  * @property integer $tournament_match_fixture_id
  * @property string $tournament_match_fixture_token_id
  * @property integer $tournament_sport_game_group_id
- * @property string $tournament_sport_game_group_token_id
- * @property integer $group_participant_team_id
- * @property string $group_participant_team_token_id
  * @property string $tournament_match_group_number
  * @property string $match_venue
  * @property string $match_date
@@ -19,14 +16,14 @@
  * @property string $effective_date
  * @property boolean $qualified_flag
  * @property integer $qualification_status
- * @property boolean $confirm_flag
+ * @property boolean $confirmed_flag
  * @property boolean $active_flag
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
  * @property TournamentSportGameGroup $TournamentSportGameGroup
  * @property TournamentMatchFixture $TournamentMatchFixture
- * @property Doctrine_Collection $tournamentMatchFixtureGroupParticipants
+ * @property Doctrine_Collection $tournamentMatchFixtureGroupParticipantTeams
  * 
  * @package    symfony
  * @subpackage model
@@ -51,17 +48,6 @@ abstract class BaseTournamentMatchFixtureGroup extends sfDoctrineRecord
              ));
         $this->hasColumn('tournament_sport_game_group_id', 'integer', null, array(
              'type' => 'integer',
-             ));
-        $this->hasColumn('tournament_sport_game_group_token_id', 'string', 100, array(
-             'type' => 'string',
-             'length' => 100,
-             ));
-        $this->hasColumn('group_participant_team_id', 'integer', null, array(
-             'type' => 'integer',
-             ));
-        $this->hasColumn('group_participant_team_token_id', 'string', 100, array(
-             'type' => 'string',
-             'length' => 100,
              ));
         $this->hasColumn('tournament_match_group_number', 'string', 100, array(
              'type' => 'string',
@@ -90,7 +76,7 @@ abstract class BaseTournamentMatchFixtureGroup extends sfDoctrineRecord
              'type' => 'integer',
              'default' => 1,
              ));
-        $this->hasColumn('confirm_flag', 'boolean', null, array(
+        $this->hasColumn('confirmed_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));
@@ -124,7 +110,7 @@ abstract class BaseTournamentMatchFixtureGroup extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasMany('TournamentMatchParticipantTeam as tournamentMatchFixtureGroupParticipants', array(
+        $this->hasMany('TournamentMatchParticipantTeam as tournamentMatchFixtureGroupParticipantTeams', array(
              'local' => 'id',
              'foreign' => 'tournament_match_fixture_group_id'));
 

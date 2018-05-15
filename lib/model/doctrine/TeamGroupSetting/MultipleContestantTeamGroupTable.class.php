@@ -42,14 +42,14 @@ class MultipleContestantTeamGroupTable extends PluginMultipleContestantTeamGroup
 			$_nw->tournament_team_group_token_id = sha1(md5(trim($_tournamentGroupTokenID)));  
 			$_nw->sport_game_id = trim($_sportGameID); 
 			$_nw->sport_game_token_id = sha1(md5(trim($_sportGameTokenID)));  
-			$_nw->group_name = trim('Group '.TournamentCore::processGroupNumberValue ($_groupNumber)); 
+			$_nw->group_name = trim('Group '.TournamentCore::processRoundNumberValue ($_groupNumber)); 
 			$_nw->group_number = trim($_groupNumber); 
 			$_nw->group_code = trim($_groupCode); 
 			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->gender_category_id = trim($_genderCategory); 
 			$_nw->start_date = trim($_startDate); 
 			$_nw->active_flag = false;  
-			$_nw->approval_status = $_apporvalStatus ? trim($_apporvalStatus):TournamentCore::$_PENDING;    
+			$_nw->approval_status = $_apporvalStatus ? trim($_apporvalStatus):TournamentCore::$_INITIATED;    
 			$_nw->status = $_groupStatus ? trim($_groupStatus):TournamentCore::$_INITIATED;   
 			$_nw->description = SystemCore::processDescription ((trim($_sportGameFullName).' - '.trim(TournamentCore::processGenderValue($_genderCategory)).' - '.trim($_groupTypeName)), trim($_description) );  
 			$_nw->save(); 

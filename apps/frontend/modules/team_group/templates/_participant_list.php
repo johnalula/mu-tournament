@@ -12,7 +12,7 @@
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Sport Game Name') ?>"><?php echo  __('Sport Game') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Description') ?></th>  
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('Action') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('...') ?></th>  
 			<th></th>
 		 </tr>
 	  </thead>
@@ -35,7 +35,7 @@
 				<?php echo $_teamMemberParticipant->memberFullName  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_teamMemberParticipant->participantTeamName.' ( '.$_teamMemberParticipant->participantTeamAlias.' ) -'.SystemCore::processCountryValue($_teamMemberParticipant->participantTeamCountry) ?> 
+				<?php echo $_teamMemberParticipant->participantTeamName.' ( '.$_teamMemberParticipant->participantTeamAlias.' ) ' ?> 
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo $_teamMemberParticipant->sportGameName.' '.($_teamMemberParticipant->sportGameDistanceTypeID ? (' - '.TournamentCore::processDistanceTypeValue($_teamMemberParticipant->sportGameDistanceTypeID)):'').'  '.($_teamMemberParticipant->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_teamMemberParticipant->sportGameTypeMode)):'') ?>

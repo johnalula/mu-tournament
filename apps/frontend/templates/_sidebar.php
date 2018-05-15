@@ -10,7 +10,14 @@
 				<tr>
 					<td>
 						<span class="ui-sidebar-content-sm">
-							<?php echo $sf_user->getAttribute('userName').' ( '.Wordlimit::wordLimiterShort($sf_user->getAttribute('userRoleName'),2).' )' ?>
+							<?php echo $sf_user->getAttribute('userName') ?>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="ui-sidebar-content-sm">
+							<?php echo $sf_user->getAttribute('userRoleName') ?>
 						</span>
 					</td>
 				</tr>
@@ -42,39 +49,32 @@
 			<span class="ui-accordion-slider ui-right-slider"><img class="ui-sidebar-slider-img" src="<?php echo image_path('icons/plus') ?>"></span>
 		</h2>
 		<div class="ui-sidebar-nav" id="ui-panel-2">
-			<ul class="nav nav-sidebar">
+			<ul class="nav nav-sidebar"> 
 				<li>
 					<a href="<?php echo url_for('tournament/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/save') ?>">
-						<?php echo __('News and Events') ?>
-					</a>
-				</li> 
-				<li>
-					<a href="<?php echo url_for('tournament/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/save') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/championship') ?>">
 						<?php echo __('Tournaments') ?>
 					</a>
 				</li> 
 				<li>
-					<a href="<?php echo url_for('group/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/update') ?>">
-						<?php echo __('Groups') ?>
-					</a>
-				</li> 
-				<li role="separator" class="ui-sidebar-divider"></li>  
-				<li>
-					<a href="<?php echo url_for('round/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">
-						<?php echo __('Rounds') ?>
+					<a href="<?php echo url_for('sport_games/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/sport_games') ?>">
+						<?php echo __('Sport Games') ?>
 					</a>
 				</li>  
 				<li>
-					<a href="<?php echo url_for('inventory_item/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">
-						<?php echo __('Purchase Order') ?>
+					<a href="<?php echo url_for('team_group/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/team_group') ?>">
+						<?php echo __('Team Groups') ?>
 					</a>
-				</li> 
+				</li>   
 				<li role="separator" class="ui-sidebar-divider"></li>  
+				<li>
+					<a href="<?php echo url_for('news_and_events/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/schedule') ?>">
+						<?php echo __('Programs') ?>
+					</a>
+				</li>  
 				<li>
 					<a href="<?php echo url_for('news_and_events/index') ?>">
 						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">

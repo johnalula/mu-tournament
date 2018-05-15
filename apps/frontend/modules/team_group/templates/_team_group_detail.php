@@ -2,7 +2,7 @@
 	<fieldset class="ui-content-detail-fieldset"> 
 		<legend class="ui-content-detial-fieldset-legend">
 				<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group Management') ?>">
-				<?php echo __('Team Group').' ( Sport Game: '.$_sportGameTeamGroup->sportGameName.' - Group: '.TournamentCore::processGroupNumberValue($_sportGameTeamGroup->groupNumber).' - Code #:'.$_sportGameTeamGroup->sportGameGroupCode.' )'  ?>
+				<?php echo __('Tournament Group').' ( Type: '.$_tournamentTeamGroup->gameCategoryName.' -  Code #: '.$_tournamentTeamGroup->tournamentGroupFullCode.' - Mode : '.TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode).' )'  ?>
 		</legend> 
 		<div class="ui-content-detail-box"> 	
 			<div class="col-sm-3">

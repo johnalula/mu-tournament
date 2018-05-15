@@ -9,7 +9,7 @@
 						<?php echo __('Match Fixture') ?>
 					</legend> 
 					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Match Fixture') ?>: <span class="ui-red-text">&nbsp;</span></label>
+						<label class="col-sm-21 control-label"><?php echo __('Parent Fixture') ?>: <span class="ui-red-text">&nbsp;</span></label>
 						<div class="col-sm-40"> 
 							<div class="input-group">
 								<input type="text" class="form-control " id="parent_match_fixture_name" name="tournament_match_fixture[parent_match_fixture_name]" placeholder="<?php echo __('Candidate Parent Match Fixture') ?>" title="<?php echo __('Candidate Parent Match Fixture') ?>" value="" data-toggle="modal" data-target="#candidateParentMatchFixtureModal"  disabled>
@@ -19,11 +19,11 @@
 								<input type="hidden" class="form-control" id="sport_game_type_id" name="tournament_match_fixture[sport_game_type_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->gameCategoryID ?>"  >
 								<input type="hidden" class="form-control" id="tournament_match_id" name="tournament_match_fixture[tournament_match_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->id ?>"  >
 								<input type="hidden" class="form-control" id="tournament_match_token_id" name="tournament_match_fixture[tournament_match_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->token_id ?>"  >
-								<input type="hidden" class="form-control" id="tournament_match_number" name="tournament_match_fixture[tournament_match_number]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->matchNumber ?>"  >
+								<input type="hidden" class="form-control" id="tournament_match_number" name="tournament_match_fixture[tournament_match_number]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->tournamentMatchNumber ?>"  >
 								<input type="hidden" class="form-control" id="tournament_match_round_mode" name="tournament_match_fixture[tournament_match_round_mode]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->tournamentMatchRoundMode ?>"  >
 								
 								<span class="input-group-btn">
-									<button class="btn btn-default selectCandidateParentMatchFixture" type="button" data-toggle="modal" data-target="#candidateParentMatchFixtureModal" title="<?php echo __('Candidat Parent Match Fixture') ?>" <?php echo $_tournamentMatch->tournamentMatchRoundMode == TournamentCore::$_FIRST_ROUND ? 'disabled':'' ?>>
+									<button class="btn btn-default selectCandidateParentMatchFixture" type="button" data-toggle="modal" data-target="#candidateParentMatchFixtureModal" title="<?php echo __('Candidat Parent Match Fixture') ?>" <?php echo $_tournamentMatch->tournamentMatchRoundMode == TournamentCore::$_FIRST_ROUND ? 'disabled':'' ?> disabled>
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 									</button>
 								</span>
@@ -98,7 +98,7 @@
 							<select id="event_type" name="tournament_match_fixture[event_type]" class="form-control" title="<?php echo __('Event Type') ?>">
 								<option value=""  ><?php echo 'Select Event ...' ?></option>
 								<?php foreach(TournamentCore::processEventTypes() as $_key => $_eventType): ?>								 
-									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultEventType() ? 'selected':'' ?> > 
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::makeDefaultEventType($_tournamentMatch->contestantTeamMode) ? 'selected':'' ?> > 
 										<?php echo $_eventType ?>
 									</option>								 
 								<?php endforeach; ?>

@@ -32,20 +32,20 @@ class SystemLogFileTable extends PluginSystemLogFileTable
 			$_desc = trim(' from [ IP: '.gethostbyname($_SERVER['REMOTE_ADDR']).' ] at [Date: '.date('D M d, Y h:i:s A', strtotime($_actionDate)).']'); 
 			$_description = trim(SystemCore::processSystemActionDescriptionValue($_actionID, $_user->userName, trim($_actionDataValue)).' '.$_desc); 
 			
-			$_logFile = self::processCreate ( $_orgID, $_orgTokenID, $_user, $_moduleID, $_hostName, $_phpSelf, $_documentRoot, $_actionID, $_actionData, $_actionDate, $_actionTime, $_pcIPAddress, $_browserType, $_description );
+			$_logFile = self::processCreate ( $_orgID, $_orgTokenID, $_userID, $_moduleID, $_hostName, $_phpSelf, $_documentRoot, $_actionID, $_actionData, $_actionDate, $_actionTime, $_pcIPAddress, $_browserType, $_description );
 			
 		return $_logFile ? true:false; 
 	}
 	public static function processCreate ( $_orgID, $_orgTokenID, $_userID, $_moduleID, $_hostName, $_phpSelf, $_documentRoot, $_actionID, $_actionData, $_actionDate, $_actionTime, $_pcIPAddress, $_browserType, $_description )
 	{ 
 			$_token = trim($_orgTokenID).trim($_actionData).trim($_pcIPAddress).rand('11111', '99999'); 
+			$_startDate = date('m/d/Y', time());
 			$_nw = new SystemLogFile();  
-			$_nw->token_id = md5(sha1($_token));
+			$_nw->token_id = sha1(md5($_token));
 			$_nw->org_id = trim($_orgID);
-			$_nw->org_token_id = md5(sha1(trim($_orgTokenID))); 
+			$_nw->org_token_id = sha1(md5(trim($_orgTokenID))); 
 			$_nw->user_id = trim($_userID); 
-			$_nw->module_id = empty($moduleID) ? trim($_moduleID):trim($moduleID); 
-			$_nw->static_module_id = trim($_moduleID); 
+			$_nw->module_id = empty($_moduleID) ? trim($_moduleID):trim($_moduleID); 
 			$_nw->host_name = trim($_hostName); 
 			$_nw->php_self = trim($_phpSelf); 
 			$_nw->document_root = trim($_documentRoot); 
@@ -55,6 +55,7 @@ class SystemLogFileTable extends PluginSystemLogFileTable
 			$_nw->action_date = trim($_actionDate);
 			$_nw->action_data = trim($_actionData); 
 			$_nw->pc_ip_address = trim($_pcIPAddress); 
+			//s$_nw->effective_date = trim($_pcIPAddress); 
 			$_nw->description = trim($_description); 
 			$_nw->save(); 
 

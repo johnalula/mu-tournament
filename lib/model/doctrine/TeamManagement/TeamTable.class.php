@@ -95,7 +95,7 @@ class TeamTable extends PluginTeamTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirm_flag as confirmFlag, tm.active_flag as activeFlag, 
+		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirmed_flag as confirmFlag, tm.active_flag as activeFlag, 
 		 trnmnt.id as tournamentID,
 		 
 		 (EXISTS (SELECT tmGmPrtn.id FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 

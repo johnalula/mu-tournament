@@ -15,15 +15,21 @@
  * @property integer $gender_category_id
  * @property integer $event_type
  * @property integer $player_mode
+ * @property string $start_date
+ * @property string $effective_date
+ * @property string $end_date
  * @property boolean $grouped_flag
- * @property boolean $confirm_flag
+ * @property boolean $confirmed_flag
  * @property boolean $active_flag
+ * @property integer $grouped_status
+ * @property integer $confirmed_status
  * @property integer $status
  * @property clob $description
  * @property Team $Team
  * @property GameCategory $GameCategory
  * @property SportGame $SportGame
  * @property Doctrine_Collection $teamGameParticipantPersons
+ * @property Doctrine_Collection $teamGameParticipationGroupParticipantTeams
  * 
  * @package    symfony
  * @subpackage model
@@ -68,17 +74,37 @@ abstract class BaseTeamGameParticipation extends sfDoctrineRecord
         $this->hasColumn('player_mode', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('start_date', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
+        $this->hasColumn('effective_date', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
+        $this->hasColumn('end_date', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
         $this->hasColumn('grouped_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));
-        $this->hasColumn('confirm_flag', 'boolean', null, array(
+        $this->hasColumn('confirmed_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
+             ));
+        $this->hasColumn('grouped_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
+        $this->hasColumn('confirmed_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('status', 'integer', null, array(
              'type' => 'integer',
@@ -108,6 +134,10 @@ abstract class BaseTeamGameParticipation extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('TeamMemberParticipantRole as teamGameParticipantPersons', array(
+             'local' => 'id',
+             'foreign' => 'team_game_participation_id'));
+
+        $this->hasMany('TournamentGroupParticipantTeam as teamGameParticipationGroupParticipantTeams', array(
              'local' => 'id',
              'foreign' => 'team_game_participation_id'));
 

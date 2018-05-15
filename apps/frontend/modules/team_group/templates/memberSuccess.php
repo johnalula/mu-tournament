@@ -1,6 +1,13 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
 	
+	//0d95dc25ebf3bc725368cb516d93b6323103ad50
+	//2
+	
+	//$_gameParticipation =  TeamGameParticipationTable::processObject ( $_orgID, $_orgTokenID, 2, '0d95dc25ebf3bc725368cb516d93b6323103ad50' ) ;
+	
+	//echo $_gameParticipation->id.' == '.$_gameParticipation->sportGameName;
+	
 ?> 
 
 <div class="ui-page-box">
@@ -173,7 +180,7 @@
 	$('#createMultipleCandidateModalData').click(function(){
 		var url = '<?php echo url_for('team_group/createMultipleGroupParticipantTeam')?>';  
 		
-		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_group_id='+document.getElementById('sport_game_group_id').value+'&sport_game_group_token_id='+document.getElementById('sport_game_group_token_id').value+'&sport_game_group_name='+document.getElementById('sport_game_group_name').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value+'&team_status='+document.getElementById('team_status').value+'&start_date='+document.getElementById('start_date').value+'&description='+document.getElementById('description').value;
+		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_group_id='+document.getElementById('sport_game_group_id').value+'&sport_game_group_token_id='+document.getElementById('sport_game_group_token_id').value+'&sport_game_group_name='+document.getElementById('sport_game_group_name').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value+'&description='+document.getElementById('description').value;
 		//alert(data);
 		$('#candidateGroupParticipantTeamModal').modal('hide');
 		processEntry(data, url )
@@ -235,6 +242,8 @@
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
 			var listArr = input.split("$"); 
+			document.getElementById("team_game_participation_id").value = listArr[0];
+			document.getElementById("team_game_participation_token_id").value = listArr[1];  
 			document.getElementById("participant_team_id").value = listArr[2];
 			document.getElementById("participant_team_token_id").value = listArr[3];  
 			document.getElementById("participant_team_name").value = listArr[4]+' ('+listArr[5]+') - '+listArr[6]; 

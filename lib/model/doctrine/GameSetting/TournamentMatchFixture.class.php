@@ -15,7 +15,8 @@ class TournamentMatchFixture extends PluginTournamentMatchFixture
 	public function makeMatchFixtureCode ($_tournamentMatchNumber)
 	{
 		$_flag = true;    
-			$this->tournament_match_number = $_tournamentMatchNumber.'-'.SystemCore::processCodeGeneratorInitialNumber($this->id).'/'.date('y', time()); 
+			$this->tournament_match_fixture_full_number = $_tournamentMatchNumber.'-'.SystemCore::processCodeGeneratorInitialNumber($this->id).'/'.date('y', time()); 
+			$this->tournament_match_fixture_number = $_tournamentMatchNumber.'-'.SystemCore::processCodeGeneratorInitialNumber($this->id); 
 			$this->save();
 			
 		return $_flag;
@@ -69,13 +70,13 @@ class TournamentMatchFixture extends PluginTournamentMatchFixture
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  
 		$this->active_flag = true;  
-		$this->approval_status = trim(TournamentCore::$_COMPLETED); 
-		$this->status = trim(TournamentCore::$_ACTIVE);  
+		$this->approval_status = trim(TournamentCore::$_APPROVED); 
+		$this->status = trim(TournamentCore::$_COMPLETED);  
 		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  
 		$this->save();
 		return $_flag;
 	}
-	public function makeProcessFinalize ()
+	public function makeFinalization ()
 	{
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  

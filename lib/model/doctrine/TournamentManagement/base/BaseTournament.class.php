@@ -14,6 +14,7 @@
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
+ * @property boolean $default_flag
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
@@ -70,6 +71,10 @@ abstract class BaseTournament extends sfDoctrineRecord
         $this->hasColumn('end_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('default_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',

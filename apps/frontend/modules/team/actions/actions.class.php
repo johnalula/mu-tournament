@@ -125,8 +125,6 @@ class teamActions extends sfActions
 	
 		$_flag =  TeamMemberParticipantTable::processNew ( $_orgID, $_orgTokenID, $_teamID, $_teamTokenID, $_firstName, $_middleName, $_lastName, $_memberRole, $_memberGender, $_dateOfBirth, $_memberNumber, $_memberStatus, $_remark, $_description, $_userID, $_userTokenID  );  
 		
-		//$_person = PersonTable::processNew ( $_orgID, $_orgTokenID, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_memberGender, $_nationality, $_partyRelationShipRole, $_memberRole, $_partyRelationShip, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_email, $_addressRemark, $_description, $_partyCode, $_userID, $_userTokenID );
-		
 				 
 		return $_flag ? true:false;
 	}
@@ -139,6 +137,7 @@ class teamActions extends sfActions
 		$_memberSportGameID = $request->getParameter('member_sport_game_id');	
 		$_memberSportGameTokenID = $request->getParameter('member_sport_game_token_id');	
 		$_memberRole = $request->getParameter('team_member_role');	 
+		$_genderCategory = $request->getParameter('gender_category_id');	 
 		$_memberStatus = $request->getParameter('member_status');	
 		$_description = $request->getParameter('role_description');	
 				
@@ -147,7 +146,7 @@ class teamActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  TeamMemberParticipantRoleTable::processNew ( $_orgID, $_orgTokenID, $_participantID, $_participantTokenID, $_memberSportGameID, $_memberSportGameTokenID, $_participantName, $_sportGameName, $_memberRole, $_memberStatus, $_description, $_userID, $_userTokenID  );  
+		$_flag =  TeamMemberParticipantRoleTable::processNew ( $_orgID, $_orgTokenID, $_participantID, $_participantTokenID, $_memberSportGameID, $_memberSportGameTokenID, $_participantName, $_sportGameName, $_memberRole, $_genderCategory, $_memberStatus, $_description, $_userID, $_userTokenID  );  
 		
 		return $_flag ? true:false;
 	}

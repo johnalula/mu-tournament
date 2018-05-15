@@ -11,14 +11,9 @@
 				<div class="form-group">
 					<label class="col-sm-21 control-label" title="<?php echo __('Sport Games Type') ?>"><?php echo __('Game Type') ?>: <span class="ui-red-text">*</span></label>
 					<div class="col-sm-40"> 
-						<select id="game_category" name="team_group_category[game_category]" class="form-control" title="<?php echo __('Match Group') ?>" disabled>
-							<option value="" selected  ><?php echo 'Select Category ...' ?></option>
-							<?php foreach($_candidateGameCategorys as $_key => $_candidateGameCategory): ?>								 
-								<option value="<?php echo $_candidateGameCategory->id ?>" <?php echo $_candidateGameCategory->id == $_tournamentTeamGroup->gameCategoryID ? 'selected':'' ?> >
-									<?php echo $_candidateGameCategory->categoryName ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
+					<input type="text" class="form-control" id="game_category" name="team_group_category[game_category]" placeholder="<?php echo __('Last Name') ?>" title="<?php echo __('Sport Game Type') ?>"required rel="ui-string" value="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" disabled >
+					<input type="hidden" class="form-control" id="game_category_id" name="team_group_category[game_category_id]" placeholder="<?php echo __('Last Name') ?>" title="<?php echo __('Sport Game Type') ?>"required rel="ui-string" value="<?php echo $_tournamentTeamGroup->gameCategoryID ?>" >
+						 
 					</div>
 				</div> 
 				<div class="form-group">
@@ -62,31 +57,7 @@
 							<?php endforeach; ?>
 						</select>
 					</div>
-				</div>  
-				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Contestant Team Mode') ?>"><?php echo __('Team Mode') ?>: <span class="ui-red-text">&nbsp;</span></label>
-					<div class="col-sm-23">
-						<select id="contestant_team_mode" name="sport_game_type[contestant_team_mode]" class="form-control" title="<?php echo __('Team Mode') ?>" disabled>
-							<option value="" selected  ><?php echo 'Select Team Mode ...' ?></option>
-							<?php foreach(TournamentCore::processContestantTeamModes() as $_key => $_mode): ?>								 
-								<option value="<?php echo $_key ?>" <?php echo $_key == $_tournamentTeamGroup->contestantTeamMode ? 'selected':'' ?> > 
-									<?php echo $_mode ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
-					</div>
-					<label class="col-sm-01 control-label" title="<?php echo __('Status') ?>"><?php echo __('Status') ?>:</label>
-					<div class="col-sm-23">
-						<select id="sport_game_group_status" name="team_group_category[sport_game_group_status]" class="form-control" title="<?php echo __('Status') ?>">
-							<option value="" selected  ><?php echo 'Select Status ...' ?></option>
-							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_INITIATED ? 'selected':'' ?> > 
-									<?php echo $_matchStatus ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
-					</div>
-				</div>  
+				</div>   
 				<div class="form-group">
 					<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>: <span class="ui-red-text">&nbsp;</span></label>
 					<div class="col-sm-40"> 

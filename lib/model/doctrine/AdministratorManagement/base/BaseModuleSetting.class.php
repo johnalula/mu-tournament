@@ -21,7 +21,6 @@
  * @property clob $description
  * @property Organization $Organization
  * @property Doctrine_Collection $moduleUserRoleAccessPermissions
- * @property Doctrine_Collection $moduleSettingLogFiles
  * 
  * @package    symfony
  * @subpackage model
@@ -96,10 +95,6 @@ abstract class BaseModuleSetting extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('AccessLevelPermission as moduleUserRoleAccessPermissions', array(
-             'local' => 'id',
-             'foreign' => 'module_setting_id'));
-
-        $this->hasMany('SystemLogFile as moduleSettingLogFiles', array(
              'local' => 'id',
              'foreign' => 'module_setting_id'));
 

@@ -27,7 +27,7 @@ abstract class BaseAccessLevelPermission extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('eASsys_tbl_access_level_permission');
+        $this->setTableName('mutms_tbl_access_level_permission');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

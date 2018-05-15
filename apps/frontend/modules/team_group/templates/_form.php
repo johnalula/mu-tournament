@@ -10,9 +10,9 @@
 				<div class="form-group">
 					<label class="col-sm-21 control-label" title="<?php echo __('Tournament') ?>"><?php echo __('Tournament') ?>: <span class="ui-red-text">&nbsp;</span></label>
 					<div class="col-sm-40"> 
-						<input type="text" class="form-control" id="tournament_name" name="tournament_team_group[tournament_name]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->tournamentName.' ('.$_activeTournament->tournamentAlias.' ) - '.$_activeTournament->tournamentSeason ?>" disabled >
-						<input type="hidden" class="form-control" id="tournament_token_id" name="tournament_team_group[tournament_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->token_id ?>"  >
-						<input type="hidden" class="form-control" id="tournament_id" name="tournament_team_group[tournament_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_activeTournament->id ?>"  >
+						<input type="text" class="form-control" id="tournament_name" name="tournament_team_group[tournament_name]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $sf_user->getAttribute('activeTournamentName').' ('.$sf_user->getAttribute('activeTournamentAlias').' ) '.$_activeTournament->tournamentSeason ?>" disabled >
+						<input type="hidden" class="form-control" id="tournament_token_id" name="tournament_team_group[tournament_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $sf_user->getAttribute('activeTournamentTokenID') ?>"  >
+						<input type="hidden" class="form-control" id="tournament_id" name="tournament_team_group[tournament_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $sf_user->getAttribute('activeTournamentID') ?>"  >
 					</div>
 				</div> 
 				
@@ -72,15 +72,15 @@
 	 
 	 
 	$('#group_status').change(function(e) {
-		$("#createTournamentTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		//$("#createTournamentTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		//$("#cancelTournamentTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	});  
 	 
 	
 	$('#description').keyup(function(e) {
-		$("#createTournamentTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+		//$("#createTournamentTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+		//$("#cancelTournamentTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	}); 
 	

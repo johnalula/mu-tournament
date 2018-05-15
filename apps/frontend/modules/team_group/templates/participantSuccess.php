@@ -1,18 +1,12 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
+	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)): 
+	//sport_game_group_name=Group One - 5000M (Men) - Running&sport_game_group_id=1&sport_game_group_token_id=15bb00b24ee254469c06b63c9974377472355609&tournament_id=1&tournament_team_group_id=1&tournament_team_group_token_id=4df788a05e7e3d0bda1ce1969a7e77621cfb3a17&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&gender_category_id=1&participant_team_name=Axum University (AXU-ET) - ETHIOPIA&participant_team_id=8&participant_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&group_member_participant_team_id=4&group_member_participant_team_token_id=177faf6d9c39f5262c6435b90863502e6803d68c&participant_name=Adem Mohammed Seid ( Contestant/Player )&participant_id=14&participant_token_id=3e5e86fbf7b3f69a5fae83217d60f477393d6944&participant_member_role_id=50&participant_member_role_token_id=24c91c387b37f1b43eb08a634777f32160b3661e&participant_role_id=&member_participant_status=3&start_date=05/11/2018&description=adfasdfasdfasdfasdfasdfasdf asdfasdf
 	
-	//sport_game_group_name=Group One - 5000M (Men) - Running&sport_game_group_id=5&sport_game_group_token_id=5e754ee527395f5b407c18ba125a1fb53f836acd&tournament_id=1&tournament_team_group_id=1&tournament_team_group_token_id=8bed6e61e3c51bf310b141ade06f985b1b97aaf1&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&gender_category_id=1&participant_team_name=Mekelle University (MU-ET) - ETHIOPIA&participant_team_id=4&participant_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&team_status=1&start_date=04/28/2018&description=dfsfgsdfgsdfg
+	//$_participantRole =  TeamMemberParticipantRoleTable::makeObject ( 1, 50, '24c91c387b37f1b43eb08a634777f32160b3661e' );
+	//echo $_participantRole->id.' == ';
+	//$_flag1 = $_participantRole->checkPending () ? $_participantRole->makeActivation ():true;
 	
-	//$_flag =  SportGameGroupParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, 1, 5, '5e754ee527395f5b407c18ba125a1fb53f836acd', 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', 'Mekelle University (MU-ET) - ETHIOPIA', 'Group One - 5000M (Men) - Running', '04/26/2018', 2, 'asdfas dfasdf', SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
-	
-	//$_flag =  SportGameTeamGroupTable::processNew ( $_orgID, $_orgTokenID, 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', 1, 'b7d28c838020d0307bcb521542e95f464cbe17c5', 'Mekelle University (MU-ET)', '04/26/2018', 1, 'sdfgsdfgsdf sdfgsdfg', SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
-	
-	//$_flag =  SportGameTeamGroupTable::processNew ( $_orgID, $_orgTokenID, $_memberTeamID, $_memberTeamTokenID, $_teamGroupID, $_teamGroupTokenID, $_memberTeamName, $_entryDate, $_teamStatus, $_description, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
-	
-	//$_teamGroup =  GroupTypeTable::makeObject ( $_orgID, 1);
-	//echo count($_candidateParticipants).' = '; 
-	//echo count($_candidateParticipantMembers).' = '; 
-	//echo sha1(md5('3829e68f447d9c6e723f820a44421f7e90674acf'));
+	//echo count($_participantRoles).' == ';
 ?> 
 
 <div class="ui-page-box">
@@ -228,6 +222,15 @@
 <script>
 	$('#createGroupTeamParticipantMember').click(function(){
 		var url = '<?php echo url_for('team_group/createGroupTeamParticipantMember')?>'; 
+		var formName = 'createGroupTeamParticipantMemberForm';
+		var data = $("form#createGroupTeamParticipantMemberForm").serialize();
+		var datas = generateValidData (formName);
+		processEntry(datas, url )
+		//alert(datas);
+		return false; 
+	});  
+	$('#createBatchGroupTeamParticipantMember').click(function(){
+		var url = '<?php echo url_for('team_group/createBatchGroupTeamParticipantMember')?>'; 
 		var formName = 'createGroupTeamParticipantMemberForm';
 		var data = $("form#createGroupTeamParticipantMemberForm").serialize();
 		var datas = generateValidData (formName);

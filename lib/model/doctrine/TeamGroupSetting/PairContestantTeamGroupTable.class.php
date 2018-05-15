@@ -42,7 +42,7 @@ class PairContestantTeamGroupTable extends PluginPairContestantTeamGroupTable
 			$_nw->tournament_team_group_token_id = sha1(md5(trim($_tournamentGroupTokenID)));  
 			$_nw->sport_game_id = trim($_sportGameID); 
 			$_nw->sport_game_token_id = sha1(md5(trim($_sportGameTokenID)));  
-			$_nw->group_name = trim('Group '.TournamentCore::processGroupNumberValue ($_groupNumber)); 
+			$_nw->group_name = trim('Group '.TournamentCore::processRoundNumberValue ($_groupNumber)); 
 			$_nw->group_number = trim($_groupNumber); 
 			$_nw->group_code = trim($_groupCode); 
 			$_nw->contestant_team_mode = trim($_contestantTeamMode); 

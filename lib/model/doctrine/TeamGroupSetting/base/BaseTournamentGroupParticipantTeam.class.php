@@ -9,23 +9,28 @@
  * @property integer $tournament_id
  * @property integer $tournament_sport_game_group_id
  * @property string $tournament_sport_game_group_token_id
+ * @property integer $team_game_participation_id
  * @property integer $team_id
  * @property string $team_token_id
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
+ * @property boolean $confirmed_flag
  * @property boolean $active_flag
  * @property boolean $completed_flag
  * @property boolean $qualified_flag
  * @property integer $qualification_status
+ * @property integer $confirmed_status
+ * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
  * @property Tournament $Tournament
+ * @property TeamGameParticipation $TeamGameParticipation
  * @property Team $Team
  * @property TournamentSportGameGroup $TournamentSportGameGroup
  * @property Doctrine_Collection $tournamentGroupParticipantTeamMembers
- * @property Doctrine_Collection $sportGameTeamGroupMatchTeamParticipants
+ * @property Doctrine_Collection $sportGameTeamGroupMatchTeamParticipantTeams
  * 
  * @package    symfony
  * @subpackage model
@@ -51,6 +56,9 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('team_game_participation_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('team_id', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -70,6 +78,10 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('confirmed_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              ));
@@ -81,6 +93,14 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
              'default' => true,
              ));
         $this->hasColumn('qualification_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
+        $this->hasColumn('confirmed_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
+        $this->hasColumn('process_status', 'integer', null, array(
              'type' => 'integer',
              'default' => 1,
              ));
@@ -105,6 +125,11 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
+        $this->hasOne('TeamGameParticipation', array(
+             'local' => 'team_game_participation_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
         $this->hasOne('Team', array(
              'local' => 'team_id',
              'foreign' => 'id',
@@ -119,7 +144,7 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'group_participant_team_id'));
 
-        $this->hasMany('TournamentMatchParticipantTeam as sportGameTeamGroupMatchTeamParticipants', array(
+        $this->hasMany('TournamentMatchParticipantTeam as sportGameTeamGroupMatchTeamParticipantTeams', array(
              'local' => 'id',
              'foreign' => 'group_participant_team_id'));
 

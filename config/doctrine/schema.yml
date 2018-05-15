@@ -17,6 +17,7 @@ Tournament:
     start_date: { type: string(100) }
     effective_date: { type: string(100) }
     end_date: { type: string(100) }  
+    default_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: true } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
@@ -75,6 +76,7 @@ GameCategory:
     category_name: { type: string(255) }
     alias: { type: string(50) } }  
     contestant_team_mode: { type: integer } 
+    result_ranking_mode: { type: integer } 
     default_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: true } 
     status: { type: integer} 
@@ -105,6 +107,9 @@ SportGame:
     contestant_team_mode: { type: integer } 
     jump_type_mode: { type: integer } 
     throw_type_mode: { type: integer } 
+    win_result_table_point: { type: integer } 
+    draw_result_table_point: { type: integer } 
+    loose_result_table_point: { type: integer } 
     result_ranking_mode: { type: integer } 
     start_date: { type: string(100) }
     effective_date: { type: string(100) }
@@ -149,7 +154,7 @@ Team:
     start_date: { type: string(100) }
     end_date: { type: string(100) }  
     grouped_flag: { type: boolean, default: false } 
-    confirm_flag: { type: boolean, default: false } 
+    confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: true } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
@@ -173,9 +178,14 @@ TeamGameParticipation:
     gender_category_id: { type: integer } 
     event_type: { type: integer } 
     player_mode: { type: integer } 
+    start_date: { type: string(100) }
+    effective_date: { type: string(100) }  
+    end_date: { type: string(100) }  
     grouped_flag: { type: boolean, default: false } 
-    confirm_flag: { type: boolean, default: false } 
+    confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    grouped_status: { type: integer, default: 1  } 
+    confirmed_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
@@ -198,8 +208,10 @@ TeamMemberParticipant:
     member_full_name: { type: string(255) }
     member_role_id: { type: integer }    
     member_number: { type: integer }    
+    confirmed_flag: { type: boolean, default: false } 
     grouped_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    grouped_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
@@ -219,8 +231,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: { type: string(100) }  
     member_role_id: { type: integer }   
     gender_category_id: { type: integer }     
+    confirmed_flag: { type: boolean, default: false } 
     grouped_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    confirmed_status: { type: integer, default: 1  } 
+    grouped_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
@@ -325,6 +340,7 @@ TournamentSportGameGroup:
     end_date: { type: string(100) }  
     complete_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
@@ -361,20 +377,25 @@ TournamentGroupParticipantTeam:
     tournament_id: { type: integer }
     tournament_sport_game_group_id: { type: integer }
     tournament_sport_game_group_token_id: { type: string(100) }   
+    team_game_participation_id: { type: integer }
     team_id: { type: integer }
     team_token_id: { type: string(100) }   
     start_date: { type: string(100) }
     effective_date: { type: string(100) }  
     end_date: { type: string(100) }  
+    confirmed_flag: { type: boolean, default: false  } 
     active_flag: { type: boolean  } 
     completed_flag: { type: boolean  } 
     qualified_flag: { type: boolean, default: true  } 
     qualification_status: { type: integer, default: 1  } 
+    confirmed_status: { type: integer, default: 1  } 
+    process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
     Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentSportGamesTeamGroups }   
+    TeamGameParticipation: { onDelete: CASCADE, local: team_game_participation_id, foreign: id, foreignAlias: teamGameParticipationGroupParticipantTeams }  
     Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamGroupMembers }  
     TournamentSportGameGroup: { onDelete: CASCADE, local: tournament_sport_game_group_id, foreign: id, foreignAlias: tournamentSportGameTeamGroups }  
  
@@ -395,12 +416,15 @@ TournamentGroupParticipantTeamMember:
     start_date: { type: string(100) }
     effective_date: { type: string(100) }  
     end_date: { type: string(100) }  
-    confirm_flag: { type: boolean, default: 0 } 
+    confirmed_flag: { type: boolean, default: 0 } 
     active_flag: { type: boolean, default: 0 } 
+    confirmed_flag: { type: boolean, default: false  } 
     qualified_flag: { type: boolean, default: true  } 
-    qualification_status: { type: integer, default: 1  } 
+    qualification_status: { type: integer, default: 1  }
+    confirmed_status: { type: integer, default: 1  }  
     standing_status: { type: integer, default: 1 } 
     contestant_status: { type: integer, default: 1 } 
+    process_status: { type: integer, default: 1 } 
     approval_status: { type: integer, default: 1 } 
     status: { type: integer, default: 1 } 
     description:  { type: clob }  
@@ -424,8 +448,11 @@ TournamentMatch:
     org_token_id: { type: string(100) }  
     tournament_id: { type: integer } 
     tournament_token_id: { type: string(100) } 
+    parent_tournament_match_id: { type: integer } 
+    parent_tournament_match_token_id: { type: string(100) } 
     sport_game_category_id: { type: integer } 
-    match_number: { type: string(100) }
+    tournament_match_number: { type: string(100) }
+    tournament_match_full_number: { type: string(100) }
     tournament_match_round_mode: { type: integer } 
     round_type_mode: { type: integer } 
     contestant_team_mode: { type: integer } 
@@ -438,6 +465,7 @@ TournamentMatch:
     status: { type: integer, default: 1  } 
     description:  { type: string(255) }    
   relations:  
+    TournamentMatch: { onDelete: CASCADE, local: parent_tournament_match_id, foreign: id, foreignAlias: parentTournamentMatchs }
     Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationTournamentMatchs }
     Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentMatchs }     
     GameCategory: { onDelete: CASCADE, local: sport_game_category_id, foreign: id, foreignAlias: gameCategoryTournamentMatch }     
@@ -453,16 +481,22 @@ TournamentMatchFixture:
     tournament_match_token_id: { type: string(100) } 
     parent_match_fixture_id: { type: integer } 
     parent_match_fixture_token_id: { type: string(100) } 
+    tournament_sport_game_group_id: { type: integer } 
+    tournament_sport_game_group_token_id: { type: string(100) } 
     sport_game_id: { type: integer } 
     sport_game_token_id: { type: string(100) } 
     match_round_type_id: { type: integer } 
+    match_heat_type_id: { type: integer } 
+    match_round_type_name: { type: string(100) } 
+    match_heat_type_name: { type: string(100) } 
     gender_category_id: { type: integer } 
     match_fixture_round_mode: { type: integer } 
     event_type: { type: integer } 
     contestant_mode: { type: integer } 
     contestant_team_mode: { type: integer } 
     match_venue: { type: string(100) } 
-    tournament_match_number: { type: string(100) } 
+    tournament_match_fixture_number: { type: string(100) } 
+    tournament_match_fixture_full_number: { type: string(100) } 
     match_date: { type: string(100) }
     match_time: { type: string(100) }
     start_date: { type: string(100) }
@@ -479,8 +513,8 @@ TournamentMatchFixture:
   relations:  
     TournamentMatch: { onDelete: CASCADE, local: tournament_match_id, foreign: id, foreignAlias: tournamentMatchMatchFixtures }     
     SportGame: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: sportGameMatchFixtures }     
-    RoundType: { onDelete: CASCADE, local: match_round_type_id, foreign: id, foreignAlias: roundTypeMatchFixtures }     
-    TournamentMatchFixture: { onDelete: CASCADE, local: parent_match_fixture_id, foreign: id, foreignAlias: matchFixtureParentFixtures }      
+    TournamentMatchFixture: { onDelete: CASCADE, local: parent_match_fixture_id, foreign: id, foreignAlias: matchFixtureParentFixtures } 
+    TournamentSportGameGroup: { onDelete: CASCADE, local: tournament_sport_game_group_id, foreign: id, foreignAlias: tournamentSportGameGroupMatchFixtures }         
     
 TournamentMatchFixtureGroup:
   package: GameSetting
@@ -492,9 +526,6 @@ TournamentMatchFixtureGroup:
     tournament_match_fixture_id: { type: integer }
     tournament_match_fixture_token_id: { type: string(100) } 
     tournament_sport_game_group_id: { type: integer } 
-    tournament_sport_game_group_token_id: { type: string(100) } 
-    group_participant_team_id: { type: integer } 
-    group_participant_team_token_id: { type: string(100) } 
     tournament_match_group_number: { type: string(100) } 
     match_venue: { type: string(100) } 
     match_date: { type: string(100) }
@@ -502,14 +533,14 @@ TournamentMatchFixtureGroup:
     effective_date: { type: string(100) }
     qualified_flag: { type: boolean  } 
     qualification_status: { type: integer, default: 1  } 
-    confirm_flag: { type: boolean, default: false } 
+    confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    TournamentSportGameGroup: { onDelete: CASCADE, local: tournament_sport_game_group_id, foreign: id, foreignAlias: roundTypeMatchFixtures }    
-    TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipants }  
+    TournamentSportGameGroup: { onDelete: CASCADE, local: tournament_sport_game_group_id, foreign: id, foreignAlias: tournamentSportGameGroupMatchFixtureGroups }    
+    TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureMatchFixtureGroups }  
 
 TournamentMatchParticipantTeam:
   package: GameSetting
@@ -524,18 +555,22 @@ TournamentMatchParticipantTeam:
     tournament_match_fixture_group_token_id: { type: string(100) } 
     group_participant_team_id: { type: integer } 
     group_participant_team_token_id: { type: string(100) } 
+    match_result_point: { type: integer } 
+    match_result_score: { type: integer } 
+    match_result_time: { type: integer } 
     effective_date: { type: string(100) }
     qualified_flag: { type: boolean  } 
-    qualification_status: { type: integer, default: 1  } 
-    confirm_flag: { type: boolean, default: false } 
+    confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    qualification_status: { type: integer, default: 1  } 
+    competition_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    TournamentGroupParticipantTeam: { onDelete: CASCADE, local: group_participant_team_id, foreign: id, foreignAlias: sportGameTeamGroupMatchTeamParticipants } 
-    TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipants }  
-    TournamentMatchFixtureGroup: { onDelete: CASCADE, local: tournament_match_fixture_group_id, foreign: id, foreignAlias: tournamentMatchFixtureGroupParticipants }  
+    TournamentGroupParticipantTeam: { onDelete: CASCADE, local: group_participant_team_id, foreign: id, foreignAlias: sportGameTeamGroupMatchTeamParticipantTeams } 
+    TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipantTeams }  
+    TournamentMatchFixtureGroup: { onDelete: CASCADE, local: tournament_match_fixture_group_id, foreign: id, foreignAlias: tournamentMatchFixtureGroupParticipantTeams }  
 
 MultipleParticipantTeam:
   package: GameSetting
@@ -568,20 +603,38 @@ TournamentMatchTeamMemberParticipant:
     tournament_match_participant_team_token_id: { type: string(100) } 
     group_participant_team_member_id: { type: integer }
     group_participant_team_member_token_id: { type: string(100) } 
+    match_position_order: { type: integer } 
+    match_result_position_order: { type: integer } 
+    match_result_score: { type: integer } 
+    match_result_time: { type: integer } 
     effective_date: { type: string(100) }
     qualified_flag: { type: boolean  } 
+    confirmed_flag: { type: boolean, default: false } 
+    active_flag: { type: boolean, default: false } 
     qualification_status: { type: integer, default: 1  } 
-    confirm_flag: { type: boolean, default: 0 } 
-    active_flag: { type: boolean, default: 0 } 
-    standing_status: { type: integer, default: 1 } 
-    contestant_status: { type: integer, default: 1 } 
-    approval_status: { type: integer, default: 1 } 
+    competition_status: { type: integer, default: 1  } 
+    approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
     TournamentGroupParticipantTeamMember: { onDelete: CASCADE, local: group_participant_team_member_id, foreign: id, foreignAlias: tournamentGroupParticipantTeamMemberMatchParticipants }  
     TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipants }  
     TournamentMatchParticipantTeam: { onDelete: CASCADE, local: tournament_match_participant_team_id, foreign: id, foreignAlias: tournamentMatchParticipantTeamMemberParticipants }  
+  
+TournamentMatchFixtureResult:
+  package: GameSetting
+  tableName: mutms_tbl_tournament_match_fixture_result
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    tournament_match_fixture_id: { type: integer }
+    tournament_match_fixture_token_id: { type: string(100) }  
+    active_flag: { type: boolean, default: false }   
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: tournamentMatchFixtureResults }  
   
  
 ############  Party Management ####################
@@ -978,7 +1031,7 @@ UserRole:
 
 AccessLevelPermission:
   package: AdministratorManagement
-  tableName: eASsys_tbl_access_level_permission
+  tableName: mutms_tbl_access_level_permission
   actAs:
     Timestampable: ~
   columns: 
@@ -1030,7 +1083,7 @@ SystemLogFile:
     org_id: { type: integer }
     org_token_id: { type: string(100) }   
     user_id: { type: integer } 
-    module_setting_id: { type: integer } 
+    module_id: { type: integer } 
     action_date: { type: string(100) }
     action_time: { type: string(50) } 
     action_data: { type: clob } 
@@ -1040,8 +1093,8 @@ SystemLogFile:
     php_self: { type: string(100) } 
     pc_ip_address: { type: string(100) } 
     browser_type: { type: string(100) } 
+    effective_date: { type: string(100) }
     description: { type: clob } 
   relations:
     User: { onDelete: CASCADE, local: user_id, foreign: id, foreignAlias: userSystemLogFileActivities } 
     Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationSystemLogFiles } 
-    ModuleSetting: { onDelete: CASCADE, local: module_setting_id, foreign: id, foreignAlias: moduleSettingLogFiles } 

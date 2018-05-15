@@ -92,7 +92,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 								(sprtGmGrp.status=".TournamentCore::$_PENDING.") as pendingTeamGroup, (sprtGmGrp.status=".TournamentCore::$_ACTIVE.") as activeTeamGroup, (sprtGmGrp.status=".TournamentCore::$_COMPLETED.") as completedTeamGroup,
 								(sprtGmGrp.approval_status=".TournamentCore::$_PENDING.") as pendingApprovalTeamGroup, (sprtGmGrp.approval_status=".TournamentCore::$_ACTIVE.") as activeApprovalTeamGroup, (sprtGmGrp.approval_status=".TournamentCore::$_APPROVED.") as approvedApprovalTeamGroup, (sprtGmGrp.approval_status=".TournamentCore::$_COMPLETED.") as completedApprovalTeamGroup,
 								
-								(EXISTS (SELECT sprtGmGrp1.id FROM TournamentGroupParticipantTeam sprtGmGrp1 WHERE sprtGmGrp1.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp1.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND sprtGmGrp1.approval_status = ".TournamentCore::$_INITIATED." AND sprtGmGrp1.status = ".TournamentCore::$_INITIATED." )) as hasGroupParticipantTeam,
+								(EXISTS (SELECT sprtGmGrp1.id FROM TournamentGroupParticipantTeam sprtGmGrp1 WHERE sprtGmGrp1.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp1.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND sprtGmGrp1.approval_status = ".TournamentCore::$_APPROVED." AND sprtGmGrp1.status = ".TournamentCore::$_ACTIVE." )) as hasGroupParticipantTeam,
 								
 		";	
 		return $_queryFileds;
@@ -111,7 +111,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("sprtGmGrp.id ASC")
+				->orderBy("sprtGmGrp.id DESC")
 				->where("sprtGmGrp.id IS NOT NULL");
 				if(!is_null($_tournamentGroupID)) $_qry = $_qry->addWhere("trmnSprtGmGrp.id = ? AND trmnSprtGmGrp.token_id = ? ", array($_tournamentGroupID, $_tournamentGroupTokenID));
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    

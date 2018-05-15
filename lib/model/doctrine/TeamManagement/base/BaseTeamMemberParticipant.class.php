@@ -14,8 +14,10 @@
  * @property string $member_full_name
  * @property integer $member_role_id
  * @property integer $member_number
+ * @property boolean $confirmed_flag
  * @property boolean $grouped_flag
  * @property boolean $active_flag
+ * @property integer $grouped_status
  * @property integer $status
  * @property clob $description
  * @property Team $Team
@@ -64,6 +66,10 @@ abstract class BaseTeamMemberParticipant extends sfDoctrineRecord
         $this->hasColumn('member_number', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('confirmed_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('grouped_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
@@ -71,6 +77,10 @@ abstract class BaseTeamMemberParticipant extends sfDoctrineRecord
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
+             ));
+        $this->hasColumn('grouped_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('status', 'integer', null, array(
              'type' => 'integer',

@@ -52,19 +52,14 @@
 					<img title="<?php echo $_matchParticipantTeam->sportGameName ?>" src="<?php echo image_path($_matchParticipantTeam->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
-			<td class="ui-table-action ui-table-list-action-box-3">
+			<td class="ui-table-action ui-table-list-action-box-2">
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">   
 						<li>
 							<a href="<?php echo url_for('team/view?product_id='.$_matchParticipantTeam->id.'&token_id='.$_matchParticipantTeam->token_id) ?>" >	
 								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_matchParticipantTeam->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
-						</li> 
-						<li>  
-							<a href="<?php echo url_for('team/edit?product_id='.$_matchParticipantTeam->id.'&token_id='.$_matchParticipantTeam->token_id) ?>" >	
-								<img title="<?php echo __('Edit Team').' ( '.' Task '.' #:'.$_matchParticipantTeam->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
-							</a>    
-						</li> 
+						</li>  
 						<li>   
 							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_matchParticipantTeam->id ?>" onclick="Javascript:deleteProduct(<?php echo $_matchParticipantTeam->id ?>);" rel="<?php echo $_matchParticipantTeam->token_id ?>">	
 							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_matchParticipantTeam->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 

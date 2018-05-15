@@ -144,7 +144,7 @@
 								 
 								<?php if(!$sf_user->isAuthenticated()): 	?> 
 								<ul class="nav navbar-nav navbar-right">
-									<li><a href="<?php echo url_for('login/index') ?>">Login</a></li>
+									<li><?php echo link_to('Login', '@user_login') ?></li>
 								</ul>
 								<?php endif; 	?> 
 							</div><!--/.nav-collapse -->

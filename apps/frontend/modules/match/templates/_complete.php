@@ -1,7 +1,7 @@
 <div class="ui-panel-container" id=""> 
 
-	<input type="hidden" class="form-control" id="team_group_id" name="team_group_id" value="<?php echo $sf_request->getParameter('team_group_id') ?>"> 
-	<input type="hidden" class="form-control" id="team_group_token_id" name="team_group_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
+	<input type="hidden" class="form-control" id="tournament_match_id" name="tournament_match_id" value="<?php echo $sf_request->getParameter('match_id') ?>"> 
+	<input type="hidden" class="form-control" id="tournament_match_token_id" name="tournament_match_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
 	<div class="ui-panel-grid-box" id=""> 
 		<!-- First panel --> 
 		<div class="col-sm-12" id="">  
@@ -13,7 +13,7 @@
 							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Match Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
+						<?php echo __('Match Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->tournamentMatchFullNumber.' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -70,7 +70,11 @@
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('complete_list', array('_matchParticipantTeams' => $_matchParticipantTeams )) ?> 
+													<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
+														<?php include_partial('participant_pair_team_list', array('_matchParticipantTeams' => $_matchParticipantTeams)) ?> 
+													<?php else: ?>
+														<?php include_partial('complete_list', array('_matchParticipantTeams' => $_matchParticipantTeams)) ?> 
+													<?php endif; ?>
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											
@@ -83,31 +87,26 @@
 											</div>
 										</div><!-- end of ui-tab-content --> 
 										
-										
-									 <!-- Begining of toolbar -->
-									<div class="ui-toolbar-menu-box  ui-toolbar-border1 ui-panel-footer-margin ui-panel-footer-border">
-										<div class="ui-toolbar-menu">
-											<div id="" class="navbar-collapse ui-toolbar">
-												<div class="row">
-													<div class="col-sm-12">
-														<?php include_partial('footer_navigation', array('_object' => $_tournamentMatch)) ?> 
-													</div> 
+										 <!-- Begining of toolbar -->
+										<div class="ui-toolbar-menu-box  ui-toolbar-border1 ui-panel-footer-margin ui-panel-footer-border">
+											<div class="ui-toolbar-menu">
+												<div id="" class="navbar-collapse ui-toolbar">
+													<div class="row">
+														<div class="col-sm-12">
+															<?php include_partial('footer_navigation', array('_object' => $_tournamentMatch)) ?> 
+														</div> 
+													</div><!-- end of ui-filter-list -->
 												</div><!-- end of ui-filter-list -->
-											</div><!-- end of ui-filter-list -->
-										</div>
-									</div  
-									<!--    End of toolbar      -->
-									
+											</div>
+										</div  
+										<!--    End of toolbar      -->
 										
 									</div><!-- end of ui-tab-content -->  
-									
-									
 						
 								</div><!-- end of ui-main-tab-box --> 
 							</div><!-- end of ui-main-tab-box --> 
 							
 						</div><!-- end of ui-panel-footer-default-box --> 
-						 
 						
 					</div><!-- end of ui-panel-content-box --> 
 								

@@ -1,21 +1,33 @@
-<?php
-	//ournament_name=asdfasdf&tournament_alias=asdfasdf&season=1&status=1&start_date=02/23/2018&end_date=02/28/2018&description=asdfasdfasdfad asdfasdf
-	//processSave ( $_orgID, $_orgTokenID,  $_tournamentName, $_tournamentAlias, $_tournamentSeason, $_startDate, $_effectiveDate, $_endDate, $_description )
+<?php if($sf_user->isAuthenticated()): 	 
+	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
+?> 
+
+<div class="ui-page-box">
+	<div class="ui-main-content-box" >
+		<div class="ui-detail-tab-list ui-grid-content-container-box" >
+			<div id="ui-tab-three" class="ui-tab" style="">
+				<?php include_partial('edit', array( '_tournamentMatchs' => $_tournamentMatchs, '_countSportGames' => $_countSportGames )) ?> 
+			</div><!-- end of ui-tab-three-->
+		</div> <!-- end of ui-detail-tab-list -->
+		<div class="ui-clear-fix"></div>
+	</div> <!-- end of ui-main-list-default -->
 	
-	//$_flag =  TournamentTable::processNew ( $_orgID, $_orgTokenID,  'asdfasdf', 'asdfasdf', '2018', '02/23/2018', $_effectiveDate, '02/28/2018', 1, $_description, $_userID, $_userTokenID  ); 
-	//$_flag =  TournamentTable::processSave ( $_orgID, $_orgTokenID,  'asdfasdf', 'asdfasdf', '2018', '02/23/2018', $_effectiveDate, '02/28/2018', $_description ); 
-	//$_flag =  TeamTable::processNew ( $_orgID, $_orgTokenID,  'Nirobi University', 'NU', 44, 'Nirobi', $_description, $_userID, $_userTokenID  );  
-	//tournament_name=African Universities Sport Festival (AUSF ) - 2018&tournament_token_id=67a74306b06d0c01624fe0d0249a570f4d093747&tournament_id=1&sport_game_name=Football (Football)&sport_game_id=17&sport_game_token_id=0077401f137c4cfaa7bc58b3288df045a4237cb2&match_venue=sasasdf&event_type=2&gender_category=1&player_mode=2&match_round=0&match_status=2&match_date=03/05/2018&description=
-	//$_flag =  MatchFixtureTable::processNew ( $_orgID, $_orgTokenID,  $_tournamentID, $_tournamentTokenID, $_sportGameID, $_sportGameTokenID, $_matchSportGameName, $_roundTypeID, $_genderCategoryID, $_eventType, $_playerMode, $_matchVenue, $_matchDate, $_status, $_description, $_userID, $_userTokenID  );  
-?>
-<form class="form-horizontal" role="form" action="<?php echo url_for('match/createTournamentMatch') ?>" id="createTournamentMatchForm" name="createTournamentMatchForm" method="post"> 
-<div class="ui-content-page">
-	<?php include_partial('edit', array( '_tournamentMatch' => $_tournamentMatch,'_activeTournament' => $_activeTournament, '_candidateRounds' => $_candidateRounds, '_productClasses' => $_productClasses )) ?> 
 </div>		  
-</form>
+ 
+<?php else: ?> 
+	<div class="ui-error-container" id="ui-error-box" >
+		<?php echo include_partial('global/credential_denied', array()) ?>
+	</div>  
+<?php endif; ?>
+
+<?php else: ?>
+
+	<div class="ui-success-container" id="ui-success-box" >
+		<?php echo include_partial('global/authorization_denied', array()) ?>
+	</div>
+<?php endif; ?>         
 <!--- ************************  -->
-
-
+ 
 <!-- Modal -->
 <div class="modal fade" id="candidateSportGameCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <form id="insertModalOneData">

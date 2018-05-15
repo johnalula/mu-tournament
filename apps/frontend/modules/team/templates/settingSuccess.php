@@ -530,8 +530,8 @@
 			document.getElementById("sport_game_type_token_id").value = listArr[1];  
 			document.getElementById("sport_game_type_name").value = listArr[2]+' ('+listArr[3]+')';  
 			  
-			$("#createTeamSportGameParticipation").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelTeamSportGameParticipation").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			//$("#createTeamSportGameParticipation").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			//$("#cancelTeamSportGameParticipation").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			$('.selectCandidateSportGame').removeAttr("disabled");
 			$('#candidateSportGameTypeModal').modal('hide');
 		return e.preventDefault();
@@ -577,8 +577,8 @@
 			document.getElementById("sport_game_category_token_id").value = listArr[1];  
 			document.getElementById("sport_game_category_name").value = listArr[2]+' ('+listArr[3]+')';    
 						
-			$("#createTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			//$("#createTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			//$("#cancelTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			$('.selectCandidateMemberSportGame').removeAttr("disabled");
 			$('#candidateSportGameCategoryModal').modal('hide');
 		return e.preventDefault();
@@ -595,8 +595,8 @@
 			document.getElementById("member_participant_name").value = listArr[2]+' ('+listArr[4]+')';    
 			document.getElementById("member_participant_gender_id").value = listArr[5];  
 			
-			$("#createTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			//$("#createTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			//$("#cancelTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			$('.selectCandidateSportGameCategory').removeAttr("disabled");
 			$('#candidateMemberParticipantModal').modal('hide');
 		return e.preventDefault();

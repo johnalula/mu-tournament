@@ -6,12 +6,12 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
-			<th class="" style="text-align:left!important;"><?php echo __('Prod').' #' ?></th>
-			<th class="ui-th-left-text" title="<?php echo __('Product Name') ?>"><?php echo  __('Product Name') ?></th>   
+			<th class="" style="text-align:left!important;"><?php echo __('Team').' #' ?></th>
+			<th class="ui-th-left-text" title="<?php echo __('Team Name') ?>"><?php echo  __('Country Name') ?></th>   
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Name') ?>"><?php echo  __('UOM') ?></th>   
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Qnt on SO') ?></th>  
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Qnt on Hand') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Group') ?>"><?php echo  __('Unit Price') ?></th>   
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Group') ?>"><?php echo  __('Description') ?></th>   
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
 			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('Action') ?></th>  
 			<th></th>
@@ -29,23 +29,22 @@
 					<?php echo SystemCore::processDataID($_team->id) ?>
 				</a>
 			</td> 
-			<td class="ui-td-left-text ui-td-xsmall-02"> 
-				<?php echo $_team->teamName  ?>
+			<td class="ui-td-center-text ui-td-xsmall-00">
+				<?php echo $_team->teamNumber ?>
 			</td> 
-			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_team->teamAlias ?> 
+			<td class="ui-td-left-text ui-td-xsmall-2"> 
+				<?php echo $_team->teamName.' ( '.$_team->teamAlias.' )'  ?>
+			</td> 
+			<td class="ui-td-left-text ui-td-xsmall-1"> 
+				<?php echo SystemCore::processCountryValue($_team->teamCountry) ?> 
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0 <?php echo $_team->hasGameParticipation ? '':'ui-table-bgcolor-red' ?>">
 				<?php echo $_team->hasGameParticipation ? 'True':'False' ?>
 			</td>
-			
-			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_team->id ?>
-			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo $_team->id ?>
 			</td> 
-			<td class="ui-td-right-text ui-td-xsmall-00">
+			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo Wordlimit::Wordlimiter($_team->description, 5) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">

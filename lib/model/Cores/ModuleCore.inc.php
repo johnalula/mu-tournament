@@ -7,7 +7,7 @@ class ModuleCore {
 	public static $_GROUP = 4;
 	public static $_TEAM = 5;  
 	public static $_RESULT_SETTING = 6;  
-	public static $_MATCH = 7;  
+	public static $_TOURNAMENT_MATCH = 7;  
 	public static $_TEAM_GROUP = 8;   
 	public static $_MEDAL_AWARD = 9;  
 	public static $_ORGANIZATION = 10; 
@@ -16,7 +16,7 @@ class ModuleCore {
 	public static $_ADMINISTRATOR = 13; 
 	public static $_REPORT = 14;
 	
-	public static $_MODULES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Game", 4 => "Group", 5 => "Team", 6 => "Result Setting", 7 => "Match", 8 => "Team Group", 9 => "Medal Award", 10 => "Organization", 11 => "General Setting", 12 => "System Setting", 13 => "Administrator", 14 => "Report" );
+	public static $_MODULES = array (1 => "Dashboard",  2 => "Tournament", 3 => "Sport Game", 4 => "Group", 5 => "Team", 6 => "Result Setting", 7 => "Tournament Match", 8 => "Team Group", 9 => "Medal Award", 10 => "Organization", 11 => "General Setting", 12 => "System Setting", 13 => "Administrator", 14 => "Report" );
 	
 	public static function processModules ( ) 
 	{

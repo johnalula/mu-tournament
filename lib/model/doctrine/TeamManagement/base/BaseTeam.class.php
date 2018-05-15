@@ -29,7 +29,7 @@
  * @property string $start_date
  * @property string $end_date
  * @property boolean $grouped_flag
- * @property boolean $confirm_flag
+ * @property boolean $confirmed_flag
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
@@ -145,7 +145,7 @@ abstract class BaseTeam extends sfDoctrineRecord
              'type' => 'boolean',
              'default' => false,
              ));
-        $this->hasColumn('confirm_flag', 'boolean', null, array(
+        $this->hasColumn('confirmed_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));

@@ -9,7 +9,7 @@
  * @property integer $org_id
  * @property string $org_token_id
  * @property integer $user_id
- * @property integer $module_setting_id
+ * @property integer $module_id
  * @property string $action_date
  * @property string $action_time
  * @property clob $action_data
@@ -19,10 +19,10 @@
  * @property string $php_self
  * @property string $pc_ip_address
  * @property string $browser_type
+ * @property string $effective_date
  * @property clob $description
  * @property User $User
  * @property Organization $Organization
- * @property ModuleSetting $ModuleSetting
  * 
  * @package    symfony
  * @subpackage model
@@ -48,7 +48,7 @@ abstract class BaseSystemLogFile extends sfDoctrineRecord
         $this->hasColumn('user_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('module_setting_id', 'integer', null, array(
+        $this->hasColumn('module_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('action_date', 'string', 100, array(
@@ -85,6 +85,10 @@ abstract class BaseSystemLogFile extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('effective_date', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
         $this->hasColumn('description', 'clob', null, array(
              'type' => 'clob',
              ));
@@ -100,11 +104,6 @@ abstract class BaseSystemLogFile extends sfDoctrineRecord
 
         $this->hasOne('Organization', array(
              'local' => 'org_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
-
-        $this->hasOne('ModuleSetting', array(
-             'local' => 'module_setting_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

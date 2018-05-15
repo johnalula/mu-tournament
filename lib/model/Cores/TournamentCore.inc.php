@@ -447,13 +447,12 @@ class TournamentCore {
 	
 	/*********************************************/
 	
-	public static $_ROUND = 1;
+	public static $_PRELIMINARY = 1;
 	public static $_QUARTER_FINAL = 2;
 	public static $_SEMI_FINAL = 3;
 	public static $_FINAL = 4;
-	public static $_OTHER_ROUND = 5; 
 
-	public static $_ROUND_TYPES = array ( 1 => 'Round', 2 => 'Quarter Final', 3 => 'Semi Final', 4 => 'Final', 5 => 'Other');
+	public static $_ROUND_TYPES = array ( 1 => 'Preliminary Round', 2 => 'Quarter Final', 3 => 'Semi Final', 4 => 'Final');
 	
 	public static function processRounds ( ) 
 	{
@@ -492,16 +491,16 @@ class TournamentCore {
 	public static function processDefaultRound ( )
 	{
 		 try {
-				return self::$_ROUND; 
+				return self::$_PRELIMINARY; 
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
 	}
-	public static function processUserRoleIcon ($_round) 
+	public static function processRoundIcon ($_round) 
 	{
 		switch($_round) {			
-			case self::$_ROUND:
-				return 'Round';
+			case self::$_PRELIMINARY:
+				return 'Preliminary Round';
 			break;
 			case self::$_QUARTER_FINAL:
 				return 'Quarter Final';
@@ -511,9 +510,6 @@ class TournamentCore {
 			break;
 			case self::$_FINAL:
 				return 'Final';
-			break;
-			case self::$_OTHER_ROUND:
-				return 'None';
 			break; 
 		}
 	}
@@ -734,38 +730,32 @@ class TournamentCore {
 	}
 	/*********************************************/
 	
-	public static $_GROUP_ONE = 1;
-	public static $_GROUP_TWO = 2;
-	public static $_GROUP_THREE = 3;
-	public static $_GROUP_FOUR = 4;
-	public static $_GROUP_FIVE = 5; 
-	public static $_GROUP_SIX = 6;
-	public static $_GROUP_SEVEN = 7;
-	public static $_GROUP_EIGHT = 8;
-	public static $_GROUP_NINE = 9;
-	public static $_GROUP_TEN = 10; 
-	public static $_GROUP_ELEVEN = 11; 
-	public static $_GROUP_TWELVE = 12; 
-	public static $__GROUPTHIRTEEN = 13; 
-	public static $_GROUP_FOURTEEN = 14; 
-	public static $_GROUP_FIFTEEN = 15; 
-	public static $_GROUP_SIXTEEN = 16; 
+	public static $_HEAT_ONE = 1;
+	public static $_HEAT_TWO = 2;
+	public static $_HEAT_THREE = 3;
+	public static $_HEAT_FOUR = 4;
+	public static $_HEAT_FIVE = 5; 
+	public static $_HEAT_SIX = 6;
+	public static $_HEAT_SEVEN = 7;
+	public static $_HEAT_EIGHT = 8;
+	public static $_HEAT_NINE = 9;
+	public static $_HEAT_TEN = 10; 
 
-	public static $_GROUP_NUMBERS = array ( 1 => 'One', 2 => 'Two', 3 => 'Three', 4 => 'Four', 5 => 'Five', 6 => 'Six', 7 => 'Seven', 8 => 'Eight', 9 => 'Nine', 10 => 'Ten', 11 => 'Eleven', 12 => 'Twelve', 13 => 'Thirteen', 14 => 'Fourteen', 15 => 'Fifteen', 16 => 'Sixteen');
+	public static $_HEAT_NUMBERS = array ( 1 => 'Heat One', 2 => 'Heat Two', 3 => 'Heat Three', 4 => 'Heat Four', 5 => 'Heat Five', 6 => 'Heat Six', 7 => 'Heat Seven', 8 => 'Heat Eight', 9 => 'Heat Nine', 10 => 'Heat Ten');
 	
-	public static function processGroupNumbers ( ) 
+	public static function processHeatNumbers ( ) 
 	{
 		 try {
-				return self::$_GROUP_NUMBERS; 
+				return self::$_HEAT_NUMBERS; 
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
 	}
 	
-	public static function processGroupNumberID ( $_value ) 
+	public static function processHeatNumberID ( $_value ) 
 	{
 		try {
-			foreach( self::$_GROUP_NUMBERS as $_key=> $_group ){
+			foreach( self::$_HEAT_NUMBERS as $_key=> $_group ){
 				if( strcmp($_group, $_value) == 0 )
 					return $_key; 
 			}
@@ -775,10 +765,10 @@ class TournamentCore {
 		}
 	}
 
-	public static function processGroupNumberValue ($_id )
+	public static function processHeatNumberValue ($_id )
 	{
 		try {
-			foreach( self::$_GROUP_NUMBERS as $_key=> $_group ){
+			foreach( self::$_HEAT_NUMBERS as $_key=> $_group ){
 			  if( $_key == $_id )
 					return $_group; 
 			}
@@ -787,65 +777,47 @@ class TournamentCore {
 			return null; 
 		}
 	}
-	public static function processDefaultGroupNumber ( )
+	public static function processDefaultHeatNumber ( )
 	{
 		 try {
-				return self::$_GROUP_ONE; 
+				return self::$_HEAT_ONE; 
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
 	}
-	public static function processGroupNumberIcon ($_round) 
+	public static function processHeatNumberIcon ($_round) 
 	{
 		switch($_round) {			
-			case self::$_GROUP_ONE:
+			case self::$_HEAT_ONE:
 				return 'one';
 			break;
-			case self::$_GROUP_TWO:
+			case self::$_HEAT_TWO:
 				return 'two';
 			break;
-			case self::$_GROUP_THREE:
+			case self::$_HEAT_THREE:
 				return 'three';
 			break;
-			case self::$_GROUP_FOUR:
+			case self::$_HEAT_FOUR:
 				return 'four';
 			break;
-			case self::$_GROUPFIVE:
+			case self::$_HEAT_FIVE:
 				return 'five';
 			break; 
-			case self::$_GROUP_SIX:
+			case self::$_HEAT_SIX:
 				return 'six';
 			break;
-			case self::$_GROUP_SEVEN:
+			case self::$_HEAT_SEVEN:
 				return 'seven';
 			break;
-			case self::$_GROUP_EIGHT:
+			case self::$_HEAT_EIGHT:
 				return 'eight';
 			break;
-			case self::$_GROUP_NINE:
+			case self::$_HEAT_NINE:
 				return 'nine';
 			break;
-			case self::$_GROUP_TEN:
+			case self::$_HEAT_TEN:
 				return 'ten';
-			break; 
-			case self::$_GROUP_ELEVEN:
-				return 'eleven';
-			break; 
-			case self::$_GROUP_TWELVE:
-				return 'twelve';
-			break;
-			case self::$_GROUP_THIRTEEN:
-				return 'thirteen';
-			break;
-			case self::$_GROUP_FOURTEEN:
-				return 'fourteen';
-			break;
-			case self::$_GROUP_FIFTEEN:
-				return 'fifteen';
-			break;
-			case self::$_GROUP_SIXTEEN:
-				return 'sixteen';
-			break; 
+			break;  
 		}
 	}
 	/*********************************************/
@@ -898,6 +870,20 @@ class TournamentCore {
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
+	}
+	public static function makeDefaultEventType ($_eventType)
+	{
+		 switch($_eventType) {			
+			case self::$_PAIR_TEAM:
+				return self::$_FIELD;
+			break;
+			case self::$_MULTIPLE_TEAM:
+				return self::$_TRACK;
+			break;
+			default:
+				return self::$_TRACK;
+			break; 
+		}
 	}
 	public static function processEventTypeIcon ($_event) 
 	{
@@ -1269,8 +1255,6 @@ class TournamentCore {
 			break; 
 		}
 	}
-	
-
 
 /************************************************/
 
@@ -1350,13 +1334,13 @@ class TournamentCore {
 	} 
 /************************************************/
 
-	public static $_FIRST_ROUND = 1; 
+	public static $_PRELIMINARY_ROUND = 1; 
 	public static $_NEXT_ROUND = 2; 
 	public static $_QUALIFIED_ROUND = 3; 
 	public static $_FINAL_ROUND = 4; 
-	public static $_PLAY_OFF = 5; 
+	public static $_KICKOFF = 5; 
 	
-	public static $_ROUND_MODES = array ( 1 => "First Round", 2 => "Next Round", 3 => "Qualified Round", 4 => "Final Round", 5 => "Play Off" );
+	public static $_ROUND_MODES = array ( 1 => "Preliminary Round", 2 => "Next Round", 3 => "Qualified Round", 4 => "Final Round", 5 => "Kickoff" );
 	
 	public static function processMatchRoundModes ( ) 
 	{
@@ -1425,9 +1409,11 @@ class TournamentCore {
 	public static $_POINT_ORDER = 1; 
 	public static $_POSITION_ORDER = 2; 
 	public static $_TIME_ORDER = 3; 
-	public static $_OTHER_ORDER = 4; 
+	public static $_DISTANCE_ORDER = 4; 
+	public static $_HEIGHT_ORDER = 5; 
+	public static $_OTHER_ORDER = 6; 
 	
-	public static $_RESULT_RANKING_MODES = array ( 1 => "Point Order", 2 => "Position Order", 3 => "Time Order", 4 => "Other Order" );
+	public static $_RESULT_RANKING_MODES = array ( 1 => "Point Order", 2 => "Position Order", 3 => "Time Order", 4 => "Distance Order", 5 => "Height Order", 6 => "Other Order" );
 	
 	public static function processResultRankingModes ( ) 
 	{
@@ -1532,6 +1518,78 @@ class TournamentCore {
 			break;
 			case self::$_OTHER_MEASUREMENT:
 				return 'other';
+			break; 
+		}
+	}
+	
+	/********************************************************/
+	
+	public static $_INDIVIDUAL_CREATION_MODE = 1;
+	public static $_BATCH_CREATION_MODE = 2;
+
+	public static $_DATA_CREATION_MODES = array ( 1 => 'Individual Participant', 2 => 'Batch Participant');
+	
+	public static function processDataCreationModes ( ) 
+	{
+		 try {
+				return self::$_DATA_CREATION_MODES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processDataCreationModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_DATA_CREATION_MODES as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processDataCreationModeValue ($_id )
+	{
+		try {
+			foreach( self::$_DATA_CREATION_MODES as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultDataCreationMode ( )
+	{
+		 try {
+				return self::$_INDIVIDUAL_CREATION_MODE; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processDataCreationModeAlias ($_event) 
+	{
+		switch($_event) {			
+			case self::$_INDIVIDUAL_CREATION_MODE:
+				return 'M';
+			break;
+			case self::$_BATCH_CREATION_MODE:
+				return 'KM';
+			break; 
+		}
+	}
+	public static function processDataCreationModeIcon ($_event) 
+	{
+		switch($_event) {			
+			case self::$_INDIVIDUAL_CREATION_MODE:
+				return 'single_player';
+			break;
+			case self::$_BATCH_CREATION_MODE:
+				return 'pair_players';
 			break; 
 		}
 	}

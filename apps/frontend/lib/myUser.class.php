@@ -27,6 +27,10 @@ class myUser extends sfBasicSecurityUser
 		$this->setAttribute('isDefaultUser', $_user->defaultFlag); 
 		$this->setAttribute('userRoleID', $_user->userRoleID); 
 		$this->setAttribute('userRoleTypeID', $_user->userRoleTypeID); 
+		$this->setAttribute('activeTournamentID', $_user->activeTournamentID); 
+		$this->setAttribute('activeTournamentTokenID', $_user->activeTournamentTokenID); 
+		$this->setAttribute('activeTournamentName', $_user->activeTournamentName); 
+		$this->setAttribute('activeTournamentAlias', $_user->activeTournamentAlias); 
 		$this->setAttribute('logindate', date('m/d/Y H:i:s', time()));  
 		
 		/*if($_user->normalUser ) {

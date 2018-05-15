@@ -10,8 +10,11 @@
  * @property string $org_token_id
  * @property integer $tournament_id
  * @property string $tournament_token_id
+ * @property integer $parent_tournament_match_id
+ * @property string $parent_tournament_match_token_id
  * @property integer $sport_game_category_id
- * @property string $match_number
+ * @property string $tournament_match_number
+ * @property string $tournament_match_full_number
  * @property integer $tournament_match_round_mode
  * @property integer $round_type_mode
  * @property integer $contestant_team_mode
@@ -23,9 +26,11 @@
  * @property integer $approval_status
  * @property integer $status
  * @property string $description
+ * @property TournamentMatch $TournamentMatch
  * @property Organization $Organization
  * @property Tournament $Tournament
  * @property GameCategory $GameCategory
+ * @property Doctrine_Collection $parentTournamentMatchs
  * @property Doctrine_Collection $tournamentMatchMatchFixtures
  * 
  * @package    symfony
@@ -56,10 +61,21 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('parent_tournament_match_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('parent_tournament_match_token_id', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
         $this->hasColumn('sport_game_category_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('match_number', 'string', 100, array(
+        $this->hasColumn('tournament_match_number', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
+        $this->hasColumn('tournament_match_full_number', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
              ));
@@ -109,6 +125,11 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('TournamentMatch', array(
+             'local' => 'parent_tournament_match_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
         $this->hasOne('Organization', array(
              'local' => 'org_id',
              'foreign' => 'id',
@@ -123,6 +144,10 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
              'local' => 'sport_game_category_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('TournamentMatch as parentTournamentMatchs', array(
+             'local' => 'id',
+             'foreign' => 'parent_tournament_match_id'));
 
         $this->hasMany('TournamentMatchFixture as tournamentMatchMatchFixtures', array(
              'local' => 'id',

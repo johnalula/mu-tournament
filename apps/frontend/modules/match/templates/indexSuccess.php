@@ -1,5 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_MATCH)):
+	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
 ?> 
 
 <div class="ui-page-box">

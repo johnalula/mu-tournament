@@ -17,7 +17,6 @@
  * @property integer $status
  * @property string $description
  * @property Organization $Organization
- * @property Doctrine_Collection $roundTypeMatchFixtures
  * 
  * @package    symfony
  * @subpackage model
@@ -78,10 +77,6 @@ abstract class BaseRoundType extends sfDoctrineRecord
              'local' => 'org_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
-
-        $this->hasMany('TournamentMatchFixture as roundTypeMatchFixtures', array(
-             'local' => 'id',
-             'foreign' => 'match_round_type_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

@@ -1,6 +1,6 @@
 
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_MATCH)):
+	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
 	//match_fixture=Group One - 5000M Running - Men (Athletics)&match_fixture_id=1&match_fixture_token_id=81f85a62f6e4419c4bb3430b3ad4d5fd1af83a9d&sport_game_group_id=1&sport_game_group_token_id=e3c1cac992933bbb99ce3ca296ea0a175e8db7cd&tournament_match_id=1&tournament_match_token_id=c14cde52da7dbba0b3fb2b418a9c9a35962411b9&participant_team_name=Arba Minch University (AMU-ET) - ETHIOPIA&participant_team_id=7&participant_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&sport_game_group_team_id=17&sport_game_group_team_token_id=56234234514997b1df19ac78f1c72ceade49ee75&description=fgsdfg sdfg sdgs dfgg
 	
 	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, 1, 'c14cde52da7dbba0b3fb2b418a9c9a35962411b9', 1, '81f85a62f6e4419c4bb3430b3ad4d5fd1af83a9d', 1, 'e3c1cac992933bbb99ce3ca296ea0a175e8db7cd', 17, '56234234514997b1df19ac78f1c72ceade49ee75', 'Group One - 5000M Running - Men (Athletics)', 'Arba Minch University (AMU-ET) - ETHIOPIA', $_matchStatus, 'asdf asdfa sdfasdf', SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );

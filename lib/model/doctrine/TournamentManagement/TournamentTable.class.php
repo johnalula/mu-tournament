@@ -49,7 +49,7 @@ class TournamentTable extends PluginTournamentTable
 			$_nw->effective_date = trim($_effectiveDate);  
 			$_nw->end_date = trim($_endDate);  
 			$_nw->status = trim(TournamentCore::$_PENDING);   
-			//$_nw->description = SystemCore::processDescription ( trim($_tournamentName), trim($_description) );  
+			$_nw->description = SystemCore::processDescription ( trim($_tournamentName), trim($_description) );  
 			$_nw->save(); 
 			
 			return $_nw; 

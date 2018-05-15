@@ -19,4 +19,8 @@ class competitionActions extends sfActions
 	{
 
 	}
+	public function executeView(sfWebRequest $request)
+	{
+
+	}
 }

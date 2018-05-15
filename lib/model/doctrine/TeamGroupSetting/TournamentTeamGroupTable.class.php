@@ -19,15 +19,25 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
     //
 	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_gameCategoryID, $_gameCategoryTokenID, $_sportGameTypeName, $_startDate, $_groupStatus, $_description, $_userID, $_userTokenID )
 	{
-			$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_GROUP, true  ); 
+			$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_TEAM_GROUP, true  ); 
 			$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
 			$_groupCode = $_codeConfig->prefixCode.'-'.SystemCore::processCodeGeneratorInitialNumber($_codeNumber);
 			
-			$_sportGameGroup = self::processSave ( $_tournamentID, $_gameCategoryID, $_gameCategoryTokenID, $_sportGameTypeName, $_groupCode, $_startDate, $_groupStatus, $_description ); 
+			$_tournamentTeamGroup = self::processSave ( $_tournamentID, $_gameCategoryID, $_gameCategoryTokenID, $_sportGameTypeName, $_groupCode, $_startDate, $_groupStatus, $_description ); 
 			
 			$_flag = $_codeConfig->makeCodeSetup ( $_codeConfig->lastCode );
 			
-		return $_sportGameGroup;
+			if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TEAM_GROUP;  
+				$_actionObject  = 'Team Group ID: '.$_tournamentTeamGroup->id;  
+				$_actionDesc  = 'Team Group - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM_GROUP).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}
+			
+		return $_tournamentTeamGroup;
 	}
 	//
 	public static function processSave ( $_tournamentID, $_gameCategoryID, $_gameCategoryTokenID, $_sportGameTypeName, $_groupCode, $_startDate, $_groupStatus, $_description )
@@ -257,7 +267,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	//
 	public static function selectCandidateParticipantTeams ( $_tournamentID=null, $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameGroupID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
-		$_groupParticipantTeams = TournamentGroupParticipantTeamTable::processCandidateParticipants($_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategoryID, $_keyword);
+		$_groupParticipantTeams = TournamentGroupParticipantTeamTable::processCandidateParticipants($_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword);
 		$_exclusion = array();   
 		foreach($_groupParticipantTeams as $_groupParticipantTeam) {
 			$_exclusion[] = $_groupParticipantTeam->team_id;
@@ -268,13 +278,13 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	//
 	public static function selectAllCandidateParticipantTeams ( $_tournamentID=null, $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameGroupID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null ) 
    {
-		$_groupParticipantTeams = TournamentGroupParticipantTeamTable::processCandidateParticipants($_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategoryID, $_keyword);
+		$_groupParticipantTeams = TournamentGroupParticipantTeamTable::processCandidateParticipants($_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword);
 		$_exclusion = array();   
 		foreach($_groupParticipantTeams as $_groupParticipantTeam) {
 			$_exclusion[] = $_groupParticipantTeam->team_id;
 		} 
 		
-		return TeamGameParticipationTable::selectCandidateParticipants ( $_tournamentID, $_teamID, $_teamTokenID, $_sportGameID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion) ;
+		return TeamGameParticipationTable::selectAllCandidateParticipants ( $_tournamentID, $_teamID, $_teamTokenID, $_sportGameID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion) ;
 	} 
 	
 	 /********** Candidate selection process participant action *******************/
@@ -325,6 +335,19 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		
 		return TeamMemberParticipantRoleTable::processCandidateParticipants ( $_participantTeamID, $_participantTeamTokenID, $_sportGameID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit ) ;
 	} 
+	
+	/********** Candidate group team member participant selection process *******************/
+	
+	public static function selectCandidateBatchGroupParticipants ( $_tournamentID=null, $_tournamentGroupID=null, $_sportGameID=null, $_participantRoleID=null, $_genderCategory=null) 
+   {
+		$_participantTeamMembers = TournamentGroupParticipantTeamMemberTable::processCandidateBatchSelection ($_tournamentID, $_tournamentGroupID, $_teamID, $_sportGameID, $_genderCategoryID) ;
+		$_exclusion = array();   
+		foreach($_participantTeamMembers as $_participantTeamMember) {
+			$_exclusion[] = $_participantTeamMember->team_member_participant_role_id;
+		} 
+		
+		return TeamMemberParticipantRoleTable::processBatchSelection ( $_tournamentID, $_sportGameID, $_participantRoleID, $_genderCategory, $_exclusion)  ;
+	} 
 	//
 	 
 	/*********************************************************
@@ -336,7 +359,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	public static function processApproval ( $_orgID, $_orgTokenID, $_teamGroupID, $_teamGroupTokenID, $_userID, $_userTokenID ) 
 	{
 		$_flag = true;   
-		$_sportGameTeamGroup =  self::processObject ( null, null, $_teamGroupID, $_teamGroupTokenID ); 
+		$_tournamentTeamGroup =  self::processObject ( null, null, $_teamGroupID, $_teamGroupTokenID ); 
 		
 		//if(!$_sportGameTeamGroup) { return false; }   
 		/*$_orders = RegistrationOrderTable::processApprovalCandidate ( $_task->id, sha1(md5($_task->token_id)), TaskOrderCore::$_PENDING, TaskCore::$_ACTIVE );
@@ -345,14 +368,24 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				$_flag = $_order->makeOrderApproval (); 
 			}
 		} */
-		$_flag = $_sportGameTeamGroup ? $_sportGameTeamGroup->makeProcessApproval ():false;
+		$_flag = $_tournamentTeamGroup ? $_tournamentTeamGroup->makeApproval ():false;
+		
+		/*if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  
+				$_actionObject  = 'Match Fixture ID: '.$_matchFixtureGroup->id;  
+				$_actionDesc  = 'Tournament Match Fixture Participant Teams- [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}*/
 			
 		return $_flag; 
 	}
 	public static function processCompletion ( $_orgID, $_orgTokenID, $_teamGroupID, $_teamGroupTokenID, $_userID, $_userTokenID ) 
 	{
 		$_flag = true;   
-		$_sportGameTeamGroup =  self::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_teamGroupID, $_teamGroupTokenID ); 
+		$_tournamentTeamGroup =  self::processObject ( $_orgID,$_orgTokenID, $_teamGroupID, $_teamGroupTokenID ); 
 		
 		//if(!$_sportGameTeamGroup) { return false; }   
 		/*$_orders = RegistrationOrderTable::processApprovalCandidate ( $_task->id, sha1(md5($_task->token_id)), TaskOrderCore::$_PENDING, TaskCore::$_ACTIVE );
@@ -361,8 +394,19 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				$_flag = $_order->makeOrderApproval (); 
 			}
 		} */
-		$_flag = $_sportGameTeamGroup ? $_sportGameTeamGroup->makeProcessCompletion ():false;
+		
+		$_flag = $_tournamentTeamGroup ? $_tournamentTeamGroup->makeCompletion ():false;
+		
+		/*if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  
+				$_actionObject  = 'Match Fixture ID: '.$_matchFixtureGroup->id;  
+				$_actionDesc  = 'Tournament Match Fixture Participant Teams- [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
 			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}*/
+				
 		return $_flag; 
 	}
 }

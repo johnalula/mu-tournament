@@ -4,9 +4,9 @@
 		 <tr>
 			<th></th>
 			<th class="" style="text-align:center!important;"><?php echo __('ID') ?></th>
-			<th class="ui-th-left-text"><?php echo __('Name') ?></th>
-			<th class="" style=""><?php echo __('Category') ?></th>
-			<th class="ui-th-center-text"><?php echo __('Class') ?></th>
+			<th class="ui-th-center-text"><?php echo __('Team').' #' ?></th>
+			<th class="ui-th-left-text"><?php echo __('Team Name') ?></th>
+			<th class="" style=""><?php echo __('Coutry') ?></th>
 			<th class="ui-th-center-text"><?php echo __('Group') ?></th>
 			<th class="ui-th-left-text"><?php echo __('Description') ?></th>
 			<th class="" style="text-align:center!important;"><?php echo __('Status') ?></th>
@@ -22,14 +22,14 @@
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<?php echo SystemCore::processDataID($_candidateTeam->id) ?> 
 			</td> 
+			<td class="ui-td-left-text ui-td-xsmall-00">
+				<?php echo $_candidateTeam->teamNumber ?>
+			</td>
 			<td class="ui-td-left-text ui-td-xsmall-1">
-				<?php echo $_candidateTeam->teamName ?>
+				<?php echo $_candidateTeam->teamName.' ( '.$_candidateTeam->teamAlias.' )'  ?>
 			</td>
-			<td class="ui-td-left-text ui-td-xsmall-2">
-				<?php echo $_candidateTeam->id ?>
-			</td>
-			<td class="ui-td-left-text ui-td-xsmall-01">
-				<?php echo $_candidateTeam->id ?>
+			<td class="ui-td-left-text ui-td-xsmall-1">
+				<?php echo SystemCore::processCountryValue($_candidateTeam->id) ?> 
 			</td>
 			<td class="ui-td-left-text ui-td-xsmall-01">
 				<?php echo $_candidateTeam->id ?>

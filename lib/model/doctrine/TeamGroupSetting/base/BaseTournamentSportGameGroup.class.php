@@ -23,6 +23,7 @@
  * @property string $end_date
  * @property boolean $complete_flag
  * @property boolean $active_flag
+ * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
@@ -32,8 +33,8 @@
  * @property SportGame $SportGame
  * @property Doctrine_Collection $tournamentSportGameTeamGroups
  * @property Doctrine_Collection $tournamentSportGameGroupMemberParticipants
- * @property Doctrine_Collection $TournamentMatchFixture
- * @property Doctrine_Collection $roundTypeMatchFixtures
+ * @property Doctrine_Collection $tournamentSportGameGroupMatchFixtures
+ * @property Doctrine_Collection $tournamentSportGameGroupMatchFixtureGroups
  * 
  * @package    symfony
  * @subpackage model
@@ -110,6 +111,10 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
              'type' => 'boolean',
              'default' => false,
              ));
+        $this->hasColumn('process_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
         $this->hasColumn('approval_status', 'integer', null, array(
              'type' => 'integer',
              'default' => 1,
@@ -164,11 +169,11 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'tournament_sport_game_group_id'));
 
-        $this->hasMany('TournamentMatchFixture', array(
+        $this->hasMany('TournamentMatchFixture as tournamentSportGameGroupMatchFixtures', array(
              'local' => 'id',
              'foreign' => 'tournament_sport_game_group_id'));
 
-        $this->hasMany('TournamentMatchFixtureGroup as roundTypeMatchFixtures', array(
+        $this->hasMany('TournamentMatchFixtureGroup as tournamentSportGameGroupMatchFixtureGroups', array(
              'local' => 'id',
              'foreign' => 'tournament_sport_game_group_id'));
 

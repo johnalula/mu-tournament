@@ -29,7 +29,7 @@
 				<?php echo SystemCore::processDataID($_tournamentSportGameGroup->id) ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-00"> 
-				<?php echo $_tournamentSportGameGroup->sportGameGroupCode  ?>
+				<?php echo $_tournamentSportGameGroup->hasGroupParticipantTeam ? 'True':'False'  ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo $_tournamentSportGameGroup->sportGameGroupName ?>

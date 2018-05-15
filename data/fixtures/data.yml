@@ -1,3 +1,239 @@
+TournamentSportGameGroup: {  }
+MultipleContestantTeamGroup:
+  MultipleContestantTeamGroup_1:
+    token_id: 9ef2d739d11aba8904aa6abe88588960cfc00d9a
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_1
+    tournament_team_group_token_id: c1276296eed465c7610bae0baa43aa968137b86f
+    SportGame: SportGame_2
+    sport_game_token_id: 5613b3b75cdbdcc29668617a5eb7d98044522d50
+    gender_category_id: '1'
+    group_code: GRP-003-001/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    contestant_team_mode: '2'
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: '800M (Athletics) - Middle Distance Running - Men - ( dfgsdfgsdfgsdfg )'
+    type: '1'
+    created_at: '2018-05-15 01:59:21'
+    updated_at: '2018-05-15 01:59:21'
+  MultipleContestantTeamGroup_2:
+    token_id: 2e41f6fe6c8366de7ff030ff120df80e106c27ac
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_1
+    tournament_team_group_token_id: c1276296eed465c7610bae0baa43aa968137b86f
+    SportGame: SportGame_2
+    sport_game_token_id: 5613b3b75cdbdcc29668617a5eb7d98044522d50
+    gender_category_id: '1'
+    group_code: GRP-003-002/18
+    group_name: 'Group Two'
+    group_number: '2'
+    alias: null
+    total_group_members: null
+    contestant_team_mode: '2'
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: '800M (Athletics) - Middle Distance Running - Men - ( dfgsdfgsdfgsdfg )'
+    type: '1'
+    created_at: '2018-05-15 01:59:21'
+    updated_at: '2018-05-15 01:59:21'
+  MultipleContestantTeamGroup_3:
+    token_id: a22a0ecc2b8bb6b1864b5b28ce50496de1d0a22e
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_1
+    tournament_team_group_token_id: c1276296eed465c7610bae0baa43aa968137b86f
+    SportGame: SportGame_2
+    sport_game_token_id: 5613b3b75cdbdcc29668617a5eb7d98044522d50
+    gender_category_id: '1'
+    group_code: GRP-003-003/18
+    group_name: 'Group Three'
+    group_number: '3'
+    alias: null
+    total_group_members: null
+    contestant_team_mode: '2'
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: '800M (Athletics) - Middle Distance Running - Men - ( dfgsdfgsdfgsdfg )'
+    type: '1'
+    created_at: '2018-05-15 01:59:21'
+    updated_at: '2018-05-15 01:59:21'
+  MultipleContestantTeamGroup_4:
+    token_id: a94d8b4593fcb94cff2f9a1f28c5e52811f74f08
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_1
+    tournament_team_group_token_id: c1276296eed465c7610bae0baa43aa968137b86f
+    SportGame: SportGame_5
+    sport_game_token_id: 5708f219daa54d91fa4ce9775496fe04dbd05600
+    gender_category_id: '1'
+    group_code: GRP-003-004/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    contestant_team_mode: '2'
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: '5000M (Athletics) - Long Distance Running - Men - ( sfasdfasdfasdf )'
+    type: '1'
+    created_at: '2018-05-15 01:59:42'
+    updated_at: '2018-05-15 01:59:42'
+  MultipleContestantTeamGroup_5:
+    token_id: 4bd96da49394cf07d3cc87cb5e5588cb61c57e08
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_1
+    tournament_team_group_token_id: c1276296eed465c7610bae0baa43aa968137b86f
+    SportGame: SportGame_5
+    sport_game_token_id: 5708f219daa54d91fa4ce9775496fe04dbd05600
+    gender_category_id: '2'
+    group_code: GRP-003-005/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    contestant_team_mode: '2'
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: '5000M (Athletics) - Long Distance Running - Women - ( sdfgsdfgsdfgsdf gsdfgsdfg )'
+    type: '1'
+    created_at: '2018-05-15 02:00:00'
+    updated_at: '2018-05-15 02:00:00'
+  MultipleContestantTeamGroup_6:
+    token_id: a2a1069c24ca10b35ea5d0cf13e32d8f3f5092e8
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_1
+    tournament_team_group_token_id: c1276296eed465c7610bae0baa43aa968137b86f
+    SportGame: SportGame_6
+    sport_game_token_id: b032ea7f3a2b35793c8a9b04622548bfa68bc116
+    gender_category_id: '1'
+    group_code: GRP-003-006/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    contestant_team_mode: '2'
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: '10000M (Athletics) - Long Distance Running - Men - ( dsf gsdfg sdfgdsg )'
+    type: '1'
+    created_at: '2018-05-15 02:00:50'
+    updated_at: '2018-05-15 02:00:50'
+  MultipleContestantTeamGroup_7:
+    token_id: 4df467f7011f67821e69213947ec1c29597af2da
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_1
+    tournament_team_group_token_id: c1276296eed465c7610bae0baa43aa968137b86f
+    SportGame: SportGame_6
+    sport_game_token_id: b032ea7f3a2b35793c8a9b04622548bfa68bc116
+    gender_category_id: '2'
+    group_code: GRP-003-007/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    contestant_team_mode: '2'
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: '10000M (Athletics) - Long Distance Running - Women - ( gdsfgsdfgsdfg )'
+    type: '1'
+    created_at: '2018-05-15 02:01:02'
+    updated_at: '2018-05-15 02:01:02'
+  MultipleContestantTeamGroup_8:
+    token_id: 1388a96dc67c48f66706a134b91875a26eb9d75a
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_1
+    tournament_team_group_token_id: c1276296eed465c7610bae0baa43aa968137b86f
+    SportGame: SportGame_11
+    sport_game_token_id: 35b807f945a238e187a86ecfebdc04a787fcaf42
+    gender_category_id: '1'
+    group_code: GRP-003-008/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    contestant_team_mode: '2'
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Maraton (Athletics) - Marathon Running - Men - ( asdfasdfasdfasdf )'
+    type: '1'
+    created_at: '2018-05-15 02:01:19'
+    updated_at: '2018-05-15 02:01:19'
+  MultipleContestantTeamGroup_9:
+    token_id: 897dc839069d417e28e4960c233808fd5b99a228
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_1
+    tournament_team_group_token_id: c1276296eed465c7610bae0baa43aa968137b86f
+    SportGame: SportGame_11
+    sport_game_token_id: 35b807f945a238e187a86ecfebdc04a787fcaf42
+    gender_category_id: '2'
+    group_code: GRP-003-009/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    contestant_team_mode: '2'
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Maraton (Athletics) - Marathon Running - Women - ( fasdf asdf asdfasdfasdfasdfsdfgsdfgsdfg )'
+    type: '1'
+    created_at: '2018-05-15 02:01:57'
+    updated_at: '2018-05-15 02:01:57'
 Party: {  }
 Organization:
   Organization_1:
@@ -58,7 +294,7 @@ Person:
     place_of_birth: Mekelle
     religion: null
     ethnicity: null
-    nationality: '67'
+    nationality: '19'
     access_activation_key: null
     created_at: '2016-01-18 20:22:15'
     updated_at: '2016-01-18 20:22:15'
@@ -89,7 +325,7 @@ Person:
     place_of_birth: Mekelle
     religion: null
     ethnicity: null
-    nationality: '67'
+    nationality: '19'
     access_activation_key: null
     created_at: '2016-01-18 20:22:15'
     updated_at: '2016-01-18 20:22:15'
@@ -120,7 +356,7 @@ Person:
     place_of_birth: Mekelle
     religion: null
     ethnicity: null
-    nationality: '67'
+    nationality: '19'
     access_activation_key: null
     created_at: '2016-01-18 20:22:15'
     updated_at: '2016-01-18 20:22:15'
@@ -2134,6 +2370,366 @@ Person:
     access_activation_key: null
     created_at: '2018-05-03 01:02:13'
     updated_at: '2018-05-03 01:02:13'
+  Person_72:
+    token_id: eb643c374a37d8fca4b858a4ac56afef
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Tadesse
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Tadesse Alemayohu Sibhat (fasdfasdfasdfasdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Alemayohu
+    last_name: Sibhat
+    full_name: 'Tadesse Alemayohu Sibhat'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:21:35'
+    updated_at: '2018-05-11 02:21:35'
+  Person_73:
+    token_id: 9b4e1bf91df5add101afc634a6504670
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Kidus
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Kidus Yirag Tesfamichael (asdfasdfasdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Yirag
+    last_name: Tesfamichael
+    full_name: 'Kidus Yirag Tesfamichael'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:22:00'
+    updated_at: '2018-05-11 02:22:00'
+  Person_74:
+    token_id: 8d042c027cb65d057cfbf90f6c2f3f72
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Mesele
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Mesele Fantahun Esayas (sdfgsdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Fantahun
+    last_name: Esayas
+    full_name: 'Mesele Fantahun Esayas'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:24:20'
+    updated_at: '2018-05-11 02:24:20'
+  Person_75:
+    token_id: bc7270075aa2c9c9a44cc70cf6da1ba2
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Kedija
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Kedija Eibrahim Abdu (sdfgsdfgsdfgsdfg sdgsdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Eibrahim
+    last_name: Abdu
+    full_name: 'Kedija Eibrahim Abdu'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:25:44'
+    updated_at: '2018-05-11 02:25:44'
+  Person_76:
+    token_id: 39529777335a2c0814deef0e88f657cc
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Kisanet
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Kisanet Hadgu Nirea (fasdfasdfasdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Hadgu
+    last_name: Nirea
+    full_name: 'Kisanet Hadgu Nirea'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:26:30'
+    updated_at: '2018-05-11 02:26:30'
+  Person_77:
+    token_id: c7748cf32a4cef47a0db8adb9d44c205
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Tanya
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Tanya James Dunes (gsdggsdgsdfgsdg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: James
+    last_name: Dunes
+    full_name: 'Tanya James Dunes'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:32:28'
+    updated_at: '2018-05-11 02:32:28'
+  Person_78:
+    token_id: 80f718c1e90865e1ec47bd24bc2acd46
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: James
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'James Smith Conwell (sdfgsdfgsdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Smith
+    last_name: Conwell
+    full_name: 'James Smith Conwell'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:33:17'
+    updated_at: '2018-05-11 02:33:17'
+  Person_79:
+    token_id: 7811e9bd6c79ba198fafaebb54874a69
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Lala
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Lala Camile Cavalli (dsfgsdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Camile
+    last_name: Cavalli
+    full_name: 'Lala Camile Cavalli'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:34:25'
+    updated_at: '2018-05-11 02:34:25'
+  Person_80:
+    token_id: b0b9a3798bf85886d09b3a885bed32af
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Jameson
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Jameson Abusanjo Charless (asdfasd asdfasdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Abusanjo
+    last_name: Charless
+    full_name: 'Jameson Abusanjo Charless'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:35:06'
+    updated_at: '2018-05-11 02:35:06'
+  Person_81:
+    token_id: 67244721b51185cbba84aa515491ca3c
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Alamrew
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Alamrew Kebede Dejassa (sdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Kebede
+    last_name: Dejassa
+    full_name: 'Alamrew Kebede Dejassa'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:38:54'
+    updated_at: '2018-05-11 02:38:54'
+  Person_82:
+    token_id: ff4b16074dacd8f87ea7d6dad07ee3cb
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Lakesh
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Lakesh Bezu Yihune (sdfgsdfgsdfg sdfgsdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Bezu
+    last_name: Yihune
+    full_name: 'Lakesh Bezu Yihune'
+    gender: '2'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:39:15'
+    updated_at: '2018-05-11 02:39:15'
+  Person_83:
+    token_id: b4df023fe5cff62c8d37a66fbaf5edbf
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Teklit
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Teklit Tekeste Hailay (sdfgsdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Tekeste
+    last_name: Hailay
+    full_name: 'Teklit Tekeste Hailay'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-11 02:43:34'
+    updated_at: '2018-05-11 02:43:34'
 UserGroup:
   UserGroup_1:
     token_id: 311bb7024364b698d134e090ce9b788b
@@ -2992,161 +3588,6 @@ UserRole:
     description: 'Moderator user role (Sdfg sdfgsdfg )'
     created_at: '2016-03-15 01:01:19'
     updated_at: '2016-03-15 01:01:19'
-RoundType:
-  RoundType_1:
-    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '1'
-    round_number: '1'
-    name: 'Round One'
-    alias: ROUND_ONE
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Round One ( ada fasdf a asdf )'
-    created_at: '2018-02-27 22:03:48'
-    updated_at: '2018-02-27 22:03:48'
-  RoundType_2:
-    token_id: 1ade1521b38d85983a4d543da12fd533947fcb37
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '1'
-    round_number: '2'
-    name: 'Round Two'
-    alias: ROUND_TWO
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Round Two ( asdfas dfasdf )'
-    created_at: '2018-02-27 22:04:18'
-    updated_at: '2018-02-27 22:04:18'
-  RoundType_3:
-    token_id: 80b490ba980e9095c44fde607dedbf30f75c96e6
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '1'
-    round_number: '3'
-    name: 'Round Three'
-    alias: ROUND_THREE
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Round Three ( asdfas dfasdf )'
-    created_at: '2018-02-27 22:04:35'
-    updated_at: '2018-02-27 22:04:35'
-  RoundType_4:
-    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '1'
-    round_number: '4'
-    name: 'Round Four'
-    alias: ROUND_FOUR
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Round Four ( asd asdfa sdf )'
-    created_at: '2018-02-27 22:05:35'
-    updated_at: '2018-02-27 22:05:35'
-  RoundType_5:
-    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '1'
-    round_number: '5'
-    name: 'Round Five'
-    alias: ROUND_FIVE
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Round Four ( asd asdfa sdf )'
-    created_at: '2018-02-27 22:05:35'
-    updated_at: '2018-02-27 22:05:35'
-  RoundType_6:
-    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '1'
-    round_number: '6'
-    name: 'Round Six'
-    alias: ROUND_SIX
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Round Four ( asd asdfa sdf )'
-    created_at: '2018-02-27 22:05:35'
-    updated_at: '2018-02-27 22:05:35'
-  RoundType_7:
-    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '1'
-    round_number: '7'
-    name: 'Round Seven'
-    alias: ROUND_SEVEN
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Round Four ( asd asdfa sdf )'
-    created_at: '2018-02-27 22:05:35'
-    updated_at: '2018-02-27 22:05:35'
-  RoundType_8:
-    token_id: e7060e4514a698f4995d0703d6106626a66d5a33
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '1'
-    round_number: '8'
-    name: 'Round Eight'
-    alias: ROUND_EIGHT
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Round Four ( asd asdfa sdf )'
-    created_at: '2018-02-27 22:05:35'
-    updated_at: '2018-02-27 22:05:35'
-  RoundType_9:
-    token_id: bdf7fcbb4342ffcaac522f4477886b917bb899a7
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '2'
-    round_number: null
-    name: 'Quarter Final'
-    alias: QUARTER_FINAL
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Quarter Final ( fasdfasdfa sdfad )'
-    created_at: '2018-02-27 22:06:02'
-    updated_at: '2018-02-27 22:06:02'
-  RoundType_10:
-    token_id: fd1fd1044593f935180e5a90f998c633e433c26a
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '3'
-    round_number: null
-    name: 'Semi Final'
-    alias: SEMI_FINAL
-    default_flag: false
-    active_flag: true
-    status: '2'
-    description: 'Semi Final ( asdfas dfasdf asdf )'
-    created_at: '2018-02-27 22:07:51'
-    updated_at: '2018-02-27 22:07:51'
-  RoundType_11:
-    token_id: 51a386c611d4c1cc9e159da68650b8205b0ac41f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    round_type: '4'
-    round_number: null
-    name: Final
-    alias: FINAL
-    default_flag: true
-    active_flag: true
-    status: '2'
-    description: 'Final ( asdfa asdf )'
-    created_at: '2018-02-27 22:21:34'
-    updated_at: '2018-02-27 22:21:34'
 SportGame:
   SportGame_1:
     token_id: 0ee6aa76d21f77b2e5d42291c026f7d6a9deff59
@@ -3164,7 +3605,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '2'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3190,7 +3634,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '2'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3216,7 +3663,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '2'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3242,7 +3692,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '2'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3268,7 +3721,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '2'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3277,7 +3733,7 @@ SportGame:
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M ( sdfg sfgsfgsdfg )'
     created_at: '2018-04-06 20:31:08'
-    updated_at: '2018-05-06 19:47:46'
+    updated_at: '2018-05-13 22:15:48'
   SportGame_6:
     token_id: 85d8956dee40b8813e4541cf977487585a878edd
     Organization: Organization_1
@@ -3294,7 +3750,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '2'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3303,7 +3762,7 @@ SportGame:
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M ( sdfgsdfgsdfg )'
     created_at: '2018-04-06 20:31:44'
-    updated_at: '2018-05-06 19:49:25'
+    updated_at: '2018-05-11 22:07:15'
   SportGame_7:
     token_id: 296fd51afe0267a908a73fa528c03e007d23a432
     Organization: Organization_1
@@ -3320,7 +3779,10 @@ SportGame:
     contestant_team_mode: '1'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: '2'
+    draw_result_table_point: null
+    loose_result_table_point: '1'
+    result_ranking_mode: '1'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3346,7 +3808,10 @@ SportGame:
     contestant_team_mode: '1'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: '3'
+    draw_result_table_point: '1'
+    loose_result_table_point: '0'
+    result_ranking_mode: '1'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3355,7 +3820,7 @@ SportGame:
     status: '2'
     description: 'Football (FOOTBALL) - Football ( adfa sdfasdfa sdf )'
     created_at: '2018-04-06 20:33:39'
-    updated_at: '2018-05-03 19:09:51'
+    updated_at: '2018-05-11 22:41:41'
   SportGame_9:
     token_id: deb5fc5d274f07ae1486cb862f9f8b8d836ce285
     Organization: Organization_1
@@ -3372,7 +3837,10 @@ SportGame:
     contestant_team_mode: '1'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '1'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3398,7 +3866,10 @@ SportGame:
     contestant_team_mode: '1'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '1'
     start_date: 04/06/2018
     effective_date: null
     end_date: null
@@ -3424,7 +3895,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '1'
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3433,7 +3907,7 @@ SportGame:
     status: '3'
     description: 'Athletics (ATHLETICS) - Maraton ( sdf gsdfg sdfgsdfg )'
     created_at: '2018-04-19 20:01:29'
-    updated_at: '2018-05-06 19:52:17'
+    updated_at: '2018-05-11 22:08:41'
   SportGame_12:
     token_id: a2850b01d693710275931b2d291a99eaede24e89
     Organization: Organization_1
@@ -3450,7 +3924,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '1'
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3476,7 +3953,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '1'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '4'
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3502,7 +3982,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '2'
     throw_type_mode: '0'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '4'
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3528,7 +4011,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '2'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '4'
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3554,7 +4040,10 @@ SportGame:
     contestant_team_mode: '2'
     jump_type_mode: '0'
     throw_type_mode: '3'
-    result_ranking_mode: null
+    win_result_table_point: null
+    draw_result_table_point: null
+    loose_result_table_point: null
+    result_ranking_mode: '4'
     start_date: 04/19/2018
     effective_date: null
     end_date: null
@@ -3573,6 +4062,7 @@ GameCategory:
     category_name: Athletics
     alias: ATHLETICS
     contestant_team_mode: '2'
+    result_ranking_mode: null
     default_flag: true
     active_flag: true
     status: '1'
@@ -3587,6 +4077,7 @@ GameCategory:
     category_name: Bascketball
     alias: BASCKETBALL
     contestant_team_mode: '1'
+    result_ranking_mode: null
     default_flag: false
     active_flag: true
     status: '1'
@@ -3601,6 +4092,7 @@ GameCategory:
     category_name: Handball
     alias: HANDBALL
     contestant_team_mode: '1'
+    result_ranking_mode: null
     default_flag: false
     active_flag: true
     status: '1'
@@ -3615,6 +4107,7 @@ GameCategory:
     category_name: Vollyball
     alias: VOLLYBALL
     contestant_team_mode: '1'
+    result_ranking_mode: null
     default_flag: false
     active_flag: true
     status: '1'
@@ -3629,6 +4122,7 @@ GameCategory:
     category_name: Football
     alias: FOOTBALL
     contestant_team_mode: '1'
+    result_ranking_mode: null
     default_flag: false
     active_flag: true
     status: '1'
@@ -3643,6 +4137,7 @@ GameCategory:
     category_name: 'Ground Tennis'
     alias: GROUND_TENNIS
     contestant_team_mode: '1'
+    result_ranking_mode: null
     default_flag: false
     active_flag: true
     status: '1'
@@ -3657,6 +4152,7 @@ GameCategory:
     category_name: 'Table Tennis'
     alias: TABLE_TENNIS
     contestant_team_mode: '1'
+    result_ranking_mode: null
     default_flag: false
     active_flag: true
     status: '1'
@@ -3671,6 +4167,7 @@ GameCategory:
     category_name: Badmenten
     alias: BADMENTEN
     contestant_team_mode: '1'
+    result_ranking_mode: null
     default_flag: false
     active_flag: true
     status: '1'
@@ -3688,8 +4185,9 @@ Tournament:
     start_date: 02/23/2018
     effective_date: ''
     end_date: 02/28/2018
+    default_flag: true
     active_flag: true
-    status: '1'
+    status: '3'
     description: null
     created_at: '2018-02-23 20:20:48'
     updated_at: '2018-02-23 20:20:48'
@@ -3703,8 +4201,9 @@ Tournament:
     start_date: 02/23/2018
     effective_date: ''
     end_date: 04/24/2018
+    default_flag: false
     active_flag: false
-    status: '8'
+    status: '11'
     description: null
     created_at: '2018-02-23 20:38:19'
     updated_at: '2018-02-23 20:38:19'
@@ -3718,116 +4217,12 @@ Tournament:
     start_date: 03/11/2018
     effective_date: ''
     end_date: 03/29/2018
+    default_flag: false
     active_flag: false
-    status: '1'
+    status: '11'
     description: null
     created_at: '2018-03-11 21:24:17'
     updated_at: '2018-03-11 21:24:17'
-GameGroupType:
-  GameGroupType_1:
-    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    group_category_id: null
-    group_name: 'Group One'
-    group_number: '1'
-    alias: GROUP_ONE
-    default_flag: true
-    active_flag: true
-    description: 'Group One ( ada fasdf a asdf )'
-    created_at: '2018-02-27 22:03:48'
-    updated_at: '2018-02-27 22:03:48'
-  GameGroupType_2:
-    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    group_category_id: null
-    group_name: 'Group Two'
-    group_number: '2'
-    alias: GROUP_TWO
-    default_flag: false
-    active_flag: true
-    description: 'Group two ( ada fasdf a asdf )'
-    created_at: '2018-02-27 22:03:48'
-    updated_at: '2018-02-27 22:03:48'
-  GameGroupType_3:
-    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    group_category_id: null
-    group_name: 'Group Three'
-    group_number: '3'
-    alias: GROUP_THREE
-    default_flag: false
-    active_flag: true
-    description: 'Group Three ( ada fasdf a asdf )'
-    created_at: '2018-02-27 22:03:48'
-    updated_at: '2018-02-27 22:03:48'
-  GameGroupType_4:
-    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    group_category_id: null
-    group_name: 'Group Four'
-    group_number: '4'
-    alias: GROUP_FOUR
-    default_flag: false
-    active_flag: true
-    description: 'Group Four ( ada fasdf a asdf )'
-    created_at: '2018-02-27 22:03:48'
-    updated_at: '2018-02-27 22:03:48'
-  GameGroupType_5:
-    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    group_category_id: null
-    group_name: 'Group Five'
-    group_number: '5'
-    alias: GROUP_FIVE
-    default_flag: false
-    active_flag: true
-    description: 'Group Five ( ada fasdf a asdf )'
-    created_at: '2018-02-27 22:03:48'
-    updated_at: '2018-02-27 22:03:48'
-  GameGroupType_6:
-    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    group_category_id: null
-    group_name: 'Group Six'
-    group_number: '6'
-    alias: GROUP_SIX
-    default_flag: false
-    active_flag: true
-    description: 'Group Six ( ada fasdf a asdf )'
-    created_at: '2018-02-27 22:03:48'
-    updated_at: '2018-02-27 22:03:48'
-  GameGroupType_7:
-    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    group_category_id: null
-    group_name: 'Group Seven'
-    group_number: '7'
-    alias: GROUP_SEVEN
-    default_flag: false
-    active_flag: true
-    description: 'Group Seven ( ada fasdf a asdf )'
-    created_at: '2018-02-27 22:03:48'
-    updated_at: '2018-02-27 22:03:48'
-  GameGroupType_8:
-    token_id: 916c5f0bc4ae6af856ef40b39c4e6afa2937087f
-    Organization: Organization_1
-    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
-    group_category_id: null
-    group_name: 'Group Eight'
-    group_number: '8'
-    alias: GROUP_EIGHT
-    default_flag: false
-    active_flag: true
-    description: 'Group Eight ( ada fasdf a asdf )'
-    created_at: '2018-02-27 22:03:48'
-    updated_at: '2018-02-27 22:03:48'
 Team:
   Team_1:
     token_id: 6d8819a85c22612333e3111b47dcf6d56e2b39ec
@@ -3835,7 +4230,7 @@ Team:
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '44'
+    country_id: '25'
     team_number: TM-0001
     team_name: 'Nirobi University'
     alias: NU
@@ -3853,19 +4248,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 20:56:45'
-    updated_at: '2018-02-24 20:56:45'
+    updated_at: '2018-05-11 22:25:32'
   Team_2:
     token_id: 78d046156b9c88cb068883876c2f7b3781937431
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '58'
     team_number: TM-0002
     team_name: 'Harare University'
     alias: HU
@@ -3883,19 +4279,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 20:57:14'
-    updated_at: '2018-02-24 20:57:14'
+    updated_at: '2018-05-11 22:18:19'
   Team_3:
     token_id: ea9f90e18e97bbc70135dbf70148e3e7bf7ac4c8
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0003
     team_name: 'Jimma Uniersity'
     alias: JU-ET
@@ -3913,19 +4310,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:24'
-    updated_at: '2018-02-24 21:28:24'
+    updated_at: '2018-05-11 22:13:25'
   Team_4:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0004
     team_name: 'Mekelle University'
     alias: MU-ET
@@ -3943,19 +4341,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-02-24 21:28:50'
+    updated_at: '2018-05-11 22:26:08'
   Team_5:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0005
     team_name: 'Haromaya University'
     alias: HRU-ET
@@ -3973,19 +4372,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-02-24 21:28:50'
+    updated_at: '2018-05-11 22:16:47'
   Team_6:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0006
     team_name: 'Adigrat University'
     alias: ADU-ET
@@ -4003,19 +4403,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-02-24 21:28:50'
+    updated_at: '2018-05-11 22:09:08'
   Team_7:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0007
     team_name: 'Arba Minch University'
     alias: AMU-ET
@@ -4033,19 +4434,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-02-24 21:28:50'
+    updated_at: '2018-05-11 22:26:23'
   Team_8:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0008
     team_name: 'Axum University'
     alias: AXU-ET
@@ -4063,19 +4465,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-02-24 21:28:50'
+    updated_at: '2018-05-11 22:25:51'
   Team_9:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0009
     team_name: 'Raya University'
     alias: RU-ET
@@ -4093,19 +4496,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-02-24 21:28:50'
+    updated_at: '2018-05-11 22:11:12'
   Team_10:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0010
     team_name: 'Kombolcha University'
     alias: KU-ET
@@ -4123,7 +4527,8 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
@@ -4135,7 +4540,7 @@ Team:
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0011
     team_name: 'Bahirdar University'
     alias: BU-ET
@@ -4153,7 +4558,8 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
@@ -4165,7 +4571,7 @@ Team:
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0012
     team_name: 'Welega University'
     alias: WU-ET
@@ -4183,19 +4589,20 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-02-24 21:28:50'
+    updated_at: '2018-05-11 22:17:15'
   Team_13:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0015
     team_name: 'Wollo University'
     alias: WLU-ET
@@ -4213,7 +4620,8 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
@@ -4225,7 +4633,7 @@ Team:
     org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
     Tournament: Tournament_1
     tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
-    country_id: '67'
+    country_id: '19'
     team_number: TM-0014
     team_name: 'Welkite University'
     alias: WKU-ET
@@ -4243,12 +4651,13 @@ Team:
     team_country_flag_file_full_path: null
     start_date: 02/24/2018
     end_date: null
-    confirm_flag: false
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: true
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-02-24 21:28:50'
+    updated_at: '2018-05-11 22:17:35'
 TeamMemberParticipant:
   TeamMemberParticipant_1:
     token_id: f89c7c4dc4ed4b5dfa6b38a2ccf2e5cf0d53fa1c
@@ -4260,11 +4669,14 @@ TeamMemberParticipant:
     member_full_name: 'Berhe Tesfay Kiros'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Berhe Tesfay Kiros (  )'
     created_at: '2018-04-24 21:24:22'
-    updated_at: '2018-04-24 21:24:22'
+    updated_at: '2018-05-11 22:19:15'
   TeamMemberParticipant_2:
     token_id: 7eba043b2b2ac99b2890589b4bccd5eb0bd7d9ff
     Team: Team_4
@@ -4275,11 +4687,14 @@ TeamMemberParticipant:
     member_full_name: 'Lemlem Gidey Gebru'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Lemlem Gidey Gebru (  )'
     created_at: '2018-04-24 21:24:43'
-    updated_at: '2018-04-24 21:24:43'
+    updated_at: '2018-05-11 22:15:32'
   TeamMemberParticipant_3:
     token_id: 5506b2fce27148f9104292607a07045e5884ce9b
     Team: Team_4
@@ -4290,7 +4705,10 @@ TeamMemberParticipant:
     member_full_name: 'Helen Fikadu Dereje'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Helen Fikadu Dereje (  )'
     created_at: '2018-04-24 21:31:37'
@@ -4305,7 +4723,10 @@ TeamMemberParticipant:
     member_full_name: 'Fetwi Medhaniye Kibrom'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Fetwi Medhaniye Kibrom (  )'
     created_at: '2018-04-24 21:34:28'
@@ -4320,7 +4741,10 @@ TeamMemberParticipant:
     member_full_name: 'Hadera Redaei Tesfom'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Hadera Redaei Tesfom (  )'
     created_at: '2018-04-24 21:34:49'
@@ -4335,7 +4759,10 @@ TeamMemberParticipant:
     member_full_name: 'Felege Kidane Mehari'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Felege Kidane Mehari (  )'
     created_at: '2018-04-24 21:35:46'
@@ -4350,11 +4777,14 @@ TeamMemberParticipant:
     member_full_name: 'Frehiwot Girmay Mekonen'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Frehiwot Girmay Mekonen (  )'
     created_at: '2018-04-24 21:36:10'
-    updated_at: '2018-04-24 21:36:10'
+    updated_at: '2018-05-11 22:15:48'
   TeamMemberParticipant_8:
     token_id: 56d5b03648e8f448110954e58d3965f4ba9b1a2b
     Team: Team_9
@@ -4365,7 +4795,10 @@ TeamMemberParticipant:
     member_full_name: 'Teberih Mehari Haregot'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Teberih Mehari Haregot (  )'
     created_at: '2018-04-24 21:57:48'
@@ -4380,11 +4813,14 @@ TeamMemberParticipant:
     member_full_name: 'Fitsum Gidey Moges'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Fitsum Gidey Moges (  )'
     created_at: '2018-04-24 21:58:03'
-    updated_at: '2018-04-24 21:58:03'
+    updated_at: '2018-05-11 22:10:53'
   TeamMemberParticipant_10:
     token_id: 37f9dce899967362c370dd5d118ef9f65b675a58
     Team: Team_9
@@ -4395,11 +4831,14 @@ TeamMemberParticipant:
     member_full_name: 'Tariku Mekonen Yemane'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Tariku Mekonen Yemane (  )'
     created_at: '2018-04-24 21:58:24'
-    updated_at: '2018-04-24 21:58:24'
+    updated_at: '2018-05-11 22:11:12'
   TeamMemberParticipant_11:
     token_id: 11e687289ce01c91d6b11a388b45babc3c161f47
     Team: Team_9
@@ -4410,7 +4849,10 @@ TeamMemberParticipant:
     member_full_name: 'Yordanos Hailay Meresa'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Yordanos Hailay Meresa (  )'
     created_at: '2018-04-24 21:58:42'
@@ -4425,7 +4867,10 @@ TeamMemberParticipant:
     member_full_name: 'Getachew Girmay Ferede'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Getachew Girmay Ferede (  )'
     created_at: '2018-04-24 21:59:08'
@@ -4440,7 +4885,10 @@ TeamMemberParticipant:
     member_full_name: 'Merhawit Haileslassie Gebru'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Merhawit Haileslassie Gebru (  )'
     created_at: '2018-04-24 21:59:30'
@@ -4455,11 +4903,14 @@ TeamMemberParticipant:
     member_full_name: 'Adem Mohammed Seid'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Adem Mohammed Seid (  )'
     created_at: '2018-04-24 22:01:10'
-    updated_at: '2018-04-24 22:01:10'
+    updated_at: '2018-05-11 22:10:23'
   TeamMemberParticipant_15:
     token_id: 42564b09dcca0d70bb1529fe5d46ab649fcf7d47
     Team: Team_8
@@ -4470,11 +4921,14 @@ TeamMemberParticipant:
     member_full_name: 'Fikirte Belay Deres'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Fikirte Belay Deres (  )'
     created_at: '2018-04-24 22:01:28'
-    updated_at: '2018-04-24 22:01:28'
+    updated_at: '2018-05-11 22:13:39'
   TeamMemberParticipant_16:
     token_id: ca9a81a074d0701e16b36524424d2b9f6a405384
     Team: Team_8
@@ -4485,7 +4939,10 @@ TeamMemberParticipant:
     member_full_name: 'Mihur Mahteme Tesfaslassie'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Mihur Mahteme Tesfaslassie (  )'
     created_at: '2018-04-24 22:01:46'
@@ -4500,7 +4957,10 @@ TeamMemberParticipant:
     member_full_name: 'Meron Kedir Hafte'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Meron Kedir Hafte (  )'
     created_at: '2018-04-24 22:02:08'
@@ -4515,7 +4975,10 @@ TeamMemberParticipant:
     member_full_name: 'Amanuel Gidey Belete'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Amanuel Gidey Belete (  )'
     created_at: '2018-04-24 22:02:23'
@@ -4530,11 +4993,14 @@ TeamMemberParticipant:
     member_full_name: 'Letay Gebremedhin Tesfay'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Letay Gebremedhin Tesfay (  )'
     created_at: '2018-04-24 22:02:44'
-    updated_at: '2018-04-24 22:02:44'
+    updated_at: '2018-05-11 22:13:57'
   TeamMemberParticipant_20:
     token_id: 8a8cbc891456b1f87660676426019d0a7e712b22
     Team: Team_2
@@ -4545,11 +5011,14 @@ TeamMemberParticipant:
     member_full_name: 'Jackson Hadson Kiristofor'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Jackson Hadson Kiristofor (  )'
     created_at: '2018-04-24 22:05:29'
-    updated_at: '2018-04-24 22:05:29'
+    updated_at: '2018-05-11 22:17:50'
   TeamMemberParticipant_21:
     token_id: 3fec0e65f09db4c0cbb8e0921ba8050d23684cdc
     Team: Team_2
@@ -4560,11 +5029,14 @@ TeamMemberParticipant:
     member_full_name: 'Helena Carter Boris'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Helena Carter Boris (  )'
     created_at: '2018-04-24 22:05:52'
-    updated_at: '2018-04-24 22:05:52'
+    updated_at: '2018-05-11 22:14:11'
   TeamMemberParticipant_22:
     token_id: 911e4f3310614d7f1767f8282b16ab5e5cf32e97
     Team: Team_2
@@ -4575,7 +5047,10 @@ TeamMemberParticipant:
     member_full_name: 'Eden Kendra Coasta'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Eden Kendra Coasta (  )'
     created_at: '2018-04-24 22:07:02'
@@ -4590,11 +5065,14 @@ TeamMemberParticipant:
     member_full_name: 'Ruth Jordan Keys'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Ruth Jordan Keys (  )'
     created_at: '2018-04-24 22:07:36'
-    updated_at: '2018-04-24 22:07:36'
+    updated_at: '2018-05-11 22:14:39'
   TeamMemberParticipant_24:
     token_id: 0dd6c1f63f1639e34da50a673a515c2b9766d12e
     Team: Team_2
@@ -4605,11 +5083,14 @@ TeamMemberParticipant:
     member_full_name: 'Jonathan Kirstoff Mugabe'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Jonathan Kirstoff Mugabe (  )'
     created_at: '2018-04-24 22:08:05'
-    updated_at: '2018-04-24 22:08:05'
+    updated_at: '2018-05-11 22:18:19'
   TeamMemberParticipant_25:
     token_id: de936a05cecad38845b151f29191e9e3002f7c07
     Team: Team_1
@@ -4620,11 +5101,14 @@ TeamMemberParticipant:
     member_full_name: 'Whitney Uhuru Donald'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Whitney Uhuru Donald (  )'
     created_at: '2018-04-24 22:08:58'
-    updated_at: '2018-04-24 22:08:58'
+    updated_at: '2018-05-11 22:14:55'
   TeamMemberParticipant_26:
     token_id: 2180b27e35a3ae2d907721a5253354f76c047f4f
     Team: Team_1
@@ -4635,7 +5119,10 @@ TeamMemberParticipant:
     member_full_name: 'Alicia Houston Jolie'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Alicia Houston Jolie (  )'
     created_at: '2018-04-24 22:09:36'
@@ -4650,11 +5137,14 @@ TeamMemberParticipant:
     member_full_name: 'Jonathan Dion Carey'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Jonathan Dion Carey (  )'
     created_at: '2018-04-24 22:10:14'
-    updated_at: '2018-04-24 22:10:14'
+    updated_at: '2018-05-11 22:18:37'
   TeamMemberParticipant_28:
     token_id: 7b6f082b5f546b07e08f46733f0334a660d3c02a
     Team: Team_1
@@ -4665,11 +5155,14 @@ TeamMemberParticipant:
     member_full_name: 'Jenevive Jameson String'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Jenevive Jameson String (  )'
     created_at: '2018-04-24 22:16:29'
-    updated_at: '2018-04-24 22:16:29'
+    updated_at: '2018-05-11 22:15:14'
   TeamMemberParticipant_29:
     token_id: 81e354f72c9fa6c4cacfd5e7afdcbb052e4c6622
     Team: Team_1
@@ -4680,11 +5173,14 @@ TeamMemberParticipant:
     member_full_name: 'Mohammed Edris Seid'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Mohammed Edris Seid (  )'
     created_at: '2018-04-24 22:16:49'
-    updated_at: '2018-04-24 22:16:49'
+    updated_at: '2018-05-11 22:12:05'
   TeamMemberParticipant_30:
     token_id: 570b32708aaeee74df043fbc87c1eca37cb1e214
     Team: Team_1
@@ -4695,11 +5191,14 @@ TeamMemberParticipant:
     member_full_name: 'Andorson Sky Aniston'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Andorson Sky Aniston (  )'
     created_at: '2018-04-24 22:17:30'
-    updated_at: '2018-04-24 22:17:30'
+    updated_at: '2018-05-11 22:18:53'
   TeamMemberParticipant_31:
     token_id: 1285359d162f1b9392d98318a07c29c964f0ecc4
     Team: Team_1
@@ -4710,7 +5209,10 @@ TeamMemberParticipant:
     member_full_name: 'Sandra Breez Dunes'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Sandra Breez Dunes (  )'
     created_at: '2018-04-24 22:18:05'
@@ -4725,7 +5227,10 @@ TeamMemberParticipant:
     member_full_name: 'Jeferson James Block'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Jeferson James Block (  )'
     created_at: '2018-04-24 22:18:36'
@@ -4740,7 +5245,10 @@ TeamMemberParticipant:
     member_full_name: 'Andargachew Tenaye Kebede'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Andargachew Tenaye Kebede (  )'
     created_at: '2018-04-24 22:20:35'
@@ -4755,7 +5263,10 @@ TeamMemberParticipant:
     member_full_name: 'Shiwanesh Tesfaye Mola'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Shiwanesh Tesfaye Mola (  )'
     created_at: '2018-04-24 22:20:56'
@@ -4770,7 +5281,10 @@ TeamMemberParticipant:
     member_full_name: 'Degitu Deresa Kibebu'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Degitu Deresa Kibebu (  )'
     created_at: '2018-04-24 22:21:28'
@@ -4785,11 +5299,14 @@ TeamMemberParticipant:
     member_full_name: 'Tesfaye Belayneh Kitaw'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Tesfaye Belayneh Kitaw (  )'
     created_at: '2018-04-24 22:22:21'
-    updated_at: '2018-04-24 22:22:21'
+    updated_at: '2018-05-11 22:16:33'
   TeamMemberParticipant_37:
     token_id: 8950fe4897fa2d42c30c3b93b5a0c6c40011c444
     Team: Team_5
@@ -4800,7 +5317,10 @@ TeamMemberParticipant:
     member_full_name: 'Sebsibe Kidane Belay'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Sebsibe Kidane Belay (  )'
     created_at: '2018-04-24 22:22:53'
@@ -4815,11 +5335,14 @@ TeamMemberParticipant:
     member_full_name: 'Tibebu Tamirat Tadesse'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Tibebu Tamirat Tadesse (  )'
     created_at: '2018-04-24 22:23:11'
-    updated_at: '2018-04-24 22:23:11'
+    updated_at: '2018-05-11 22:16:47'
   TeamMemberParticipant_39:
     token_id: b3c6be23e5bcb66684d82e914ef29b846664a132
     Team: Team_12
@@ -4830,7 +5353,10 @@ TeamMemberParticipant:
     member_full_name: 'Belaynesh Tamirat Werku'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Belaynesh Tamirat Werku (  )'
     created_at: '2018-04-24 22:24:49'
@@ -4845,11 +5371,14 @@ TeamMemberParticipant:
     member_full_name: 'Hayliye Gared Bekele'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Hayliye Gared Bekele (  )'
     created_at: '2018-04-24 22:25:15'
-    updated_at: '2018-04-24 22:25:15'
+    updated_at: '2018-05-11 22:17:01'
   TeamMemberParticipant_41:
     token_id: f362efa51303519dede19ce3be0205d2f5db0815
     Team: Team_12
@@ -4860,11 +5389,14 @@ TeamMemberParticipant:
     member_full_name: 'Tilahun Haile Molalign'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Tilahun Haile Molalign (  )'
     created_at: '2018-04-24 22:25:48'
-    updated_at: '2018-04-24 22:25:48'
+    updated_at: '2018-05-11 22:17:15'
   TeamMemberParticipant_42:
     token_id: 8dadcabc3dbc754f0646ba30fc498299e7c37f7c
     Team: Team_12
@@ -4875,7 +5407,10 @@ TeamMemberParticipant:
     member_full_name: 'Tirunesh Moges Tarekegn'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Tirunesh Moges Tarekegn (  )'
     created_at: '2018-04-24 22:26:58'
@@ -4890,11 +5425,14 @@ TeamMemberParticipant:
     member_full_name: 'Meresa Tesfaye Gadissa'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Meresa Tesfaye Gadissa (  )'
     created_at: '2018-04-24 22:28:57'
-    updated_at: '2018-04-24 22:28:57'
+    updated_at: '2018-05-11 22:17:35'
   TeamMemberParticipant_44:
     token_id: 6f62f78145c68a4963426b64078286b11829573a
     Team: Team_14
@@ -4905,7 +5443,10 @@ TeamMemberParticipant:
     member_full_name: 'Tolla Desalegn Tamirat'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Tolla Desalegn Tamirat (  )'
     created_at: '2018-04-24 22:29:27'
@@ -4920,7 +5461,10 @@ TeamMemberParticipant:
     member_full_name: 'Werkitu Kasaye Mola'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Werkitu Kasaye Mola (  )'
     created_at: '2018-04-24 22:29:50'
@@ -4935,7 +5479,10 @@ TeamMemberParticipant:
     member_full_name: 'Fikre Dagnew Gebre'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Fikre Dagnew Gebre (  )'
     created_at: '2018-04-24 22:30:41'
@@ -4950,11 +5497,14 @@ TeamMemberParticipant:
     member_full_name: 'Negasi Mirutse Bahta'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Negasi Mirutse Bahta (  )'
     created_at: '2018-04-24 22:32:52'
-    updated_at: '2018-04-24 22:32:52'
+    updated_at: '2018-05-11 22:09:08'
   TeamMemberParticipant_48:
     token_id: c858ec1fe25a517fcca6e687ed4e080fd24a2837
     Team: Team_6
@@ -4965,7 +5515,10 @@ TeamMemberParticipant:
     member_full_name: 'Berhe Halefom Tekle'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Berhe Halefom Tekle (  )'
     created_at: '2018-04-24 22:33:08'
@@ -4980,7 +5533,10 @@ TeamMemberParticipant:
     member_full_name: 'Merhawit Hailu Mehari'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Merhawit Hailu Mehari (  )'
     created_at: '2018-04-24 22:33:34'
@@ -4995,7 +5551,10 @@ TeamMemberParticipant:
     member_full_name: 'Fireweiny Halefom Kahsay'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Fireweiny Halefom Kahsay (  )'
     created_at: '2018-04-24 22:34:00'
@@ -5010,7 +5569,10 @@ TeamMemberParticipant:
     member_full_name: 'Biniam Teklay Hailay'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Biniam Teklay Hailay (  )'
     created_at: '2018-04-24 22:34:14'
@@ -5025,11 +5587,14 @@ TeamMemberParticipant:
     member_full_name: 'Tesfanesh Bekelle Melkessa'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Tesfanesh Bekelle Melkessa (  )'
     created_at: '2018-04-24 22:40:31'
-    updated_at: '2018-04-24 22:40:31'
+    updated_at: '2018-05-11 22:26:23'
   TeamMemberParticipant_53:
     token_id: 6e6461bffe82b776fcfcd4cd64d0cdd56809ac1c
     Team: Team_7
@@ -5040,7 +5605,10 @@ TeamMemberParticipant:
     member_full_name: 'Tesfaye Mosisa Bezabih'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Tesfaye Mosisa Bezabih (  )'
     created_at: '2018-04-24 22:41:03'
@@ -5055,11 +5623,14 @@ TeamMemberParticipant:
     member_full_name: 'Girmaye Waqhira Girasa'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Girmaye Waqhira Girasa (  )'
     created_at: '2018-04-24 22:41:30'
-    updated_at: '2018-04-24 22:41:30'
+    updated_at: '2018-05-11 22:22:44'
   TeamMemberParticipant_55:
     token_id: f1aefa1141541451048f2764a34adb7674ab7390
     Team: Team_7
@@ -5070,7 +5641,10 @@ TeamMemberParticipant:
     member_full_name: 'Shiferaw Toshome Tilaye'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Shiferaw Toshome Tilaye (  )'
     created_at: '2018-04-24 22:42:04'
@@ -5085,7 +5659,10 @@ TeamMemberParticipant:
     member_full_name: 'Girma Toga Hailemariam'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Girma Toga Hailemariam (  )'
     created_at: '2018-04-24 22:42:43'
@@ -5100,7 +5677,10 @@ TeamMemberParticipant:
     member_full_name: 'Hunde Tekle Tilahun'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Hunde Tekle Tilahun (  )'
     created_at: '2018-04-24 22:44:01'
@@ -5115,7 +5695,10 @@ TeamMemberParticipant:
     member_full_name: 'Samson Tesfaye Teklu'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Samson Tesfaye Teklu (  )'
     created_at: '2018-04-24 22:44:21'
@@ -5130,11 +5713,14 @@ TeamMemberParticipant:
     member_full_name: 'Hewan Kasim Ali'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Hewan Kasim Ali (  )'
     created_at: '2018-04-24 22:44:57'
-    updated_at: '2018-04-24 22:44:57'
+    updated_at: '2018-05-11 22:13:25'
   TeamMemberParticipant_60:
     token_id: 1098814624b709de0dbab7ee4f69fbb643faaa78
     Team: Team_3
@@ -5145,7 +5731,10 @@ TeamMemberParticipant:
     member_full_name: 'Rahel Alebel Tsiga'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Rahel Alebel Tsiga (  )'
     created_at: '2018-04-24 22:45:15'
@@ -5160,7 +5749,10 @@ TeamMemberParticipant:
     member_full_name: 'Elfu Kiros Tesfay'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Elfu Kiros Tesfay (  )'
     created_at: '2018-04-25 10:55:04'
@@ -5175,11 +5767,14 @@ TeamMemberParticipant:
     member_full_name: 'Mebrhit Kahsay Tesfalem'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Mebrhit Kahsay Tesfalem (  )'
     created_at: '2018-05-03 00:55:32'
-    updated_at: '2018-05-03 00:55:32'
+    updated_at: '2018-05-11 22:26:08'
   TeamMemberParticipant_63:
     token_id: 49208873f1021c8bd034ee96ff1b817dd20aa43b
     Team: Team_4
@@ -5190,11 +5785,14 @@ TeamMemberParticipant:
     member_full_name: 'Rezene Meles Gidey'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Rezene Meles Gidey (  )'
     created_at: '2018-05-03 00:55:46'
-    updated_at: '2018-05-03 00:55:46'
+    updated_at: '2018-05-11 22:22:21'
   TeamMemberParticipant_64:
     token_id: 67dedc1d2b5e96de9933dcf9b38ec544f5063c15
     Team: Team_8
@@ -5205,11 +5803,14 @@ TeamMemberParticipant:
     member_full_name: 'Gezaei Reda Miruts'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Gezaei Reda Miruts (  )'
     created_at: '2018-05-03 00:59:47'
-    updated_at: '2018-05-03 00:59:47'
+    updated_at: '2018-05-11 22:21:59'
   TeamMemberParticipant_65:
     token_id: e725f45ae7bc2c173f3c3a639b56c6bb51035ec5
     Team: Team_8
@@ -5220,11 +5821,14 @@ TeamMemberParticipant:
     member_full_name: 'Lemlem Bizen Lewolo'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Lemlem Bizen Lewolo (  )'
     created_at: '2018-05-03 01:00:06'
-    updated_at: '2018-05-03 01:00:06'
+    updated_at: '2018-05-11 22:25:51'
   TeamMemberParticipant_66:
     token_id: f6941aab9cfd9c2decb8d5589722f2173173c302
     Team: Team_1
@@ -5235,11 +5839,14 @@ TeamMemberParticipant:
     member_full_name: 'Saron Kindey Garson'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Saron Kindey Garson (  )'
     created_at: '2018-05-03 01:01:54'
-    updated_at: '2018-05-03 01:01:54'
+    updated_at: '2018-05-11 22:25:32'
   TeamMemberParticipant_67:
     token_id: d922500165b08ed3b1826008f413ba3be0c9b5cb
     Team: Team_1
@@ -5250,11 +5857,230 @@ TeamMemberParticipant:
     member_full_name: 'Samuel Jack Larson'
     member_role_id: '2'
     member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    grouped_status: '1'
     status: '2'
     description: 'Samuel Jack Larson (  )'
     created_at: '2018-05-03 01:02:13'
-    updated_at: '2018-05-03 01:02:13'
+    updated_at: '2018-05-11 22:19:29'
+  TeamMemberParticipant_68:
+    token_id: 4e6760e0da4f4a573553ae3969221c1979cc615d
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_72
+    person_token_id: 0d7828f2462985ae2f1dfda81cce093276df1908
+    gender_category_id: '1'
+    member_full_name: 'Tadesse Alemayohu Sibhat'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Tadesse Alemayohu Sibhat (  )'
+    created_at: '2018-05-11 02:21:35'
+    updated_at: '2018-05-11 02:21:35'
+  TeamMemberParticipant_69:
+    token_id: da35b485e3ae5def88c76dabd9aee28ae5d5f8f3
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_73
+    person_token_id: 1709ddc323c6808316d27e5f299bccdaba3b8eb7
+    gender_category_id: '1'
+    member_full_name: 'Kidus Yirag Tesfamichael'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Kidus Yirag Tesfamichael (  )'
+    created_at: '2018-05-11 02:22:01'
+    updated_at: '2018-05-11 02:22:01'
+  TeamMemberParticipant_70:
+    token_id: d60eec53ef13badd3648fd696e93614e463c268a
+    Team: Team_9
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_74
+    person_token_id: 81cbe3a774fb0c685e5778853082d5de3c2a7cd6
+    gender_category_id: '1'
+    member_full_name: 'Mesele Fantahun Esayas'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Mesele Fantahun Esayas (  )'
+    created_at: '2018-05-11 02:24:20'
+    updated_at: '2018-05-11 02:24:20'
+  TeamMemberParticipant_71:
+    token_id: 525980377bf4d48a672ec0929df206cd5f6a3d02
+    Team: Team_9
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_75
+    person_token_id: a594c6f77cd6481dbf914250732d82640ac6b244
+    gender_category_id: '2'
+    member_full_name: 'Kedija Eibrahim Abdu'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Kedija Eibrahim Abdu (  )'
+    created_at: '2018-05-11 02:25:44'
+    updated_at: '2018-05-11 02:25:44'
+  TeamMemberParticipant_72:
+    token_id: 949f824d86e3defafa16b2535602ec615ee31576
+    Team: Team_9
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_76
+    person_token_id: e03d4aa1d8b67a7fdecf5740a7c74ccda68baec6
+    gender_category_id: '2'
+    member_full_name: 'Kisanet Hadgu Nirea'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Kisanet Hadgu Nirea (  )'
+    created_at: '2018-05-11 02:26:30'
+    updated_at: '2018-05-11 02:26:30'
+  TeamMemberParticipant_73:
+    token_id: 74bf2d778d3a9d53ab36238516d0393a21352831
+    Team: Team_2
+    team_token_id: 631a8f1f5891676f1629444f59b18eab460aea61
+    Person: Person_77
+    person_token_id: d32f874b7bf15d48c60fcd4e8ed0645a247aadd1
+    gender_category_id: '2'
+    member_full_name: 'Tanya James Dunes'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Tanya James Dunes (  )'
+    created_at: '2018-05-11 02:32:28'
+    updated_at: '2018-05-11 02:32:28'
+  TeamMemberParticipant_74:
+    token_id: e75605b1bf55a83cc327ee07575ca28fb789c49e
+    Team: Team_2
+    team_token_id: 631a8f1f5891676f1629444f59b18eab460aea61
+    Person: Person_78
+    person_token_id: cd9c80900b8e5144f43e8ed507d27a95165adcf5
+    gender_category_id: '1'
+    member_full_name: 'James Smith Conwell'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'James Smith Conwell (  )'
+    created_at: '2018-05-11 02:33:17'
+    updated_at: '2018-05-11 02:33:17'
+  TeamMemberParticipant_75:
+    token_id: d7fa962a58370b65bf86ef28bb4584344762fdc7
+    Team: Team_2
+    team_token_id: 631a8f1f5891676f1629444f59b18eab460aea61
+    Person: Person_79
+    person_token_id: 48966fc082e5956e79592425f6655fb686fc9cb2
+    gender_category_id: '2'
+    member_full_name: 'Lala Camile Cavalli'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Lala Camile Cavalli (  )'
+    created_at: '2018-05-11 02:34:26'
+    updated_at: '2018-05-11 02:34:26'
+  TeamMemberParticipant_76:
+    token_id: cee151f6ecdc277c38b0734c7553c7b259009a38
+    Team: Team_2
+    team_token_id: 631a8f1f5891676f1629444f59b18eab460aea61
+    Person: Person_80
+    person_token_id: 631a7d6b769def9280c4884d1c90cc0507076d4b
+    gender_category_id: '1'
+    member_full_name: 'Jameson Abusanjo Charless'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Jameson Abusanjo Charless (  )'
+    created_at: '2018-05-11 02:35:07'
+    updated_at: '2018-05-11 02:35:07'
+  TeamMemberParticipant_77:
+    token_id: b0f1405fbea3e5246c7c8148e0c7d5b9d285d8c3
+    Team: Team_5
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_81
+    person_token_id: b61ff980d7a593c2903e7d5f1fdbdc949a441bea
+    gender_category_id: '1'
+    member_full_name: 'Alamrew Kebede Dejassa'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Alamrew Kebede Dejassa (  )'
+    created_at: '2018-05-11 02:38:54'
+    updated_at: '2018-05-11 02:38:54'
+  TeamMemberParticipant_78:
+    token_id: d56eef7bd8c25c8663dd267d891342608f7ed42d
+    Team: Team_5
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_82
+    person_token_id: d1fd7f9855fa0e86f1d09d0aeb99d6935a57cd49
+    gender_category_id: '2'
+    member_full_name: 'Lakesh Bezu Yihune'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Lakesh Bezu Yihune (  )'
+    created_at: '2018-05-11 02:39:15'
+    updated_at: '2018-05-11 02:39:15'
+  TeamMemberParticipant_79:
+    token_id: b6db4c76fa8a56eff3298230c4d8ca326536b6aa
+    Team: Team_8
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_83
+    person_token_id: 07a2bce263eb6701256cea6d11bd5a69e268d0ae
+    gender_category_id: '1'
+    member_full_name: 'Teklit Tekeste Hailay'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Teklit Tekeste Hailay (  )'
+    created_at: '2018-05-11 02:43:34'
+    updated_at: '2018-05-11 02:43:34'
 TeamMemberParticipantRole:
   TeamMemberParticipantRole_1:
     token_id: a99cd4235504e1a370dcabe4c6c0911b13ae02df
@@ -5264,11 +6090,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: feb939fd24699cc114200cda6a455ec0e800367b
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Berhe Tesfay Kiros (Contestant/Player) participating in 5000M (Athletics) ( sdf gsdfg sdfg sdfg )'
     created_at: '2018-04-25 20:48:28'
-    updated_at: '2018-04-25 20:48:28'
+    updated_at: '2018-05-11 22:12:20'
   TeamMemberParticipantRole_2:
     token_id: c78a2a3b257fb289f438ce70d50bf6a60d7b8dbd
     TeamGameParticipation: TeamGameParticipation_2
@@ -5277,11 +6107,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 4082dec9b155d97f598b133e3271b1283d33ac91
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Lemlem Gidey Gebru (Contestant/Player) participating in 5000M (Athletics) ( fadf asdfasdfasdfasdf )'
     created_at: '2018-04-25 20:49:10'
-    updated_at: '2018-04-25 20:49:10'
+    updated_at: '2018-05-11 22:15:32'
   TeamMemberParticipantRole_3:
     token_id: 759336b8f691d731d4a79445e2fb2113e7c5bde3
     TeamGameParticipation: TeamGameParticipation_3
@@ -5290,11 +6124,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: feb939fd24699cc114200cda6a455ec0e800367b
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Berhe Tesfay Kiros (Contestant/Player) participating in 10000M (Athletics) ( sdfg sdfg sdfgsdfg )'
     created_at: '2018-04-25 21:17:51'
-    updated_at: '2018-04-25 21:17:51'
+    updated_at: '2018-05-11 22:19:15'
   TeamMemberParticipantRole_4:
     token_id: 52cdbf8598c22115c6774b0cf7214054d5267345
     TeamGameParticipation: TeamGameParticipation_4
@@ -5303,7 +6141,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: ece8a2cb9f083f1e200410aac3b3d70468cb5003
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Helen Fikadu Dereje (Contestant/Player) participating in 10000M (Athletics) ( fad asdf asdfasdf )'
     created_at: '2018-04-25 21:18:27'
@@ -5316,7 +6158,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 6a0929a5e9c00c81397775bcfc6be3525438135f
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Fetwi Medhaniye Kibrom (Contestant/Player) participating in 3000M (Athletics) ( sdfgsdfgsdfg )'
     created_at: '2018-04-25 21:25:27'
@@ -5329,7 +6175,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: cb123752048eb8e4c6dfcb6e358129c61acacb70
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Hadera Redaei Tesfom (Contestant/Player) participating in 800M (Athletics) ( sdfasdfasdf )'
     created_at: '2018-04-25 21:25:57'
@@ -5342,7 +6192,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: fa9515d7403e388c875d202e237123c8a2ad83af
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Felege Kidane Mehari (Contestant/Player) participating in Ground Tennis (Ground Tennis) ( hghjg hjg jhg jh )'
     created_at: '2018-04-25 21:26:21'
@@ -5355,7 +6209,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: e36dcca1361bddb66ec86b894016888e63ca5671
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Elfu Kiros Tesfay (Contestant/Player) participating in Table Tennis (Table Tennis) ( ghjghjg hgj hjgjh )'
     created_at: '2018-04-25 21:26:41'
@@ -5368,11 +6226,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 09c84560c4e79471789ddaa7d6f023d033483013
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Frehiwot Girmay Mekonen (Contestant/Player) participating in 5000M (Athletics) (  )'
     created_at: '2018-04-25 21:27:56'
-    updated_at: '2018-04-25 21:27:56'
+    updated_at: '2018-05-11 22:15:48'
   TeamMemberParticipantRole_10:
     token_id: ee13a4bc398d73e796ace34b6db360fe25ceef0a
     TeamGameParticipation: TeamGameParticipation_4
@@ -5381,7 +6243,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 09c84560c4e79471789ddaa7d6f023d033483013
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Frehiwot Girmay Mekonen (Contestant/Player) participating in 10000M (Athletics) (  )'
     created_at: '2018-04-25 21:28:19'
@@ -5394,11 +6260,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: b49bbd4dae9bf4531d3f3cb69d0b75debeffe669
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Whitney Uhuru Donald (Contestant/Player) participating in 5000M (Athletics) ( asfasdf )'
     created_at: '2018-05-01 18:30:35'
-    updated_at: '2018-05-01 18:30:35'
+    updated_at: '2018-05-11 22:14:55'
   TeamMemberParticipantRole_12:
     token_id: f48f47eba47b540eb36359b9d40ff152bd73bff8
     TeamGameParticipation: TeamGameParticipation_16
@@ -5407,7 +6277,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: bc0124248a5946cc4f722283a98709e7bee3fb0c
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Alicia Houston Jolie (Contestant/Player) participating in 10000M (Athletics) ( asdfasdf asdf )'
     created_at: '2018-05-01 18:30:59'
@@ -5420,11 +6294,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 99cf9803614864d92f254f44131f7db158d0a7b5
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Jonathan Dion Carey (Contestant/Player) participating in 5000M (Athletics) ( wertwert )'
     created_at: '2018-05-01 18:31:34'
-    updated_at: '2018-05-01 18:31:34'
+    updated_at: '2018-05-11 22:11:48'
   TeamMemberParticipantRole_14:
     token_id: eb19141b5b415f85da779753ed277c33a3e19a22
     TeamGameParticipation: TeamGameParticipation_15
@@ -5433,11 +6311,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 99cf9803614864d92f254f44131f7db158d0a7b5
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Jonathan Dion Carey (Contestant/Player) participating in 10000M (Athletics) ( wertwertwert )'
     created_at: '2018-05-01 18:31:51'
-    updated_at: '2018-05-01 18:31:51'
+    updated_at: '2018-05-11 22:18:37'
   TeamMemberParticipantRole_15:
     token_id: 3aece79377db7a4b1aaf86ad456157565940c142
     TeamGameParticipation: TeamGameParticipation_14
@@ -5446,11 +6328,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 94c40ab07340e00a57f71e043c7732c708528716
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Jenevive Jameson String (Contestant/Player) participating in 5000M (Athletics) ( ertwer twert wert )'
     created_at: '2018-05-01 18:32:15'
-    updated_at: '2018-05-01 18:32:15'
+    updated_at: '2018-05-11 22:15:14'
   TeamMemberParticipantRole_16:
     token_id: b363776b36f2a18ea772c2478201190ce69d3728
     TeamGameParticipation: TeamGameParticipation_13
@@ -5459,11 +6345,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: ff634a94bce05efd434525b0dc47ebdfa3dc55da
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Mohammed Edris Seid (Contestant/Player) participating in 5000M (Athletics) ( sdf gsdfgsdg )'
     created_at: '2018-05-01 18:32:43'
-    updated_at: '2018-05-01 18:32:43'
+    updated_at: '2018-05-11 22:12:05'
   TeamMemberParticipantRole_17:
     token_id: 8c55cbc08b9c91dd475774c0126bd41aea4b1695
     TeamGameParticipation: TeamGameParticipation_15
@@ -5472,11 +6362,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 47ec2fbcebae1ddbc205db1fd26bfdd4d1f57b62
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Andorson Sky Aniston (Contestant/Player) participating in 10000M (Athletics) ( asdfasdfasdf )'
     created_at: '2018-05-01 18:33:16'
-    updated_at: '2018-05-01 18:33:16'
+    updated_at: '2018-05-11 22:18:53'
   TeamMemberParticipantRole_18:
     token_id: 6945524fc46dd02de600af0dad4867a255446cd2
     TeamGameParticipation: TeamGameParticipation_31
@@ -5485,11 +6379,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 15c44129abce71d4e458cbea2fcdf877f9f2245b
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Jackson Hadson Kiristofor (Contestant/Player) participating in 5000M (Athletics) ( asdfa dfasdfasdf )'
     created_at: '2018-05-01 18:34:14'
-    updated_at: '2018-05-01 18:34:14'
+    updated_at: '2018-05-11 22:09:50'
   TeamMemberParticipantRole_19:
     token_id: 1809bf0505763ea4dc74980a214ecb0079deddce
     TeamGameParticipation: TeamGameParticipation_33
@@ -5498,11 +6396,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 15c44129abce71d4e458cbea2fcdf877f9f2245b
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Jackson Hadson Kiristofor (Contestant/Player) participating in 10000M (Athletics) ( sdfgsdf gsdfgsdfg )'
     created_at: '2018-05-01 18:34:32'
-    updated_at: '2018-05-01 18:34:32'
+    updated_at: '2018-05-11 22:17:50'
   TeamMemberParticipantRole_20:
     token_id: 257f3bdb6015cd3de67fd229e3d37373aae56b7f
     TeamGameParticipation: TeamGameParticipation_32
@@ -5511,11 +6413,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 6633fe0ee4ca87bca6a015426ee4fcd23bc106d4
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Helena Carter Boris (Contestant/Player) participating in 5000M (Athletics) ( sdgsdfgsdfg )'
     created_at: '2018-05-01 18:34:48'
-    updated_at: '2018-05-01 18:34:48'
+    updated_at: '2018-05-11 22:14:11'
   TeamMemberParticipantRole_21:
     token_id: b0007c6ae28d11489abc89b7a3f12a3f0f47ef97
     TeamGameParticipation: TeamGameParticipation_34
@@ -5524,7 +6430,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 6633fe0ee4ca87bca6a015426ee4fcd23bc106d4
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Helena Carter Boris (Contestant/Player) participating in 10000M (Athletics) ( asdfas dfasdf asdf )'
     created_at: '2018-05-01 18:35:07'
@@ -5537,7 +6447,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: a049fc2cb6ac237a1ff81b0ace4b33735d36bde5
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Eden Kendra Coasta (Contestant/Player) participating in 10000M (Athletics) ( sdgsdfgsdfg )'
     created_at: '2018-05-01 18:35:28'
@@ -5550,11 +6464,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 5650823aeddbc4d22efcaeb0de72017ef904b2e2
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Ruth Jordan Keys (Contestant/Player) participating in 5000M (Athletics) ( dfasd fasfs )'
     created_at: '2018-05-01 18:35:48'
-    updated_at: '2018-05-01 18:35:48'
+    updated_at: '2018-05-11 22:14:39'
   TeamMemberParticipantRole_24:
     token_id: b062789e3a84222bb61e89263d8ea0b2b89ae9be
     TeamGameParticipation: TeamGameParticipation_33
@@ -5563,11 +6481,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 7347b7e0b785a36318ca87134c3b2f368a549028
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Jonathan Kirstoff Mugabe (Contestant/Player) participating in 10000M (Athletics) ( asdf asdfsdf )'
     created_at: '2018-05-01 18:36:21'
-    updated_at: '2018-05-01 18:36:21'
+    updated_at: '2018-05-11 22:18:19'
   TeamMemberParticipantRole_25:
     token_id: 8420a62883869a002c7aa7fa01f7f4cc2a60d66f
     TeamGameParticipation: TeamGameParticipation_31
@@ -5576,11 +6498,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 7347b7e0b785a36318ca87134c3b2f368a549028
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Jonathan Kirstoff Mugabe (Contestant/Player) participating in 5000M (Athletics) ( fasdf asdfas dfasf )'
     created_at: '2018-05-01 18:36:38'
-    updated_at: '2018-05-01 18:36:38'
+    updated_at: '2018-05-11 22:10:06'
   TeamMemberParticipantRole_26:
     token_id: 4eb6e1ec3ba91b8a0be091b396d03cc1d924aad0
     TeamGameParticipation: TeamGameParticipation_69
@@ -5589,7 +6515,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 7e4931c77779b5d14d7800a4b60cbc741d5fbbe0
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Hunde Tekle Tilahun (Contestant/Player) participating in 5000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:37:13'
@@ -5602,7 +6532,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 8a538d7f2b5f4d724aa2151f60b5d7af5331fecc
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Samson Tesfaye Teklu (Contestant/Player) participating in 10000M (Athletics) ( fgsdfgsdfgsdfg )'
     created_at: '2018-05-01 18:37:32'
@@ -5615,11 +6549,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: e7b04766a86b2bd1c0b931dd9f150fc1ea24c585
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Hewan Kasim Ali (Contestant/Player) participating in 5000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:37:50'
-    updated_at: '2018-05-01 18:37:50'
+    updated_at: '2018-05-11 22:13:25'
   TeamMemberParticipantRole_29:
     token_id: 22c4ba65fd230ba5ad4a55b9139d80d959eeb646
     TeamGameParticipation: TeamGameParticipation_72
@@ -5628,7 +6566,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: df5caaae87c61658bb8cbb4fd2834b9ab7e74aea
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Rahel Alebel Tsiga (Contestant/Player) participating in 10000M (Athletics) ( asdf asdfasdfasdf )'
     created_at: '2018-05-01 18:38:06'
@@ -5641,7 +6583,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: b44960b7f04d3142ab7114075cb21ccc6812f4bc
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Andargachew Tenaye Kebede (Contestant/Player) participating in 5000M (Athletics) ( sdfasdasdfasfd )'
     created_at: '2018-05-01 18:38:40'
@@ -5654,7 +6600,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: c98078c59cc1df6a8f6db78fcf26116b4de92663
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Shiwanesh Tesfaye Mola (Contestant/Player) participating in 10000M (Athletics) ( asdf asdfas f )'
     created_at: '2018-05-01 18:38:55'
@@ -5667,7 +6617,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: e8c844b6d6525bc867494fc8fd355a1118205497
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Degitu Deresa Kibebu (Contestant/Player) participating in 10000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:39:09'
@@ -5680,7 +6634,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 34b408bb1cd22ea2a760d52d497b02d2ba443721
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Tesfaye Belayneh Kitaw (Contestant/Player) participating in 5000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:39:26'
@@ -5693,11 +6651,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 34b408bb1cd22ea2a760d52d497b02d2ba443721
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Tesfaye Belayneh Kitaw (Contestant/Player) participating in 10000M (Athletics) ( asdf adfasdfasdf )'
     created_at: '2018-05-01 18:39:42'
-    updated_at: '2018-05-01 18:39:42'
+    updated_at: '2018-05-11 22:16:33'
   TeamMemberParticipantRole_35:
     token_id: 9d16c025dcd663f32177c22111b5aaabd7a111ae
     TeamGameParticipation: TeamGameParticipation_41
@@ -5706,7 +6668,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 4260342565b210374d6b193a88e60fb395bf5d15
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Sebsibe Kidane Belay (Contestant/Player) participating in 5000M (Athletics) ( sdfgsdfgsdfg )'
     created_at: '2018-05-01 18:39:59'
@@ -5719,11 +6685,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 162236c36c3fed9aa2d7d750bfac53fc97a361d7
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Tibebu Tamirat Tadesse (Contestant/Player) participating in 10000M (Athletics) ( afasdf asdfasdfasdf )'
     created_at: '2018-05-01 18:40:29'
-    updated_at: '2018-05-01 18:40:29'
+    updated_at: '2018-05-11 22:16:47'
   TeamMemberParticipantRole_37:
     token_id: 07a012fd996db0dc66054fb9dc6be261dd7359ab
     TeamGameParticipation: TeamGameParticipation_57
@@ -5732,11 +6702,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 7a06dc5cba07a7bcc26a0b1fab69ce63a3a12492
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Negasi Mirutse Bahta (Contestant/Player) participating in 5000M (Athletics) (  )'
     created_at: '2018-05-01 18:41:33'
-    updated_at: '2018-05-01 18:41:33'
+    updated_at: '2018-05-11 22:09:08'
   TeamMemberParticipantRole_38:
     token_id: eb652e06c242df4081d2a6c9bf47bab59c343388
     TeamGameParticipation: TeamGameParticipation_59
@@ -5745,7 +6719,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 7a06dc5cba07a7bcc26a0b1fab69ce63a3a12492
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Negasi Mirutse Bahta (Contestant/Player) participating in 10000M (Athletics) (  )'
     created_at: '2018-05-01 18:41:47'
@@ -5758,7 +6736,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 024e0513363684eae59624b8ae31ea23b0b8792e
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Berhe Halefom Tekle (Contestant/Player) participating in 10000M (Athletics) (  )'
     created_at: '2018-05-01 18:42:08'
@@ -5771,7 +6753,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: f8f9139300090d7cb2505ce58604a66359f6ce6d
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Merhawit Hailu Mehari (Contestant/Player) participating in 5000M (Athletics) ( adsfsd )'
     created_at: '2018-05-01 18:42:34'
@@ -5784,7 +6770,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: e8b35953a88e6a5c723da28ed21ca04a49b6d5b1
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Fireweiny Halefom Kahsay (Contestant/Player) participating in 10000M (Athletics) ( fgsdfgsdfgsdfg )'
     created_at: '2018-05-01 18:43:11'
@@ -5797,7 +6787,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 2dd3f04f114353ee4fc5c91a1eb6b0fe2326f0b0
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Biniam Teklay Hailay (Contestant/Player) participating in Table Tennis (Table Tennis) ( sdfgsdgsdfgsf )'
     created_at: '2018-05-01 18:43:28'
@@ -5810,11 +6804,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 4dacd6a670f3b3ca6d37980ebb3af4a5d8ccb0d7
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Tesfanesh Bekelle Melkessa (Contestant/Player) participating in Maraton (Athletics) ( asdfasdfa sdf )'
     created_at: '2018-05-01 18:44:21'
-    updated_at: '2018-05-01 18:44:21'
+    updated_at: '2018-05-11 22:26:23'
   TeamMemberParticipantRole_44:
     token_id: 4ac5c07511e2cac30dfa8161b50df295fccdbf18
     TeamGameParticipation: TeamGameParticipation_63
@@ -5823,7 +6821,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 917cf63a948b0063bf1e6cd6abbfb79f7621a5eb
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Tesfaye Mosisa Bezabih (Contestant/Player) participating in 5000M (Athletics) ( asdfasdfasdf )'
     created_at: '2018-05-01 18:44:38'
@@ -5836,7 +6838,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 917cf63a948b0063bf1e6cd6abbfb79f7621a5eb
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Tesfaye Mosisa Bezabih (Contestant/Player) participating in 10000M (Athletics) ( asdfasdfdf )'
     created_at: '2018-05-01 18:44:55'
@@ -5849,11 +6855,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: f19bb1c622f9540745a7e39eb4f1d15e27d0e349
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Girmaye Waqhira Girasa (Contestant/Player) participating in Maraton (Athletics) ( fdgsfgsdfg )'
     created_at: '2018-05-01 18:45:14'
-    updated_at: '2018-05-01 18:45:14'
+    updated_at: '2018-05-11 22:22:44'
   TeamMemberParticipantRole_47:
     token_id: fce49c41d88205208b8638074c19bd54aee15002
     TeamGameParticipation: TeamGameParticipation_67
@@ -5862,7 +6872,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 47a174bc01e7f3190f44953ff249cbab8b69d925
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Shiferaw Toshome Tilaye (Contestant/Player) participating in 3000M (Athletics) ( asdf asdfasdf )'
     created_at: '2018-05-01 18:45:33'
@@ -5875,7 +6889,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: b7f369ec7aed200507a229c1f993d3a1d44c5ad6
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Girma Toga Hailemariam (Contestant/Player) participating in 5000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:46:03'
@@ -5888,7 +6906,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: b7f369ec7aed200507a229c1f993d3a1d44c5ad6
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Girma Toga Hailemariam (Contestant/Player) participating in 10000M (Athletics) ( fasdfasdfasdf )'
     created_at: '2018-05-01 18:46:21'
@@ -5901,11 +6923,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: c7880376f0d1a78c08dbf4b221350aeacd7ccd00
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Adem Mohammed Seid (Contestant/Player) participating in 5000M (Athletics) ( asdfasdfd )'
     created_at: '2018-05-01 18:46:55'
-    updated_at: '2018-05-01 18:46:55'
+    updated_at: '2018-05-11 22:10:23'
   TeamMemberParticipantRole_51:
     token_id: d7d8203b349bdc373e2259751a3e5c807bf27120
     TeamGameParticipation: TeamGameParticipation_26
@@ -5914,7 +6940,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: c7880376f0d1a78c08dbf4b221350aeacd7ccd00
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Adem Mohammed Seid (Contestant/Player) participating in 10000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:47:08'
@@ -5927,11 +6957,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 67e711d3ad688990192cc9b605f52b115fb66d1e
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Fikirte Belay Deres (Contestant/Player) participating in 5000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:47:26'
-    updated_at: '2018-05-01 18:47:26'
+    updated_at: '2018-05-11 22:13:39'
   TeamMemberParticipantRole_53:
     token_id: cf09602da75797ec7347c38472064b63dd95f699
     TeamGameParticipation: TeamGameParticipation_27
@@ -5940,7 +6974,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 67e711d3ad688990192cc9b605f52b115fb66d1e
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Fikirte Belay Deres (Contestant/Player) participating in 10000M (Athletics) ( asdf )'
     created_at: '2018-05-01 18:47:45'
@@ -5953,7 +6991,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 87f86b4837f6d1533c3e24b2ea82014b7c847dfd
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Mihur Mahteme Tesfaslassie (Contestant/Player) participating in 10000M (Athletics) ( sadfasdf )'
     created_at: '2018-05-01 18:48:01'
@@ -5966,7 +7008,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 9bac9b17e5a2895f8943101c65c67490cf3d0ca4
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Amanuel Gidey Belete (Contestant/Player) participating in Table Tennis (Table Tennis) ( asdfasf asdf )'
     created_at: '2018-05-01 18:49:24'
@@ -5979,11 +7025,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 2d5ea9a375b692a1f8142649af8dc4d16e463165
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Letay Gebremedhin Tesfay (Contestant/Player) participating in 5000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:49:43'
-    updated_at: '2018-05-01 18:49:43'
+    updated_at: '2018-05-11 22:13:57'
   TeamMemberParticipantRole_57:
     token_id: 98367318bc9f815b9fe13dd7575b23f8c0e189bb
     TeamGameParticipation: TeamGameParticipation_27
@@ -5992,7 +7042,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 2d5ea9a375b692a1f8142649af8dc4d16e463165
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Letay Gebremedhin Tesfay (Contestant/Player) participating in 10000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:49:58'
@@ -6005,7 +7059,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 669e918418d345f415e3569a4f011e8a060391f2
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Teberih Mehari Haregot (Contestant/Player) participating in 5000M (Athletics) (  )'
     created_at: '2018-05-01 18:51:35'
@@ -6018,7 +7076,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: b16678c5f95d8850f4ea7d074e8629fd558cdb22
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Yordanos Hailay Meresa (Contestant/Player) participating in 5000M (Athletics) ( asdfasdfasdf )'
     created_at: '2018-05-01 18:51:57'
@@ -6031,7 +7093,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: b16678c5f95d8850f4ea7d074e8629fd558cdb22
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Yordanos Hailay Meresa (Contestant/Player) participating in 10000M (Athletics) ( sadfasdfasdfasf )'
     created_at: '2018-05-01 18:52:14'
@@ -6044,11 +7110,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 69001cdcab78c9822558d4291f3a88be66990d9c
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Fitsum Gidey Moges (Contestant/Player) participating in 5000M (Athletics) ( afsdfasdfasdfa sdf )'
     created_at: '2018-05-01 18:52:40'
-    updated_at: '2018-05-01 18:52:40'
+    updated_at: '2018-05-11 22:10:53'
   TeamMemberParticipantRole_62:
     token_id: c2176c0cfe88983f7db8e22ed250b16e8b8caa0a
     TeamGameParticipation: TeamGameParticipation_20
@@ -6057,7 +7127,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 69001cdcab78c9822558d4291f3a88be66990d9c
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Fitsum Gidey Moges (Contestant/Player) participating in 10000M (Athletics) ( adfasdfasdfasdf )'
     created_at: '2018-05-01 18:53:05'
@@ -6070,11 +7144,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 0afd402fdf637f03303051ffbb544993bbcced4d
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Tariku Mekonen Yemane (Contestant/Player) participating in 5000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:53:46'
-    updated_at: '2018-05-01 18:53:46'
+    updated_at: '2018-05-11 22:11:12'
   TeamMemberParticipantRole_64:
     token_id: 49deebef9c32bc9613a278d7adc2b5f4deaba764
     TeamGameParticipation: TeamGameParticipation_21
@@ -6083,7 +7161,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: eab194eb2abd5f8a4d17e801747aef90d434f741
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Merhawit Haileslassie Gebru (Contestant/Player) participating in 10000M (Athletics) ( asdfasdfasdf )'
     created_at: '2018-05-01 18:54:23'
@@ -6096,7 +7178,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 345afa67d9d41adad412460d95774310a52c9085
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Getachew Girmay Ferede (Contestant/Player) participating in Ground Tennis (Ground Tennis) ( asdfas dfasdf asdfas df )'
     created_at: '2018-05-01 18:55:02'
@@ -6109,7 +7195,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: bed85a0b328ce1a959765a4fdf80fbdeb472c725
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Belaynesh Tamirat Werku (Contestant/Player) participating in 5000M (Athletics) ( asdfasdf asdfasdf )'
     created_at: '2018-05-01 18:55:39'
@@ -6122,7 +7212,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: bed85a0b328ce1a959765a4fdf80fbdeb472c725
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Belaynesh Tamirat Werku (Contestant/Player) participating in 10000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:55:52'
@@ -6135,7 +7229,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 5222fe7faf4c0979aef85ec001c91c1e908433ac
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Hayliye Gared Bekele (Contestant/Player) participating in 5000M (Athletics) ( asdfasdf )'
     created_at: '2018-05-01 18:56:06'
@@ -6148,11 +7246,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 5222fe7faf4c0979aef85ec001c91c1e908433ac
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Hayliye Gared Bekele (Contestant/Player) participating in 10000M (Athletics) ( asdfasdfasdf )'
     created_at: '2018-05-01 18:56:21'
-    updated_at: '2018-05-01 18:56:21'
+    updated_at: '2018-05-11 22:17:01'
   TeamMemberParticipantRole_70:
     token_id: 51dff7ee8493855929dfc23fb143ed95482f4b8c
     TeamGameParticipation: TeamGameParticipation_49
@@ -6161,11 +7263,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 347839e6f3bfeda79ae6e55c75e147eab535b19b
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Tilahun Haile Molalign (Contestant/Player) participating in 10000M (Athletics) ( asdfasdfasdf )'
     created_at: '2018-05-01 18:56:44'
-    updated_at: '2018-05-01 18:56:44'
+    updated_at: '2018-05-11 22:17:15'
   TeamMemberParticipantRole_71:
     token_id: 3f0a7b2f585f1ef2a7524431e77ffb3631d7da3c
     TeamGameParticipation: TeamGameParticipation_48
@@ -6174,7 +7280,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 694b2dc9444f6ad68a74a6bb70914ee0970f3817
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Tirunesh Moges Tarekegn (Contestant/Player) participating in 5000M (Athletics) ( asdfa sdfasdf asdf )'
     created_at: '2018-05-01 18:57:00'
@@ -6187,11 +7297,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 5c812a708153e965d15cfffbdbcc689565412355
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Meresa Tesfaye Gadissa (Contestant/Player) participating in 10000M (Athletics) ( sdfg sdfgdfg )'
     created_at: '2018-05-01 18:57:31'
-    updated_at: '2018-05-01 18:57:31'
+    updated_at: '2018-05-11 22:17:35'
   TeamMemberParticipantRole_73:
     token_id: a6b1b352fd3f8f41750689582fbe769a39181701
     TeamGameParticipation: TeamGameParticipation_52
@@ -6200,7 +7314,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: e1a30c3e79ea16324d2dea0ec34ff676b3d3484b
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Tolla Desalegn Tamirat (Contestant/Player) participating in 5000M (Athletics) ( ad asdf asdf )'
     created_at: '2018-05-01 18:57:49'
@@ -6213,7 +7331,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 2e0d81c15ce7b2b200f711d97ec6fd031d2e4690
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Werkitu Kasaye Mola (Contestant/Player) participating in 5000M (Athletics) ( asd fasdfasfasdf )'
     created_at: '2018-05-01 18:58:07'
@@ -6226,7 +7348,11 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: c1d51c3bbb80aa3b13932948f6d760b60597dfb3
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
     active_flag: true
+    confirmed_status: '1'
+    grouped_status: '1'
     status: '2'
     description: 'Fikre Dagnew Gebre (Contestant/Player) participating in 10000M (Athletics) ( adfa sdfasdfasdf )'
     created_at: '2018-05-01 18:58:27'
@@ -6239,11 +7365,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: f58108a512567cb384b8f26f8a970b972404327b
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Rezene Meles Gidey (Contestant/Player) participating in Maraton (Athletics) ( dfgsdfgsdfgsdfg )'
     created_at: '2018-05-03 00:58:20'
-    updated_at: '2018-05-03 00:58:20'
+    updated_at: '2018-05-11 22:22:21'
   TeamMemberParticipantRole_77:
     token_id: 73149c8281f0aa781f9b7d0a0357677c7f1a7c55
     TeamGameParticipation: TeamGameParticipation_78
@@ -6252,11 +7382,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 95af36cdb958b4be245fc226e35cc6b8ebd24d7c
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Mebrhit Kahsay Tesfalem (Contestant/Player) participating in Maraton (Athletics) ( fgsdfgsdfgsdfg )'
     created_at: '2018-05-03 00:58:46'
-    updated_at: '2018-05-03 00:58:46'
+    updated_at: '2018-05-11 22:26:08'
   TeamMemberParticipantRole_78:
     token_id: fbaa968d808df95ea5f0ce3c7514c4e1aa5e981b
     TeamGameParticipation: TeamGameParticipation_80
@@ -6265,11 +7399,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 6b89793b6db2a4816f002c3dbdcf5172d6b51113
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Lemlem Bizen Lewolo (Contestant/Player) participating in Maraton (Athletics) ( adfasdfasdf )'
     created_at: '2018-05-03 01:00:27'
-    updated_at: '2018-05-03 01:00:27'
+    updated_at: '2018-05-11 22:25:51'
   TeamMemberParticipantRole_79:
     token_id: d0ba3866b81e7621d5ecfd87ef9bd8366825b14e
     TeamGameParticipation: TeamGameParticipation_79
@@ -6278,11 +7416,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 56e5e27ad378faffac9894040e8a73de54fa4c71
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Gezaei Reda Miruts (Contestant/Player) participating in Maraton (Athletics) ( fasdfasfasdf )'
     created_at: '2018-05-03 01:00:44'
-    updated_at: '2018-05-03 01:00:44'
+    updated_at: '2018-05-11 22:21:59'
   TeamMemberParticipantRole_80:
     token_id: 6a6e3359f4bc592617033656a9921565ae53ecd5
     TeamGameParticipation: TeamGameParticipation_81
@@ -6291,11 +7433,15 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: e3133ed892cc7be4c05f2061bc1b438e52e3546a
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Samuel Jack Larson (Contestant/Player) participating in Maraton (Athletics) ( adfasdfasdf )'
     created_at: '2018-05-03 01:02:30'
-    updated_at: '2018-05-03 01:02:30'
+    updated_at: '2018-05-11 22:19:29'
   TeamMemberParticipantRole_81:
     token_id: 6854a97f5f6f197a17a78a281c189295389169f9
     TeamGameParticipation: TeamGameParticipation_82
@@ -6304,11 +7450,168 @@ TeamMemberParticipantRole:
     team_member_participant_token_id: 876b1f82b37a16af06163d4cd9fbb19906cb898a
     member_role_id: '2'
     gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: true
     active_flag: true
-    status: '2'
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
     description: 'Saron Kindey Garson (Contestant/Player) participating in Maraton (Athletics) ( asdfasdfasdfasdf )'
     created_at: '2018-05-03 01:02:50'
-    updated_at: '2018-05-03 01:02:50'
+    updated_at: '2018-05-11 22:25:32'
+  TeamMemberParticipantRole_82:
+    token_id: 4494956dcbd5fffbd84d38da0657cd73907920de
+    TeamGameParticipation: TeamGameParticipation_9
+    team_game_participation_token_id: a44f2129f8da9298a12dea92b6ff430cf7febe2a
+    TeamMemberParticipant: TeamMemberParticipant_69
+    team_member_participant_token_id: b88ba429bd0157b73161073729e9d5c0510269c3
+    member_role_id: '2'
+    gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Kidus Yirag Tesfamichael (Contestant/Player) participating in Ground Tennis (Ground Tennis) ( fasdfasdfasdfasdfasdfasdfasdfdf )'
+    created_at: '2018-05-11 02:22:35'
+    updated_at: '2018-05-11 02:22:35'
+  TeamMemberParticipantRole_83:
+    token_id: abae7c859a55978bc4921489f5730d4c18bb58fc
+    TeamGameParticipation: TeamGameParticipation_11
+    team_game_participation_token_id: 9a30c5b539ff8f14abaf3e3531be77884cfc55ec
+    TeamMemberParticipant: TeamMemberParticipant_68
+    team_member_participant_token_id: 569d48000fd6bfcb7be85606c9c6f862bed5bd7c
+    member_role_id: '2'
+    gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Tadesse Alemayohu Sibhat (Contestant/Player) participating in Table Tennis (Table Tennis) ( dsadasdasdasd )'
+    created_at: '2018-05-11 02:23:11'
+    updated_at: '2018-05-11 02:23:11'
+  TeamMemberParticipantRole_84:
+    token_id: 3f1e90e1bb4256c5f1afe40a99de1e2ab5cfabb2
+    TeamGameParticipation: TeamGameParticipation_38
+    team_game_participation_token_id: 179cd30a51090b3bfd007d05a77fc01f6f321a31
+    TeamMemberParticipant: TeamMemberParticipant_73
+    team_member_participant_token_id: 4dc84a4a2ef2f8a08d0bd60f2292b41fc20b2e94
+    member_role_id: '2'
+    gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Tanya James Dunes (Contestant/Player) participating in Ground Tennis (Ground Tennis) ( asdfasdfasdfasdfasf )'
+    created_at: '2018-05-11 02:35:40'
+    updated_at: '2018-05-11 02:35:40'
+  TeamMemberParticipantRole_85:
+    token_id: 2f0c9848b0b1752df5562c1e1cee4d889a8ffd8e
+    TeamGameParticipation: TeamGameParticipation_37
+    team_game_participation_token_id: 14af8d04198072547e910d384fd0f33980a3c47d
+    TeamMemberParticipant: TeamMemberParticipant_74
+    team_member_participant_token_id: ef5d9b28296b46830ec635fbc32f0f622743fdf8
+    member_role_id: '2'
+    gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'James Smith Conwell (Contestant/Player) participating in Ground Tennis (Ground Tennis) ( sdfasdfasfasdfasdf )'
+    created_at: '2018-05-11 02:36:06'
+    updated_at: '2018-05-11 02:36:06'
+  TeamMemberParticipantRole_86:
+    token_id: f77087c43e8a7cea12ea24878aafdf25acdda6d0
+    TeamGameParticipation: TeamGameParticipation_40
+    team_game_participation_token_id: db11eca2c2a1bb4d3cafd955f184984867b9938e
+    TeamMemberParticipant: TeamMemberParticipant_75
+    team_member_participant_token_id: f376857d70e916595241b02123e4f897bfc75388
+    member_role_id: '2'
+    gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Lala Camile Cavalli (Contestant/Player) participating in Table Tennis (Table Tennis) ( asdfasdfasdfasdf )'
+    created_at: '2018-05-11 02:36:50'
+    updated_at: '2018-05-11 02:36:50'
+  TeamMemberParticipantRole_87:
+    token_id: 8fe519ffc2c1fb0e894bbf6d2c8d892b5d9fc660
+    TeamGameParticipation: TeamGameParticipation_39
+    team_game_participation_token_id: 7ae6eacd6d2237e5800f641ee0a694de4b77b341
+    TeamMemberParticipant: TeamMemberParticipant_76
+    team_member_participant_token_id: 973fe6df6ffc728f2c8848c61198e97327063a5b
+    member_role_id: '2'
+    gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Jameson Abusanjo Charless (Contestant/Player) participating in Table Tennis (Table Tennis) ( sfasdfsadfasdfasdfasdf )'
+    created_at: '2018-05-11 02:37:33'
+    updated_at: '2018-05-11 02:37:33'
+  TeamMemberParticipantRole_88:
+    token_id: 56b30a769dd8a0f3aef18f522c8fb2a11055ca1d
+    TeamGameParticipation: TeamGameParticipation_45
+    team_game_participation_token_id: 4b3b60bd61e359a36b7b7746cf522404a57f8eb9
+    TeamMemberParticipant: TeamMemberParticipant_77
+    team_member_participant_token_id: 3825271a68fd0b8c139ebaacf2fcc97bc512a415
+    member_role_id: '2'
+    gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Alamrew Kebede Dejassa (Contestant/Player) participating in Table Tennis (Table Tennis) ( asfasdfasdfasdfasdf )'
+    created_at: '2018-05-11 02:39:54'
+    updated_at: '2018-05-11 02:39:54'
+  TeamMemberParticipantRole_89:
+    token_id: d5969cb155d2444e931bbde02bbf75f3786c45c1
+    TeamGameParticipation: TeamGameParticipation_46
+    team_game_participation_token_id: a9dd1941ad17524df289a62104320c9ba932239b
+    TeamMemberParticipant: TeamMemberParticipant_78
+    team_member_participant_token_id: e9bb9ca35b7358f140eec07f58dc1d0506734d75
+    member_role_id: '2'
+    gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Lakesh Bezu Yihune (Contestant/Player) participating in Table Tennis (Table Tennis) ( dfasdfasdfasfasdfasfasdf )'
+    created_at: '2018-05-11 02:40:21'
+    updated_at: '2018-05-11 02:40:21'
+  TeamMemberParticipantRole_90:
+    token_id: d28633e2fe878ddf4d35521865dd7418503a1140
+    TeamGameParticipation: TeamGameParticipation_29
+    team_game_participation_token_id: 0a97829c9f119aae1cbc34584f9e7b32c3e07f22
+    TeamMemberParticipant: TeamMemberParticipant_79
+    team_member_participant_token_id: fe2658e4e738de8b45c800df4284d6ca9b18af87
+    member_role_id: '2'
+    gender_category_id: null
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Teklit Tekeste Hailay (Contestant/Player) participating in Ground Tennis (Ground Tennis) ( sadfasdfasdfasdfasdf )'
+    created_at: '2018-05-11 02:44:19'
+    updated_at: '2018-05-11 02:44:19'
 TeamGameParticipation:
   TeamGameParticipation_1:
     token_id: 029e9503d58b795b526e0b591959e4cf5294dd4b
@@ -6321,12 +7624,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsdfgsdfg sdfgsfg )'
     created_at: '2018-04-24 21:06:18'
-    updated_at: '2018-04-24 21:06:18'
+    updated_at: '2018-05-11 22:12:20'
   TeamGameParticipation_2:
     token_id: 0d95dc25ebf3bc725368cb516d93b6323103ad50
     Team: Team_4
@@ -6338,12 +7646,17 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsdfgsdfg sdfgsfg )'
     created_at: '2018-04-24 21:06:18'
-    updated_at: '2018-04-24 21:06:18'
+    updated_at: '2018-05-11 22:15:48'
   TeamGameParticipation_3:
     token_id: 0a4ed56016335ec544016bbcc13576274dae84a8
     Team: Team_4
@@ -6355,12 +7668,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfg sdfgs dfg )'
     created_at: '2018-04-24 21:06:50'
-    updated_at: '2018-04-24 21:06:50'
+    updated_at: '2018-05-11 22:19:15'
   TeamGameParticipation_4:
     token_id: 4da70e70f76085a9ee1085a5ed58c5f12f523694
     Team: Team_4
@@ -6372,8 +7690,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfg sdfgs dfg )'
     created_at: '2018-04-24 21:06:50'
@@ -6389,8 +7712,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 3000M (Athletics) ( sdfgs dfgsdfgsdfg )'
     created_at: '2018-04-24 21:07:23'
@@ -6406,8 +7734,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 3000M (Athletics) ( sdfgs dfgsdfgsdfg )'
     created_at: '2018-04-24 21:07:23'
@@ -6423,8 +7756,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Bascketball (BASCKETBALL) - Bascketball (Bascketball) ( sfgsdfgsdfgsdfg )'
     created_at: '2018-04-24 21:07:55'
@@ -6440,8 +7778,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( dsfgsdfg sfgsdfgs dfg )'
     created_at: '2018-04-24 21:08:10'
@@ -6457,8 +7800,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis (Ground Tennis) ( sdfgsdfgsdfg )'
     created_at: '2018-04-24 21:08:26'
@@ -6474,8 +7822,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis (Ground Tennis) ( sdfgsdfgsdfg )'
     created_at: '2018-04-24 21:08:26'
@@ -6491,8 +7844,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( sdfgsdfgsdfgf )'
     created_at: '2018-04-24 21:08:42'
@@ -6508,8 +7866,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( sdfgsdfgsdfgf )'
     created_at: '2018-04-24 21:08:42'
@@ -6525,12 +7888,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sgsdf gsdfg sdfgsdfg )'
     created_at: '2018-04-24 21:55:35'
-    updated_at: '2018-04-24 21:55:35'
+    updated_at: '2018-05-11 22:12:05'
   TeamGameParticipation_14:
     token_id: d1f424c56193140f741b7588331d4b97001a6090
     Team: Team_1
@@ -6542,12 +7910,17 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sgsdf gsdfg sdfgsdfg )'
     created_at: '2018-04-24 21:55:36'
-    updated_at: '2018-04-24 21:55:36'
+    updated_at: '2018-05-11 22:15:14'
   TeamGameParticipation_15:
     token_id: eafb04496be1f898ca2eeb30fad617049eb9955f
     Team: Team_1
@@ -6559,12 +7932,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfg sdfg sdfg )'
     created_at: '2018-04-24 21:55:54'
-    updated_at: '2018-04-24 21:55:54'
+    updated_at: '2018-05-11 22:18:53'
   TeamGameParticipation_16:
     token_id: 7f080aa91d8bfdfe889a7666a187e30984466e14
     Team: Team_1
@@ -6576,8 +7954,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfg sdfg sdfg )'
     created_at: '2018-04-24 21:55:54'
@@ -6593,8 +7976,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( fgsfdg sfgsfg )'
     created_at: '2018-04-24 21:56:10'
@@ -6610,12 +7998,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsf )'
     created_at: '2018-04-24 21:56:36'
-    updated_at: '2018-04-24 21:56:36'
+    updated_at: '2018-05-11 22:11:12'
   TeamGameParticipation_19:
     token_id: 43b9e4c5ce5a201e29676c62dbdeb68bddc80eb2
     Team: Team_9
@@ -6627,8 +8020,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsf )'
     created_at: '2018-04-24 21:56:36'
@@ -6644,8 +8042,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfg sdfg sdfgsdfg )'
     created_at: '2018-04-24 21:56:54'
@@ -6661,8 +8064,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfg sdfg sdfgsdfg )'
     created_at: '2018-04-24 21:56:55'
@@ -6678,8 +8086,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( fgsdfgsd gsdfg )'
     created_at: '2018-04-24 21:57:13'
@@ -6695,8 +8108,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis (Ground Tennis) ( sfg sdfgsdfg )'
     created_at: '2018-04-24 21:57:26'
@@ -6712,12 +8130,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( asdfasdf adfadf )'
     created_at: '2018-04-24 21:59:57'
-    updated_at: '2018-04-24 21:59:57'
+    updated_at: '2018-05-11 22:10:23'
   TeamGameParticipation_25:
     token_id: 01d9607497ef85d9bd418dd0d1536156f0293836
     Team: Team_8
@@ -6729,12 +8152,17 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( asdfasdf adfadf )'
     created_at: '2018-04-24 21:59:57'
-    updated_at: '2018-04-24 21:59:57'
+    updated_at: '2018-05-11 22:13:57'
   TeamGameParticipation_26:
     token_id: f5ab7963b1f9818f6f47de377ba04c9947c28d5a
     Team: Team_8
@@ -6746,8 +8174,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfgs dfgsdgsdfg )'
     created_at: '2018-04-24 22:00:14'
@@ -6763,8 +8196,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfgs dfgsdgsdfg )'
     created_at: '2018-04-24 22:00:14'
@@ -6780,8 +8218,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( adfadfa fasfd )'
     created_at: '2018-04-24 22:00:28'
@@ -6797,8 +8240,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis (Ground Tennis) ( sdfgsdfgsdfg )'
     created_at: '2018-04-24 22:00:42'
@@ -6814,8 +8262,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( sdfg sgsdfg )'
     created_at: '2018-04-24 22:00:55'
@@ -6831,12 +8284,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsdfgs )'
     created_at: '2018-04-24 22:03:20'
-    updated_at: '2018-04-24 22:03:20'
+    updated_at: '2018-05-11 22:10:06'
   TeamGameParticipation_32:
     token_id: f95750563335befd730306a32d85eca572504b16
     Team: Team_2
@@ -6848,12 +8306,17 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsdfgs )'
     created_at: '2018-04-24 22:03:20'
-    updated_at: '2018-04-24 22:03:20'
+    updated_at: '2018-05-11 22:14:39'
   TeamGameParticipation_33:
     token_id: 4e77486f1a009a252a653d0c25933f0cee805982
     Team: Team_2
@@ -6865,12 +8328,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( adfadf asdf )'
     created_at: '2018-04-24 22:03:38'
-    updated_at: '2018-04-24 22:03:38'
+    updated_at: '2018-05-11 22:18:19'
   TeamGameParticipation_34:
     token_id: 10047612d6d51fcdf9067ae141b2655633e44621
     Team: Team_2
@@ -6882,8 +8350,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( adfadf asdf )'
     created_at: '2018-04-24 22:03:38'
@@ -6899,8 +8372,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 3000M (Athletics) ( adfa fasdf )'
     created_at: '2018-04-24 22:03:55'
@@ -6916,8 +8394,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( sdfg sgsgsfg )'
     created_at: '2018-04-24 22:04:33'
@@ -6933,8 +8416,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis (Ground Tennis) ( sdfgsdfgsdfg )'
     created_at: '2018-04-24 22:04:48'
@@ -6950,8 +8438,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Ground Tennis (GROUND_TENNIS) - Ground Tennis (Ground Tennis) ( sdfgsdfgsdfg )'
     created_at: '2018-04-24 22:04:48'
@@ -6967,8 +8460,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( sdfgs gsdfgfg )'
     created_at: '2018-04-24 22:05:05'
@@ -6984,8 +8482,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( sdfgs gsdfgfg )'
     created_at: '2018-04-24 22:05:05'
@@ -7001,8 +8504,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sfg sg sdfgsdfg )'
     created_at: '2018-04-24 22:19:24'
@@ -7018,12 +8526,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfg sfgsdfg )'
     created_at: '2018-04-24 22:19:41'
-    updated_at: '2018-04-24 22:19:41'
+    updated_at: '2018-05-11 22:16:47'
   TeamGameParticipation_43:
     token_id: 6ef4f1f1f5787cac314a96327d0a060b431ca1c6
     Team: Team_5
@@ -7035,8 +8548,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sdfg sfgsdfg )'
     created_at: '2018-04-24 22:19:41'
@@ -7052,8 +8570,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( sdf sdfgs dfgsdfg )'
     created_at: '2018-04-24 22:19:56'
@@ -7069,8 +8592,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( sdfgs gsfg )'
     created_at: '2018-04-24 22:20:10'
@@ -7086,8 +8614,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( sdfgs gsfg )'
     created_at: '2018-04-24 22:20:10'
@@ -7103,8 +8636,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsdfgsdfg )'
     created_at: '2018-04-24 22:23:47'
@@ -7120,8 +8658,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sdfgsdfgsdfg )'
     created_at: '2018-04-24 22:23:47'
@@ -7137,12 +8680,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) (  )'
     created_at: '2018-04-24 22:24:03'
-    updated_at: '2018-04-24 22:24:03'
+    updated_at: '2018-05-11 22:17:15'
   TeamGameParticipation_50:
     token_id: b03930a4a0cd491edafa17dced2b34c5561b9913
     Team: Team_12
@@ -7154,8 +8702,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) (  )'
     created_at: '2018-04-24 22:24:03'
@@ -7171,8 +8724,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( adfasdf asdfafasdfasdfasdf )'
     created_at: '2018-04-24 22:24:29'
@@ -7188,8 +8746,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( asdfasdfas sfgsf )'
     created_at: '2018-04-24 22:27:32'
@@ -7205,8 +8768,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( asdfasdfas sfgsf )'
     created_at: '2018-04-24 22:27:32'
@@ -7222,12 +8790,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( fgsf gsfgsdfgs fg sgsfg )'
     created_at: '2018-04-24 22:28:26'
-    updated_at: '2018-04-24 22:28:26'
+    updated_at: '2018-05-11 22:17:35'
   TeamGameParticipation_55:
     token_id: d680833562267c5e4f3e03decbfb0b365fddb0ab
     Team: Team_14
@@ -7239,8 +8812,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( fgsf gsfgsdfgs fg sgsfg )'
     created_at: '2018-04-24 22:28:26'
@@ -7256,8 +8834,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( fg sfgsdgsdfg )'
     created_at: '2018-04-24 22:28:42'
@@ -7273,12 +8856,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( gfgs dfgsdfg )'
     created_at: '2018-04-24 22:31:20'
-    updated_at: '2018-04-24 22:31:20'
+    updated_at: '2018-05-11 22:09:08'
   TeamGameParticipation_58:
     token_id: bdbd9cf6a5ed7327542fbcbca188059414a26f5c
     Team: Team_6
@@ -7290,8 +8878,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( gfgs dfgsdfg )'
     created_at: '2018-04-24 22:31:20'
@@ -7307,8 +8900,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( fgsf gsdfgsdfg )'
     created_at: '2018-04-24 22:31:37'
@@ -7324,8 +8922,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( fgsf gsdfgsdfg )'
     created_at: '2018-04-24 22:31:38'
@@ -7341,8 +8944,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Table Tennis (TABLE_TENNIS) - Table Tennis (Table Tennis) ( sdfadfasdsf sdfg sfg )'
     created_at: '2018-04-24 22:32:15'
@@ -7358,8 +8966,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( sdafasf asfd )'
     created_at: '2018-04-24 22:32:27'
@@ -7375,8 +8988,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( sfgsdfgsdfg )'
     created_at: '2018-04-24 22:38:51'
@@ -7392,8 +9010,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sgs gsdgs df )'
     created_at: '2018-04-24 22:39:05'
@@ -7409,12 +9032,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( sfgsfg sdfgsdfgsfg )'
     created_at: '2018-04-24 22:39:24'
-    updated_at: '2018-04-24 22:39:24'
+    updated_at: '2018-05-11 22:22:44'
   TeamGameParticipation_66:
     token_id: fee42142fdefebe60fe41119a1cb617182f606f2
     Team: Team_7
@@ -7426,12 +9054,17 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( sfgsfg sdfgsdfgsfg )'
     created_at: '2018-04-24 22:39:24'
-    updated_at: '2018-04-24 22:39:24'
+    updated_at: '2018-05-11 22:26:23'
   TeamGameParticipation_67:
     token_id: 2de2e828328f54454e6b9bda8621c39538903684
     Team: Team_7
@@ -7443,8 +9076,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 3000M (Athletics) ( fa sgsfdgsfgsdfg )'
     created_at: '2018-04-24 22:39:44'
@@ -7460,8 +9098,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( sfgsdfgsdgf )'
     created_at: '2018-04-24 22:40:01'
@@ -7477,8 +9120,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( gsfgsdfgsdfg )'
     created_at: '2018-04-24 22:43:09'
@@ -7494,12 +9142,17 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 5000M (Athletics) ( gsfgsdfgsdfg )'
     created_at: '2018-04-24 22:43:09'
-    updated_at: '2018-04-24 22:43:09'
+    updated_at: '2018-05-11 22:13:25'
   TeamGameParticipation_71:
     token_id: 0879eca3abf715963594a85abcb171e62eda0f27
     Team: Team_3
@@ -7511,8 +9164,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sfgsfg sfg sdfgsdfg )'
     created_at: '2018-04-24 22:43:28'
@@ -7528,8 +9186,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 10000M (Athletics) ( sfgsfg sfg sdfgsdfg )'
     created_at: '2018-04-24 22:43:28'
@@ -7545,8 +9208,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Football (FOOTBALL) - Football (Football) ( fgsfgsdfgsdfg )'
     created_at: '2018-04-24 22:43:43'
@@ -7562,8 +9230,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 800M (Athletics) ( sfgdfgsdfg )'
     created_at: '2018-04-25 10:54:05'
@@ -7579,8 +9252,13 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 800M (Athletics) ( sfgdfgsdfg )'
     created_at: '2018-04-25 10:54:05'
@@ -7596,8 +9274,13 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - 400M (Athletics) ( fasdfasdf )'
     created_at: '2018-05-03 00:55:01'
@@ -7613,12 +9296,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( fasdfasdf )'
     created_at: '2018-05-03 00:57:37'
-    updated_at: '2018-05-03 00:57:37'
+    updated_at: '2018-05-11 22:22:21'
   TeamGameParticipation_78:
     token_id: e73ed4707d9be9bd994eacd114b57befd0a73600
     Team: Team_4
@@ -7630,12 +9318,17 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( fadfasdf )'
     created_at: '2018-05-03 00:57:55'
-    updated_at: '2018-05-03 00:57:55'
+    updated_at: '2018-05-11 22:26:08'
   TeamGameParticipation_79:
     token_id: 2e839a02b712627f91ca3e1c82a3a4a42d9bf87d
     Team: Team_8
@@ -7647,12 +9340,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( sdfgsdfgsdfg )'
     created_at: '2018-05-03 00:59:13'
-    updated_at: '2018-05-03 00:59:13'
+    updated_at: '2018-05-11 22:21:59'
   TeamGameParticipation_80:
     token_id: 2bc31fa7ad4f7960d18f05b1a7bde47fbdb12324
     Team: Team_8
@@ -7664,12 +9362,17 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( adfasdfasdf )'
     created_at: '2018-05-03 00:59:28'
-    updated_at: '2018-05-03 00:59:28'
+    updated_at: '2018-05-11 22:25:51'
   TeamGameParticipation_81:
     token_id: c619ace82578889c1d439a046725c2c2390aff31
     Team: Team_1
@@ -7681,12 +9384,17 @@ TeamGameParticipation:
     gender_category_id: '1'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( asdfasdfsf )'
     created_at: '2018-05-03 01:01:09'
-    updated_at: '2018-05-03 01:01:09'
+    updated_at: '2018-05-11 22:19:29'
   TeamGameParticipation_82:
     token_id: bd11f18d1208d00fe9a3d75e0a20a859e3a6c2a6
     Team: Team_1
@@ -7698,12 +9406,39 @@ TeamGameParticipation:
     gender_category_id: '2'
     event_type: '0'
     player_mode: '0'
-    confirm_flag: false
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
     active_flag: false
+    grouped_status: '1'
     status: '2'
     description: 'Athletics (ATHLETICS) - Maraton (Athletics) ( asdfasdfsf )'
     created_at: '2018-05-03 01:01:09'
-    updated_at: '2018-05-03 01:01:09'
+    updated_at: '2018-05-11 22:25:32'
+  TeamGameParticipation_83:
+    token_id: 02f4956d173a639dca9d17fecf395ca680a7d70c
+    Team: Team_10
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_5
+    SportGame: SportGame_8
+    sport_game_token_id: bb25aed08b77bd55e86ecdeecac85813cfae70ff
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    status: '2'
+    description: 'Football (FOOTBALL) - Football (Football) (  )'
+    created_at: '2018-05-11 22:38:59'
+    updated_at: '2018-05-11 22:38:59'
 CodeGenerator:
   CodeGenerator_1:
     token_id: ee5bb3a6124bae087ac3f5d732d94947
@@ -7766,7 +9501,7 @@ CodeGenerator:
     prefix_code: TRNMT
     alias: TRNMT
     initial_number: '001'
-    last_code: '001'
+    last_code: '003'
     deleted_code: null
     can_recreate_deleted: true
     code_type: '2'
@@ -7802,15 +9537,70 @@ CodeGenerator:
     prefix_code: GRP
     alias: GRP
     initial_number: '001'
-    last_code: '0009'
+    last_code: '0004'
     deleted_code: null
     can_recreate_deleted: true
-    code_type: '4'
+    code_type: '8'
     has_deleted: false
     default_flag: true
     applicable_flag: true
     active_flag: true
     description: 'Team Group ( Team Group generated code )'
     created_at: '2016-01-21 01:26:19'
-    updated_at: '2018-05-06 19:42:16'
- 
+    updated_at: '2018-05-15 01:58:59'
+  CodeGenerator_7:
+    token_id: 80f14629d01dc4b0d7073752f1020eda
+    Organization: Organization_1
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    prefix_code: MAW
+    alias: MAW
+    initial_number: '001'
+    last_code: '001'
+    deleted_code: null
+    can_recreate_deleted: true
+    code_type: '9'
+    has_deleted: false
+    default_flag: true
+    applicable_flag: true
+    active_flag: true
+    description: 'Medal Award ( Medal Award generated code )'
+    created_at: '2016-01-21 01:26:19'
+    updated_at: '2018-05-09 01:13:11'
+TournamentTeamGroup:
+  TournamentTeamGroup_1:
+    token_id: eb5ed921838f8819fb65878728f66fa3d53268ca
+    Tournament: Tournament_1
+    GameCategory: GameCategory_1
+    sport_game_category_token_id: e02fa68d1c4b595a06a372982ba4b587ac3a3165
+    group_full_code: GRP-003/18
+    group_code: GRP-003
+    start_date: 05/15/2018
+    effective_date: null
+    end_date: null
+    complete_flag: false
+    active_flag: false
+    approval_status: '2'
+    status: '2'
+    description: sdfgsdfgsdfg
+    created_at: '2018-05-15 01:58:59'
+    updated_at: '2018-05-15 01:59:21'
+SystemLogFile:
+  SystemLogFile_1:
+    token_id: 99b7a42098ac0f76113274effdb5f08f3d0df96e
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '8'
+    action_date: '05/15/2018 01:59:00 AM'
+    action_time: '01:59:00 AM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team Group - [ Module: Team Group ], Object: Team Group ID: 1, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team_group/createTournamentGroup
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team Group - [ Module: Team Group ] from [ IP: 127.0.0.1 ] at [Date: Tue May 15, 2018 01:59:00 AM]'
+    created_at: '2018-05-15 01:59:00'
+    updated_at: '2018-05-15 01:59:00'
