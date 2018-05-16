@@ -17,6 +17,8 @@
  * @property integer $group_number
  * @property string $alias
  * @property integer $total_group_members
+ * @property integer $number_of_teams_per_group
+ * @property integer $number_of_participants_per_group
  * @property integer $contestant_team_mode
  * @property string $start_date
  * @property string $effective_date
@@ -86,6 +88,12 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
              'length' => 50,
              ));
         $this->hasColumn('total_group_members', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('number_of_teams_per_group', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('number_of_participants_per_group', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('contestant_team_mode', 'integer', null, array(

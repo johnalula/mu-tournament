@@ -119,6 +119,8 @@ class team_groupActions extends sfActions
 		$_genderCategory = $request->getParameter('gender_category');	 
 		$_contestantTeamMode = $request->getParameter('sport_game_contestant_team_mode');	 
 		$_groupNumber = $request->getParameter('group_number');	 
+		$_numberOfTeamsPerGroup = $request->getParameter('number_of_participants_per_group');	 
+		$_numberOfParticipantPerGroup = $request->getParameter('number_of_teams_per_group');	 
 		$_groupStatus = $request->getParameter('sport_game_group_status');	 
 		$_description = $request->getParameter('description');	
 				
@@ -129,7 +131,7 @@ class team_groupActions extends sfActions
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
 
-		$_flag =  TournamentSportGameGroupTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_contestantTeamMode, $_genderCategory, $_groupNumber, $_tournamentGroupCode, $_groupStatus, $_description, $_userID, $_userTokenID );  
+		$_flag =  TournamentSportGameGroupTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_contestantTeamMode, $_genderCategory, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_groupNumber, $_tournamentGroupCode, $_groupStatus, $_description, $_userID, $_userTokenID );  
 				 
 		return $_flag ? true:false;
 	 
@@ -145,9 +147,11 @@ class team_groupActions extends sfActions
 		$this->_activeTournament = TournamentTable::makeCandidateObject ( $_orgID, true ) ;
 		$this->_tournamentTeamGroup = TournamentTeamGroupTable::processObject ( $_orgID, $_orgTokenID, $_tournamentGroupID, $_tokenID ) ;
 		
-		$this->_groupParticipantTeams = TournamentGroupParticipantTeamTable::processSelection( $_tournamentID, $_tournamentGroupID, sha1(md5($_tokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 20 ) ;
+		$this->_groupParticipantTeams = TournamentGroupParticipantTeamTable::processSelection ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 15 ) ;
+		$this->_countGroupParticipantTeams = TournamentGroupParticipantTeamTable::processAll ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tokenID)), $_sportGameID, $_genderCategoryID, $_keyword) ;
 		
-		$this->_tournamentSportGameGroups = TournamentSportGameGroupTable::processSelection ( $_tournamentID, $_tournamentGroupID, $_tokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword, 0, 20  ) ;
+		//$this->_tournamentGroupGenderCategorys
+		//$this->_tournamentSportGameGroups = TournamentSportGameGroupTable::processSelection ( $_tournamentID, $_tournamentGroupID, $_tokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword, 0, 20  ) ;
 		
 		//$this->_candidateParticipantTeams = TournamentSportGameGroupTable::processCandidateParticipantTeams ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tokenID)), $_sportGameID, $_genderCategory, $_keyword, 0, 20 ); 
 	}
@@ -364,7 +368,29 @@ class team_groupActions extends sfActions
 	} 
 
 	/****************** Member Action ***********************/
+	
+	//
+	public function executeCandidateTournamentSportGameGroups(sfWebRequest $request)
+	{
+		$_tournamentGroupID = $request->getParameter('team_group_id');	
+		$_tournamentGroupTokenID = $request->getParameter('team_group_token_id');	
+		//$_tournamentID = $request->getParameter('tournament_id');	
+		//$_sportGameGroupID = $request->getParameter('sport_game_group_id');	
+		//$_sportGameID = $request->getParameter('sport_game_id');	
+		//$_genderCategory = $request->getParameter('gender_category_id');	
+		$_offset = $request->getParameter('offset');	
+		$_limit = $request->getParameter('limit');	
 
+		if(!$_offset || $_offset=='')	$_offset = 0;			
+		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		
+		$_tournamentSportGameGroups = TournamentTeamGroupTable::selectCandidateTournamentSportGameGroups ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword, $_offset, $_limit  ) ;
+		
+		//$_tournamentSportGameGroups = TournamentTeamGroupTable::selectCandidateTournamentSportGameGroups ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_keyword, $_offset, $_limit ) ;
+		
+		return $this->renderPartial('candidate_tournament_groups', array('_tournamentSportGameGroups' => $_tournamentSportGameGroups, '_countCandidateSportGames' => $_countCandidateSportGames));	  
+	}
+	//
 	public function executeCandidateGroupParticipantTeam (sfWebRequest $request)
 	{
 		$_tournamentID = $request->getParameter('tournament_id');	
@@ -380,7 +406,7 @@ class team_groupActions extends sfActions
 		if(!$_offset || $_offset=='')	$_offset = 0;			
 		if(!$_limit || $_limit=='' ) $_limit = 20;			 
 
-		$_candidateParticipantTeams = TournamentTeamGroupTable::selectCandidateParticipantTeams ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamenGroupTokenID)), $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit ); 
+		$_candidateParticipantTeams = TournamentTeamGroupTable::selectCandidateParticipantTeams ( $_tournamentGroupID, $_tournamenGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
 		
 		return $this->renderPartial('team/candidate_participant_team', array('_candidateMemberTeams' => $_candidateParticipantTeams, '_countCandidateSportGames' => $_countCandidateSportGames));	  
@@ -477,6 +503,42 @@ class team_groupActions extends sfActions
 		$_candidateParticipants = TournamentTeamGroupTable::selectCandidateGroupParticipantTeamMembers ( $_tournamentGroupID, $_tournamentGroupTokenID, $_participantTeamID, sha1(md5($_participantTeamTokenID)), $_groupMemberTeamID, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit ); 
 		
 		return $this->renderPartial('candidate_team_member_participants', array('_candidateParticipants' => $_candidateParticipants, '_countCandidateSportGames' => $_countCandidateSportGames));	  
+	}
+	
+	
+	/*********************************************************************/
+	/************************ Search Pagination **************************
+	//********************************************************************/
+	
+	public function executeSearch(sfWebRequest $request)
+	{
+		$_tournamentGroupID = $request->getParameter('team_group_id');	
+		$_tournamentGroupTokenID = $request->getParameter('token_id');	
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');  
+		
+		$_limit = $request->getParameter("limit");
+		$_offset = $request->getParameter("offset");
+		$_genderCategoryID = $request->getParameter("member_gender_category_id");
+		$_keyword = $request->getParameter("member_keyword");
+		$_keyword = '%' . $_keyword . '%';
+		
+		if(!$_offset || $_offset=='')	$_offset = 0;			
+		if(!$_limit || $_limit=='' ) $_limit = 15;			 
+		if(!$_genderCategoryID || $_genderCategoryID == '' ) $_genderCategoryID = null;			 
+		if(!$_keyword || $_keyword == '' ) $_keyword = null;			 
+		
+		
+		
+		$_groupParticipantTeams = TournamentGroupParticipantTeamTable::processSelection ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, $_offset, $_limit ) ;
+		$_countGroupParticipantTeams = TournamentGroupParticipantTeamTable::processAll ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword) ;
+		
+		/*if (!$_groupParticipantTeams)
+		{
+			return $this->renderPartial('error', array('_groupParticipantTeams' => $_groupParticipantTeams));
+		}*/
+			
+		return $this->renderPartial('member_list', array('_groupParticipantTeams' => $_groupParticipantTeams, '_countGroupParticipantTeams' => $_countGroupParticipantTeams));
+
 	}
 }
 

@@ -46,7 +46,7 @@
 								<input type="hidden" class="form-control" id="tournament_match_round_mode" name="tournament_match[tournament_match_round_mode]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->tournamentMatchRoundMode ?>"  >
 								
 								<span class="input-group-btn">
-									<button class="btn btn-default selectCandidateParentMatchFixture" type="button" data-toggle="modal" data-target="#candidateParentMatchFixtureModal" title="<?php echo __('Candidat Parent Match Fixture') ?>" <?php echo $_tournamentMatch->tournamentMatchRoundMode == TournamentCore::$_FIRST_ROUND ? 'disabled':'' ?> disabled>
+									<button class="btn btn-default selectCandidateParentMatchFixture" type="button" data-toggle="modal" data-target="#candidateParentMatchFixtureModal" title="<?php echo __('Candidat Parent Match Fixture') ?>" <?php echo $_tournamentMatch->tournamentMatchRoundMode == TournamentCore::$_PRELIMINARY_ROUND ? 'disabled':'' ?> disabled>
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 									</button>
 								</span>
@@ -57,15 +57,13 @@
 					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Match Status') ?>"><?php echo __('Status') ?>:</label>
 					<div class="col-sm-23">
 						<select id="tournament_match_round_mode" name="tournament_match[tournament_match_round_mode]" class="form-control" title="<?php echo __('Tournament Match Round Mode') ?>">
-								<option value=""  ><?php echo 'Select Mode ...' ?></option>
-								<?php foreach(TournamentCore::processMatchRoundModes() as $_key => $_round): ?>								 
-									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultMatchRoundMode() ? 'selected':'' ?> >
-										<?php echo $_round ?>
-									</option>								 
-								<?php endforeach; ?>
-							</select>
-							
-						
+							<option value=""  ><?php echo 'Select Mode ...' ?></option>
+							<?php foreach(TournamentCore::processMatchRoundModes() as $_key => $_round): ?>								 
+								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultMatchRoundMode() ? 'selected':'' ?> >
+									<?php echo $_round ?>
+								</option>								 
+							<?php endforeach; ?>
+						</select>
 					</div>
 					<label class="col-sm-01 control-label" title="<?php echo __('Touirnament Match Date') ?>"><?php echo __('Date') ?>:</label>
 					<div class="col-sm-23">

@@ -217,10 +217,10 @@
 		
 		makeNavigation (navButton, divName, totalLimitValue );
 		var dataRecords = serializedData+'&offset='+document.getElementById('pagination-offset').value+'&limit='+document.getElementById('pagination-limit').value; 
-		alert(dataRecords);
+		//alert(dataRecords);
 		$('#'+divName).load(recordURL, dataRecords ); 
-		//checkNavigationStatus (divName, totalLimitValue );
-		//makeNavigationDisplayText (divName, totalLimitValue );
+		checkNavigationStatus (divName, totalLimitValue );
+		makeNavigationDisplayText (divName, totalLimitValue );
 	}
 	function makeButtonEnabled (navButton, divName  )
 	{

@@ -13,7 +13,7 @@
 							<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 							<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Tournament Group').' ( Type: '.$_tournamentTeamGroup->gameCategoryName.' -  Code #: '.$_tournamentTeamGroup->tournamentGroupFullCode.' - Mode : '.TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode).' )'  ?>
+						<?php echo __('Tournament Group').' ( Type: '.$_tournamentTeamGroup->gameCategoryName.' -  Code #: '.$_tournamentTeamGroup->tournamentGroupFullCode.' - Mode : '.TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode).' )'   ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -58,26 +58,30 @@
 										<div class="ui-tab-separater"></div>
 										<div id="ui-main-tab-one" class="tab-pane active"> 
 											<!-- Begining of toolbar -->
-											<div class="ui-toolbar-menu-box">
+											<div class="ui-toolbar-menu-box  ui-toolbar-border1">
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															<?php include_partial('action_toolbar', array()) ?> 
-														</div> 
+															<?php include_partial('footer_action_toolbar', array()) ?> 
+														</div>
+														<div class="">
+															<?php include_partial('member_filter', array( )) ?> 
+														</div><!-- end of ui-filter-list -->
 													</div><!-- end of ui-filter-list -->
 												</div>
-											</div>
+											</div  
+											<!--    End of toolbar      -->
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('member_list', array('_groupParticipantTeams' => $_groupParticipantTeams)) ?> 
+													<?php include_partial('member_list', array('_groupParticipantTeams' => $_groupParticipantTeams,'_countGroupParticipantTeams' => $_countGroupParticipantTeams)) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											
 											<div class="ui-panel-footer-default ui-panel-footer-margin">
 												<div class="ui-panel-list-pagination-default">
 													<div class="ui-panel-list-pagination">
-														<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
+														<?php include_partial('global/pagination', array('_totalRecords' => $_countGroupParticipantTeams , '_pager'=> 'group-members')) ?>
 													</div>
 												</div>
 											</div>

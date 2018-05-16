@@ -110,7 +110,7 @@ class TournamentGroupParticipantTeamMemberTable extends PluginTournamentGroupPar
 								gmCat.id as gameCategoryID, gmCat.token_id as gameCategoryTokenID, gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.alias as tournamentAlias,
 								
-								tmPrt.id as teamID, tmPrt.team_name as participantTeamName, tmPrt.alias as participantTeamAlias, tmPrt.country_id as participantTeamCountry, tmPrt.team_city as teamCity, tmPrt.team_number as participantTeamNumber, tmPrt.confirm_flag as confirmFlag,
+								tmPrt.id as teamID, tmPrt.team_name as participantTeamName, tmPrt.alias as participantTeamAlias, tmPrt.country_id as participantTeamCountry, tmPrt.team_city as teamCity, tmPrt.team_number as participantTeamNumber, tmPrt.confirmed_flag as confirmFlag,
 								org.id, 
 								prsn.id as personID, prsn.name as memberName, prsn.middle_name as memberMiddleName, prsn.last_name as memberLastName, prsn.full_name as memberFullName,
 								

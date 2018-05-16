@@ -25,13 +25,14 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 	
 	public function checkInitiated ()
 	{
-		return (($this->approval_status ==TournamentCore::$_PENDING) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
+		return (($this->approval_status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
 	}
 	
 	public function makePending ()
 	{
 		$_flag = true;   
-			$this->approval_status = trim(TournamentCore::$_ACTIVE);   
+			$this->process_status = trim(TournamentCore::$_PENDING);   
+			$this->approval_status = trim(TournamentCore::$_PENDING);   
 			$this->status = trim(TournamentCore::$_PENDING); 
 			$this->save();
 			

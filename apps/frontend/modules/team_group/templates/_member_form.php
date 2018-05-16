@@ -24,7 +24,7 @@
 								<input type="hidden" class="form-control" id="gender_category_id" name="group_participant_team[gender_category_id]" value=""> 
 								
 								<span class="input-group-btn">
-									<button class="btn btn-default selectCandidateTournamentSportGameGroup" type="button" data-toggle="modal" data-target="#candidateTournamentSportGameGroupModal" title="<?php echo __('Candidate Sport Game Group') ?>">
+									<button class="btn btn-default selectCandidateTournamentSportGameGroup" type="button" data-toggle="modal" data-target="#candidateTournamentSportGameGroupModal" title="<?php echo __('Candidate Sport Game Group') ?>" <?php echo $_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup ? '':'disabled' ?> >
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
 									</button>
 								</span>

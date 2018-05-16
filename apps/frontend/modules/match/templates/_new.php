@@ -27,7 +27,7 @@
 									</div> 
 								</div><!-- end of ui-filter-list -->
 							</div>
-						</div  
+						</div>
 						<!--    End of toolbar      -->
 						<div class="ui-panel-detail-form-container" style=""> 
 							<div class="ui-panel-form-content"> 

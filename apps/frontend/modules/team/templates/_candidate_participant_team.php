@@ -29,7 +29,7 @@
 				<?php echo $_candidateTeam->teamName.' ( '.$_candidateTeam->teamAlias.' )'  ?>
 			</td>
 			<td class="ui-td-left-text ui-td-xsmall-1">
-				<?php echo SystemCore::processCountryValue($_candidateTeam->id) ?> 
+				<?php echo SystemCore::processCountryValue($_candidateTeam->teamCountryID) ?> 
 			</td>
 			<td class="ui-td-left-text ui-td-xsmall-01">
 				<?php echo $_candidateTeam->id ?>

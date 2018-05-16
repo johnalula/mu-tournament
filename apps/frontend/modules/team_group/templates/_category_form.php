@@ -10,7 +10,7 @@
 				</legend> 
 				<div class="form-group">
 					<label class="col-sm-21 control-label" title="<?php echo __('Sport Games Type') ?>"><?php echo __('Game Type') ?>: <span class="ui-red-text">*</span></label>
-					<div class="col-sm-40"> 
+					<div class="col-sm-410"> 
 					<input type="text" class="form-control" id="game_category" name="team_group_category[game_category]" placeholder="<?php echo __('Last Name') ?>" title="<?php echo __('Sport Game Type') ?>"required rel="ui-string" value="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" disabled >
 					<input type="hidden" class="form-control" id="game_category_id" name="team_group_category[game_category_id]" placeholder="<?php echo __('Last Name') ?>" title="<?php echo __('Sport Game Type') ?>"required rel="ui-string" value="<?php echo $_tournamentTeamGroup->gameCategoryID ?>" >
 						 
@@ -18,7 +18,7 @@
 				</div> 
 				<div class="form-group">
 					<label class="col-sm-21 control-label"><?php echo __('Sport Game') ?>: <span class="ui-red-text">*</span></label>
-					<div class="col-sm-40"> 
+					<div class="col-sm-410"> 
 						<div class="input-group">
 							<input type="text" class="form-control " id="sport_game_full_name" name="team_group_category[sport_game_full_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateSportGameModal"  disabled required >
 							<input type="hidden" class="form-control" id="tournament_id" name="team_group_category[tournament_id]" placeholder="" value="<?php echo $_tournamentTeamGroup->tournament_id ?>">
@@ -46,7 +46,7 @@
 					<div class="col-sm-23">
 						<input type="text" class="form-control" id="group_number" name="team_group_category[group_number]" value=""  placeholder="<?php echo __('Number of Groups') ?>"> 
 					</div>
-					<label class="col-sm-01 control-label" title="<?php echo __('Gender Category') ?>"><?php echo __('Gender') ?>:</label>
+					<label class="col-sm-121 control-label" title="<?php echo __('Gender Category') ?>"><?php echo __('Gender') ?>:</label>
 					<div class="col-sm-23">
 						<select id="gender_category" name="team_group_category[gender_category]" class="form-control" title="<?php echo __('Gender Category') ?>">
 							<option value="" selected  ><?php echo 'Select Gender ...' ?></option>
@@ -59,8 +59,18 @@
 					</div>
 				</div>   
 				<div class="form-group">
+					<label class="col-sm-21 control-label" title="<?php echo __('Number of Teams Per Group ') ?>"><?php echo __('Teams').' #' ?>: <span class="ui-red-text">&nbsp;</span></label>
+					<div class="col-sm-23">
+						<input type="text" class="form-control" id="number_of_teams_per_group" name="team_group_category[number_of_teams_per_group]" value=""  placeholder="<?php echo __('# Teams Per Group') ?>"> 
+					</div>
+					<label class="col-sm-121 control-label" title="<?php echo __('Gender Category') ?>"><?php echo __('Participants') ?> :</label>
+					<div class="col-sm-23">
+						<input type="text" class="form-control" id="number_of_participants_per_group" name="team_group_category[number_of_participants_per_group]" value=""  placeholder="<?php echo __('# Participants Per Group') ?>"> 
+					</div>
+				</div>   
+				<div class="form-group">
 					<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>: <span class="ui-red-text">&nbsp;</span></label>
-					<div class="col-sm-40"> 
+					<div class="col-sm-410"> 
 						<textarea class="form-control form-control-sm" rows=4 id="description" name="team_group_category[description]" placeholder="<?php echo __('Description') ?>" title="<?php echo __('Description') ?>" ></textarea>
 					</div>
 				</div>

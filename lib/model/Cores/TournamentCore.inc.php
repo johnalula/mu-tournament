@@ -1378,7 +1378,7 @@ class TournamentCore {
 	public static function processDefaultMatchRoundMode ()
 	{
 		try {
-				return  self::$_FIRST_ROUND; 
+				return  self::$_PRELIMINARY_ROUND; 
 			} catch ( Exception $e ) {
 			return null; 
 	  }     

@@ -16,6 +16,7 @@
  * @property string $end_date
  * @property boolean $complete_flag
  * @property boolean $active_flag
+ * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
@@ -74,6 +75,10 @@ abstract class BaseTournamentTeamGroup extends sfDoctrineRecord
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
+             ));
+        $this->hasColumn('process_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('approval_status', 'integer', null, array(
              'type' => 'integer',

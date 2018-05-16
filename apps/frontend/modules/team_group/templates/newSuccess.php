@@ -1,5 +1,10 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)): 
+	
+	//fea2553fcd57307b5e9907b2350cd52ed542bb41
+	
+	//$_teamGroup =  TournamentTeamGroupTable::processNew ( $_orgID, $_orgTokenID, 1, 1, 'fea2553fcd57307b5e9907b2350cd52ed542bb41', $_sportGameTypeName, $_startDate, $_groupStatus, $_description, $_userID, $_userTokenID );  
+	
 ?> 
 
 <form class="form-horizontal" role="form" action="<?php echo url_for('team_group/createTournamentGroup') ?>" id="createTournamentSportGameGroup" name="createTournamentSportGameGroupForm" method="post"> 

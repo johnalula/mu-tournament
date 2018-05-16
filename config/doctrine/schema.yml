@@ -277,6 +277,7 @@ TournamentTeamGroup:
     end_date: { type: string(100) }  
     complete_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
@@ -334,6 +335,8 @@ TournamentSportGameGroup:
     group_number: { type: integer } 
     alias: { type: string(50) }    
     total_group_members: { type: integer } 
+    number_of_teams_per_group: { type: integer } 
+    number_of_participants_per_group: { type: integer } 
     contestant_team_mode: { type: integer } 
     start_date: { type: string(100) }
     effective_date: { type: string(100) }  

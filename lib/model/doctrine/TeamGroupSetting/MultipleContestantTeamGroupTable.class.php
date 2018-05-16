@@ -17,9 +17,9 @@ class MultipleContestantTeamGroupTable extends PluginMultipleContestantTeamGroup
         return Doctrine_Core::getTable('MultipleContestantTeamGroup');
     }
     //
-	public static function processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
+	public static function processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
 	{
-			$_sportGameGroup = self::processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
+			$_sportGameGroup = self::processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
 		
 		return $_sportGameGroup;
 	}
@@ -28,7 +28,7 @@ class MultipleContestantTeamGroupTable extends PluginMultipleContestantTeamGroup
 	{
 		
 	} 
-	public static function processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
+	public static function processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -44,6 +44,8 @@ class MultipleContestantTeamGroupTable extends PluginMultipleContestantTeamGroup
 			$_nw->sport_game_token_id = sha1(md5(trim($_sportGameTokenID)));  
 			$_nw->group_name = trim('Group '.TournamentCore::processRoundNumberValue ($_groupNumber)); 
 			$_nw->group_number = trim($_groupNumber); 
+			$_nw->number_of_teams_per_group = trim($_numberOfTeamsPerGroup); 
+			$_nw->number_of_participants_per_group = trim($_numberOfParticipantPerGroup); 
 			$_nw->group_code = trim($_groupCode); 
 			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->gender_category_id = trim($_genderCategory); 
