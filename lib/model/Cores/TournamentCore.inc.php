@@ -452,21 +452,21 @@ class TournamentCore {
 	public static $_SEMI_FINAL = 3;
 	public static $_FINAL = 4;
 
-	public static $_ROUND_TYPES = array ( 1 => 'Preliminary Round', 2 => 'Quarter Final', 3 => 'Semi Final', 4 => 'Final');
+	public static $_ROUND_MODES = array ( 1 => 'Preliminary Round', 2 => 'Quarter Final', 3 => 'Semi Final', 4 => 'Final');
 	
-	public static function processRounds ( ) 
+	public static function processRoundModes ( ) 
 	{
 		 try {
-				return self::$_ROUND_TYPES; 
+				return self::$_ROUND_MODES; 
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
 	}
 	
-	public static function processRoundID ( $_value ) 
+	public static function processRoundModeID ( $_value ) 
 	{
 		try {
-			foreach( self::$_ROUND_TYPES as $_key=> $_round ){
+			foreach( self::$_ROUND_MODES as $_key=> $_round ){
 				if( strcmp($_round, $_value) == 0 )
 					return $_key; 
 			}
@@ -476,10 +476,10 @@ class TournamentCore {
 		}
 	}
 
-	public static function processRoundValue ($_id )
+	public static function processRoundModeValue ($_id )
 	{
 		try {
-			foreach( self::$_ROUND_TYPES as $_key=> $_round ){
+			foreach( self::$_ROUND_MODES as $_key=> $_round ){
 			  if( $_key == $_id )
 					return $_round; 
 			}
@@ -488,7 +488,7 @@ class TournamentCore {
 			return null; 
 		}
 	}
-	public static function processDefaultRound ( )
+	public static function processDefaultRoundMode ( )
 	{
 		 try {
 				return self::$_PRELIMINARY; 
@@ -496,7 +496,7 @@ class TournamentCore {
 			return $_e; 
 	  }   
 	}
-	public static function processRoundIcon ($_round) 
+	public static function processRoundModeIcon ($_round) 
 	{
 		switch($_round) {			
 			case self::$_PRELIMINARY:
@@ -527,7 +527,7 @@ class TournamentCore {
 	public static function processCompetitionStatuses ( ) 
 	{
 		 try {
-				return self::$_ROUND_TYPES; 
+				return self::$_COMPETITION_STATUSES; 
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
@@ -536,7 +536,7 @@ class TournamentCore {
 	public static function processCompetitionStatusID ( $_value ) 
 	{
 		try {
-			foreach( self::$_ROUND_TYPES as $_key=> $_round ){
+			foreach( self::$_COMPETITION_STATUSES as $_key=> $_round ){
 				if( strcmp($_round, $_value) == 0 )
 					return $_key; 
 			}
@@ -549,7 +549,7 @@ class TournamentCore {
 	public static function processCompetitionStatusValue ($_id )
 	{
 		try {
-			foreach( self::$_ROUND_TYPES as $_key=> $_round ){
+			foreach( self::$_COMPETITION_STATUSES as $_key=> $_round ){
 			  if( $_key == $_id )
 					return $_round; 
 			}
@@ -561,7 +561,7 @@ class TournamentCore {
 	public static function processDefaultCompetitionStatus ( )
 	{
 		 try {
-				return self::$_ROUND; 
+				return self::$_FIN; 
 			} catch ( Exception $_e ) {
 			return $_e; 
 	  }   
@@ -906,12 +906,12 @@ class TournamentCore {
 	/*********************************************/
 	
 	public static $_SINGLE = 1;
-	public static $_PAIR = 2;
+	public static $_DOUBLE = 2;
 	public static $_TRIPLE = 3;
 	public static $_MULTIPLE = 4;
 	public static $_OTHER_PLAYING = 5; 
 
-	public static $_PLAYER_MODE = array ( 1 => 'Single Player', 2 => 'Pair Player', 3 => 'Triple Players', 4 => 'Multiple Players', 5 =>  'Other');
+	public static $_PLAYER_MODE = array ( 1 => 'Single Player', 2 => 'Double Player', 3 => 'Triple Players', 4 => 'Multiple Players', 5 =>  'Other');
 	
 	public static function processPlayerModes ( ) 
 	{
@@ -961,7 +961,7 @@ class TournamentCore {
 			case self::$_SINGLE:
 				return 'single_player';
 			break;
-			case self::$_PAIR:
+			case self::$_DOUBLE:
 				return 'pair_players';
 			break;
 			case self::$_TRIPLE:
@@ -1338,14 +1338,14 @@ class TournamentCore {
 	public static $_NEXT_ROUND = 2; 
 	public static $_QUALIFIED_ROUND = 3; 
 	public static $_FINAL_ROUND = 4; 
-	public static $_KICKOFF = 5; 
+	public static $_KNOCK_OUT = 5; 
 	
-	public static $_ROUND_MODES = array ( 1 => "Preliminary Round", 2 => "Next Round", 3 => "Qualified Round", 4 => "Final Round", 5 => "Kickoff" );
+	public static $_COMPETITION_MODES = array ( 1 => "Preliminary Round", 2 => "Next Round", 3 => "Qualified Round", 4 => "Final Round", 5 => "Knock Out" );
 	
 	public static function processMatchRoundModes ( ) 
 	{
 	  try {
-				return  self::$_ROUND_MODES; 
+				return  self::$_COMPETITION_MODES; 
 			} catch ( Exception $e ) {
 			return null; 
 	  }        
@@ -1353,7 +1353,7 @@ class TournamentCore {
 	public static function processMatchRoundModeID ( $_value ) 
 	{
 		try {
-			foreach( self::$_ROUND_MODES as $_key => $_round ) {
+			foreach( self::$_COMPETITION_MODES as $_key => $_round ) {
 				if( strcmp($_round, $_value) == 0 )
 					return $_key; 
 			}
@@ -1366,7 +1366,7 @@ class TournamentCore {
 	public static function processMatchRoundModeValue ( $_id )
 	{
 		try {
-				foreach( self::$_ROUND_MODES as $_key => $_round ) {
+				foreach( self::$_COMPETITION_MODES as $_key => $_round ) {
 					if( $_key == $_id )
 						return $_round; 
 			}
@@ -1398,7 +1398,7 @@ class TournamentCore {
 			case self::$_FINAL_ROUND:
 				return 'final_round';
 			break;  
-			case self::$_PLAY_OFF:
+			case self::$_KNOCK_OUT:
 				return 'play_off';
 			break;  
 		}

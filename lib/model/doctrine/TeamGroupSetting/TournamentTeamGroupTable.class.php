@@ -83,10 +83,10 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "trmntTmGrp.id, trmntTmGrp.group_code as tournamentGroupCode, trmntTmGrp.group_full_code as tournamentGroupFullCode, trmntTmGrp.start_date as matchDate, trmntTmGrp.approval_status as apporvalStatus, trmntTmGrp.active_flag as activeFlag,
+		 $_queryFileds = "trmntTmGrp.id, trmntTmGrp.group_code as tournamentGroupCode, trmntTmGrp.group_full_code as tournamentGroupFullCode, trmntTmGrp.start_date as matchDate, trmntTmGrp.approval_status as apporvalStatus, trmntTmGrp.active_flag as activeFlag, trmntTmGrp.effective_date as effectiveDate, trmntTmGrp.start_date as startDate, trmntTmGrp.created_at as createdDate,trmntTmGrp.updated_at as updatedDate,
 								
 								gmCat.id as gameCategoryID, gmCat.token_id as gameCategoryTokenID, gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,, gmCat.contestant_team_mode as contestantTeamMode,
-								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.alias as tournamentAlias,
+								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.alias as tournamentAlias, trnmt.season as tournamentSeason, trnmt.effective_date as tournamentEffectiveDate,
 								
 								(trmntTmGrp.status=".TournamentCore::$_PENDING.") as pendingTeamGroup, (trmntTmGrp.status=".TournamentCore::$_ACTIVE.") as activeTeamGroup, (trmntTmGrp.status=".TournamentCore::$_COMPLETED.") as completedTeamGroup,
 								(trmntTmGrp.approval_status=".TournamentCore::$_PENDING.") as pendingApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_ACTIVE.") as activeApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_APPROVED.") as approvedApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_COMPLETED.") as completedApprovalTeamGroup,
@@ -396,19 +396,19 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	*********************************************************/
 	
 	// registration task approval function
-	public static function processApproval ( $_orgID, $_orgTokenID, $_teamGroupID, $_teamGroupTokenID, $_userID, $_userTokenID ) 
+	public static function processApproval ( $_orgID, $_orgTokenID, $_tournamentGroupID, $_tournamentGroupTokenID, $_userID, $_userTokenID ) 
 	{
 		$_flag = true;   
-		$_tournamentTeamGroup =  self::processObject ( null, null, $_teamGroupID, $_teamGroupTokenID ); 
+		$_tournamentTeamGroup =  self::processObject ( null, null, $_tournamentGroupID, $_tournamentGroupTokenID ); 
 		
 		//if(!$_sportGameTeamGroup) { return false; }   
-		/*$_orders = RegistrationOrderTable::processApprovalCandidate ( $_task->id, sha1(md5($_task->token_id)), TaskOrderCore::$_PENDING, TaskCore::$_ACTIVE );
-		if(!$_orders) { $_flag = false; } else {
-			foreach($_orders as $_order) {
-				$_flag = $_order->makeOrderApproval (); 
+		$_candidateTournamentGroups = TournamentSportGameGroupTable::processCandidateApprovalSelections ( $_tournamentGroupID, $_tournamentGroupTokenID, TournamentCore::$_PENDING, TournamentCore::$_PENDING, TournamentCore::$_PENDING) ;
+		if(!$_candidateTournamentGroups) { $_flag = false; } else {
+			foreach($_candidateTournamentGroups as $_candidateTournamentGroup) {
+				$_flag = $_candidateTournamentGroup->makeCompletion (); 
 			}
-		} */
-		$_flag = $_tournamentTeamGroup ? $_tournamentTeamGroup->makeApproval ():false;
+		} 
+		$_flag = ($_tournamentTeamGroup && !$_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup) ? $_tournamentTeamGroup->makeApproval ():true;
 		
 		/*if($_orgID && $_userID) { 
 				

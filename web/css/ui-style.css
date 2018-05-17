@@ -3495,8 +3495,8 @@ td.ui-grid-right-text {
 }
 .ui-content-detail table.ui-content-detail-table tbody tr td {
 	border:0px solid #689ff1!important; 
-	font-size:10px!important;
-	padding:2px 4px 2px 5px!important;  
+	font-size:0.68em!important;
+	padding:2px 4px 2px 3px!important;  
 	font-weight:bold!important;  
 	letter-spacing:0.05em!important;  
 }

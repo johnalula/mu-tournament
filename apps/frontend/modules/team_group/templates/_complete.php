@@ -34,7 +34,7 @@
 					<div class="ui-panel-content-box">
 						<div class="ui-panel-detail-form-container" id=""> 
 							<div class="ui-panel-content-detail"> 
-								<?php include_partial('team_group_detail', array('_tournamentTeamGroup' => $_tournamentTeamGroup,'_activeTournament' => $_activeTournament,'_candidateRounds' => $_candidateRounds)) ?> 
+								<?php include_partial('team_group_detail', array('_tournamentTeamGroup' => $_tournamentTeamGroup)) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
 
@@ -58,26 +58,30 @@
 										<div class="ui-tab-separater"></div>
 										<div id="ui-main-tab-one" class="tab-pane active"> 
 											<!-- Begining of toolbar -->
-											<div class="ui-toolbar-menu-box">
+											<div class="ui-toolbar-menu-box  ui-toolbar-border1">
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															<?php include_partial('action_toolbar', array()) ?> 
-														</div> 
+															<?php include_partial('footer_action_toolbar', array()) ?> 
+														</div>
+														<div class="">
+															<?php include_partial('member_filter', array( )) ?> 
+														</div><!-- end of ui-filter-list -->
 													</div><!-- end of ui-filter-list -->
 												</div>
-											</div>
+											</div  
+											<!--    End of toolbar      -->
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('complete_list', array('_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateParticipantMembers' => $_candidateParticipantMembers )) ?> 
+													<?php include_partial('complete_list', array('_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateParticipantMembers' => $_groupParticipantTeams , '_countGroupParticipantTeams' => $_countGroupParticipantTeams )) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											
 											<div class="ui-panel-footer-default ui-panel-footer-margin">
 												<div class="ui-panel-list-pagination-default">
 													<div class="ui-panel-list-pagination">
-														<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
+														<?php include_partial('global/pagination', array('_totalRecords' => $_countGroupParticipantTeams , '_pager'=> 'sport_game')) ?>
 													</div>
 												</div>
 											</div>

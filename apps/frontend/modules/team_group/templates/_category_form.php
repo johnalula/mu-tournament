@@ -63,9 +63,16 @@
 					<div class="col-sm-23">
 						<input type="text" class="form-control" id="number_of_teams_per_group" name="team_group_category[number_of_teams_per_group]" value=""  placeholder="<?php echo __('# Teams Per Group') ?>"> 
 					</div>
-					<label class="col-sm-121 control-label" title="<?php echo __('Gender Category') ?>"><?php echo __('Participants') ?> :</label>
+					<label class="col-sm-121 control-label" title="<?php echo __('Status') ?>"><?php echo __('Status') ?> :</label>
 					<div class="col-sm-23">
-						<input type="text" class="form-control" id="number_of_participants_per_group" name="team_group_category[number_of_participants_per_group]" value=""  placeholder="<?php echo __('# Participants Per Group') ?>"> 
+						<select id="group_status" name="team_group_category[group_status]" class="form-control" title="<?php echo __('Team Group Status') ?>" disabled>
+							<option value=""  ><?php echo 'Select Status ...' ?></option>
+							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
+								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_INITIATED ? 'selected':'' ?> >
+									<?php echo $_matchStatus ?>
+								</option>								 
+							<?php endforeach; ?>
+						</select>
 					</div>
 				</div>   
 				<div class="form-group">

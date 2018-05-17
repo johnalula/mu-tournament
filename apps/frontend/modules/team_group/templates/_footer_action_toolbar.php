@@ -66,22 +66,26 @@
 	
 	<?php if($sf_request->getParameter('action') == 'complete'): ?>
 		<li class="">
-			<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="completeTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
-				<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
-				<?php echo __('Approve') ?>
-			</button>
-		</li>	 
-		<li class="">
-			<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="completeTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
-				<img class="navbar-nav-img" src="<?php echo image_path('status/apply') ?>">
-				<?php echo __('Complete') ?>
-			</button>
-		</li>	 
-		<li class="">
-			<a href="<?php echo url_for('team_group/index') ?>" title="<?php echo __('Back to Team Group List') ?>" id="backToSportGame" class="" >
-				<img class="navbar-nav-img" src="<?php echo image_path('icons/details') ?>">
-				<?php echo __('List') ?>
+			<a href="#" title="<?php echo __('Back to Team Group List') ?>" id="deleteTournamentGroupParticipants" class="" >
+				<img class="navbar-nav-img" src="<?php echo image_path('icons/del') ?>">
+				<?php echo __('Delete') ?>
 			</a>
+		</li> 
+		<li class="">
+			<a href="#" title="<?php echo __('Back to Team Group List') ?>" id="confirmournamentGroupParticipants" class="" >
+				<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
+				<?php echo __('Confirm') ?>
+			</a>
+		</li>
+		<li class="">
+			<select id="product_class_id" name="product_class_id"  class="form-control ui-toolbar-input-xsm-2" title="<?php echo __('Product Category Classification') ?>">
+				<option value="0"><?php echo __('All') ?></option>
+				<?php foreach( $_productClasses as $_key => $_productClass): ?>								 
+					<option value="<?php echo $_productClass ?>" >
+						<?php echo PropertyCore::processProductClassificationValue($_productClass) ?>
+					</option>						 
+				<?php endforeach; ?>		
+			</select>
 		</li>
 	<?php endif; ?>
 </ul>

@@ -54,20 +54,20 @@
 						</div>
 					</div>
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Match Status') ?>"><?php echo __('Status') ?>:</label>
+					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Match Round Mode') ?>"><?php echo __('Round Mode') ?>:</label>
 					<div class="col-sm-23">
 						<select id="tournament_match_round_mode" name="tournament_match[tournament_match_round_mode]" class="form-control" title="<?php echo __('Tournament Match Round Mode') ?>">
 							<option value=""  ><?php echo 'Select Mode ...' ?></option>
-							<?php foreach(TournamentCore::processMatchRoundModes() as $_key => $_round): ?>								 
-								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultMatchRoundMode() ? 'selected':'' ?> >
+							<?php foreach(TournamentCore::processRoundModes() as $_key => $_round): ?>								 
+								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultRoundMode() ? 'selected':'' ?> >
 									<?php echo $_round ?>
 								</option>								 
 							<?php endforeach; ?>
 						</select>
 					</div>
-					<label class="col-sm-01 control-label" title="<?php echo __('Touirnament Match Date') ?>"><?php echo __('Date') ?>:</label>
+					<label class="col-sm-01 control-label" title="<?php echo __('Touirnament Match Status') ?>"><?php echo __('Status') ?> :</label>
 					<div class="col-sm-23">
-						<select id="match_status" name="tournament_match[match_status]" class="form-control" title="<?php echo __('Match Status') ?>">
+						<select id="match_status" name="tournament_match[match_status]" class="form-control" title="<?php echo __('Match Status') ?>" disabled>
 							<option value=""  ><?php echo 'Select Status ...' ?></option>
 							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
 								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_INITIATED ? 'selected':'' ?> >

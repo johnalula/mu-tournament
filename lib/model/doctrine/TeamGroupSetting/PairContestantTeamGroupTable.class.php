@@ -17,9 +17,9 @@ class PairContestantTeamGroupTable extends PluginPairContestantTeamGroupTable
         return Doctrine_Core::getTable('PairContestantTeamGroup');
     }
     //
-	public static function processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
+	public static function processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_numberOfTeamsPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
 	{
-			$_sportGameGroup = self::processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description);
+			$_sportGameGroup = self::processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_numberOfTeamsPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description);
 		
 		return $_sportGameGroup;
 	}
@@ -28,7 +28,7 @@ class PairContestantTeamGroupTable extends PluginPairContestantTeamGroupTable
 	{
 		
 	} 
-	public static function processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
+	public static function processSave ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_groupNumber, $_numberOfTeamsPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -45,13 +45,12 @@ class PairContestantTeamGroupTable extends PluginPairContestantTeamGroupTable
 			$_nw->group_name = trim('Group '.TournamentCore::processRoundNumberValue ($_groupNumber)); 
 			$_nw->group_number = trim($_groupNumber); 
 			$_nw->number_of_teams_per_group = trim($_numberOfTeamsPerGroup); 
-			$_nw->number_of_participants_per_group = trim($_numberOfParticipantPerGroup); 
 			$_nw->group_code = trim($_groupCode); 
 			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->gender_category_id = trim($_genderCategory); 
 			$_nw->start_date = trim($_startDate); 
 			$_nw->active_flag = false;  
-			$_nw->approval_status = $_apporvalStatus ? trim($_apporvalStatus):TournamentCore::$_PENDING;   
+			$_nw->approval_status = $_apporvalStatus ? trim($_apporvalStatus):TournamentCore::$_INITIATED;   
 			$_nw->status = $_groupStatus ? trim($_groupStatus):TournamentCore::$_INITIATED;   
 			$_nw->description = SystemCore::processDescription ((trim($_sportGameFullName).' - '.trim(TournamentCore::processGenderValue($_genderCategory)).' - '.trim($_groupTypeName)), trim($_description) );  
 			$_nw->save(); 

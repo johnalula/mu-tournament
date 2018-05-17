@@ -8,6 +8,7 @@
 	
 	//echo $_gameParticipation->id.' == '.$_gameParticipation->sportGameName;
 	
+	//echo count($_tournamentSportGameGroups).' == ';
 ?> 
 
 <div class="ui-page-box">
@@ -250,7 +251,7 @@
 		var url = '<?php echo url_for('team_group/candidateTournamentSportGameGroups')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-tournament-groups';   
-		var data = 'team_group_id='+document.getElementById('team_group_id').value+'&team_group_token_id='+document.getElementById('team_group_token_id').value;
+		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value;
 		//alert(data);
 		processDataSelection(data, idName, url );	
 		return true;	 
@@ -317,53 +318,7 @@
 	});
 	 
 	//*************************************************************************************************************************************/
-	$(document).ready(function()	{ 
-	
-		$('#member_keyword').keyup(function(key) {
-			var navButton =  $(this).attr('rel');
-			var serializedData = 'member_gender_category_id='+$('#member_gender_category_id').val()+'&member_keyword='+$('#member_keyword').val();
-			var totalLimitValue = document.getElementById('ui-total-data-list-group-members').value;
-			var recordURL = 'team_group/search';
-			var divName =  'group-members';
-			//alert(totalLimitValue);
-			makePageNavigation (serializedData);
-		});
-		
-		$('#member_gender_category_id').change(function() {
-			var navButton =  $(this).attr('rel');
-			var serializedData = 'member_gender_category_id='+document.getElementById('member_gender_category_id').value+'&member_keyword='+document.getElementById('member_keyword').value;
-			var totalLimitValue = document.getElementById('ui-total-data-list-group-members').value;
-			var recordURL = 'team_group/search';
-			var divName =  'group-members';
-			alert(serializedData);
-			makePageNavigation (, recordURL, navButton, 'group-members', totalLimitValue );
-		});
-		
-		setInterval(function() {
-			var limit = document.getElementById('pagination-pagesize-group-members').value;
-			var offset = document.getElementById('pagination-offset-group-members').value;
-			var genderCategory = document.getElementById('member_gender_category_id').value;
-			var keyword = document.getElementById('member_keyword').value;
-			var data = "limit="+limit+'&offset='+offset+'&member_keyword='+keyword+'&member_gender_category_id='+genderCategory+'&member_keyword='+keyword;
-			alert('hello');   
-        }, 1000); 
-        
-	/*	$('#pagination-limit-group-members').change(function() {
-			var url = '<?php echo url_for('team_group/search')?>'; 
-			var navName = $(this).attr('rel'); 
-			var idName = 'group-members'; 
-			var dataNames = [
-				document.getElementById('pagination-limit-'+idName),
-				document.getElementById('pagination-offset-'+idName),
-				document.getElementById('member_gender_category_id'), 
-				document.getElementById('member_keyword')
-			]; 
-			var thisAttr = $(this).attr('rel');
-			var thisDiv = '';
-			processPagination(dataNames, idName, navName, thisDiv, url );		
-			return false;	
-		});*/
-	});
+	 
 	 
  
 </script>

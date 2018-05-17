@@ -42,6 +42,7 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 	{
 		$_flag = true;    
 		//if($this->pendingTeamGroup) { 
+			$this->process_status = trim(TournamentCore::$_ACTIVE); 
 			$this->approval_status = trim(TournamentCore::$_ACTIVE); 
 			$this->status = trim(TournamentCore::$_ACTIVE); 
 			$this->save();
@@ -67,12 +68,13 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 		$this->save();
 		return $_flag;
 	}
-	public function makeProcessCompletion ()
+	public function makeCompletion ()
 	{
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  
 		$this->active_flag = true;  
-		$this->approval_status = trim(TournamentCore::$_COMPLETED); 
+		$this->process_status = trim(TournamentCore::$_COMPLETED); 
+		$this->approval_status = trim(TournamentCore::$_APPROVED); 
 		$this->status = trim(TournamentCore::$_ACTIVE);  
 		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  
 		$this->save();

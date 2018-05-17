@@ -63,6 +63,25 @@ GameGroupType:
   relations:  
     Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes } 
     
+TournamentVenue:
+  package: TournamentManagement
+  tableName: mutms_tbl_tournament_venue
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    org_id: { type: integer } 
+    org_token_id: { type: string(100) }  
+    tournament_id: { type: integer } 
+    tournament_venue_name: { type: string(255) }
+    venue_alias: { type: string(255) }
+    default_flag: { type: boolean, default: false } 
+    active_flag: { type: boolean, default: true } 
+    description:  { type: string(255) }    
+  relations:  
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationGroupTypes } 
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentVenues }  
+    
 GameCategory:
   package: TournamentManagement
   tableName: mutms_tbl_game_category
@@ -310,6 +329,7 @@ SportGameGroup:
     complete_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
     approval_status: { type: integer, default: 1  } 
+    approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
@@ -459,11 +479,15 @@ TournamentMatch:
     tournament_match_round_mode: { type: integer } 
     round_type_mode: { type: integer } 
     contestant_team_mode: { type: integer } 
+    competition_mode: { type: integer } 
     start_date: { type: string(100) }
     effective_date: { type: string(100) }  
     end_date: { type: string(100) }  
+    competition_flag: { type: boolean, default: false } 
     complete_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    competition_status: { type: integer, default: 1  } 
+    process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: string(255) }    
@@ -509,7 +533,10 @@ TournamentMatchFixture:
     inheritable_flag: { type: boolean, default: false } 
     roundable_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    competition_flag: { type: boolean, default: false } 
     complete_flag: { type: boolean, default: false } 
+    competition_status: { type: integer, default: 1  } 
+    process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: string(255) }    
@@ -538,6 +565,8 @@ TournamentMatchFixtureGroup:
     qualification_status: { type: integer, default: 1  } 
     confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    competition_status: { type: integer, default: 1  } 
+    process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
@@ -565,8 +594,10 @@ TournamentMatchParticipantTeam:
     qualified_flag: { type: boolean  } 
     confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    competition_flag: { type: boolean, default: false } 
     qualification_status: { type: integer, default: 1  } 
     competition_status: { type: integer, default: 1  } 
+    process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  

@@ -34,7 +34,7 @@
 					<div class="ui-panel-content-box">
 						<div class="ui-panel-detail-form-container" id=""> 
 							<div class="ui-panel-content-detail"> 
-								<?php include_partial('tournament_match_detail', array('_tournamentMatch' => $_tournamentMatch,'_activeTournament' => $_activeTournament,'_candidateRounds' => $_candidateRounds)) ?> 
+								<?php include_partial('tournament_match_detail', array('_tournamentMatch' => $_tournamentMatch)) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
 

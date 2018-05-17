@@ -17,7 +17,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
         return Doctrine_Core::getTable('TournamentSportGameGroup');
     }
   //
-	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_contestantTeamMode, $_genderCategory, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_groupNumber, $_groupCode, $_groupStatus, $_description, $_userID, $_userTokenID )
+	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_contestantTeamMode, $_genderCategory, $_numberOfTeamsPerGroup, $_groupNumber, $_groupCode, $_groupStatus, $_description, $_userID, $_userTokenID )
 	{
 			 
 			$_initialGroupNumber = 1;
@@ -41,14 +41,14 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 			switch ( trim($_contestantTeamMode) ) {
 				case TournamentCore::$_PAIR_TEAM: 
 					for($_i=0,$_key=$_initialGroupNumber;$_i<$_groupNumber;$_i++,++$_key) {
-						$_sportGameGroup = PairContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_key, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
+						$_sportGameGroup = PairContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_key, $_numberOfTeamsPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
 						
 						$_sportGameGroup->makeGroupCode ($_groupCode, $_sportGameGroup->id); 
 					}
 				break; 
 				case TournamentCore::$_MULTIPLE_TEAM:  
 					for($_i=0,$_key=$_initialGroupNumber;$_i<$_groupNumber;$_i++,++$_key) {
-						$_sportGameGroup = MultipleContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_key, $_numberOfTeamsPerGroup, $_numberOfParticipantPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
+						$_sportGameGroup = MultipleContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_key, $_numberOfTeamsPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
 						
 						$_sportGameGroup->makeGroupCode ($_groupCode, $_sportGameGroup->id); 
 					}
@@ -227,6 +227,28 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
 						$_qry = $_qry->andWhere("sprtGmGrp.group_name LIKE ? OR sprtGm.name LIKE ? OR sprtGmGrp.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	} 
+	// process list selection function 
+   public static function processCandidateApprovalSelections ( $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_processStatus=null, $_approvalStatus=null, $_status=null) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TournamentSportGameGroup sprtGmGrp") 
+				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnSprtGmGrp on sprtGmGrp.tournament_team_group_id = trmnSprtGmGrp.id ")  
+				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
+				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
+				->orderBy("sprtGmGrp.id DESC")
+				->where("sprtGmGrp.id IS NOT NULL");
+				if(!is_null($_tournamentGroupID)) $_qry = $_qry->addWhere("trmnSprtGmGrp.id = ? AND trmnSprtGmGrp.token_id = ? ", array($_tournamentGroupID, $_tournamentGroupTokenID));
+				if(!is_null($_processStatus)) $_qry = $_qry->addWhere("sprtGmGrp.process_status = ?", $_processStatus);    
+				if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("sprtGmGrp.approval_status = ?", $_approvalStatus);    
+				if(!is_null($_status)) $_qry = $_qry->addWhere("sprtGmGrp.status = ?", $_status);  
 				
 			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
 
