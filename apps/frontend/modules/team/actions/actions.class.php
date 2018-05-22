@@ -20,7 +20,7 @@ class teamActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_teams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 20 );
+		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 30 );
 	}
 	
 	public function executeNew(sfWebRequest $request)
@@ -28,10 +28,18 @@ class teamActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_teams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
+		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 30 );
 		
 	}
 	public function executeView(sfWebRequest $request)
+	{
+		$_teamID = $request->getParameter('team_id');	
+		$_tokenID = $request->getParameter('token_id');	 
+		
+		$this->_team = TeamTable::processObject ( $_orgID, $_orgTokenID, $_teamID, $_tokenID ) ;
+		
+	}
+	public function executeEdit(sfWebRequest $request)
 	{
 		$_teamID = $request->getParameter('team_id');	
 		$_tokenID = $request->getParameter('token_id');	 
@@ -69,8 +77,9 @@ class teamActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
 	
-		$_flag =  TeamTable::processNew ( $_orgID, $_orgTokenID,  $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_description, $_userID, $_userTokenID  );  
+		$_flag =  TeamTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID,  $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_description, $_userID, $_userTokenID  );  
 				 
 		return $_flag ? true:false;
 		

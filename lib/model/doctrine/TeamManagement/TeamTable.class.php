@@ -17,20 +17,36 @@ class TeamTable extends PluginTeamTable
         return Doctrine_Core::getTable('Team');
     }
      //
-	public static function processNew ( $_orgID, $_orgTokenID,  $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_description, $_userID, $_userTokenID  )
+	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_description, $_userID, $_userTokenID  )
 	{
 		 $_flag = true;
-
-			$_tournament = self::processSave ( $_orgID, $_orgTokenID,  $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_description );
 		
-		return $_tournament;
+				$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_TEAM, true  ); 
+				$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
+				$_teamNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeGeneratorInitialNumber($_codeNumber);
+				
+
+			$_team = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_teamNumber, $_description );
+		
+		
+		if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TEAM;  
+				$_actionObject  = 'Team ID: '.$_team->id;  
+				$_actionDesc  = 'Team - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}
+			
+		return $_team;
 	}
 	//
 	public static function processCreate ( )
 	{
 		
 	} 
-	public static function processSave ( $_orgID, $_orgTokenID,  $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_teamNumber, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -41,13 +57,15 @@ class TeamTable extends PluginTeamTable
 			$_nw->token_id = sha1(md5(trim($_token))); 
 			$_nw->org_id = trim($_orgID); 
 			$_nw->org_token_id = sha1(md5(trim($_orgTokenID)));  
+			$_nw->tournament_id = trim($_tournamentID); 
 			$_nw->team_name = trim($_teamName); 
 			$_nw->alias = trim($_teamAlias); 
+			$_nw->team_number = trim($_teamNumber); 
 			$_nw->country_id = trim($_teamCountry);  
 			$_nw->team_city = trim($_teamCity);  
 			$_nw->start_date = trim($_startDate);  
 			$_nw->status = trim(TournamentCore::$_PENDING);   
-			//$_nw->description = SystemCore::processDescription ( trim($_teamName), trim($_description) );  
+			$_nw->description = SystemCore::processDescription ( trim($_teamName), trim($_description) );  
 			$_nw->save(); 
 			
 			return $_nw; 
@@ -106,7 +124,7 @@ class TeamTable extends PluginTeamTable
 	}
 	//
 	// process list selection function 
-   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   public static function processSelection ( $_orgID=null, $_tournamentID=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -117,10 +135,9 @@ class TeamTable extends PluginTeamTable
 				->limit($_limit) 
 				->orderBy("tm.id ASC")
 				->where("tm.id IS NOT NULL");
-				if(!is_null($_orgID)) $_qry = $_qry->addWhere("tm.org_id = ? AND tm.org_token_id = ? ", array($_orgID, $_orgTokenID));
-				if(!is_null($_season)) $_qry = $_qry->addWhere("tm.season = ? ", $_season); 
+				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("tm.org_id = ? AND tm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
 				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
-				if(!is_null($_exclusion))  $_qry = $_qry->andWhereNotIn("tm.id", $_exclusion ); 
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
 						$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
