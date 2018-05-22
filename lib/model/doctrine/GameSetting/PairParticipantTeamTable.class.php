@@ -73,7 +73,7 @@ class PairParticipantTeamTable extends PluginPairParticipantTeamTable
 			$_nw->tournament_match_fixture_group_token_id = sha1(md5(trim($_matchFixtureGroupTokenID)));   
 			$_nw->group_participant_team_id = trim($_participantTeamGroupID); 
 			$_nw->group_participant_team_token_id = sha1(md5(trim($_participantTeamGroupTokenID)));
-			$_nw->confirm_flag = true;     
+			$_nw->confirmed_flag = true;     
 			$_nw->active_flag = true;     
 			$_nw->approval_status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_APPROVED;  
 			$_nw->status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_ACTIVE;  

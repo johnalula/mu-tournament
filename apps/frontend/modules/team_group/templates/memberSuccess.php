@@ -127,7 +127,11 @@
 							<!-- Begining of toolbar -->
 								<div class="ui-toolbar-menu-box ui-panel-content-border">
 									<div class="ui-toolbar-menu">
-										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
+										<?php if($_tournamentTeamGroup->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
+											<?php include_partial('partials/insert_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
+										<?php else: ?>
+											<?php include_partial('partials/modal_action_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
+										<?php endif; ?>
 									</div>
 								</div>
 								<!--    End of toolbar      -->
@@ -173,7 +177,7 @@
 									<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 										<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
 									</span>
-									<?php echo __('Candidate Participant Teams').' ( Type: '.$_tournamentTeamGroup->gameCategoryName.' -  Code #: '.$_tournamentTeamGroup->tournamentGroupFullCode.' - Mode : '.TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode).' )'  ?>
+									<?php echo __('Candidate Participant Teams').' ( Type: '.$_tournamentTeamGroup->contestantTeamMode.' -  Code #: '.$_tournamentTeamGroup->tournamentGroupFullCode.' - Mode : '.TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode).' )'  ?>
 								</h2>
 								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -184,7 +188,11 @@
 							<!-- Begining of toolbar -->
 								<div class="ui-toolbar-menu-box ui-panel-content-border">
 									<div class="ui-toolbar-menu">
-										<?php include_partial('partials/insert_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
+										<?php if($_tournamentTeamGroup->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
+											<?php include_partial('partials/insert_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
+										<?php else: ?>
+											<?php include_partial('partials/modal_action_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
+										<?php endif; ?>
 									</div>
 								</div>
 								<!--    End of toolbar      -->
@@ -274,7 +282,8 @@
 	
 	function deleteGroupMemberParticipant(idNumber)
 	{
-		//alert(idNumber);
+		 
+		alert(idNumber);
 		return false;
 	}
 	//*********************************/
@@ -314,6 +323,12 @@
 			$("#createGroupParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 			$("#cancelGroupParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			$('#candidateGroupParticipantTeamModal').modal('hide');
+		return e.preventDefault();
+	});
+	
+	$("#viewCandidateGroupParticipantTeamModal").submit(function(e) { 
+		 
+			$('#viewCandidateGroupParticipantTeamModal').modal('hide');
 		return e.preventDefault();
 	});
 	 

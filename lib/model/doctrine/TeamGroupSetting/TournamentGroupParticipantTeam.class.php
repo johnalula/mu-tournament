@@ -55,7 +55,7 @@ class TournamentGroupParticipantTeam extends PluginTournamentGroupParticipantTea
 	{
 		$_flag = true;   
 		$this->confirmed_flag = true; 
-		$this->confirmed_status = trim(TournamentCore::$_ACTIVE); 
+		$this->confirmed_status = trim(TournamentCore::$_CONFIRMED); 
 		$this->save();
 		return $_flag;
 	}

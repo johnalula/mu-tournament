@@ -26,8 +26,8 @@
 							</div><!-- /input-group --> 
 						</div>
 						<div class="form-group">
-							<label class="col-sm-22 control-label" title="<?php echo __('Game Type') ?>"><?php echo __('Game Type') ?>: <span class="ui-red-text">&nbsp;</span></label>
-							<div class="col-sm-31"> 
+							<label class="col-sm-22 control-label" title="<?php echo __('Game Type') ?>"><?php echo __('Game Type') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
 								<select id="sport_game_type" name="sport_game_type[sport_game_type]" class="form-control" title="<?php echo __('Game Type') ?>">
 									<option value="" selected  ><?php echo 'Select Game Type ...' ?></option>
 									<?php foreach(TournamentCore::processDistanceTypes() as $_key => $_roundNumber): ?>								 
@@ -37,8 +37,8 @@
 									<?php endforeach; ?>
 								</select>
 							</div><!-- /input-group --> 
-							<label class="col-sm-21 control-label" title="<?php echo __('Type') ?>"><?php echo __('Type') ?>: <span class="ui-red-text">&nbsp;</span></label>
-							<div class="col-sm-31"> 
+							<label class="col-sm-212 control-label" title="<?php echo __('Type') ?>"><?php echo __('Type') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
 								<select id="sport_game_type_mode" name="sport_game_type[sport_game_type_mode]" class="form-control" title="<?php echo __('Type Mode') ?>">
 									<option value="" selected  ><?php echo 'Select Type ...' ?></option>
 									<?php foreach(TournamentCore::processAthleticsTypes() as $_key => $_typeMode): ?>								 
@@ -50,59 +50,51 @@
 							</div><!-- /input-group --> 
 						</div> 
 						<div class="form-group">
-							<label class="col-sm-22 control-label" title="<?php echo __('Measurement') ?>"><?php echo __('Measurement') ?>: <span class="ui-red-text">&nbsp;</span></label>
-							<div class="col-sm-31"> 
-								<select id="sport_game_measurement" name="sport_game_type[sport_game_measurement]" class="form-control" title="<?php echo __('Measurement') ?>">
-									<option value="" selected  ><?php echo 'Select Measure. ...' ?></option>
-									<?php foreach(TournamentCore::processDistanceMeasurements() as $_key => $_event): ?>								 
-										<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_METER ? 'selected':'' ?> >
-											<?php echo $_event.' ('.TournamentCore::processDistanceMeasurementAlias ($_key).')' ?>
+							<label class="col-sm-22 control-label" title="<?php echo __('Throw Type Mode') ?>"><?php echo __('Throw') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
+								<select id="sport_game_throw_type" name="sport_game_type[sport_game_throw_type]" class="form-control" title="<?php echo __('Game Throw Type') ?>">
+									<option value="" selected  ><?php echo 'Select Throw ...' ?></option>
+									<?php foreach(TournamentCore::processThrowTypes() as $_key => $_type): ?>								 
+										<option value="<?php echo $_key ?>"  >
+											<?php echo $_type ?>
 										</option>								 
 									<?php endforeach; ?>
 								</select>
 							</div><!-- /input-group --> 
-							<label class="col-sm-21 control-label" title="<?php echo __('Game Distance') ?>"><?php echo __('Dist') ?>: <span class="ui-red-text">&nbsp;</span></label>
-							<div class="col-sm-31"> 
-								<input type="text" class="form-control" id="sport_game_distance"	name="sport_game_type[sport_game_distance]"	placeholder="<?php echo __('Game Distance') ?>">
+							<label class="col-sm-212 control-label" title="<?php echo __('Jump Type Mode') ?>"><?php echo __('Jumping') ?>: <span class="ui-red-text"></span></span></label>
+							<div class="col-sm-30"> 
+								<select id="sport_game_jump_type_mode" name="sport_game_type[sport_game_jump_type_mode]" class="form-control" title="<?php echo __('Jump Type Mode') ?>">
+									<option value="" selected  ><?php echo 'Select Jump ...' ?></option>
+									<?php foreach(TournamentCore::processJumpTypes() as $_key => $_event): ?>								 
+										<option value="<?php echo $_key ?>"  >
+											<?php echo $_event ?>
+										</option>								 
+									<?php endforeach; ?>
+								</select>
 							</div><!-- /input-group --> 
 						</div> 
 						<div class="form-group">
-							<label class="col-sm-22 control-label" title="<?php echo __('Sport Game Name') ?>"><?php echo __('Game Name') ?>:<span class="ui-red-text">*</span></label>
-							<div class="col-sm-80"> 
-								<input type="text" class="form-control" id="sport_game_type_name"	name="sport_game_type[sport_game_type_name]"	placeholder="<?php echo __('Game Name') ?>">
-								<span class="required-error ui-display-none" id="middle_name_required"><?php echo __("Required field!") ?></span>
-								<span class="invalid-error ui-display-none" id="middle_name_invalid"><?php echo __("Invalid input!") ?></span>
-							</div><!-- /input-group --> 
-						</div>
-						<div class="form-group">
-							<label class="col-sm-22 control-label" title="<?php echo __('Team Member Last Name') ?>"><?php echo __('Last Name') ?>:<span class="ui-red-text">*</span></label>
-							<div class="col-sm-80"> 
-								<input type="text" class="form-control" id="last_name" name="team_member[last_name]" placeholder="<?php echo __('Last Name') ?>" title="<?php echo __('Team Member Last name') ?>"required rel="ui-string" >
-								<span class="required-error ui-display-none" id="last_name_required"><?php echo __("Required field!") ?></span>
-								<span class="invalid-error ui-display-none" id="last_name_invalid"><?php echo __("Invalid input!") ?></span>
-							</div><!-- /input-group --> 
-						</div>  
-						<div class="form-group">
-							<label class="col-sm-22 control-label" title="<?php echo __('Member Gender') ?>"><?php echo __('Gender') ?>:</label>
-							<div class="col-sm-31"> 
-								<select id="member_gender" name="team_member[member_gender]" class="form-control" title="<?php echo __('Member Gender') ?>">
-									<?php foreach(PartyCore::processAllGenders() as $_key => $_mode): ?>								 
-										<option value="<?php echo  $_key ?>">
-											<?php echo $_mode ?>
+							<label class="col-sm-22 control-label" title="<?php echo __('Player Mode') ?>"><?php echo __('Player Mode') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
+								<select id="sport_game_player_mode" name="sport_game_type[sport_game_player_mode]" class="form-control" title="<?php echo __('Player Mode') ?>">
+									<option value="" selected  ><?php echo 'Select Player Mode ...' ?></option>
+									<?php foreach(TournamentCore::processPlayerModes() as $_key => $_type): ?>								 
+										<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_MULTIPLE ? 'selected':'' ?> >
+											<?php echo $_type ?>
 										</option>								 
 									<?php endforeach; ?>
 								</select>
 							</div><!-- /input-group --> 
-							<label class="col-sm-21 control-label" title="<?php echo __('Member Date of Birth') ?>"><?php echo __('DOB') ?>:<span class="ui-red-text"></span></label>
-							<div class="col-sm-31"> 
-								<div class="input-group"> 
-									<input type="text" class="form-control" id="date_of_birth" name="team_member[date_of_birth]" placeholder="<?php echo __('Date of Birth') ?>" title="<?php echo __('Employee Date of Birth') ?>" readonly rel="ui-date" >
-									<span class="input-group-btn">
-										<button class="btn btn-default ui-button-img" type="button" title="<?php echo __('Date of birth') ?>">
-											<img class="ui-addon-img" src="<?php echo image_path('icons/calendar_small') ?>" >
-										</button>
-									</span> 
-								</div> 
+							<label class="col-sm-212 control-label" title="<?php echo __('Ranking Mode') ?>"><?php echo __('Ranking') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
+								<select id="sport_game_ranking_mode" name="sport_game_type[sport_game_ranking_mode]" class="form-control" title="<?php echo __('Sport Game Status') ?>">
+									<option value="" selected  ><?php echo 'Select Status ...' ?></option>
+									<?php foreach(TournamentCore::processResultRankingModes() as $_key => $_status): ?>								 
+										<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_POINT_ORDER ? 'selected':'' ?> >
+											<?php echo $_status ?>
+										</option>								 
+									<?php endforeach; ?>
+								</select>
 							</div><!-- /input-group --> 
 						</div> 
 						<div class="form-group">
@@ -122,54 +114,77 @@
 							<?php echo __('Detail Info') ?>
 						</legend>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" title="<?php echo __('Team Member Role') ?>"><?php echo __('Role') ?>:<span class="ui-red-text"></span></label>
+							<label class="col-sm-2 control-label" title="<?php echo __('Sport Game Name') ?>"><?php echo __('Game Name') ?>:<span class="ui-red-text">*</span></label>
 							<div class="col-sm-80"> 
-								<select id="team_member_role" name="team_member[team_member_role]" class="form-control" title="<?php echo __('Team Member Role') ?>"  >
-									<option value="" selected  ><?php echo 'Select Player Mode ...' ?></option>
-									 
-								</select> 
+								<input type="text" class="form-control" id="sport_game_type_name"	name="sport_game_type[sport_game_type_name]"	placeholder="<?php echo __('Game Name') ?>">
+								<span class="required-error ui-display-none" id="middle_name_required"><?php echo __("Required field!") ?></span>
+								<span class="invalid-error ui-display-none" id="middle_name_invalid"><?php echo __("Invalid input!") ?></span>
 							</div><!-- /input-group --> 
 						</div>  
 						<div class="form-group">
-							<label class="col-sm-2 control-label" title="<?php echo __('Sport Game') ?>"><?php echo __('Sport Game') ?>:<span class="ui-red-text"></span></label>
-							<div class="col-sm-80"> 
-								<div class="input-group">
-									<input type="text" class="form-control " id="sport_game_name" name="team_member[sport_game_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateMemberSportGameModal"  disabled>
-									<input type="hidden" class="form-control" id="sport_game_id" name="team_member[sport_game_id]" placeholder="" value="">
-									<input type="hidden" class="form-control" id="sport_game_token_id" name="team_member[sport_game_token_id]" value=""> 
-									<span class="input-group-btn">
-										<button class="btn btn-default selectCandidateMemberSportGame" type="button" data-toggle="modal" data-target="#candidateMemberSportGameModal" title="<?php echo __('Candidat Sport Game') ?>">
-											<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
-										</button>
-									</span>
-								</div><!-- /input-group -->
-							</div><!-- /input-group --> 
-						</div> 
-						<div class="form-group">
-							<label class="col-sm-2 control-label" title="<?php echo __('Employee City/Province Address') ?>"><?php echo __('City/Province') ?>:<span class="ui-red-text"></span></label>
-							<div class="col-sm-80"> 
-								<input type="text" class="form-control" id="employee_city_province_address" name="team_member[employee_city_province_address]" placeholder="<?php echo __('City/Province') ?>" title="<?php echo __('Employee City/Province Address') ?>" value="Mekelle" required rel="ui-city-province" > 
-							</div><!-- /input-group --> 
-						</div> 
-						<div class="form-group">
-							<label class="col-sm-2 control-label" title="<?php echo __('Event Type') ?>"><?php echo __('Event Type') ?>:<span class="ui-red-text"></span></label>
-							<div class="col-sm-31"> 
-								<select id="event_type" name="team_member[event_type]" class="form-control" title="<?php echo __('Event Type') ?>">
-									<option value="" selected  ><?php echo 'Select Event ...' ?></option>
-									<?php foreach(TournamentCore::processEventTypes() as $_key => $_eventType): ?>								 
-										<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultEventType () ? 'selected':'' ?> >
-											<?php echo $_eventType ?>
+							<label class="col-sm-2 control-label" title="<?php echo __('Measurement') ?>"><?php echo __('Measure.') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
+								<select id="sport_game_measurement" name="sport_game_type[sport_game_measurement]" class="form-control" title="<?php echo __('Measurement') ?>">
+									<option value="" selected  ><?php echo 'Select Measure. ...' ?></option>
+									<?php foreach(TournamentCore::processDistanceMeasurements() as $_key => $_event): ?>								 
+										<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_METER ? 'selected':'' ?> >
+											<?php echo $_event.' ('.TournamentCore::processDistanceMeasurementAlias ($_key).')' ?>
 										</option>								 
 									<?php endforeach; ?>
-								</select> 
+								</select>
 							</div><!-- /input-group --> 
-							<label class="col-sm-21 control-label" title="<?php echo __('Employee ID Number') ?>"><?php echo __('ID') ?> #:<span class="ui-red-text"></span></label>
-							<div class="col-sm-31"> 
-								<input type="text" class="form-control" id="employee_id_number" name="team_member[employee_id_number]" placeholder="<?php echo __('ID Number') ?>" title="<?php echo __('Employee ID Number') ?>" value="" rel="ui-identification-number" >
-								<span class="required-error ui-display-none"><?php echo __("Required field!") ?></span>
-								<span class="invalid-error ui-display-none"><?php echo __("Invalid input!") ?></span>
+							<label class="col-sm-212 control-label" title="<?php echo __('Game Distance') ?>"><?php echo __('Distance') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
+								<input type="text" class="form-control" id="sport_game_distance"	name="sport_game_type[sport_game_distance]"	placeholder="<?php echo __('Game Distance') ?>">
 							</div><!-- /input-group --> 
 						</div> 
+						<div class="form-group">
+							<label class="col-sm-2 control-label" title="<?php echo __('Throw Type Mode') ?>"><?php echo __('Throw') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
+								<select id="sport_game_throw_type" name="sport_game_type[sport_game_throw_type]" class="form-control" title="<?php echo __('Game Throw Type') ?>">
+									<option value="" selected  ><?php echo 'Select Throw ...' ?></option>
+									<?php foreach(TournamentCore::processThrowTypes() as $_key => $_type): ?>								 
+										<option value="<?php echo $_key ?>"  >
+											<?php echo $_type ?>
+										</option>								 
+									<?php endforeach; ?>
+								</select>
+							</div><!-- /input-group --> 
+							<label class="col-sm-212 control-label" title="<?php echo __('Jump Type Mode') ?>"><?php echo __('Jump') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
+								<div class="btn-toolbar" role="toolbar">
+									<div class="btn-group">
+										<input type="hidden" class="form-control" id="group_team_number_mandatory_flag" name="team_group_category[group_team_number_mandatory_flag]" value="0" >
+										<button type="button" class="btn btn-default btn-xs btn-padding-sm-0 " id="enabledNumberOfTeamsPerGroupYesButton" value="1" title="<?php echo __('Enable Number of Teams') ?>"><?php echo __('Yes') ?>
+										<button type="button" class="btn btn-default btn-sm btn-padding-sm-0 btn-danger active" id="enabledNumberOfTeamsPerGroupNoButton" value="0" title="<?php echo __('Disabled Number of Teams') ?>"><?php echo __('No') ?> 
+									</div> 
+								</div>
+							</div><!-- /input-group --> 
+						</div>  
+						<div class="form-group">
+							<label class="col-sm-2 control-label" title="<?php echo __('Ranking Mode') ?>"><?php echo __('Ranking') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
+								<select id="sport_game_throw_type" name="sport_game_type[sport_game_throw_type]" class="form-control" title="<?php echo __('Game Throw Type') ?>">
+									<option value="" selected  ><?php echo 'Select Throw ...' ?></option>
+									<?php foreach(TournamentCore::processThrowTypes() as $_key => $_type): ?>								 
+										<option value="<?php echo $_key ?>"  >
+											<?php echo $_type ?>
+										</option>								 
+									<?php endforeach; ?>
+								</select>
+							</div><!-- /input-group --> 
+							<label class="col-sm-212 control-label" title="<?php echo __('Sport Game Status') ?>"><?php echo __('Status') ?>: <span class="ui-red-text"></span></label>
+							<div class="col-sm-30"> 
+								<select id="sport_game_status" name="sport_game_type[sport_game_status]" class="form-control" title="<?php echo __('Sport Game Status') ?>">
+									<option value="" selected  ><?php echo 'Select Status ...' ?></option>
+									<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_status): ?>								 
+										<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_ACTIVE ? 'selected':'' ?> >
+											<?php echo $_status ?>
+										</option>								 
+									<?php endforeach; ?>
+								</select>
+							</div><!-- /input-group --> 
+						</div>  
 						<div class="form-group">
 							<label class="col-sm-2 control-label" title="<?php echo __('Remark') ?>"><?php echo __('Remark') ?>:</label>
 							<div class="col-sm-80"> 
@@ -186,4 +201,16 @@
 
 <script>
  
+ $('#enabledNumberOfTeamsPerGroupYesButton').click(function() {
+		$('#enabledNumberOfTeamsPerGroupYesButton').addClass('btn-success').addClass('active');
+		$('#enabledNumberOfTeamsPerGroupNoButton').removeClass('btn-danger').removeClass('active');
+		document.getElementById("group_team_number_mandatory_flag").value = $(this).val() == 1 ? 1:0;
+	});  
+	$('#enabledNumberOfTeamsPerGroupNoButton').click(function() {
+		$('#enabledNumberOfTeamsPerGroupNoButton').addClass('btn-danger').addClass('active');
+		$('#enabledNumberOfTeamsPerGroupYesButton').removeClass('btn-success').removeClass('active');
+		document.getElementById("group_team_number_mandatory_flag").value = $(this).val() == 0 ? 0:1;
+	});   
+	
+	
 </script>

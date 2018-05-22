@@ -513,6 +513,7 @@ class TournamentCore {
 			break; 
 		}
 	}
+	 
 	/*********************************************/
 	
 	public static $_FIN = 1;
@@ -867,8 +868,8 @@ class TournamentCore {
 	{
 		 try {
 				return self::$_TRACK; 
-			} catch ( Exception $_e ) {
-			return $_e; 
+			} catch ( Exception $_e ) {		
+			 	return null; 
 	  }   
 	}
 	public static function makeDefaultEventType ($_eventType)
@@ -1335,14 +1336,14 @@ class TournamentCore {
 /************************************************/
 
 	public static $_PRELIMINARY_ROUND = 1; 
-	public static $_NEXT_ROUND = 2; 
-	public static $_QUALIFIED_ROUND = 3; 
-	public static $_FINAL_ROUND = 4; 
-	public static $_KNOCK_OUT = 5; 
+	public static $_HEAT_ROUND = 2;
+	public static $_QUALIFYING_ROUND = 3; 
+	public static $_KNOCK_OUT = 4;  
+	public static $_FINAL_ROUND = 5; 
 	
-	public static $_COMPETITION_MODES = array ( 1 => "Preliminary Round", 2 => "Next Round", 3 => "Qualified Round", 4 => "Final Round", 5 => "Knock Out" );
+	public static $_COMPETITION_MODES = array ( 1 => "Preliminary", 2 => "Heat Round", 3 => "Qualifying", 4 => "Knock Out", 5 => "Final" );
 	
-	public static function processMatchRoundModes ( ) 
+	public static function processMatchCompetitionRoundModes ( ) 
 	{
 	  try {
 				return  self::$_COMPETITION_MODES; 
@@ -1350,7 +1351,7 @@ class TournamentCore {
 			return null; 
 	  }        
 	} 
-	public static function processMatchRoundModeID ( $_value ) 
+	public static function processMatchCompetitionRoundModeID ( $_value ) 
 	{
 		try {
 			foreach( self::$_COMPETITION_MODES as $_key => $_round ) {
@@ -1363,7 +1364,7 @@ class TournamentCore {
 		}        
 	}
 	
-	public static function processMatchRoundModeValue ( $_id )
+	public static function processMatchCompetitionRoundModeValue ( $_id )
 	{
 		try {
 				foreach( self::$_COMPETITION_MODES as $_key => $_round ) {
@@ -1375,7 +1376,7 @@ class TournamentCore {
 			return null; 
 		}    
 	}
-	public static function processDefaultMatchRoundMode ()
+	public static function processDefaultMatchCompetitionRoundMode ()
 	{
 		try {
 				return  self::$_PRELIMINARY_ROUND; 
@@ -1386,13 +1387,13 @@ class TournamentCore {
 	public static function processMatchRoundModeAlias ($_round)
 	{
 		switch($_round) {			
-			case self::$_FIRST_ROUND:
+			case self::$_PRELIMINARY_ROUND:
 				return 'first_round';
 			break;	
-			case self::$_NEXT_ROUND:
+			case self::$_HEAT_ROUND:
 				return 'next_round';
 			break; 
-			case self::$_QUALIFIED_ROUND:
+			case self::$_QUALIFYING_ROUND:
 				return 'qualified_round';
 			break;  
 			case self::$_FINAL_ROUND:
@@ -1403,7 +1404,25 @@ class TournamentCore {
 			break;  
 		}
 	} 
+	public static function makeMatchCompetitionRoundMode ($_roundMode)
+	{
+		 switch($_roundMode) {			
+			case self::$_PRELIMINARY:
+				return self::$_PRELIMINARY_ROUND;
+			break;
+			case self::$_QUARTER_FINAL:
+				return self::$_QUALIFYING_ROUND;
+			break;
+			case self::$_SEMI_FINAL:
+				return self::$_QUALIFYING_ROUND;
+			break;
+			case self::$_FINAL:
+				return self::$_FINAL_ROUND;
+			break; 
+		}
+	} 
 	
+	 
 	/************************************************/
 	
 	public static $_POINT_ORDER = 1; 

@@ -24,9 +24,11 @@
  * @property integer $draw_result_table_point
  * @property integer $loose_result_table_point
  * @property integer $result_ranking_mode
+ * @property integer $number_of_contestants_per_track_mode
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
+ * @property boolean $fixed_contestant_per_track_flag
  * @property boolean $default_flag
  * @property boolean $active_flag
  * @property integer $status
@@ -109,6 +111,9 @@ abstract class BaseSportGame extends sfDoctrineRecord
         $this->hasColumn('result_ranking_mode', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('number_of_contestants_per_track_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('start_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
@@ -120,6 +125,10 @@ abstract class BaseSportGame extends sfDoctrineRecord
         $this->hasColumn('end_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('fixed_contestant_per_track_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('default_flag', 'boolean', null, array(
              'type' => 'boolean',

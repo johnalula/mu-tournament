@@ -8,10 +8,10 @@
  * @property string $token_id
  * @property integer $tournament_match_fixture_id
  * @property string $tournament_match_fixture_token_id
+ * @property integer $tournament_match_fixture_group_id
  * @property integer $tournament_match_participant_team_id
- * @property string $tournament_match_participant_team_token_id
- * @property integer $group_participant_team_member_id
- * @property string $group_participant_team_member_token_id
+ * @property integer $participant_team_member_id
+ * @property integer $participant_team_member_role_id
  * @property integer $match_position_order
  * @property integer $match_result_position_order
  * @property integer $match_result_score
@@ -25,7 +25,9 @@
  * @property integer $approval_status
  * @property integer $status
  * @property clob $description
- * @property TournamentGroupParticipantTeamMember $TournamentGroupParticipantTeamMember
+ * @property TeamMemberParticipant $TeamMemberParticipant
+ * @property TeamMemberParticipantRole $TeamMemberParticipantRole
+ * @property TournamentMatchFixtureGroup $TournamentMatchFixtureGroup
  * @property TournamentMatchFixture $TournamentMatchFixture
  * @property TournamentMatchParticipantTeam $TournamentMatchParticipantTeam
  * 
@@ -50,19 +52,17 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('tournament_match_fixture_group_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('tournament_match_participant_team_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('tournament_match_participant_team_token_id', 'string', 100, array(
-             'type' => 'string',
-             'length' => 100,
-             ));
-        $this->hasColumn('group_participant_team_member_id', 'integer', null, array(
+        $this->hasColumn('participant_team_member_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('group_participant_team_member_token_id', 'string', 100, array(
-             'type' => 'string',
-             'length' => 100,
+        $this->hasColumn('participant_team_member_role_id', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('match_position_order', 'integer', null, array(
              'type' => 'integer',
@@ -115,8 +115,18 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('TournamentGroupParticipantTeamMember', array(
-             'local' => 'group_participant_team_member_id',
+        $this->hasOne('TeamMemberParticipant', array(
+             'local' => 'participant_team_member_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('TeamMemberParticipantRole', array(
+             'local' => 'participant_team_member_role_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('TournamentMatchFixtureGroup', array(
+             'local' => 'tournament_match_fixture_group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

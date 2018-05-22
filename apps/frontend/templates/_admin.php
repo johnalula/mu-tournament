@@ -60,6 +60,12 @@
 								</a>
 							</li>  
 							<li>
+								<a href="<?php echo url_for('sport_games/index') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/sports') ?>"><?php echo __('Sport Games') ?>
+								</a>
+							</li>  
+							<li role="separator" class="divider"></li> 
+							<li>
 								<a href="<?php echo url_for('tournament_setup/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/sport_games') ?>"><?php echo __('Game Setup') ?>
 								</a>
@@ -69,10 +75,9 @@
 									<img class="navbar-img" src="<?php echo image_path('settings/game_types') ?>"><?php echo __('Sport Game Types') ?>
 								</a>
 							</li>  
-							<li role="separator" class="divider"></li> 
-							<li>
-								<a href="<?php echo url_for('sport_games/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/sports') ?>"><?php echo __('Sport Games') ?>
+							<li class="">
+								<a href="<?php echo url_for('tournament_setup/index') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/game_types') ?>"><?php echo __('Tournament Vanue') ?>
 								</a>
 							</li>  
 						</ul>
@@ -86,7 +91,7 @@
 						</a>
 						<ul class="dropdown-menu">  
 							<li>
-								<a href="<?php echo url_for('match/new') ?>">
+								<a href="<?php echo url_for('match/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/clock') ?>"><?php echo __('Matchs') ?>
 								</a>
 							</li> 

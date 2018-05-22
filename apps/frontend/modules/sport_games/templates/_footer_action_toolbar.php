@@ -1,33 +1,28 @@
-<div id="" class="navbar-collapse ui-toolbar">
-	<ul class="nav navbar-nav ui-toolbar-action">
+<ul class="nav navbar-nav ui-toolbar-action">
+			 
+	<?php if($sf_request->getParameter('action') == 'index'): ?>
+		<li class="">
+			<a href="<?php echo url_for('team_group/new') ?>" title="<?php echo __('Add New Tournament Team Group') ?>" id="addTournamentTeamGRoup" class="" >
+				<img class="navbar-nav-img" src="<?php echo image_path('icons/add') ?>">
+				<?php echo __('New') ?>
+			</a>
+		</li> 
+	<?php endif; ?>
 	
-	<!-- ************ Account Chart Management ********************** -->
-		
-		<?php if($sf_request->getParameter('module') == 'sport_games' ): ?>
-			 
-			<?php if($sf_request->getParameter('action') == 'new'): ?>
-				<li class="">
-					<button title="<?php echo __('Save Sport Game Information') ?>" id="createSportGameFooter" class="ui-disabled-toolbar-btn" disabled >
-						<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
-						<?php echo __('Save') ?>
-					</button>
-				</li>	
-				<li class="">
-					<button title="<?php echo __('Cancel Sport Game Information') ?>" id="cancelSportGameFooter" class="ui-disabled-toolbar-btn" disabled>
-						<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
-						<?php echo __('Cancel') ?>
-					</button>
-				</li>
-				<li class="">
-					<a href="<?php echo url_for('sport_games/index') ?>" title="<?php echo __('Back to Sport Game List') ?>" id="backToSportGameFooter" class="" >
-						<img class="navbar-nav-img" src="<?php echo image_path('icons/details') ?>">
-						<?php echo __('List') ?>
-					</a>
-				</li>
-			<?php endif; ?>
-			 
-		<?php endif; ?>
-		 
-	</ul>
-</div>
-
+	<?php if($sf_request->getParameter('action') == 'new'): ?>
+		<li class="">
+			<button title="<?php echo __('Save Team Group Member Information') ?>" id="createBatchGroupParticipantTeam" class="ui-disabled-toolbar-btn" disabled >
+				<img class="navbar-nav-img" src="<?php echo image_path('icons/del') ?>">
+				<?php echo __('Delete') ?>
+			</button>
+		</li>	
+		<li class="">
+			<button title="<?php echo __('Cancel Team Group Member Information') ?>" id="cancelGroupParticipantTeam" class="ui-disabled-toolbar-btn" disabled>
+				<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
+				<?php echo __('Confirm') ?>
+			</button>
+		</li> 
+	<?php endif; ?>
+	
+	 
+</ul>

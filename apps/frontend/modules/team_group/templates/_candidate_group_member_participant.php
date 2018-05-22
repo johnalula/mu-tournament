@@ -37,8 +37,8 @@
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo TournamentCore::processEventTypeValue($_candidateParticipant->id) ?>
 			</td> 
-			<td class="ui-td-right-text ui-td-xsmall-00">
-				 <?php echo $_candidateParticipant->teamName.' -- '.$_candidateParticipant->teamID ?> 
+			<td class="ui-td-left-text ui-td-xsmall-00">
+				 <?php echo $_candidateParticipant->id.' -- '.$_candidateParticipant->id ?> 
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo Wordlimit::Wordlimiter($_candidateParticipant->description, 5) ?>

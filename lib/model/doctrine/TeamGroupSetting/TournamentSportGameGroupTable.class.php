@@ -17,7 +17,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
         return Doctrine_Core::getTable('TournamentSportGameGroup');
     }
   //
-	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_contestantTeamMode, $_genderCategory, $_numberOfTeamsPerGroup, $_groupNumber, $_groupCode, $_groupStatus, $_description, $_userID, $_userTokenID )
+	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_contestantTeamMode, $_genderCategory, $_numberOfTeamsPerGroup, $_groupNumber, $_groupCode, $_mandatoryFlag, $_groupStatus, $_description, $_userID, $_userTokenID )
 	{
 			 
 			$_initialGroupNumber = 1;
@@ -41,14 +41,14 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 			switch ( trim($_contestantTeamMode) ) {
 				case TournamentCore::$_PAIR_TEAM: 
 					for($_i=0,$_key=$_initialGroupNumber;$_i<$_groupNumber;$_i++,++$_key) {
-						$_sportGameGroup = PairContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_key, $_numberOfTeamsPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
+						$_sportGameGroup = PairContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_key, $_numberOfTeamsPerGroup, $_contestantTeamMode, $_genderCategory, $_mandatoryFlag, $_groupStatus, $_groupCode, $_description );
 						
 						$_sportGameGroup->makeGroupCode ($_groupCode, $_sportGameGroup->id); 
 					}
 				break; 
 				case TournamentCore::$_MULTIPLE_TEAM:  
 					for($_i=0,$_key=$_initialGroupNumber;$_i<$_groupNumber;$_i++,++$_key) {
-						$_sportGameGroup = MultipleContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_key, $_numberOfTeamsPerGroup, $_contestantTeamMode, $_genderCategory, $_groupStatus, $_groupCode, $_description );
+						$_sportGameGroup = MultipleContestantTeamGroupTable::processNew ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_key, $_numberOfTeamsPerGroup, $_contestantTeamMode, $_genderCategory, $_mandatoryFlag, $_groupStatus, $_groupCode, $_description );
 						
 						$_sportGameGroup->makeGroupCode ($_groupCode, $_sportGameGroup->id); 
 					}

@@ -37,9 +37,9 @@ class TournamentMatchParticipantTeamTable extends PluginTournamentMatchParticipa
 					
 					$_matchFixtureGroup = MultipleParticipantTeamTable::processNew ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_matchStatus, $_description, $_dataCreationMode);
 					
-					$_groupParticipantTeam = TournamentGroupParticipantTeamTable::processObject ( $_orgID, $_orgTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID ) ; //5 21054315fadfa7172ef46b8f49f6ce7c9e4148d7
+					//$_groupParticipantTeam = TournamentGroupParticipantTeamTable::processObject ( $_orgID, $_orgTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID ) ; //5 21054315fadfa7172ef46b8f49f6ce7c9e4148d7
 					
-					$_flag1 = $_groupParticipantTeam->checkConfirmation () ? $_groupParticipantTeam->makeConfirmation ():true;
+					//$_flag1 = $_groupParticipantTeam->checkConfirmation () ? $_groupParticipantTeam->makeConfirmation ():true;
 					
 					//$_matchFixtureGroup->makeMatchFixtureGroupCode ($_tournamentMatchNumber, $_matchFixtureID);
 					
@@ -109,7 +109,7 @@ class TournamentMatchParticipantTeamTable extends PluginTournamentMatchParticipa
 								
 								gmGrpMbr.id as groupParticipantTeamID, gmGrpMbr.token_id as groupParticipantTeamTokenID,
 								
-								tmPrt.id as participantTeamID, tmPrt.token_id as participantTeamTokenID, tmPrt.team_name as participantTeamName, tmPrt.alias as participantTeamAlias, tmPrt.country_id as teamCountry, tmPrt.team_city as teamCity, tmPrt.team_number as teamNumber, tmPrt.confirm_flag as confirmFlag,
+								tmPrt.id as participantTeamID, tmPrt.token_id as participantTeamTokenID, tmPrt.team_name as participantTeamName, tmPrt.alias as participantTeamAlias, tmPrt.country_id as teamCountry, tmPrt.team_city as teamCity, tmPrt.team_number as teamNumber, tmPrt.confirmed_flag as confirmFlag,
 		 
 								 
 		";	
@@ -442,9 +442,5 @@ class TournamentMatchParticipantTeamTable extends PluginTournamentMatchParticipa
 	/*********************************************************
 	********** Candidate filtering process *******************
 	**********************************************************/
-	
-	public static function processRoleSelection ()
-	{
-		 
-	}
+	 
 }

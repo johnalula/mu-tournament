@@ -19,25 +19,23 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
     //
    public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamID, $_participantTeamTokenID, $_teamGameParticipationID, $_teamGameParticipationTokenID, $_sportGameID, $_participantTeamName, $_sportGameGroupName, $_genderCategory, $_entryDate, $_teamStatus, $_description, $_dataCreationMode, $_userID, $_userTokenID )
 	{
-			$_sportGameGroup =  TournamentSportGameGroupTable::processObject ($_orgID, $_orgTokenID, $_sportGameGroupID, $_sportGameGroupTokenID );  
-			
 			switch ( trim($_dataCreationMode) ) {
 				case SystemCore::$_SINGLE_DATA: 
 						$_groupParticipantTeam = self::processSave ( $_tournamentID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamID, $_participantTeamTokenID, $_teamGameParticipationID, $_participantTeamName, $_sportGameGroupName, $_entryDate, $_teamStatus, $_description );
 				
-						$_flag1 = $_sportGameGroup->checkInitiated () ? $_sportGameGroup->makePending ():true;
-				
 						$_gameParticipation = TeamGameParticipationTable::processObject ( $_orgID, $_orgTokenID, $_teamGameParticipationID, $_teamGameParticipationTokenID ) ;
 						
 						$_flag2 = $_gameParticipation->makeConfirmation ();
+						
+						$_sportGameGroup =  TournamentSportGameGroupTable::processObject ($_orgID, $_orgTokenID, $_sportGameGroupID, $_sportGameGroupTokenID );  
+						
+						$_flag1 = ($_sportGameGroup->checkInitiated () && $_sportGameGroup->hasPendingTeamGameParticipation) ? $_sportGameGroup->makePending():$_sportGameGroup->makeActivation();
 				
 				break; 
 				case SystemCore::$_MULTIPLE_DATA: 
 					
 					$_candidateParticipantTeams = TournamentTeamGroupTable::selectAllCandidateParticipantTeams ( $_tournamentGroupID, $_tournamenGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword ); 
 					
-					//$_candidateParticipantTeams = TournamentTeamGroupTable::selectCandidateParticipantTeams ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID=null, $_genderCategory, $_keyword, $_offset=0, $_limit=10 ) 
-		
 					foreach($_candidateParticipantTeams as $_participantTeam ) {
 						
 						$_participantTeamFullName = ($_participantTeam->teamName.' ( '.$_participantTeam->teamAlias.' ) - '.SystemCore::processCountryValue($_participantTeam->teamCountryID));
@@ -47,17 +45,22 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 						$_gameParticipation = TeamGameParticipationTable::processObject ( $_orgID, $_orgTokenID, $_participantTeam->id, $_participantTeam->token_id ) ;
 						
 						$_flag2 = $_gameParticipation->makeConfirmation ();
-						
 					}
 					
-					$_flag1 = $_sportGameGroup->checkInitiated () ? $_sportGameGroup->makePending ():true;
+					$_sportGameGroup =  TournamentSportGameGroupTable::processObject ($_orgID, $_orgTokenID, $_sportGameGroupID, $_sportGameGroupTokenID );  
+					
+					$_flag1 = ($_sportGameGroup->checkInitiated () && $_sportGameGroup->hasPendingTeamGameParticipation) ? $_sportGameGroup->makePending():$_sportGameGroup->makeActivation();
+					
+					//$_flag1 = $_sportGameGroup->checkInitiated () ? $_sportGameGroup->makePending ():true;
 				 
 				break;
 			
 			}
 			
-			//$_falg1 = $_sportGameTeamGroup->makeProcessActivation ();
-		
+			//$_flag1 = $_sportGameGroup->checkInitiated ? ($_sportGameGroup->hasPendingTeamGameParticipation ? $_sportGameGroup->makePending():$_sportGameGroup->makeActivation()):true;
+			
+			//$_flag1 = $_sportGameGroup->checkInitiated ? $_sportGameGroup->makePending():true;
+			
 		return $_groupParticipantTeam;
 	}
 	//
@@ -514,18 +517,19 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeObject ( $_orgID=null, $_matchID, $_tokenID  ) 
+   public static function makeObject ( $_matchGroupID, $_matchGroupTokenID  ) 
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
-				->from("TournamentGroupParticipantTeam sprtGmGrp") 
-				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ") 
-				->innerJoin("sprtGmGrp.GameGroupType grpTyp on sprtGmGrp.game_group_type_id = grpTyp.id ")  
+				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
+				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
+				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
+				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")     
-				->where("sprtGmGrp.id = ? AND sprtGmGrp.token_id = ? ", array($_matchID, $_tokenID ));
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
+				->where("gmGrpTmPrt.id = ? AND gmGrpTmPrt.token_id = ? ", array($_matchGroupID, $_matchGroupTokenID ));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	

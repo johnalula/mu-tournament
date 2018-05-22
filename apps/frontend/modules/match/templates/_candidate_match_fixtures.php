@@ -7,10 +7,10 @@
 			<th class="" style="text-align:left!important;"><?php echo __('Match #') ?></th>
 			<th class="" style="text-align:left!important;"><?php echo __('Tournament Match Game') ?></th>
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Event Type') ?>"><?php echo  __('Event') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Group') ?>"><?php echo  __('Group') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Round') ?>"><?php echo  __('Round') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Date') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Time') ?>"><?php echo  __('Time') ?></th>   
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Group') ?>"><?php echo  __('Group') ?></th>     
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Time') ?>"><?php echo  __('Round') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Round') ?>"><?php echo  __('Heat') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Qualifying') ?></th>
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Status Status') ?>"><?php echo  __('Status') ?></th>  
 			<th>&nbsp;</th>
 		 </tr>
@@ -33,17 +33,17 @@
 			<td class="ui-td-center-text ui-td-xsmall-01">
 				<?php echo TournamentCore::processEventTypeValue($_candidateMatchFixture->matchEventType) ?>
 			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-01">
-				<?php echo TournamentCore::processGroupNumberValue($_candidateMatchFixture->groupID) ?>
+			<td class="ui-td-center-text ui-td-xsmall-0">
+				<?php echo $_candidateMatchFixture->sportGameGroupName ?>
 			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-01">
-				<?php echo $_candidateMatchFixture->roundTypeName ?>
+			<td class="ui-td-center-text ui-td-xsmall-0">
+				<?php echo  $_candidateMatchFixture->matchFixtureHeatName ?>
 			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-01">
-				<?php echo $_candidateMatchFixture->matchDate ?>
-			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-01">
-				<?php echo $_candidateMatchFixture->matchTime ?>
+			<td class="ui-td-center-text ui-td-xsmall-0">
+				<?php echo TournamentCore::processRoundModeValue($_candidateMatchFixture->matchFixtureGroupRoundMode) ?>
+			</td>  
+			<td class="ui-td-center-text ui-td-xsmall-0">
+				<?php echo TournamentCore::processMatchCompetitionRoundModeValue($_candidateMatchFixture->qualifyingStatus) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_candidateMatchFixture->id ?>" class="ui-table-status-small-icon" id="<?php echo $_candidateMatchFixture->id ?>">

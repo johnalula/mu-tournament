@@ -34,7 +34,7 @@
 					<div class="ui-panel-content-box">
 						<div class="ui-panel-detail-form-container" style=""> 
 							<div class="ui-panel-form-content"> 
-								<?php include_partial('fixture_form', array('_tournamentMatch' => $_tournamentMatch,'_activeTournament' => $_activeTournament,'_candidateRounds' => $_candidateRounds)) ?> 
+								<?php include_partial('fixture_form', array('_tournamentMatch' => $_tournamentMatch,'_candidateRounds' => $_candidateRounds)) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
 
@@ -58,19 +58,23 @@
 										<div class="ui-tab-separater"></div>
 										<div id="ui-main-tab-one" class="tab-pane active"> 
 											<!-- Begining of toolbar -->
-											<div class="ui-toolbar-menu-box">
+											<div class="ui-toolbar-menu-box  ui-toolbar-border1">
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															<?php include_partial('action_toolbar', array()) ?> 
-														</div> 
+															<?php include_partial('footer_action_toolbar', array()) ?> 
+														</div>
+														<div class="">
+															<?php include_partial('filter', array( )) ?> 
+														</div><!-- end of ui-filter-list -->
 													</div><!-- end of ui-filter-list -->
 												</div>
-											</div>
+											</div  
+											<!--    End of toolbar      -->
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('fixture_list', array('_matchFixtures' => $_matchFixtures)) ?> 
+													<?php include_partial('fixture_list', array('_tournamentFixtureGroups' => $_tournamentFixtureGroups)) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											

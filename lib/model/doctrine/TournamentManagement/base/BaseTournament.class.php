@@ -19,11 +19,13 @@
  * @property integer $status
  * @property clob $description
  * @property Organization $Organization
+ * @property Doctrine_Collection $tournamentVenues
  * @property Doctrine_Collection $tournamentTeams
  * @property Doctrine_Collection $tournamentSportGamesGroups
  * @property Doctrine_Collection $tournamentSportGamesTeamGroups
  * @property Doctrine_Collection $tournamentMatchs
  * @property Doctrine_Collection $tournamentMedalAwards
+ * @property Doctrine_Collection $tournamentParticipantTeamStandings
  * @property Doctrine_Collection $tournamentTournamentNews
  * @property Doctrine_Collection $tournamentTournamentPrograms
  * 
@@ -97,6 +99,10 @@ abstract class BaseTournament extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
+        $this->hasMany('TournamentVenue as tournamentVenues', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
         $this->hasMany('Team as tournamentTeams', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
@@ -114,6 +120,10 @@ abstract class BaseTournament extends sfDoctrineRecord
              'foreign' => 'tournament_id'));
 
         $this->hasMany('TournamentMedalAwards as tournamentMedalAwards', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('TournamentParticipantTeamMedalStanding as tournamentParticipantTeamStandings', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 

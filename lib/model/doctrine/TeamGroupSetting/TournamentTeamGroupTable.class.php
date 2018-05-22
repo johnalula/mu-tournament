@@ -92,6 +92,8 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 								(trmntTmGrp.approval_status=".TournamentCore::$_PENDING.") as pendingApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_ACTIVE.") as activeApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_APPROVED.") as approvedApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_COMPLETED.") as completedApprovalTeamGroup,
 								
 								(EXISTS (SELECT sprtGmGrp1.id FROM TournamentSportGameGroup sprtGmGrp1 WHERE sprtGmGrp1.tournament_team_group_id = trmntTmGrp.id AND sprtGmGrp1.tournament_team_group_token_id = ".sha1."(".md5."("."trmntTmGrp.token_id)) AND sprtGmGrp1.approval_status = ".TournamentCore::$_INITIATED." AND sprtGmGrp1.status = ".TournamentCore::$_INITIATED." AND sprtGmGrp1.active_flag IS FALSE )) as hasInitiatedTournamentSportGameGroup,
+								
+								(EXISTS (SELECT sprtGmGrp2.id FROM TournamentSportGameGroup sprtGmGrp2 WHERE sprtGmGrp2.tournament_team_group_id = trmntTmGrp.id AND sprtGmGrp2.tournament_team_group_token_id = ".sha1."(".md5."("."trmntTmGrp.token_id)) )) as hasTournamentSportGameGroup,
 		";	
 		return $_queryFileds;
 	}
@@ -402,7 +404,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		$_tournamentTeamGroup =  self::processObject ( null, null, $_tournamentGroupID, $_tournamentGroupTokenID ); 
 		
 		//if(!$_sportGameTeamGroup) { return false; }   
-		$_candidateTournamentGroups = TournamentSportGameGroupTable::processCandidateApprovalSelections ( $_tournamentGroupID, $_tournamentGroupTokenID, TournamentCore::$_PENDING, TournamentCore::$_PENDING, TournamentCore::$_PENDING) ;
+		$_candidateTournamentGroups = TournamentSportGameGroupTable::processCandidateApprovalSelections ( $_tournamentGroupID, $_tournamentGroupTokenID, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING) ;
 		if(!$_candidateTournamentGroups) { $_flag = false; } else {
 			foreach($_candidateTournamentGroups as $_candidateTournamentGroup) {
 				$_flag = $_candidateTournamentGroup->makeCompletion (); 
@@ -427,25 +429,17 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		$_flag = true;   
 		$_tournamentTeamGroup =  self::processObject ( $_orgID,$_orgTokenID, $_teamGroupID, $_teamGroupTokenID ); 
 		
-		//if(!$_sportGameTeamGroup) { return false; }   
-		/*$_orders = RegistrationOrderTable::processApprovalCandidate ( $_task->id, sha1(md5($_task->token_id)), TaskOrderCore::$_PENDING, TaskCore::$_ACTIVE );
-		if(!$_orders) { $_flag = false; } else {
-			foreach($_orders as $_order) {
-				$_flag = $_order->makeOrderApproval (); 
-			}
-		} */
-		
 		$_flag = $_tournamentTeamGroup ? $_tournamentTeamGroup->makeCompletion ():false;
 		
-		/*if($_orgID && $_userID) { 
+		if($_orgID && $_userID) { 
 				
-				$_actionID = SystemCore::$_CREATE; 
-				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  
-				$_actionObject  = 'Match Fixture ID: '.$_matchFixtureGroup->id;  
-				$_actionDesc  = 'Tournament Match Fixture Participant Teams- [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
+				$_actionID = SystemCore::$_APPROVE; 
+				$_moduleID  = ModuleCore::$_TEAM_GROUP;  
+				$_actionObject  = 'Tournament Team Group ID: '.$_tournamentTeamGroup->id;  
+				$_actionDesc  = 'Tournament Team Group - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM_GROUP).' ]';  
 			
 				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
-			}*/
+			}
 				
 		return $_flag; 
 	}

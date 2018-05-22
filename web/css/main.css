@@ -259,7 +259,11 @@ span.has-input-error {
   font-size: 11px!important;
 }
 .btn-padding-sm {
-	padding:2px 15px 2px 15px!important;
+	padding:2px 25px 2px 25px!important;
+  font-size: 11px!important;
+}
+.btn-padding-sm-0 {
+	padding:2px 23px 2px 22px!important;
   font-size: 11px!important;
 }
 .ui-date-input {

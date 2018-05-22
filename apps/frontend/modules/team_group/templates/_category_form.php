@@ -42,9 +42,13 @@
 					</div>
 				</div>   
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Group Number') ?>"><?php echo __('Group #') ?>: <span class="ui-red-text">&nbsp;</span></label>
+					<label class="col-sm-21 control-label" title="<?php echo __('Group Number') ?>"><?php echo __('Group') ?>: <span class="ui-red-text">&nbsp;</span></label>
 					<div class="col-sm-23">
-						<input type="text" class="form-control" id="group_number" name="team_group_category[group_number]" value=""  placeholder="<?php echo __('Number of Groups') ?>"> 
+						<div class="input-group">
+							<span class="input-group-addon" style="font-size:11px!important;"># <?php echo __('Groups')  ?></span>
+							<input type="text" class="form-control ui-text-right-align" id="group_number" name="team_group_category[group_number]" value=""  placeholder="<?php echo __('No of Groups') ?>"> 
+						</div><!-- input-group -->
+						
 					</div>
 					<label class="col-sm-121 control-label" title="<?php echo __('Gender Category') ?>"><?php echo __('Gender') ?>:</label>
 					<div class="col-sm-23">
@@ -59,20 +63,23 @@
 					</div>
 				</div>   
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Number of Teams Per Group ') ?>"><?php echo __('Teams').' #' ?>: <span class="ui-red-text">&nbsp;</span></label>
+					<label class="col-sm-21 control-label" title="<?php echo __('Number of Teams Per Group ') ?>"><?php echo __('Total')  ?>: <span class="ui-red-text">&nbsp;</span></label>
 					<div class="col-sm-23">
-						<input type="text" class="form-control" id="number_of_teams_per_group" name="team_group_category[number_of_teams_per_group]" value=""  placeholder="<?php echo __('# Teams Per Group') ?>"> 
+						<div class="input-group">
+							<span class="input-group-addon" style="font-size:11px!important;"># <?php echo __('Teams')  ?>&nbsp;</span>
+							<input type="hidden" class="form-control ui-text-right-align"  id="payment_fee_amount" name="team_group_category[number_of_teams_per_group]" placeholder="<?php echo __('per Group') ?>" title="<?php echo __('Payment fee amount') ?>"> 
+							<input type="text" class="form-control ui-text-right-align" id="number_of_teams_per_group" name="team_group_category[number_of_teams_per_group]" value=""  placeholder="<?php echo __('Per Group') ?>"> 
+						</div><!-- input-group -->
 					</div>
-					<label class="col-sm-121 control-label" title="<?php echo __('Status') ?>"><?php echo __('Status') ?> :</label>
+					<label class="col-sm-121 control-label" title="<?php echo __('Status') ?>"><?php echo __('Mandatory') ?> :</label>
 					<div class="col-sm-23">
-						<select id="group_status" name="team_group_category[group_status]" class="form-control" title="<?php echo __('Team Group Status') ?>" disabled>
-							<option value=""  ><?php echo 'Select Status ...' ?></option>
-							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_INITIATED ? 'selected':'' ?> >
-									<?php echo $_matchStatus ?>
-								</option>								 
-							<?php endforeach; ?>
-						</select>
+						<div class="btn-toolbar" role="toolbar">
+							<div class="btn-group">
+								<input type="hidden" class="form-control" id="group_team_number_mandatory_flag" name="team_group_category[group_team_number_mandatory_flag]" value="0" >
+								<button type="button" class="btn btn-default btn-xs btn-padding-sm " id="enabledNumberOfTeamsPerGroupYesButton" value="1" title="<?php echo __('Enable Number of Teams') ?>"><?php echo __('Yes') ?>
+								<button type="button" class="btn btn-default btn-sm btn-padding-sm btn-danger active" id="enabledNumberOfTeamsPerGroupNoButton" value="0" title="<?php echo __('Disabled Number of Teams') ?>"><?php echo __('No') ?> 
+							</div> 
+						</div>
 					</div>
 				</div>   
 				<div class="form-group">
@@ -89,7 +96,18 @@
 </div> 
  
 <script>
-	 
+	
+	$('#enabledNumberOfTeamsPerGroupYesButton').click(function() {
+		$('#enabledNumberOfTeamsPerGroupYesButton').addClass('btn-success').addClass('active');
+		$('#enabledNumberOfTeamsPerGroupNoButton').removeClass('btn-danger').removeClass('active');
+		document.getElementById("group_team_number_mandatory_flag").value = $(this).val() == 1 ? 1:0;
+	});  
+	$('#enabledNumberOfTeamsPerGroupNoButton').click(function() {
+		$('#enabledNumberOfTeamsPerGroupNoButton').addClass('btn-danger').addClass('active');
+		$('#enabledNumberOfTeamsPerGroupYesButton').removeClass('btn-success').removeClass('active');
+		document.getElementById("group_team_number_mandatory_flag").value = $(this).val() == 0 ? 0:1;
+	});   
+	
 	$('#game_category').change(function(e) {
 		$("#createTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 		$("#cancelTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");

@@ -1,17 +1,12 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_SPORT_GAME)):
-	
-	//sport_game_category_name=Athletics (ATHLETICS)&sport_game_category_id=1&sport_game_category_token_id=fea2553fcd57307b5e9907b2350cd52ed542bb41&contestant_team_mode=2&sport_game_category=&sport_game_type=1&sport_game_type_mode=1&sport_game_measurement=1&sport_game_distance=400&sport_game_type_name=400M&sport_game_throw_type=&sport_game_jump_type_mode=&sport_game_player_mode=4&sport_game_status=2&description=asdfas dfasdf asdf
-	
-	//$_flag =  SportGameTable::processNew ( 1, '94f12f125643718e20d329aef595bc3e', 1, 'fea2553fcd57307b5e9907b2350cd52ed542bb41', 'Athletics (ATHLETICS)', '400M', $_sportGameAlias, 1, 400, 1, 1, $_throwTypeMode, $_jumpTypeMode, 4, 2, 2, 'asdfas dfasdf asdf', $_userID, $_userTokenID  );  
-	 
+	if($sf_user->canAccess(ModuleCore::$_SPORT_GAME)): 
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('new', array( '_sportGames' => $_sportGames, '_gameCategorys' => $_gameCategorys)) ?> 
+				<?php include_partial('new', array( '_sportGames' => $_sportGames, '_gameCategorys' => $_gameCategorys, '_countSportGames' => $_countSportGames)) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -30,7 +25,9 @@
 	</div>
 <?php endif; ?>         
 
+<!--- ************************  -->
 
+ 
 
 
 <!-- Modal -->
@@ -81,6 +78,19 @@
 </div><!-- /.modal -->
 
 
+<!--- ************************  -->
+
+<div class="modal fade" id="processAjaxLoadergModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
+	<div class="modal-dialog-xxsm">
+		<div class="modal-contents ui-ajax-loader-text" style="text-align:center!important;padding:5px!important;">
+			<div class="ui-ajax-loader-content">
+				<img src="/images/icons/ajax-loader.png"><br>
+				<?php echo __('Loading . . .') ?>
+			</div>	<!-- /.modal-content -->
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog --> 
+</div><!-- /.modal -->
+
 
 <script>
 	$('#createTournamentSportGame').click(function(){
@@ -117,76 +127,5 @@
 			$('#candidateSportGameCategoryModal').modal('hide');
 		return e.preventDefault();
 	});
-	
-	$("#insertModalTwoData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("parent_product_id").value = listArr[0];
-			document.getElementById("parent_product_token_id").value = listArr[1];  
-			document.getElementById("parent_product_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			document.getElementById("product_name").value = listArr[2];  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#parentProductModal').modal('hide');
-		return e.preventDefault();
-	});
-	
-	$("#insertModalThreeData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("gl_sales_account_id").value = listArr[0];
-			document.getElementById("gl_sales_account_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#glSalesAccountModal').modal('hide');
-		return e.preventDefault();
-	});
-	$("#insertModalFourData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("gl_inventory_account_id").value = listArr[0];
-			document.getElementById("gl_inventory_account_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#glInventoryAccountModal').modal('hide');
-		return e.preventDefault();
-	});
-	$("#insertModalFiveData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("gl_cos_account_id").value = listArr[0];
-			document.getElementById("gl_cos_account_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#glCoSAccountModal').modal('hide');
-		return e.preventDefault();
-	});
-	$("#insertModalSixData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("gl_sales_account_id").value = listArr[0];
-			document.getElementById("gl_sales_account_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#productLocationModal').modal('hide');
-		return e.preventDefault();
-	});
-	
-	 
  
 </script>

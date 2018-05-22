@@ -57,7 +57,7 @@
 					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Match Round Mode') ?>"><?php echo __('Round Mode') ?>:</label>
 					<div class="col-sm-23">
 						<select id="tournament_match_round_mode" name="tournament_match[tournament_match_round_mode]" class="form-control" title="<?php echo __('Tournament Match Round Mode') ?>">
-							<option value=""  ><?php echo 'Select Mode ...' ?></option>
+							<option value=""  ><?php echo 'Select Round Mode ...' ?></option>
 							<?php foreach(TournamentCore::processRoundModes() as $_key => $_round): ?>								 
 								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultRoundMode() ? 'selected':'' ?> >
 									<?php echo $_round ?>
@@ -65,13 +65,13 @@
 							<?php endforeach; ?>
 						</select>
 					</div>
-					<label class="col-sm-01 control-label" title="<?php echo __('Touirnament Match Status') ?>"><?php echo __('Status') ?> :</label>
+					<label class="col-sm-01 control-label" title="<?php echo __('Touirnament Match Result Mode') ?>"><?php echo __('Result') ?> :</label>
 					<div class="col-sm-23">
-						<select id="match_status" name="tournament_match[match_status]" class="form-control" title="<?php echo __('Match Status') ?>" disabled>
-							<option value=""  ><?php echo 'Select Status ...' ?></option>
-							<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_INITIATED ? 'selected':'' ?> >
-									<?php echo $_matchStatus ?>
+						<select id="tournament_match_result_mode" name="tournament_match[tournament_match_result_mode]" class="form-control" title="<?php echo __('Tournament Match Result Mode') ?>">
+							<option value=""  ><?php echo 'Select Result Mode ...' ?></option>
+							<?php foreach(TournamentCore::processMatchCompetitionRoundModes() as $_key => $_round): ?>								 
+								<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::processDefaultMatchCompetitionRoundMode() ? 'selected':'' ?> >
+									<?php echo $_round ?>
 								</option>								 
 							<?php endforeach; ?>
 						</select>

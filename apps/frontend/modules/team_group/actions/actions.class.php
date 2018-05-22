@@ -120,7 +120,7 @@ class team_groupActions extends sfActions
 		$_contestantTeamMode = $request->getParameter('sport_game_contestant_team_mode');	 
 		$_groupNumber = $request->getParameter('group_number');	 
 		$_numberOfTeamsPerGroup = $request->getParameter('number_of_participants_per_group');	 
-		//$_numberOfParticipantPerGroup = $request->getParameter('number_of_teams_per_group');	 
+		$_mandatoryFlag = $request->getParameter('group_team_number_mandatory_flag');	 
 		$_groupStatus = $request->getParameter('group_status');	 
 		$_description = $request->getParameter('description');	
 				
@@ -131,7 +131,7 @@ class team_groupActions extends sfActions
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
 
-		$_flag =  TournamentSportGameGroupTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_contestantTeamMode, $_genderCategory, $_numberOfTeamsPerGroup, $_groupNumber, $_tournamentGroupCode, $_groupStatus, $_description, $_userID, $_userTokenID );  
+		$_flag =  TournamentSportGameGroupTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameFullName, $_contestantTeamMode, $_genderCategory, $_numberOfTeamsPerGroup, $_groupNumber, $_tournamentGroupCode, $_mandatoryFlag, $_groupStatus, $_description, $_userID, $_userTokenID );  
 				 
 		return $_flag ? true:false;
 	 
@@ -406,7 +406,7 @@ class team_groupActions extends sfActions
 		if(!$_offset || $_offset=='')	$_offset = 0;			
 		if(!$_limit || $_limit=='' ) $_limit = 20;			 
 
-		$_candidateParticipantTeams = TournamentTeamGroupTable::selectCandidateParticipantTeams ( $_tournamentGroupID, $_tournamenGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit ); 
+		$_candidateParticipantTeams = TournamentTeamGroupTable::selectCandidateParticipantTeams ( $_tournamentGroupID, $_tournamenGroupTokenID, $_sportGameGroupIDs, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
 		
 		return $this->renderPartial('team/candidate_participant_team', array('_candidateMemberTeams' => $_candidateParticipantTeams, '_countCandidateSportGames' => $_countCandidateSportGames));	  

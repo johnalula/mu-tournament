@@ -4,6 +4,8 @@
 			<tr> 
 				<th>Team</th>
 				<th>Gold</th> 
+				<th>Silver</th> 
+				<th>Bronze</th> 
 				<th>Total</th>
 			</tr>
 		</thead>
@@ -16,6 +18,12 @@
 				<td>
 					<?php echo  $_participantTeam->id ?>
 				</td>
+				<td>
+					<?php echo $_participantTeam->id ?>
+				</td> 
+				<td>
+					<?php echo $_participantTeam->id ?>
+				</td> 
 				<td>
 					<?php echo $_participantTeam->id ?>
 				</td> 

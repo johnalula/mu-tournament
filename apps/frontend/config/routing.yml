@@ -2,15 +2,6 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 
-match:
-  url: /
-  param: { module: match, action: index }
-
-match_new:
-  url: /new
-  param: { module: match, action: new }
-
-
 # default rules
 
 

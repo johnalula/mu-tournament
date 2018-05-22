@@ -97,11 +97,7 @@
 											</div>
 										</div  
 										<!--    End of toolbar      -->
-									
-										
 									</div><!-- end of ui-tab-content -->  
-									
-									
 						
 								</div><!-- end of ui-main-tab-box --> 
 							</div><!-- end of ui-main-tab-box --> 

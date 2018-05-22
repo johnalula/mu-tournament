@@ -24,6 +24,7 @@
  * @property Person $Person
  * @property Doctrine_Collection $teamMemberParticipantRoles
  * @property Doctrine_Collection $teamTeamGroupMemberParticipans
+ * @property Doctrine_Collection $teamMemberParticipantTournamentMatchParticipants
  * 
  * @package    symfony
  * @subpackage model
@@ -111,6 +112,10 @@ abstract class BaseTeamMemberParticipant extends sfDoctrineRecord
         $this->hasMany('TournamentGroupParticipantTeamMember as teamTeamGroupMemberParticipans', array(
              'local' => 'id',
              'foreign' => 'team_member_participant_id'));
+
+        $this->hasMany('TournamentMatchTeamMemberParticipant as teamMemberParticipantTournamentMatchParticipants', array(
+             'local' => 'id',
+             'foreign' => 'participant_team_member_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

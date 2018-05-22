@@ -16,13 +16,18 @@
  * @property string $tournament_match_number
  * @property string $tournament_match_full_number
  * @property integer $tournament_match_round_mode
+ * @property integer $tournament_match_result_mode
  * @property integer $round_type_mode
  * @property integer $contestant_team_mode
+ * @property integer $competition_mode
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
+ * @property boolean $competition_flag
  * @property boolean $complete_flag
  * @property boolean $active_flag
+ * @property integer $competition_status
+ * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
  * @property string $description
@@ -82,10 +87,16 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
         $this->hasColumn('tournament_match_round_mode', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('tournament_match_result_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('round_type_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('contestant_team_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('competition_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('start_date', 'string', 100, array(
@@ -100,6 +111,10 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('competition_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('complete_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
@@ -107,6 +122,14 @@ abstract class BaseTournamentMatch extends sfDoctrineRecord
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
+             ));
+        $this->hasColumn('competition_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
+        $this->hasColumn('process_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('approval_status', 'integer', null, array(
              'type' => 'integer',

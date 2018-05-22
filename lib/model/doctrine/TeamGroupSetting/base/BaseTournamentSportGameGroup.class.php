@@ -23,6 +23,7 @@
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
+ * @property boolean $group_team_number_mandatory_flag
  * @property boolean $complete_flag
  * @property boolean $active_flag
  * @property integer $process_status
@@ -110,6 +111,10 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
         $this->hasColumn('end_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('group_team_number_mandatory_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('complete_flag', 'boolean', null, array(
              'type' => 'boolean',

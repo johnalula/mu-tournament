@@ -83,6 +83,12 @@
 						</button>
 					</li>	
 					<li class="">
+						<button title="<?php echo __('Add Team Group Member Participant Information') ?>" id="createBatchTournamentMatchFixtureParticipant" class="ui-disabled-toolbar-btn" disabled >
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/add') ?>">
+							<?php echo __('Batch Participant') ?>
+						</button>
+					</li>	 
+					<li class="">
 						<button title="<?php echo __('Cancel Match Participant Team Information') ?>" id="cancelTournamentMatchParticipant" class="ui-disabled-toolbar-btn" disabled>
 							<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
 							<?php echo __('Cancel') ?>

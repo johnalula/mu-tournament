@@ -35,7 +35,11 @@
  * @property boolean $inheritable_flag
  * @property boolean $roundable_flag
  * @property boolean $active_flag
+ * @property boolean $competition_flag
  * @property boolean $complete_flag
+ * @property integer $competition_status
+ * @property integer $fixture_round_status
+ * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
  * @property string $description
@@ -168,9 +172,24 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'type' => 'boolean',
              'default' => false,
              ));
+        $this->hasColumn('competition_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('complete_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
+             ));
+        $this->hasColumn('competition_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
+        $this->hasColumn('fixture_round_status', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('process_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('approval_status', 'integer', null, array(
              'type' => 'integer',

@@ -11,6 +11,7 @@
  * @property Doctrine_Collection $organizationSportGames
  * @property Doctrine_Collection $organizationTeams
  * @property Doctrine_Collection $organizationTournamentMatchs
+ * @property Doctrine_Collection $organizationTournamentParticipantTeamStandings
  * @property Doctrine_Collection $organizationTournamentNews
  * @property Doctrine_Collection $organizationTournamentPrograms
  * @property Doctrine_Collection $organizationSystemConfigs
@@ -51,6 +52,10 @@ abstract class BaseOrganization extends Party
              'foreign' => 'org_id'));
 
         $this->hasMany('TournamentMatch as organizationTournamentMatchs', array(
+             'local' => 'id',
+             'foreign' => 'org_id'));
+
+        $this->hasMany('TournamentParticipantTeamMedalStanding as organizationTournamentParticipantTeamStandings', array(
              'local' => 'id',
              'foreign' => 'org_id'));
 
