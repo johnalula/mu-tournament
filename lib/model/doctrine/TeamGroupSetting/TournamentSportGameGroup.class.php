@@ -67,6 +67,17 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 		$this->save();
 		return $_flag;
 	}
+	public function makeConfirmation ()
+	{
+		$_flag = true;   
+		$_endDate = date('m/d/Y', time());  
+		$this->active_flag = true;  
+		$this->process_status = trim(TournamentCore::$_APPROVED); 
+		$this->approval_status = trim(TournamentCore::$_APPROVED); 
+		$this->status = trim(TournamentCore::$_ACTIVE);  
+		$this->save();
+		return $_flag;
+	}
 	public function makeCompletion ()
 	{
 		$_flag = true;   

@@ -88,6 +88,7 @@ abstract class BaseTournamentMatchFixtureGroup extends sfDoctrineRecord
              ));
         $this->hasColumn('qualified_flag', 'boolean', null, array(
              'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('qualification_status', 'integer', null, array(
              'type' => 'integer',

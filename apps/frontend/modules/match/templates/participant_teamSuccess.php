@@ -15,6 +15,10 @@
 	
 	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( 1, 'afccda09e18b3ebfd6734f446fd6e2a4e91f95c1', 1, '5e1a08d23a632ab92ec1f8c5a0e7e5f0750d9812', 4, 'f0b05948b6c93fbc76ffb4ed0cbf44efb61ed1bd', 4, '0065cbad2acd2a8be6ff9617a1da125362d1e82a', 2, '927b2b9fbbc5a6da68d82c646ffd661d32e00296', $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, 'Group One - 5000M Running - Women (Athletics)', $_participantTeamName, $_opponentParticipantTeamName, 'Tigray Stadium', $_matchDate, $_matchTime, $_matchStatus, $_description, 2, SystemCore::$_MULTIPLE_DATA, $_userID, $_userTokenID );
 	
+	//$_matchFixtureGroupParticipants = TournamentMatchFixtureGroupTable::processCandidateSelections ( 3, 'ba44103dc5939ca480fa8b9809ad058a2a3130c7', $_matchFixtureID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE) ;
+	
+	//echo count($_matchFixtureGroupParticipants);
+	
 ?> 
 
 <div class="ui-page-box">
@@ -265,7 +269,7 @@
 	//*********************************/
 	
 	$('.selectCandidateTournamentMatchFixture').click(function() {   
-		var url = '<?php echo url_for('match/candidateTournamentMatchFixtures')?>'; 
+		var url = '<?php echo url_for('match/candidateTournamentMatchParticipantFixtures')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-match-fixtures';   
 		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&tournament_match_game_category_id='+document.getElementById('tournament_match_game_category_id').value+'&tournament_contestant_team_mode='+document.getElementById('match_fixture_contestant_team_mode').value;

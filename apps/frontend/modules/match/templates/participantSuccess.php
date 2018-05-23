@@ -1,9 +1,11 @@
 
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
-	//match_fixture=Group One - Maraton Running - Women (Athletics)&match_fixture_id=6&match_fixture_token_id=c0eb9d0f1f6060784ff6ef7fe1b9528197ae841d&tournament_sport_game_group_id=6&tournament_sport_game_group_token_id=6df1f8657243b3c2f51424faf96bcf418e74b7e6&gender_category_id=2&tournament_match_fixture_group_id=6&tournament_match_fixture_token_group_id=6ca77bcab18a67844f426e79e3f9af5bf1f3ceb1&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=1&tournament_match_token_id=17a7179c93fc7b90a97c0f0545a1089f66438a27&tournament_match_game_category_id=1&participant_team_name=Axum University (AXU-ET) - Ethiopia &participant_team_id=8&participant_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&sport_game_group_team_id=4&sport_game_group_team_token_id=d603151399eb25fc00498fb46cca25a9c02fab1a&sport_game_venue_name=Mekelle Tigray Stadium&sport_game_group_type_id=&match_date=05/23/2018&match_time=10:00 PM&description=asd asdfasdfasdf
+	//match_participant_creation_mode=1&match_fixture=Group One - 800M Running - Men (Athletics)&match_fixture_id=7&match_fixture_token_id=b6def2a76391b9cb74b4e98ebd1e572b04c4767d&tournament_sport_game_group_id=10&tournament_sport_game_group_token_id=3fd92bafbe6151e731eee1f0d0b1f287f108bc48&gender_category_id=1&tournament_match_fixture_group_id=7&tournament_match_fixture_token_group_id=56135323a57b8929de5f0ab866f9cd194cd9259f&sport_game_id=2&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=3&tournament_match_token_id=ba44103dc5939ca480fa8b9809ad058a2a3130c7&tournament_match_game_category_id=1&participant_team_name=Nirobi University (NU) - Kenya&team_id=1&team_token_id=6d8819a85c22612333e3111b47dcf6d56e2b39ec&participant_team_id=51&participant_team_token_id=9eb20666a18f68f17ab15e60bd76a9c0e0defcd2&sport_game_group_team_id=65&sport_game_group_team_token_id=2fa72dee95204b57f0f5b01b87101f0def9d01cd&participant_name=80 ( Xxxxxx Fffffff Dddd ) - Contestant/Player&participant_role_id=91&participant_role_token_id=fe61e6bfe0b7bd63d4d71605870c989641a0bace&participant_member_id=80&participant_member_token_id=63859fe700d33d0b2363adee2364a6c8ed606e60&description=sdf sdf gsdfgsdfg
 	
-
+	
+	//$_flag =  TournamentMatchTeamMemberParticipantTable::processNew ( 1, 'afccda09e18b3ebfd6734f446fd6e2a4e91f95c1', 3, 'ba44103dc5939ca480fa8b9809ad058a2a3130c7', 7, 'b6def2a76391b9cb74b4e98ebd1e572b04c4767d', 7, '56135323a57b8929de5f0ab866f9cd194cd9259f', 51, '9eb20666a18f68f17ab15e60bd76a9c0e0defcd2', 91, 'fe61e6bfe0b7bd63d4d71605870c989641a0bace', 80, '63859fe700d33d0b2363adee2364a6c8ed606e60', 'Group One - 800M Running - Men (Athletics)', 'Nirobi University (NU) - Kenya', '80 ( Xxxxxx Fffffff Dddd ) - Contestant/Player', $_description, 1, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
+	
 	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( 1, 'afccda09e18b3ebfd6734f446fd6e2a4e91f95c1', 1, '17a7179c93fc7b90a97c0f0545a1089f66438a27#', 6, 'c0eb9d0f1f6060784ff6ef7fe1b9528197ae841d', 6, '6ca77bcab18a67844f426e79e3f9af5bf1f3ceb1', 6, '6df1f8657243b3c2f51424faf96bcf418e74b7e6', 4, 'd603151399eb25fc00498fb46cca25a9c02fab1a', $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, 'Group One - Maraton Running - Women (Athletics)', 'Axum University (AXU-ET) - Ethiopia', $_opponentParticipantTeamName, 'Mekelle Tigray Stadium', '05/23/2018', '10:00 PM', $_matchStatus, 'asdf asdf asdfasdfad', 2, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
 
 	 //match_fixture=Group One - 10000M Running - Women (Athletics)&match_fixture_id=6&match_fixture_token_id=b6b3628172b215aac37f082b779c41bcd1f8311d&tournament_sport_game_group_id=4&tournament_sport_game_group_token_id=eea763e281415bf2e0086378e23a3ecef31fd379&gender_category_id=2&tournament_match_fixture_group_id=6&tournament_match_fixture_token_group_id=2785ac12ee7e10c12bdb32f1ee866ddd22ef3b6b&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=1&tournament_match_token_id=5e1a08d23a632ab92ec1f8c5a0e7e5f0750d9812&tournament_match_game_category_id=1&participant_team_name=Mekelle University (MU-ET) - Ethiopia &participant_team_id=4&participant_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&sport_game_group_team_id=9&sport_game_group_team_token_id=f43eecb067032a135998fee6a2bebd7493fe33d1&sport_game_venue_name=Mekelle Tigray Stadium&sport_game_group_type_id=&match_date=05/29/2018&match_time=11:00 AM&description=sdfg sdfg sdfgsdg
@@ -15,13 +17,26 @@
 	
 	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( 1, 'afccda09e18b3ebfd6734f446fd6e2a4e91f95c1', 1, '5e1a08d23a632ab92ec1f8c5a0e7e5f0750d9812', 4, 'f0b05948b6c93fbc76ffb4ed0cbf44efb61ed1bd', 4, '0065cbad2acd2a8be6ff9617a1da125362d1e82a', 2, '927b2b9fbbc5a6da68d82c646ffd661d32e00296', $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, 'Group One - 5000M Running - Women (Athletics)', $_participantTeamName, $_opponentParticipantTeamName, 'Tigray Stadium', $_matchDate, $_matchTime, $_matchStatus, $_description, 2, SystemCore::$_MULTIPLE_DATA, $_userID, $_userTokenID );
 	
+	//echo count($_matchParticipantTeamMembes).' == ';
+	
+	////match_participant_creation_mode=2&match_fixture=Group One - 800M Running - Men (Athletics)&match_fixture_id=7&match_fixture_token_id=9a13968cac938e2a2314f3fe64fa5d2e061b49b8&tournament_sport_game_group_id=10&tournament_sport_game_group_token_id=3fd92bafbe6151e731eee1f0d0b1f287f108bc48&gender_category_id=1&tournament_match_fixture_group_id=7&tournament_match_fixture_token_group_id=e2a6c3715f6e7dbf8c516cae2b88b342c2dc1762&sport_game_id=2&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=3&tournament_match_token_id=cfd491a3db8128365c289656ee135877b6e91117&tournament_match_game_category_id=1&participant_team_name=&team_id=&team_token_id=&participant_team_id=&participant_team_token_id=&sport_game_group_team_id=&sport_game_group_team_token_id=&participant_name=&participant_role_id=&participant_role_token_id=&participant_member_id=&participant_member_token_id=&description=
+	
+	
+	//$_candidateParticipantTeams = TournamentMatchTable::selectCandidateMatchFixtureGroupParticipantTeams ( $_tournamentID, 3, 'cfd491a3db8128365c289656ee135877b6e91117', 7, 2, 1, $_keyword, 0, 2 ); 
+	
+	
+	//$_candidateFixtureParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateSelections ( 3, 'cfd491a3db8128365c289656ee135877b6e91117', $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_sportGameGroupID); 
+	
+	
+	//echo count($_candidateParticipantTeams).' == '.count($_candidateFixtureParticipantTeams).' == ';
+	
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('participant', array( '_tournamentMatch' => $_tournamentMatch,'_activeTournament' => $_activeTournament, '_matchParticipantTeams' => $_matchParticipantTeams, '_matchFixtures' => $_matchFixtures )) ?> 
+				<?php include_partial('participant', array( '_tournamentMatch' => $_tournamentMatch,'_matchParticipantTeamMembers' => $_matchParticipantTeamMembers, '_matchParticipantTeams' => $_matchParticipantTeams, '_matchFixtures' => $_matchFixtures )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -232,8 +247,8 @@
  
 
 <script>
-	$('#createTournamentMatchParticipantTeam').click(function(){
-		var url = '<?php echo url_for('match/createTournamentMatchParticipantTeam')?>'; 
+	$('#createTournamentMatchParticipant').click(function(){
+		var url = '<?php echo url_for('match/createBatchMatchFixtureGroupParticipantTeamMembers')?>'; 
 		var formName = 'createTournamentMatchFixtureGroupParticipantForm';
 		var data = $("form#createTournamentMatchFixtureGroupParticipantForm").serialize();
 		var datas = generateValidData (formName);
@@ -245,7 +260,7 @@
 	
 	//*********************************/
 	
-	$('#createBatchTournamentMatchFixtureParticipant').click(function(){
+	$('#createBatchTournamentMatchFixtureTeamMemberParticipant').click(function(){
 		var url = '<?php echo url_for('match/createBatchTournamentMatchFixtureGroupParticipant')?>'; 
 		var formName = 'createTournamentMatchFixtureGroupParticipantForm';
 		var data = $("form#createTournamentMatchFixtureGroupParticipantForm").serialize();
@@ -311,9 +326,10 @@
 			//$("#createTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 			//$("#cancelTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			if(document.getElementById("match_participant_creation_mode").value == 2){
-				$("#createBatchTournamentMatchFixtureParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+				$("#createBatchTournamentMatchFixtureTeamMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			} else {
+				$(".selectCandidateMatchFixtureParticipantTeam").removeAttr("disabled") ;
 			}
-			$(".selectCandidateMatchFixtureParticipantTeam").removeAttr("disabled") ;
 			$('#candidateTournamentMatchFixtureGroupModal').modal('hide');
 		return e.preventDefault();
 	});
@@ -350,9 +366,11 @@
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
 			var listArr = input.split("$"); 
-			document.getElementById("participant_id").value = listArr[0];
-			document.getElementById("participant_token_id").value = listArr[1];  
-			document.getElementById("participant_name").value = listArr[2]+' ( '+listArr[4]+' )';    
+			document.getElementById("participant_role_id").value = listArr[0];
+			document.getElementById("participant_role_token_id").value = listArr[1];  
+			document.getElementById("participant_member_id").value = listArr[2];
+			document.getElementById("participant_member_token_id").value = listArr[3];  
+			document.getElementById("participant_name").value = listArr[4]+' ( '+listArr[6]+' )  ';    
 			
 			$("#createTournamentMatchParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 			$("#cancelTournamentMatchParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");

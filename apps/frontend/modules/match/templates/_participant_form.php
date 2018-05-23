@@ -75,8 +75,10 @@
 						<div class="col-sm-40"> 
 							<div class="input-group">
 								<input type="text" class="form-control " id="participant_name" name="match_participant[participant_name]" placeholder="<?php echo __('Candidate Participant Team') ?>" title="<?php echo __('Candidate Participant Team') ?>" value="" data-toggle="modal" data-target="#candidateMatchParticipantTeamMemberModal"  disabled>
-								<input type="hidden" class="form-control" id="participant_id" name="match_participant[participant_id]" placeholder="" value="">
-								<input type="hidden" class="form-control" id="participant_token_id" name="match_participant[participant_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="participant_role_id" name="match_participant[participant_role_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="participant_role_token_id" name="match_participant[participant_role_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="participant_member_id" name="match_participant[participant_member_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="participant_member_token_id" name="match_participant[participant_member_token_id]" value=""> 
 								<span class="input-group-btn">
 									<button class="btn btn-default selectCandidateMatchParticipantTeamMember" type="button" data-toggle="modal" data-target="#candidateMatchParticipantTeamMemberModal" title="<?php echo __('Candidat Participant Teams') ?>" disabled >
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >

@@ -82,6 +82,7 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              ));
         $this->hasColumn('qualified_flag', 'boolean', null, array(
              'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('confirmed_flag', 'boolean', null, array(
              'type' => 'boolean',

@@ -330,7 +330,7 @@ SportGameGroup:
     end_date: { type: string(100) }  
     complete_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
-    approval_status: { type: integer, default: 1  } 
+    process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
@@ -569,7 +569,7 @@ TournamentMatchFixtureGroup:
     match_date: { type: string(100) }
     match_time: { type: string(100) }
     effective_date: { type: string(100) }
-    qualified_flag: { type: boolean  } 
+    qualified_flag: { type: boolean, default: false } 
     qualification_status: { type: integer, default: 1  } 
     confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
@@ -600,7 +600,7 @@ TournamentMatchParticipantTeam:
     match_result_score: { type: integer } 
     match_result_time: { type: integer } 
     effective_date: { type: string(100) }
-    qualified_flag: { type: boolean  } 
+    qualified_flag: { type: boolean, default: false } 
     confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
     competition_flag: { type: boolean, default: false } 

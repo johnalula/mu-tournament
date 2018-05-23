@@ -1,5 +1,5 @@
-<div class="table-responsive" id="">
-	<table class="table table-striped">
+<div class="" id="">
+	<table class="">
 		<thead>
 			<tr> 
 				<th>Team</th>

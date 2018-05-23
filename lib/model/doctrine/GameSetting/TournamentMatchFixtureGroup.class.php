@@ -17,7 +17,9 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 		$_flag = true;    
 			$this->tournament_match_group_number = $_tournamentMatchNumber.'-'.SystemCore::processCodeGeneratorInitialNumber(trim($_matchFixtureID)).'-'.SystemCore::processCodeGeneratorInitialNumber($this->id).'/'.date('y', time()); 
 			$this->active_flag = false;   
-			$this->approval_status = trim(TournamentCore::$_ACTIVE);   
+			$this->competition_status = trim(TournamentCore::$_PENDING);   
+			$this->process_status = trim(TournamentCore::$_PENDING);   
+			$this->approval_status = trim(TournamentCore::$_PENDING);   
 			$this->status = trim(TournamentCore::$_PENDING); 
 			$this->save();
 			
@@ -40,9 +42,10 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 	public function makeActivation ()
 	{
 		$_flag = true;    
-			$this->active_flag = true;   
-			$this->approval_status = trim(TournamentCore::$_APPROVED); 
-			$this->status = trim(TournamentCore::$_ACTIVE); 
+			$this->confirmed_flag = true; 
+			$this->competition_status = trim(TournamentCore::$_ACTIVE);   
+			$this->process_status = trim(TournamentCore::$_ACTIVE);   
+			$this->approval_status = trim(TournamentCore::$_ACTIVE);   
 			$this->save();
 
 		return $_flag;

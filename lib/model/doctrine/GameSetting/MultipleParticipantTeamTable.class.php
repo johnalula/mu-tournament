@@ -30,6 +30,10 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 					
 					$_flag1 = $_groupParticipantTeam->checkConfirmation () ? $_groupParticipantTeam->makeConfirmation ():true;
 					
+					$_matchFixtureGroupObj = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID);
+					
+					$_flag2 = $_matchFixtureGroupObj->hasActiveGroupParticipantTeam ? true:$_matchFixtureGroupObj->makeActivation ();
+					
 				break; 
 				case SystemCore::$_MULTIPLE_DATA: 
 					
@@ -45,6 +49,10 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 							$_groupParticipantTeam = TournamentGroupParticipantTeamTable::makeObject ( $_participantTeam->id, $_participantTeam->token_id  );
 					
 							$_flag1 = $_groupParticipantTeam->checkConfirmation () ? $_groupParticipantTeam->makeConfirmation ():true;
+							
+							$_matchFixtureGroupObj = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID);
+					
+							$_flag2 = $_matchFixtureGroupObj->makeActivation ();
 						}
 					
 					//$_flag1 = $_sportGameGroup->checkInitiated () ? $_sportGameGroup->makePending ():true;

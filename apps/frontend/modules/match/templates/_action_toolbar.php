@@ -83,7 +83,7 @@
 						</button>
 					</li>	
 					<li class="">
-						<button title="<?php echo __('Add Team Group Member Participant Information') ?>" id="createBatchTournamentMatchFixtureParticipant" class="ui-disabled-toolbar-btn" disabled >
+						<button title="<?php echo __('Add Team Group Member Participant Information') ?>" id="createBatchTournamentMatchFixtureTeamMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
 							<img class="navbar-nav-img" src="<?php echo image_path('icons/add') ?>">
 							<?php echo __('Batch Participant') ?>
 						</button>

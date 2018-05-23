@@ -1239,14 +1239,14 @@ TournamentMatchFixtureGroup:
     match_date: 05/23/2018
     match_time: '10:00 AM'
     effective_date: 05/23/2018
-    qualified_flag: null
+    qualified_flag: f
     qualification_status: '1'
     confirmed_flag: false
     active_flag: false
-    competition_status: '1'
+    competition_status: '2'
     fixture_round_status: '5'
-    process_status: '1'
-    approval_status: '3'
+    process_status: '2'
+    approval_status: '2'
     status: '2'
     description: 'Group One - 5000M (Men) - Running - Athletics ( sdf gsdfgsdfgs )'
     created_at: '2018-05-21 21:18:46'
@@ -1264,14 +1264,14 @@ TournamentMatchFixtureGroup:
     match_date: 05/24/2018
     match_time: '9:00 AM'
     effective_date: 05/24/2018
-    qualified_flag: null
+    qualified_flag: false
     qualification_status: '1'
     confirmed_flag: false
     active_flag: false
-    competition_status: '1'
+    competition_status: '2'
     fixture_round_status: '5'
-    process_status: '1'
-    approval_status: '3'
+    process_status: '2'
+    approval_status: '2'
     status: '2'
     description: 'Group One - 5000M (Women) - Running - Athletics ( sdfg sdfgsdfgsdg )'
     created_at: '2018-05-21 21:19:04'
@@ -1289,14 +1289,14 @@ TournamentMatchFixtureGroup:
     match_date: 05/24/2018
     match_time: '3:00 PM'
     effective_date: 05/24/2018
-    qualified_flag: null
+    qualified_flag: false
     qualification_status: '1'
     confirmed_flag: false
     active_flag: false
-    competition_status: '1'
+    competition_status: '2'
     fixture_round_status: '5'
-    process_status: '1'
-    approval_status: '3'
+    process_status: '2'
+    approval_status: '2'
     status: '2'
     description: 'Group One - 10000M (Men) - Running - Athletics ( sdfgsdfgsdfgsdfg )'
     created_at: '2018-05-21 21:19:23'
@@ -1314,14 +1314,14 @@ TournamentMatchFixtureGroup:
     match_date: 05/25/2018
     match_time: '8:45 AM'
     effective_date: 05/25/2018
-    qualified_flag: null
+    qualified_flag: false
     qualification_status: '1'
     confirmed_flag: false
     active_flag: false
-    competition_status: '1'
+    competition_status: '2'
     fixture_round_status: '5'
-    process_status: '1'
-    approval_status: '3'
+    process_status: '2'
+    approval_status: '2'
     status: '2'
     description: 'Group One - 10000M (Women) - Running - Athletics ( sdfgsdfgsdfgsdfg )'
     created_at: '2018-05-21 21:19:42'
@@ -1339,14 +1339,14 @@ TournamentMatchFixtureGroup:
     match_date: 05/25/2018
     match_time: '3:00 PM'
     effective_date: 05/25/2018
-    qualified_flag: null
+    qualified_flag: false
     qualification_status: '1'
     confirmed_flag: false
     active_flag: false
-    competition_status: '1'
+    competition_status: '2'
     fixture_round_status: '5'
-    process_status: '1'
-    approval_status: '3'
+    process_status: '2'
+    approval_status: '2'
     status: '2'
     description: 'Group One - Maraton (Men) - Running - Athletics ( sdfg sdfgsdfgsdfgsfg )'
     created_at: '2018-05-21 21:20:02'
@@ -1364,14 +1364,14 @@ TournamentMatchFixtureGroup:
     match_date: 05/26/2018
     match_time: '9:30 AM'
     effective_date: 05/26/2018
-    qualified_flag: null
+    qualified_flag: false
     qualification_status: '1'
     confirmed_flag: false
     active_flag: false
-    competition_status: '1'
+    competition_status: '2'
     fixture_round_status: '5'
-    process_status: '1'
-    approval_status: '3'
+    process_status: '2'
+    approval_status: '2'
     status: '2'
     description: 'Group One - Maraton (Women) - Running - Athletics ( sdfgsdfgsdfgsdfg )'
     created_at: '2018-05-21 21:20:22'
@@ -1388,6 +1388,7 @@ TournamentMatch:
     tournament_match_number: MTCH-001
     tournament_match_full_number: MTCH-001/18
     tournament_match_round_mode: '4'
+    tournament_match_result_mode: null
     round_type_mode: '4'
     contestant_team_mode: '2'
     competition_mode: null
@@ -1415,6 +1416,7 @@ TournamentMatch:
     tournament_match_number: MTCH-001
     tournament_match_full_number: MTCH-001/18
     tournament_match_round_mode: '1'
+    tournament_match_result_mode: null
     round_type_mode: '1'
     contestant_team_mode: '1'
     competition_mode: null
@@ -1935,6 +1937,64 @@ MultipleContestantTeamGroup:
     type: '1'
     created_at: '2018-05-18 20:47:12'
     updated_at: '2018-05-18 20:57:34'
+  MultipleContestantTeamGroup_10:
+    token_id: 3fd92bafbe6151e731eee1f0d0b1f287f108bc48
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_3
+    tournament_team_group_token_id: 450f610dfd1355e1f0681a44f89bec0fc9d9d02a
+    SportGame: SportGame_2
+    sport_game_token_id: 5613b3b75cdbdcc29668617a5eb7d98044522d50
+    gender_category_id: '1'
+    group_code: GRP-003-010/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    number_of_teams_per_group: '0'
+    number_of_participants_per_group: null
+    contestant_team_mode: '2'
+    start_date: 05/22/2018
+    effective_date: null
+    end_date: null
+    group_team_number_mandatory_flag: true
+    complete_flag: false
+    active_flag: true
+    process_status: '4'
+    approval_status: '4'
+    status: '3'
+    description: '800M (Athletics) - Middle Distance Running - Men - ( wertwretrtt yertyertyerty )'
+    type: '1'
+    created_at: '2018-05-22 20:09:38'
+    updated_at: '2018-05-22 20:59:23'
+  MultipleContestantTeamGroup_11:
+    token_id: f7f8f17b67e486318204c68e6b095d00665e073e
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_3
+    tournament_team_group_token_id: 450f610dfd1355e1f0681a44f89bec0fc9d9d02a
+    SportGame: SportGame_3
+    sport_game_token_id: df98e3a887293f1d68a9c3b0f537ba27885472de
+    gender_category_id: '1'
+    group_code: GRP-003-011/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    number_of_teams_per_group: '0'
+    number_of_participants_per_group: null
+    contestant_team_mode: '2'
+    start_date: 05/22/2018
+    effective_date: null
+    end_date: null
+    group_team_number_mandatory_flag: false
+    complete_flag: false
+    active_flag: true
+    process_status: '4'
+    approval_status: '4'
+    status: '3'
+    description: '1500M (Athletics) - Middle Distance Running - Men - ( ertyertyetry erty erty )'
+    type: '1'
+    created_at: '2018-05-22 20:10:21'
+    updated_at: '2018-05-22 20:59:23'
 Party: {  }
 Organization:
   Organization_1:
@@ -4431,6 +4491,126 @@ Person:
     access_activation_key: null
     created_at: '2018-05-11 02:43:34'
     updated_at: '2018-05-11 02:43:34'
+  Person_84:
+    token_id: 1657f80bf7e1ca6ccdb55ed42889a421
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Xxxxxx
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Xxxxxx Fffffff Dddd (adsfafasdf)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Fffffff
+    last_name: Dddd
+    full_name: 'Xxxxxx Fffffff Dddd'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-22 20:04:08'
+    updated_at: '2018-05-22 20:04:08'
+  Person_85:
+    token_id: de556f16991a15cfccb1193c1845a490
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Gggggggg
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Gggggggg Wwwwww Qqqqq (sdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Wwwwww
+    last_name: Qqqqq
+    full_name: 'Gggggggg Wwwwww Qqqqq'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-22 20:04:22'
+    updated_at: '2018-05-22 20:04:22'
+  Person_86:
+    token_id: e5613ae282850a91b848d0c849047fef
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Tesfu
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Tesfu Gidey Mehari (sfgsdfgsdfg sdfgsdfgsfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Gidey
+    last_name: Mehari
+    full_name: 'Tesfu Gidey Mehari'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-22 20:07:38'
+    updated_at: '2018-05-22 20:07:38'
+  Person_87:
+    token_id: 9d8207f2cd6687a371fffb15df0fbfc2
+    org_id: '1'
+    org_token_id: afccda09e18b3ebfd6734f446fd6e2a4e91f95c1
+    name: Abreha
+    alias: null
+    party_code_number: ''
+    parent_flag: false
+    super_parent_flag: false
+    default_flag: false
+    active_flag: true
+    status: '1'
+    trashed_flag: false
+    trashed_on: null
+    description: 'Abreha Miruts Yihdego (fgsdf sdfgsdfg)'
+    type: '2'
+    representative_id: null
+    title: null
+    middle_name: Miruts
+    last_name: Yihdego
+    full_name: 'Abreha Miruts Yihdego'
+    gender: '1'
+    date_of_birth: ''
+    place_of_birth: null
+    religion: null
+    ethnicity: null
+    nationality: '0'
+    access_activation_key: null
+    created_at: '2018-05-22 20:08:06'
+    updated_at: '2018-05-22 20:08:06'
 UserGroup:
   UserGroup_1:
     token_id: 311bb7024364b698d134e090ce9b788b
@@ -5351,7 +5531,7 @@ SportGame:
     status: '2'
     description: 'Athletics (ATHLETICS) - 800M ( sdfg sdfg sdfg sdfg )'
     created_at: '2018-04-06 20:29:42'
-    updated_at: '2018-04-06 20:29:42'
+    updated_at: '2018-05-22 20:59:23'
   SportGame_3:
     token_id: b9d6e0c4ce8041eb2feb535786bf38ef6c50d3fa
     Organization: Organization_1
@@ -5382,7 +5562,7 @@ SportGame:
     status: '2'
     description: 'Athletics (ATHLETICS) - 1500M ( sfg sdfg sdfg sdfg )'
     created_at: '2018-04-06 20:30:16'
-    updated_at: '2018-04-06 20:30:16'
+    updated_at: '2018-05-22 20:59:23'
   SportGame_4:
     token_id: 2e7e8248b842bcbc74a867c470049a1596526ddf
     Organization: Organization_1
@@ -5987,7 +6167,7 @@ Team:
     status: '1'
     description: null
     created_at: '2018-02-24 20:56:45'
-    updated_at: '2018-05-18 20:53:32'
+    updated_at: '2018-05-22 20:10:59'
   Team_2:
     token_id: 78d046156b9c88cb068883876c2f7b3781937431
     Organization: Organization_1
@@ -6080,7 +6260,7 @@ Team:
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-05-18 20:48:41'
+    updated_at: '2018-05-22 20:10:59'
   Team_5:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
@@ -6142,7 +6322,7 @@ Team:
     status: '1'
     description: null
     created_at: '2018-02-24 21:28:50'
-    updated_at: '2018-05-18 20:56:49'
+    updated_at: '2018-05-22 20:10:59'
   Team_7:
     token_id: 6e60f180ecab6683ae00640e0d847c1607cb050d
     Organization: Organization_1
@@ -7814,6 +7994,78 @@ TeamMemberParticipant:
     description: 'Teklit Tekeste Hailay (  )'
     created_at: '2018-05-11 02:43:34'
     updated_at: '2018-05-11 02:43:34'
+  TeamMemberParticipant_80:
+    token_id: 63859fe700d33d0b2363adee2364a6c8ed606e60
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    Person: Person_84
+    person_token_id: 08e9b1d57c5c7c8494d3dfb820bbb585d3efccf2
+    gender_category_id: '1'
+    member_full_name: 'Xxxxxx Fffffff Dddd'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Xxxxxx Fffffff Dddd (  )'
+    created_at: '2018-05-22 20:04:08'
+    updated_at: '2018-05-22 20:04:08'
+  TeamMemberParticipant_81:
+    token_id: e896a029812f192cd8d35256a91afe94a1879bbb
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    Person: Person_85
+    person_token_id: 062431e58bb59d56889c08fd91084e0669324efc
+    gender_category_id: '1'
+    member_full_name: 'Gggggggg Wwwwww Qqqqq'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Gggggggg Wwwwww Qqqqq (  )'
+    created_at: '2018-05-22 20:04:22'
+    updated_at: '2018-05-22 20:04:22'
+  TeamMemberParticipant_82:
+    token_id: 661e27816f61fef09f141bd6f364c0bd9a5894ad
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_86
+    person_token_id: 2a2aeda0cc35f270b8df650612b3433e5394faa5
+    gender_category_id: '1'
+    member_full_name: 'Tesfu Gidey Mehari'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Tesfu Gidey Mehari (  )'
+    created_at: '2018-05-22 20:07:38'
+    updated_at: '2018-05-22 20:07:38'
+  TeamMemberParticipant_83:
+    token_id: f6ed699dc7e36808b4e8960eef53007fc9f1189a
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    Person: Person_87
+    person_token_id: f771ba9fdc646f495c217f07a50fa32a9d7ea050
+    gender_category_id: '1'
+    member_full_name: 'Abreha Miruts Yihdego'
+    member_role_id: '2'
+    member_number: '2'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: true
+    grouped_status: '1'
+    status: '2'
+    description: 'Abreha Miruts Yihdego (  )'
+    created_at: '2018-05-22 20:08:06'
+    updated_at: '2018-05-22 20:08:06'
 TeamMemberParticipantRole:
   TeamMemberParticipantRole_1:
     token_id: a99cd4235504e1a370dcabe4c6c0911b13ae02df
@@ -9345,6 +9597,108 @@ TeamMemberParticipantRole:
     description: 'Teklit Tekeste Hailay (Contestant/Player) participating in Ground Tennis (Ground Tennis) ( sadfasdfasdfasdfasdf )'
     created_at: '2018-05-11 02:44:19'
     updated_at: '2018-05-11 02:44:19'
+  TeamMemberParticipantRole_91:
+    token_id: fe61e6bfe0b7bd63d4d71605870c989641a0bace
+    TeamGameParticipation: TeamGameParticipation_84
+    team_game_participation_token_id: 8f5df0617ddc477fd8b6619f7a643e3136117d40
+    TeamMemberParticipant: TeamMemberParticipant_80
+    team_member_participant_token_id: 5d5087880a3d40a88274741ff80c3b17e693076a
+    member_role_id: '2'
+    gender_category_id: '0'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
+    description: 'Xxxxxx Fffffff Dddd (Contestant/Player) participating in 800M (Athletics) ( wertwertwertwert )'
+    created_at: '2018-05-22 20:05:37'
+    updated_at: '2018-05-22 20:05:37'
+  TeamMemberParticipantRole_92:
+    token_id: 33f6454b6d98897e57fab14b9f651e508be803f8
+    TeamGameParticipation: TeamGameParticipation_86
+    team_game_participation_token_id: 8f61bd98fa5b61cdb840fb6caa072a5a07586dec
+    TeamMemberParticipant: TeamMemberParticipant_81
+    team_member_participant_token_id: 193af732889e57b394a4239bc043cb85bd824dfa
+    member_role_id: '2'
+    gender_category_id: '0'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Gggggggg Wwwwww Qqqqq (Contestant/Player) participating in 1500M (Athletics) ( wertwertwertwert )'
+    created_at: '2018-05-22 20:05:59'
+    updated_at: '2018-05-22 20:05:59'
+  TeamMemberParticipantRole_93:
+    token_id: 715dd896b5b0742276298e394ca6a0b385d94b5f
+    TeamGameParticipation: TeamGameParticipation_86
+    team_game_participation_token_id: 8f61bd98fa5b61cdb840fb6caa072a5a07586dec
+    TeamMemberParticipant: TeamMemberParticipant_80
+    team_member_participant_token_id: 5d5087880a3d40a88274741ff80c3b17e693076a
+    member_role_id: '2'
+    gender_category_id: '0'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Xxxxxx Fffffff Dddd (Contestant/Player) participating in 1500M (Athletics) ( wertwert bert wertwertwert )'
+    created_at: '2018-05-22 20:06:34'
+    updated_at: '2018-05-22 20:06:34'
+  TeamMemberParticipantRole_94:
+    token_id: 3dad93979a5c7afaa7baf9f639560011b5da527a
+    TeamGameParticipation: TeamGameParticipation_88
+    team_game_participation_token_id: 70f149b919db863fec2ba95ff80e16e21fe8f1c6
+    TeamMemberParticipant: TeamMemberParticipant_83
+    team_member_participant_token_id: 9915baeaf4a97283725a57072222863aaebabfef
+    member_role_id: '2'
+    gender_category_id: '0'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '3'
+    description: 'Abreha Miruts Yihdego (Contestant/Player) participating in 800M (Athletics) ( wertwer twertwert wertwert )'
+    created_at: '2018-05-22 20:08:27'
+    updated_at: '2018-05-22 20:08:27'
+  TeamMemberParticipantRole_95:
+    token_id: 715137a101a040a1766fc15441fc5de4d807e0e6
+    TeamGameParticipation: TeamGameParticipation_89
+    team_game_participation_token_id: 4bb7feead9dfb6d40546f6d9b4c3e105702da4df
+    TeamMemberParticipant: TeamMemberParticipant_83
+    team_member_participant_token_id: 9915baeaf4a97283725a57072222863aaebabfef
+    member_role_id: '2'
+    gender_category_id: '0'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Abreha Miruts Yihdego (Contestant/Player) participating in 1500M (Athletics) ( wertwertwert )'
+    created_at: '2018-05-22 20:08:53'
+    updated_at: '2018-05-22 20:08:53'
+  TeamMemberParticipantRole_96:
+    token_id: 17282f3172acb7ba1b8e1422fd252130f54ef812
+    TeamGameParticipation: TeamGameParticipation_89
+    team_game_participation_token_id: 4bb7feead9dfb6d40546f6d9b4c3e105702da4df
+    TeamMemberParticipant: TeamMemberParticipant_82
+    team_member_participant_token_id: 4407b7ba3bc6d5b284cc1bfdc776a66e768d0bf1
+    member_role_id: '2'
+    gender_category_id: '0'
+    confirmed_flag: false
+    grouped_flag: false
+    active_flag: false
+    confirmed_status: '1'
+    grouped_status: '1'
+    status: '2'
+    description: 'Tesfu Gidey Mehari (Contestant/Player) participating in 1500M (Athletics) ( wertwer twertwert )'
+    created_at: '2018-05-22 20:09:11'
+    updated_at: '2018-05-22 20:09:11'
 TeamGameParticipation:
   TeamGameParticipation_1:
     token_id: 029e9503d58b795b526e0b591959e4cf5294dd4b
@@ -11037,17 +11391,17 @@ TeamGameParticipation:
     event_type: '0'
     player_mode: '0'
     start_date: null
-    effective_date: null
+    effective_date: 05/22/2018
     end_date: null
-    grouped_flag: false
-    confirmed_flag: false
-    active_flag: false
-    grouped_status: '1'
-    confirmed_status: '1'
-    status: '2'
+    grouped_flag: true
+    confirmed_flag: true
+    active_flag: true
+    grouped_status: '11'
+    confirmed_status: '4'
+    status: '3'
     description: 'Athletics (ATHLETICS) - 800M (Athletics) ( sfgdfgsdfg )'
     created_at: '2018-04-25 10:54:05'
-    updated_at: '2018-04-25 10:54:05'
+    updated_at: '2018-05-22 20:10:59'
   TeamGameParticipation_75:
     token_id: 5f13c135a0da8267998c98912164ce1ee28e85cf
     Team: Team_4
@@ -11255,6 +11609,144 @@ TeamGameParticipation:
     description: 'Football (FOOTBALL) - Football (Football) (  )'
     created_at: '2018-05-11 22:38:59'
     updated_at: '2018-05-18 20:57:06'
+  TeamGameParticipation_84:
+    token_id: 84cace6ce6259ba7c38ce9a80d86fda70da4181e
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    GameCategory: GameCategory_1
+    SportGame: SportGame_2
+    sport_game_token_id: 5613b3b75cdbdcc29668617a5eb7d98044522d50
+    number_of_players: '1'
+    gender_category_id: '1'
+    event_type: '0'
+    player_mode: '0'
+    start_date: null
+    effective_date: 05/22/2018
+    end_date: null
+    grouped_flag: true
+    confirmed_flag: true
+    active_flag: true
+    grouped_status: '11'
+    confirmed_status: '4'
+    status: '3'
+    description: 'Athletics (ATHLETICS) - 800M (Athletics) ( wertwertwert )'
+    created_at: '2018-05-22 20:04:54'
+    updated_at: '2018-05-22 20:10:59'
+  TeamGameParticipation_85:
+    token_id: 96d102cccc492319229423991841304c37ffe023
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    GameCategory: GameCategory_1
+    SportGame: SportGame_2
+    sport_game_token_id: 5613b3b75cdbdcc29668617a5eb7d98044522d50
+    number_of_players: '1'
+    gender_category_id: '2'
+    event_type: '0'
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 800M (Athletics) ( wertwertwert )'
+    created_at: '2018-05-22 20:04:54'
+    updated_at: '2018-05-22 20:04:54'
+  TeamGameParticipation_86:
+    token_id: d40f774c16fae64582197efa5f83dfb7ebdb2262
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    GameCategory: GameCategory_1
+    SportGame: SportGame_3
+    sport_game_token_id: df98e3a887293f1d68a9c3b0f537ba27885472de
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    player_mode: '0'
+    start_date: null
+    effective_date: 05/22/2018
+    end_date: null
+    grouped_flag: true
+    confirmed_flag: true
+    active_flag: true
+    grouped_status: '11'
+    confirmed_status: '4'
+    status: '3'
+    description: 'Athletics (ATHLETICS) - 1500M (Athletics) ( wertwertwertwer )'
+    created_at: '2018-05-22 20:05:13'
+    updated_at: '2018-05-22 20:10:48'
+  TeamGameParticipation_87:
+    token_id: 4dfcc1005f6159d8db6bc1eb9559108008c8aad5
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    GameCategory: GameCategory_1
+    SportGame: SportGame_3
+    sport_game_token_id: df98e3a887293f1d68a9c3b0f537ba27885472de
+    number_of_players: '0'
+    gender_category_id: '2'
+    event_type: '0'
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 1500M (Athletics) ( wertwertwertwer )'
+    created_at: '2018-05-22 20:05:13'
+    updated_at: '2018-05-22 20:05:13'
+  TeamGameParticipation_88:
+    token_id: f68330b8831526a5bf498e6efacfb70a0a6d2d3d
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_2
+    sport_game_token_id: 5613b3b75cdbdcc29668617a5eb7d98044522d50
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    player_mode: '0'
+    start_date: null
+    effective_date: 05/22/2018
+    end_date: null
+    grouped_flag: true
+    confirmed_flag: true
+    active_flag: true
+    grouped_status: '11'
+    confirmed_status: '4'
+    status: '3'
+    description: 'Athletics (ATHLETICS) - 800M (Athletics) ( ewrtwertwer twer )'
+    created_at: '2018-05-22 20:06:58'
+    updated_at: '2018-05-22 20:10:59'
+  TeamGameParticipation_89:
+    token_id: d37178719456562017c65aa676c47a0e481a6641
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    GameCategory: GameCategory_1
+    SportGame: SportGame_3
+    sport_game_token_id: df98e3a887293f1d68a9c3b0f537ba27885472de
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    player_mode: '0'
+    start_date: null
+    effective_date: 05/22/2018
+    end_date: null
+    grouped_flag: true
+    confirmed_flag: true
+    active_flag: true
+    grouped_status: '11'
+    confirmed_status: '4'
+    status: '3'
+    description: 'Athletics (ATHLETICS) - 1500M (Athletics) ( wertwertwertwetr )'
+    created_at: '2018-05-22 20:07:14'
+    updated_at: '2018-05-22 20:10:49'
 CodeGenerator:
   CodeGenerator_1:
     token_id: ee5bb3a6124bae087ac3f5d732d94947
@@ -11353,7 +11845,7 @@ CodeGenerator:
     prefix_code: GRP
     alias: GRP
     initial_number: '001'
-    last_code: '0003'
+    last_code: '0004'
     deleted_code: null
     can_recreate_deleted: true
     code_type: '8'
@@ -11363,7 +11855,7 @@ CodeGenerator:
     active_flag: true
     description: 'Team Group ( Team Group generated code )'
     created_at: '2016-01-21 01:26:19'
-    updated_at: '2018-05-18 20:40:31'
+    updated_at: '2018-05-22 20:03:40'
   CodeGenerator_7:
     token_id: 80f14629d01dc4b0d7073752f1020eda
     Organization: Organization_1
@@ -11419,6 +11911,24 @@ TournamentTeamGroup:
     description: 'jh ghjg hjgjhjkhjk hkj hkj'
     created_at: '2018-05-18 20:40:31'
     updated_at: '2018-05-18 20:57:38'
+  TournamentTeamGroup_3:
+    token_id: a51f4fd43fab1a245c3f9036585fe76efeca0ff2
+    Tournament: Tournament_1
+    GameCategory: GameCategory_1
+    sport_game_category_token_id: e02fa68d1c4b595a06a372982ba4b587ac3a3165
+    group_full_code: GRP-003/18
+    group_code: GRP-003
+    start_date: 05/22/2018
+    effective_date: 05/22/2018
+    end_date: null
+    complete_flag: false
+    active_flag: true
+    process_status: '11'
+    approval_status: '4'
+    status: '3'
+    description: gsdfgsdfgsdfg
+    created_at: '2018-05-22 20:03:39'
+    updated_at: '2018-05-22 20:59:26'
 TournamentGroupParticipantTeam:
   TournamentGroupParticipantTeam_1:
     token_id: 43fffdd059e7fd80ce4dfa8ad77788a8fc6fdf5d
@@ -12823,6 +13333,121 @@ TournamentGroupParticipantTeam:
     description: 'Kombolcha University (KU-ET) - Ethiopia team grouped in Group One - Football (Men) - ( adfasdfasdfasdfasdfasdfasdf )'
     created_at: '2018-05-18 20:57:06'
     updated_at: '2018-05-18 20:57:06'
+  TournamentGroupParticipantTeam_62:
+    token_id: 1c5807550168a5bb23be174e8b392f1713112159
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_11
+    tournament_sport_game_group_token_id: 26d6e521c4e16015712d7d52a530be12e46564d8
+    TeamGameParticipation: TeamGameParticipation_86
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    start_date: 05/22/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: false
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '1'
+    confirmed_status: '1'
+    process_status: '1'
+    approval_status: '4'
+    status: '3'
+    description: 'Nirobi University ( NU ) - Kenya team grouped in Group One - 1500M (Men) - Running (  )'
+    created_at: '2018-05-22 20:10:48'
+    updated_at: '2018-05-22 20:10:48'
+  TournamentGroupParticipantTeam_63:
+    token_id: 320ef8e2a5db57566ee608456fa21afe78293f02
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_11
+    tournament_sport_game_group_token_id: 26d6e521c4e16015712d7d52a530be12e46564d8
+    TeamGameParticipation: TeamGameParticipation_89
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    start_date: 05/22/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: false
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '1'
+    confirmed_status: '1'
+    process_status: '1'
+    approval_status: '4'
+    status: '3'
+    description: 'Adigrat University ( ADU-ET ) - Ethiopia team grouped in Group One - 1500M (Men) - Running (  )'
+    created_at: '2018-05-22 20:10:49'
+    updated_at: '2018-05-22 20:10:49'
+  TournamentGroupParticipantTeam_64:
+    token_id: b779b285d4236e2ff19d95fc64892c60a16a84a8
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_10
+    tournament_sport_game_group_token_id: 1355da907ce76953d463e26f1fb95847625b7732
+    TeamGameParticipation: TeamGameParticipation_74
+    Team: Team_4
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    start_date: 05/22/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: false
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '1'
+    confirmed_status: '1'
+    process_status: '1'
+    approval_status: '4'
+    status: '3'
+    description: 'Mekelle University ( MU-ET ) - Ethiopia team grouped in Group One - 800M (Men) - Running (  )'
+    created_at: '2018-05-22 20:10:59'
+    updated_at: '2018-05-22 20:10:59'
+  TournamentGroupParticipantTeam_65:
+    token_id: 2fa72dee95204b57f0f5b01b87101f0def9d01cd
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_10
+    tournament_sport_game_group_token_id: 1355da907ce76953d463e26f1fb95847625b7732
+    TeamGameParticipation: TeamGameParticipation_84
+    Team: Team_1
+    team_token_id: dea0998898d8c02b0cad84c45fea34615f761bb4
+    start_date: 05/22/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: false
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '1'
+    confirmed_status: '1'
+    process_status: '1'
+    approval_status: '4'
+    status: '3'
+    description: 'Nirobi University ( NU ) - Kenya team grouped in Group One - 800M (Men) - Running (  )'
+    created_at: '2018-05-22 20:10:59'
+    updated_at: '2018-05-22 20:10:59'
+  TournamentGroupParticipantTeam_66:
+    token_id: 050a480c6ee52a180bd422a1a71db5d94de150ce
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_10
+    tournament_sport_game_group_token_id: 1355da907ce76953d463e26f1fb95847625b7732
+    TeamGameParticipation: TeamGameParticipation_88
+    Team: Team_6
+    team_token_id: 4bc509e515e391289dc42acaa460a923bfb04f4e
+    start_date: 05/22/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: false
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '1'
+    confirmed_status: '1'
+    process_status: '1'
+    approval_status: '4'
+    status: '3'
+    description: 'Adigrat University ( ADU-ET ) - Ethiopia team grouped in Group One - 800M (Men) - Running (  )'
+    created_at: '2018-05-22 20:10:59'
+    updated_at: '2018-05-22 20:10:59'
 SystemLogFile:
   SystemLogFile_1:
     token_id: 99b7a42098ac0f76113274effdb5f08f3d0df96e
@@ -13185,3 +13810,41 @@ SystemLogFile:
     description: 'Admin has performed CREATE action to create New Tournament Match - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Tue May 22, 2018 12:25:37 AM]'
     created_at: '2018-05-22 00:25:37'
     updated_at: '2018-05-22 00:25:37'
+  SystemLogFile_20:
+    token_id: 28cf8839664471b058fb9041a3c5f45cdf57ea18
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '8'
+    action_date: '05/22/2018 08:03:40 PM'
+    action_time: '08:03:40 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team Group - [ Module: Team Group ], Object: Team Group ID: 3, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team_group/createTournamentGroup
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team Group - [ Module: Team Group ] from [ IP: 127.0.0.1 ] at [Date: Tue May 22, 2018 08:03:40 PM]'
+    created_at: '2018-05-22 20:03:40'
+    updated_at: '2018-05-22 20:03:40'
+  SystemLogFile_21:
+    token_id: 165ccbe3d84fa811f9dd56e802fe2ed534b37657
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '8'
+    action_date: '05/22/2018 08:59:26 PM'
+    action_time: '08:59:26 PM'
+    action_data: 'User: admin, Action: APPROVE, Data: Approve Tournament Team Group - [ Module: Team Group ], Object: Tournament Team Group ID: 3, IP: 127.0.0.1'
+    action_type_id: '7'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team_group/completeTeamGrouping
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed APPROVE action to Approve Tournament Team Group - [ Module: Team Group ] from [ IP: 127.0.0.1 ] at [Date: Tue May 22, 2018 08:59:26 PM]'
+    created_at: '2018-05-22 20:59:26'
+    updated_at: '2018-05-22 20:59:26'

@@ -1105,4 +1105,43 @@ a.reset_time {
 	background:#f00!important;
 }
 
+/************************************************************/
+
+.ui-table-panel-box {
+	margin-top: 10px;
+	padding: 2px;
+	border:1px solid #f00;
+}
+.ui-table-panel {
+	border:1px solid #f00;
+}
+.ui-table-panel h2 {
+	margin: 0px;
+	padding: 8px 10px;
+	font-size: 16px;
+	font-weight:bold;
+	border:1px solid #0f0;
+	background:#f9a818;
+}
+.ui-panel {
+	border:1px solid #00f;
+}
+
+.ui-panel table {
+	padding:0px;
+	width:100%;
+}
+.ui-panel table tr {
+	padding:0px;
+}
+.ui-panel table thead {
+	padding:3px;
+	background:gray;
+	font-size: 14px;
+}
+.ui-panel table tr td {
+	padding:5px;
+	font-size: 12px;
+	
+}
 

@@ -271,7 +271,7 @@ class matchActions extends sfActions
 		
 		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID );
 		
-		//$this->_matchParticipantTeams = TournamentMatchParticipantTeamTable::processSelection ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_matchFixtureID, $_teamGroupID, $_sportGameID, $_keyword, 0, 20  ) ;
+		$this->_matchParticipantTeamMembers = TournamentMatchTeamMemberParticipantTable::processSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword, 0, 20  ) ;
 		//$this->_candidateParticipantTeams = TournamentMatchTable::processCandidateTournamentMatchParticipantTeams ( $_orgID, $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_keyword, 0, 20 ); 
 		//$this->_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateParticipants ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_teamGroupID, $_sportGameID, $_keyword, 0, 20 ); 
 		//$this->_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateParticipants ( $_orgID, $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_keyword, $_exclusion, 0, 20 ); 
@@ -286,58 +286,33 @@ class matchActions extends sfActions
 		 
 		
 	}
-	public function executeCreateMatchParticipantTeamMember(sfWebRequest $request)
+	public function executeCreateTournamentMatchParticipantTeamMember(sfWebRequest $request)
 	{
+		
+		//match_participant_creation_mode=1&match_fixture=Group One - 800M Running - Men (Athletics)&match_fixture_id=7&match_fixture_token_id=b6def2a76391b9cb74b4e98ebd1e572b04c4767d&tournament_sport_game_group_id=10&tournament_sport_game_group_token_id=3fd92bafbe6151e731eee1f0d0b1f287f108bc48&gender_category_id=1&tournament_match_fixture_group_id=7&tournament_match_fixture_token_group_id=56135323a57b8929de5f0ab866f9cd194cd9259f&sport_game_id=2&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=3&tournament_match_token_id=ba44103dc5939ca480fa8b9809ad058a2a3130c7&tournament_match_game_category_id=1&participant_team_name=Nirobi University (NU) - Kenya&team_id=1&team_token_id=6d8819a85c22612333e3111b47dcf6d56e2b39ec&=51&=9eb20666a18f68f17ab15e60bd76a9c0e0defcd2&sport_game_group_team_id=65&sport_game_group_team_token_id=2fa72dee95204b57f0f5b01b87101f0def9d01cd&participant_name=80 ( Xxxxxx Fffffff Dddd ) - Contestant/Player&=91&=fe61e6bfe0b7bd63d4d71605870c989641a0bace&=80&=63859fe700d33d0b2363adee2364a6c8ed606e60&description=dasDASDaSD
+		
 		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
 		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
-		
-		$_matchFixtureID = $request->getParameter('match_fixture_id');	
-		$_matchFixtureTokenID = $request->getParameter('match_fixture_token_id');	
-		$_sportGameGroupID = $request->getParameter('tournament_sport_game_group_id');	
-		$_sportGameGroupTokenID = $request->getParameter('tournament_sport_game_group_token_id');	
-		$_participantTeamGroupID = $request->getParameter('sport_game_group_team_id');	
-		$_participantTeamGroupTokenID = $request->getParameter('sport_game_group_team_token_id');	
 		
 		$_matchFixtureName = $request->getParameter('match_fixture');	
-		$_participantTeamName = $request->getParameter('participant_team_name');	
-		$_genderCategory = $request->getParameter('gender_category_id');	
-		
-		$_matchStatus = $request->getParameter('match_status');	 
-		$_description = $request->getParameter('description');	
-				
-		$_orgID = $this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
-		$_userID = $this->getUser()->getAttribute('userID');
-		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
-	
-		$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_matchStatus, $_description, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
-				 
-		return $_flag ? true:false;
-		
-	}
-	public function executeCreateBatchTournamentMatchFixtureGroupParticipant(sfWebRequest $request)
-	{
-		//=2&=Group One - 5000M Running - Men (Athletics)&=1&=f822ae662c4fb4c525be33b8d4453f5127adc560&tournament_sport_game_group_id=1&tournament_sport_game_group_token_id=33ac5fc77c60ef9b912263e996af91556a4e7750&=1&=1&=0d6dbf5b9a01dbc1c262177e59ab5a4a0d071d98&sport_game_id=5&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&=1&=522d17df030f87f4afe317b006613dfa22301c0a&tournament_match_game_category_id=1&participant_team_name=&team_id=&team_token_id=&participant_team_id=&participant_team_token_id=&sport_game_group_team_id=&sport_game_group_team_token_id=&participant_name=&participant_id=&participant_token_id=&description=dfgsdfgsdfgsdfg
-	
-		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
-		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
-		
 		$_matchFixtureID = $request->getParameter('match_fixture_id');	
 		$_matchFixtureTokenID = $request->getParameter('match_fixture_token_id');	
 		$_matchFixtureGroupID = $request->getParameter('tournament_match_fixture_group_id');	
 		$_matchFixtureGroupTokenID = $request->getParameter('tournament_match_fixture_token_group_id');	
-		$_sportGameGroupID = $request->getParameter('tournament_sport_game_group_id');	
-		$_sportGameGroupTokenID = $request->getParameter('tournament_sport_game_group_token_id');	
-		$_participantTeamGroupID = $request->getParameter('sport_game_group_team_id');	
-		$_participantTeamGroupTokenID = $request->getParameter('sport_game_group_team_token_id');	
 		
-		$_matchFixtureName = $request->getParameter('match_fixture');	
 		$_participantTeamName = $request->getParameter('participant_team_name');	
+		$_participantTeamID = $request->getParameter('participant_team_id');	
+		$_participantTeamTokenID = $request->getParameter('participant_team_token_id');	
+		
+		$_participantMemberName = $request->getParameter('participant_name');	
+		$_participantMemberRoleID = $request->getParameter('participant_role_id');	
+		$_participantMemberRoleTokenID = $request->getParameter('participant_role_token_id');	
+		$_participantMemberID = $request->getParameter('participant_member_id');	
+		$_participantMemberTokenID = $request->getParameter('participant_member_token_id');	
+		
 		$_genderCategory = $request->getParameter('gender_category_id');	
 		
-		$_dataCreationMode = $request->getParameter('match_participant_creation_mode');	
-		
-		$_matchStatus = $request->getParameter('match_status');	 
+		$_batchCreationMode = $request->getParameter('match_participant_creation_mode');	 
 		$_description = $request->getParameter('description');	
 				
 		$_orgID = $this->getUser()->getAttribute('orgID');
@@ -345,10 +320,47 @@ class matchActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_matchFixtureName, $_description, TournamentCore::$_BATCH_CREATION_MODE, $_userID, $_userTokenID );  
+		$_flag =  TournamentMatchTeamMemberParticipantTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamID, $_participantTeamTokenID, $_participantMemberRoleID, $_participantMemberRoleTokenID, $_participantMemberID, $_participantMemberTokenID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_description, $_batchCreationMode, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
 				 
 		return $_flag ? true:false;
 		
+	}
+	public function executeCreateBatchMatchFixtureGroupParticipantTeamMembers(sfWebRequest $request)
+	{
+		//match_participant_creation_mode=2&match_fixture=Group One - 800M Running - Men (Athletics)&match_fixture_id=7&match_fixture_token_id=9a13968cac938e2a2314f3fe64fa5d2e061b49b8&tournament_sport_game_group_id=10&tournament_sport_game_group_token_id=3fd92bafbe6151e731eee1f0d0b1f287f108bc48&gender_category_id=1&tournament_match_fixture_group_id=7&tournament_match_fixture_token_group_id=e2a6c3715f6e7dbf8c516cae2b88b342c2dc1762&sport_game_id=2&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=3&tournament_match_token_id=cfd491a3db8128365c289656ee135877b6e91117&tournament_match_game_category_id=1&participant_team_name=&team_id=&team_token_id=&participant_team_id=&participant_team_token_id=&sport_game_group_team_id=&sport_game_group_team_token_id=&participant_name=&participant_role_id=&participant_role_token_id=&participant_member_id=&participant_member_token_id=&description=
+	
+		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
+		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
+		
+		$_matchFixtureName = $request->getParameter('match_fixture');	
+		$_matchFixtureID = $request->getParameter('match_fixture_id');	
+		$_matchFixtureTokenID = $request->getParameter('match_fixture_token_id');	
+		$_matchFixtureGroupID = $request->getParameter('tournament_match_fixture_group_id');	
+		$_matchFixtureGroupTokenID = $request->getParameter('tournament_match_fixture_token_group_id');	
+		
+		$_participantTeamName = $request->getParameter('participant_team_name');	
+		$_participantTeamID = $request->getParameter('participant_team_id');	
+		$_participantTeamTokenID = $request->getParameter('participant_team_token_id');	
+		
+		$_participantMemberName = $request->getParameter('participant_name');	
+		$_participantMemberRoleID = $request->getParameter('participant_role_id');	
+		$_participantMemberRoleTokenID = $request->getParameter('participant_role_token_id');	
+		$_participantMemberID = $request->getParameter('participant_member_id');	
+		$_participantMemberTokenID = $request->getParameter('participant_member_token_id');	
+		
+		$_genderCategory = $request->getParameter('gender_category_id');	
+		
+		$_batchCreationMode = $request->getParameter('match_participant_creation_mode');	 
+		$_description = $request->getParameter('description');	
+				
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_userID = $this->getUser()->getAttribute('userID');
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+	
+		$_flag =  TournamentMatchTeamMemberParticipantTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_matchFixtureName, $_description, $_batchCreationMode, $_userID, $_userTokenID );  
+				 
+		return $_flag ? true:false;
 	}
 	public function executeComplete(sfWebRequest $request)
 	{
@@ -474,7 +486,7 @@ class matchActions extends sfActions
 	 
   /****************** Participant Team Action ***********************/
 	
-	public function executeCandidateTournamentMatchFixtures(sfWebRequest $request)
+	public function executeCandidateTournamentMatchParticipantFixtures(sfWebRequest $request)
 	{
 		
 		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
@@ -487,7 +499,7 @@ class matchActions extends sfActions
 		if(!$_offset || $_offset=='')	$_offset = 0;			
 		if(!$_limit || $_limit=='' ) $_limit = 20;			 
 
-		$_candidateMatchFixtures = TournamentMatchTable::selectCandidateMatchFixtures ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_contestantTeamMode, $_keyword, $_offset, $_limit); 
+		$_candidateMatchFixtures = TournamentMatchTable::selectCandidateTournamentMatchParticipantFixtures ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_contestantTeamMode, $_keyword, $_offset, $_limit); 
 		
 		return $this->renderPartial('candidate_match_fixtures', array('_candidateMatchFixtures' => $_candidateMatchFixtures, '_countCandidateSportGames' => $_countCandidateSportGames));	  
 	}

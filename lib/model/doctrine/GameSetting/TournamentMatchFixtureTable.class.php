@@ -47,7 +47,10 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 			$_matchFixture->makeMatchFixtureCode ($_tournamentMatchNumber); 
 			
 			$_flag1 = $_tournamentMatch->checkInitiated () ? $_tournamentMatch->makePending ():true;
-		
+			
+			$_sportGameGroup = TournamentSportGameGroupTable::makeCandidateObject ( $_sportGameGroupID, $_sportGameGroupTokenID );
+			$_flag2 = $_sportGameGroup->makeCompletion ();
+			
 			if($_orgID && $_userID) { 
 				
 				$_actionID = SystemCore::$_CREATE; 

@@ -407,7 +407,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		$_candidateTournamentGroups = TournamentSportGameGroupTable::processCandidateApprovalSelections ( $_tournamentGroupID, $_tournamentGroupTokenID, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING) ;
 		if(!$_candidateTournamentGroups) { $_flag = false; } else {
 			foreach($_candidateTournamentGroups as $_candidateTournamentGroup) {
-				$_flag = $_candidateTournamentGroup->makeCompletion (); 
+				$_flag = $_candidateTournamentGroup->makeConfirmation (); 
 			}
 		} 
 		$_flag = ($_tournamentTeamGroup && !$_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup) ? $_tournamentTeamGroup->makeApproval ():true;
