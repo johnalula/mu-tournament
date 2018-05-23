@@ -16,16 +16,16 @@
 					<?php echo  $_participantTeam->teamName ?>
 				</td>
 				<td>
-					<?php echo  $_participantTeam->id ?>
+					<?php  ?>
 				</td>
 				<td>
-					<?php echo $_participantTeam->id ?>
+					<?php  ?>
 				</td> 
 				<td>
-					<?php echo $_participantTeam->id ?>
+					<?php  ?>
 				</td> 
 				<td>
-					<?php echo $_participantTeam->id ?>
+					<?php d ?>
 				</td> 
 			</tr> 
 			<?php endforeach; ?>
