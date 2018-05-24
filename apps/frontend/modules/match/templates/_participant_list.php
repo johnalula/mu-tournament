@@ -45,7 +45,7 @@
 				<?php echo $_matchParticipantTeamMember->sportGameGroupName ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo Wordlimit::Wordlimiter($_matchParticipantTeamMember->description, 7) ?>
+				<?php echo Wordlimit::Wordlimiter($_matchParticipantTeamMember->description, 5) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_matchParticipantTeamMember->id ?>" class="ui-table-status-small-icon" id="<?php echo $_matchParticipantTeamMember->id ?>">

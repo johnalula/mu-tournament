@@ -1,5 +1,5 @@
-<div class="" id="">
-	<table class="">
+<div class="table-responsive" id="">
+	<table class="table table-striped">
 		<thead>
 			<tr> 
 				<th>Team</th>
@@ -16,16 +16,16 @@
 					<?php echo  $_participantTeam->teamName ?>
 				</td>
 				<td>
-					<?php  ?>
+					<?php echo  $_participantTeam->id ?>
 				</td>
 				<td>
-					<?php  ?>
+					<?php echo $_participantTeam->id ?>
 				</td> 
 				<td>
-					<?php  ?>
+					<?php echo $_participantTeam->id ?>
 				</td> 
 				<td>
-					<?php d ?>
+					<?php echo $_participantTeam->id ?>
 				</td> 
 			</tr> 
 			<?php endforeach; ?>

@@ -216,6 +216,7 @@ class matchActions extends sfActions
 	
 		$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_opponentParticipantTeamName, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_matchStatus, $_description, $_contestantTeamMode, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
 		
+		 
 		return $_flag ? true:false;
 		
 	}
@@ -321,7 +322,7 @@ class matchActions extends sfActions
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
 		$_flag =  TournamentMatchTeamMemberParticipantTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamID, $_participantTeamTokenID, $_participantMemberRoleID, $_participantMemberRoleTokenID, $_participantMemberID, $_participantMemberTokenID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_description, $_batchCreationMode, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );  
-				 
+		
 		return $_flag ? true:false;
 		
 	}
@@ -377,6 +378,8 @@ class matchActions extends sfActions
 		$this->_matchParticipantTeams = TournamentMatchFixtureGroupTable::processSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword, 0, 20  ) ;
 		
 		$this->_tournamentMatchFixtures = TournamentMatchFixtureTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, false, $_parentFlag, false, TournamentCore::$_PENDING, TournamentCore::$_PENDING);
+		
+		$this->_matchParticipantTeamMembers = TournamentMatchTeamMemberParticipantTable::processSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword, 0, 20  ) ;
 		
 	}
 

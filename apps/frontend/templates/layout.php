@@ -15,7 +15,7 @@
 		</script>
 	</head>
 	
-	<body oncontextmenu="return false">   
+	<body >   
 	 <!-- Fixed navbar 0945525171-->
 	 <!-- Fixed navbar 0945525171-->
 		<div class="">

@@ -448,11 +448,13 @@ class TournamentCore {
 	/*********************************************/
 	
 	public static $_PRELIMINARY = 1;
-	public static $_QUARTER_FINAL = 2;
-	public static $_SEMI_FINAL = 3;
-	public static $_FINAL = 4;
+	public static $_HEATS = 2;
+	public static $_QUALIFICATION = 3;
+	public static $_QUARTER_FINAL = 4;
+	public static $_SEMI_FINAL = 5;
+	public static $_FINAL = 6;
 
-	public static $_ROUND_MODES = array ( 1 => 'Preliminary Round', 2 => 'Quarter Final', 3 => 'Semi Final', 4 => 'Final');
+	public static $_ROUND_MODES = array ( 1 => 'Preliminary Round', 2 => 'Heats', 3 => 'Qualification', 4 => 'Quarter Final', 5 => 'Semi Final', 6 => 'Final');
 	
 	public static function processRoundModes ( ) 
 	{
@@ -501,6 +503,12 @@ class TournamentCore {
 		switch($_round) {			
 			case self::$_PRELIMINARY:
 				return 'Preliminary Round';
+			break;
+			case self::$_HEATS:
+				return 'Heats';
+			break;
+			case self::$_QUALIFICATION:
+				return 'Qualificaton';
 			break;
 			case self::$_QUARTER_FINAL:
 				return 'Quarter Final';
@@ -1409,6 +1417,12 @@ class TournamentCore {
 		 switch($_roundMode) {			
 			case self::$_PRELIMINARY:
 				return self::$_PRELIMINARY_ROUND;
+			break;
+			case self::$_HEATS:
+				return self::$_HEAT_ROUND;
+			break;
+			case self::$_QUALIFICATION:
+				return self::$_QUALIFYING_ROUND;
 			break;
 			case self::$_QUARTER_FINAL:
 				return self::$_QUALIFYING_ROUND;

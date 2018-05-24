@@ -13,7 +13,7 @@ default:
     #bootstrap/css/bootstrap.css,jquery-ui-1.8.21.custom.css,jquery.ui.accordion.css, , bootstrap.css, bootstrap-responsive.css, doc.css
   stylesheets:    [main.css, template.css, jquery-ui.css, bootstrap.css, bootstrap.min.css, bootstrap-theme.css, bootstrap-theme.min.css, ui-style.css, ui-style-default.css, default.css, ie10-viewport-bug-workaround.css, print: { media: print } ]
  
-  javascripts:    [jquery.min.js, jquery-ui.js, bootstrap.min.js, timepicki.js,  ajax.js, functions.js, holder.min.js, tooltip-viewport.js, customize.min.js, docs.min.js, npm.js, ie10-viewport-bug-workaround.js, ie8-responsive-file-warning.js, ie-emulation-modes-warning.js, raw-files.min.js ]
+  javascripts:    [jquery.min.js, jquery-ui.js, bootstrap.min.js, bootstrap-tab.js, timepicki.js, ajax.js, functions.js, holder.min.js, tooltip-viewport.js, customize.min.js, docs.min.js, npm.js, ie10-viewport-bug-workaround.js, ie8-responsive-file-warning.js, ie-emulation-modes-warning.js, raw-files.min.js ]
   
   has_layout:     true
   layout:         layout

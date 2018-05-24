@@ -1,26 +1,14 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_SPORT_GAME)):
+	if($sf_user->canAccess(ModuleCore::$_SPORT_GAME)): 
 	
-	//$_candidateSportGames = TeamTable::processCandidateSportGameParticipation ( 1, 1, 4, sha1(md5('6e60f180ecab6683ae00640e0d847c1607cb050d')), $_gameTypeID, 0, 30 );
-	//$_candidateSportGames = TeamGameParticipationTable::processSelection ( $_orgID, 1, 4, sha1(md5('6e60f180ecab6683ae00640e0d847c1607cb050d')), $_gameTypeID, $_keyword, $_exclusion, 0, 30  ) ;;
-	//echo count($_teamGameParticipations).'==';
-	
-	//first_name=Getachew&middle_name=Berhe&last_name=Hdush&member_gender=1&date_of_birth=&description=ssfdgsfdgsdfg&member_sport_game_name=Mekelle University (MU-ET)&member_sport_game_id=1&member_sport_game_token_id=f94a6e7c7cd99f059dd6298ec64d966bf42ec991&member_tournament_id=1&member_team_id=4&member_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&team_member_role=2&team_member_number=&member_status=1&remark=sdf gsdfg sdfg
-	
-	//$_flag =  TeamMemberParticipantTable::processNew ( 1, '94f12f125643718e20d329aef595bc3e', 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', 1, 'a87eb71dcf9bc50b40650e313e122d936a4818b9', 'Robel', 'Hailu', 'Kahsay', '5000M (Athletics)', 2, 1, $_dateOfBirth, $_memberNumber, $_memberStatus, $_remark, 'asdfasdfaf', $_userID, $_userTokenID  );  
-	
-	//$_flag =  TeamMemberParticipantTable::processNew ( 1, '94f12f125643718e20d329aef595bc3e', 4, '6e60f180ecab6683ae00640e0d847c1607cb050d', 1, 'f94a6e7c7cd99f059dd6298ec64d966bf42ec991', 'Robel', 'Hailu', 'Kahsay', '5000M (Athletics)', 2, 1, $_dateOfBirth, $_memberNumber, $_memberStatus, 'sdfgsdfg sdfgsfgsfgsfg', 'asdfa asdfasd adaadfafa adaf', $_userID, $_userTokenID  ); 
-	
-	//$_flag =  TeamMemberParticipantTable::processNew ( 1, '94f12f125643718e20d329aef595bc3e', 14, '6e60f180ecab6683ae00640e0d847c1607cb050d', 35, '69a7d725a1d4bb6945539d08e7fabaa3d78a8ab1', 'Getachew', 'Bezabih', 'Nigusse', '5000M (Athletics)', 2, 1, $_dateOfBirth, $_memberNumber, $_memberStatus, $_remark, 'asdfasdf asdfa', $_userID, $_userTokenID  );  
- 
-	///echo count($_candidateParticipantTeams).' == ';
+	//echo count($_candidateWomenParticipants).' -- ';
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('view', array( '_sportGame' => $_sportGame, '_candidateParticipantTeams' => $_candidateParticipantTeams, '_countCandidateParticipantTeams' => $_countCandidateParticipantTeams )) ?> 
+				<?php include_partial('view', array( '_sportGame' => $_sportGame, '_candidateParticipantTeams' => $_candidateParticipantTeams, '_countCandidateParticipantTeams' => $_countCandidateParticipantTeams, '_candidateMenParticipants' => $_candidateMenParticipants, '_countCandidateMenParticipants' => $_countCandidateMenParticipants, '_candidateWomenParticipants' => $_candidateWomenParticipants,'_countCandidateWomenParticipants' => $_countCandidateWomenParticipants )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>

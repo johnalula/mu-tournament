@@ -1,14 +1,15 @@
-<div class="" id="">
-	<table class="">
+<div class="table-responsive" id="ui-data-content">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Local Time</th> 
-				<th>Date</th> 
-				<th>Sex</th>
-				<th>Event</th>
-				<th>Round</th>
-				<th>Status</th>
+				<th>TIME</th>
+				<th>SEX</th>
+				<th>EVENT</th> 
+				<th>GROUP</th>
+				
+				<th>ROUND</th>
+				<th>STATUS</th>
 				<th>...</th>
 			</tr>
 		</thead>
@@ -22,17 +23,20 @@
 					<?php echo $_matchFixture->matchTime ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->matchDate ?>
-				</td>
-				<td>
-					<?php echo TournamentCore::processGenderAlias($_matchFixture->genderCategoryID) ?>
-				</td>
-				<td>
-					<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName ?>
-					 
+					<?php echo TournamentCore::processGenderValue($_matchFixture->teamGroupGenderCategoryID) ?>
+					
 				</td> 
 				<td>
-					<?php echo TournamentCore::processMatchCompetitionRoundModeValue($_matchFixture->matchFixtureGroupRoundMode) ?>
+					<a href="<?php echo url_for('competition/fixture?match_fixture_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	
+						<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName) ?>
+					</a>
+				</td> 
+				<td>
+					<?php echo $_matchFixture->sportGameGroupName ?>
+				</td>
+				
+				<td>
+					<?php echo $_matchFixture->matchDate ?>
 				</td>
 				<td>
 					<?php echo $_matchFixture->status ? 'Pending':'Active' ?>

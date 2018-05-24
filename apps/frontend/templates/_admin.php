@@ -84,7 +84,7 @@
 					</li>  
 				<?php endif; ?>
 				<?php if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):  ?> 
-					<li class="dropdown <?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
+					<li class="dropdown <?php echo ($sf_request->getParameter('module') == 'tournament_match') ? 'active':'' ?>">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							<img class="navbar-nav-img" src="<?php echo image_path('settings/clock') ?>">
 							<span class="ui-hot-key"></span><?php echo __('Matchs') ?><span class="caret"></span>
@@ -96,47 +96,37 @@
 								</a>
 							</li> 
 							<li>
-								<a href="<?php echo url_for('match/fixture') ?>">
+								<a href="<?php echo url_for('tournament_match/fixture') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/timetable') ?>"><?php echo __('Match Fixtures') ?>
 								</a>
 							</li>
 							<li>
-								<a href="<?php echo url_for('account/chart_type') ?>">
+								<a href="<?php echo url_for('tournament_match/chart_type') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/account_chart') ?>"><?php echo __('Match Tables') ?>
 								</a>
 							</li>
 							<li role="separator" class="divider"></li> 
 							<li class="">
-								<a href="<?php echo url_for('student/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('Fisture Result') ?>
+								<a href="<?php echo url_for('tournament_match/result') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('Fixture Result') ?>
 								</a>
 							</li>
 							<li class="">
-								<a href="<?php echo url_for('student/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/student') ?>"><?php echo __('Awards') ?>
+								<a href="<?php echo url_for('tournament_match/award') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/tournament_match') ?>"><?php echo __('Awards') ?>
 								</a>
-							</li>
-							<li class="<?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
-								<a href="<?php echo url_for('student/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/school_setting') ?>"><?php echo __('Pending Matchs') ?>
-								</a>
-							</li>  
+							</li> 
 							<li role="separator" class="divider"></li> 
 							<li class="">
-								<a href="<?php echo url_for('student/index') ?>">
+								<a href="<?php echo url_for('tournament_match/team') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('Team Standings') ?>
 								</a>
 							</li>
 							<li class="">
-								<a href="<?php echo url_for('student/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/student') ?>"><?php echo __('Awards') ?>
+								<a href="<?php echo url_for('tournament_match/award') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/tournament_match') ?>"><?php echo __('Awards') ?>
 								</a>
-							</li>
-							<li class="<?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
-								<a href="<?php echo url_for('student/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/school_setting') ?>"><?php echo __('Pending Matchs') ?>
-								</a>
-							</li>  
+							</li> 
 						</ul>
 					</li>  
 				<?php endif; ?>

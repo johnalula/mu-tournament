@@ -27,9 +27,12 @@ class TeamMemberParticipantRole extends PluginTeamMemberParticipantRole
 	public function makeActivation ()
 	{
 		$_flag = true;    
+			$this->confirmed_flag = true; 
 			$this->grouped_flag = true; 
 			$this->active_flag = true; 
-			$this->status = trim(TournamentCore::$_ACTIVE); 
+			$this->confirmed_status = trim(TournamentCore::$_CONFIRMED); 
+			$this->grouped_status = trim(TournamentCore::$_ACTIVE); 
+			$this->status = trim(TournamentCore::$_COMPLETED); 
 			$this->save();
 
 		return $_flag;

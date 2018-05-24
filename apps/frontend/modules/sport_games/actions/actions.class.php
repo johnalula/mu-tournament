@@ -75,11 +75,15 @@ class sport_gamesActions extends sfActions
 		
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');    
 		
 		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
 		$this->_sportGame = SportGameTable::processObject ( $_orgID, $_orgTokenID, $_sportGameID, $_tokenID ); 
 		
 		$this->_candidateParticipantTeams = TeamGameParticipationTable::processCandidateTeams ( $_orgID, $_tournamentID, $_sportGameID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, 0, 20 ); 
+		$this->_candidateMenParticipants = TeamMemberParticipantRoleTable::selectCandidates( $_tournamentID, $_teamID, $_participantID, $_sportGameID, $_sportGameCategoryID, TournamentCore::$_MEN, $_keyword, 0, 20 ); 
+		$this->_candidateWomenParticipants = TeamMemberParticipantRoleTable::selectCandidates( $_tournamentID, $_teamID, $_participantID, $_sportGameID, $_sportGameCategoryID, TournamentCore::$_WOMEN, $_keyword, 0, 20 ); 
 		
 	}
 	

@@ -7,13 +7,13 @@
 			 
 			<?php if($sf_request->getParameter('action') == 'new'): ?>
 				<li class="">
-					<button title="<?php echo __('Save Sport Game Information') ?>" id="createSportGame" class="ui-disabled-toolbar-btn" disabled >
+					<button title="<?php echo __('Save Sport Game Information') ?>" id="createTournamentSportGame" class="ui-disabled-toolbar-btn" disabled >
 						<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
 						<?php echo __('Save') ?>
 					</button>
 				</li>	
 				<li class="">
-					<button title="<?php echo __('Cancel Sport Game Information') ?>" id="cancelSportGame" class="ui-disabled-toolbar-btn" disabled>
+					<button title="<?php echo __('Cancel Sport Game Information') ?>" id="cancelTournamentSportGame" class="ui-disabled-toolbar-btn" disabled>
 						<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
 						<?php echo __('Cancel') ?>
 					</button>

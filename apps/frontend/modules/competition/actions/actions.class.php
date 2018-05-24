@@ -39,6 +39,6 @@ class competitionActions extends sfActions
 		//$this->_tournamentMatchFixtures = TournamentMatchFixtureGroupTable::processObject ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword, 0, 20  ) ;
 		
 		//$this->_tournamentMatchFixtureParticipants = TournamentMatchFixtureGroupTable::processAll ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword ); 
-		$this->_tournamentMatchFixtureParticipants = TeamMemberParticipantRoleTable::processAll ( $_tournamentID, $_teamID, $_teamTokenID, $_sportGameID, $_sportGameCategoryID, $_genderCategory, $_keyword  ); 
+		$this->_tournamentMatchFixtureParticipants = TournamentMatchTeamMemberParticipantTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword  ); 
 	}
 }

@@ -267,34 +267,31 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeObject ( $_orgID=null, $_matchID, $_tokenID  ) 
+   public static function makeObject ( $_memberID, $_memberTokenID ) 
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
-				->from("TeamMemberParticipant sprtGmPrt") 
-				->innerJoin("sprtGmPrt.Tournament trnmt on sprtGmPrt.tournament_id = trnmt.id ")  
-				->innerJoin("sprtGmPrt.SportGame sprtGm on sprtGmPrt.sport_game_id = sprtGm.id ")  
-				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				//->innerJoin("tm.Organization org on tm.org_id = org.id ")     
-				->where("sprtGmPrt.id = ? AND sprtGmPrt.token_id = ? ", array($_matchID, $_tokenID ));
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				->from("TeamMemberParticipant tmMbrPrt") 
+				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")   
+				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
+				->innerJoin("tmMbrPrt.Person prsn on tmMbrPrt.person_id = prsn.id ")  
+				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
+				->where("tmMbrPrt.id = ? AND tmMbrPrt.token_id = ? ", array($_memberID, $_memberTokenID ));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeCandidateObject ( $_orgID=null, $_activeFlag ) 
+   public static function makeCandidateObject ( $_memberID=null, $_activeFlag ) 
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
-				->from("TeamMemberParticipant sprtGmPrt") 
-				->innerJoin("sprtGmPrt.Tournament trnmt on sprtGmPrt.tournament_id = trnmt.id ")  
-				->innerJoin("sprtGmPrt.SportGame sprtGm on sprtGmPrt.sport_game_id = sprtGm.id ")  
-				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				//->innerJoin("tm.Organization org on tm.org_id = org.id ")  
-				->where("sprtGmPrt.id IS NOT NULL");
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
-				if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("sprtGmPrt.active_flag = ?", $_activeFlag);
+				->from("TeamMemberParticipant tmMbrPrt") 
+				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")   
+				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
+				->innerJoin("tmMbrPrt.Person prsn on tmMbrPrt.person_id = prsn.id ")  
+				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
+				->where("sprtGmPrt.id = ? AND sprtGmPrt.token_id = ? ", array($_matchID, $_tokenID ));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	

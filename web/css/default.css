@@ -2436,3 +2436,84 @@
 	width:120px!important;
 }
 /*********************************************/
+
+/******************from mokea***********************/
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+    background-color: #fcb931;
+}
+.panel-title h4 {
+padding: 0;
+margin:0;
+}
+.panel-title h4 > a {
+    display: block;
+    padding: 0 12px;
+    line-height: 40px;
+    text-decoration: none;
+    text-transform: uppercase;
+    min-height: 40px;
+    height: auto !important;
+    height: 40px;
+    color: #000026;
+}
+
+.nav-tabs > li > a {
+    border: 0 none transparent !important;
+    color: #eeeef3;
+    display: table-cell;
+    float: none;
+    height: 45px;
+    line-height: 20px;
+    margin: 0;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    /*width: 1080px;*/
+    vertical-align: middle;
+    border-radius: 0;
+}
+
+#myTab.nav > li > a:focus, #myTab.nav > li > a:hover {
+    text-decoration: none;
+    background-color: #fcb931;
+    color:#325889;
+}
+#myTab.nav-tabs > li.active > a, #myTab.nav-tabs > li.active > a:focus, #myTab.nav-tabs > li.active > a:hover {
+    color: #000026;
+    cursor: default;
+    background-color: #fcb931;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+#myTab.nav-tabs > li {
+    border-left: 1px solid #6f6d7d;
+        }
+
+.table-header {
+    background-color: #325889;
+    display: table;
+    width: 100%;
+}
+.table-header h2 {
+    background-color: #325889;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.bakGr{
+
+background: -moz-linear-gradient(45deg, #020031 0%, #6d3353 100%);
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353));
+background: -webkit-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+background: -o-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+background: -ms-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
+}

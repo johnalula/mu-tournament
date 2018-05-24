@@ -150,7 +150,7 @@
 									<?php endforeach; ?>
 								</select>
 							</div><!-- /input-group --> 
-							<label class="col-sm-212 control-label" title="<?php echo __('Jump Type Mode') ?>"><?php echo __('Jump') ?>: <span class="ui-red-text"></span></label>
+							<label class="col-sm-212 control-label" title="<?php echo __('Jump Type Mode') ?>"><?php echo __('Enable') ?>: <span class="ui-red-text"></span></label>
 							<div class="col-sm-30"> 
 								<div class="btn-toolbar" role="toolbar">
 									<div class="btn-group">

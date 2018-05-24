@@ -425,11 +425,11 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	// Tournament Match Fixture Group Participant Team Member Selection
 	public static function selectCandidateMatchFixtureGroupParticipantTeamMembers( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_participantTeamID=null, $_participantTeamTokenID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
-		/*$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateParticipantSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameGroupID, $_sportGameID, $_keyword);
+		$_candidateParticipantMembers = TournamentMatchTeamMemberParticipantTable::processCandidateSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword);
 		$_exclusion = array();   
-		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
-			$_exclusion[] = $_candidateParticipantTeam->group_participant_team_id;
-		} */
+		foreach($_candidateParticipantMembers as $_candidateParticipantMember) {
+			$_exclusion[] = $_candidateParticipantMember->participant_team_member_role_id;
+		} 
 		
 		//return TournamentGroupParticipantTeamMemberTable::processCandidateParticipantTeamMembers ($_tournamentID, $_tournamentGroupID, $_groupMemberTeamID, $_participantTeamID, $_participantTeamTokenID, $_sportGameID, $_genderCategory, $_exclusion, $_keyword, $_offset, $_limit ) ;
 		
@@ -462,12 +462,12 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 		$_tournamentMatch =  self::processObject ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID ); 
 		
 		//if(!$_sportGameTeamGroup) { return false; }   
-		$_tournamentMatchFixtures = TournamentMatchFixtureTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, false, $_parentFlag, false, TournamentCore::$_PENDING, TournamentCore::$_PENDING);
+		/*$_tournamentMatchFixtures = TournamentMatchFixtureTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, false, $_parentFlag, false, TournamentCore::$_PENDING, TournamentCore::$_PENDING);
 		//if(!$_tournamentMatchFixtures) { $_flag = false; } else {
 			foreach($_tournamentMatchFixtures as $_tournamentMatchFixture) {
 				$_flag = $_tournamentMatchFixture->makeApproval (); 
 			}
-		//} 
+		//} */
 		$_flag = $_tournamentMatch ? $_tournamentMatch->makeApproval ():false;
 		
 		/*if($_orgID && $_userID) { 
