@@ -189,13 +189,7 @@
 		processDataSelection(data, idName, url );		 
 	});  
 	
-	$('.selectSportGameMatchVenue').click(function() {   
-		var thisIDNumber = $(this).attr('rel');   
-		var thisIDName = $(this).attr('id');   
-		document.getElementById("sport_game_venue_name").value = thisIDNumber;
-		//document.getElementById("sport_game_group_type_id").value = thisIDNumber; 
-		//$('#createSchoolGradePaymentFee').removeAttr("disabled").removeClass("ui-action-toolbar-disabled-menu").addClass("ui-action-toolbar-enabled-menu");
-	}); 
+	
 	//*********************************/
 	
 	$("#candidateParentMatchFixtureModal").submit(function(e) { 

@@ -15,7 +15,7 @@
 		</thead>
 		<tbody>
 			<?php foreach($_tournamentMatchFixtures as $_key => $_matchFixture ): ?>
-			<tr>
+			<tr class="ui-data-row">
 				<td>
 						<?php echo $_matchFixture->id ?> 
 				</td>

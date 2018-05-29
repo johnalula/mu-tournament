@@ -7,6 +7,9 @@
 				<?php include_partial('tournament_news_events', array('_tornamentNewsEvents' => $_tornamentNewsEvents)) ?>
 			</div><!-- /.carousel -->
 			 <div class="col-sm-4">
+					<div class="panel-title">
+						<h4><a> Team Standings</a></h4>
+					</div>
 				<?php include_partial('team_standing', array('_participantTeams' => $_participantTeamsTop7)) ?>
 			</div><!-- /.carousel -->
 		</div><!-- /.carousel -->

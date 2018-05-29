@@ -70,6 +70,9 @@ class TournamentMatchFixture extends PluginTournamentMatchFixture
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  
 		$this->active_flag = true;  
+		$this->competition_flag = true;  
+		$this->competition_status = trim(TournamentCore::$_ACTIVE); 
+		$this->process_status = trim(TournamentCore::$_COMPLETED); 
 		$this->approval_status = trim(TournamentCore::$_APPROVED); 
 		$this->status = trim(TournamentCore::$_COMPLETED);  
 		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  

@@ -21,6 +21,19 @@
 						</div>
 					</div>  
 					<div class="form-group">
+						<label class="col-sm-21 control-label"><?php echo __('Contestant Name') ?>: <span class="ui-red-text">&nbsp;</span></label>
+						<div class="col-sm-40"> 
+							<select id="contestant_name" name="game_category[contestant_name]" class="form-control" title="<?php echo __('Team Mode') ?>">
+								<option value="" selected  ><?php echo 'Select Mode ...' ?></option>
+								<?php foreach(TournamentCore::processContestantTeamModes() as $_key => $_mode): ?>								 
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PAIR_TEAM ? 'selected':'' ?> >
+										<?php echo $_mode ?>
+									</option>								 
+								<?php endforeach; ?>
+							</select>
+						</div>
+					</div>  
+					<div class="form-group">
 						<label class="col-sm-21 control-label"><?php echo __('Team Mode') ?>: <span class="ui-red-text">&nbsp;</span></label>
 						<div class="col-sm-212">
 							<select id="participant_team_mode" name="game_category[participant_team_mode]" class="form-control" title="<?php echo __('Team Mode') ?>">
@@ -63,21 +76,6 @@
 		$("#cancelGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
 	});
-	$('#category_alias').keyup(function(e) {
-		$("#createGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});
-	$('#participant_team_mode').change(function() {
-		$("#createGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-		
-	}); 
-	$('#description').keyup(function(e) {
-		$("#createGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelGameCategory").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});
+	 
 	 
 </script>

@@ -94,7 +94,6 @@ class TournamentTable extends PluginTournamentTable
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("Tournament trnmnt") 
-				//->innerJoin("trnmnt.Campus cmps on trnmnt.campus_id = cmps.id ")  
 				//->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")   
 				->offset($_offset)
 				->limit($_limit) 
@@ -156,7 +155,6 @@ class TournamentTable extends PluginTournamentTable
 			$_qry = Doctrine_Query::create()
 					->select(self::appendQueryFields())
 					->from("Tournament trnmnt") 
-					//->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
 					//->innerJoin("tm.Organization org on tm.org_id = org.id ")  
 					->where("trnmnt.id IS NOT NULL");
 				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));

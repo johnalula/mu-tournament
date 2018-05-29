@@ -112,8 +112,8 @@
 								</a>
 							</li>
 							<li class="">
-								<a href="<?php echo url_for('tournament_match/award') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/tournament_match') ?>"><?php echo __('Awards') ?>
+								<a href="<?php echo url_for('tournament_match/medal_award') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/tournament_match') ?>"><?php echo __('Medal Award') ?>
 								</a>
 							</li> 
 							<li role="separator" class="divider"></li> 

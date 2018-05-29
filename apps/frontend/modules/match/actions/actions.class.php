@@ -17,9 +17,9 @@ class matchActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
 	{
-		//$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		//$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		//$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
 		//$this->_teams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
 		$this->_tournamentMatchs = TournamentMatchTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  );
@@ -114,6 +114,8 @@ class matchActions extends sfActions
 	}
 	public function executeCreateTournamentMatchFixture(sfWebRequest $request)
 	{
+		//parent_match_fixture_name=&parent_match_fixture_id=&parent_match_fixture_token_id=&sport_game_type_id=1&tournament_match_id=1&tournament_match_token_id=522d17df030f87f4afe317b006613dfa22301c0a&tournament_match_number=MTCH-001&tournament_match_round_mode=4&tournament_sport_game_group_name=Group One - 800M (Men) - Running - Athletics&tournament_sport_game_group_id=10&tournament_sport_game_group_token_id=3fd92bafbe6151e731eee1f0d0b1f287f108bc48&gender_category_id=1&contestant_team_mode=2&contestant_mode=4&sport_game_id=2&sport_game_token_id=eb470377fa1959449ad07fac42cc5daeb72c719f&number_of_heats_per_group=&event_type=1&tournament_match_round_mode=4&qualifying_status=3&description=hg jhghjghjghjghj &sport_game_venue_name=&sport_game_group_type_id=&match_date=&match_time=&tournament_match_time_value=&qualifying_row_numbers=&qualifing_row_numbers_flag=0&best_qualifying_row_numbers=&best_qualifing_row_numbers_flag=0&remark=
+		
 		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
 		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
 		
@@ -139,6 +141,7 @@ class matchActions extends sfActions
 		$_heatsPerFixture = $request->getParameter('number_of_heats_per_group');	 
 		$_qualifyingStatus = $request->getParameter('qualifying_status');	 
 		
+		$_tournamentMatchSession = $request->getParameter('tournament_match_session');	 
 		$_tournamentMatchNumber = $request->getParameter('tournament_match_number');	 
 		$_matchStatus = $request->getParameter('match_status');	 
 		$_matchTime = $request->getParameter('match_time');	 
@@ -359,8 +362,8 @@ class matchActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  TournamentMatchTeamMemberParticipantTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_matchFixtureName, $_description, $_batchCreationMode, $_userID, $_userTokenID );  
-				 
+		$_flag =  TournamentMatchTeamMemberParticipantTable::processNew ($_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamID, $_participantTeamTokenID, $_participantMemberRoleID, $_participantMemberRoleTokenID, $_participantMemberID, $_participantMemberTokenID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_description, TournamentCore::$_BATCH_CREATION_MODE, $_dataCreationMode, $_userID, $_userTokenID);  
+		
 		return $_flag ? true:false;
 	}
 	public function executeComplete(sfWebRequest $request)

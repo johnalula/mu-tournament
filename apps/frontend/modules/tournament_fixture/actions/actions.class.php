@@ -17,6 +17,14 @@ class tournament_fixtureActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    
+  }
+  public function executeResult(sfWebRequest $request)
+  {
+    
+  }
+  public function executeMedal_award(sfWebRequest $request)
+  {
+    
   }
 }

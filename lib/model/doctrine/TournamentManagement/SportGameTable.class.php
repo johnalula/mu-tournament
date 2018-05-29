@@ -129,7 +129,7 @@ class SportGameTable extends PluginSportGameTable
 				->limit($_limit) 
 				->orderBy("sprtGm.id ASC")
 				->where("sprtGm.id IS NOT NULL");
-				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("sprtGm.org_id = ? AND sprtGm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("sprtGm.org_id = ? AND sprtGm.org_token_id = ? ", array($_orgID, $_orgTokenID));
 				if(!is_null($_categoryID)) $_qry = $_qry->addWhere("sprtGm.sport_game_category_id = ?", $_categoryID);    
 				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGm.active_flag = ?", $_activeFlag);    
 				if(!is_null($_keyword) )

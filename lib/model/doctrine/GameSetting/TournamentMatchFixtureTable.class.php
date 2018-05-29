@@ -388,6 +388,31 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	 
+	 public static function selectApprovalCandidates ( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_processStatus=null, $_approvalStatus=null, $_status=null) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TournamentMatchFixture mtchFix") 
+				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
+				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFix.TournamentSportGameGroup sprtGmGrp on mtchFix.tournament_sport_game_group_id = sprtGmGrp.id ") 
+				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
+				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
+				->offset($_offset)
+				->limit($_limit)   
+				->orderBy("mtchFix.id ASC")
+				->where("mtchFix.id IS NOT NULL");
+				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
+				if(!is_null($_processStatus)) $_qry = $_qry->addWhere("mtchFix.process_status = ?", $_processStatus);    
+				if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("mtchFix.approval_status = ?", $_approvalStatus);    
+				if(!is_null($_status)) $_qry = $_qry->addWhere("mtchFix.status = ?", $_status);      
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
 	
 	/*********************************************************
 	********** Candidate selection process *******************

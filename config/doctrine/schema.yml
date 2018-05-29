@@ -770,7 +770,35 @@ TournamentParticipantTeamMedalStanding:
     Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationTournamentParticipantTeamStandings }  
     Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamTournamentParticipantTeamStandings } 
  
+TournamentParticipantTeamMedalStandingDetail:
+  package: TournamentManagement
+  tableName: mutms_tbl_tournament_participant_team_medal_standing_detail
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }       
+    org_id: { type: integer }
+    org_token_id: { type: string(100) } 
+    tournament_id: { type: integer }
+    participant_team_medal_standing_id: { type: integer }
+    participant_team_medal_standing_token_id: { type: string(100) } 
+    participant_team_medal_standing_id: { type: integer }
+    participant_team_medal_standing_token_id: { type: string(100) } 
+    standing_rank: { type: integer }
+    gold_medal: { type: integer }
+    silver_medal: { type: integer }
+    bronze_medal: { type: integer }
+    total_medal_award: { type: integer }
+    active_flag: { type: boolean, default: true }
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    TournamentParticipantTeamMedalStanding: { onDelete: CASCADE, local: participant_team_medal_standing_id, foreign: id, foreignAlias: tournamentParticipantTeamStandingDetails } 
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentParticipantTeamStandings } 
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationTournamentParticipantTeamStandings }  
+    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamTournamentParticipantTeamStandings } 
  
+
  
 ############  Party Management ####################
 

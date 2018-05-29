@@ -25,7 +25,10 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<?php include_partial('fixture', array('_matchFixtureGroup' => $_matchFixtureGroup, '_participantTeams' => $_participantTeams, '_tournamentMatchFixtureParticipants' => $_tournamentMatchFixtureParticipants)) ?>
+				<div class="panel-title">
+					<h4><a><?php echo __('Team Standings') ?></a></h4>
+				</div>
+				<?php include_partial('team_standing', array('_participantTeams' => $_participantTeams )) ?>
 			</div><!-- /.col-sm -->
 		</div><!-- /.row --> 
 		
@@ -33,3 +36,11 @@
 </div><!-- /.carousel -->
 
  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

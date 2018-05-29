@@ -6,9 +6,9 @@
 				<th>PARTICIPANT</th>
 				<th>TEAM</th>
 				<th>COUNTRY</th> 
-				<th>RANK</th>
+				<th align="center">RANK</th>
 				
-				<th>TIME</th>
+				<th align="center">TIME</th>
 				<th>STATUS</th>
 				<th>...</th>
 			</tr>
@@ -17,30 +17,28 @@
 			<?php foreach($_tournamentMatchFixtureParticipants as $_key => $_tournamentMatchFixtureParticipant ): ?>
 			<tr>
 				<td>
-						<?php echo $_tournamentMatchFixtureParticipant->id ?> 
+						<?php echo ++$_key ?> 
 				</td>
 				<td>
 					<?php echo $_tournamentMatchFixtureParticipant->participantMemberFullName ?>
 				</td>
 				<td>
-						<?php echo $_tournamentMatchFixtureParticipant->participantTeamName ?>
-					
+					<?php echo $_tournamentMatchFixtureParticipant->participantTeamName.' ( '.$_tournamentMatchFixtureParticipant->participantTeamAlias.' ) ' ?>
 				</td> 
-				<td>
-						<?php echo $_tournamentMatchFixtureParticipant->id ?>
+				<td >
+					<?php echo SystemCore::processCountryValue($_tournamentMatchFixtureParticipant->teamCountry)  ?>
 				</td> 
-				<td>
-					<?php echo $_tournamentMatchFixtureParticipant->id ?>
+				<td align="center">
+					<?php echo $_tournamentMatchFixtureParticipant->id ? '0':'' ?>
 				</td>
-				
-				<td>
-					<?php echo $_tournamentMatchFixtureParticipant->id ?>
+				<td align="center">
+					<?php echo $_tournamentMatchFixtureParticipant->id ? '0':'' ?>
 				</td>
 				<td>
 					<?php echo $_tournamentMatchFixtureParticipant->id ? 'Pending':'Active' ?>
 				</td>
 				<td>
-						<?php echo $_tournamentMatchFixtureParticipant->id ?>
+					<?php echo $_tournamentMatchFixtureParticipant->id ? '0':'' ?>
 				</td>
 			</tr> 
 			<?php endforeach; ?>

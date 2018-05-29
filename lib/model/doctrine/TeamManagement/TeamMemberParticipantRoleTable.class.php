@@ -218,6 +218,37 @@ class TeamMemberParticipantRoleTable extends PluginTeamMemberParticipantRoleTabl
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	
+   public static function processAllCandidates ( $_tournamentID=null, $_teamID=null, $_teamTokenID=null, $_sportGameID=null, $_sportGameCategoryID=null, $_genderCategory=null, $_exclusion=null, $_keyword=null )
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TeamMemberParticipantRole tmMbrPrtRol") 
+				->innerJoin("tmMbrPrtRol.TeamGameParticipation sprtGmPrtn on tmMbrPrtRol.team_game_participation_id = sprtGmPrtn.id ")  
+				->innerJoin("tmMbrPrtRol.TeamMemberParticipant tmMbrPrt on tmMbrPrtRol.team_member_participant_id = tmMbrPrt.id ")  
+				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")   
+				->innerJoin("sprtGmPrtn.GameCategory gmCat on sprtGmPrtn.sport_game_category_id = gmCat.id ")  
+				->innerJoin("sprtGmPrtn.SportGame sprtGm on sprtGmPrtn.sport_game_id = sprtGm.id ")  
+				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
+				->innerJoin("tmMbrPrt.Person prsn on tmMbrPrt.person_id = prsn.id ")  
+				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
+				->orderBy("tmMbrPrt.id ASC")
+				->where("tmMbrPrt.id IS NOT NULL");
+				if(!is_null($_teamID)) $_qry = $_qry->addWhere("prtTm.id = ? AND prtTm.token_id = ? ", array($_teamID, $_teamTokenID));
+				if(!is_null($_participantID)) $_qry = $_qry->addWhere("prsn.id = ?", $_participantID);   
+				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGmPrtn.sport_game_id = ?", $_sportGameID);   
+				if(!is_null($_sportGameCategoryID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_sportGameCategoryID);   
+				if(!is_null($_genderCategory)) $_qry = $_qry->addWhere("sprtGmPrtn.gender_category_id = ?", $_genderCategory);   
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
+				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("tmMbrPrtRol.id ", $_exclusion );          
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("prsn.full_name LIKE ? OR gmCat.category_name LIKE ? OR sprtGmPrtn.id LIKE ? OR sprtGmPrtn.description LIKE ?", array( $_keyword, $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	
 	// process list selection function 
    public static function processCandidateSelection ( $_tournamentID=null, $_teamID=null, $_teamTokenID=null, $_sportGameID=null, $_sportGameCategoryID=null, $_keyword=null, $_offset=0, $_limit=10 )
    {

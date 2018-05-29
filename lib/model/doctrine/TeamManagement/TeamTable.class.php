@@ -147,24 +147,23 @@ class TeamTable extends PluginTeamTable
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
-   public static function processAll ($_orgID=null, $_orgTokenID=null, $_activeFlag=null, $_keyword=null ) 
+   public static function processAll ( $_orgID=null, $_orgTokenID=null, $_tournamentID=null, $_activeFlag=null, $_keyword=null) 
    {
-		$_qry = Doctrine_Query::create()
-				->select(self::appendQueryFields())
-				->from("Team tm") 
-				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
-				->innerJoin("tm.Organization org on tm.org_id = org.id ")  
-				->orderBy("tm.id ASC")
-				->where("tm.id IS NOT NULL");
-				if(!is_null($_orgID)) $_qry = $_qry->addWhere("tm.org_id = ? AND tm.org_token_id = ? ", array($_orgID, $_orgTokenID));
-				if(!is_null($_season)) $_qry = $_qry->addWhere("tm.season = ? ", $_season); 
-				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
-				if(!is_null($_exclusion))  $_qry = $_qry->andWhereNotIn("tm.id", $_exclusion ); 
-				if(!is_null($_keyword) )
-					if(strcmp(trim($_keyword), "") != 0 )
-						$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
-				
-			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+			$_qry = Doctrine_Query::create()
+					->select(self::appendQueryFields())
+					->from("Team tm") 
+					->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
+					->innerJoin("tm.Organization org on tm.org_id = org.id ")  
+					->orderBy("tm.id ASC")
+					->where("tm.id IS NOT NULL");
+					if(!is_null($_orgID)) $_qry = $_qry->addWhere("tm.org_id = ? AND tm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+					if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
+					if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
+					if(!is_null($_keyword) )
+						if(strcmp(trim($_keyword), "") != 0 )
+							$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+					
+				$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
 
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}

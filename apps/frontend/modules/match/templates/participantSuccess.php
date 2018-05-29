@@ -21,7 +21,7 @@
 	
 	//echo count($_matchParticipantTeamMembes).' == ';
 	
-	////match_participant_creation_mode=2&match_fixture=Group One - 800M Running - Men (Athletics)&match_fixture_id=7&match_fixture_token_id=9a13968cac938e2a2314f3fe64fa5d2e061b49b8&tournament_sport_game_group_id=10&tournament_sport_game_group_token_id=3fd92bafbe6151e731eee1f0d0b1f287f108bc48&gender_category_id=1&tournament_match_fixture_group_id=7&tournament_match_fixture_token_group_id=e2a6c3715f6e7dbf8c516cae2b88b342c2dc1762&sport_game_id=2&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=3&tournament_match_token_id=cfd491a3db8128365c289656ee135877b6e91117&tournament_match_game_category_id=1&participant_team_name=&team_id=&team_token_id=&participant_team_id=&participant_team_token_id=&sport_game_group_team_id=&sport_game_group_team_token_id=&participant_name=&participant_role_id=&participant_role_token_id=&participant_member_id=&participant_member_token_id=&description=
+	////match_participant_creation_mode=2&match_fixture=Group One - 5000M Running - Men (Athletics)&match_fixture_id=1&match_fixture_token_id=f822ae662c4fb4c525be33b8d4453f5127adc560&tournament_sport_game_group_id=1&tournament_sport_game_group_token_id=33ac5fc77c60ef9b912263e996af91556a4e7750&gender_category_id=1&tournament_match_fixture_group_id=1&tournament_match_fixture_token_group_id=0d6dbf5b9a01dbc1c262177e59ab5a4a0d071d98&sport_game_id=5&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=1&tournament_match_token_id=522d17df030f87f4afe317b006613dfa22301c0a&tournament_match_game_category_id=1&participant_team_name=&team_id=&team_token_id=&participant_team_id=&participant_team_token_id=&sport_game_group_team_id=&sport_game_group_team_token_id=&participant_name=&participant_role_id=&participant_role_token_id=&participant_member_id=&participant_member_token_id=&description=dfgd fgh dfgh dfghdfgh
 	/*
 	
 	$_candidateParticipantTeams = TournamentMatchTable::selectCandidateMatchFixtureGroupParticipantTeams ( $_tournamentID, 3, 'cfd491a3db8128365c289656ee135877b6e91117', 7, 2, 1, $_keyword, 0, 2 ); 
@@ -31,14 +31,38 @@
 	
 	$_candidateParticipants = TournamentMatchTable::selectCandidateMatchFixtureGroupParticipantTeamMembers( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_participantTeamID, $_participantTeamTokenID, 5, 1, $_keyword, 0, 30 ); 
 	
-	
+	$_candidateParticipants = TournamentMatchTable::selectAllCandidateMatchFixtureGroupParticipantTeams ( $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null)
+	* 
+	* 
 	echo count($_candidateParticipantTeams).' == '.count($_candidateFixtureParticipantTeams).' == '.count($_candidateParticipants).' == ';
 	*/
 	//$_memberRole = TeamMemberParticipantRoleTable::makeCandidateObject ( 1, 'a99cd4235504e1a370dcabe4c6c0911b13ae02df' );
 	//$_memberRole = TeamMemberParticipantTable::makeObject ( 1, 'f89c7c4dc4ed4b5dfa6b38a2ccf2e5cf0d53fa1c' );
 	//$_memberRole = TournamentMatchParticipantTeamTable::makeObject ( 1, '3f170e2cd2833cae1d6e2489bb842488ad8635d6'  );
 	//
-	//echo $_memberRole->id.' == '.$_memberRole->status;
+	//echo $_memberRole->id.' == '.$_memberRole->status; participantTeamID
+	
+	/*$_candidateMatchFixtureGroupTeams = TournamentMatchTable::selectAllCandidateMatchFixtureGroupParticipantTeams ( $_tournamentID, 1, '522d17df030f87f4afe317b006613dfa22301c0a', 1, $_sportGameID, $_genderCategory, $_keyword);
+	
+			foreach($_candidateMatchFixtureGroupTeams as $_key => $_candidateMatchFixtureGroupTeam ) {
+				
+				$_candidateParticipantRoles = TournamentMatchTable::selectAllCandidateMatchFixtureGroupParticipantTeamMembers( 1, '522d17df030f87f4afe317b006613dfa22301c0a', 1, $_candidateMatchFixtureGroupTeam->participantTeamID, $_candidateMatchFixtureGroupTeam->participantTeamTokenID, $_candidateMatchFixtureGroupTeam->fixtureSportGameID, $_candidateMatchFixtureGroupTeam->teamGroupGenderCategoryID, $_keyword );
+				
+		//echo $_candidateMatchFixtureGroupTeam->teamGroupGenderCategoryID.' <br>';
+			//$_candidateParticipantRoles = TournamentMatchTable::selectAllCandidateMatchFixtureGroupParticipantTeamMembers( 1, '522d17df030f87f4afe317b006613dfa22301c0a', 1, $_candidateParticipant->participantTeamID, $_candidateParticipant->participantTeamTokenID, 5, 1, $_keyword );
+			//echo $_candidateParticipantRole->id.' => ';
+			foreach($_candidateParticipantRoles as $_key => $_candidateParticipantRole ) {
+				//echo $_candidateParticipantRole->id.' => ';
+				
+				$_matchFixtureParticipant = TournamentMatchTeamMemberParticipantTable::processSave (1, '522d17df030f87f4afe317b006613dfa22301c0a', 1, $_candidateMatchFixtureGroupTeam->participantTeamID, $_candidateParticipantRole->participantMemberID, $_candidateParticipantRole->id, $_matchFixtureName, $_candidateMatchFixtureGroupTeam->participantTeamName, $_candidateParticipantRole->memberFullName, $_matchStatus, $_description );
+				
+				
+			}
+		
+		}
+		echo '<br>;';*/
+	
+	
 ?> 
 
 <div class="ui-page-box">
@@ -272,12 +296,12 @@
 	//*********************************/
 	
 	$('#createBatchTournamentMatchFixtureTeamMemberParticipant').click(function(){
-		var url = '<?php echo url_for('match/createBatchTournamentMatchFixtureGroupParticipant')?>'; 
+		var url = '<?php echo url_for('match/createBatchMatchFixtureGroupParticipantTeamMembers')?>'; 
 		var formName = 'createTournamentMatchFixtureGroupParticipantForm';
 		var data = $("form#createTournamentMatchFixtureGroupParticipantForm").serialize();
 		var datas = generateValidData (formName);
-		//processEntry(datas, url )
-		alert(datas);
+		processEntry(datas, url )
+		//alert(datas);
 		return true; 
 	});  
 	  

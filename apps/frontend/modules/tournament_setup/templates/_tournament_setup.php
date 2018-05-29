@@ -20,15 +20,9 @@
 										<li class="selectCandidateActiveCourses" id="selectCandidateActiveCourses">
 											<a href="#ui-main-tab-two" data-toggle="tab">
 												<img class="" src="<?php echo image_path('settings/courses') ?>">
-												<?php echo __('Game Rounds') ?>
+												<?php echo __('Tournament Venue') ?>
 											</a>
-										</li>  
-										<li class="selectCourseAssessmentTypes" id="selectCourseAssessmentTypes">
-											<a href="#ui-main-tab-three" data-toggle="tab">
-												<img class="" src="<?php echo image_path('settings/assessment_type') ?>">
-												<?php echo __('Group Types') ?>
-											</a>
-										</li>  
+										</li>   
 									</ul>
 								</div><!-- end of ui-panel-tab-header-box --> 
 							</div><!-- end of ui-panel-tab-header-box -->  
@@ -89,7 +83,7 @@
 										</div>
 									<!--    End of toolbar      -->
 										<div class="ui-panel-form-content-box ui-tab-panel-form-box"> 
-											<?php include_partial('round_form', array()) ?> 
+											 
 										</div> <!-- ui-panel-content -->
 									
 										<div class="ui-tab-panel-default-header-box">
@@ -119,49 +113,6 @@
 											</div>  
 										</div><!-- ui-panel-footer-default -->	
 									</div><!-- ui-panel-footer-default -->
-									
-								</div><!-- ui-main-tab-one --> 
-								
-								<div id="ui-main-tab-three" class="tab-pane">
-									<div id="ui-list-collapsible-panel-three">
-										<!-- Begining of toolbar -->
-										<div class="ui-toolbar-menu-box">
-											<div class="ui-toolbar-menu">
-												<?php include_partial('game_round_action_toolbar', array()) ?> 
-											</div>
-										</div>
-										<!--    End of toolbar      -->
-										<div class="ui-panel-form-content-box ui-tab-panel-form-box"> 
-											<?php include_partial('group_type_form', array()) ?> 
-										</div> <!-- ui-panel-content -->
-									
-										<div class="ui-tab-panel-default-header-box">
-											<div class="ui-tab-panel-default-header">
-												<h2 class="ui-theme-panel-header-title">
-													<img src="<?php echo image_path('settings/assessment_types') ?>" title="<?php echo __('Game Round Management') ?>">
-													<?php echo __('Group Types') ?>
-												</h2>
-												<div class="ui-panel-content-minimize opened" id="ui-list-collaps-tab-panel-three" style="">	
-													<span id="ui--tab-panel-content-up-arrow-three" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
-													<span id="ui--tab-panel-content-down-arrow-three" class="ui-minimize-arrow ui-display-none"><img src="<?php echo image_path('icons/arrow_down') ?>"></span>	
-												</div>
-											</div>
-										</div><!-- ui-panel-footer-default -->
-										
-										<div id="ui-tab-panel-content-collapsible-tthree">
-											<div class="ui-tab-separater"></div>
-											<div class="ui-toolbar-menu-box">
-												<div class="ui-toolbar-menu">
-													<?php include_partial('game_category_action_toolbar', array()) ?> 
-												</div>
-											</div>
-											<div class="ui-panel-content-box ">
-												<div class="ui-tab-panel-grid">  
-													<?php include_partial('group_type_list', array('_groupTypes' => $_groupTypes)) ?> 
-												</div>
-											</div>  
-										</div><!-- ui-panel-footer-default -->
-									</div><!-- ui-panel-footer-default -->	
 									
 								</div><!-- ui-main-tab-one --> 
 								

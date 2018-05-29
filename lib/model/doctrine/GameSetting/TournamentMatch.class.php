@@ -25,6 +25,8 @@ class TournamentMatch extends PluginTournamentMatch
 	public function makePending ()
 	{
 		$_flag = true;   
+			$this->competition_status = trim(TournamentCore::$_PENDING);   
+			$this->process_status = trim(TournamentCore::$_PENDING);   
 			$this->approval_status = trim(TournamentCore::$_PENDING);   
 			$this->status = trim(TournamentCore::$_PENDING); 
 			$this->save();
@@ -47,7 +49,9 @@ class TournamentMatch extends PluginTournamentMatch
 		$_flag = true;   
 		$_effectiveDate = date('m/d/Y', time());  
 		$this->active_flag = true; 
-		$this->approval_status = trim(TournamentCore::$_APPROVED); 
+		$this->competition_status = trim(TournamentCore::$_PENDING); 
+		$this->process_status = trim(TournamentCore::$_ACTIVE); 
+		$this->approval_status = trim(TournamentCore::$_ACTIVE); 
 		$this->status = trim(TournamentCore::$_ACTIVE); 
 		$this->effective_date = trim($_effectiveDate);  
 		$this->save();
@@ -66,6 +70,9 @@ class TournamentMatch extends PluginTournamentMatch
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  
 		$this->active_flag = true;  
+		$this->competition_flag = true;  
+		$this->competition_status = trim(TournamentCore::$_ACTIVE); 
+		$this->process_status = trim(TournamentCore::$_COMPLETED); 
 		$this->approval_status = trim(TournamentCore::$_APPROVED); 
 		$this->status = trim(TournamentCore::$_ACTIVE);  
 		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  

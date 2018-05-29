@@ -2441,13 +2441,13 @@
 .panel-title {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 16px;
+    font-size: 15px;
     color: inherit;
     background-color: #fcb931;
 }
 .panel-title h4 {
-padding: 0;
-margin:0;
+	padding: 0;
+	margin:0;
 }
 .panel-title h4 > a {
     display: block;
@@ -2459,9 +2459,10 @@ margin:0;
     height: auto !important;
     height: 40px;
     color: #000026;
+    font-weight:bold;
 }
 
-.nav-tabs > li > a {
+#myTab.nav-tabs > li > a {
     border: 0 none transparent !important;
     color: #eeeef3;
     display: table-cell;
@@ -2506,8 +2507,59 @@ margin:0;
     padding: 10px;
     margin: 0;
     text-transform: uppercase;
+    font-weight:bold;
+}
+#ui-data-content table.table tr {
+	border:0px solid #f00!important;
+}
+#ui-data-content table.table tr.ui-data-row:hover {
+	cursor:pointer!important;
+    background-color: #fcb931;
 }
 
+.ui-row-container {
+	border:1px solid #ddd!important;
+	background-color: #325889;
+	padding:10px 6px;
+}
+.ui-content-detail-box {
+	border:0px solid #f00!important;
+	background:#fefefe;
+	padding:10px 10px 5px 10px; 
+}
+.ui-content-detail-box h2 {
+	font-size:28px;
+	font-weight:bold;
+	margin:5px 10px 5px 10px;
+	text-shadow: #666 0.04em 0.04em 0.04em;
+	border-bottom:4px solid #fcb931;
+}
+.ui-content-detail {
+	border:0px solid #f00!important;
+	background:#fefefe;
+	padding:5px 10px;
+	font-size:18px;
+	font-weight:bold;
+}
+.ui-content-detail span {
+	line-height:26px!important;
+}
+
+.ui-content-detail h3 {
+	font-size:24px;
+	font-weight:bold;
+	margin:0px 0px 10px 0px;
+	text-shadow: #555 0.05em 0.05em 0.05em;
+}
+.ui-image-banner {
+	border:1px solid #eee!important;
+	padding:10px;
+	background:#fefefe;
+}
+.ui-image-banner img.ui-img-banner {
+	width:100%!important;
+	height:140px!important;
+}
 .bakGr{
 
 background: -moz-linear-gradient(45deg, #020031 0%, #6d3353 100%);

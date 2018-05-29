@@ -17,6 +17,42 @@ class tournament_matchActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+     
   }
+  public function executeFixture(sfWebRequest $request)
+  {
+     
+  }
+  public function executeResult(sfWebRequest $request)
+  {
+     
+  }
+  public function executeTable(sfWebRequest $request)
+  {
+     
+  }
+  public function executeMedal_award(sfWebRequest $request)
+  {
+	  
+		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+
+		$this->_participantTeams = TournamentParticipantTeamMedalStandingTable::processAll ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_activeFlag, $_keyword);
+  }
+  //
+  public function executeGenerateTournamentMedalAwardStanding(sfWebRequest $request)
+	{ 
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_userID = $this->getUser()->getAttribute('userID');
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
+	
+		$_flag =  TournamentParticipantTeamMedalStandingTable::processGenerate ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_description, $_userID, $_userTokenID );  
+				 
+		return $_flag ? true:false;
+		
+	}
+	
 }

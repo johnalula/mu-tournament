@@ -23,14 +23,27 @@ class competitionActions extends sfActions
 	{
 
 	}
+	public function executeTeam_standing(sfWebRequest $request)
+	{
+		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+
+		$this->_participantTeams = TournamentParticipantTeamMedalStandingTable::processCandidates ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_activeFlag, $_keyword);
+	}
 	public function executeFixture(sfWebRequest $request)
 	{
 		
-		//$_tournamentID = $request->getParameter('tournament_id');	
-		$_matchFixtureID = $request->getParameter('match_fixture_id');	
-		$_matchFixtureTokenID = $request->getParameter('token_id');	
+		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
-		$this->_matchFixtureGroup = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureID, $_matchFixtureTokenID, $_activeFlag );
+		//$_tournamentID = $request->getParameter('tournament_id');	
+		$_matchFixtureGroupID = $request->getParameter('match_fixture_id');	
+		$_matchFixtureGroupTokenID = $request->getParameter('token_id');	
+		
+		//$_this->_activeTournament = TournamentTable::makeCandidateObject ( null, true );
+		$this->_matchFixtureGroup = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_activeFlag );
 		$this->_participantTeams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
 		//$_sportGameID = $this->_matchFixtureGroup->sportGameID;
 		//$this->_tournamentGames = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 20  ) ;
