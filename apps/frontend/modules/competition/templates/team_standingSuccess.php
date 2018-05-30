@@ -1,7 +1,7 @@
  
-<div class="ui-content-box" >
-	<div class="containers">
-		<div class="row ui-row-container">
+<div class="ui-content-box" style="border:0px solid #f00!important;">
+	<div class="container" style="border:0px solid #ff0!important;">
+		<div class="row ui-row-container">	 
 			<div class="col-sm-6">
 				<div class="ui-content-detail-box">
 					<h2><?php echo strtoupper($_matchFixtureGroup->gameCategoryName) ?> </h2> 
@@ -14,33 +14,51 @@
 			</div>
 			<div class="col-sm-3">
 				<div class="ui-image-banner">
-					<img class="ui-img-banner" src="<?php echo image_path('images/owner_logo') ?>" alt="AAUG">
+					<img class="ui-img-banner" src="<?php echo image_path('images/owner_logo') ?>" alt="AAUG"> 
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="ui-image-banner">
 					<img class="ui-img-banner" src="<?php echo image_path('images/african_university_games') ?>" alt="AAUG">
 				</div>
-			</div>
-		</div>
+			</div> 
+		</div><!-- /.row -->
+
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="panel-title">
-					<h4><a><?php echo __('Team Standings') ?></a></h4>
-				</div>
-				<?php include_partial('team_standing', array('_participantTeams' => $_participantTeams )) ?>
-			</div><!-- /.col-sm -->
-		</div><!-- /.row --> 
-		
+				<ul class="nav nav-tabs" id="myTab" style="background-color: #325889;">
+					<li class="active">
+					  <a href="#day_one">
+						 <span style="display:block"><?php echo __('Medal Standing') ?></span> 
+					  </a>
+				  </li> 
+				</ul>
+				
+				<div class="tab-content">
+					<div class="tab-pane active" id="day_one"> 
+						<div class="panel-title">
+							<h4><a><?php echo __('Medal Standing') ?></a></h4>
+						</div>
+					
+						<div class="col-sm-12">
+							<div class="panel-content">
+								<?php include_partial('team_standing', array('_candidateParticipantTeams' => $_candidateParticipantTeams)) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm --> 
+						
+					</div><!-- /.tab-pane -->
+					
+				</div><!-- /.col-sm-12 -->
+			</div><!-- /.col-sm-12 -->
+		</div><!-- /.row -->
+		 
 	</div><!-- /.carousel -->
-</div><!-- /.carousel -->
+</div><!-- /.carousel --> 
 
- 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<script>
+	
+	$('#myTab a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+	})
+</script>

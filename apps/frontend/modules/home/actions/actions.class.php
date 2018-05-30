@@ -21,28 +21,17 @@ class homeActions extends sfActions
 		//$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		 
 		//$this->_tournamentMatchs = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  );
-		$this->_participantTeams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
+		$_tournament = TournamentTable::makeActiveObject ( true );
 		
-		$this->_participantTeamsTop7 = TournamentParticipantTeamMedalStandingTable::processCandidateSelection ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_activeFlag, $_keyword, 0, 5);;
-		//$this->_candidateTeams = TeamTable::processAll ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword);
-		//$this->_tournamentGames = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 20  ) ;
-		//$this->_tournamentMatchFixtures = TournamentMatchFixtureTable::processCandidateSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword) ;
+		$this->_activeTournament = TournamentTable::makeActiveObject ( true );
 		
-		$this->_tournamentMatchFixtures = TournamentMatchFixtureGroupTable::processSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword, 0, 20  ) ;
+		$this->_participantTeams = TeamTable::makeCandidateSelection ( $_tournament->id, $_activeFlag, $_keyword, 0, 10 );
+
+		$this->_participantTeamStandings = TournamentParticipantTeamMedalStandingTable::makeCandidateSelection ( $_tournament->id, $_participantTeamID, $_activeFlag, $_keyword, 0, 6);;
 		
-		//$this->_gameCategorys = GameCategoryTable::processCandidates ($_orgID, $_orgTokenID, $_keyword, $_activeFlag );
-		//$this->_gameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 15 );;
-	}
-	public function executeCandidateMatchs(sfWebRequest $request)
-	{
-		//$this->_manusctiptJournals = ArticleJournalTable::processCandidates ( $_authorID, $_manuscriptCode, $_status );
-		//$this->_manusctiptJournals = ArticleJournalTable::processActiveCandidates ( $_authorID, ManuscriptJournalCore::$_ACTIVE);
-		//$this->_tournamentMatchs = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  );
-		//$this->_participantTeams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
-		//$this->_tournamentGames = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 20  ) ;
-		//$this->_matchFixtures = MatchFixtureTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  ) ;
-	}
-	
+		$this->_tournamentMatchFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournament->id, $_sportGameID, $_sportGameTypeID, $_genderCategory, $_keyword, 0, 20  ) ;
+		
+	} 
 	
 	public function executeSelectTournamentMatchFixtures(sfWebRequest $request)
 	{

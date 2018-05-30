@@ -649,7 +649,7 @@ TournamentMatchTeamMemberParticipant:
     match_position_order: { type: integer } 
     match_result_position_order: { type: integer } 
     match_result_score: { type: integer } 
-    match_result_time: { type: integer } 
+    match_result_time: { type: datetime } 
     effective_date: { type: string(100) }
     qualified_flag: { type: boolean  } 
     confirmed_flag: { type: boolean, default: false } 

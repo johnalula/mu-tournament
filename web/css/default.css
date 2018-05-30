@@ -2436,18 +2436,22 @@
 	width:120px!important;
 }
 /*********************************************/
+.ui-content-box {
+	margin-bottom:100px;
+}
 
 /******************from mokea***********************/
 .panel-title {
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 15px;
+    font-size: 13px!important;
     color: inherit;
     background-color: #fcb931;
 }
 .panel-title h4 {
 	padding: 0;
 	margin:0;
+    font-size: 16px!important;
 }
 .panel-title h4 > a {
     display: block;
@@ -2494,10 +2498,11 @@
     border-left: 1px solid #6f6d7d;
         }
 
-.table-header {
-    background-color: #325889;
+.table-header { 
     display: table;
     width: 100%;
+    border:0px solid #f00;
+    padding: 0px 5px!important;
 }
 .table-header h2 {
     background-color: #325889;
@@ -2520,7 +2525,8 @@
 .ui-row-container {
 	border:1px solid #ddd!important;
 	background-color: #325889;
-	padding:10px 6px;
+	padding:10px 6px; 
+	margin-bottom:10px; 
 }
 .ui-content-detail-box {
 	border:0px solid #f00!important;
@@ -2560,12 +2566,106 @@
 	width:100%!important;
 	height:140px!important;
 }
-.bakGr{
-
-background: -moz-linear-gradient(45deg, #020031 0%, #6d3353 100%);
-background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353));
-background: -webkit-linear-gradient(45deg, #020031 0%,#6d3353 100%);
-background: -o-linear-gradient(45deg, #020031 0%,#6d3353 100%);
-background: -ms-linear-gradient(45deg, #020031 0%,#6d3353 100%);
-background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
+.bakGr {
+	background: -moz-linear-gradient(45deg, #020031 0%, #6d3353 100%);
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353));
+	background: -webkit-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	background: -o-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	background: -ms-linear-gradient(45deg, #020031 0%,#6d3353 100%);
+	background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
 }
+
+.row {
+	border:0px solid #000!important;
+}
+
+/*******************************************************/
+.panel-content {
+}
+.ui-panel-content-padding {
+	padding:8px 8px!important;
+	color:#000!important;
+}
+.ui-placeholder h4 {
+	color:#555!important;
+	font-size: 13px;
+}
+.ui-placeholder a h4:hover {
+	text-decoration:none!important;
+	color:#990000!important;
+}
+.ui-placeholder a:hover {
+	text-decoration:none!important;
+	color:#990000!important;
+}
+.ui-placeholder .ui-flag img { 
+	border:0px solid #f00!important;
+	-webkit-border-radius:0px 0px 0px 0px;
+	-moz-border-radius:0px 0px 0px 0px;
+	border-radius:0px 0px 0px 0px;
+	padding:0px 0px!important;
+	margin:8px 0px 0px 0px!important;
+}
+.panel-content table.table {
+}
+.panel-content table.table tr th {
+	border:0px solid #f00!important;
+	border-bottom:1px solid #ccc!important;
+	padding:8px 8px!important;
+	background:#f3f5f8!important;
+	font-weight:bold!important;
+}
+.panel-content table.table tr.ui-even {
+	background:#eeeeee!important;
+}
+.panel-content table.table tr.ui-odd {
+	background:#fff!important;
+}
+.panel-content table.table tr.ui-even:hover {
+	cursor:pointer!important;
+	background-color: #fcb931!important;
+}
+.panel-content table.table tr.ui-odd:hover {
+	cursor:pointer!important;
+	background-color: #fcb931!important;
+}
+.panel-content table.table tr td {
+	border:0px solid #f00!important;
+	padding:7px 8px!important;
+	font-size:0.95em!important;
+	border-bottom:1px solid #ccc!important;
+}
+.panel-content table.table tr.ui-footer-tr {
+	border:0px solid #f00!important;
+	padding:5px 6px!important;
+	font-size:0.90em!important;
+	font-weight:bold!important;
+	background:none!important;
+	border-bottom:0px solid #ccc!important;
+}
+.panel-content table.table tr.ui-footer-tr td {
+	border:0px solid #f00!important;
+	padding:6px 6px!important;
+	font-size:0.90em!important;
+	font-weight:bold!important;
+	background:none!important;
+	border-bottom:0px solid #ccc!important;
+}
+.panel-content table.table tr.ui-footer-tr td a:hover {
+	text-decoration:none!important; 
+	color:#990000!important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

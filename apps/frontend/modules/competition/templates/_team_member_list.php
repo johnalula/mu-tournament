@@ -22,7 +22,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach($_participantTeamStandings as $_key => $_participantTeam ): ?>
+			<?php foreach($_participantTeams as $_key => $_participantTeam ): ?>
 			<tr class="<?php echo fmod($_key, 2) ? 'ui-even' : 'ui-odd' ?>"> 
 				<td align="left">
 					<?php echo $_participantTeam->participantTeamName ?>

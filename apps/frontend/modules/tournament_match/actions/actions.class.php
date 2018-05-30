@@ -19,10 +19,16 @@ class tournament_matchActions extends sfActions
   {
      
   }
+  //
   public function executeFixture(sfWebRequest $request)
   {
-     
+		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		
+		//$this->_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournamentID, $_sportGameID, $_sportGameTypeID, $_genderCategory, $_keyword, 0, 20 );
   }
+  //
   public function executeResult(sfWebRequest $request)
   {
      

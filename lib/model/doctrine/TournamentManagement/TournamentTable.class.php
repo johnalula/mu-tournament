@@ -163,6 +163,19 @@ class TournamentTable extends PluginTournamentTable
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
+   public static function makeActiveObject ( $_activeFlag ) 
+	{
+			$_qry = Doctrine_Query::create()
+					->select(self::appendQueryFields())
+					->from("Tournament trnmnt") 
+					->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")  
+					->where("trnmnt.id IS NOT NULL");
+					if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("trnmnt.active_flag = ?", $_activeFlag);
+				
+					$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
+	}  
 	 
 	
 	/*********************************************************

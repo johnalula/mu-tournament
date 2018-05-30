@@ -7,8 +7,8 @@
 				
 					<div class="ui-panel-header-default">
 						<h2 class="ui-theme-panel-header">
-							<img src="<?php echo image_path('settings/product') ?>" title="<?php echo __('Tournament Match Fixture Management') ?>">
-							<?php echo __('Tournament Match Fixtures') ?>
+							<img src="<?php echo image_path('settings/product') ?>" title="<?php echo __('Tournament Match Medal Award Standings Management') ?>">
+							<?php echo __('Tournament Medal Award Standings') ?>
 						</h2>
 						<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 							<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -32,8 +32,8 @@
 							</div>
 						</div  
 						<!--    End of toolbar      -->
-						<div class="ui-panel-grid-list" id="fixture"> 
-							<?php include_partial('fixture_list', array( '_candidateMatchFixtureGroups' => $_candidateMatchFixtureGroups )) ?> 
+						<div class="ui-panel-grid-list-form">
+							<?php include_partial('fixture_list', array( '_participantTeams' => $_participantTeams )) ?> 
 						</div> <!-- ui-panel-content -->  
 					</div><!-- ui-panel-content-box -->
 					

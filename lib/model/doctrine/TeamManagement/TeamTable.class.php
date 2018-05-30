@@ -113,9 +113,9 @@ class TeamTable extends PluginTeamTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirmed_flag as confirmFlag, tm.active_flag as activeFlag, 
-		 trnmnt.id as tournamentID,
+		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirmed_flag as confirmFlag, tm.active_flag as activeFlag,  
 		 
+			trnmnt.id as tournamentID, trnmnt.token_id as tournamentTokenID, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.start_date as tournamentStartDate, trnmnt.end_date as tournamentEndDate,
 		 (EXISTS (SELECT tmGmPrtn.id FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 
 		 
 		  
@@ -211,6 +211,32 @@ class TeamTable extends PluginTeamTable
 		 
 	} 
 	 
+	
+	/*********************************************************/
+	
+	// process list selection function 
+   public static function makeCandidateSelection ( $_tournamentID=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("Team tm") 
+				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
+				->innerJoin("tm.Organization org on tm.org_id = org.id ")  
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("tm.id ASC")
+				->where("tm.id IS NOT NULL");
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	
 	
 	/*********************************************************
 	********** Candidate selection process *******************

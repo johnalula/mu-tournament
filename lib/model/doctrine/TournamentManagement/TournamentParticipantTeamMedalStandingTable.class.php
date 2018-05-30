@@ -340,6 +340,55 @@ class TournamentParticipantTeamMedalStandingTable extends PluginTournamentPartic
 	}  
 	 
 	
+	/*********************************************************/
+	
+	public static function makeCandidateSelection ( $_tournamentID=null, $_participantTeamID=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TournamentParticipantTeamMedalStanding prtMdlAwrdStng") 
+				->innerJoin("prtMdlAwrdStng.Team prtTm on prtMdlAwrdStng.team_id = prtTm.id ")  
+				->innerJoin("prtMdlAwrdStng.Tournament trnmt on prtMdlAwrdStng.tournament_id = trnmt.id ")  
+				->innerJoin("prtMdlAwrdStng.Organization org on prtMdlAwrdStng.org_id = org.id ")    
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("prtMdlAwrdStng.total_medal_award DESC")
+				->where("prtMdlAwrdStng.id IS NOT NULL");
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("prtMdlAwrdStng.tournament_id = ?", $_tournamentID);    
+				if(!is_null($_participantTeamID)) $_qry = $_qry->addWhere("prtMdlAwrdStng.team_id = ?", $_participantTeamID);    
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("prtMdlAwrdStng.active_flag = ?", $_activeFlag);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("trnmtMtch.category_name LIKE ? OR trnmtMtch.alias LIKE ? OR trnmtMtch.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	} 
+	//
+	public static function makeCandidates ( $_tournamentID=null, $_participantTeamID=null, $_activeFlag=null, $_keyword=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TournamentParticipantTeamMedalStanding prtMdlAwrdStng") 
+				->innerJoin("prtMdlAwrdStng.Team prtTm on prtMdlAwrdStng.team_id = prtTm.id ")  
+				->innerJoin("prtMdlAwrdStng.Tournament trnmt on prtMdlAwrdStng.tournament_id = trnmt.id ")  
+				->innerJoin("prtMdlAwrdStng.Organization org on prtMdlAwrdStng.org_id = org.id ")  
+				->orderBy("prtMdlAwrdStng.total_medal_award DESC")
+				->where("prtMdlAwrdStng.id IS NOT NULL");
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("prtMdlAwrdStng.tournament_id = ?", $_tournamentID);    
+				if(!is_null($_participantTeamID)) $_qry = $_qry->addWhere("prtMdlAwrdStng.team_id = ?", $_participantTeamID);    
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("prtMdlAwrdStng.active_flag = ?", $_activeFlag);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("trnmtMtch.category_name LIKE ? OR trnmtMtch.alias LIKE ? OR trnmtMtch.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	} 
+	
+	
 	/*********************************************************
 	********** Candidate selection process *******************
 	**********************************************************/

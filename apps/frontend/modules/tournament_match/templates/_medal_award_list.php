@@ -64,7 +64,7 @@
 						</li> 
 						<li>
 							<a href="<?php echo url_for('team/view?product_id='.$_participantTeam->id.'&token_id='.$_participantTeam->token_id) ?>" >	
-								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_participantTeam->id ?> )" src="<?php echo image_path('icons/view') ?>">			
+								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_participantTeam->id ?> )" src="<?php echo image_path('icons/del') ?>">			
 							</a>
 						</li>   
 					</ul>

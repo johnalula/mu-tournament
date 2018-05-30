@@ -1,104 +1,132 @@
  
-<div class="ui-content-box" >
-	<div class="containers">
+<div class="ui-content-box" style="border:0px solid #f00!important;">
+	<div class="container" style="border:0px solid #ff0!important;">
 		<div class="row">	
-			
 			<div class="col-sm-8">
 				<?php include_partial('tournament_news_events', array('_tornamentNewsEvents' => $_tornamentNewsEvents)) ?>
 			</div><!-- /.carousel -->
 			 <div class="col-sm-4">
-					<div class="panel-title">
-						<h4><a> Team Standings</a></h4>
-					</div>
-				<?php include_partial('team_standing', array('_participantTeams' => $_participantTeamsTop7)) ?>
-			</div><!-- /.carousel -->
-		</div><!-- /.carousel -->
-		<div class="row" style="margin-left: -9px;margin-right: -9px;border-bottom: 1px solid #6f6d7d;padding-top: 20px;">
+				<div class="panel-title">
+					<h4><a> Team Standings</a></h4>
+				</div>
+				<div class="panel-content">
+					<?php include_partial('team_standing', array('_participantTeamStandings' => $_participantTeamStandings)) ?>
+				</div><!-- /.panel-content -->
+			</div><!-- /.cols-m -->
+		</div><!-- /.row -->
+		
+		<div class="row">
 			<div class="col-sm-12 table-header">
-				<h2 style="font-weight: 500;">Timetable-by-Day <span style="color:#fcb931">AAUG Championships Mekelle University - Ethiopia 2018</span></h2>
-			</div>
+				<h2 style="">Timetable-by-Day <span style="color:#fcb931">AAUG Championships Mekelle University - Ethiopia 2018</span></h2>
+			</div> 
 		</div>
         
 
 		<div class="row">
 			<div class="col-sm-12">
 				<ul class="nav nav-tabs" id="myTab" style="background-color: #325889;">
-				  <li class="active">
-					  <a href="#home">
+					<li class="active">
+					  <a href="#day_one">
 						  <span style="display:block">Day 1</span>
 						  05 aug
 					  </a>
 				  </li>
 				  <li>
-					  <a href="#profile">
+					  <a href="#day_two">
 						<span style="display:block">Day 2</span>
 							  05 aug
 					  </a>
 				  </li>
 				  <li>
-					  <a href="#messages">
+					  <a href="#day_three">
 					  <span style="display:block">Day 3</span>
 							  05 aug
 					  </a>
 				  </li>
-				  <li><a href="#settings">Settings</a></li>
+				  <li><a href="#settings"><?php echo __('Settings') ?></a></li>
 				</ul>
-				 
-				<div class="tab-content">
-					<div class="tab-pane active" id="home">
-				  
 				
-					<div class="">
+				<div class="tab-content">
+					<div class="tab-pane active" id="day_one"> 
 						<div class="panel-title">
-							<h4><a> Session</a></h4>
+							<h4><a><?php echo __('Morning Session') ?></a></h4>
+						</div>
+					
+						<div class="col-sm-12">
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm --> 
+						
+						<div class="col-sm-12">
+							<div class="panel-title">
+								<h4><a><?php echo __('Afternoon Session') ?></a></h4>
+							</div>
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm -->
+					</div><!-- /.tab-pane -->
+					
+					<div class="tab-pane" id="day_two">
+						<div class="">
+							<div class="panel-title">
+								<h4><a> Session</a></h4>
+							</div>
 						</div>
 						
-					</div>
-					<!--<div class="col-sm-4">
-						<?php //include_partial('team_standing', array('_participantTeams' => $_participantTeams)) ?>
-					</div> /.carousel -->
-					<div class="col-sm-12">
-						<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
-					</div><!-- /.col-sm -->
-					</div>
-					<div class="tab-pane" id="profile">...</div>
-					<div class="tab-pane" id="messages">...</div>
-					<div class="tab-pane" id="settings">...</div>
-				</div>
-			</div>
+						<div class="col-sm-12">
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm -->
+					
+					</div><!-- /.tab-pane -->
+					<div class="tab-pane" id="day_three">
+						 <div class="panel-title">
+							<h4><a><?php echo __('Morning Session') ?></a></h4>
+						</div>
+					
+						<div class="col-sm-12">
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm --> 
+						
+						<div class="col-sm-12">
+							<div class="panel-title">
+								<h4><a><?php echo __('Afternoon Session') ?></a></h4>
+							</div>
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm -->
+					</div><!-- /.tab-pane -->
+					
+				</div><!-- /.col-sm-12 -->
+			</div><!-- /.col-sm-12 -->
 		</div><!-- /.row -->
+		
+		 
 		
 		<div class="row">
 			<div class="col-sm-12">
-				<?php include_partial('teams', array('_candidateTeams' => $_candidateTeams)) ?> 
-			</div><!-- /.col-sm --> 
-		</div><!-- /.row -->
-		
-		<div class="row">
-			
-			<div class="col-sm-12">
-				<div class="panel-title">
-					<h4><a>Participating Universities</a></h4>
+				 <div class="panel-title">
+					<h4><a><?php echo __('Participant Teams') ?></a></h4>
 				</div>
-			</div><!-- /.col-sm --> 
+				<div class="panel-content ui-panel-content-padding">
+					<?php include_partial('team_participating', array('_participantTeams' => $_participantTeams)) ?>		
+				</div><!-- /.row -->
+			</div><!-- /.row -->
 		</div><!-- /.row -->
-		<div class="row bakGr1">
-			<?php include_partial('team_participating', array('_participantTeams' => $_participantTeams)) ?>				
-	    </div>
+		 
 	</div><!-- /.carousel -->
-	<script>
+</div><!-- /.carousel --> 
+
+<script>
 	
-	    $('#myTab a').click(function (e) {
+	$('#myTab a').click(function (e) {
       e.preventDefault();
       $(this).tab('show');
-    })
-    </script>
-</div><!-- /.carousel -->
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+	})
+</script>

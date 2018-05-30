@@ -1,4 +1,4 @@
-<div class="col-sm-10 col-sm-offset-2 col-md-offset-2 " style="border:0px solid #f00;">
+<div class="col-sm-10 col-sm-offset-2 col-md-offset-2 ui-placeholder" style="border:0px solid #f00;">
 	<h1 class="page-header"></h1>
 
 	<div class="row placeholders">
@@ -15,7 +15,7 @@
 			</a>
 		</div>
 		<div class="col-xs-6 col-sm-3 placeholder">
-			<a href="<?php echo url_for('tournament/index') ?>">
+			<a href="<?php echo url_for('competetion/team') ?>">
 				<img src="<?php echo image_path('settings/team') ?>" width="80" height="80" class="img-responsive" alt="Generic placeholder thumbnail">
 				<h4>Teams</h4>
 			</a>

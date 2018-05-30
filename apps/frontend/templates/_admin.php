@@ -96,7 +96,7 @@
 								</a>
 							</li> 
 							<li>
-								<a href="<?php echo url_for('tournament_match/fixture') ?>">
+								<a href="<?php echo url_for('tournament_fixture/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/timetable') ?>"><?php echo __('Match Fixtures') ?>
 								</a>
 							</li>

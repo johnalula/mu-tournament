@@ -22,7 +22,7 @@
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-product" name="ui-total-data-list-product" value="<?php echo count($_countTournaments) ?>">
-	  <?php foreach ( $_candidateMatchFixtureGroups as $_key => $_matchFixture ): ?>
+	  <?php foreach ( $_tournamentFixtureGroups as $_key => $_matchFixture ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
@@ -68,13 +68,13 @@
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">   
 						<li>
-							<a href="<?php echo url_for('tournament_fixture/result?match_fixture_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	
-								<img title="<?php echo __('Fixture Restult ').' ( '.' Fixture '.' #:'.$_matchFixture->id ?> )" src="<?php echo image_path('icons/edit') ?>">			
+							<a href="<?php echo url_for('team/view?product_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	
+								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_matchFixture->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
 						</li>  
 						<li>   
 							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_matchFixture->id ?>" onclick="Javascript:deleteProduct(<?php echo $_matchFixture->id ?>);" rel="<?php echo $_matchFixture->token_id ?>">	
-							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_matchFixture->id ?> )" src="<?php echo image_path('icons/view')  ?>" > 
+							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_matchFixture->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
 							</a>  
 						</li> 
 					</ul>
