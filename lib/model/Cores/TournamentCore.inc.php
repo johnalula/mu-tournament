@@ -1273,7 +1273,7 @@ class TournamentCore {
 	public static $_MIXED = 4; 
 	
 	public static $_GENDERS = array ( 1 => "Men", 2 => "Women", 3 => "Both Gender", 4 => "Mixed" );
-	public static $_PLAYER_GENDERS = array ( 1 => "Men", 2 => "Women");
+	public static $_PLAYER_GENDERS = array ( 1 => "Men", 2 => "Women", 4 => "Mixed Gender");
 	
 	public static function processPlayerGender ( ) 
 	{
@@ -1622,6 +1622,78 @@ class TournamentCore {
 				return 'single_player';
 			break;
 			case self::$_BATCH_CREATION_MODE:
+				return 'pair_players';
+			break; 
+		}
+	}
+	
+	/********************************************************/
+	
+	public static $_MORNING_SESSION = 1;
+	public static $_AFTERNOON_SESSION = 2;
+
+	public static $_TOURNAMENT_SESSION_MODES = array ( 1 => 'Modning Session', 2 => 'Afternoon Session');
+	
+	public static function processTournamentSessionModes ( ) 
+	{
+		 try {
+				return self::$_TOURNAMENT_SESSION_MODES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processTournamentSessionModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_TOURNAMENT_SESSION_MODES as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processTournamentSessionModeValue ($_id )
+	{
+		try {
+			foreach( self::$_TOURNAMENT_SESSION_MODES as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultTournamentSessionMode ( )
+	{
+		 try {
+				return self::$_MORNING_SESSION; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processTournamentSessionModeAlias ($_event) 
+	{
+		switch($_event) {			
+			case self::$_MORNING_SESSION:
+				return 'M';
+			break;
+			case self::$_AFTERNOON_SESSION:
+				return 'KM';
+			break; 
+		}
+	}
+	public static function processDataTournamentSessionModeIcon ($_event) 
+	{
+		switch($_event) {			
+			case self::$_MORNING_SESSION:
+				return 'single_player';
+			break;
+			case self::$_AFTERNOON_SESSION:
 				return 'pair_players';
 			break; 
 		}

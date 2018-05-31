@@ -31,8 +31,8 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				
 				$_actionID = SystemCore::$_CREATE; 
 				$_moduleID  = ModuleCore::$_TEAM_GROUP;  
-				$_actionObject  = 'Team Group ID: '.$_tournamentTeamGroup->id;  
-				$_actionDesc  = 'Team Group - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM_GROUP).' ]';  
+				$_actionObject  = 'Tournament Team Group ID: '.$_tournamentTeamGroup->id;  
+				$_actionDesc  = 'Tournament Team Group - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM_GROUP).' ]';  
 			
 				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
 			}
@@ -49,7 +49,15 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 			$_effectiveDate = date('m/d/Y', time());
 			$_nw = new TournamentTeamGroup (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
-			$_nw->tournament_id = trim($_tournamentID); 
+			$_nw->tournament_id = trim($_tournamentID);  if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TEAM_GROUP;  
+				$_actionObject  = 'Tournament Sport Game Group ID: '.$_sportGameGroup->id;  
+				$_actionDesc  = 'Team Group - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM_GROUP).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}
 			$_nw->sport_game_category_id = trim($_gameCategoryID); 
 			$_nw->sport_game_category_token_id = sha1(md5(trim($_gameCategoryTokenID))); 
 			$_nw->group_full_code = SystemCore::makeFullCode ( trim($_groupCode) );  

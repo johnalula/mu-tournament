@@ -1,8 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
-	//game_category=1&sport_game_full_name=5000M (Athletics) - Long Distance Running&tournament_id=1&tournament_group_code=GRP-003&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&sport_game_category_name=Athletics&sport_game_contestant_team_mode=2&tournament_team_group_id=1&tournament_team_group_token_id=c1d2d3c9546871552c79426aded1d4ecf1d32651&group_number=1&gender_category=1&contestant_team_mode=2&sport_game_group_status=1&description=sfgsdf sdf gsdfg
-	
-	//$_flag =  TournamentSportGameGroupTable::processNew ( $_orgID, $_orgTokenID, 1, 1, 'c1d2d3c9546871552c79426aded1d4ecf1d32651', 5, 'a5b16fbdda8b5c083be1d62b23ce2380ffcf6213', '5000M (Athletics) - Long Distance Running', 2, 1, $_groupNumber, $_tournamentGroupCode, 1, $_description, $_userID, $_userTokenID );  
+	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)): 
 ?> 
 
 <div class="ui-page-box">

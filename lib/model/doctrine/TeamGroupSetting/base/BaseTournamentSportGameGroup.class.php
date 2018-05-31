@@ -35,7 +35,6 @@
  * @property TournamentTeamGroup $TournamentTeamGroup
  * @property SportGame $SportGame
  * @property Doctrine_Collection $tournamentSportGameTeamGroups
- * @property Doctrine_Collection $tournamentSportGameGroupMemberParticipants
  * @property Doctrine_Collection $tournamentSportGameGroupMatchFixtures
  * @property Doctrine_Collection $tournamentSportGameGroupMatchFixtureGroups
  * 
@@ -175,10 +174,6 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('TournamentGroupParticipantTeam as tournamentSportGameTeamGroups', array(
-             'local' => 'id',
-             'foreign' => 'tournament_sport_game_group_id'));
-
-        $this->hasMany('TournamentGroupParticipantTeamMember as tournamentSportGameGroupMemberParticipants', array(
              'local' => 'id',
              'foreign' => 'tournament_sport_game_group_id'));
 

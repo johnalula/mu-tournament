@@ -164,18 +164,20 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("TournamentMatch trnmtMtch") 
-				->leftJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
-				->leftJoin("trnmtMtch.GameCategory gmCat on trnmtMtch.sport_game_category_id = gmCat.id ")  
-				//->innerJoin("trnmtMtch.Organization org on trnmtMtch.org_id = org.id ")   
+				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
+				->innerJoin("trnmtMtch.GameCategory gmCat on trnmtMtch.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmtMtch.Organization org on trnmtMtch.org_id = org.id ")   
 				->offset($_offset)
 				->limit($_limit) 
 				->orderBy("trnmtMtch.id ASC")
 				->where("trnmtMtch.id IS NOT NULL");
-				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmtMtch.org_id = ? AND trnmtMtch.org_token_id = ? ", array($_orgID, $_orgTokenID));
-				/*if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("trnmtMtch.active_flag = ?", $_activeFlag);    
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmtMtch.org_id = ? AND trnmtMtch.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_categoryID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_categoryID);    
+				if(!is_null($_gameTypeID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_gameTypeID);    
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("trnmtMtch.active_flag = ?", $_activeFlag);    
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
-						$_qry = $_qry->andWhere("trnmtMtch.category_name LIKE ? OR trnmtMtch.alias LIKE ? OR trnmtMtch.description LIKE ?", array( $_keyword, $_keyword, $_keyword));*/
+						$_qry = $_qry->andWhere("trnmtMtch.category_name LIKE ? OR trnmtMtch.alias LIKE ? OR trnmtMtch.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
 				
 			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
 

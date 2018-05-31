@@ -69,11 +69,6 @@
 								<a href="<?php echo url_for('tournament_setup/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/sport_games') ?>"><?php echo __('Game Setup') ?>
 								</a>
-							</li> 
-							<li class="">
-								<a href="<?php echo url_for('game_category/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/game_types') ?>"><?php echo __('Sport Game Types') ?>
-								</a>
 							</li>  
 							<li class="">
 								<a href="<?php echo url_for('tournament_setup/index') ?>">

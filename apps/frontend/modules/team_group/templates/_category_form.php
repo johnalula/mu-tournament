@@ -63,11 +63,11 @@
 					</div>
 				</div>   
 				<div class="form-group">
-					<label class="col-sm-21 control-label" title="<?php echo __('Number of Teams Per Group ') ?>"><?php echo __('Total')  ?>: <span class="ui-red-text">&nbsp;</span></label>
+					<label class="col-sm-21 control-label" title="<?php echo __('Number of Teams Per Group') ?>"><?php echo __('Total')  ?>: <span class="ui-red-text">&nbsp;</span></label>
 					<div class="col-sm-23">
 						<div class="input-group">
 							<span class="input-group-addon" style="font-size:11px!important;"># <?php echo __('Teams')  ?>&nbsp;</span>
-							<input type="hidden" class="form-control ui-text-right-align"  id="payment_fee_amount" name="team_group_category[number_of_teams_per_group]" placeholder="<?php echo __('per Group') ?>" title="<?php echo __('Payment fee amount') ?>"> 
+							<input type="hidden" class="form-control ui-text-right-align"  id="number_of_participant_teams_per_group" name="team_group_category[number_of_participant_teams_per_group]" placeholder="<?php echo __('per Group') ?>" title="<?php echo __('Number of Teams Per Group') ?>"> 
 							<input type="text" class="form-control ui-text-right-align" id="number_of_teams_per_group" name="team_group_category[number_of_teams_per_group]" value=""  placeholder="<?php echo __('Per Group') ?>"> 
 						</div><!-- input-group -->
 					</div>
@@ -108,7 +108,7 @@
 		document.getElementById("group_team_number_mandatory_flag").value = $(this).val() == 0 ? 0:1;
 	});   
 	
-	$('#game_category').change(function(e) {
+	/*$('#game_category').change(function(e) {
 		$("#createTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 		$("#cancelTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		$(".selectCandidateSportGame").removeAttr("disabled") ;
@@ -125,6 +125,6 @@
 		$("#createTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 		$("#cancelTeamGroup").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 		return false;
-	}); 
+	}); */
 	 
 </script>

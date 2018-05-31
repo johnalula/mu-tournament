@@ -21,7 +21,6 @@
  * @property clob $description
  * @property TeamGameParticipation $TeamGameParticipation
  * @property TeamMemberParticipant $TeamMemberParticipant
- * @property Doctrine_Collection $teamMemberParticipantRoleParticipants
  * @property Doctrine_Collection $teamMemberParticipantRoleTournamentMatchParticipants
  * 
  * @package    symfony
@@ -99,10 +98,6 @@ abstract class BaseTeamMemberParticipantRole extends sfDoctrineRecord
              'local' => 'team_member_participant_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
-
-        $this->hasMany('TournamentGroupParticipantTeamMember as teamMemberParticipantRoleParticipants', array(
-             'local' => 'id',
-             'foreign' => 'team_member_participant_role_id'));
 
         $this->hasMany('TournamentMatchTeamMemberParticipant as teamMemberParticipantRoleTournamentMatchParticipants', array(
              'local' => 'id',

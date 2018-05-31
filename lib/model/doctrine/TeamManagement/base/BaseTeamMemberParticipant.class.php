@@ -23,7 +23,6 @@
  * @property Team $Team
  * @property Person $Person
  * @property Doctrine_Collection $teamMemberParticipantRoles
- * @property Doctrine_Collection $teamTeamGroupMemberParticipans
  * @property Doctrine_Collection $teamMemberParticipantTournamentMatchParticipants
  * 
  * @package    symfony
@@ -106,10 +105,6 @@ abstract class BaseTeamMemberParticipant extends sfDoctrineRecord
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('TeamMemberParticipantRole as teamMemberParticipantRoles', array(
-             'local' => 'id',
-             'foreign' => 'team_member_participant_id'));
-
-        $this->hasMany('TournamentGroupParticipantTeamMember as teamTeamGroupMemberParticipans', array(
              'local' => 'id',
              'foreign' => 'team_member_participant_id'));
 

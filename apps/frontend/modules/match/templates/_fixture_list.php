@@ -27,10 +27,8 @@
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
-			<td class="ui-td-center-text ui-td-xsmall-00">
-				<a href="<?php echo url_for('category/view?category_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	
-					<?php echo SystemCore::processDataID($_matchFixture->id) ?>
-				</a>
+			<td class="ui-td-center-text ui-td-xsmall-00"> 
+				<?php echo SystemCore::processDataID($_matchFixture->id) ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
 				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - '.$_matchFixture->sportGameGroupName.' ( '.TournamentCore::processGenderValue($_matchFixture->teamGroupGenderCategoryID).' )' ?>

@@ -1,14 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
-	
-	//0d95dc25ebf3bc725368cb516d93b6323103ad50
-	//2
-	
-	//$_gameParticipation =  TeamGameParticipationTable::processObject ( $_orgID, $_orgTokenID, 2, '0d95dc25ebf3bc725368cb516d93b6323103ad50' ) ;
-	
-	//echo $_gameParticipation->id.' == '.$_gameParticipation->sportGameName;
-	
-	//echo count($_tournamentSportGameGroups).' == ';
 ?> 
 
 <div class="ui-page-box">
@@ -244,7 +235,7 @@
 		return false; 
 	});  
 	$('#createMultipleCandidateModalData').click(function(){
-		var url = '<?php echo url_for('team_group/createMultipleGroupParticipantTeam')?>';  
+		var url = '<?php echo url_for('team_group/createBatchGroupParticipantTeam')?>';  
 		
 		var data = 'tournament_team_group_id='+document.getElementById('tournament_team_group_id').value+'&tournament_team_group_token_id='+document.getElementById('tournament_team_group_token_id').value+'&sport_game_group_id='+document.getElementById('sport_game_group_id').value+'&sport_game_group_token_id='+document.getElementById('sport_game_group_token_id').value+'&sport_game_group_name='+document.getElementById('sport_game_group_name').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&tournament_id='+document.getElementById('tournament_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value+'&description='+document.getElementById('description').value;
 		//alert(data);

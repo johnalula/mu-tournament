@@ -52,7 +52,7 @@ abstract class BaseTournamentMatchTeamMemberParticipantForm extends BaseFormDoct
       'match_position_order'                 => new sfValidatorInteger(array('required' => false)),
       'match_result_position_order'          => new sfValidatorInteger(array('required' => false)),
       'match_result_score'                   => new sfValidatorInteger(array('required' => false)),
-      'match_result_time'                    => new sfValidatorInteger(array('required' => false)),
+      'match_result_time'                    => new sfValidatorPass(array('required' => false)),
       'effective_date'                       => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'qualified_flag'                       => new sfValidatorBoolean(array('required' => false)),
       'confirmed_flag'                       => new sfValidatorBoolean(array('required' => false)),

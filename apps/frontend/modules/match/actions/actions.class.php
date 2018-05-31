@@ -114,7 +114,7 @@ class matchActions extends sfActions
 	}
 	public function executeCreateTournamentMatchFixture(sfWebRequest $request)
 	{
-		//parent_match_fixture_name=&parent_match_fixture_id=&parent_match_fixture_token_id=&sport_game_type_id=1&tournament_match_id=1&tournament_match_token_id=522d17df030f87f4afe317b006613dfa22301c0a&tournament_match_number=MTCH-001&tournament_match_round_mode=4&tournament_sport_game_group_name=Group One - 800M (Men) - Running - Athletics&tournament_sport_game_group_id=10&tournament_sport_game_group_token_id=3fd92bafbe6151e731eee1f0d0b1f287f108bc48&gender_category_id=1&contestant_team_mode=2&contestant_mode=4&sport_game_id=2&sport_game_token_id=eb470377fa1959449ad07fac42cc5daeb72c719f&number_of_heats_per_group=&event_type=1&tournament_match_round_mode=4&qualifying_status=3&description=hg jhghjghjghjghj &sport_game_venue_name=&sport_game_group_type_id=&match_date=&match_time=&tournament_match_time_value=&qualifying_row_numbers=&qualifing_row_numbers_flag=0&best_qualifying_row_numbers=&best_qualifing_row_numbers_flag=0&remark=
+		//parent_match_fixture_name=&parent_match_fixture_id=&parent_match_fixture_token_id=&sport_game_type_id=1&tournament_match_id=1&tournament_match_token_id=53f2ab60aaee7c5d46f7c83cfce4a7f2d948be86&tournament_match_number=MTCH-001&tournament_match_round_mode=6&tournament_sport_game_group_name=Group One - 5000M (Men) - Running - Athletics&tournament_sport_game_group_id=2&tournament_sport_game_group_token_id=4a829246404ec901002237cb59f838ffb43b955f&gender_category_id=1&contestant_team_mode=2&contestant_mode=4&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&number_of_heats_per_group=1&event_type=1&tournament_match_round_mode=6&qualifying_status=5&description=sdfg sdfgsdfgsdfg&sport_game_venue_name=Mekelle Tigray Stadium&sport_game_group_type_id=&match_date=05/25/2018&match_time=10:00 AM&tournament_match_time_value=10:00&=morning&=3&=1&=&=0&remark= sdfg sdfg sdfgsdf gsdfgsdfgsdfg
 		
 		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
 		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
@@ -140,6 +140,11 @@ class matchActions extends sfActions
 		$_matchRoundMode = $request->getParameter('tournament_match_round_mode');	 
 		$_heatsPerFixture = $request->getParameter('number_of_heats_per_group');	 
 		$_qualifyingStatus = $request->getParameter('qualifying_status');	 
+			 
+		$_qualifyingRowNumbers = $request->getParameter('qualifying_row_numbers');	 
+		$_qualifyingRowNumbersFlag = $request->getParameter('qualifing_row_numbers_flag');	 
+		$_bestQqualifyingRowNumbers = $request->getParameter('best_qualifying_row_numbers');	 
+		$_bestQqualifyingRowNumbersFlag = $request->getParameter('best_qualifing_row_numbers_flag');
 		
 		$_tournamentMatchSession = $request->getParameter('tournament_match_session');	 
 		$_tournamentMatchNumber = $request->getParameter('tournament_match_number');	 
@@ -153,7 +158,7 @@ class matchActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  TournamentMatchFixtureTable::processNew ( $_orgID, $_orgTokenID, $_parentMatchID, $_parentMatchTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameGroupName, $_matchRoundMode, $_genderCategory, $_eventType, $_contestantTeamMode, $_contestantMode, $_tournamentMatchVenue, $_matchTime, $_matchDate, $_tournamentMatchNumber, $_heatsPerFixture, $_qualifyingStatus, $_matchStatus, $_description, $_userID, $_userTokenID  );  
+		$_flag =  TournamentMatchFixtureTable::processNew ( $_orgID, $_orgTokenID, $_parentMatchID, $_parentMatchTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameGroupName, $_matchRoundMode, $_genderCategory, $_eventType, $_contestantTeamMode, $_contestantMode, $_tournamentMatchVenue, $_matchTime, $_matchDate, $_tournamentMatchSession, $_tournamentMatchNumber, $_heatsPerFixture, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_description, $_userID, $_userTokenID  );  
 				 
 		return $_flag ? true:false;
 		

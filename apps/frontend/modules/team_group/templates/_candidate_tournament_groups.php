@@ -3,7 +3,7 @@
 	  <thead>
 		 <tr>
 			<th></th>
-			<th class="" style="text-align:center!important;"><?php echo __('PLR') ?></th>
+			<th class="" style="text-align:center!important;"><?php echo __('PRO') ?></th>
 			<th class="" style="text-align:center!important;"><?php echo __('ID') ?></th>
 			<th class="" style="text-align:left!important;"><?php echo __('Game').' #' ?></th>
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Team Group') ?>"><?php echo  __('Group #') ?></th>    
@@ -22,7 +22,7 @@
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<span rel="<?php echo $_tournamentSportGameGroup->id ?>" class="ui-table-status-xsmall-icon" id="<?php echo $_tournamentSportGameGroup->id ?>">
-					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->hasGroupParticipantTeam ? 'status/approved':'status/disabled')  ?>"> 
+					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->hasGroupParticipantTeam ? 'status/pending':'status/disabled')  ?>"> 
 				</span>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00"> 

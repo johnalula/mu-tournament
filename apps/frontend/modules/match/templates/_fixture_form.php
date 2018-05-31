@@ -163,10 +163,10 @@
 											<span class="caret"></span>
 										</button>
 										<ul class="dropdown-menu pull-right">
-											<li class="selectTournamentMatchTime" rel="AM" id="morning">
+											<li class="selectTournamentMatchTime" rel="AM" id="<?php echo TournamentCore::$_MORNING_SESSION ?>">
 												<a href="#"><?php echo ('AM') ?></a>
 											</li> 			 
-											<li class="selectTournamentMatchTime" rel="PM" id="afternoon">
+											<li class="selectTournamentMatchTime" rel="PM" id="<?php echo TournamentCore::$_AFTERNOON_SESSION ?>">
 												<a href="#"><?php echo ('PM') ?></a>
 											</li> 			  
 										</ul>

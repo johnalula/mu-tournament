@@ -38,6 +38,7 @@
  * @property Doctrine_Collection $sportGameTeamPartcipation
  * @property Doctrine_Collection $sportGameSportGameGroups
  * @property Doctrine_Collection $sportGameMatchFixtures
+ * @property Doctrine_Collection $sportGameParticipantTeamStandingDetails
  * 
  * @package    symfony
  * @subpackage model
@@ -169,6 +170,10 @@ abstract class BaseSportGame extends sfDoctrineRecord
              'foreign' => 'sport_game_id'));
 
         $this->hasMany('TournamentMatchFixture as sportGameMatchFixtures', array(
+             'local' => 'id',
+             'foreign' => 'sport_game_id'));
+
+        $this->hasMany('TournamentParticipantTeamMedalStandingDetail as sportGameParticipantTeamStandingDetails', array(
              'local' => 'id',
              'foreign' => 'sport_game_id'));
 

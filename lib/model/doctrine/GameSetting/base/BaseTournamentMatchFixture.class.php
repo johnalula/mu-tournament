@@ -22,6 +22,8 @@
  * @property integer $match_fixture_round_mode
  * @property integer $event_type
  * @property integer $contestant_mode
+ * @property integer $number_of_qualifying_rows
+ * @property integer $number_of_best_qualifying_rows
  * @property integer $contestant_team_mode
  * @property string $match_venue
  * @property string $tournament_match_fixture_number
@@ -31,6 +33,8 @@
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
+ * @property boolean $qualifying_rows_enable_flag
+ * @property boolean $best_qualifying_row_enable_flag
  * @property boolean $parent_flag
  * @property boolean $inheritable_flag
  * @property boolean $roundable_flag
@@ -121,6 +125,12 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
         $this->hasColumn('contestant_mode', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('number_of_qualifying_rows', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('number_of_best_qualifying_rows', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('contestant_team_mode', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -155,6 +165,14 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
         $this->hasColumn('end_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('qualifying_rows_enable_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('best_qualifying_row_enable_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('parent_flag', 'boolean', null, array(
              'type' => 'boolean',

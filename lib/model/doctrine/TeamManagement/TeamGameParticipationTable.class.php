@@ -64,7 +64,7 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 			$_nw->event_type = trim($_eventType); 
 			$_nw->player_mode = trim($_playerMode); 
 			$_nw->number_of_players = trim($_participantNumber); 
-			$_nw->active_flag = false;  
+			$_nw->active_flag = true;  
 			$_nw->status = TournamentCore::$_PENDING;  
 			$_nw->description = SystemCore::processDescription ( (trim($_sportGameTypeName).' - '.trim($_sportGameName)), trim($_description) );  
 			$_nw->save(); 

@@ -58,8 +58,16 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 			}
 			
 			$_flag1 = $_tournamentGroup->checkInitiated () ? $_tournamentGroup->makePending ():true;
-			  
-			//$_codeConfig->makeCodeSetup ( $_codeConfig->lastCode );   
+			 
+			 if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TEAM_GROUP;  
+				$_actionObject  = 'Tournament Sport Game Group ID: '.$_sportGameGroup->id;  
+				$_actionDesc  = 'Team Group - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM_GROUP).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}
 		
 		return $_sportGameGroup;
 	}
@@ -94,7 +102,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 								
 								(EXISTS (SELECT sprtGmGrp1.id FROM TournamentGroupParticipantTeam sprtGmGrp1 WHERE sprtGmGrp1.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp1.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND sprtGmGrp1.approval_status = ".TournamentCore::$_APPROVED." AND sprtGmGrp1.status = ".TournamentCore::$_ACTIVE." )) as hasGroupParticipantTeam,
 								
-								(EXISTS (SELECT sprtGmPrt1.id FROM TeamGameParticipation sprtGmPrt1 WHERE sprtGmPrt1.sport_game_id = sprtGm.id AND sprtGmPrt1.sport_game_token_id = ".sha1."(".md5."("."sprtGm.token_id)) AND sprtGmPrt1.gender_category_id = sprtGmGrp.gender_category_id AND sprtGmPrt1.confirmed_status = ".TournamentCore::$_INITIATED." AND sprtGmPrt1.status = ".TournamentCore::$_PENDING." AND sprtGmPrt1.active_flag IS FALSE AND sprtGmPrt1.confirmed_flag IS FALSE)) as hasPendingTeamGameParticipation,
+								(EXISTS (SELECT sprtGmPrt1.id FROM TeamGameParticipation sprtGmPrt1 WHERE sprtGmPrt1.sport_game_id = sprtGm.id AND sprtGmPrt1.sport_game_token_id = ".sha1."(".md5."("."sprtGm.token_id)) AND sprtGmPrt1.gender_category_id = sprtGmGrp.gender_category_id AND sprtGmPrt1.confirmed_status = ".TournamentCore::$_INITIATED." AND sprtGmPrt1.status = ".TournamentCore::$_PENDING." AND sprtGmPrt1.active_flag IS TRUE AND sprtGmPrt1.confirmed_flag IS FALSE AND sprtGmPrt1.grouped_flag IS FALSE)) as hasPendingTeamGameParticipation,
 								
 		";	
 		return $_queryFileds;

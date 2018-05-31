@@ -52,7 +52,7 @@ abstract class BaseTeam extends sfDoctrineRecord
 {
     public function setTableDefinition()
     {
-        $this->setTableName('mutms_tbl_teams');
+        $this->setTableName('mutms_tbl_participant_teams');
         $this->hasColumn('token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,

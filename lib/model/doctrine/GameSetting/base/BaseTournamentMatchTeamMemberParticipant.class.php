@@ -15,7 +15,7 @@
  * @property integer $match_position_order
  * @property integer $match_result_position_order
  * @property integer $match_result_score
- * @property integer $match_result_time
+ * @property datetime $match_result_time
  * @property string $effective_date
  * @property boolean $qualified_flag
  * @property boolean $confirmed_flag
@@ -30,6 +30,7 @@
  * @property TournamentMatchFixtureGroup $TournamentMatchFixtureGroup
  * @property TournamentMatchFixture $TournamentMatchFixture
  * @property TournamentMatchParticipantTeam $TournamentMatchParticipantTeam
+ * @property Doctrine_Collection $tournamentMatchTeamMemberParticipantTeamStandingDetails
  * 
  * @package    symfony
  * @subpackage model
@@ -73,8 +74,8 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
         $this->hasColumn('match_result_score', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('match_result_time', 'integer', null, array(
-             'type' => 'integer',
+        $this->hasColumn('match_result_time', 'datetime', null, array(
+             'type' => 'datetime',
              ));
         $this->hasColumn('effective_date', 'string', 100, array(
              'type' => 'string',
@@ -139,6 +140,10 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
              'local' => 'tournament_match_participant_team_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('TournamentParticipantTeamMedalStandingDetail as tournamentMatchTeamMemberParticipantTeamStandingDetails', array(
+             'local' => 'id',
+             'foreign' => 'participant_team_member_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

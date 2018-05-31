@@ -29,7 +29,6 @@
  * @property TeamGameParticipation $TeamGameParticipation
  * @property Team $Team
  * @property TournamentSportGameGroup $TournamentSportGameGroup
- * @property Doctrine_Collection $tournamentGroupParticipantTeamMembers
  * @property Doctrine_Collection $sportGameTeamGroupMatchTeamParticipantTeams
  * 
  * @package    symfony
@@ -139,10 +138,6 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
              'local' => 'tournament_sport_game_group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
-
-        $this->hasMany('TournamentGroupParticipantTeamMember as tournamentGroupParticipantTeamMembers', array(
-             'local' => 'id',
-             'foreign' => 'group_participant_team_id'));
 
         $this->hasMany('TournamentMatchParticipantTeam as sportGameTeamGroupMatchTeamParticipantTeams', array(
              'local' => 'id',
