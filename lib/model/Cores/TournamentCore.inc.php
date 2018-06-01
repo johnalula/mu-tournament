@@ -521,7 +521,190 @@ class TournamentCore {
 			break; 
 		}
 	}
+	
+	/************************************************/
+
+	public static $_PRELIMINARY_ROUND = 1; 
+	public static $_HEAT_ROUND = 2;
+	public static $_QUALIFYING_ROUND = 3; 
+	public static $_KNOCK_OUT = 4;  
+	public static $_FINAL_ROUND = 5; 
+	
+	public static $_COMPETITION_MODES = array ( 1 => "Preliminary", 2 => "Heat Round", 3 => "Qualifying", 4 => "Knock Out", 5 => "Final" );
+	
+	public static function processMatchCompetitionRoundModes ( ) 
+	{
+	  try {
+				return  self::$_COMPETITION_MODES; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }        
+	} 
+	public static function processMatchCompetitionRoundModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_COMPETITION_MODES as $_key => $_round ) {
+				if( strcmp($_round, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}        
+	}
+	
+	public static function processMatchCompetitionRoundModeValue ( $_id )
+	{
+		try {
+				foreach( self::$_COMPETITION_MODES as $_key => $_round ) {
+					if( $_key == $_id )
+						return $_round; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}    
+	}
+	public static function processDefaultMatchCompetitionRoundMode ()
+	{
+		try {
+				return  self::$_PRELIMINARY_ROUND; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }     
+	}
+	public static function processMatchRoundModeAlias ($_round)
+	{
+		switch($_round) {			
+			case self::$_PRELIMINARY_ROUND:
+				return 'first_round';
+			break;	
+			case self::$_HEAT_ROUND:
+				return 'next_round';
+			break; 
+			case self::$_QUALIFYING_ROUND:
+				return 'qualified_round';
+			break;  
+			case self::$_FINAL_ROUND:
+				return 'final_round';
+			break;  
+			case self::$_KNOCK_OUT:
+				return 'play_off';
+			break;  
+		}
+	} 
+	public static function makeMatchCompetitionRoundMode ($_roundMode)
+	{
+		 switch($_roundMode) {			
+			case self::$_PRELIMINARY:
+				return self::$_PRELIMINARY_ROUND;
+			break;
+			case self::$_HEATS:
+				return self::$_HEAT_ROUND;
+			break;
+			case self::$_QUALIFICATION:
+				return self::$_QUALIFYING_ROUND;
+			break;
+			case self::$_QUARTER_FINAL:
+				return self::$_QUALIFYING_ROUND;
+			break;
+			case self::$_SEMI_FINAL:
+				return self::$_QUALIFYING_ROUND;
+			break;
+			case self::$_FINAL:
+				return self::$_FINAL_ROUND;
+			break; 
+		}
+	} 
+	
 	 
+	/************************************************/
+	
+	public static $_POINT_ORDER = 1; 
+	public static $_POSITION_ORDER = 2; 
+	public static $_TIME_ORDER = 3; 
+	public static $_DISTANCE_ORDER = 4; 
+	public static $_HEIGHT_ORDER = 5; 
+	public static $_OTHER_ORDER = 6; 
+	
+	public static $_RESULT_RANKING_MODES = array ( 1 => "Point Order", 2 => "Position Order", 3 => "Time Order", 4 => "Distance Order", 5 => "Height Order", 6 => "Other Order" );
+	
+	public static function processResultRankingModes ( ) 
+	{
+	  try {
+				return  self::$_RESULT_RANKING_MODES; 
+			} catch ( Exception $_e ) {
+			return null; 
+	  }        
+	}
+	public static function processResultRankingModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_RESULT_RANKING_MODES as $_key => $_order ) {
+				if( strcmp($_order, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+			} catch ( Exception $_e ) {
+			return null; 
+		}        
+	}
+	
+	public static function processResultRankingModeValue ( $_id )
+	{
+		try {
+				foreach( self::$_RESULT_RANKING_MODES as $_key => $_order ) {
+					if( $_key == $_id )
+						return $_order; 
+			}
+			return null; 
+			} catch ( Exception $_e ) {
+			return null; 
+		}    
+	}
+	public static function processDefaultResultRankingMode ()
+	{
+		try {
+				return  self::$_POINT_ORDER; 
+			} catch ( Exception $_e ) {
+			return null; 
+	  }     
+	}
+	public static function processResultRankingModeIcon ($_order)
+	{
+		switch($_order) {			
+			case self::$_POINT_ORDER:
+				return 'point_order';
+			break;	
+			case self::$_POSITION_ORDER:
+				return 'position_order';
+			break; 
+			case self::$_TIME_ORDER:
+				return 'time_order';
+			break; 
+			case self::$_OTHER_ORDER:
+				return 'other_order';
+			break; 
+		}
+	}
+	public static function processResultRankingModeAlias ($_order)
+	{
+		switch($_order) {			
+			case self::$_POINT_ORDER:
+				return 'POTOR';
+			break;	
+			case self::$_POSITION_ORDER:
+				return 'POSOR';
+			break; 
+			case self::$_TIME_ORDER:
+				return 'TMOR';
+			break; 
+			case self::$_OTHER_ORDER:
+				return 'OTOR';
+			break; 
+		}
+	}
+	
 	/*********************************************/
 	
 	public static $_FIN = 1;
@@ -1341,188 +1524,8 @@ class TournamentCore {
 			break; 
 		}
 	} 
-/************************************************/
 
-	public static $_PRELIMINARY_ROUND = 1; 
-	public static $_HEAT_ROUND = 2;
-	public static $_QUALIFYING_ROUND = 3; 
-	public static $_KNOCK_OUT = 4;  
-	public static $_FINAL_ROUND = 5; 
-	
-	public static $_COMPETITION_MODES = array ( 1 => "Preliminary", 2 => "Heat Round", 3 => "Qualifying", 4 => "Knock Out", 5 => "Final" );
-	
-	public static function processMatchCompetitionRoundModes ( ) 
-	{
-	  try {
-				return  self::$_COMPETITION_MODES; 
-			} catch ( Exception $e ) {
-			return null; 
-	  }        
-	} 
-	public static function processMatchCompetitionRoundModeID ( $_value ) 
-	{
-		try {
-			foreach( self::$_COMPETITION_MODES as $_key => $_round ) {
-				if( strcmp($_round, $_value) == 0 )
-					return $_key; 
-			}
-			return null; 
-			} catch ( Exception $e ) {
-			return null; 
-		}        
-	}
-	
-	public static function processMatchCompetitionRoundModeValue ( $_id )
-	{
-		try {
-				foreach( self::$_COMPETITION_MODES as $_key => $_round ) {
-					if( $_key == $_id )
-						return $_round; 
-			}
-			return null; 
-			} catch ( Exception $e ) {
-			return null; 
-		}    
-	}
-	public static function processDefaultMatchCompetitionRoundMode ()
-	{
-		try {
-				return  self::$_PRELIMINARY_ROUND; 
-			} catch ( Exception $e ) {
-			return null; 
-	  }     
-	}
-	public static function processMatchRoundModeAlias ($_round)
-	{
-		switch($_round) {			
-			case self::$_PRELIMINARY_ROUND:
-				return 'first_round';
-			break;	
-			case self::$_HEAT_ROUND:
-				return 'next_round';
-			break; 
-			case self::$_QUALIFYING_ROUND:
-				return 'qualified_round';
-			break;  
-			case self::$_FINAL_ROUND:
-				return 'final_round';
-			break;  
-			case self::$_KNOCK_OUT:
-				return 'play_off';
-			break;  
-		}
-	} 
-	public static function makeMatchCompetitionRoundMode ($_roundMode)
-	{
-		 switch($_roundMode) {			
-			case self::$_PRELIMINARY:
-				return self::$_PRELIMINARY_ROUND;
-			break;
-			case self::$_HEATS:
-				return self::$_HEAT_ROUND;
-			break;
-			case self::$_QUALIFICATION:
-				return self::$_QUALIFYING_ROUND;
-			break;
-			case self::$_QUARTER_FINAL:
-				return self::$_QUALIFYING_ROUND;
-			break;
-			case self::$_SEMI_FINAL:
-				return self::$_QUALIFYING_ROUND;
-			break;
-			case self::$_FINAL:
-				return self::$_FINAL_ROUND;
-			break; 
-		}
-	} 
-	
-	 
-	/************************************************/
-	
-	public static $_POINT_ORDER = 1; 
-	public static $_POSITION_ORDER = 2; 
-	public static $_TIME_ORDER = 3; 
-	public static $_DISTANCE_ORDER = 4; 
-	public static $_HEIGHT_ORDER = 5; 
-	public static $_OTHER_ORDER = 6; 
-	
-	public static $_RESULT_RANKING_MODES = array ( 1 => "Point Order", 2 => "Position Order", 3 => "Time Order", 4 => "Distance Order", 5 => "Height Order", 6 => "Other Order" );
-	
-	public static function processResultRankingModes ( ) 
-	{
-	  try {
-				return  self::$_RESULT_RANKING_MODES; 
-			} catch ( Exception $_e ) {
-			return null; 
-	  }        
-	}
-	public static function processResultRankingModeID ( $_value ) 
-	{
-		try {
-			foreach( self::$_RESULT_RANKING_MODES as $_key => $_order ) {
-				if( strcmp($_order, $_value) == 0 )
-					return $_key; 
-			}
-			return null; 
-			} catch ( Exception $_e ) {
-			return null; 
-		}        
-	}
-	
-	public static function processResultRankingModeValue ( $_id )
-	{
-		try {
-				foreach( self::$_RESULT_RANKING_MODES as $_key => $_order ) {
-					if( $_key == $_id )
-						return $_order; 
-			}
-			return null; 
-			} catch ( Exception $_e ) {
-			return null; 
-		}    
-	}
-	public static function processDefaultResultRankingMode ()
-	{
-		try {
-				return  self::$_POINT_ORDER; 
-			} catch ( Exception $_e ) {
-			return null; 
-	  }     
-	}
-	public static function processResultRankingModeIcon ($_order)
-	{
-		switch($_order) {			
-			case self::$_POINT_ORDER:
-				return 'point_order';
-			break;	
-			case self::$_POSITION_ORDER:
-				return 'position_order';
-			break; 
-			case self::$_TIME_ORDER:
-				return 'time_order';
-			break; 
-			case self::$_OTHER_ORDER:
-				return 'other_order';
-			break; 
-		}
-	}
-	public static function processResultRankingModeAlias ($_order)
-	{
-		switch($_order) {			
-			case self::$_POINT_ORDER:
-				return 'POTOR';
-			break;	
-			case self::$_POSITION_ORDER:
-				return 'POSOR';
-			break; 
-			case self::$_TIME_ORDER:
-				return 'TMOR';
-			break; 
-			case self::$_OTHER_ORDER:
-				return 'OTOR';
-			break; 
-		}
-	}
+
 	
 /************************************************/
 

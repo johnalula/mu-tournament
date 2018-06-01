@@ -46,19 +46,19 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 			
 			$_matchFixtureGroupObj = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID);
 					
-			$_flag2 = $_matchFixtureGroupObj->hasActiveGroupParticipantTeam ? true:$_matchFixtureGroupObj->makeActivation ();
+			$_flag2 = $_matchFixtureGroupObj->hasActiveGroupParticipantTeam ? $_matchFixtureGroupObj->makeActivation ():$_matchFixtureGroupObj->makeApproval ();
 			 
 			//$_flag1 = $_tournamentMatchFixture->checkInitiated () ? $_tournamentMatchFixture->makePending ():true;
 			
-			/*if($_orgID && $_userID) { 
+			if($_orgID && $_userID) { 
 				
 				$_actionID = SystemCore::$_CREATE; 
 				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  
-				$_actionObject  = 'Match Fixture ID: '.$_matchFixtureGroup->id;  
+				$_actionObject  = 'Match Fixture Group Participant Team ID: '.$_matchFixtureGroupObj->id;  
 				$_actionDesc  = 'Tournament Match Fixture Participant Teams- [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
 			
 				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
-			}*/
+			}
 			
 		
 		return $_matchFixtureParticipant ? true:false;

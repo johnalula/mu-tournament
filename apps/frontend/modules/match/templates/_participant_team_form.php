@@ -116,7 +116,25 @@
 						</div>
 						<label class="col-sm-01 control-label"><?php echo __('Time') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-23">
-							 <input type="text" class="form-control" id="match_time"	name="match_participant_team[match_time]"	placeholder="<?php echo __('Match Time') ?>" required  >
+							<div class="input-group">
+								<input type="text" class="form-control" id="match_time"	name="tournament_match_fixture[match_time]"	placeholder="<?php echo __('Match Time') ?>" required  >
+								<input type="hidden" class="form-control" id="tournament_match_time_value" name="match_participant_team[tournament_match_time_value]" >
+								<input type="hidden" class="form-control" id="tournament_match_session" name="match_participant_team[tournament_match_session]" >
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-default	dropdown-toggle tournamentMathTimeValue" data-toggle="dropdown" >
+										TIme
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu pull-right">
+										<li class="selectTournamentMatchTime" rel="AM" id="<?php echo TournamentCore::$_MORNING_SESSION ?>">
+											<a href="#"><?php echo ('AM') ?></a>
+										</li> 			 
+										<li class="selectTournamentMatchTime" rel="PM" id="<?php echo TournamentCore::$_AFTERNOON_SESSION ?>">
+											<a href="#"><?php echo ('PM') ?></a>
+										</li> 			  
+									</ul>
+								</div><!-- /btn-group -->
+							</div><!-- /input-group -->
 						</div>
 					</div>  
 					<div class="form-group">
@@ -133,45 +151,21 @@
 </div> 
 
 <script>
-	$('#event_type').change(function(e) {
-		$("#createTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		$("#createTournamentMatchFixtureFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFixtureFooter").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		//alert('asdfa');
-		return false;
-	});  
-	$('#player_mode').change(function(e) {
-		$("#createTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});  
-	$('#gender_category').change(function(e) {
-		$("#createTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});  
-	$('#match_round').change(function(e) {
-		$("#createTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});  
-	$('#match_status').change(function(e) {
-		$("#createTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});  
-	 
-	$('#match_venue').keyup(function(e) {
-		$("#createTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
+	$('.selectTournamentMatchTime').click(function() {   
+		var thisIDNumber = $(this).attr('rel');   
+		var thisIDName = $(this).attr('id');   
+		document.getElementById("match_time").value = $('#tournament_match_time_value').val()+' '+thisIDNumber;
+		document.getElementById("tournament_match_session").value = thisIDName;
+		//document.getElementById("sport_game_group_type_id").value = thisIDNumber; 
+		//$('#createSchoolGradePaymentFee').removeAttr("disabled").removeClass("ui-action-toolbar-disabled-menu").addClass("ui-action-toolbar-enabled-menu");
 	}); 
-	$('#description').keyup(function(e) {
-		$("#createTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		$("#cancelTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-		return false;
-	});
+	$('#match_time').keyup(function(key) {
+		var thisIDNumber = $(this).attr('rel');   
+		var thisIDName = $(this).attr('id');   
+		document.getElementById("tournament_match_time_value").value = $(this).val();
+		//document.getElementById("sport_game_group_type_id").value = thisIDNumber; 
+		//$('#createSchoolGradePaymentFee').removeAttr("disabled").removeClass("ui-action-toolbar-disabled-menu").addClass("ui-action-toolbar-enabled-menu");
+	}); 
 	$( "#match_date" ).datepicker({  
 		yearRange: "2005:2020", 
 		changeYear: true,

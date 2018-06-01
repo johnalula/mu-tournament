@@ -17,7 +17,7 @@
 	
 	//$_matchFixtureGroupParticipants = TournamentMatchFixtureGroupTable::processCandidateSelections ( 3, 'ba44103dc5939ca480fa8b9809ad058a2a3130c7', $_matchFixtureID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE) ;
 	
-	//echo count($_matchFixtureGroupParticipants);
+	//echo count($_tournamentMatchFixtureGroups);
 	
 ?> 
 

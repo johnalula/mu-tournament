@@ -27,9 +27,9 @@ class homeActions extends sfActions
 		
 		$this->_participantTeams = TeamTable::makeCandidateSelection ( $_tournament->id, $_activeFlag, $_keyword, 0, 10 );
 
-		//$this->_participantTeamStandings = TournamentParticipantTeamMedalStandingTable::makeCandidateSelection ( $_tournament->id, $_participantTeamID, $_activeFlag, $_keyword, 0, 6);;
+		$this->_participantTeamStandings = TournamentParticipantTeamMedalStandingTable::makeCandidateSelection ( $_tournament->id, $_participantTeamID, $_activeFlag, $_keyword, 0, 6);;
 		
-		//$this->_tournamentMatchFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournament->id, $_sportGameID, $_sportGameTypeID, $_genderCategory, $_keyword, 0, 20  ) ;
+		$this->_tournamentMatchFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournament->id, $_sportGameID, $_sportGameTypeID, $_genderCategory, $_keyword, 0, 20  ) ;
 		
 	} 
 	

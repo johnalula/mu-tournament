@@ -484,7 +484,9 @@ TournamentMatchFixture:
     match_round_type_id: { type: integer } 
     match_heat_type_id: { type: integer } 
     match_round_type_name: { type: string(100) } 
-    match_heat_type_name: { type: string(100) } 
+    match_heat_type_name: { type: string(100) }
+    match_heat_number: { type: integer }  
+    match_heat_name: { type: string(100) }   
     gender_category_id: { type: integer } 
     match_fixture_round_mode: { type: integer } 
     event_type: { type: integer } 

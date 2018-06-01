@@ -25,7 +25,7 @@
 				<?php echo SystemCore::processDataID($_candidateMatchFixture->id) ?> 
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo $_candidateMatchFixture->tournamentMatchFixtureNumber  ?> 
+				<?php echo $_candidateMatchFixture->hasActiveGroupParticipantTeam ? 'true':'fasle' ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo $_candidateMatchFixture->sportGameName.' - '.$_candidateMatchFixture->gameCategoryName.'- '.($_candidateMatchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_candidateMatchFixture->sportGameTypeMode)):$_candidateMatchFixture->sportGameName).' - '.$_candidateMatchFixture->sportGameGroupName.' ( '.TournamentCore::processGenderValue($_candidateMatchFixture->teamGroupGenderCategoryID).' )' ?>

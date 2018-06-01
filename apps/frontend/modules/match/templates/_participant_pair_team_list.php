@@ -38,14 +38,14 @@
 			<td class="ui-td-center-text ui-td-xlarg">
 				<?php echo $_candidateMatchFixtureGroup->selectCandidateParticipantTeams()  ?>
 			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_candidateMatchFixtureGroup->matchDate ?>
+			<td class="ui-td-center-text ui-td-xsmall-01">
+				<?php echo date('M, d Y', strtotime($_candidateMatchFixtureGroup->fixtureGroupMatchDate)) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_candidateMatchFixtureGroup->matchTime ?>
+				<?php echo $_candidateMatchFixtureGroup->fixtureGroupMatchTime ?>
 			</td>  	
 			<td class="ui-td-left-text ui-td-xsmall-12"> 
-				<?php echo Wordlimit::Wordlimiter($_candidateMatchFixtureGroup->tournamentMatchFixtureVenue, 7) ?>
+				<?php echo Wordlimit::Wordlimiter($_candidateMatchFixtureGroup->tournamentMatchFixtureGroupVenue, 7) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_candidateMatchFixtureGroup->id ?>" class="ui-table-status-small-icon" id="<?php echo $_candidateMatchFixtureGroup->id ?>">

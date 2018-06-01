@@ -16,7 +16,12 @@
  * @property string $match_venue
  * @property string $match_date
  * @property string $match_time
+ * @property integer $tournament_match_session_mode
+ * @property integer $number_of_qualifying_rows
+ * @property integer $number_of_best_qualifying_rows
  * @property string $effective_date
+ * @property boolean $qualifying_rows_enable_flag
+ * @property boolean $best_qualifying_row_enable_flag
  * @property boolean $qualified_flag
  * @property integer $qualification_status
  * @property boolean $confirmed_flag
@@ -83,9 +88,26 @@ abstract class BaseTournamentMatchFixtureGroup extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('tournament_match_session_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('number_of_qualifying_rows', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('number_of_best_qualifying_rows', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('effective_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('qualifying_rows_enable_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('best_qualifying_row_enable_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
              ));
         $this->hasColumn('qualified_flag', 'boolean', null, array(
              'type' => 'boolean',

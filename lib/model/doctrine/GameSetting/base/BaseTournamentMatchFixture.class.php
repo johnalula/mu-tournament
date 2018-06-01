@@ -26,6 +26,7 @@
  * @property integer $number_of_best_qualifying_rows
  * @property integer $contestant_team_mode
  * @property string $match_venue
+ * @property integer $tournament_match_session_mode
  * @property string $tournament_match_fixture_number
  * @property string $tournament_match_fixture_full_number
  * @property string $match_date
@@ -137,6 +138,9 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
         $this->hasColumn('match_venue', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('tournament_match_session_mode', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('tournament_match_fixture_number', 'string', 100, array(
              'type' => 'string',

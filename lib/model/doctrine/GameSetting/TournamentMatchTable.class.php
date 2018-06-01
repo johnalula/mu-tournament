@@ -144,7 +144,7 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "trnmtMtch.id, trnmtMtch.sport_game_category_id as matchSportGameCategoryID, trnmtMtch.tournament_match_number as matchNumber, trnmtMtch.tournament_match_number as tournamentMatchNumber, trnmtMtch.tournament_match_full_number as tournamentMatchFullNumber, trnmtMtch.tournament_match_round_mode as tournamentMatchRoundMode, trnmtMtch.active_flag as activeFlag, trnmtMtch.start_date as matchDate, 
+		 $_queryFileds = "trnmtMtch.id, trnmtMtch.sport_game_category_id as matchSportGameCategoryID, trnmtMtch.tournament_match_number as matchNumber, trnmtMtch.tournament_match_number as tournamentMatchNumber, trnmtMtch.tournament_match_full_number as tournamentMatchFullNumber, trnmtMtch.tournament_match_result_mode as tournamentMatchResultMode, trnmtMtch.tournament_match_round_mode as tournamentMatchRoundMode, trnmtMtch.active_flag as activeFlag, trnmtMtch.start_date as matchDate, 
 								
 								gmCat.id as gameCategoryID, gmCat.token_id as gameCategoryTokenID, gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias, gmCat.contestant_team_mode as contestantTeamMode,
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.alias as tournamentAlias,
@@ -255,6 +255,21 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	}  
 	 
 	
+	/*********************************************************/
+	
+	public static function selectCandidateTournamentMatchFixtures ( $_tournamentID, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_sportGameID=null, $_sportGameTypeID=null, $_contestantTeamMode=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		
+		switch ( trim($_contestantTeamMode) ) {
+			case TournamentCore::$_MULTIPLE_TEAM: 
+				return TournamentMatchFixtureGroupTable::processSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword, $_offset, $_limit) ;
+			break; 
+			case TournamentCore::$_PAIR_TEAM:  
+				return TournamentMatchFixtureTable::processSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword,$_offset, $_limit) ;
+			break;
+		}
+	} 
+	
 	/*********************************************************
 	********** Candidate selection process *******************
 	**********************************************************/
@@ -323,9 +338,7 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 				return TournamentMatchFixtureTable::processCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword, $_exclusion,$_offset, $_limit) ;
 				
 			break;
-		}
-			
-		//
+		} 
 	} 
 	
 	/********** Candidate Match Fixture Participants *******************/
@@ -406,7 +419,7 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 						$_exclusion[] = $_matchFixtureGroupParticipant->id;
 					}
 				}*/
-			return TournamentMatchFixtureGroupTable::processCandidateFixtures ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameTypeID, TournamentCore::$_PENDING, TournamentCore::$_PENDING, $_exclusion, $_keyword, $_offset, $_limit) ;
+			return TournamentMatchFixtureGroupTable::processCandidateFixtures ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameTypeID, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE, $_exclusion, $_keyword, $_offset, $_limit) ;
 			 
 			
 		//

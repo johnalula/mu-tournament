@@ -169,8 +169,8 @@
 		var formName = 'createTournamentMatchFixtureForm';
 		var data = $("form#createTournamentMatchFixtureForm").serialize();
 		var datas = generateValidData (formName);
-		//processEntry(datas, url )
-		alert(datas);
+		processEntry(datas, url )
+		//alert(datas);
 		return true; 
 	});  
 	

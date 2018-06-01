@@ -74,7 +74,12 @@
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('fixture_list', array('_tournamentFixtureGroups' => $_tournamentFixtureGroups)) ?> 
+													<?php if($_tournamentMatch->contestantTeamMode  == TournamentCore::$_PAIR_TEAM ): ?>
+														<?php include_partial('pair_team_fixture_list', array('_tournamentFixtureGroups' => $_tournamentFixtureGroups)) ?> 
+													<?php else: ?>
+														<?php include_partial('fixture_list', array('_tournamentFixtureGroups' => $_tournamentFixtureGroups)) ?> 
+													<?php endif ?>
+													
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											

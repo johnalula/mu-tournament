@@ -17,7 +17,7 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
         return Doctrine_Core::getTable('TournamentMatchFixture');
     }
    //
-	public static function processNew ( $_orgID, $_orgTokenID, $_parentMatchID, $_parentMatchTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameGroupName, $_matchRoundMode, $_genderCategory, $_eventType, $_contestantTeamMode, $_contestantMode, $_tournamentMatchVenue, $_matchTime, $_matchDate, $_tournamentMatchSession, $_tournamentMatchNumber, $_heatsPerFixture, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_description, $_userID, $_userTokenID )
+	public static function processNew ( $_orgID, $_orgTokenID, $_parentMatchID, $_parentMatchTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameGroupName, $_matchRoundMode, $_genderCategory, $_eventType, $_contestantTeamMode, $_contestantMode, $_tournamentMatchVenue, $_matchTime, $_matchDate, $_tournamentMatchSession, $_tournamentMatchNumber, $_heatsPerFixture, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description, $_userID, $_userTokenID )
 	{
 			$_flag = true;
 			
@@ -28,7 +28,7 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 			
 			//$_contestantTeamMode == TournamentCore::$_PAIR_TEAM
 			
-			$_matchFixture = self::processSave ( $_parentMatchID, $_parentMatchTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameGroupName, $_matchRoundTypeID, $_matchRoundMode, $_genderCategory, $_eventType, $_contestantTeamMode, $_contestantMode, $_tournamentMatchVenue, $_matchTime, $_matchDate, $_matchStatus, $_qualifyingStatus, $_inheritableFlag, $_parentFlag, $_description );
+			$_matchFixture = self::processSave ( $_parentMatchID, $_parentMatchTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameGroupName, $_matchRoundTypeID, $_matchRoundMode, $_genderCategory, $_eventType, $_contestantTeamMode, $_contestantMode, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_matchStatus, $_qualifyingStatus, $_inheritableFlag, $_parentFlag, $_remark, $_description );
 			
 			if($_contestantTeamMode == TournamentCore::$_MULTIPLE_TEAM) {
 				
@@ -37,7 +37,7 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 				
 				for($_i=0,$_key=$_initialGroupNumber;$_i<$_heatsPerFixture;$_i++,++$_key) {
 						
-						$_matchFixtureGroup = TournamentMatchFixtureGroupTable::processNew ( $_matchFixture->id, $_matchFixture->token_id, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_key, $_tournamentMatchVenue, $_matchTime, $_matchDate, $_qualifyingStatus, $_matchStatus, $_description );
+						$_matchFixtureGroup = TournamentMatchFixtureGroupTable::processNew ( $_matchFixture->id, $_matchFixture->token_id, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_key, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description );
 						
 					}
 					
@@ -68,7 +68,7 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 	{
 		
 	} 
-	public static function processSave ( $_parentMatchID, $_parentMatchTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameGroupName, $_matchRoundTypeID, $_matchRoundMode, $_genderCategory, $_eventType, $_contestantTeamMode, $_contestantMode, $_tournamentMatchVenue, $_matchTime, $_matchDate, $_matchStatus, $_qualifyingStatus, $_inheritableFlag, $_parentFlag, $_description )
+	public static function processSave ( $_parentMatchID, $_parentMatchTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_sportGameID, $_sportGameTokenID, $_sportGameGroupName, $_matchRoundTypeID, $_matchRoundMode, $_genderCategory, $_eventType, $_contestantTeamMode, $_contestantMode, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_matchStatus, $_qualifyingStatus, $_inheritableFlag, $_parentFlag, $_remark, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -97,9 +97,14 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 			$_nw->contestant_mode = trim($_contestantMode); 
 			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->match_venue = trim($_tournamentMatchVenue); 
+			$_nw->tournament_match_session_mode = trim($_tournamentMatchSession); 
 			$_nw->match_time = strtoupper(trim($_matchTime)); 
 			$_nw->match_date = trim($_matchDate); 
 			$_nw->start_date = $_matchDate ? trim($_matchDate):trim($_startDate); 
+			$_nw->number_of_qualifying_rows = trim($_qualifyingRowNumbers); 
+			$_nw->number_of_best_qualifying_rows = trim($_bestQqualifyingRowNumbers); 
+			$_nw->qualifying_rows_enable_flag = trim($_qualifyingRowNumbersFlag);
+			$_nw->best_qualifying_row_enable_flag = trim($_bestQqualifyingRowNumbersFlag);
 			$_nw->parent_flag = trim($_parentFlag); 
 			$_nw->roundable_flag = trim($_roundableFlag); 
 			$_nw->inheritable_flag = trim($_inheritableFlag); 
@@ -107,7 +112,7 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 			$_nw->fixture_round_status = $_qualifyingStatus ? trim($_qualifyingStatus):TournamentCore::$_PRELIMINARY_ROUND;  
 			$_nw->approval_status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_INITIATED;  
 			$_nw->status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_INITIATED;  
-			$_nw->description = SystemCore::processDescription ( trim($_sportGameGroupName), trim($_description) );  
+			$_nw->description = SystemCore::processDescription ( trim($_sportGameGroupName), (trim($_description).' - '.trim($_description)) );  
 			$_nw->save(); 
 			
 			return $_nw; 
@@ -141,9 +146,9 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "mtchFix.id, mtchFix.match_round_type_id as matchRoundTypeID, mtchFix.event_type as matchEventType, mtchFix.contestant_mode as matchContestantMode, mtchFix.match_venue as matchVenue, mtchFix.gender_category_id as genderCategoryID, mtchFix.tournament_match_fixture_number as tournamentMatchFixtureNumber, mtchFix.tournament_match_fixture_full_number as tournamentMatchFixtureFullNumber, mtchFix.match_venue as tournamentMatchVenue, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.id as groupID, mtchFix.active_flag as activeFlag, mtchFix.sport_game_id as fixtureSportGameID, mtchFix.id as matchFixtureID, mtchFix.token_id as matchFixtureTokenID,
+		 $_queryFileds = "mtchFix.id, mtchFix.match_round_type_id as matchRoundTypeID, mtchFix.event_type as matchEventType, mtchFix.contestant_mode as matchContestantMode, mtchFix.match_venue as matchVenue, mtchFix.gender_category_id as genderCategoryID, mtchFix.tournament_match_fixture_number as tournamentMatchFixtureNumber, mtchFix.tournament_match_fixture_full_number as tournamentMatchFixtureFullNumber, mtchFix.match_venue as tournamentMatchVenue, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.id as groupID, mtchFix.active_flag as activeFlag, mtchFix.sport_game_id as fixtureSportGameID, mtchFix.id as matchFixtureID, mtchFix.token_id as matchFixtureTokenID, mtchFix.match_heat_type_name as matchFixtureHeatNumber, mtchFix.match_heat_type_name as matchFixtureHeatName, mtchFix.match_venue as tournamentMatchFixtureVenue, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.match_fixture_round_mode as matchFixtureGroupRoundMode, mtchFix.fixture_round_status as qualifyingStatus,
 		 
-								trnmtMtch.id as tournamentMatchID, trnmtMtch.tournament_match_number as tournamentMatchNumbe, trnmtMtch.tournament_match_full_number as tournamentMatchFullNumber,
+								trnmtMtch.id as tournamentMatchID, trnmtMtch.tournament_match_number as tournamentMatchNumbe, trnmtMtch.tournament_match_full_number as tournamentMatchFullNumber, trnmtMtch.tournament_match_result_mode as tournamentMatchResultMode, trnmtMtch.tournament_match_round_mode as tournamentMatchRoundMode,
 								prntMtchFix.id as parentMatchFixtureID, 
 								 
 								
