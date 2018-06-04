@@ -5,10 +5,10 @@
 			<div class="ui-panel-grid">
 				<div class="ui-panel-header-default">
 					<h2 class="ui-theme-panel-header">
-						<img src="<?php echo image_path('settings/sport_games') ?>" title="<?php echo __('Sport Game Management') ?>">
+						<img src="<?php echo image_path('settings/sport_games') ?>" title="<?php echo __('Tournament Sport Game Management') ?>">
 						<span class="ui-header-status-icon">
 						</span>
-						<?php echo __('Sport Games')  ?>
+						<?php echo __('Tournament Sport Games')  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		

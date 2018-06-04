@@ -25,6 +25,27 @@
 					</a>
 				</li>
 			<?php endif; ?>
+			
+			<?php if($sf_request->getParameter('action') == 'edit'): ?>
+				<li class="">
+					<button title="<?php echo __('Save Sport Game Information') ?>" id="createTournamentSportGame" class="ui-disabled-toolbar-btn" disabled >
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/update') ?>">
+						<?php echo __('Update') ?>
+					</button>
+				</li>	
+				<li class="">
+					<button title="<?php echo __('Cancel Sport Game Information') ?>" id="cancelTournamentSportGame" class="ui-disabled-toolbar-btn" disabled>
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
+						<?php echo __('Cancel') ?>
+					</button>
+				</li>
+				<li class="">
+					<a href="<?php echo url_for('sport_games/index') ?>" title="<?php echo __('Back to Sport Game List') ?>" id="backToSportGame" class="" >
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/details') ?>">
+						<?php echo __('List') ?>
+					</a>
+				</li>
+			<?php endif; ?>
 			 
 		<?php endif; ?>
 		 

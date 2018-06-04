@@ -27,7 +27,7 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 				
 				$_tournamentMatch = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_tournamentTokenID, $_sportGameCategoryID, $_sportGameCategoryName, $_tournamentMatchName, $_tournamentMatchNumber, $_contestantTeamMode, $_matchRoundMode, $_matchResultMode, $_matchDate, $_status, $_description );
 		
-		if($_orgID && $_userID) { 
+			if($_orgID && $_userID) { 
 				
 				$_actionID = SystemCore::$_CREATE; 
 				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  

@@ -17,6 +17,7 @@
  * @property string $sport_game_number
  * @property integer $sport_game_type_mode
  * @property integer $contestant_mode
+ * @property integer $team_contestants_per_game_mode
  * @property integer $contestant_team_mode
  * @property integer $jump_type_mode
  * @property integer $throw_type_mode
@@ -28,7 +29,8 @@
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
- * @property boolean $fixed_contestant_per_track_flag
+ * @property boolean $enable_fixed_contestant_per_track_flag
+ * @property boolean $enable_player_mode_flag
  * @property boolean $default_flag
  * @property boolean $active_flag
  * @property integer $status
@@ -91,6 +93,9 @@ abstract class BaseSportGame extends sfDoctrineRecord
         $this->hasColumn('contestant_mode', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('team_contestants_per_game_mode', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('contestant_team_mode', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -108,6 +113,7 @@ abstract class BaseSportGame extends sfDoctrineRecord
              ));
         $this->hasColumn('loose_result_table_point', 'integer', null, array(
              'type' => 'integer',
+             'default' => 0,
              ));
         $this->hasColumn('result_ranking_mode', 'integer', null, array(
              'type' => 'integer',
@@ -127,7 +133,11 @@ abstract class BaseSportGame extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('fixed_contestant_per_track_flag', 'boolean', null, array(
+        $this->hasColumn('enable_fixed_contestant_per_track_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('enable_player_mode_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));

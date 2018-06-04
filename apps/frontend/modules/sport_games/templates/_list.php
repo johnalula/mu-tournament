@@ -3,7 +3,7 @@
 	  <thead>
 		 <tr>
 			<th>
-				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
+				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" disabled value="true" />
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
 			<th class="" style="text-align:center!important;"><?php echo __('Game').' #' ?></th>
@@ -32,7 +32,7 @@
 			</td>
 			<td class="ui-td-left-text ui-td-xsmall-11">
 				<a href="<?php echo url_for('sport_games/view?category_id='.$_sportGame->id.'&token_id='.$_sportGame->token_id) ?>" >	
-					<?php echo $_sportGame->sportGameName.' ( '.TournamentCore::processDistanceTypeValue($_sportGame->sportGameTypeMode).' )'  ?>
+					<?php echo $_sportGame->sportGameName.' ( '.TournamentCore::processDistanceTypeValue($_sportGame->sportGameDistanceTypeID).' )'  ?>
 				</a>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-11">
@@ -60,7 +60,7 @@
 							</a>    
 						</li> 
 						<li>   
-							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_sportGame->id ?>" onclick="Javascript:deleteProduct(<?php echo $_sportGame->id ?>);" rel="<?php echo $_sportGame->token_id ?>">	
+							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_sportGame->id ?>" onclick="Javascript:deleteTournamentSportGame(<?php echo $_sportGame->id ?>, <?php echo $_sportGame->token_id ?>);" rel="<?php echo $_sportGame->token_id ?>">	
 							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_sportGame->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
 							</a>  
 						</li> 

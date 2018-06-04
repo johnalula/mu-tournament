@@ -18,6 +18,8 @@
  * @property integer $match_heat_type_id
  * @property string $match_round_type_name
  * @property string $match_heat_type_name
+ * @property integer $match_heat_number
+ * @property string $match_heat_name
  * @property integer $gender_category_id
  * @property integer $match_fixture_round_mode
  * @property integer $event_type
@@ -111,6 +113,13 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'length' => 100,
              ));
         $this->hasColumn('match_heat_type_name', 'string', 100, array(
+             'type' => 'string',
+             'length' => 100,
+             ));
+        $this->hasColumn('match_heat_number', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_heat_name', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
              ));

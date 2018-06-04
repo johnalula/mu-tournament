@@ -123,7 +123,7 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("sprtGmPrt.id ASC")
+				->orderBy("sprtGmPrt.id DESC")
 				->where("sprtGmPrt.id IS NOT NULL");
 				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmt.org_id = ?", $_orgID);
 				if(!is_null($_teamID)) $_qry = $_qry->addWhere("sprtGmPrt.team_id = ? AND sprtGmPrt.team_token_id = ? ", array($_teamID, $_teamTokenID));

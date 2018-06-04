@@ -1,5 +1,8 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_SPORT_GAME)): 
+	
+	//echo TournamentCore::makeAthleticsGameName (6, 3, 4) ;
+	//echo TournamentCore::makeTournamentSportGameName ($_contestantMode, $_playersNumberPerGame, $_gameDistance, $_measurementType, 6, 2, $_jumpTypeMode) ;
 ?> 
 
 <div class="ui-page-box">
@@ -39,7 +42,7 @@
 				<div class="modal-header modal-header-info">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					<h4 class="modal-title" id="myModalLabel">
-						<?php echo __('Candidate Categories') ?>
+						<?php echo __('Candidate Sport Game Categories') ?>
 					</h4>
 				</div>
 				<div class="modal-content-body">
@@ -121,6 +124,7 @@
 			document.getElementById("sport_game_category_id").value = listArr[0];
 			document.getElementById("sport_game_category_token_id").value = listArr[1];  
 			document.getElementById("sport_game_category_name").value = listArr[2]+' ('+listArr[3]+')';    
+			document.getElementById("tournament_sport_game_name").value = listArr[2];    
 			document.getElementById("contestant_team_mode").value = listArr[4];    
 			$("#createTournamentSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 			$("#cancelTournamentSportGame").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");

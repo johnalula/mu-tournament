@@ -17,42 +17,49 @@ class SportGameTable extends PluginSportGameTable
         return Doctrine_Core::getTable('SportGame');
     }
     //
-	public static function processNew ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryTokenID, $_gameCategoryName, $_sportGameName, $_sportGameAlias, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_contestantTeamMode, $_sportGameStatus, $_description, $_userID, $_userTokenID )
+	public static function processNew ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryTokenID, $_gameCategoryName, $_sportGameName, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_participantTeamMode, $_playersNumberPerGame, $_sportGameRankingMode, $_winnerTablePoint, $_drawTablePoint, $_participantNumberPerTrack, $_enableParticipantNumberPerTrackFlag, $_enablePlayerModeFlag, $_sportGameStatus, $_description, $_userID, $_userTokenID )
 	{
 		 $_flag = true;
 				
 				
 			$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_SPORT_GAME, true  ); 
 			$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
-			$_sportGameNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeInitialNumber($_codeNumber);
+			$_sportGameNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeGeneratorInitialNumber($_codeNumber);
 			
-			//$_sportGameTypeName = $_sportGameName ? $_sportGameName:(TournamentCore::processTypeExclusion ());
-			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
+			$_tournamentSportGameName = TournamentCore::makeTournamentSportGameName ($_contestantMode, $_playersNumberPerGame, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode);
+			$_sportGameName = ($_participantTeamMode == TournamentCore::$_PAIR_TEAM && ($_enablePlayerModeFlag)) ? (trim($_sportGameName).' '.trim(TournamentCore::makePlayerModeName($_contestantMode))):trim($_sportGameName);
+			$_sportGameName = ($_participantTeamMode == TournamentCore::$_PAIR_TEAM && ($_playersNumberPerGame) && (!$_enablePlayerModeFlag)) ? (trim(intval($_playersNumberPerGame)).' X '.trim(intval($_playersNumberPerGame)).' '.trim($_sportGameName)):trim($_sportGameName);
+			$_sportGameName = $_participantTeamMode == TournamentCore::$_PAIR_TEAM ? $_sportGameName:$_tournamentSportGameName;
+			
+			$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_sportGameName );
 			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
-			$_tournament = self::processSave ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryTokenID, $_gameCategoryName, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_contestantTeamMode, $_sportGameStatus, $_description );
+			
+			$_sportGame = self::processSave ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryName, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_participantTeamMode, $_playersNumberPerGame, $_sportGameRankingMode, $_winnerTablePoint, $_drawTablePoint, $_participantNumberPerTrack, $_enableParticipantNumberPerTrackFlag, $_enablePlayerModeFlag, $_sportGameStatus, $_description );
 		
 			$_codeConfig->makeCodeSetup ( $_codeConfig->lastCode ); 
 			
-			/*$_actionID = SystemCore::$_UPDATE; 
-			$_moduleID  = ModuleCore::$_PRODUCT;  
-			$_actionObject  = 'Product ID: '.$_product->id;  
-			$_actionDesc  = 'Product - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_PRODUCT).' ]';  
+			if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_SPORT_GAME;  
+				$_actionObject  = 'Sport Game ID: '.$_sportGame->id;  
+				$_actionDesc  = 'Sport Game - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_SPORT_GAME).' ]';  
 			
-			$_flag5 = SystemLogFileTable::processNew ( $_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);*/
-			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}
 		
-		return $_tournament;
+		return $_sportGame;
 	}
 	//
 	public static function processCreate ( )
 	{
 		
 	} 
-	public static function processSave ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryTokenID, $_gameCategoryName, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_contestantTeamMode, $_sportGameStatus, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID, $_gameCategoryID, $_gameCategoryName, $_sportGameName, $_sportGameAlias, $_sportGameNumber, $_gameDistanceType, $_gameDistance, $_measurementType, $_sportGameTypeMode, $_throwTypeMode, $_jumpTypeMode, $_contestantMode, $_participantTeamMode, $_playersNumberPerGame, $_sportGameRankingMode, $_winnerTablePoint, $_drawTablePoint, $_participantNumberPerTrack, $_enableParticipantNumberPerTrackFlag, $_enablePlayerModeFlag, $_sportGameStatus, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
-			$_token = trim($_orgTokenID).trim($_sportGameName).trim($_sportGameAlias).trim($_startDate).rand('11111', '99999'); 
+			$_token = trim($_orgTokenID).trim($_sportGameName).trim($_sportGameAlias).trim($_gameCategoryName).rand('11111', '99999'); 
 			$_startDate = date('m/d/Y', time());
 			$_nw = new SportGame (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
@@ -66,13 +73,20 @@ class SportGameTable extends PluginSportGameTable
 			$_nw->sport_game_type_mode = trim($_sportGameTypeMode); 
 			$_nw->contestant_mode = trim($_contestantMode); 
 			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
+			$_nw->team_contestants_per_game_mode = trim($_playersNumberPerGame); 
 			$_nw->jump_type_mode = trim($_jumpTypeMode); 
 			$_nw->throw_type_mode = trim($_throwTypeMode); 
+			$_nw->win_result_table_point = trim($_winnerTablePoint); 
+			$_nw->draw_result_table_point = trim($_drawTablePoint); 
+			$_nw->result_ranking_mode = trim($_sportGameRankingMode); 
+			$_nw->number_of_contestants_per_track_mode = trim($_participantNumberPerTrack); 
 			$_nw->name = ucwords(trim($_sportGameName)); 
 			$_nw->alias = trim($_sportGameAlias); 
 			$_nw->start_date = trim($_startDate);  
+			$_nw->enable_fixed_contestant_per_track_flag = trim($_enableParticipantNumberPerTrack);  
+			$_nw->enable_player_mode_flag = trim($_enablePlayerModeFlag);  
 			$_nw->active_flag = true;  
-			$_nw->status = $_sportGameStatus ? $_sportGameStatus:trim(TournamentCore::$_PENDING);   
+			$_nw->status = $_sportGameStatus ? $_sportGameStatus:trim(TournamentCore::$_ACTIVE);   
 			$_nw->description = SystemCore::processDescription ( (trim($_gameCategoryName).' - '.trim($_sportGameName)), trim($_description) );  
 			$_nw->save(); 
 			

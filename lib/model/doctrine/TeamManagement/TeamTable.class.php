@@ -25,28 +25,29 @@ class TeamTable extends PluginTeamTable
 				$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
 				$_teamNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeGeneratorInitialNumber($_codeNumber);
 				
+				$_participantTeamAlias = trim($_teamAlias).'-'.SystemCore::processCountryAliasValue($_teamCountry);
 
-			$_team = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_teamNumber, $_description );
+				$_participantTeam = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_participantTeamAlias, $_teamCountry, $_teamCity, $_teamNumber, $_description );
 		
 		
-		if($_orgID && $_userID) { 
+			if($_orgID && $_userID) { 
 				
 				$_actionID = SystemCore::$_CREATE; 
 				$_moduleID  = ModuleCore::$_TEAM;  
-				$_actionObject  = 'Team ID: '.$_team->id;  
+				$_actionObject  = 'Participant Team ID: '.$_participantTeam->id;  
 				$_actionDesc  = 'Team - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM).' ]';  
 			
 				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
 			}
 			
-		return $_team;
+		return $_participantTeam;
 	}
 	//
 	public static function processCreate ( )
 	{
 		
 	} 
-	public static function processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_teamNumber, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_teamFullAlias, $_teamCountry, $_teamCity, $_teamNumber, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -60,11 +61,12 @@ class TeamTable extends PluginTeamTable
 			$_nw->tournament_id = trim($_tournamentID); 
 			$_nw->team_name = trim($_teamName); 
 			$_nw->alias = trim($_teamAlias); 
+			$_nw->team_full_alias = trim($_teamFullAlias); 
 			$_nw->team_number = trim($_teamNumber); 
 			$_nw->country_id = trim($_teamCountry);  
 			$_nw->team_city = trim($_teamCity);  
 			$_nw->start_date = trim($_startDate);  
-			$_nw->status = trim(TournamentCore::$_PENDING);   
+			$_nw->status = trim(TournamentCore::$_ACTIVE);   
 			$_nw->description = SystemCore::processDescription ( trim($_teamName), trim($_description) );  
 			$_nw->save(); 
 			
@@ -113,7 +115,7 @@ class TeamTable extends PluginTeamTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirmed_flag as confirmFlag, tm.active_flag as activeFlag,  
+		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.team_full_alias as teamFullAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirmed_flag as confirmFlag, tm.active_flag as activeFlag,  
 		 
 			trnmnt.id as tournamentID, trnmnt.token_id as tournamentTokenID, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.start_date as tournamentStartDate, trnmnt.end_date as tournamentEndDate,
 		 (EXISTS (SELECT tmGmPrtn.id FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 

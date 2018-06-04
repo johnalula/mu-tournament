@@ -33,14 +33,18 @@ class tournament_setupActions extends sfActions
 		$_categoryName = $request->getParameter('category_name');	
 		$_categoryAlias = $request->getParameter('category_alias');	
 		$_teamMode = $request->getParameter('participant_team_mode');	
+		$_contestantNameMode = $request->getParameter('contestant_name');	
+		$_resultRankingMode = $request->getParameter('sport_game_ranking_mode');	
 		$_description = $request->getParameter('description');	
 				
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
 	
-		$_flag =  GameCategoryTable::processNew ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $category_status, $_description, $_userID, $_userTokenID  );  
+		$_flag =  GameCategoryTable::processNew ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_contestantNameMode, $_resultRankingMode, $_categoryStatus, $_description, $_userID, $_userTokenID  );  
 				 
 		return $_flag ? true:false;
 		

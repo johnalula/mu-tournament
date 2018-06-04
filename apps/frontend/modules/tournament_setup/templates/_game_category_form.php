@@ -13,20 +13,14 @@
 						<div class="col-sm-40"> 
 							<input type="text" class="form-control" id="category_name" name="game_category[category_name]" placeholder="<?php echo __('Name') ?>">	 
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Alias') ?>: <span class="ui-red-text">&nbsp;</span></label>
-						<div class="col-sm-40"> 
-							 <input type="text" class="form-control" id="category_alias"	name="game_category[category_alias]"	placeholder="<?php echo __('Alias') ?>">
-						</div>
-					</div>  
+					</div> 
 					<div class="form-group">
 						<label class="col-sm-21 control-label"><?php echo __('Contestant Name') ?>: <span class="ui-red-text">&nbsp;</span></label>
 						<div class="col-sm-40"> 
 							<select id="contestant_name" name="game_category[contestant_name]" class="form-control" title="<?php echo __('Team Mode') ?>">
 								<option value="" selected  ><?php echo 'Select Mode ...' ?></option>
-								<?php foreach(TournamentCore::processContestantTeamModes() as $_key => $_mode): ?>								 
-									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PAIR_TEAM ? 'selected':'' ?> >
+								<?php foreach(TournamentCore::processContestantNameModes() as $_key => $_mode): ?>								 
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_ATHLETE ? 'selected':'' ?> >
 										<?php echo $_mode ?>
 									</option>								 
 								<?php endforeach; ?>
@@ -45,12 +39,12 @@
 								<?php endforeach; ?>
 							</select>
 						</div>
-						<label class="col-sm-122 control-label" title="<?php echo __('Category Status') ?>"><?php echo __('Status') ?>:</label>
+						<label class="col-sm-122 control-label" title="<?php echo __('Result Ranking Mode') ?>"><?php echo __('Ranking') ?>:</label>
 						<div class="col-sm-212">
-							<select id="category_status" name="game_category[category_status]" class="form-control" title="<?php echo __('Category Status') ?>">
+							<select id="sport_game_ranking_mode" name="game_category[sport_game_ranking_mode]" class="form-control" title="<?php echo __('Sport Game Status') ?>">
 								<option value="" selected  ><?php echo 'Select Status ...' ?></option>
-								<?php foreach(SystemCore::ProcessBatchActionTypes() as $_key => $_status): ?>								 
-									<option value="<?php echo $_key ?>" <?php echo $_key == SystemCore::$_ACTIVATE ? 'selected':'' ?> >
+								<?php foreach(TournamentCore::processResultRankingModes() as $_key => $_status): ?>								 
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_POINT_ORDER ? 'selected':'' ?> >
 										<?php echo $_status ?>
 									</option>								 
 								<?php endforeach; ?>

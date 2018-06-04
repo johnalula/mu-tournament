@@ -74,9 +74,9 @@
 						<div class="col-sm-23">
 							<select id="member_status" name="team_member[member_status]" class="form-control" title="<?php echo __('Member Status') ?>">
 								<option value="" selected  ><?php echo 'Select Status ...' ?></option>
-								<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PENDING ? 'selected':'' ?> >
-										<?php echo $_matchStatus ?>
+								<?php foreach(TournamentCore::processContestantNameModes() as $_key => $_mode): ?>								 
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_ATHLETE ? 'selected':'' ?> >
+										<?php echo $_mode ?>
 									</option>								 
 								<?php endforeach; ?>
 							</select>

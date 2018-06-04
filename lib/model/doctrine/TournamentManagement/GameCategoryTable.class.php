@@ -17,21 +17,31 @@ class GameCategoryTable extends PluginGameCategoryTable
         return Doctrine_Core::getTable('GameCategory');
     }
    //
-	public static function processNew ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_categoryStatus, $_description, $_userID, $_userTokenID  )
+	public static function processNew ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_contestantNameMode, $_resultRankingMode, $_categoryStatus, $_description, $_userID, $_userTokenID   )
 	{
 		 $_flag = true;
 
 			$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
-			$_tournament = self::processSave ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_categoryStatus, $_description );
+			$_sportGameCategory = self::processSave ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_contestantNameMode, $_resultRankingMode, $_categoryStatus, $_description );
 		
-		return $_tournament;
+			if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TOURNAMENT;  
+				$_actionObject  = 'Sport Game Category ID: '.$_sportGameCategory->id;  
+				$_actionDesc  = 'Tournament Setup - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}
+			
+		return $_sportGameCategory;
 	}
 	//
 	public static function processCreate ( )
 	{
 		
 	} 
-	public static function processSave ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_categoryStatus, $_description )
+	public static function processSave ( $_orgID, $_orgTokenID, $_categoryName, $_categoryAlias, $_teamMode, $_contestantNameMode, $_resultRankingMode, $_categoryStatus, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -45,8 +55,10 @@ class GameCategoryTable extends PluginGameCategoryTable
 			$_nw->category_name = ucwords(trim($_categoryName)); 
 			$_nw->alias = trim($_categoryAlias); 
 			$_nw->contestant_team_mode = trim($_teamMode); 
+			$_nw->contestant_name_mode = trim($_contestantNameMode); 
+			$_nw->result_ranking_mode = trim($_resultRankingMode); 
 			$_nw->active_flag = true;  
-			$_nw->status = $_categoryStatus ? $_categoryStatus:trim(SystemCore::$_ACTIVATE);   
+			$_nw->status = $_categoryStatus ? $_categoryStatus:trim(TournamentCore::$_ACTIVE);   
 			$_nw->description = SystemCore::processDescription ( trim($_categoryName), trim($_description) );  
 			$_nw->save(); 
 			

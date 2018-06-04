@@ -210,7 +210,7 @@
 								<div class="ui-panel-content-box">
 									<div class="ui-panel-content-box ">
 										<div class="ui-panel-grid-list"> 
-											<?php include_partial('sport_games/candidate_sport_game', array( '_candidateSportGames' => $_candidateSportGames )) ?>  
+											<?php include_partial('candidate_sport_game', array( '_candidateSportGames' => $_candidateSportGames )) ?>  
 										</div>
 									</div> 
 									

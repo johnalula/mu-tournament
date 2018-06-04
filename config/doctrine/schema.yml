@@ -95,6 +95,7 @@ GameCategory:
     category_name: { type: string(255) }
     alias: { type: string(50) } }  
     contestant_team_mode: { type: integer } 
+    contestant_name_mode: { type: integer } 
     result_ranking_mode: { type: integer } 
     default_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: true } 
@@ -123,18 +124,20 @@ SportGame:
     sport_game_number: { type: string(50) }
     sport_game_type_mode: { type: integer } 
     contestant_mode: { type: integer } 
+    team_contestants_per_game_mode: { type: integer } 
     contestant_team_mode: { type: integer } 
     jump_type_mode: { type: integer } 
     throw_type_mode: { type: integer } 
     win_result_table_point: { type: integer } 
     draw_result_table_point: { type: integer } 
-    loose_result_table_point: { type: integer } 
+    loose_result_table_point: { type: integer, default: 0 } 
     result_ranking_mode: { type: integer } 
     number_of_contestants_per_track_mode: { type: integer } 
     start_date: { type: string(100) }
     effective_date: { type: string(100) }
     end_date: { type: string(100) }  
-    fixed_contestant_per_track_flag: { type: boolean, default: false } 
+    enable_fixed_contestant_per_track_flag: { type: boolean, default: false } 
+    enable_player_mode_flag: { type: boolean, default: false } 
     default_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: true } 
     status: { type: integer, default: 1  } 
@@ -160,6 +163,7 @@ Team:
     team_number: { type: string(255) }
     team_name: { type: string(255) }
     alias: { type: string(50) } }   
+    team_full_alias: { type: string(50) } }   
     team_city: { type: string(50) } }   
     total_member: { type: string(50) } }   
     team_logo_alias: { type: string(50) } }     

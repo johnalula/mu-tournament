@@ -20,7 +20,7 @@ class teamActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 30 );
+		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 50 );
 	}
 	
 	public function executeNew(sfWebRequest $request)
@@ -159,7 +159,21 @@ class teamActions extends sfActions
 		
 		return $_flag ? true:false;
 	}
-	
+	//
+	public function executeGenerateTournamentMedalAwardStanding(sfWebRequest $request)
+	{ 
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_userID = $this->getUser()->getAttribute('userID');
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
+
+		$_flag =  TournamentParticipantTeamMedalStandingTable::processGenerate ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_description, $_userID, $_userTokenID );  
+			 
+		return $_flag ? true:false;
+
+	}
+	//
 	public function executeCreateTeamLogo(sfWebRequest $request)
 	{
 		$_manuCode = $_POST['manuscript_journal_code'];
@@ -270,7 +284,7 @@ class teamActions extends sfActions
 		$_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
 		
-		return $this->renderPartial('sport_games/candidate_sport_game', array('_candidateSportGames' => $_candidateSportGames, '_countCandidateSportGames' => $_countCandidateSportGames));	  
+		return $this->renderPartial('candidate_sport_game', array('_candidateSportGames' => $_candidateSportGames, '_countCandidateSportGames' => $_countCandidateSportGames));	  
 	}
 	
 	/************  Candidate Navigation Selection Functions **************/

@@ -14,6 +14,7 @@
  * @property string $team_number
  * @property string $team_name
  * @property string $alias
+ * @property string $team_full_alias
  * @property string $team_city
  * @property string $total_member
  * @property string $team_logo_alias
@@ -83,6 +84,10 @@ abstract class BaseTeam extends sfDoctrineRecord
              'length' => 255,
              ));
         $this->hasColumn('alias', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
+        $this->hasColumn('team_full_alias', 'string', 50, array(
              'type' => 'string',
              'length' => 50,
              ));
