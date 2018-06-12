@@ -11,7 +11,7 @@
 			<div class="tab-pane active" id="home">
 				<div class="">
 					<div class="panel-title">
-						<h4><a><?php echo __('Session') ?></a></h4>
+						<h4><a><?php echo TournamentCore::processTournamentSessionModeValue ($_matchFixtureGroup->matchFixtureGroupSessionMode ) ?></a></h4>
 					</div>
 				</div>
 				<div class="col-sm-12">

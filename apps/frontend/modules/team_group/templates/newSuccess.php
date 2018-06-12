@@ -1,9 +1,8 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)): 
 	
-	//fea2553fcd57307b5e9907b2350cd52ed542bb41
-	
-	//$_teamGroup =  TournamentTeamGroupTable::processNew ( $_orgID, $_orgTokenID, 1, 1, 'fea2553fcd57307b5e9907b2350cd52ed542bb41', $_sportGameTypeName, $_startDate, $_groupStatus, $_description, $_userID, $_userTokenID );  
+	//echo sha1(md5($sf_user->getAttribute('orgTokenID')));
+	//echo sha1(md5('94f12f125643718e20d329aef595bc3e'));
 	
 ?> 
 

@@ -63,7 +63,6 @@
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															<?php include_partial('footer_action_toolbar', array()) ?> 
 														</div>
 														<div class="">
 															<?php include_partial('member_filter', array( )) ?> 

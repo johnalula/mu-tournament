@@ -120,7 +120,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				->orderBy("trmntTmGrp.id ASC")
 				->where("trmntTmGrp.id IS NOT NULL");
 				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmt.org_id = ? AND trnmt.org_token_id = ? ", array($_orgID, $_orgTokenID));
-				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trmntTmGrp.active_flag = ?", $_tournamentID);    
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trmntTmGrp.tournament_id = ?", $_tournamentID);    
 				if(!is_null($_sportGameTypeID)) $_qry = $_qry->addWhere("trmntTmGrp.sport_game_category_id = ?", $_sportGameTypeID);    
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
@@ -296,6 +296,20 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		
 		return GameCategoryTable::processCandidates ( $_orgID, $_orgTokenID, $_exclusion, $_keyword, $_offset, $_limit ) ;
 	} 
+	 /********** Candidate selection process new action *******************/
+	//
+	public static function selectCandidateTournamentSportGames ( $_orgID=null, $_orgTokenID=null, $_categoryID=null, $_gameTypeID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		/*$_candidateCategorys = GameCategoryTable::processAll ( $_orgID, $_orgTokenID, $_keyword);
+		$_exclusion = array();   
+		foreach($_candidateCategorys as $_candidateCategory) {
+			if(!$_candidateCategory->hasTournamentSportGames) {
+				$_exclusion[] = $_candidateCategory->id;
+			}
+		} */
+		
+		return SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, $_offset, $_limit );
+	} 
 	 /********** Candidate selection process member action *******************/
 	 
 	 public static function selectCandidateTournamentSportGameGroups ( $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameID=null, $_sportGameTypeID=null, $_genderCategoryID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
@@ -409,7 +423,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	public static function processApproval ( $_orgID, $_orgTokenID, $_tournamentGroupID, $_tournamentGroupTokenID, $_userID, $_userTokenID ) 
 	{
 		$_flag = true;   
-		$_tournamentTeamGroup =  self::processObject ( null, null, $_tournamentGroupID, $_tournamentGroupTokenID ); 
+		$_tournamentTeamGroup =  self::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentGroupID, $_tournamentGroupTokenID ); 
 		
 		//if(!$_sportGameTeamGroup) { return false; }   
 		$_candidateTournamentGroups = TournamentSportGameGroupTable::processCandidateApprovalSelections ( $_tournamentGroupID, $_tournamentGroupTokenID, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING) ;
@@ -435,7 +449,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	public static function processCompletion ( $_orgID, $_orgTokenID, $_teamGroupID, $_teamGroupTokenID, $_userID, $_userTokenID ) 
 	{
 		$_flag = true;   
-		$_tournamentTeamGroup =  self::processObject ( $_orgID,$_orgTokenID, $_teamGroupID, $_teamGroupTokenID ); 
+		$_tournamentTeamGroup =  self::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_teamGroupID, $_teamGroupTokenID ); 
 		
 		$_flag = $_tournamentTeamGroup ? $_tournamentTeamGroup->makeCompletion ():false;
 		

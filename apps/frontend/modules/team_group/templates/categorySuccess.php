@@ -1,5 +1,9 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)): 
+	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
+	
+	//game_category=Athletics&game_category_id=1&sport_game_full_name=100 Meters (Athletics) - Sprint Running&tournament_id=1&tournament_group_code=GRP-001&sport_game_id=1&sport_game_token_id=20bdee050b81ec70072d24d5c870974dddc1bfef&sport_game_category_name=Athletics&sport_game_contestant_team_mode=0&tournament_team_group_id=1&tournament_team_group_token_id=35a5f0d10a1cb7c8321056cd6f127333872208ef&group_number=2&gender_category=1&number_of_participant_teams_per_group=&number_of_teams_per_group=8&group_team_number_mandatory_flag=1&description=sfg sdgsdfgsdgf
+	
+	//$_flag =  TournamentSportGameGroupTable::processNew ( 1, 'afccda09e18b3ebfd6734f446fd6e2a4e91f95c1', 1, 1, '35a5f0d10a1cb7c8321056cd6f127333872208ef', 1, '20bdee050b81ec70072d24d5c870974dddc1bfef', '100 Meters (Athletics) - Sprint Running', $_contestantTeamMode, $_genderCategory, $_numberOfTeamsPerGroup, $_groupNumber, $_tournamentGroupCode, $_mandatoryFlag, $_groupStatus, $_description, $_userID, $_userTokenID );  
 ?> 
 
 <div class="ui-page-box">

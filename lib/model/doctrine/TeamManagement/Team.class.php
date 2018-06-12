@@ -16,9 +16,9 @@ class Team extends PluginTeam
 	{
 		return (($_tournamentMatchNumber->approval_status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
 	}
-	public function checkInitiated ()
+	public function checkActivation ()
 	{
-		return (($this->approval_status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
+		return (($this->active_flag) && ($this->status ==TournamentCore::$_ACTIVE)) ? true:false;
 	}
 	public function makePending ()
 	{
@@ -32,7 +32,8 @@ class Team extends PluginTeam
 	{
 		$_flag = true;    
 		//if($this->pendingTeamGroup) { 
-			$this->approval_status = trim(TournamentCore::$_ACTIVE); 
+			$this->confirmed_flag = true; 
+			$this->active_flag = true; 
 			$this->status = trim(TournamentCore::$_ACTIVE); 
 			$this->save();
 		//}

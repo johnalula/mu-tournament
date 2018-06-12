@@ -25,12 +25,10 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<a href="<?php echo url_for('category/view?category_id='.$_matchParticipantTeamMember->id.'&token_id='.$_matchParticipantTeamMember->token_id) ?>" >	
-					<?php echo SystemCore::processDataID($_matchParticipantTeamMember->id) ?>
-				</a>
+				<?php echo SystemCore::processDataID(++$_key) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo $_matchParticipantTeamMember->id ?> 
+				<?php echo $_matchParticipantTeamMember->tournament_match_fixture_id ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
 				<?php echo $_matchParticipantTeamMember->participantMemberFullName  ?>
@@ -44,8 +42,8 @@
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo $_matchParticipantTeamMember->sportGameGroupName ?>
 			</td>  
-			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo Wordlimit::Wordlimiter($_matchParticipantTeamMember->description, 5) ?>
+			<td class="ui-td-left-text ui-td-xlarg" title="<?php echo $_matchParticipantTeamMember->description ?>">
+				<?php echo Wordlimit::Wordlimiter($_matchParticipantTeamMember->description, 3) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_matchParticipantTeamMember->id ?>" class="ui-table-status-small-icon" id="<?php echo $_matchParticipantTeamMember->id ?>">

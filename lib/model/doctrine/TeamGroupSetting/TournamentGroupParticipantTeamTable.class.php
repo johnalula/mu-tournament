@@ -23,11 +23,11 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				case SystemCore::$_SINGLE_DATA: 
 						$_groupParticipantTeam = self::processSave ( $_tournamentID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamID, $_participantTeamTokenID, $_teamGameParticipationID, $_participantTeamName, $_sportGameGroupName, $_entryDate, $_teamStatus, $_description );
 				
-						$_gameParticipation = TeamGameParticipationTable::processObject ( $_orgID, $_orgTokenID, $_teamGameParticipationID, $_teamGameParticipationTokenID ) ;
+						$_gameParticipation = TeamGameParticipationTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_teamGameParticipationID, $_teamGameParticipationTokenID ) ;
 						
 						$_flag2 = $_gameParticipation->makeConfirmation ();
 						
-						$_sportGameGroup =  TournamentSportGameGroupTable::processObject ($_orgID, $_orgTokenID, $_sportGameGroupID, $_sportGameGroupTokenID );  
+						$_sportGameGroup =  TournamentSportGameGroupTable::processObject ($_orgID, sha1(md5($_orgTokenID)), $_sportGameGroupID, $_sportGameGroupTokenID );  
 						
 						$_flag1 = ($_sportGameGroup->checkInitiated () && $_sportGameGroup->hasPendingTeamGameParticipation) ? $_sportGameGroup->makePending():$_sportGameGroup->makeActivation();
 				
@@ -42,12 +42,12 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 						
 						$_groupParticipantTeam = self::processSave ( $_tournamentID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeam->teamID, $_participantTeam->teamTokenID, $_participantTeam->id, $_participantTeamFullName, $_sportGameGroupName, $_entryDate, $_teamStatus, $_description );
 						
-						$_gameParticipation = TeamGameParticipationTable::processObject ( $_orgID, $_orgTokenID, $_participantTeam->id, $_participantTeam->token_id ) ;
+						$_gameParticipation = TeamGameParticipationTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_participantTeam->id, $_participantTeam->token_id ) ;
 						
 						$_flag2 = $_gameParticipation->makeConfirmation ();
 					}
 					
-					$_sportGameGroup =  TournamentSportGameGroupTable::processObject ($_orgID, $_orgTokenID, $_sportGameGroupID, $_sportGameGroupTokenID );  
+					$_sportGameGroup =  TournamentSportGameGroupTable::processObject ($_orgID, sha1(md5($_orgTokenID)), $_sportGameGroupID, $_sportGameGroupTokenID );  
 					
 					$_flag1 = ($_sportGameGroup->checkInitiated () && $_sportGameGroup->hasPendingTeamGameParticipation) ? $_sportGameGroup->makePending():$_sportGameGroup->makeActivation();
 					
@@ -85,6 +85,8 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 			$_nw->team_token_id = sha1(md5(trim($_participantTeamTokenID)));  
 			$_nw->start_date = $_entryDate ? trim($_entryDate):trim($_startDate);; 
 			$_nw->active_flag = true;  
+			$_nw->qualification_status = TournamentCore::$_QUALIFIED;   
+			$_nw->process_status = TournamentCore::$_ACTIVE;   
 			$_nw->approval_status = TournamentCore::$_APPROVED;   
 			$_nw->status = TournamentCore::$_ACTIVE;   
 			$_nw->description = SystemCore::processDescription ( (trim($_participantTeamName).' team grouped in '.trim($_sportGameGroupName)), trim($_description) );  

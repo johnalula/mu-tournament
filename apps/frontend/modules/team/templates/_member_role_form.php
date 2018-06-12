@@ -49,6 +49,7 @@
 								<input type="text" class="form-control " id="member_sport_game_name" name="team_member_role[member_sport_game_name]" placeholder="<?php echo __('Candidate Sport Game') ?>" title="<?php echo __('Candidate Sport Game') ?>" value="" data-toggle="modal" data-target="#candidateMemberSportGameModal"  disabled>
 								<input type="hidden" class="form-control" id="member_sport_game_id" name="team_member_role[member_sport_game_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="member_sport_game_token_id" name="team_member_role[member_sport_game_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="sport_game_gender_category" name="team_member_role[sport_game_gender_category]" value=""> 
 								<span class="input-group-btn">
 									<button class="btn btn-default selectCandidateMemberSportGame" type="button" data-toggle="modal" data-target="#candidateMemberSportGameModal" title="<?php echo __('Candidat Sport Game') ?>" disabled>
 										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
@@ -58,7 +59,7 @@
 						</div>
 					</div>  
 					<div class="form-group">
-						<label class="col-sm-20 control-label" title="<?php echo __('Team Member Role') ?>"><?php echo __('Role') ?> :<span class="ui-red-text"></span></label>
+						<label class="col-sm-20 control-label" title="<?php echo __('Team Member Relation') ?>"><?php echo __('Relation') ?> :<span class="ui-red-text"></span></label>
 						<div class="col-sm-23">
 							<select id="team_member_role" name="team_member_role[team_member_role]" class="form-control" title="<?php echo __('Team Member Role') ?>"  >
 								<option value="" selected  ><?php echo 'Select Player Mode ...' ?></option>
@@ -69,13 +70,13 @@
 								<?php endforeach; ?> 
 							</select> 
 						</div>
-						<label class="col-sm-01 control-label" title="<?php echo __('Member Status') ?>"><?php echo __('Status') ?>:<span class="ui-red-text"></span></label>
+						<label class="col-sm-01 control-label" title="<?php echo __('Member Role') ?>"><?php echo __('Role') ?>:<span class="ui-red-text"></span></label>
 						<div class="col-sm-23">
-							<select id="member_status" name="team_member_role[member_status]" class="form-control" title="<?php echo __('Member Gender') ?>">
+							<select id="team_member_role" name="team_member[team_member_role]" class="form-control" title="<?php echo __('Member Role') ?>">
 								<option value="" selected  ><?php echo 'Select Status ...' ?></option>
-								<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
-									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PENDING ? 'selected':'' ?> >
-										<?php echo $_matchStatus ?>
+								<?php foreach(TournamentCore::processContestantNameModes() as $_key => $_mode): ?>								 
+									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_ATHLETE ? 'selected':'' ?> >
+										<?php echo $_mode ?>
 									</option>								 
 								<?php endforeach; ?>
 							</select>

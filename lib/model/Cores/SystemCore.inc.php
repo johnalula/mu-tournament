@@ -751,7 +751,7 @@ class SystemCore {
 	}
 	public static function processDataID ( $_id ) 
 	{ 
-		return  ($_id < 1000 ? ($_id < 100 ? ($_id < 10 ? '000':'00'):'0'):'').$_id; 
+		return  ($_id < 100 ? ($_id < 10 ? ($_id < 10 ? '00':'0'):'0'):'').$_id; 
 	}
 	public static function makeTokenURL ( $_ID, $_tokenID, $_idName=null ) 
 	{ 

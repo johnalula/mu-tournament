@@ -24,6 +24,8 @@
  * @property integer $match_fixture_round_mode
  * @property integer $event_type
  * @property integer $contestant_mode
+ * @property integer $number_of_teams_per_fixture
+ * @property integer $number_of_participants_per_fixture
  * @property integer $number_of_qualifying_rows
  * @property integer $number_of_best_qualifying_rows
  * @property integer $contestant_team_mode
@@ -38,6 +40,8 @@
  * @property string $end_date
  * @property boolean $qualifying_rows_enable_flag
  * @property boolean $best_qualifying_row_enable_flag
+ * @property boolean $enable_participant_team_number_mandatory_flag
+ * @property boolean $enable_participant_number_mandatory_flag
  * @property boolean $parent_flag
  * @property boolean $inheritable_flag
  * @property boolean $roundable_flag
@@ -135,6 +139,12 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
         $this->hasColumn('contestant_mode', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('number_of_teams_per_fixture', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('number_of_participants_per_fixture', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('number_of_qualifying_rows', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -184,6 +194,14 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'default' => false,
              ));
         $this->hasColumn('best_qualifying_row_enable_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('enable_participant_team_number_mandatory_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('enable_participant_number_mandatory_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));

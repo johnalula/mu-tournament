@@ -12,7 +12,7 @@
 			<th class="ui-th-left-text" style="" title="<?php echo __('Category Alias') ?>"><?php echo  __('Event') ?></th>   
 			<th class="ui-th-left-text" style="" title="<?php echo __('Category Group') ?>"><?php echo  __('Description') ?></th>   
 			<th class="ui-th-left-text" style="" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
-			<th class="ui-th-left-text" style=""><?php echo  __('Action') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('...') ?></th>  
 			<th></th>
 		 </tr>
 	  </thead>
@@ -50,19 +50,14 @@
 					<img title="<?php echo $_gameParticipation->sportGameName ?>" src="<?php echo image_path($_gameParticipation->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
-			<td class="ui-table-action ui-table-list-action-box-3">
+			<td class="ui-table-action ui-table-list-action-box-2">
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">   
 						<li>
-							<a href="<?php echo url_for('sport_games/view?sport_game_id='.$_gameParticipation->id.'&token_id='.$_gameParticipation->token_id) ?>" >	
+							<a href="<?php echo url_for('team/view?sport_game_id='.$_gameParticipation->id.'&token_id='.$_gameParticipation->token_id) ?>" >	
 								<img title="<?php echo __('View Sport Game ').' ( '.' Task '.' #:'.$_gameParticipation->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
-						</li> 
-						<li>  
-							<a href="<?php echo url_for('sport_games/edit?sport_game_id='.$_gameParticipation->id.'&token_id='.$_gameParticipation->token_id) ?>" >	
-								<img title="<?php echo __('Edit Game Category').' ( '.' Task '.' #:'.$_gameParticipation->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
-							</a>    
-						</li> 
+						</li>  
 						<li>   
 							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_gameParticipation->id ?>" onclick="Javascript:deleteProduct(<?php echo $_gameParticipation->id ?>);" rel="<?php echo $_gameParticipation->token_id ?>">	
 							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_gameParticipation->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 

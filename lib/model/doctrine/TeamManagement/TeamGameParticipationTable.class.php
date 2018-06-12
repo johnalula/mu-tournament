@@ -39,6 +39,19 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 				break;
 			
 			}
+			$_participantTeam = TeamTable::makeCandidateObject ( $_teamID, $_teamTokenID ) ;
+			
+			$_flag1 = $_participantTeam->checkActivation() ? true:$_participantTeam->makeActivation ();
+			
+			if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TEAM;  
+				$_actionObject  = 'Participant Team ID: '.$_participantTeam->id;  
+				$_actionDesc  = 'Team - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}
 			
 		return $_gameParticipation ? true:false;
 	}
@@ -354,9 +367,8 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 				->where("sprtGmPrt.id IS NOT NULL");
 				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmt.org_id = ? ", $_orgID);
 				if(!is_null($_teamID)) $_qry = $_qry->addWhere("sprtGmPrt.team_id = ? AND sprtGmPrt.team_token_id = ? ", array($_teamID, $_teamTokenID));
-				if(!is_null($_genderCategory)) $_qry = $_qry->addWhere("sprtGmPrt.gender_category_id = ?", $_genderCategory);  
+				if(!is_null($_genderCategory)) $_qry = $_qry->addWhere("sprtGmPrt.gender_category_id = ? OR sprtGmPrt.gender_category_id = ? ", array($_genderCategory, TournamentCore::$_MIXED));  
 				if(!is_null($_sportGameCategoryID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_sportGameCategoryID);  
-				//if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGmPrt.active_flag = ?", $_activeFlag);    
 				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("sprtGmPrt.id ", $_exclusion );  
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
@@ -378,7 +390,7 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
 				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
 				->where("sprtGmPrt.id = ? AND sprtGmPrt.token_id = ? ", array($_participationID, $_participationTokenID ));
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				if(!is_null($_orgID)) $_qry = $_qry->andWhere("prtTm.org_id = ? AND prtTm.org_token_id = ?", array($_orgID, $_orgTokenID));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	

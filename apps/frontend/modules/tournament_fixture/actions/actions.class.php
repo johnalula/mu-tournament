@@ -24,7 +24,7 @@ class tournament_fixtureActions extends sfActions
 		$_tournamentID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('activeTournamentID');
 		$_tournament = TournamentTable::makeActiveObject ( true );
 		
-		$this->_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournamentID, $_sportGameID, $_sportGameTypeID, $_genderCategory, $_keyword, 0, 20 );
+		$this->_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateSelections ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_approvalStatus, $_status, $_keyword, 0, 20  );
   }
   //
   public function executeResult(sfWebRequest $request)

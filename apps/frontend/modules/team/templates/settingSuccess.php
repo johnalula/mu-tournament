@@ -1,11 +1,5 @@
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_TEAM)):
-	
-	//tournament_id=1&member_team_id=4&member_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&member_participant_id=3&member_participant_gender_id=2&sport_game_category_id=1
-	
-	//$_participantRoles = TeamMemberParticipantRoleTable::processCandidateMemberRoles ( 1, 1, 4, sha1(md5('6e60f180ecab6683ae00640e0d847c1607cb050d')), $_sportGameID, 3, $_keyword);
-	 
-	//echo count($_participantRoles).' == ';
+	if($sf_user->canAccess(ModuleCore::$_TEAM)): 
 ?> 
 
 <div class="ui-page-box">
@@ -559,7 +553,8 @@
 			var listArr = input.split("$"); 
 			document.getElementById("member_sport_game_id").value = listArr[0];
 			document.getElementById("member_sport_game_token_id").value = listArr[1];  
-			document.getElementById("member_sport_game_name").value = listArr[2]+' ('+listArr[3]+')';    
+			document.getElementById("member_sport_game_name").value = listArr[2]+' ('+listArr[3]+')';   
+			document.getElementById("sport_game_gender_category").value = listArr[5];   
 			
 			$("#createTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 			$("#cancelTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");

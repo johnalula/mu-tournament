@@ -154,11 +154,11 @@
 							<label class="col-sm-212 control-label"><?php echo __('Time') ?>: <span class="ui-red-text">*</span></label>
 							<div class="col-sm-30">
 								<div class="input-group">
-									<input type="text" class="form-control" id="match_time"	name="tournament_match_fixture[match_time]"	placeholder="<?php echo __('Match Time') ?>" required  <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? 'disabled':'' ?> >
-									<input type="hidden" class="form-control" id="tournament_match_time_value" name="tournament_match_fixture[tournament_match_time_value]" >
-									<input type="hidden" class="form-control" id="tournament_match_session" name="tournament_match_fixture[tournament_match_session]" >
+									<input type="text" class="form-control" id="match_time"	name="tournament_match_fixture[match_time]"	placeholder="<?php echo __('Match Time') ?>" required  <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? 'disabled':'' ?>  rel="<?php echo $_tournamentMatch->contestantTeamMode ?>">
+									<input type="hidden" class="form-control" id="tournament_match_time_value" name="tournament_match_fixture[tournament_match_time_value]" value="">
+									<input type="hidden" class="form-control" id="tournament_match_session" name="tournament_match_fixture[tournament_match_session]"  value="<?php echo TournamentCore::$_MORNING_SESSION ?>" rel="<?php echo $_tournamentMatch->contestantTeamMode ?>">
 									<div class="input-group-btn">
-										<button type="button" class="btn btn-default	dropdown-toggle tournamentMathTimeValue" data-toggle="dropdown" <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? 'disabled':'' ?> >
+										<button type="button" class="btn btn-default	dropdown-toggle tournamentMathTimeValue" data-toggle="dropdown" disabled >
 											TIme
 											<span class="caret"></span>
 										</button>
@@ -240,6 +240,9 @@
 		var thisIDNumber = $(this).attr('rel');   
 		var thisIDName = $(this).attr('id');   
 		document.getElementById("tournament_match_time_value").value = $(this).val();
+		if($(this).attr('rel') == 2) {
+			$('.tournamentMathTimeValue').removeAttr("disabled");
+		}
 		//document.getElementById("sport_game_group_type_id").value = thisIDNumber; 
 		//$('#createSchoolGradePaymentFee').removeAttr("disabled").removeClass("ui-action-toolbar-disabled-menu").addClass("ui-action-toolbar-enabled-menu");
 	}); 

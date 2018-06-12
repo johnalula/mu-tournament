@@ -61,7 +61,7 @@ class TournamentParticipantTeamMedalStandingTable extends PluginTournamentPartic
 				
 				$_participantTeams = TeamTable::processAll ( $_orgID, $_orgTokenID, $_tournamentID, true, $_keyword);
 				
-				foreach($_participantTeams as $_key => $_participantTeam ) {
+				foreach ( $_participantTeams as $_key => $_participantTeam ) {
 					
 					$_participantMedalAwards = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeam->id, $_participantTeam->token_id, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeam->teamName, $_status, $_description );
 				}

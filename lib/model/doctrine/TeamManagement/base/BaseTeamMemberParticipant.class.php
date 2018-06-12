@@ -13,6 +13,7 @@
  * @property integer $gender_category_id
  * @property string $member_full_name
  * @property integer $member_role_id
+ * @property integer $member_relation_id
  * @property integer $member_number
  * @property boolean $confirmed_flag
  * @property boolean $grouped_flag
@@ -61,6 +62,9 @@ abstract class BaseTeamMemberParticipant extends sfDoctrineRecord
              'length' => 255,
              ));
         $this->hasColumn('member_role_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('member_relation_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('member_number', 'integer', null, array(

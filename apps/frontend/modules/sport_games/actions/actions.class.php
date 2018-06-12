@@ -22,7 +22,7 @@ class sport_gamesActions extends sfActions
 		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
 		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
-		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_activeFlag, $_keyword, 0, 20 ); 
+		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_activeFlag, $_keyword, 0, 40 ); 
 		$this->_countSportGames = SportGameTable::processAll ($_orgID, $_orgTokenID, $_categoryID, $_activeFlag, $_keyword ); 
 	}
 	
@@ -58,7 +58,7 @@ class sport_gamesActions extends sfActions
 		$_gameCategoryName = $request->getParameter('sport_game_category_name');	
 		$_gameCategoryID = $request->getParameter('sport_game_category_id');	
 		$_gameCategoryTokenID = $request->getParameter('sport_game_category_token_id');	
-		$_contestantTeamMode = $request->getParameter('contestant_team_mode');	
+		//$_contestantTeamMode = $request->getParameter('contestant_team_mode');	
 		$_sportGameTypeMode = $request->getParameter('sport_game_type_mode');	
 		$_gameDistanceType = $request->getParameter('sport_game_type');	
 		$_gameDistance = $request->getParameter('sport_game_distance');	

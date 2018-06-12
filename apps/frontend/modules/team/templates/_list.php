@@ -45,7 +45,8 @@
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_team->id ?>" class="ui-table-status-small-icon" id="<?php echo $_team->id ?>">
-					<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->id ? 'status/approved':'status/disabled')  ?>"> 
+					<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->activeFlag ? 'status/active':'status/other')  ?>"> 
+					<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->status == TournamentCore::$_ACTIVE ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
 			<td class="ui-table-action ui-table-list-action-box-4">
@@ -80,13 +81,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=7></td>
+			<td class="ui-table-td-footer" colspan=8></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=9>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=10>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

@@ -149,13 +149,13 @@ class UserTable extends PluginUserTable
 						(usr.user_role_id=".UserCore::$_ADMINISTRATOR.") as isAdmin,  
 						usrRole.user_role_name as userRoleName, usrRole.user_role_type_id as userRoleTypeID,
 						
-						((SELECT trnmt1.id FROM Tournament trnmt1 WHERE trnmt1.org_id = usr.org_id AND trnmt1.org_token_id = usr.org_token_id AND trnmt1.status = ".TournamentCore::$_ACTIVE."  AND trnmt1.active_flag IS TRUE AND trnmt1.default_flag IS TRUE )) as activeTournamentID,
+						((SELECT trnmt1.id FROM Tournament trnmt1 WHERE trnmt1.org_id = usr.org_id AND org.token_id = usr.org_token_id AND trnmt1.status = ".TournamentCore::$_ACTIVE."  AND trnmt1.active_flag IS TRUE AND trnmt1.default_flag IS TRUE )) as activeTournamentID,
 						
-						((SELECT trnmt2.name FROM Tournament trnmt2 WHERE trnmt2.org_id = usr.org_id AND trnmt2.org_token_id = usr.org_token_id AND trnmt2.status = ".TournamentCore::$_ACTIVE."  AND trnmt2.active_flag IS TRUE AND trnmt2.default_flag IS TRUE )) as activeTournamentName,
+						((SELECT trnmt2.name FROM Tournament trnmt2 WHERE trnmt2.org_id = usr.org_id AND org.token_id = usr.org_token_id AND trnmt2.status = ".TournamentCore::$_ACTIVE."  AND trnmt2.active_flag IS TRUE AND trnmt2.default_flag IS TRUE )) as activeTournamentName,
 						
-						((SELECT trnmt3.token_id FROM Tournament trnmt3 WHERE trnmt3.org_id = usr.org_id AND trnmt3.org_token_id = usr.org_token_id AND trnmt3.status = ".TournamentCore::$_ACTIVE."  AND trnmt3.active_flag IS TRUE AND trnmt3.default_flag IS TRUE )) as activeTournamentTokenID,
+						((SELECT trnmt3.token_id FROM Tournament trnmt3 WHERE trnmt3.org_id = usr.org_id AND org.token_id = usr.org_token_id AND trnmt3.status = ".TournamentCore::$_ACTIVE."  AND trnmt3.active_flag IS TRUE AND trnmt3.default_flag IS TRUE )) as activeTournamentTokenID,
 						
-						((SELECT trnmt4.alias FROM Tournament trnmt4 WHERE trnmt4.org_id = usr.org_id AND trnmt4.org_token_id = usr.org_token_id AND trnmt4.status = ".TournamentCore::$_ACTIVE."  AND trnmt4.active_flag IS TRUE AND trnmt4.default_flag IS TRUE )) as activeTournamentAlias,
+						((SELECT trnmt4.alias FROM Tournament trnmt4 WHERE trnmt4.org_id = usr.org_id AND org.token_id = usr.org_token_id AND trnmt4.status = ".TournamentCore::$_ACTIVE."  AND trnmt4.active_flag IS TRUE AND trnmt4.default_flag IS TRUE )) as activeTournamentAlias,
 						";
 		return $_queryFileds;
 	}

@@ -17,11 +17,10 @@ class tournamentActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
 	{
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
+		$this->_tournaments = TournamentTable::processSelection ( $_orgID, sha1(md5($_orgTokenID)), $_season, $_activeFlag, $_keyword, 0, 10 );
 	}
 	
 	public function executeNew(sfWebRequest $request)

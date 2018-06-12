@@ -16,7 +16,7 @@
 			<?php foreach($_tournamentMatchFixtures as $_key => $_matchFixture ): ?>
 			<tr class="<?php echo fmod($_key, 2) ? 'ui-even' : 'ui-odd' ?>"> 
 				<td>
-					<?php echo $_matchFixture->id ?> 
+					<?php echo ++$_key ?> 
 				</td>
 				<td>
 					<?php echo $_matchFixture->matchTime ?>
@@ -33,7 +33,7 @@
 					<?php echo $_matchFixture->sportGameGroupName ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->matchDate ?>
+					<?php echo $_matchFixture->matchFixtureHeatName ?>
 				</td>
 				<td>
 					<?php echo $_matchFixture->status ? 'Pending':'Active' ?>

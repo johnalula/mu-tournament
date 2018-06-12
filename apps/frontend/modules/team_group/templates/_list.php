@@ -6,12 +6,10 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
-			<th class="" style="text-align:left!important;"><?php echo __('Game').' #' ?></th>
-			<th class="ui-th-left-text" title="<?php echo __('Sport Game Type Name') ?>"><?php echo  __('Sport Game') ?></th>   
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Team Group') ?>"><?php echo  __('Group') ?></th>   
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Gender Category') ?>"><?php echo  __('Gender') ?></th>  
+			<th class="" style="text-align:left!important;"><?php echo __('Group').' #' ?></th>
+			<th class="ui-th-left-text" title="<?php echo __('Sport Game Type Name') ?>"><?php echo  __('Tournament Sport Game') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Team Mode') ?>"><?php echo  __('Team Mode') ?></th>  
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Total Group Members') ?>"><?php echo  __('Member #') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Team Mode') ?>"><?php echo  __('Date') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Description') ?>"><?php echo  __('Description') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Team Group Status') ?>"><?php echo  __('Status') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;"><?php echo  __('Action') ?></th>  
@@ -34,21 +32,14 @@
 				<?php echo $_tournamentTeamGroup->tournamentGroupFullCode  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-2">
-				<?php echo $_tournamentTeamGroup->gameCategoryName.' - '.$_tournamentTeamGroup->gameCategoryName.'- '.($_tournamentTeamGroup->id ? (TournamentCore::processAthleticsTypeValue($_tournamentTeamGroup->id)):$_tournamentTeamGroup->id) ?>
-			</td>
-			
-			<td class="ui-td-left-text ui-td-xsmall-00">
-				<?php echo $_tournamentTeamGroup->id ?>
-			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo TournamentCore::processGenderValue($_tournamentTeamGroup->id) ?>
+				<?php echo $_tournamentTeamGroup->gameCategoryName ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-00">
 				<?php echo TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode)  ?>
 			</td>  
-			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_tournamentTeamGroup->id  ?>
-			</td>  
+			<td class="ui-td-left-text ui-td-xsmall-00">
+				<?php echo $_tournamentTeamGroup->start_date ?>
+			</td> 
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo Wordlimit::Wordlimiter($_tournamentTeamGroup->description, 5) ?>
 			</td>  
@@ -85,13 +76,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=10></td>
+			<td class="ui-table-td-footer" colspan=8></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=12>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=10>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

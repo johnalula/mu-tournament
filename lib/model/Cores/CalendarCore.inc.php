@@ -435,6 +435,13 @@ class CalendarCore {
 			echo '<br>****** === ***** <br>';
 		}
 	}
+	public function makeDateDifference($_startDate, $_endDate)
+	{
+		$_startingDate = strtotime(date('m/d/Y', strtotime($_startDate)));
+		$_endingDate = strtotime(date('m/d/Y', strtotime($_endDate)));
+
+		return round(round(abs(($_endingDate)-($_startingDate))/86400));
+	}
 	public static function processDateFormat ($_date) 
 	{ 
 		return date('m/d/Y', strtotime($_date));

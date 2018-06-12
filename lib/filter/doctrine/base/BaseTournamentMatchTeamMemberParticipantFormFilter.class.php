@@ -14,6 +14,7 @@ abstract class BaseTournamentMatchTeamMemberParticipantFormFilter extends BaseFo
   {
     $this->setWidgets(array(
       'token_id'                             => new sfWidgetFormFilterInput(),
+      'tournament_match_id'                  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentMatch'), 'add_empty' => true)),
       'tournament_match_fixture_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentMatchFixture'), 'add_empty' => true)),
       'tournament_match_fixture_token_id'    => new sfWidgetFormFilterInput(),
       'tournament_match_fixture_group_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentMatchFixtureGroup'), 'add_empty' => true)),
@@ -39,6 +40,7 @@ abstract class BaseTournamentMatchTeamMemberParticipantFormFilter extends BaseFo
 
     $this->setValidators(array(
       'token_id'                             => new sfValidatorPass(array('required' => false)),
+      'tournament_match_id'                  => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('TournamentMatch'), 'column' => 'id')),
       'tournament_match_fixture_id'          => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('TournamentMatchFixture'), 'column' => 'id')),
       'tournament_match_fixture_token_id'    => new sfValidatorPass(array('required' => false)),
       'tournament_match_fixture_group_id'    => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('TournamentMatchFixtureGroup'), 'column' => 'id')),
@@ -81,6 +83,7 @@ abstract class BaseTournamentMatchTeamMemberParticipantFormFilter extends BaseFo
     return array(
       'id'                                   => 'Number',
       'token_id'                             => 'Text',
+      'tournament_match_id'                  => 'ForeignKey',
       'tournament_match_fixture_id'          => 'ForeignKey',
       'tournament_match_fixture_token_id'    => 'Text',
       'tournament_match_fixture_group_id'    => 'ForeignKey',

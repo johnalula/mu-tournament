@@ -14,6 +14,18 @@ class Wordlimit {
 
 		return $_text;
 	}
+	static function wordTeaxtLimiter ($_text, $_limit)
+	{
+		$_text=strip_tags($_text);
+		$_words = str_word_count($_text, 2);
+		$_pos=array_keys($_words);
+		if(count($_words)>$_limit)
+		{
+			$_text=substr($_text, 0, $_pos[$_limit]);
+		}
+
+		return $_text;
+	}
 	static function wordLimiterShort ($_text, $_limit)
 	{
 		$_text=strip_tags($_text);

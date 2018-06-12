@@ -47,14 +47,9 @@
 					<img title="<?php echo $_tournamentTeamGroup->id ?>" src="<?php echo image_path($_tournamentTeamGroup->status == TournamentCore::$_ACTIVE  ? 'status/active':'status/pending')  ?>"> 
 				</span>
 			</td> 
-			<td class="ui-table-action ui-table-list-action-box-2">
+			<td class="ui-table-action ui-table-list-action-box-1">
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">   
-						<li>
-							<a href="<?php echo url_for('team_group/view?team_group_id='.$_tournamentTeamGroup->id.'&token_id='.$_tournamentTeamGroup->token_id) ?>" >	
-								<img title="<?php echo __('View Team Group').' ( '.' Group '.' #:'.$_tournamentTeamGroup->id ?> )" src="<?php echo image_path('icons/view') ?>">			
-							</a>
-						</li>  
 						<li>   
 							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_tournamentTeamGroup->id ?>" onclick="Javascript:deleteProduct(<?php echo $_tournamentTeamGroup->id ?>);" rel="<?php echo $_tournamentTeamGroup->token_id ?>">	
 							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_tournamentTeamGroup->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 

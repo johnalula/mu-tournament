@@ -111,14 +111,21 @@ class TeamTable extends PluginTeamTable
 	//
 	public static function appendCandidateQueryFields ( ) 
 	{		
-		 
+		 /*(EXISTS (SELECT tmGmPrtn1.id FROM TeamGameParticipation tmGmPrtn1 WHERE tmGmPrtn1.team_id = tm.id AND tmGmPrtn1.team_id = tm.id AND tmGmPrtn1.team_token_id = ".sha1."(".md5."("."tm.token_id)) AND tmGmPrtn1.gender_category_id = ".TournamentCore::$_MEN." )) as hasFemalGameParticipation, 
+			
+			(EXISTS (SELECT tmGmPrtn2.id FROM TeamGameParticipation tmGmPrtn2 WHERE tmGmPrtn2.team_id = tm.id AND tmGmPrtn2.team_id = tm.id AND tmGmPrtn2.team_token_id = ".sha1."(".md5."("."tm.token_id)) AND tmGmPrtn2.gender_category_id = ".TournamentCore::$_WOMEN." )) as hasMaleGameParticipation, 
+			
+			(EXISTS (SELECT tmGmPrtn3.id FROM TeamGameParticipation tmGmPrtn3 WHERE tmGmPrtn3.team_id = tm.id AND tmGmPrtn3.team_id = tm.id AND tmGmPrtn3.team_token_id = ".sha1."(".md5."("."tm.token_id)) AND tmGmPrtn3.gender_category_id = ".TournamentCore::$_MIXED." )) as hasMixedGameParticipation, */
 	}
 	public static function appendQueryFields ( ) 
 	{		
 		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.team_full_alias as teamFullAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirmed_flag as confirmFlag, tm.active_flag as activeFlag,  
 		 
 			trnmnt.id as tournamentID, trnmnt.token_id as tournamentTokenID, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.start_date as tournamentStartDate, trnmnt.end_date as tournamentEndDate,
-		 (EXISTS (SELECT tmGmPrtn.id FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 
+			
+			(EXISTS (SELECT tmGmPrtn.id FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 
+			
+			
 		 
 		  
 		";	
@@ -158,7 +165,7 @@ class TeamTable extends PluginTeamTable
 					->innerJoin("tm.Organization org on tm.org_id = org.id ")  
 					->orderBy("tm.id ASC")
 					->where("tm.id IS NOT NULL");
-					if(!is_null($_orgID)) $_qry = $_qry->addWhere("tm.org_id = ? AND tm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+					if(!is_null($_orgID)) $_qry = $_qry->addWhere("org.id = ? AND org.token_id = ? ", array($_orgID, $_orgTokenID));
 					if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
 					if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
 					if(!is_null($_keyword) )
@@ -199,18 +206,40 @@ class TeamTable extends PluginTeamTable
 			$_qry = Doctrine_Query::create()
 					->select(self::appendQueryFields())
 					->from("Team tm") 
-					->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
+					->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
 					->innerJoin("tm.Organization org on tm.org_id = org.id ")  
 					->where("tm.id = ? AND tm.token_id = ? ", array($_teamID, $_tokenID ));
-					//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+					if(!is_null($_orgID)) $_qry = $_qry->andWhere("tm.org_id = ? AND tm.org_token_id = ?", array($_orgID, $_orgTokenID));
 					$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeObject ( ) 
-   {
-		 
+   public static function makeObject ( $_orgID=null, $_orgTokenID=null, $_teamID, $_tokenID ) 
+	{
+			$_qry = Doctrine_Query::create()
+					->select(self::appendQueryFields())
+					->from("Team tm") 
+					->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
+					->innerJoin("tm.Organization org on tm.org_id = org.id ")  
+					->where("tm.id = ? AND tm.token_id = ? ", array($_teamID, $_tokenID ));
+					if(!is_null($_orgID)) $_qry = $_qry->andWhere("tm.org_id = ? AND tm.org_token_id = ?", array($_orgID, $_orgTokenID));
+					$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
+	} 
+   public static function makeCandidateObject ( $_teamID, $_tokenID ) 
+	{
+			$_qry = Doctrine_Query::create()
+					->select("tm.id")
+					->from("Team tm") 
+					->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
+					->innerJoin("tm.Organization org on tm.org_id = org.id ")  
+					->where("tm.id = ? AND tm.token_id = ? ", array($_teamID, $_tokenID ));
+					if(!is_null($_orgID)) $_qry = $_qry->andWhere("tm.org_id = ? AND tm.org_token_id = ?", array($_orgID, $_orgTokenID));
+					$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+			
+		return (! $_qry ? null : $_qry ); 	
 	} 
 	 
 	
@@ -268,7 +297,6 @@ class TeamTable extends PluginTeamTable
    {  
 		$_participantRoles = TeamMemberParticipantRoleTable::processCandidateMemberRoles ( $_orgID, $_tournamentID, $_teamID, $_teamTokenID, $_sportGameID, $_memberParticipantID, $_keyword);
 		
-		//if(!$_sportGameParticipations) { return false; }   
 		$_exclusion = array();   
 		foreach($_participantRoles as $_participantRoles) {
 			$_exclusion[] = $_participantRoles->team_game_participation_id;

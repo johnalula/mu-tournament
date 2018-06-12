@@ -37,7 +37,7 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 				
 				for($_i=0,$_key=$_initialGroupNumber;$_i<$_heatsPerFixture;$_i++,++$_key) {
 						
-						$_matchFixtureGroup = TournamentMatchFixtureGroupTable::processNew ( $_matchFixture->id, $_matchFixture->token_id, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_key, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description );
+						$_matchFixtureGroup = TournamentMatchFixtureGroupTable::processNew ( $_tournamentMatchID, $_matchFixture->id, $_matchFixture->token_id, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_key, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description );
 						
 					}
 					

@@ -22,15 +22,19 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 			 
 			$_initialGroupNumber = 1;
 			
-			$_tournamentGroup = TournamentTeamGroupTable::processObject ( $_orgID, $_orgTokenID, $_tournamentGroupID, $_tournamentGroupTokenID );
+			$_tournamentGroup = TournamentTeamGroupTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentGroupID, $_tournamentGroupTokenID );
 			
-			$_sportGame = SportGameTable::processObject ( $_orgID, $_orgTokenID, $_sportGameID, $_sportGameTokenID ); 
+			$_sportGame = SportGameTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_sportGameID, $_sportGameTokenID ); 
 			
 			if($_genderCategory == TournamentCore::$_MEN) {
 				
 				$_initialGroupNumber = $_sportGame->maxSportGameGroupNumberMen ? ($_sportGame->maxSportGameGroupNumberMen+1):1;
 				
 			} elseif($_genderCategory == TournamentCore::$_WOMEN) {
+				
+				$_initialGroupNumber = $_sportGame->maxSportGameGroupNumberWomen ? ($_sportGame->maxSportGameGroupNumberWomen+1):1;
+				
+			} elseif($_genderCategory == TournamentCore::$_MIXED) {
 				
 				$_initialGroupNumber = $_sportGame->maxSportGameGroupNumberWomen ? ($_sportGame->maxSportGameGroupNumberWomen+1):1;
 			} else {
@@ -88,7 +92,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "sprtGmGrp.id, sprtGmGrp.group_name as sportGameGroupName, sprtGmGrp.group_code as sportGameGroupCode, sprtGmGrp.contestant_team_mode as contestantTeamMode, sprtGmGrp.gender_category_id as groupGenderCategoryID, sprtGmGrp.total_group_members as totalGroupMembers, sprtGmGrp.start_date as matchDate, sprtGmGrp.approval_status as apporvalStatus, sprtGmGrp.active_flag as activeFlag,
+		 $_queryFileds = "sprtGmGrp.id, sprtGmGrp.group_name as sportGameGroupName, sprtGmGrp.group_code as sportGameGroupCode, sprtGmGrp.contestant_team_mode as contestantTeamMode, sprtGmGrp.gender_category_id as groupGenderCategoryID, sprtGmGrp.total_group_members as totalGroupMembers, sprtGmGrp.start_date as matchDate, sprtGmGrp.approval_status as apporvalStatus, sprtGmGrp.active_flag as activeFlag, sprtGmGrp.number_of_teams_per_group as totalParticipantTeamsPerGroup, sprtGmGrp.number_of_participants_per_group as totalParticipantsPerGroup,
 								
 								trmnSprtGmGrp.id, 
 								sprtGm.id as sportGameID, sprtGm.token_id as sportGameTokenID, sprtGm.name as sportGameName,  sprtGm.sport_game_category_id as matchSportGameCategoryID, sprtGm.contestant_team_mode as gameContestantTeamMode, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, 
@@ -101,6 +105,8 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 								(sprtGmGrp.approval_status=".TournamentCore::$_PENDING.") as pendingApprovalTeamGroup, (sprtGmGrp.approval_status=".TournamentCore::$_ACTIVE.") as activeApprovalTeamGroup, (sprtGmGrp.approval_status=".TournamentCore::$_APPROVED.") as approvedApprovalTeamGroup, (sprtGmGrp.approval_status=".TournamentCore::$_COMPLETED.") as completedApprovalTeamGroup,
 								
 								(EXISTS (SELECT sprtGmGrp1.id FROM TournamentGroupParticipantTeam sprtGmGrp1 WHERE sprtGmGrp1.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp1.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND sprtGmGrp1.approval_status = ".TournamentCore::$_APPROVED." AND sprtGmGrp1.status = ".TournamentCore::$_ACTIVE." )) as hasGroupParticipantTeam,
+								
+								((SELECT COUNT(sprtGmGrp2.id) FROM TournamentGroupParticipantTeam sprtGmGrp2 WHERE sprtGmGrp2.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp2.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)))) as countTournamentGroupParticipantTeam,
 								
 								(EXISTS (SELECT sprtGmPrt1.id FROM TeamGameParticipation sprtGmPrt1 WHERE sprtGmPrt1.sport_game_id = sprtGm.id AND sprtGmPrt1.sport_game_token_id = ".sha1."(".md5."("."sprtGm.token_id)) AND sprtGmPrt1.gender_category_id = sprtGmGrp.gender_category_id AND sprtGmPrt1.confirmed_status = ".TournamentCore::$_INITIATED." AND sprtGmPrt1.status = ".TournamentCore::$_PENDING." AND sprtGmPrt1.active_flag IS TRUE AND sprtGmPrt1.confirmed_flag IS FALSE AND sprtGmPrt1.grouped_flag IS FALSE)) as hasPendingTeamGameParticipation,
 								
@@ -225,7 +231,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("sprtGmGrp.id DESC")
+				->orderBy("sprtGmGrp.id ASC")
 				->where("sprtGmGrp.id IS NOT NULL");
 				if(!is_null($_tournamentGroupID)) $_qry = $_qry->addWhere("trmnSprtGmGrp.id = ? AND trmnSprtGmGrp.token_id = ? ", array($_tournamentGroupID, $_tournamentGroupTokenID));
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    

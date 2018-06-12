@@ -24,7 +24,7 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 			switch ( trim($_dataCreationMode) ) {
 				case SystemCore::$_SINGLE_DATA: 
 					 
-					$_matchFixtureParticipantTeam = self::processSave ( $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_matchStatus, $_description);
+					$_matchFixtureParticipantTeam = self::processSave ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_matchStatus, $_description);
 					
 					$_groupParticipantTeam = TournamentGroupParticipantTeamTable::makeObject ( $_participantTeamGroupID, $_participantTeamGroupTokenID  );
 					
@@ -32,7 +32,11 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 					
 					$_matchFixtureGroupObj = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID);
 					
-					$_flag2 = $_matchFixtureGroupObj->hasActiveGroupParticipantTeam ? true:$_matchFixtureGroupObj->makeActivation ();
+					$_flag2 = $_matchFixtureGroupObj->hasActiveGroupParticipantTeam ? $_matchFixtureGroupObj->makeApproval ():$_matchFixtureGroupObj->makeActivation ();
+					
+					//$_matchFixtureGroupObj = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID);
+					
+					//$_flag2 = $_matchFixtureGroupObj->makeApproval ();
 					
 				break; 
 				case SystemCore::$_MULTIPLE_DATA: 
@@ -44,7 +48,7 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 							
 							$_participantTeamFullName = ($_participantTeam->participantTeamName.' ( '.$_participantTeam->participantTeamAlias.' ) - '.SystemCore::processCountryValue($_participantTeam->participantTeamCountry));
 							
-							$_matchFixtureParticipantTeam = self::processSave ( $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeam->id, $_participantTeam->token_id, $_matchFixtureName, $_participantTeamFullName, $_matchStatus, $_description);
+							$_matchFixtureParticipantTeam = self::processSave ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeam->id, $_participantTeam->token_id, $_matchFixtureName, $_participantTeamFullName, $_matchStatus, $_description);
 							
 							$_groupParticipantTeam = TournamentGroupParticipantTeamTable::makeObject ( $_participantTeam->id, $_participantTeam->token_id  );
 					
@@ -68,7 +72,7 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 	{
 		
 	} 
-	public static function processSave ($_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_matchStatus, $_description )
+	public static function processSave ($_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_matchStatus, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -76,6 +80,7 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 			$_startDate = date('m/d/Y', time());
 			$_nw = new PairParticipantTeam (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
+			$_nw->tournament_match_id = trim($_tournamentMatchID); 
 			$_nw->tournament_match_fixture_id = trim($_matchFixtureID); 
 			$_nw->tournament_match_fixture_token_id = sha1(md5(trim($_tournamentMatchTokenID)));   
 			$_nw->tournament_match_fixture_group_id = trim($_matchFixtureGroupID); 
@@ -84,6 +89,7 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 			$_nw->group_participant_team_token_id = sha1(md5(trim($_participantTeamGroupTokenID)));
 			$_nw->confirmed_flag = true;     
 			$_nw->active_flag = true;     
+			$_nw->process_status = TournamentCore::$_COMPLETED;  
 			$_nw->approval_status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_APPROVED;  
 			$_nw->status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_ACTIVE;  
 			$_nw->description = SystemCore::processDescription ( (trim($_participantTeamName).' participating in '.trim($_matchFixtureName)), trim($_description) );  

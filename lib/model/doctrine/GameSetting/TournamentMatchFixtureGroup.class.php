@@ -54,12 +54,10 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 	public function makeApproval ()
 	{
 		$_flag = true;   
-		$_effectiveDate = date('m/d/Y', time());  
-		$this->active_flag = true; 
-		$this->approval_status = trim(TournamentCore::$_APPROVED); 
-		$this->status = trim(TournamentCore::$_ACTIVE); 
-		$this->effective_date = trim($_effectiveDate);  
-		$this->save();
+			$this->confirmed_flag = true; 
+			$this->competition_status = trim(TournamentCore::$_ACTIVE); 
+			$this->save();
+
 		return $_flag;
 	}
 	public function makeProcessRevertion ()
@@ -75,7 +73,8 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  
 		$this->active_flag = true;  
-		$this->approval_status = trim(TournamentCore::$_COMPLETED); 
+		$this->process_status = trim(TournamentCore::$_COMPLETED); 
+		$this->approval_status = trim(TournamentCore::$_APPROVED); 
 		$this->status = trim(TournamentCore::$_ACTIVE);  
 		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  
 		$this->save();
@@ -106,7 +105,7 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 			$_participantTeams[] = $_fixtureParticipantTeam->participantTeamName.' ( '.$_fixtureParticipantTeam->participantTeamAlias.' )';
 		}
 		
-		return $_participantTeams[0].' '." --- ".' '.$_participantTeams[1];
+		return Wordlimit::wordTeaxtLimiter($_participantTeams[0],3).' '." --- ".' '.Wordlimit::wordTeaxtLimiter($_participantTeams[1],3);
 		
 	}
 }

@@ -59,10 +59,10 @@
 						</div>
 					</div>  
 					<div class="form-group">
-						<label class="col-sm-20 control-label" title="<?php echo __('Member Role') ?>"><?php echo __('Role') ?>:</label>
+						<label class="col-sm-20 control-label" title="<?php echo __('Member Relation') ?>"><?php echo __('Relation') ?>:</label>
 						<div class="col-sm-23">
-							<select id="team_member_role" name="team_member[team_member_role]" class="form-control" title="<?php echo __('Team Member Role') ?>"  >
-								<option value="" selected  ><?php echo 'Select Member Role ...' ?></option>
+							<select id="team_member_relation" name="team_member[team_member_relation]" class="form-control" title="<?php echo __('Team Member Relation') ?>"  >
+								<option value="" selected  ><?php echo 'Select Member Relation ...' ?></option>
 								<?php foreach(PersonCore::processPersonRoles() as $_key => $_mode): ?>								 
 									<option value="<?php echo $_key ?>" <?php echo $_key == PersonCore::$_CONTESTANT ? 'selected':'' ?> >
 										<?php echo $_mode ?>
@@ -70,9 +70,9 @@
 								<?php endforeach; ?> 
 							</select> 
 						</div>
-						<label class="col-sm-121 control-label" title="<?php echo __('Member Status') ?>"><?php echo __('Status') ?>:</label>
+						<label class="col-sm-121 control-label" title="<?php echo __('Member Role') ?>"><?php echo __('Role') ?>:</label>
 						<div class="col-sm-23">
-							<select id="member_status" name="team_member[member_status]" class="form-control" title="<?php echo __('Member Status') ?>">
+							<select id="team_member_role" name="team_member[team_member_role]" class="form-control" title="<?php echo __('Member Role') ?>">
 								<option value="" selected  ><?php echo 'Select Status ...' ?></option>
 								<?php foreach(TournamentCore::processContestantNameModes() as $_key => $_mode): ?>								 
 									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_ATHLETE ? 'selected':'' ?> >

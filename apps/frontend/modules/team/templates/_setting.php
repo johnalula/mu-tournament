@@ -11,7 +11,7 @@
 							<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->confirmFlag ? 'status/approved':'status/disabled')  ?>"> 
 							<img title="<?php echo $_team->teamName ?>" src="<?php echo image_path($_team->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Team').' ( Name: '.$_team->teamName.' - Country: '.SystemCore::processCountryAliasValue($_team->teamCountry).' - ID #: '.$_team->teamNumber.' )'  ?>
+						<?php echo __('Team').' ( Name: '.$_team->teamName.' - Country: '.SystemCore::processCountryValue($_team->teamCountry).' ( '.SystemCore::processCountryAliasValue($_team->teamCountry).' ) - ID #: '.$_team->teamNumber.' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		

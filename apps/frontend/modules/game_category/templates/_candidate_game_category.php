@@ -12,7 +12,7 @@
 			<th></th>
 		 </tr>
 	  </thead>
-	  <tbody>
+	  <tbody> 
 	   <?php foreach ( $_candidateGameCategorys as $_key => $_candidateGameCategory ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">

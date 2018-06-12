@@ -17,15 +17,15 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
         return Doctrine_Core::getTable('TournamentMatchTeamMemberParticipant');
     }
     //
-	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamID, $_participantTeamTokenID, $_participantMemberRoleID, $_participantMemberRoleTokenID, $_participantMemberID, $_participantMemberTokenID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_description, $_batchCreationMode, $_dataCreationMode, $_userID, $_userTokenID )
+	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamID, $_participantTeamTokenID, $_participantMemberRoleID, $_participantMemberRoleTokenID, $_participantMemberID, $_participantMemberTokenID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_genderCategory, $_description, $_batchCreationMode, $_dataCreationMode, $_userID, $_userTokenID )
 	{
 			
-			$_tournamentMatchFixture = TournamentMatchFixtureTable::processObject ( $_orgID, $_orgTokenID, $_matchFixtureID, $_matchFixtureTokenID );;  
+			$_tournamentMatchFixture = TournamentMatchFixtureTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_matchFixtureID, $_matchFixtureTokenID );;  
 			
 			switch ( trim($_batchCreationMode) ) {
 				case TournamentCore::$_INDIVIDUAL_CREATION_MODE: 
 					 
-						$_matchFixtureParticipant = self::processSave ($_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_participantTeamID, $_participantMemberID, $_participantMemberRoleID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_matchStatus, $_description );
+						$_matchFixtureParticipant = self::processSave ($_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_participantTeamID, $_participantMemberID, $_participantMemberRoleID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_matchStatus, $_description );
 						
 						$_tournamentMatchParticipant = TournamentMatchParticipantTeamTable::makeObject ( $_participantTeamID, $_participantTeamTokenID );
 						$_flag1 = $_tournamentMatchParticipant->makeActivation();
@@ -34,12 +34,12 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 						$_flag2 = $_teamMemberParticipantRole->makeActivation();
 						
 						$_teamMemberParticipant = TeamMemberParticipantTable::makeObject ( $_participantMemberID, $_participantMemberTokenID );
-						$_flag3 = $_teamMemberParticipant->makeActivation();
+						$_flag3 = (intval($_teamMemberParticipant->countTeamMemberParticipantRoles) == 1) ? $_teamMemberParticipant->makeActivation():true;
 						
 				break; 
 				case TournamentCore::$_BATCH_CREATION_MODE:  
 					
-					$_matchFixtureParticipant = self::processCreateBatch ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_participantTeamID, $_participantMemberID, $_participantMemberRoleID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_matchStatus, $_description  );
+					$_matchFixtureParticipant = self::processCreateBatch ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamID, $_participantMemberID, $_participantMemberRoleID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_genderCategory, $_matchStatus, $_description  );
 					
 				break;
 			}
@@ -64,7 +64,7 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 		return $_matchFixtureParticipant ? true:false;
 	}
 	//
-	public static function processCreateBatch ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_participantTeamID, $_participantMemberID, $_participantMemberRoleID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_matchStatus, $_description )
+	public static function processCreateBatch ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_participantTeamID, $_participantMemberID, $_participantMemberRoleID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_genderCategory, $_matchStatus, $_description )
 	{
 				$_candidateMatchFixtureGroupTeams = TournamentMatchTable::selectAllCandidateMatchFixtureGroupParticipantTeams ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameID, $_genderCategory, $_keyword);
 	
@@ -74,23 +74,26 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				
 						foreach($_candidateParticipantRoles as $_key => $_candidateParticipantRole ) {
 				
-							$_matchFixtureParticipantMember = self::processSave ($_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_candidateMatchFixtureGroupTeam->participantTeamID, $_candidateParticipantRole->participantMemberID, $_candidateParticipantRole->id, $_matchFixtureName, $_candidateMatchFixtureGroupTeam->participantTeamName, $_candidateParticipantRole->memberFullName, $_matchStatus, $_description );
+								$_matchFixtureParticipantMember = self::processSave ($_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_candidateMatchFixtureGroupTeam->participantTeamID, $_candidateParticipantRole->participantMemberID, $_candidateParticipantRole->id, $_matchFixtureName, $_candidateMatchFixtureGroupTeam->participantTeamName, $_candidateParticipantRole->memberFullName, $_matchStatus, $_description );
 								
-								//$_teamMemberParticipantRole = TeamMemberParticipantRoleTable::makeObject ( $_participantMemberRoleID, $_participantMemberRoleTokenID );
 								$_flag2 = $_candidateParticipantRole->makeActivation();
 						
 								$_teamMemberParticipant = TeamMemberParticipantTable::makeObject ( $_candidateParticipantRole->participantMemberID, $_candidateParticipantRole->participantMemberTokenID );
-								$_flag3 = $_teamMemberParticipant->makeActivation();
+								$_flag3 = (intval($_teamMemberParticipant->countTeamMemberParticipantRoles) == 1) ? $_teamMemberParticipant->makeActivation():true;
 						}
 						
 						$_flag1 = $_candidateMatchFixtureGroupTeam->makeActivation();
+						
 				}
+				
+				$_matchFixtureGroup = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID);
+				$_flag1 = $_matchFixtureGroup->makeCompletion();
 		
 			return $_matchFixtureParticipantMember ? true:false;
 	}  
 	
 	//
-	public static function processSave ( $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_participantTeamID, $_participantMemberID, $_participantMemberRoleID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_matchStatus, $_description )
+	public static function processSave ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_participantTeamID, $_participantMemberID, $_participantMemberRoleID, $_matchFixtureName, $_participantTeamName, $_participantMemberName, $_matchStatus, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -98,6 +101,7 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 			$_startDate = date('m/d/Y', time());
 			$_nw = new TournamentMatchTeamMemberParticipant (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
+			$_nw->tournament_match_id = trim($_tournamentMatchID); 
 			$_nw->tournament_match_fixture_id = trim($_matchFixtureID); 
 			$_nw->tournament_match_fixture_token_id = sha1(md5(trim($_matchFixtureTokenID)));   
 			$_nw->tournament_match_fixture_group_id = trim($_matchFixtureGroupID); 
@@ -106,7 +110,9 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 			$_nw->participant_team_member_role_id = trim($_participantMemberRoleID); 
 			$_nw->confirmed_flag = true;     
 			$_nw->active_flag = true;     
-			$_nw->competition_status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_APPROVED;  
+			$_nw->qualified_flag = true;     
+			$_nw->qualification_status = TournamentCore::$_QUALIFIED;  
+			$_nw->competition_status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_ACTIVE;  
 			$_nw->approval_status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_APPROVED;  
 			$_nw->status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_ACTIVE;  
 			$_nw->description = SystemCore::processDescription ( (trim($_participantMemberName).' from '.trim($_participantTeamName).' participating in '.trim($_matchFixtureName)), trim($_description) );  

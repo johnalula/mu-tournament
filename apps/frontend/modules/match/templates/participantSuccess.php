@@ -61,6 +61,20 @@
 		
 		}
 		echo '<br>;';*/
+		//match_participant_creation_mode=2&match_fixture=Heat One - 800 Meters Running - Men (Athletics)&match_fixture_id=1&match_fixture_token_id=dacc6b8822e0bd47fe446663e55c79c540aca561&tournament_sport_game_group_id=7&tournament_sport_game_group_token_id=85e48cdd7e049cf2c7ecdd1528e78c186c7ac18e&gender_category_id=1&tournament_match_fixture_group_id=1&tournament_match_fixture_token_group_id=f8769b4d8a60e090c145fadb551f7c8f87a92785&sport_game_id=4&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=1&tournament_match_token_id=6660d71884da2732c0d62ea8b0bcc1d0ab0d47ee&tournament_match_game_category_id=1&participant_team_name=&team_id=&team_token_id=&participant_team_id=&participant_team_token_id=&sport_game_group_team_id=&sport_game_group_team_token_id=&participant_name=&participant_role_id=&participant_role_token_id=&participant_member_id=&participant_member_token_id=&description=
+		
+		
+		//$_candidateMatchFixtureGroupTeams = TournamentMatchTable::selectAllCandidateMatchFixtureGroupParticipantTeams ( 1, 1, '6660d71884da2732c0d62ea8b0bcc1d0ab0d47ee', 1, 4, 1, $_keyword);
+		
+		//$_candidateMatchFixtureGroupTeams = TournamentMatchTable::selectAllCandidateMatchFixtureGroupParticipantTeams ( 1, 1, '462bd1634e549136f04609a502c3f57151646c65', 1, 4, 1, $_keyword);
+		
+		/*foreach($_candidateMatchFixtureGroupTeams as $_candidateMatchFixtureGroupTeam) {
+			$_candidateParticipantRoles = TournamentMatchTable::selectAllCandidateMatchFixtureGroupParticipantTeamMembers( 1, '6660d71884da2732c0d62ea8b0bcc1d0ab0d47ee', 1, $_candidateMatchFixtureGroupTeam->participantTeamID, $_candidateMatchFixtureGroupTeam->participantTeamTokenID, $_candidateMatchFixtureGroupTeam->fixtureSportGameID, $_candidateMatchFixtureGroupTeam->teamGroupGenderCategoryID, $_keyword );
+			//echo count($_candidateParticipantRoles).' - ';
+			echo count($_candidateParticipantRoles).' = '.$_candidateMatchFixtureGroupTeam->teamGroupGenderCategoryID.' ( '.$_candidateMatchFixtureGroupTeam->participantTeamTokenID.' )- ';
+			
+		}*/
+		//echo count($_candidateMatchFixtureGroupTeams) 
 	
 	
 ?> 

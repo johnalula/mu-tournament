@@ -83,7 +83,7 @@ class TournamentTable extends PluginTournamentTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "trnmnt.id, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.active_flag as activeFlag, 
+		 $_queryFileds = "trnmnt.id, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.default_flag as defaultFlag, trnmnt.active_flag as activeFlag, trnmnt.start_date as startDate, trnmnt.end_date as endDate, 
 		";	
 		return $_queryFileds;
 	}
@@ -94,7 +94,7 @@ class TournamentTable extends PluginTournamentTable
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("Tournament trnmnt") 
-				//->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")   
+				->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")   
 				->offset($_offset)
 				->limit($_limit) 
 				->orderBy("trnmnt.id ASC")
@@ -127,8 +127,7 @@ class TournamentTable extends PluginTournamentTable
 			$_qry = Doctrine_Query::create()
 					->select(self::appendQueryFields())
 					->from("Tournament trnmnt") 
-					//->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
-					//->innerJoin("tm.Organization org on tm.org_id = org.id ")     
+					->innerJoin("tm.Organization org on tm.org_id = org.id ")     
 				->where("trnmnt.id = ? AND trnmnt.token_id = ? ", array($_tournamentID, $_tokenID ));
 				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 

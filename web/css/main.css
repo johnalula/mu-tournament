@@ -258,6 +258,10 @@ span.has-input-error {
 	padding:2px 19px 2px 19px!important;
   font-size: 11px!important;
 }
+.btn-padding-md {
+	padding:2px 26px 2px 26px!important;
+  font-size: 11px!important;
+}
 .btn-padding-sm {
 	padding:2px 25px 2px 25px!important;
   font-size: 11px!important;

@@ -21,12 +21,12 @@ class TournamentMatchParticipantTeamTable extends PluginTournamentMatchParticipa
 	{
 			$_flag = true;
 			
-			$_tournamentMatchFixture = TournamentMatchFixtureTable::processObject ( $_orgID, $_orgTokenID, $_matchFixtureID, $_matchFixtureTokenID );;  
+			$_tournamentMatchFixture = TournamentMatchFixtureTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_matchFixtureID, $_matchFixtureTokenID );;  
 			
 			switch ( trim($_contestantTeamMode) ) {
 				case TournamentCore::$_PAIR_TEAM: 
 					 
-						$_matchFixtureGroup = PairParticipantTeamTable::processNew ( $_matchFixtureID, $_matchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_opponentParticipantTeamName, $_tournamentMatchFixture->tournament_match_fixture_number, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession, $_matchStatus, $_description, $_dataCreationMode );
+						$_matchFixtureGroup = PairParticipantTeamTable::processNew ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_opponentParticipantTeamName, $_tournamentMatchFixture->tournament_match_fixture_number, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession, $_matchStatus, $_description, $_dataCreationMode );
 						
 				break; 
 				case TournamentCore::$_MULTIPLE_TEAM:  
@@ -101,7 +101,7 @@ class TournamentMatchParticipantTeamTable extends PluginTournamentMatchParticipa
 								
 								tmPrt.id as participantTeamID, tmPrt.token_id as participantTeamTokenID, tmPrt.team_name as participantTeamName, tmPrt.alias as participantTeamAlias, tmPrt.country_id as teamCountry, tmPrt.team_city as teamCity, tmPrt.team_number as teamNumber, tmPrt.confirmed_flag as confirmFlag,
 		 
-								
+								(EXISTS (SELECT gmGrpMbr1.id FROM TournamentGroupParticipantTeam gmGrpMbr1 WHERE gmGrpMbr1.tournament_sport_game_group_id = sprtGmGrp.id AND gmGrpMbr1.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND gmGrpMbr1.confirmed_status=".TournamentCore::$_INITIATED." AND gmGrpMbr1.confirmed_flag IS FALSE )) as hasActiveGroupParticipantTeam,
 								 
 		";	
 		return $_queryFileds;

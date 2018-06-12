@@ -43,7 +43,7 @@ class competitionActions extends sfActions
 		$_matchFixtureGroupTokenID = $request->getParameter('token_id');	
 		
 		//$_this->_activeTournament = TournamentTable::makeCandidateObject ( null, true );
-		$this->_matchFixtureGroup = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_activeFlag );
+		$this->_matchFixtureGroup = TournamentMatchFixtureGroupTable::makeObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_activeFlag );
 		$this->_participantTeams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
 		//$_sportGameID = $this->_matchFixtureGroup->sportGameID;
 		//$this->_tournamentGames = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 20  ) ;

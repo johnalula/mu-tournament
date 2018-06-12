@@ -16,13 +16,13 @@
 		 </tr>
 	  </thead>
 	  <tbody>
-	   <?php foreach ( $_teamGameParticipations as $_key => $_teamGameParticipation ): ?>
+	   <?php $_rowNumber = 1; foreach ( $_teamGameParticipations as $_key => $_teamGameParticipation ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_teamGameParticipation->id.'$'.$_teamGameParticipation->token_id.'$'.$_teamGameParticipation->sportGameName.'$'.$_teamGameParticipation->gameCategoryName.'$'.$_teamGameParticipation->teamAlias ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_teamGameParticipation->id.'$'.$_teamGameParticipation->token_id.'$'.$_teamGameParticipation->sportGameName.'$'.$_teamGameParticipation->gameCategoryName.'$'.$_teamGameParticipation->teamAlias.'$'.$_teamGameParticipation->genderCategoryID ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo SystemCore::processDataID($_teamGameParticipation->id) ?> 
+				<?php echo SystemCore::processDataID($_rowNumber) ?> 
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-00">
 				<?php echo TournamentCore::processGenderValue($_teamGameParticipation->genderCategoryID)  ?>
@@ -43,7 +43,7 @@
 				<?php echo $_teamGameParticipation->totalContestantNumber ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_teamGameParticipation->description ?>
+				<?php echo Wordlimit::Wordlimiter($_teamGameParticipation->description, 5) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_teamGameParticipation->id ?>" class="ui-table-status-small-icon" id="<?php echo $_teamGameParticipation->id ?>">
@@ -54,6 +54,7 @@
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
+		 <?php $_rowNumber++; ?>
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>

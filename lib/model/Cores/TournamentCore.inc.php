@@ -5,15 +5,17 @@ class TournamentCore {
 	public static $_PENDING = 2;
 	public static $_ACTIVE = 3;
 	public static $_APPROVED = 4;
-	public static $_NOT_PLAYED = 5;
-	public static $_PLAYED = 6;
-	public static $_CONFIRMED = 7;
-	public static $_POSTPOND = 8;
-	public static $_ROUNDING = 9;
-	public static $_FINALIZED = 10;
-	public static $_COMPLETED = 11;
+	public static $_QUALIFIED = 5;
+	public static $_DISQUALIFIED = 6;
+	public static $_NOT_PLAYED = 7;
+	public static $_PLAYED = 8;
+	public static $_CONFIRMED = 9;
+	public static $_POSTPOND = 10;
+	public static $_ROUNDING = 11;
+	public static $_FINALIZED = 12;
+	public static $_COMPLETED = 13;
 	
-	public static $_TOURNAMENT_STATUS = array ( 1 => "Initiated", 2 => "Pending", 3 => "Active", 4 => "Approved", 5 => "Not Played", 6 => "Played", 7 => "Confirmed", 8 => "Postpond", 9 => "Rounding", 10 => "Finalized", 11 => "Completed" );
+	public static $_TOURNAMENT_STATUS = array ( 1 => "Initiated", 2 => "Pending", 3 => "Active", 4 => "Approved", 5 => "Qualified", 6 => "Disqualified", 7 => "Not Played", 8 => "Played", 9 => "Confirmed", 10 => "Postpond", 11 => "Rounding", 12 => "Finalized", 13 => "Completed" );
 
 	public static function processTournamentStatuses() 
 	{
@@ -59,6 +61,12 @@ class TournamentCore {
 			case self::$_APPROVED:
 				return 'approved';
 			break; 
+			case self::$_QUALIFIED:
+				return 'qualified';
+			break;
+			case self::$_DISQUALIFIED:
+				return 'disqualified';
+			break;
 			case self::$_NOT_PLAYED:
 				return 'not_played';
 			break;
@@ -638,6 +646,77 @@ class TournamentCore {
 			break; 
 		}
 	} 
+	/************************************************/
+
+	public static $_GOLD_MEDAL = 1; 
+	public static $_SILVER_MEDAL = 2;
+	public static $_BRONZE_MEDAL = 3; 
+	public static $_CERTIFICATE = 4;  
+	public static $_OTHER_AWARD = 5; 
+	
+	public static $_MEDAL_AWARD_MODES = array ( 1 => "Gold Medal", 2 => "Silver Medal", 3 => "Bronze Medal", 4 => "Certificate", 5 => "Other Award" );
+	
+	public static function processMatchMedalAwardModes ( ) 
+	{
+	  try {
+				return  self::$_MEDAL_AWARD_MODES; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }        
+	} 
+	public static function processMatchMedalAwardModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_MEDAL_AWARD_MODES as $_key => $_award ) {
+				if( strcmp($_award, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}        
+	}
+	
+	public static function processMatchMedalAwardModeValue ( $_id )
+	{
+		try {
+				foreach( self::$_MEDAL_AWARD_MODES as $_key => $_award ) {
+					if( $_key == $_id )
+						return $_award; 
+			}
+			return null; 
+			} catch ( Exception $e ) {
+			return null; 
+		}    
+	}
+	public static function processDefaultMatchMedalAwardMode ()
+	{
+		try {
+				return  self::$_GOLD_MEDAL; 
+			} catch ( Exception $e ) {
+			return null; 
+	  }     
+	}
+	public static function processMatchMedalAwardAlias ($_round)
+	{
+		switch($_round) {			
+			case self::$_GOLD_MEDAL:
+				return 'gold_medal';
+			break;	
+			case self::$_SILVER_MEDAL:
+				return 'silver_medal';
+			break; 
+			case self::$_BRONZE_MEDAL:
+				return 'bronze_medal';
+			break;  
+			case self::$_CERTIFICATE:
+				return 'certificate';
+			break;  
+			case self::$_OTHER_AWARD:
+				return 'other_award';
+			break;  
+		}
+	}  
 	
 	 
 	/************************************************/
@@ -1068,30 +1147,8 @@ class TournamentCore {
 
 	public static function processEventTypeValue ($_id )
 	{
-		try {switch($_distance) {			
-			case self::$_RUNNING_ATHLETICS:
-				return 'running';
-			break; 
-			case self::$_HURDLE_ATHLETICS:
-				return 'hurdles';
-			break;
-			case self::$_STEEPLE_CHASE_ATHLETICS:
-				return 'steeplechase';
-			break;
-			case self::$_RELAY_ATHLETICS:
-				return 'relay';
-			break;
-			case self::$_JUMP_ATHLETICS:
-				return 'jumps';
-			break;
-			case self::$_THROW_ATHLETICS:
-				return 'throws';
-			break; 
-			default:
-				return 'other';
-			break;
-		}
-			foreach( self::$_EVENT_TYPES as $_key => $_event ){
+		try {
+			foreach( self::$_EVENT_TYPES as $_key=> $_event ){
 			  if( $_key == $_id )
 					return $_event; 
 			}
@@ -1524,7 +1581,7 @@ class TournamentCore {
 	public static $_BOTH_GENDER = 3; 
 	public static $_MIXED = 4; 
 	
-	public static $_GENDERS = array ( 1 => "Men", 2 => "Women", 3 => "Both Gender", 4 => "Mixed" );
+	public static $_GENDERS = array ( 1 => "Men", 2 => "Women", 3 => "Both Gender", 4 => "Mixed Gender" );
 	public static $_PLAYER_GENDERS = array ( 1 => "Men", 2 => "Women", 4 => "Mixed Gender");
 	
 	public static function processPlayerGender ( ) 
@@ -1857,7 +1914,7 @@ class TournamentCore {
 	public static $_MORNING_SESSION = 1;
 	public static $_AFTERNOON_SESSION = 2;
 
-	public static $_TOURNAMENT_SESSION_MODES = array ( 1 => 'Modning Session', 2 => 'Afternoon Session');
+	public static $_TOURNAMENT_SESSION_MODES = array ( 1 => 'Morning Session', 2 => 'Afternoon Session');
 	
 	public static function processTournamentSessionModes ( ) 
 	{

@@ -1,5 +1,7 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
+	
+	//echo count($_candidateMatchFixtureGroups);
 	 
 ?> 
 

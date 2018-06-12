@@ -9,7 +9,6 @@
 			<th class="" style="text-align:left!important;"><?php echo __('Tournament Match Game') ?></th>
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Event Type') ?>"><?php echo  __('Event') ?></th>   
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Group') ?>"><?php echo  __('Group') ?></th>     
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Time') ?>"><?php echo  __('Round') ?></th>  
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Round') ?>"><?php echo  __('Heat') ?></th>  
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Qualifying') ?></th>    
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Date') ?></th>   
@@ -31,27 +30,24 @@
 				<?php echo SystemCore::processDataID($_matchFixture->id) ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
-				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - '.$_matchFixture->sportGameGroupName.' ( '.TournamentCore::processGenderValue($_matchFixture->teamGroupGenderCategoryID).' )' ?>
+				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - ( '.TournamentCore::processGenderValue($_matchFixture->teamGroupGenderCategoryID).' )' ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo TournamentCore::processEventTypeValue($_matchFixture->matchEventType) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo $_matchFixture->sportGameGroupName ?>
-			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo  $_matchFixture->matchFixtureHeatName ?>
-			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo TournamentCore::processRoundModeValue($_matchFixture->matchFixtureGroupRoundMode) ?>
+			</td>  
+			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo TournamentCore::processRoundModeValue($_matchFixture->matchFixtureGroupRoundMode) ?>">
+				<?php echo $_matchFixture->matchFixtureHeatName ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo TournamentCore::processMatchCompetitionRoundModeValue($_matchFixture->qualifyingStatus) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo  $_matchFixture->matchDate ?>
+				<?php echo  date('D M, d-Y', strtotime($_matchFixture->matchDate)) ?>
 			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-0">
+			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo TournamentCore::processTournamentSessionModeValue($_matchFixture->matchFixtureGroupSessionMode) ?>">
 				<?php echo $_matchFixture->matchTime ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xsmall-2">
@@ -84,13 +80,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=12></td>
+			<td class="ui-table-td-footer" colspan=11></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=14>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=13>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

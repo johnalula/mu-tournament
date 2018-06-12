@@ -7,10 +7,10 @@
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
 			<th class="ui-th-left-text" title="<?php echo __('Product Name') ?>"><?php echo  __('Member Name') ?></th>   
-			<th class="" style="text-align:left!important;"><?php echo __('Sport Game')  ?></th>
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Member Gender') ?>"><?php echo  __('Gender') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Member Role') ?>"><?php echo  __('Role') ?></th>  
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Group') ?>"><?php echo  __('Type') ?></th>   
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Member Role') ?>"><?php echo  __('Relation') ?></th>  
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Group') ?>"><?php echo  __('Description') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
 			<th class="ui-th-left-text" style="text-align:left!important;"><?php echo  __('Action') ?></th>  
 			<th></th>
@@ -28,17 +28,17 @@
 					<?php echo SystemCore::processDataID($_memberParticipant->id) ?>
 				</a>
 			</td> 
-			<td class="ui-td-left-text ui-td-xsmall-02"> 
+			<td class="ui-td-left-text ui-td-xsmall-2"> 
 				<?php echo $_memberParticipant->memberFullName  ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_memberParticipant->id.' - '.$_memberParticipant->id ?>
-			</td>
-			<td class="ui-td-center-text ui-td-xsmall-00">
 				<?php echo TournamentCore::processGenderValue($_memberParticipant->genderCategoryID) ?> 
+			</td>
+			<td class="ui-td-left-text ui-td-xsmall-0">
+				<?php echo TournamentCore::processContestantNameModeValue($_memberParticipant->memberRoleID) ?>
 			</td> 
-			<td class="ui-td-right-text ui-td-xsmall-00">
-				<?php echo PersonCore::processPersonRoleValue($_memberParticipant->memberRoleID) ?>
+			<td class="ui-td-left-text ui-td-xsmall-0">
+				<?php echo PersonCore::processPersonRoleValue($_memberParticipant->memberRelationID) ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo Wordlimit::Wordlimiter($_memberParticipant->description, 5) ?>
@@ -48,19 +48,14 @@
 					<img title="<?php echo $_memberParticipant->memberFullName ?>" src="<?php echo image_path($_memberParticipant->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
-			<td class="ui-table-action ui-table-list-action-box-3">
+			<td class="ui-table-action ui-table-list-action-box-2">
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">   
 						<li>
 							<a href="<?php echo url_for('team/view?team_id='.$_memberParticipant->id.'&token_id='.$_memberParticipant->token_id) ?>" >	
 								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_memberParticipant->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
-						</li> 
-						<li>  
-							<a href="<?php echo url_for('team/edit?team_id='.$_memberParticipant->id.'&token_id='.$_memberParticipant->token_id) ?>" >	
-								<img title="<?php echo __('Edit Team').' ( '.' Task '.' #:'.$_memberParticipant->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
-							</a>    
-						</li> 
+						</li>  
 						<li>   
 							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_memberParticipant->id ?>" onclick="Javascript:deleteProduct(<?php echo $_memberParticipant->id ?>);" rel="<?php echo $_memberParticipant->token_id ?>">	
 							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_memberParticipant->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 

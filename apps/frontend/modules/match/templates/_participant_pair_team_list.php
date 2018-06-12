@@ -6,7 +6,6 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
-			<th class="" style="text-align:left!important;"><?php echo __('Match #') ?></th>
 			<th class="" style="text-align:left!important;"><?php echo __('Sport Game') ?></th>
 			<th class="" style="text-align:center!important;"><?php echo __('Home Team').' vs '.(__('Away Team')) ?></th>
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Date') ?></th>   
@@ -28,9 +27,6 @@
 				<a href="<?php echo url_for('category/view?category_id='.$_candidateMatchFixtureGroup->id.'&token_id='.$_candidateMatchFixtureGroup->token_id) ?>" >	
 					<?php echo SystemCore::processDataID($_candidateMatchFixtureGroup->id) ?>
 				</a>
-			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo $_candidateMatchFixtureGroup->tournamentMatchFixtureNumber ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-12"> 
 				<?php echo $_candidateMatchFixtureGroup->sportGameName.' - '.$_candidateMatchFixtureGroup->sportGameGroupName.' ( '.TournamentCore::processGenderValue($_candidateMatchFixtureGroup->teamGroupGenderCategoryID).' )' ?>
@@ -74,13 +70,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=9></td>
+			<td class="ui-table-td-footer" colspan=8></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=11>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=10>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

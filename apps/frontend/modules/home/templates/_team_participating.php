@@ -5,13 +5,16 @@
 			<a href="<?php echo url_for('competition/participant_team?team_id='.$_participantTeam->id.'&token_id='.$_participantTeam->token_id) ?>" >	
 				<img style="max-width:50px;" src="<?php echo image_path('images/mulogo') ?>" alt="First slide">
 				<h4><?php echo  $_participantTeam->teamName ?>	</h4>
+				<?php  $_contryFlag = 'flags/'.$_participantTeam->teamCountry ?>
 				<div class="ui-flag">
-					<img style="max-width:65px;" src="<?php echo image_path('flags/1030.png') ?>" alt="First slide">
+					<img style="max-width:65px;" src="<?php echo image_path($_contryFlag) ?>" alt="First slide">
 				</div> 
 			</a>
 		</div>			
 	<?php endforeach; ?>		
-
+		<span>
+			<?php echo __('Read More') ?>
+		</span>
 	</div>
 </div>
 

@@ -17,6 +17,7 @@ abstract class BaseTournamentMatchTeamMemberParticipantForm extends BaseFormDoct
     $this->setWidgets(array(
       'id'                                   => new sfWidgetFormInputHidden(),
       'token_id'                             => new sfWidgetFormInputText(),
+      'tournament_match_id'                  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentMatch'), 'add_empty' => true)),
       'tournament_match_fixture_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentMatchFixture'), 'add_empty' => true)),
       'tournament_match_fixture_token_id'    => new sfWidgetFormInputText(),
       'tournament_match_fixture_group_id'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentMatchFixtureGroup'), 'add_empty' => true)),
@@ -43,6 +44,7 @@ abstract class BaseTournamentMatchTeamMemberParticipantForm extends BaseFormDoct
     $this->setValidators(array(
       'id'                                   => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'token_id'                             => new sfValidatorString(array('max_length' => 100, 'required' => false)),
+      'tournament_match_id'                  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentMatch'), 'required' => false)),
       'tournament_match_fixture_id'          => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentMatchFixture'), 'required' => false)),
       'tournament_match_fixture_token_id'    => new sfValidatorString(array('max_length' => 100, 'required' => false)),
       'tournament_match_fixture_group_id'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentMatchFixtureGroup'), 'required' => false)),

@@ -44,7 +44,9 @@ class TournamentMatchParticipantTeam extends PluginTournamentMatchParticipantTea
 		$_flag = true;    
 			$this->confirmed_flag = true; 
 			$this->active_flag = true; 
+			$this->qualified_flag = true; 
 			$this->competition_flag = true; 
+			$this->qualification_status = trim(TournamentCore::$_QUALIFIED);   
 			$this->competition_status = trim(TournamentCore::$_ACTIVE);   
 			$this->process_status = trim(TournamentCore::$_COMPLETED);   
 			$this->approval_status = trim(TournamentCore::$_APPROVED);   

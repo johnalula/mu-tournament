@@ -17,21 +17,29 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
         return Doctrine_Core::getTable('TeamMemberParticipant');
     }
      //
-	public static function processNew ( $_orgID, $_orgTokenID, $_teamID, $_teamTokenID, $_firstName, $_middleName, $_lastName, $_memberRole, $_memberGender, $_dateOfBirth, $_memberNumber, $_memberStatus, $_remark, $_description, $_userID, $_userTokenID )
+	public static function processNew ( $_orgID, $_orgTokenID, $_teamID, $_teamTokenID, $_firstName, $_middleName, $_lastName, $_memberRole, $_memberRelation, $_memberGender, $_dateOfBirth, $_memberNumber, $_memberStatus, $_remark, $_description, $_userID, $_userTokenID )
 	{
 		 $_flag = true;
 				
 			
-			$_person = PersonTable::processNew ( $_orgID, $_orgTokenID, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_memberGender, $_nationality, $_partyRelationShipRole, $_memberRole, $_partyRelationShip, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_email, $_addressRemark, $_description, $_partyCode, $_userID, $_userTokenID );
-			//$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_GAME, true  ); 
-			//$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
-			//$_sportGameNumber = $_codeConfig->prefixCode.'-'.SystemCore::processCodeInitialNumber($_codeNumber);
+			$_person = PersonTable::processNew ( $_orgID, $_orgTokenID, $_firstName, $_middleName, $_lastName, $_dateOfBirth, $_memberGender, $_nationality, $_partyRelationShipRole, $_memberRole, $_memberRelation, $_partyAddressOne, $_phoneNumberOne, $_phoneNumberTwo, $_mobileNumberOne, $_mobileNumberTwo, $_pobox, $_faxNumber, $_email, $_addressRemark, $_description, $_partyCode, $_userID, $_userTokenID );
+			$_codeConfig = CodeGeneratorTable::processDefaultSelection (null, null, SystemCore::$_CONTESTANT, true  ); 
+			$_codeNumber =  $_codeConfig->hasDeletedCode ? $_codeConfig->deletedCode:$_codeConfig->lastCode; 
+			$_groupCode = $_codeConfig->prefixCode.'-'.SystemCore::processCodeGeneratorInitialNumber($_codeNumber);
 			
-			//$_sportGameTypeName = $_sportGameName ? $_sportGameName:(TournamentCore::processTypeExclusion ());
-			//$_categoryAlias = $_categoryAlias ? SystemCore::makeAlias ( $_categoryAlias ):SystemCore::makeAlias ( $_categoryName );
-			//$_sportGameAlias = $_sportGameAlias ? SystemCore::makeAlias ( $_sportGameAlias ):SystemCore::makeAlias ( $_sportGameName );
-			$_tournament = self::processSave ( $_person->id, $_person->token_id, $_teamID, $_teamTokenID, $_person->full_name, $_memberGender, $_memberRole, $_memberNumber, $_memberStatus, $_remark  );
+			$_tournament = self::processSave ( $_person->id, $_person->token_id, $_teamID, $_teamTokenID, $_person->full_name, $_memberGender, $_memberRole, $_memberRelation, $_memberNumber, $_memberStatus, $_remark  );
 		
+		
+			if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TEAM;  
+				$_actionObject  = 'Participant Team ID: '.$_participantTeam->id;  
+				$_actionDesc  = 'Team - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}
+			
 		return $_tournament;
 	}
 	//
@@ -39,7 +47,7 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 	{
 		
 	} 
-	public static function processSave ( $_personID, $_personTokenID, $_teamID, $_teamTokenID, $_memberFullName, $_memberGender, $_memberRole, $_memberNumber, $_memberStatus, $_remark )
+	public static function processSave ( $_personID, $_personTokenID, $_teamID, $_teamTokenID, $_memberFullName, $_memberGender, $_memberRole, $_memberRelation, $_memberNumber, $_memberStatus, $_remark )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -53,6 +61,7 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 			$_nw->person_id = trim($_personID); 
 			$_nw->person_token_id = sha1(md5(trim($_personTokenID)));  
 			$_nw->member_role_id = trim($_memberRole); 
+			$_nw->member_relation_id = trim($_memberRelation); 
 			$_nw->gender_category_id = trim($_memberGender); 
 			$_nw->member_full_name = trim($_memberFullName); 
 			$_nw->member_number = trim($_memberNumber); 
@@ -92,13 +101,15 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "tmMbrPrt.id, tmMbrPrt.member_full_name as memberFullName, tmMbrPrt.member_role_id as memberRoleID, tmMbrPrt.gender_category_id as genderCategoryID ,
+		 $_queryFileds = "tmMbrPrt.id, tmMbrPrt.member_full_name as memberFullName, tmMbrPrt.member_role_id as memberRoleID, tmMbrPrt.gender_category_id as genderCategoryID, tmMbrPrt.member_relation_id as memberRelationID ,
 		 
 								 
 								prtTm.id as teamID, prtTm.token_id as teamTokenID, prtTm.team_name as partcipantTeamName, prtTm.alias as partcipantTeamAlias, prtTm.country_id as teamCountryID,
 								 
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.id as tournamentAlias,
 								prsn.id as personID, prsn.name as memberName, prsn.middle_name as memberMiddleName, prsn.last_name as memberLastName, prsn.full_name as memberFullName,
+								
+								((SELECT COUNT(tmMbrPrt1.id) FROM TeamMemberParticipantRole tmMbrPrt1 WHERE tmMbrPrt1.team_member_participant_id = tmMbrPrt.id AND tmMbrPrt1.team_member_participant_token_id = ".sha1."(".md5."("."tmMbrPrt.token_id)) AND tmMbrPrt1.confirmed_status=".TournamentCore::$_INITIATED."  AND tmMbrPrt1.grouped_status=".TournamentCore::$_INITIATED."  AND tmMbrPrt1.status=".TournamentCore::$_PENDING." AND tmMbrPrt1.active_flag IS FALSE )) as countTeamMemberParticipantRoles,
 		";	
 		return $_queryFileds;
 	}

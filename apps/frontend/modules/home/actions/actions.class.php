@@ -25,11 +25,12 @@ class homeActions extends sfActions
 		
 		$this->_activeTournament = TournamentTable::makeActiveObject ( true );
 		
-		$this->_participantTeams = TeamTable::makeCandidateSelection ( $_tournament->id, $_activeFlag, $_keyword, 0, 10 );
+		$this->_participantTeams = TeamTable::makeCandidateSelection ( $_tournament->id, $_activeFlag, $_keyword, 0, 6 );
 
 		$this->_participantTeamStandings = TournamentParticipantTeamMedalStandingTable::makeCandidateSelection ( $_tournament->id, $_participantTeamID, $_activeFlag, $_keyword, 0, 6);;
 		
-		$this->_tournamentMatchFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournament->id, $_sportGameID, $_sportGameTypeID, $_genderCategory, $_keyword, 0, 20  ) ;
+		$this->_tournamentMatchMorningSessionFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournament->id, $_sportGameID, $_sportGameTypeID, $_genderCategory, TournamentCore::$_MORNING_SESSION, $_tournamentDate, $_keyword, 0, 20  ) ;
+		$this->_tournamentMatchAfternoonSessionFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournament->id, $_sportGameID, $_sportGameTypeID, $_genderCategory, TournamentCore::$_AFTERNOON_SESSION, $_tournamentDate, $_keyword, 0, 20  ) ;
 		
 	} 
 	

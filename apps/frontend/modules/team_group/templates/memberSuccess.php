@@ -117,12 +117,8 @@
 								<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
 							<!-- Begining of toolbar -->
 								<div class="ui-toolbar-menu-box ui-panel-content-border">
-									<div class="ui-toolbar-menu">
-										<?php if($_tournamentTeamGroup->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
-											<?php include_partial('partials/insert_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
-										<?php else: ?>
-											<?php include_partial('partials/modal_action_toolbar', array('_object' => $_tournamentTeamGroup)) ?> 
-										<?php endif; ?>
+									<div class="ui-toolbar-menu"> 
+										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_tournamentTeamGroup)) ?>  
 									</div>
 								</div>
 								<!--    End of toolbar      -->
