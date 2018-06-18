@@ -1,27 +1,6 @@
 
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
-	//match_fixture=Group One - 100 Meters Running - Women (Athletics)&match_fixture_id=2&match_fixture_token_id=9a6fab06b523152522aab221ea44335595b3cfb5&tournament_sport_game_group_id=2&tournament_sport_game_group_token_id=07e751c1a6b906d4f982021b554f78dab3146906&gender_category_id=2&tournament_match_fixture_group_id=2&tournament_match_fixture_token_group_id=a1fe8552d5e6f79241a3cea9d0cd84f0adde71c4&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=1&tournament_match_token_id=33efe7b38d52ff5a0f58b5a2008a081aa1246294&tournament_match_game_category_id=1&participant_team_name=Botswana University of Agriculture (BAU) - Botswana&participant_team_id=8&participant_team_token_id=f0c3309288ed5d2ad6df88bf2b30dae845d71640&sport_game_group_team_id=13&sport_game_group_team_token_id=5e53779b0c39807d3c17a10c774f4d9f6b04ef0b&sport_game_venue_name=Mekelle Tigray Stadium&sport_game_group_type_id=&match_date=06/20/2018&match_time=10:30 AM&tournament_match_time_value=&tournament_match_session=&description=gsdf gsfg
-	
-		//$_flag =  TournamentMatchParticipantTeamTable::processNew ( 1, 'afccda09e18b3ebfd6734f446fd6e2a4e91f95c1', $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_opponentParticipantTeamName, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession, $_matchStatus, $_description, $_contestantTeamMode, SystemCore::$_MULTIPLE_DATA, $_userID, $_userTokenID );
-
-
-	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( 1, 'afccda09e18b3ebfd6734f446fd6e2a4e91f95c1', 1, '17a7179c93fc7b90a97c0f0545a1089f66438a27#', 6, 'c0eb9d0f1f6060784ff6ef7fe1b9528197ae841d', 6, '6ca77bcab18a67844f426e79e3f9af5bf1f3ceb1', 6, '6df1f8657243b3c2f51424faf96bcf418e74b7e6', 4, 'd603151399eb25fc00498fb46cca25a9c02fab1a', $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, 'Group One - Maraton Running - Women (Athletics)', 'Axum University (AXU-ET) - Ethiopia', $_opponentParticipantTeamName, 'Mekelle Tigray Stadium', '05/23/2018', '10:00 PM', $_matchStatus, 'asdf asdf asdfasdfad', 2, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
-
-	 //match_fixture=Group One - 10000M Running - Women (Athletics)&match_fixture_id=6&match_fixture_token_id=b6b3628172b215aac37f082b779c41bcd1f8311d&tournament_sport_game_group_id=4&tournament_sport_game_group_token_id=eea763e281415bf2e0086378e23a3ecef31fd379&gender_category_id=2&tournament_match_fixture_group_id=6&tournament_match_fixture_token_group_id=2785ac12ee7e10c12bdb32f1ee866ddd22ef3b6b&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=1&tournament_match_token_id=5e1a08d23a632ab92ec1f8c5a0e7e5f0750d9812&tournament_match_game_category_id=1&participant_team_name=Mekelle University (MU-ET) - Ethiopia &participant_team_id=4&participant_team_token_id=6e60f180ecab6683ae00640e0d847c1607cb050d&sport_game_group_team_id=9&sport_game_group_team_token_id=f43eecb067032a135998fee6a2bebd7493fe33d1&sport_game_venue_name=Mekelle Tigray Stadium&sport_game_group_type_id=&match_date=05/29/2018&match_time=11:00 AM&description=sdfg sdfg sdfgsdg
-	 
-	 
-	//echo count($_candidateParticipantTeams);
-	
-	//tournament_match_id=1&tournament_match_token_id=5e1a08d23a632ab92ec1f8c5a0e7e5f0750d9812&match_fixture_id=4&match_fixture_token_id=f0b05948b6c93fbc76ffb4ed0cbf44efb61ed1bd&tournament_match_fixture_group_id=4&tournament_match_fixture_token_group_id=0065cbad2acd2a8be6ff9617a1da125362d1e82a&tournament_sport_game_group_id=2&tournament_sport_game_group_token_id=927b2b9fbbc5a6da68d82c646ffd661d32e00296&sport_game_group_team_id=&sport_game_group_team_token_id=&match_fixture=Group One - 5000M Running - Women (Athletics)&participant_team_name=&tournament_contestant_team_mode=2&gender_category_id=2&description=
-	
-	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( 1, 'afccda09e18b3ebfd6734f446fd6e2a4e91f95c1', 1, '5e1a08d23a632ab92ec1f8c5a0e7e5f0750d9812', 4, 'f0b05948b6c93fbc76ffb4ed0cbf44efb61ed1bd', 4, '0065cbad2acd2a8be6ff9617a1da125362d1e82a', 2, '927b2b9fbbc5a6da68d82c646ffd661d32e00296', $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, 'Group One - 5000M Running - Women (Athletics)', $_participantTeamName, $_opponentParticipantTeamName, 'Tigray Stadium', $_matchDate, $_matchTime, $_matchStatus, $_description, 2, SystemCore::$_MULTIPLE_DATA, $_userID, $_userTokenID );
-	
-	//$_matchFixtureGroupParticipants = TournamentMatchFixtureGroupTable::processCandidateSelections ( 3, 'ba44103dc5939ca480fa8b9809ad058a2a3130c7', $_matchFixtureID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE) ;
-	
-	//$_tournamentMatchFixtureGroups = TournamentMatchFixtureGroupTable::selectCandidates ( 1, '33efe7b38d52ff5a0f58b5a2008a081aa1246294', $_sportGameID, $_processStatus, $_approvalStatus, $_exclusion, $_keyword, 0, 10) ;
-	//echo count($_candidateTournamentMatchFixtureGroups);
-	
+	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)): 
 ?> 
 
 <div class="ui-page-box">

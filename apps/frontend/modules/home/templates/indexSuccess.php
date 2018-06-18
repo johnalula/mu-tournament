@@ -19,10 +19,7 @@
 			<div class="col-sm-12 table-header">
 				<h2 style="">Timetable-by-Day <span style="color:#fcb931">AAUG Championships Mekelle University - Ethiopia 2018</span></h2>
 			</div> 
-		</div>
-        <?php echo CalendarCore::makeDateDifference($_activeTournament->start_date, $_activeTournament->end_date); 
-			//echo $_date1;
-        ?>
+		</div> 
 
 		<div class="row">
 			<div class="col-sm-12">
@@ -30,31 +27,31 @@
 					<li class="active">
 					  <a href="#day_one">
 						  <span style="display:block">Day 1</span>
-						  05 aug
+							July 02
 					  </a>
 				  </li>
 				  <li>
 					  <a href="#day_two">
 						<span style="display:block">Day 2</span>
-							  05 aug
+							July 03 
 					  </a>
 				  </li>
 				  <li>
 					  <a href="#day_three">
 					  <span style="display:block">Day 3</span>
-							  05 aug
+							July 04 
 					  </a>
 				  </li>
 				  <li>
 					  <a href="#day_three">
 					  <span style="display:block">Day 4</span>
-							  05 aug
+							July 05 
 					  </a>
 				  </li>
 				  <li>
 					  <a href="#day_three">
 					  <span style="display:block">Day 5</span>
-							  05 aug
+							July 06 
 					  </a>
 				  </li>
 				</ul>

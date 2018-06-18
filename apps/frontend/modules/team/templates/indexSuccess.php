@@ -2,10 +2,12 @@
 	if($sf_user->isAuthenticated()): 	
 	//echo sha1(md5('94f12f125643718e20d329aef595bc3e')); 
 	
-	//$_flag =  TournamentParticipantTeamMedalStandingTable::processGenerate ( 1, '94f12f125643718e20d329aef595bc3e', 1, $_participantTeamID, $_participantTeamTokenID, $_description, $_userID, $_userTokenID );
+	//$_flag =  TournamentParticipantTeamMedalStandingTable::processGenerate ( 1, '94f12f125643718e20d329aef595bc3e', 1, 'Tournament participant teams', $_userID, $_userTokenID );
 	//$teams = TeamTable::processAll (  1, '94f12f125643718e20d329aef595bc3e', $_tournamentID, true, $_keyword) ;
 	//echo count($teams).' == ';
 		//echo sha1(md5('afccda09e18b3ebfd6734f446fd6e2a4e91f95c1'));
+		
+		//processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description, $_userID, $_userTokenID )
 ?> 
 
 <div class="ui-page-box">

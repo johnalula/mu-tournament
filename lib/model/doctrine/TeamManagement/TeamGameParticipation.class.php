@@ -59,7 +59,7 @@ class TeamGameParticipation extends PluginTeamGameParticipation
 		$this->grouped_flag = true; 
 		$this->active_flag = true; 
 		$this->grouped_status = trim(TournamentCore::$_COMPLETED); 
-		$this->confirmed_status = trim(TournamentCore::$_APPROVED); 
+		$this->confirmed_status = trim(TournamentCore::$_CONFIRMED); 
 		$this->status = trim(TournamentCore::$_ACTIVE); 
 		$this->effective_date = $_effectiveDate;  
 		$this->save();

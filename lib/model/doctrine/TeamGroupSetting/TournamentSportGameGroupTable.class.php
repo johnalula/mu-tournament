@@ -36,7 +36,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 				
 			} elseif($_genderCategory == TournamentCore::$_MIXED) {
 				
-				$_initialGroupNumber = $_sportGame->maxSportGameGroupNumberWomen ? ($_sportGame->maxSportGameGroupNumberWomen+1):1;
+				$_initialGroupNumber = $_sportGame->maxSportGameGroupNumberMixedGender ? ($_sportGame->maxSportGameGroupNumberMixedGender+1):1;
 			} else {
 				$_initialGroupNumber = 1;
 			}
@@ -378,6 +378,63 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	 
+	/*********************************************************/
+	
+	// process list selection function 
+   public static function selectCanidates ( $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameID=null, $_genderCategoryID=null, $_approvalStatus=null, $_status=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TournamentSportGameGroup sprtGmGrp") 
+				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnSprtGmGrp on sprtGmGrp.tournament_team_group_id = trmnSprtGmGrp.id ")  
+				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
+				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("sprtGmGrp.id DESC")
+				->where("sprtGmGrp.id IS NOT NULL");
+				if(!is_null($_tournamentGroupID)) $_qry = $_qry->addWhere("sprtGmGrp.tournament_team_group_id = ? AND sprtGmGrp.tournament_team_group_token_id = ? ", array($_tournamentGroupID, $_tournamentGroupTokenID));
+				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);      
+				if(!is_null($_genderCategoryID)) $_qry = $_qry->addWhere("sprtGmGrp.gender_category_id = ?", $_genderCategoryID);  
+				if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("sprtGmGrp.approval_status = ? OR sprtGmGrp.approval_status = ?", array($_approvalStatus, TournamentCore::$_APPROVED));    
+				if(!is_null($_status)) $_qry = $_qry->addWhere("sprtGmGrp.status = ? OR sprtGmGrp.status = ?", array($_status, TournamentCore::$_ACTIVE));    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("sprtGmGrp.group_name LIKE ? OR sprtGm.name LIKE ? OR sprtGmGrp.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	// process list selection function 
+   public static function selectAllCanidates ( $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameID=null, $_genderCategoryID=null, $_approvalStatus=null, $_status=null, $_keyword=null) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TournamentSportGameGroup sprtGmGrp") 
+				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnSprtGmGrp on sprtGmGrp.tournament_team_group_id = trmnSprtGmGrp.id ")  
+				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
+				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")   
+				->orderBy("sprtGmGrp.id DESC")
+				->where("sprtGmGrp.id IS NOT NULL");
+				if(!is_null($_tournamentGroupID)) $_qry = $_qry->addWhere("sprtGmGrp.tournament_team_group_id = ? AND sprtGmGrp.tournament_team_group_token_id = ? ", array($_tournamentGroupID, $_tournamentGroupTokenID));
+				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);      
+				if(!is_null($_genderCategoryID)) $_qry = $_qry->addWhere("sprtGmGrp.gender_category_id = ?", $_genderCategoryID);  
+				if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("sprtGmGrp.approval_status = ?", $_approvalStatus);    
+				if(!is_null($_status)) $_qry = $_qry->addWhere("sprtGmGrp.status = ?", $_status);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("sprtGmGrp.group_name LIKE ? OR sprtGm.name LIKE ? OR sprtGmGrp.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	
 	/*********************************************************
 	*********************************************************/
 	 

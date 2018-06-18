@@ -26,6 +26,8 @@
  * @property boolean $group_team_number_mandatory_flag
  * @property boolean $complete_flag
  * @property boolean $active_flag
+ * @property boolean $competition_flag
+ * @property integer $competition_status
  * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
@@ -122,6 +124,14 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
+             ));
+        $this->hasColumn('competition_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('competition_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('process_status', 'integer', null, array(
              'type' => 'integer',

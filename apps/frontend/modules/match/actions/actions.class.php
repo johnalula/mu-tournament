@@ -273,7 +273,7 @@ class matchActions extends sfActions
 		
 		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID );
 		
-		$this->_matchParticipantTeamMembers = TournamentMatchTeamMemberParticipantTable::processSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword, 0, 20  ) ; 
+		$this->_matchParticipantTeamMembers = TournamentMatchTeamMemberParticipantTable::processSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword, 0, 25  ) ; 
 	}
 	public function executeCreateTournamentMatchParticipantTeamMember(sfWebRequest $request)
 	{

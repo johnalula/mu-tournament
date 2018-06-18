@@ -29,16 +29,19 @@ class TeamTable extends PluginTeamTable
 
 				$_participantTeam = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_participantTeamAlias, $_teamCountry, $_teamCity, $_teamNumber, $_description );
 		
-		
-			if($_orgID && $_userID) { 
+				if($_participantTeam ) { 
+					$_participantTeamStanding = TournamentParticipantTeamMedalStandingTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeam->id, $_participantTeam->token_id, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description);
+				}
 				
-				$_actionID = SystemCore::$_CREATE; 
-				$_moduleID  = ModuleCore::$_TEAM;  
-				$_actionObject  = 'Participant Team ID: '.$_participantTeam->id;  
-				$_actionDesc  = 'Team - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM).' ]';  
-			
-				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
-			}
+				if($_orgID && $_userID) { 
+				
+					$_actionID = SystemCore::$_CREATE; 
+					$_moduleID  = ModuleCore::$_TEAM;  
+					$_actionObject  = 'Participant Team ID: '.$_participantTeam->id;  
+					$_actionDesc  = 'Team - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM).' ]';  
+				
+					$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+				}
 			
 		return $_participantTeam;
 	}
@@ -165,7 +168,7 @@ class TeamTable extends PluginTeamTable
 					->innerJoin("tm.Organization org on tm.org_id = org.id ")  
 					->orderBy("tm.id ASC")
 					->where("tm.id IS NOT NULL");
-					if(!is_null($_orgID)) $_qry = $_qry->addWhere("org.id = ? AND org.token_id = ? ", array($_orgID, $_orgTokenID));
+					//if(!is_null($_orgID)) $_qry = $_qry->addWhere("tm.org_id = ? AND tm.org_token_id = ? ", array($_orgID, $_orgTokenID));
 					if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
 					if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
 					if(!is_null($_keyword) )

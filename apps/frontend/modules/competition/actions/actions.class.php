@@ -33,11 +33,6 @@ class competitionActions extends sfActions
 	}
 	public function executeFixture(sfWebRequest $request)
 	{
-		
-		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
-		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
-		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
-		
 		//$_tournamentID = $request->getParameter('tournament_id');	
 		$_matchFixtureGroupID = $request->getParameter('match_fixture_id');	
 		$_matchFixtureGroupTokenID = $request->getParameter('token_id');	

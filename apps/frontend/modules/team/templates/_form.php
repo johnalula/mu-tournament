@@ -39,7 +39,7 @@
 					<div class="form-group">
 						<label class="col-sm-20 control-label" title="<?php echo __('Team Status') ?>"><?php echo __('Status') ?>:</label>
 						<div class="col-sm-23">
-							 <select id="team_status" name="team[team_status]" class="form-control" title="<?php echo __('Team Status') ?>">
+							 <select id="team_status" name="team[team_status]" class="form-control" title="<?php echo __('Team Status') ?>" disabled>
 								<option value="" selected  ><?php echo 'Select Status ...' ?></option>
 								<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_matchStatus): ?>								 
 									<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_ACTIVE ? 'selected':'' ?> >

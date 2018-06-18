@@ -20,13 +20,13 @@
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-product" name="ui-total-data-list-product" value="<?php echo count($_countTournaments) ?>">
-	  <?php foreach ( $_candidateTournamentMatchFixtureGroups as $_key => $_matchFixture ): ?>
+	  <?php $_rowNumber = 1; foreach ( $_candidateTournamentMatchFixtureGroups as $_key => $_matchFixture ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo SystemCore::processDataID($_matchFixture->id) ?> 
+				<?php echo SystemCore::processDataID($_rowNumber) ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
 				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - ( '.TournamentCore::processGenderValue($_matchFixture->teamGroupGenderCategoryID).' )' ?>
@@ -73,6 +73,7 @@
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
+		 <?php $_rowNumber++; ?>
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>

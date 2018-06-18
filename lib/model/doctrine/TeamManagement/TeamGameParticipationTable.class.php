@@ -109,16 +109,20 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 	//
 	public static function appendCandidateQueryFields ( ) 
 	{		
-		 
+		 //	(EXISTS (SELECT sprtGmPrtn1.id FROM TeamGameParticipation sprtGmPrtn1 WHERE sprtGmPrtn1.sport_game_id = sprtGm.id  AND sprtGmPrtn1.sport_game_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND sprtGmGrp1.gender_category_id=".TournamentCore::$_MEN." ) as maxSportGameGroupNumberMen,
 	}
 	public static function appendQueryFields ( ) 
 	{		
 		 $_queryFileds = "sprtGmPrt.id, sprtGmPrt.event_type as eventType, sprtGmPrt.player_mode as contestantMode,  sprtGmPrt.number_of_players as totalContestantNumber, sprtGmPrt.gender_category_id as genderCategoryID, sprtGmPrt.active_flag as activeFlag, 
 								sprtGmPrt.team_id as participantTeamID,sprtGmPrt.team_token_id as participantTeamTokenID,
-								prtTm.id as teamID, prtTm.token_id as teamTokenID, prtTm.team_name as teamName, prtTm.alias as teamAlias, prtTm.country_id as teamCountryID, prtTm.team_city as teamCity, prtTm.team_number as teamNumber, prtTm.confirmed_flag as confirmFlag, prtTm.id as teamID, prtTm.token_id as teamTokenID, prtTm.team_name as partcipantTeamName, prtTm.alias as partcipantTeamAlias,
+								
+								prtTm.id as teamID, prtTm.token_id as teamTokenID, prtTm.team_name as teamName, prtTm.alias as teamAlias, prtTm.country_id as teamCountryID, prtTm.team_city as teamCity, prtTm.team_number as teamNumber, prtTm.confirmed_flag as confirmFlag, prtTm.id as teamID, prtTm.token_id as teamTokenID, prtTm.team_name as partcipantTeamName, prtTm.alias as partcipantTeamAlias, prtTm.team_full_alias as teamFullAlias, prtTm.country_id as teamCountry,
+								
 								sprtGm.id as sportGameID, sprtGm.token_id as sportGameTokenID, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.sport_game_type_mode as sportGameTypeMode,
 								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.id as tournamentAlias,
+							
+						
 		";	
 		return $_queryFileds;
 	}
@@ -412,20 +416,19 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeCandidateObject ( $_orgID=null, $_activeFlag ) 
+   public static function makeCandidateObject ( $_participationGameID, $__participationGameTokenID  ) 
 	{
 		$_qry = Doctrine_Query::create()
-				->select(self::appendQueryFields())
+				->select("sprtGmPrt.id")
 				->from("TeamGameParticipation sprtGmPrt") 
-				->innerJoin("sprtGmPrt.Tournament trnmt on sprtGmPrt.tournament_id = trnmt.id ")  
+				->innerJoin("sprtGmPrt.Team prtTm on sprtGmPrt.team_id = prtTm.id ")  
+				->innerJoin("sprtGmPrt.GameCategory gmCat on sprtGmPrt.sport_game_category_id = gmCat.id ")  
 				->innerJoin("sprtGmPrt.SportGame sprtGm on sprtGmPrt.sport_game_id = sprtGm.id ")  
-				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				//->innerJoin("tm.Organization org on tm.org_id = org.id ")  
-				->where("sprtGmPrt.id IS NOT NULL");
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
-				if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("sprtGmPrt.active_flag = ?", $_activeFlag);
+				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
+				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
+				->where("sprtGmPrt.id = ? AND sprtGmPrt.token_id = ? ", array($_participationGameID, $__participationGameTokenID ));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
-			
+				
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	 

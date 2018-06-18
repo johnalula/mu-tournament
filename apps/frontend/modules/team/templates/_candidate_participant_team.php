@@ -3,7 +3,7 @@
 	  <thead>
 		 <tr>
 			<th></th>
-			<th class="" style="text-align:center!important;"><?php echo __('ID') ?></th>
+			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
 			<th class="ui-th-center-text"><?php echo __('Team').' #' ?></th>
 			<th class="ui-th-left-text"><?php echo __('Team Name') ?></th>
 			<th class="" style=""><?php echo __('Coutry') ?></th>
@@ -14,13 +14,13 @@
 		 </tr>
 	  </thead>
 	  <tbody>
-	   <?php foreach ( $_candidateMemberTeams as $_key => $_candidateTeam ): ?>
+	   <?php $_rowNumber = 1; foreach ( $_candidateMemberTeams as $_key => $_candidateTeam ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateTeam->id.'$'.$_candidateTeam->token_id.'$'.$_candidateTeam->teamID.'$'.$_candidateTeam->teamTokenID.'$'.$_candidateTeam->teamName.'$'.$_candidateTeam->teamAlias.'$'.SystemCore::processCountryValue($_candidateTeam->teamCountryID) ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo SystemCore::processDataID($_candidateTeam->id) ?> 
+				<?php echo SystemCore::processDataID($_rowNumber) ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-00">
 				<?php echo $_candidateTeam->teamNumber ?>
@@ -46,6 +46,7 @@
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
+		 <?php $_rowNumber++; ?>
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>

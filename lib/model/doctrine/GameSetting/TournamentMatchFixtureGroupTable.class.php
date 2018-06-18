@@ -343,7 +343,7 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
    public static function makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID) 
 	{
 		$_qry = Doctrine_Query::create()
-				->select("mtchFixGrp.id")
+				->select("mtchFixGrp.id, (EXISTS (SELECT gmGrpMbr1.id FROM TournamentGroupParticipantTeam gmGrpMbr1 WHERE gmGrpMbr1.tournament_sport_game_group_id = sprtGmGrp.id AND gmGrpMbr1.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND gmGrpMbr1.confirmed_status=".TournamentCore::$_INITIATED." AND gmGrpMbr1.confirmed_flag IS FALSE )) as hasActiveGroupParticipantTeam")
 				->from("TournamentMatchFixtureGroup mtchFixGrp") 
 				->innerJoin("mtchFixGrp.TournamentMatchFixture mtchFix on mtchFixGrp.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
@@ -427,7 +427,7 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 	**********************************************************/
 	
 	// process list selection function 
-   public static function makeCandidateSelection ( $_tournamentID=null, $_sportGameID=null, $_sportGameTypeID=null, $_genderCategory=null, $_tournamentSession=null, $_tournamentDate=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   public static function makeCandidateSelection ( $_tournamentID=null, $_sportGameID=null, $_genderCategory=null, $_tournamentSession=null, $_tournamentDate=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -489,5 +489,11 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
-	 
+
+
+	/*********************************************************
+	********** Candidate selection process *******************
+	**********************************************************/
+
+	/********** Candidate selection process new action *******************/
 }

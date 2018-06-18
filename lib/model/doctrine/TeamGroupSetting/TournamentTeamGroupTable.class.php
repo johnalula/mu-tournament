@@ -49,15 +49,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 			$_effectiveDate = date('m/d/Y', time());
 			$_nw = new TournamentTeamGroup (); 
 			$_nw->token_id = sha1(md5(trim($_token))); 
-			$_nw->tournament_id = trim($_tournamentID);  if($_orgID && $_userID) { 
-				
-				$_actionID = SystemCore::$_CREATE; 
-				$_moduleID  = ModuleCore::$_TEAM_GROUP;  
-				$_actionObject  = 'Tournament Sport Game Group ID: '.$_sportGameGroup->id;  
-				$_actionDesc  = 'Team Group - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TEAM_GROUP).' ]';  
-			
-				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
-			}
+			$_nw->tournament_id = trim($_tournamentID);   
 			$_nw->sport_game_category_id = trim($_gameCategoryID); 
 			$_nw->sport_game_category_token_id = sha1(md5(trim($_gameCategoryTokenID))); 
 			$_nw->group_full_code = SystemCore::makeFullCode ( trim($_groupCode) );  
@@ -223,7 +215,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeObject ( $_orgID=null, $_groupID, $_tokenID  ) 
+   public static function makeObject ( $_orgID=null, $_groupID, $_toprocessRevertkenID  ) 
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -239,18 +231,16 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeCandidateObject ( $_orgID=null, $_activeFlag ) 
+   public static function makeCandidateObject ( $_tournamentTeamGroupID, $_tournamentTeamGroupTokenID) 
 	{
 		$_qry = Doctrine_Query::create()
-				->select(self::appendQueryFields())
+				->select("trmntTmGrp.id")
 				->from("TournamentTeamGroup trmntTmGrp") 
-				->innerJoin("trmntTmGrp.Tournament trnmt on trmntTmGrp.tournament_id = trnmt.id ") 
-				->innerJoin("trmntTmGrp.SportGame sprtGm on trmntTmGrp.sport_game_id = sprtGm.id ") 
-				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")     
-				->where("trmntTmGrp.id IS NOT NULL");
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
-				if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("trmntTmGrp.active_flag = ?", $_activeFlag);
+				->innerJoin("trmntTmGrp.Tournament trnmt on trmntTmGrp.tournament_id = trnmt.id ")  
+				->innerJoin("trmntTmGrp.GameCategory gmCat on trmntTmGrp.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")   
+				->where("trmntTmGrp.id = ? AND trmntTmGrp.token_id = ? ", array($_tournamentTeamGroupID, $_tournamentTeamGroupTokenID ));
+
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
@@ -342,11 +332,11 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	//
 	public static function selectAllCandidateParticipantTeams ( $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameGroupID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null ) 
    {
-		$_groupParticipantTeams = TournamentGroupParticipantTeamTable::processCandidateParticipants($_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword);
+		/*$_groupParticipantTeams = TournamentGroupParticipantTeamTable::processCandidateParticipants($_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword);
 		$_exclusion = array();   
 		foreach($_groupParticipantTeams as $_groupParticipantTeam) {
 			$_exclusion[] = $_groupParticipantTeam->team_game_participation_id;
-		} 
+		} */
 		
 		return TeamGameParticipationTable::selectAllCandidateParticipants ( $_teamID, $_teamTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategory, $_keyword, $_exclusion) ;
 	} 
@@ -420,6 +410,33 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	*********************************************************/
 	
 	// registration task approval function
+	public static function processRevert ( $_orgID, $_orgTokenID, $_tournamentGroupID, $_tournamentGroupTokenID, $_userID, $_userTokenID ) 
+	{
+		$_flag = true;   
+		$_tournamentTeamGroup =  self::makeCandidateObject ( $_tournamentGroupID, $_tournamentGroupTokenID ); 
+		
+		//if(!$_sportGameTeamGroup) { return false; }   
+		$_candidateTournamentGroups = TournamentSportGameGroupTable::processCandidateApprovalSelections ( $_tournamentGroupID, $_tournamentGroupTokenID, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING) ;
+		if(!$_candidateTournamentGroups) { $_flag = false; } else {
+			foreach($_candidateTournamentGroups as $_candidateTournamentGroup) {
+				$_flag = $_candidateTournamentGroup->makeConfirmation (); 
+			}
+		} 
+		//$_flag = ($_tournamentTeamGroup && !$_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup) ? $_tournamentTeamGroup->makeApproval ():true;
+		
+		/*if($_orgID && $_userID) { 
+				
+				$_actionID = SystemCore::$_CREATE; 
+				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  
+				$_actionObject  = 'Match Fixture ID: '.$_matchFixtureGroup->id;  
+				$_actionDesc  = 'Tournament Match Fixture Participant Teams- [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
+			
+				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+			}*/
+			
+		return $_flag; 
+	}
+	// registration task approval function
 	public static function processApproval ( $_orgID, $_orgTokenID, $_tournamentGroupID, $_tournamentGroupTokenID, $_userID, $_userTokenID ) 
 	{
 		$_flag = true;   
@@ -441,7 +458,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				$_actionObject  = 'Match Fixture ID: '.$_matchFixtureGroup->id;  
 				$_actionDesc  = 'Tournament Match Fixture Participant Teams- [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
 			
-				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
+				$_flag1 = SystemLogFileTable::processNew ($_omakeCandidateObjectrgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
 			}*/
 			
 		return $_flag; 

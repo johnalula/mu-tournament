@@ -6,6 +6,7 @@
 					<th>TIME</th>
 					<th>SEX</th>
 					<th>EVENT</th> 
+					<th align="center">...</th> 
 					<th>GROUP</th>
 					<th>ROUND</th>
 					<th>STATUS</th>
@@ -19,16 +20,19 @@
 					<?php echo ++$_key ?> 
 				</td>
 				<td>
-					<?php echo $_matchFixture->matchTime ?>
+					<?php echo $_matchFixture->matchTime ? $_matchFixture->matchTime:$_matchFixture->fixtureGroupMatchTime ?>
 				</td>
 				<td>
-					<?php echo TournamentCore::processGenderValue($_matchFixture->teamGroupGenderCategoryID) ?>
+					<?php echo TournamentCore::processGenderAlias($_matchFixture->teamGroupGenderCategoryID) ?>
 				</td> 
 				<td>
 					<a href="<?php echo url_for('competition/fixture?match_fixture_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	
-					<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName) ?>
+					<?php echo $_matchFixture->sportGameName ?>
 					</a>
 				</td> 
+				<td>
+					<?php echo $_matchFixture->matchContestantMode == TournamentCore::$_PAIR_TEAM ? $_matchFixture->selectCandidateParticipantTeams():'' ?>
+				</td>
 				<td>
 					<?php echo $_matchFixture->sportGameGroupName ?>
 				</td>

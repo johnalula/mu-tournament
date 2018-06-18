@@ -107,7 +107,7 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 								prtTm.id as teamID, prtTm.token_id as teamTokenID, prtTm.team_name as partcipantTeamName, prtTm.alias as partcipantTeamAlias, prtTm.country_id as teamCountryID,
 								 
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.id as tournamentAlias,
-								prsn.id as personID, prsn.name as memberName, prsn.middle_name as memberMiddleName, prsn.last_name as memberLastName, prsn.full_name as memberFullName,
+								prsn.id as personID, prsn.name as memberName, prsn.middle_name as memberMiddleName, prsn.last_name as memberLastName, prsn.full_name as memberFullName, prsn.party_code_number as partyCodeNumber,
 								
 								((SELECT COUNT(tmMbrPrt1.id) FROM TeamMemberParticipantRole tmMbrPrt1 WHERE tmMbrPrt1.team_member_participant_id = tmMbrPrt.id AND tmMbrPrt1.team_member_participant_token_id = ".sha1."(".md5."("."tmMbrPrt.token_id)) AND tmMbrPrt1.confirmed_status=".TournamentCore::$_INITIATED."  AND tmMbrPrt1.grouped_status=".TournamentCore::$_INITIATED."  AND tmMbrPrt1.status=".TournamentCore::$_PENDING." AND tmMbrPrt1.active_flag IS FALSE )) as countTeamMemberParticipantRoles,
 		";	

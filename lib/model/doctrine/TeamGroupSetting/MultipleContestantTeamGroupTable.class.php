@@ -50,6 +50,7 @@ class MultipleContestantTeamGroupTable extends PluginMultipleContestantTeamGroup
 			$_nw->gender_category_id = trim($_genderCategory); 
 			$_nw->group_team_number_mandatory_flag = $_mandatoryFlag ? trim($_mandatoryFlag):false; 
 			$_nw->start_date = trim($_startDate); 
+			//$_nw->confirmed_flag = false;  
 			$_nw->active_flag = false;  
 			$_nw->approval_status = $_apporvalStatus ? trim($_apporvalStatus):TournamentCore::$_INITIATED;    
 			$_nw->status = $_groupStatus ? trim($_groupStatus):TournamentCore::$_INITIATED;   

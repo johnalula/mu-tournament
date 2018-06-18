@@ -26,6 +26,8 @@
 					<?php echo $_tournamentMatchFixtureParticipant->participantTeamName.' ( '.$_tournamentMatchFixtureParticipant->participantTeamAlias.' ) ' ?>
 				</td> 
 				<td >
+					<?php  $_contryFlag = 'flags/'.$_tournamentMatchFixtureParticipant->teamCountry ?>
+					<img style="max-width:45px;" src="<?php echo image_path($_contryFlag) ?>" alt="First slide">&nbsp;
 					<?php echo SystemCore::processCountryValue($_tournamentMatchFixtureParticipant->teamCountry)  ?>
 				</td> 
 				<td align="center">

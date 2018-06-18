@@ -9,10 +9,10 @@
 					<h2 class="ui-theme-panel-header">
 						<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
 						<span class="ui-header-status-icon">
-							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
-							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
+							<img title="<?php echo $_tournamentSportGame->gameCategoryName ?>" src="<?php echo image_path($_tournamentSportGame->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
+							<img title="<?php echo $_tournamentSportGame->gameCategoryName ?>" src="<?php echo image_path($_tournamentSportGame->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Match Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->tournamentMatchFullNumber.' )'  ?>
+						<?php echo __('Tournament Sport Games').' ( Sport Game: '.$_tournamentSportGame->sportGameName.' ( '.$_tournamentSportGame->gameCategoryName.' ) - Code #: '.$_tournamentSportGame->sportGameNumber.' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -25,7 +25,7 @@
 				<!-- Begining of toolbar -->
 					<div class="ui-toolbar-menu-box ui-panel-content-border">
 						<div class="ui-toolbar-menu">
-							xx
+							<?php include_partial('action_toolbar', array('_tournamentSportGame' => $_tournamentSportGame)) ?> 
 						</div>
 					</div>
 					<!--    End of toolbar      -->
@@ -33,7 +33,7 @@
 					<div class="ui-panel-content-box">
 						<div class="ui-panel-detail-form-container" id=""> 
 							<div class="ui-panel-content-detail"> 
-								<?php include_partial('sport_game_view', array('_sportGame' => $_sportGame)) ?> 
+								<?php include_partial('sport_game_view', array('_tournamentSportGame' => $_tournamentSportGame)) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
 
@@ -46,7 +46,7 @@
 												<li class="active">
 													<a href="#ui-main-tab-one" data-toggle="tab">
 														<img class="" src="<?php echo image_path('settings/team') ?>">
-														<?php echo __('Teams') ?>
+														<?php echo __('Participant Teams') ?>
 													</a>
 												</li>  
 												<li class="">
@@ -74,7 +74,7 @@
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															xx
+															<?php include_partial('footer_action_toolbar', array()) ?> 
 														</div> 
 													</div><!-- end of ui-filter-list -->
 												</div>
@@ -89,7 +89,7 @@
 											<div class="ui-panel-footer-default ui-panel-footer-margin">
 												<div class="ui-panel-list-pagination-default">
 													<div class="ui-panel-list-pagination">
-														xx
+														&nbsp;
 													</div>
 												</div>
 											</div>
@@ -101,7 +101,7 @@
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															xx
+															&nbsp;
 														</div> 
 													</div><!-- end of ui-filter-list -->
 												</div>
@@ -116,7 +116,7 @@
 											<div class="ui-panel-footer-default ui-panel-footer-margin">
 												<div class="ui-panel-list-pagination-default">
 													<div class="ui-panel-list-pagination">
-														xx
+														&nbsp;
 													</div>
 												</div>
 											</div>
@@ -127,7 +127,7 @@
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															xx
+															&nbsp;
 														</div> 
 													</div><!-- end of ui-filter-list -->
 												</div>
@@ -142,15 +142,12 @@
 											<div class="ui-panel-footer-default ui-panel-footer-margin">
 												<div class="ui-panel-list-pagination-default">
 													<div class="ui-panel-list-pagination">
-														xx
+														&nbsp;
 													</div>
 												</div>
 											</div>
 										</div><!-- end of ui-tab-content --> 
-										
 										 <!-- Begining of toolbar -->
-										 
-										
 									</div><!-- end of ui-tab-content -->  
 						
 								</div><!-- end of ui-main-tab-box --> 

@@ -24,23 +24,23 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="<?php echo url_for('dashboard/index') ?>">
+								<a href="#">
 									<img class="navbar-img" src="<?php echo image_path('settings/registration') ?>"><?php echo __('Control Panel') ?>
 								</a>
 							</li>
 							<li>
-								<a href="<?php echo url_for('sales/index') ?>">
+								<a href="#">
 									<img class="navbar-img" src="<?php echo image_path('settings/sales') ?>"><?php echo __('Global Configuration') ?>
 								</a>
 							</li>  
 							<li role="separator" class="divider"></li> 
 							<li>
-								<a href="<?php echo url_for('payment/index') ?>">
+								<a href="#">
 									<img class="navbar-img" src="<?php echo image_path('settings/course') ?>"><?php echo __('System Info') ?>
 								</a>
 							</li> 
 							<li>
-								<a href="<?php echo url_for('system_setting/index') ?>">
+								<a href="#">
 									<img class="navbar-img" src="<?php echo image_path('settings/code_generator') ?>"><?php echo __('Code Generator') ?>
 								</a>
 							</li>
@@ -69,12 +69,7 @@
 								<a href="<?php echo url_for('tournament_setup/index') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/sport_games') ?>"><?php echo __('Game Setup') ?>
 								</a>
-							</li>  
-							<li class="">
-								<a href="<?php echo url_for('tournament_setup/index') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/game_types') ?>"><?php echo __('Tournament Vanue') ?>
-								</a>
-							</li>  
+							</li>   
 						</ul>
 					</li>  
 				<?php endif; ?>
@@ -116,11 +111,6 @@
 								<a href="<?php echo url_for('tournament_match/team') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('Team Standings') ?>
 								</a>
-							</li>
-							<li class="">
-								<a href="<?php echo url_for('tournament_match/award') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/tournament_match') ?>"><?php echo __('Awards') ?>
-								</a>
 							</li> 
 						</ul>
 					</li>  
@@ -146,65 +136,18 @@
 								</a>
 							</li> 
 							<li>
-								<a href="<?php echo url_for('organization/index') ?>">
+								<a href="#">
 									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('Contestants') ?>
 								</a>
 							</li>
 							<li class="">
-								<a href="<?php echo url_for('employee/index') ?>">
+								<a href="#">
 									<img class="navbar-img" src="<?php echo image_path('settings/employees') ?>"><?php echo __('People') ?>
 								</a>
 							</li> 
 						</ul>
 					</li>   
-				<?php endif; ?>
-				<?php if($sf_user->canAccess(ModuleCore::$_ADMINISTRATOR) && ($sf_user->getAttribute('userRoleTypeID') == UserCore::$_SUPER_ADMINISTRATOR || $sf_user->getAttribute('userRoleTypeID') == UserCore::$_ADMINISTRATOR) ): ?>
-					<li class="dropdown <?php echo ($sf_request->getParameter('module') == 'school' || $sf_request->getParameter('module') == 'school_setting' || $sf_request->getParameter('module') == 'campus' ) ? 'active':'' ?>">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							<img class="navbar-nav-img" src="<?php echo image_path('settings/system_setting') ?>"><span class="ui-hot-key"></span>
-							<?php echo __('Adminitrator') ?><span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu"> 
-							<li class="<?php echo ($sf_request->getParameter('module') == 'system_setting') ? 'active':'' ?>">
-								<a href="<?php echo url_for('school/calendar') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/system_setting') ?>"><?php echo __('Manage') ?>
-								</a>
-							</li> 
-							<li role="separator" class="divider"></li> 
-							<li class="<?php echo ($sf_request->getParameter('module') == 'currency') ? 'active':'' ?>">
-								<a href="<?php echo url_for('system_setting/currency') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/currency') ?>"><?php echo __('Users') ?>
-								</a>
-							</li>
-							<li>
-								<a href="<?php echo url_for('system_setting/unit') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/group') ?>"><?php echo __('Groups') ?>
-								</a>
-							</li> 
-							<li>
-								<a href="<?php echo url_for('system_setting/unit') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/user_role') ?>"><?php echo __('User Roles') ?>
-								</a>
-							</li> 
-							<li role="separator" class="divider"></li> 
-							<li>
-								<a href="<?php echo url_for('system_setting/unit_conversion') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/key') ?>"><?php echo __('Access Levels') ?>
-								</a>
-							</li> 
-							<li>
-								<a href="<?php echo url_for('administrator/activity_log') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/user_activities') ?>"><?php echo __('User Activities') ?>
-								</a>
-							</li> 
-							<li>
-								<a href="<?php echo url_for('administrator/module') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/module') ?>"><?php echo __('Module Setting') ?>
-								</a>
-							</li> 
-						</ul>
-					</li>  
-				<?php endif; ?>
+				<?php endif; ?> 
 				<?php if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):  ?> 
 					<li class="dropdown">
 						<a href="<?php echo url_for('report/index') ?>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -212,17 +155,17 @@
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a href="<?php echo url_for('report/account_receivable') ?>">
+								<a href="#">
 									<img class="navbar-img" src="<?php echo image_path('settings/user') ?>"><?php echo __('Fixture Result') ?>
 								</a>
 							</li>
 							<li>
-								<a href="<?php echo url_for('report/account_payable') ?>">
+								<a href="#">
 									<img class="navbar-img" src="<?php echo image_path('settings/user') ?>"><?php echo __('Match Result') ?>
 								</a>
 							</li>
 							<li>
-								<a href="<?php echo url_for('report/general_ledger') ?>">
+								<a href="#">
 									<img class="navbar-img" src="<?php echo image_path('settings/group') ?>"><?php echo __('Tournament Result') ?>
 								</a>
 							</li>  

@@ -7,7 +7,7 @@
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('result', array( '_candidateMatchFixtureGroup' => $_candidateMatchFixtureGroup, '_matchFixtureGroupParticipants' => $_matchFixtureGroupParticipants )) ?> 
+				<?php include_partial('result', array( '_tournamentMatchFixtureGroup' => $_tournamentMatchFixtureGroup, '_candidateMatchFixtureParticipants' => $_candidateMatchFixtureParticipants )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -45,147 +45,19 @@
  
 
 <script>
-	$('#createProduct').click(function(){
-		var url = '<?php echo url_for('product/createProduct')?>'; 
-		var formName = 'createProductForm';
-		var data = $("form#createProductForm").serialize();
-		var datas = generateValidData (formName);
+	
+	function updateTournamentMatchFixtureParticipantResultFunction (matchFixtureParticipantID) {
+		var url = '<?php echo url_for('tournament_fixture/updateTournamentMatchFixtureGroupParticipantResult')?>'; 
+		var matchFixtureParticipantTokenID = $('#updateTournamentMatchParticipantMedalAward-'+matchFixtureParticipantID).attr('rel'); 
+		
+		var datas = 'fixture_group_participant_id='+matchFixtureParticipantID+'&fixture_group_participant_token_id='+matchFixtureParticipantTokenID+'&match_fixture_group_id='+document.getElementById('match_fixture_group_id').value+'&match_fixture_group_token_id='+document.getElementById('match_fixture_group_token_id').value+'&fixture_group_participant_rank_number='+document.getElementById('matchFixtureGroupParticipantRankNumber_'+matchFixtureParticipantID).value+'&fixture_group_participant_position_number='+document.getElementById('matchFixtureGroupParticipantPositionNumber_'+matchFixtureParticipantID).value+'&fixture_group_participant_number='+document.getElementById('matchFixtureGroupParticipantNumber_'+matchFixtureParticipantID).value+'&fixture_group_participant_time_result='+document.getElementById('matchFixtureGroupParticipantTimeResult_'+matchFixtureParticipantID).value+'&fixture_group_participant_qualification_status='+document.getElementById('matchFixtureGroupParticipantResultStatus_'+matchFixtureParticipantID).value+'&fixture_group_participant_medal_award='+document.getElementById('matchFixtureGroupParticipantMedalAward_'+matchFixtureParticipantID).value;
 		processEntry(datas, url )
 		//alert(datas);
 		return true; 
-	});
-	$('.selectCandidateProductCategory').click(function() {   
-		var url = '<?php echo url_for('product/candidateParentCategory')?>'; 
-		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-parent-categorys';   
-		var data = '';
-		processDataSelection(data, idName, url );		 
-	}); 
-	$('.selectCandidateParentProduct').click(function() {   
-		var url = '<?php echo url_for('product/candidateParentCategory')?>'; 
-		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-products';   
-		var data = '';
-		processDataSelection(data, idName, url );		 
-	}); 
-	$('.selectCandidateGLSalesAccount').click(function() {   
-		var url = '<?php echo url_for('product/candidateAccountCharts')?>'; 
-		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-account-charts';   
-		var data = '';
-		processDataSelection(data, idName, url );		 
-	}); 
-	$('.selectCandidateGLInventoryAccount').click(function() {   
-		var url = '<?php echo url_for('product/candidateParentCategory')?>'; 
-		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-account-charts';   
-		var data = '';
-		processDataSelection(data, idName, url );		 
-	}); 
-	$('.selectCandidateGLCoSAccount').click(function() {   
-		var url = '<?php echo url_for('product/candidateParentCategory')?>'; 
-		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-account-charts';   
-		var data = '';
-		processDataSelection(data, idName, url );		 
-	}); 
-	$('.selectProductLocation').click(function() {   
-		var url = '<?php echo url_for('product/candidateParentCategory')?>'; 
-		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-parent-categorys';   
-		var data = '';
-		processDataSelection(data, idName, url );		 
-	}); 
+	}
 	 
-	
-	//*********************************/
-	
-	$("#insertModalOneData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("product_category_id").value = listArr[0];
-			document.getElementById("product_category_token_id").value = listArr[1];  
-			document.getElementById("product_category_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			document.getElementById("product_name").value = listArr[2];    
-			document.getElementById("category_class_id").value = listArr[5];  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#productCategoryModal').modal('hide');
-		return e.preventDefault();
-	});
-	
-	$("#insertModalTwoData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("parent_product_id").value = listArr[0];
-			document.getElementById("parent_product_token_id").value = listArr[1];  
-			document.getElementById("parent_product_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			document.getElementById("product_name").value = listArr[2];  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#parentProductModal').modal('hide');
-		return e.preventDefault();
-	});
-	
-	$("#insertModalThreeData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("gl_sales_account_id").value = listArr[0];
-			document.getElementById("gl_sales_account_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#glSalesAccountModal').modal('hide');
-		return e.preventDefault();
-	});
-	$("#insertModalFourData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("gl_inventory_account_id").value = listArr[0];
-			document.getElementById("gl_inventory_account_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#glInventoryAccountModal').modal('hide');
-		return e.preventDefault();
-	});
-	$("#insertModalFiveData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("gl_cos_account_id").value = listArr[0];
-			document.getElementById("gl_cos_account_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#glCoSAccountModal').modal('hide');
-		return e.preventDefault();
-	});
-	$("#insertModalSixData").submit(function(e) { 
-		if($("input[name=selectCandidate]:checked", this).length == 0)
-			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
-			
-			var input = $("input[name=selectCandidate]:checked", this).val();
-			var listArr = input.split("$"); 
-			document.getElementById("gl_sales_account_id").value = listArr[0];
-			document.getElementById("gl_sales_account_name").value = listArr[2]+' ( '+listArr[3]+' )';  
-			$("#createProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelProduct").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#productLocationModal').modal('hide');
-		return e.preventDefault();
-	});
-	
+	 
+	//var datas = 'fixture_group_participant_id='+matchFixtureParticipantID+'&fixture_group_participant_token_id='+matchFixtureParticipantTokenID+'&gold_medal_award='+document.getElementById('participantTeamGoldMedalAward_'+matchFixtureParticipantID).value+'&silver_medal_award='+document.getElementById('matchFixtureGroupParticipantPositionNumber_'+matchFixtureParticipantID).value+'&bronze_medal_award='+document.getElementById('matchFixtureGroupParticipantParticipantNumber_'+matchFixtureParticipantID).value+'&gold_medal_award='+document.getElementById('matchFixtureGroupParticipantTimeResult_'+matchFixtureParticipantID).value+'&silver_medal_award='+document.getElementById('matchFixtureGroupParticipantResultStatus_'+matchFixtureParticipantID).value+'&bronze_medal_award='+document.getElementById('matchFixtureGroupParticipantMedalAward_'+matchFixtureParticipantID).value;
 	 
  
 </script>

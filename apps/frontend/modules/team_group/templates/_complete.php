@@ -74,14 +74,14 @@
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('complete_list', array('_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateParticipantMembers' => $_groupParticipantTeams , '_countGroupParticipantTeams' => $_countGroupParticipantTeams )) ?> 
+													<?php include_partial('complete_list', array('_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateGroupParticipantTeams' => $_candidateGroupParticipantTeams , '_countCandidateGroupParticipantTeams' => $_countCandidateGroupParticipantTeams )) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											
 											<div class="ui-panel-footer-default ui-panel-footer-margin">
 												<div class="ui-panel-list-pagination-default">
 													<div class="ui-panel-list-pagination">
-														<?php include_partial('global/pagination', array('_totalRecords' => $_countGroupParticipantTeams , '_pager'=> 'sport_game')) ?>
+														<?php include_partial('global/pagination', array('_totalRecords' => $_countCandidateGroupParticipantTeams , '_pager'=> 'sport_game')) ?>
 													</div>
 												</div>
 											</div>

@@ -1,12 +1,21 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TEAM_GROUP)):
+	//tournament_team_group_id=1&tournament_team_group_token_id=315290b52d8250fa1acaf151705378d95fcc9bff&sport_game_group_id=2&sport_game_group_token_id=f951a7dfb0a7fb69ff8a37c2ad88b53ace12e726&sport_game_group_name=Group One - 100 Meters (Women) - Running&sport_game_id=1&tournament_id=1&gender_category_id=2&description=
+	
+	
+	//$_candidateParticipantTeams = TournamentTeamGroupTable::selectAllCandidateParticipantTeams ( 1, '315290b52d8250fa1acaf151705378d95fcc9bff', 2, 1, 2, $_keyword );
+	
+	//echo count($_candidateParticipantTeams);
+	
+	//$_tournamentGroup = TournamentTeamGroupTable::makeCandidateObject ( 3, '8f599ee44ed36ebf2b28c66f5aa29f8aec49e1f2');
+	//echo $_tournamentGroup->token_id.' = ';
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('member', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_groupParticipantTeams' => $_groupParticipantTeams, '_countGroupParticipantTeams' => $_countGroupParticipantTeams)) ?> 
+				<?php include_partial('member', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateTeamGroupParticipants' => $_candidateTeamGroupParticipants, '_countGroupParticipantTeams' => $_countGroupParticipantTeams)) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -85,7 +94,6 @@
 	</div><!-- /.modal-dialog -->
 </form>
 </div><!-- /.modal -->
-
 
 
 <!-- Modal -->
@@ -237,6 +245,14 @@
 		//alert(data);
 		$('#candidateGroupParticipantTeamModal').modal('hide');
 		processEntry(data, url )
+		return false; 
+	});  
+	
+	$('#revertTournamentTeamGrouping').click(function(){
+		var url = '<?php echo url_for('team_group/revertTournamentTeamGrouping')?>'; 
+		var data = 'team_group_id='+document.getElementById('tournament_team_group_id').value+'&team_group_token_id='+document.getElementById('tournament_team_group_token_id').value;
+		processEntry(data, url )
+		//alert(data);
 		return false; 
 	});  
 	

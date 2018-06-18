@@ -8,6 +8,7 @@
  * @property string $token_id
  * @property integer $participant_team_medal_standing_id
  * @property string $participant_team_medal_standing_token_id
+ * @property integer $tournament_match_id
  * @property integer $tournament_match_fixture_group_id
  * @property integer $participant_team_member_id
  * @property integer $sport_game_id
@@ -19,6 +20,7 @@
  * @property boolean $active_flag
  * @property integer $status
  * @property clob $description
+ * @property TournamentMatch $TournamentMatch
  * @property TournamentParticipantTeamMedalStanding $TournamentParticipantTeamMedalStanding
  * @property TournamentMatchFixtureGroup $TournamentMatchFixtureGroup
  * @property TournamentMatchTeamMemberParticipant $TournamentMatchTeamMemberParticipant
@@ -44,6 +46,9 @@ abstract class BaseTournamentParticipantTeamMedalStandingDetail extends sfDoctri
         $this->hasColumn('participant_team_medal_standing_token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('tournament_match_id', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('tournament_match_fixture_group_id', 'integer', null, array(
              'type' => 'integer',
@@ -85,6 +90,11 @@ abstract class BaseTournamentParticipantTeamMedalStandingDetail extends sfDoctri
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('TournamentMatch', array(
+             'local' => 'tournament_match_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
         $this->hasOne('TournamentParticipantTeamMedalStanding', array(
              'local' => 'participant_team_medal_standing_id',
              'foreign' => 'id',

@@ -18,13 +18,13 @@
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-product" name="ui-total-data-list-product" value="<?php echo count($_countTournaments) ?>">
-	  <?php foreach ( $_tournamentSportGameGroups as $_key => $_tournamentTeamGroup ): ?>
+	  <?php $_rowNumber = 1; foreach ( $_tournamentSportGameGroups as $_key => $_tournamentTeamGroup ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo SystemCore::processDataID($_tournamentTeamGroup->id) ?>
+				<?php echo SystemCore::processDataID($_rowNumber) ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-00"> 
 				<?php echo $_tournamentTeamGroup->sportGameGroupCode  ?>
@@ -61,6 +61,7 @@
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
+		 <?php $_rowNumber++; ?>
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>

@@ -8,7 +8,7 @@
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('view', array( '_sportGame' => $_sportGame, '_candidateParticipantTeams' => $_candidateParticipantTeams, '_countCandidateParticipantTeams' => $_countCandidateParticipantTeams, '_candidateMenParticipants' => $_candidateMenParticipants, '_countCandidateMenParticipants' => $_countCandidateMenParticipants, '_candidateWomenParticipants' => $_candidateWomenParticipants,'_countCandidateWomenParticipants' => $_countCandidateWomenParticipants )) ?> 
+				<?php include_partial('view', array( '_tournamentSportGame' => $_tournamentSportGame, '_candidateParticipantTeams' => $_candidateParticipantTeams, '_countCandidateParticipantTeams' => $_countCandidateParticipantTeams, '_candidateMenParticipants' => $_candidateMenParticipants, '_countCandidateMenParticipants' => $_countCandidateMenParticipants, '_candidateWomenParticipants' => $_candidateWomenParticipants,'_countCandidateWomenParticipants' => $_countCandidateWomenParticipants )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>

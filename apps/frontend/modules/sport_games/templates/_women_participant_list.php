@@ -18,16 +18,16 @@
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-candidate-participants" name="ui-total-data-list-candidate-participants" value="<?php echo count($_countCandidateParticipants) ?>">
-	  <?php foreach ( $_candidateWomenParticipants as $_key => $_candidateParticipant ): ?>
+	  <?php $_rowNumber = 1; foreach ( $_candidateWomenParticipants as $_key => $_candidateParticipant ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo SystemCore::processDataID($_candidateParticipant->id) ?>
+				<?php echo SystemCore::processDataID($_rowNumber) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_candidateParticipant->memberNumber ?>
+				<?php echo $_candidateParticipant->memberNumber ? $_candidateParticipant->memberNumber:$_candidateParticipant->partyCodeNumber ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-01"> 
 				<?php echo $_candidateParticipant->memberFullName  ?>
@@ -39,7 +39,7 @@
 				<?php echo PersonCore::processPersonRoleValue($_candidateParticipant->memberRoleID) ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo Wordlimit::Wordlimiter($_candidateParticipant->description, 5) ?>
+				<?php echo Wordlimit::Wordlimiter($_candidateParticipant->description, 4) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_candidateParticipant->id ?>" class="ui-table-status-small-icon" id="<?php echo $_candidateParticipant->id ?>">
@@ -60,6 +60,7 @@
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
+		 <?php $_rowNumber++; ?>
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>

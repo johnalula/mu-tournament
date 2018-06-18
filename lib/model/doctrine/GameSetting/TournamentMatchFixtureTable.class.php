@@ -419,23 +419,16 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	
+	
+
 	/*********************************************************
 	********** Candidate selection process *******************
 	**********************************************************/
-	
+
 	//
-	public static function processCandidateSportGameTeamGroups ( $_orgID=null, $_orgTokenID=null, $_tournamentID=null, $_parentMatchID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_sportGameTypeID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	public static function selectCandidateParticipants ( $_matchFixtureGroupID=null, $_matchFixtureGroupTokenID=null, $_sportGameID=null, $_genderCategoryID=null, $_qualificationStatus=null, $_competitionStatus=null, $_status=null) 
    {
-		$_tournamentMatchFixtures = self::processCandidateSelections ( $_tournamentID, $_parentMatchID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameTypeID, $_keyword);
-		//if(!$_groupMemberTeams) { return false; }   
-		$_exclusion = array();   
-		foreach($_tournamentMatchFixtures as $_tournamentMatchFixture) {
-			$_exclusion[] = $_tournamentMatchFixture->sport_game_group_id;
-		} 
-	
-		return SportGameGroupTable::processCandidates ( $_orgID, $_orgTokenID, $_tournamentID, $_sportGameID, $_sportGameTokenID, $_sportGameTypeID, $_genderCategoryID, $_keyword, $_exclusion, $_offset, $_limit);
-		
-		//return TeamGameParticipationTable::processCandidateParticipants ($_tournamentID, $_teamID, $_teamTokenID, $_sportGameID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit );
+		return TournamentMatchTeamMemberParticipantTable::makeCandidateParticipantSelection ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameID, $_genderCategoryID, $_qualificationStatus, $_competitionStatus, $_status );
 	} 
 	 
 }

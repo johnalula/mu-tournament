@@ -121,8 +121,9 @@ class SportGameTable extends PluginSportGameTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.sport_game_number as sportGameNumber, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.active_flag as activeFlag, 
-								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias, gmCat.category_type as gameCategoryType, gmCat.contestant_team_mode as categoryContestantTeamMode,
+		 $_queryFileds = "sprtGm.id, sprtGm.name as sportGameName, sprtGm.alias as sportGameAlias, sprtGm.sport_game_number as sportGameNumber, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.active_flag as activeFlag, sprtGm.start_date as startDate, sprtGm.effective_date as effectiveDate, sprtGm.end_date as endDate, sprtGm.created_at as createdDate,sprtGm.updated_at as updatedDate, 
+		 
+						gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias, gmCat.category_type as gameCategoryType, gmCat.contestant_team_mode as categoryContestantTeamMode,
 								
 						(SELECT MAX(sprtGmGrp1.group_number) FROM TournamentSportGameGroup sprtGmGrp1 WHERE sprtGmGrp1.sport_game_id = sprtGm.id AND sprtGmGrp1.gender_category_id=".TournamentCore::$_MEN." ) as maxSportGameGroupNumberMen,
 								 

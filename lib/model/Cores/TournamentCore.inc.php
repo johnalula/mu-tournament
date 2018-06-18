@@ -810,12 +810,12 @@ class TournamentCore {
 	
 	public static $_FIN = 1;
 	public static $_QFD = 2;
-	public static $_DNS = 3;
-	public static $_DNF = 4;
-	public static $_DISQ = 5;
-	public static $_OTHER_STATUS = 6; 
+	public static $_BQFD = 3;
+	public static $_DISQ = 4;
+	public static $_DNS = 5;
+	public static $_DNF = 6; 
 
-	public static $_COMPETITION_STATUSES = array ( 1 => 'Finished', 2 => 'Qualified', 3 => 'Did Not Start', 4 => 'Did Not Finish', 5 => 'Disqualified', 6 => 'Other Status');
+	public static $_COMPETITION_STATUSES = array ( 1 => 'Finished', 2 => 'Qualified', 3 => 'Best Qualified', 4 => 'Disqualified', 5 => 'Did Not Start', 6 => 'Did Not Finish');
 	
 	public static function processCompetitionStatuses ( ) 
 	{
@@ -863,10 +863,13 @@ class TournamentCore {
 	{
 		switch($_round) {			
 			case self::$_FIN:
-				return 'FIN';
+				return 'F';
 			break;
 			case self::$_QFD:
-				return 'QFD';
+				return 'Q';
+			break;
+			case self::$_BQFD:
+				return 'q';
 			break;
 			case self::$_DNF:
 				return 'DNF';
@@ -876,9 +879,6 @@ class TournamentCore {
 			break;
 			case self::$_DISQ:
 				return 'DISQ';
-			break;
-			case self::$_OTHER_STATUS:
-				return 'OTHER';
 			break; 
 		}
 	}
@@ -890,6 +890,9 @@ class TournamentCore {
 			break;
 			case self::$_QFD:
 				return 'QFD';
+			break;
+			case self::$_BQFD:
+				return 'BQFD';
 			break;
 			case self::$_DNF:
 				return 'DNF';
@@ -1142,7 +1145,7 @@ class TournamentCore {
 			return null; 
 		} catch ( Exception $_e ) {
 			return null; 
-		}
+		} 
 	}
 
 	public static function processEventTypeValue ($_id )
@@ -1979,5 +1982,5 @@ class TournamentCore {
 				return 'pair_players';
 			break; 
 		}
-	}
+	} 
 }

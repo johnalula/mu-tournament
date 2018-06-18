@@ -17,23 +17,13 @@ class TournamentParticipantTeamMedalStandingTable extends PluginTournamentPartic
         return Doctrine_Core::getTable('TournamentParticipantTeamMedalStanding');
     }
     //
-	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description, $_userID, $_userTokenID )
+	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description)
 	{
 		 $_flag = true;
 				
-				$_participantMedalAwards = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description );
-		
-			/*if($_orgID && $_userID) { 
-				
-				$_actionID = SystemCore::$_CREATE; 
-				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  
-				$_actionObject  = 'Match ID: '.$_tournamentMatch->id;  
-				$_actionDesc  = 'Tournament Match - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
+				$_participantTeamStanding = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description );
 			
-				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
-			}*/
-			
-		return $_participantMedalAwards;
+		return $_participantTeamStanding;
 	}
 	//
 	public static function processCreate ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description, $_userID, $_userTokenID )
@@ -41,45 +31,22 @@ class TournamentParticipantTeamMedalStandingTable extends PluginTournamentPartic
 		 $_flag = true;
 				
 				$_participantMedalAwards = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description );
-		
-			/*if($_orgID && $_userID) { 
-				
-				$_actionID = SystemCore::$_CREATE; 
-				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  
-				$_actionObject  = 'Match ID: '.$_tournamentMatch->id;  
-				$_actionDesc  = 'Tournament Match - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
-			
-				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
-			}*/
 			
 		return $_participantMedalAwards;
 	}
 	//
-	public static function processGenerate ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_description, $_userID, $_userTokenID )
+	public static function processGenerate ( $_orgID, $_orgTokenID, $_tournamentID, $_description, $_userID, $_userTokenID )
 	{
 		 $_flag = true;
 				
-				$_participantTeams = TeamTable::processAll ( $_orgID, $_orgTokenID, $_tournamentID, true, $_keyword);
+				$_participantTeams = TeamTable::processAll ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentID, true, $_keyword);
 				
 				foreach ( $_participantTeams as $_key => $_participantTeam ) {
 					
-					$_participantMedalAwards = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeam->id, $_participantTeam->token_id, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeam->teamName, $_status, $_description );
+					$_participantTeamStanding = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeam->id, $_participantTeam->token_id, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeam->teamName, $_status, $_description );
 				}
-				
-				
-				
-		
-			/*if($_orgID && $_userID) { 
-				
-				$_actionID = SystemCore::$_CREATE; 
-				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  
-				$_actionObject  = 'Match ID: '.$_tournamentMatch->id;  
-				$_actionDesc  = 'Tournament Match - [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
-			
-				$_flag1 = SystemLogFileTable::processNew ($_orgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
-			}*/
-			
-		return $_participantMedalAwards;
+				 
+		return $_participantTeamStanding;
 	}
 	//
 	public static function processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description )

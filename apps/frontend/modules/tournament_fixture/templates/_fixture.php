@@ -33,7 +33,7 @@
 						</div  
 						<!--    End of toolbar      -->
 						<div class="ui-panel-grid-list" id="fixture"> 
-							<?php include_partial('list', array( '_candidateMatchFixtureGroups' => $_candidateMatchFixtureGroups )) ?> 
+							<?php include_partial('fixture_list', array( '_candidateMatchFixtureGroups' => $_candidateMatchFixtureGroups )) ?> 
 						</div> <!-- ui-panel-content -->  
 					</div><!-- ui-panel-content-box -->
 					

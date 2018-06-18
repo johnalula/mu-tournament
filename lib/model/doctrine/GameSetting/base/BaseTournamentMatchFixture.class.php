@@ -50,6 +50,7 @@
  * @property boolean $complete_flag
  * @property integer $competition_status
  * @property integer $fixture_round_status
+ * @property integer $duration_status
  * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
@@ -234,6 +235,9 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'default' => 1,
              ));
         $this->hasColumn('fixture_round_status', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('duration_status', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('process_status', 'integer', null, array(

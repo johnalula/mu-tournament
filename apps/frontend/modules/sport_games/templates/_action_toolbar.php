@@ -46,6 +46,16 @@
 					</a>
 				</li>
 			<?php endif; ?>
+			
+			<?php if($sf_request->getParameter('action') == 'view'): ?>
+				 
+				<li class="">
+					<a href="<?php echo url_for('sport_games/index') ?>" title="<?php echo __('Back to Sport Game List') ?>" id="backToSportGame" class="" >
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/details') ?>">
+						<?php echo __('List') ?>
+					</a>
+				</li>
+			<?php endif; ?>
 			 
 		<?php endif; ?>
 		 

@@ -8,50 +8,43 @@
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
 			<th class="" style="text-align:left!important;"><?php echo __('Team').' #' ?></th>
 			<th class="ui-th-left-text" title="<?php echo __('Product Name') ?>"><?php echo  __('Team Name') ?></th>  
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Member Role') ?>"><?php echo  __('Role') ?></th>   
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Event') ?>"><?php echo  __('Event') ?></th>  
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Type') ?>"><?php echo  __('Type') ?></th>  
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Description') ?>"><?php echo  __('Description') ?></th>   
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
+			<th class="ui-th-left-text" title="<?php echo __('Team Name') ?>"><?php echo  __('Team Alias') ?></th>   
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Country Name') ?>"><?php echo  __('Country') ?></th>   
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Group') ?>"><?php echo  __('Description') ?></th>   
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
 			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('...') ?></th>  
 			<th></th>
 		 </tr>
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-product" name="ui-total-data-list-product" value="<?php echo count($_countTournaments) ?>">
-	  <?php foreach ( $_candidateParticipantTeams as $_key => $_candidateParticipantTeam ): ?>
+	  <?php $_rowNumber = 1; foreach ( $_candidateParticipantTeams as $_key => $_candidateParticipantTeam ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
-					<?php echo SystemCore::processDataID($_candidateParticipantTeam->id) ?>
+					<?php echo SystemCore::processDataID($_rowNumber) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00">
-					<?php echo $_candidateParticipantTeam->id ?>
+				<?php echo $_candidateParticipantTeam->teamNumber ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
 				<?php echo $_candidateParticipantTeam->teamName  ?>
-			</td> 
-			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_candidateParticipantTeam->teamAlias ?> 
 			</td>  
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_candidateParticipantTeam->id ? 'True':'False' ?>
-			</td>
-			
-			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_candidateParticipantTeam->id ?>
+			<td class="ui-td-left-text ui-td-xsmall-1"> 
+				<?php echo $_candidateParticipantTeam->teamFullAlias  ?>
 			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_candidateParticipantTeam->id ?>
-			</td> 
-			<td class="ui-td-right-text ui-td-xsmall-00">
-				<?php echo number_format($_candidateParticipantTeam->description,2)  ?>
+			<td class="ui-td-left-text ui-td-xsmall-1"> 
+				<?php echo SystemCore::processCountryValue($_candidateParticipantTeam->teamCountry) ?> 
+			</td>   
+			<td class="ui-td-left-text ui-td-xlarg" title="<?php echo $_candidateParticipantTeam->description ?>">
+				<?php echo Wordlimit::Wordlimiter($_candidateParticipantTeam->description, 5) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_candidateParticipantTeam->id ?>" class="ui-table-status-small-icon" id="<?php echo $_candidateParticipantTeam->id ?>">
-					<img title="<?php echo $_candidateParticipantTeam->teamName ?>" src="<?php echo image_path($_candidateParticipantTeam->id ? 'status/approved':'status/disabled')  ?>"> 
+					<img title="<?php echo $_candidateParticipantTeam->teamName ?>" src="<?php echo image_path($_candidateParticipantTeam->activeFlag ? 'status/active':'status/other')  ?>"> 
+					<img title="<?php echo $_candidateParticipantTeam->teamName ?>" src="<?php echo image_path($_candidateParticipantTeam->status == TournamentCore::$_ACTIVE ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
 			<td class="ui-table-action ui-table-list-action-box-1">
@@ -68,16 +61,17 @@
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
+		 <?php $_rowNumber++; ?>
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=9></td>
+			<td class="ui-table-td-footer" colspan=8></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=11>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=10>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

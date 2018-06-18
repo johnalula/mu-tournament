@@ -100,6 +100,14 @@
 		
 		<?php if(($sf_request->getParameter('team_group_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
 			<?php if($sf_request->getParameter('action') == 'member'): ?>
+				<?php if($_object->hasInitiatedTournamentSportGameGroup && $_object->activeFlag ): ?>
+					<li class="ui-nav-button ">
+						<button id="revertTournamentTeamGrouping"  class="ui-nav-active-btn"  title="<?php echo __('Complete Team Grouping').' ( Name: '.$_object->gameCategoryName.' - Code #: '.$_object->tournamentGroupFullCode.' )' ?>">
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/revert') ?>">
+							<?php echo __('Revert') ?>
+						</button> 
+					</li>	 
+				<?php endif; ?>
 				<li class="ui-nav-button">
 					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('team_group', 'team_group_id', 'complete', $_object)) ?>">
 						<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">

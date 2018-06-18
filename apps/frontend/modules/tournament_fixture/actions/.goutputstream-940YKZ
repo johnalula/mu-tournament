@@ -63,7 +63,7 @@ class tournament_fixtureActions extends sfActions
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
 		
-		$_flag =  TournamentParticipantTeamMedalStandingTable::processUpdate ( $_orgID, $_orgTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_matchFixtureGroupTokenID, $_matchFixtureParticipantID, $_matchFixtureParticipantTokenID, $_participantRankNumber, $_participantPositionNumber, $_participantBIBNumber, $_participantTimeResult, $_qualificationStatus, $_participantMedalAward, $_userID, $_userTokenID );  
+		$_flag =  TournamentParticipantTeamMedalStandingTable::processUpdate ( $_orgID, $_orgTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_matchFixtureParticipantID, $_matchFixtureParticipantID, $_matchFixtureParticipantTokenID, $_participantRankNumber, $_participantPositionNumber, $_participantBIBNumber, $_participantTimeResult, $_qualificationStatus, $_participantMedalAward, $_userID, $_userTokenID );  
 			 
 		return $_flag ? true:false;
 

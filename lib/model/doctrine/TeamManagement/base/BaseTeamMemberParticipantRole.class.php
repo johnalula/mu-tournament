@@ -16,6 +16,8 @@
  * @property boolean $confirmed_flag
  * @property boolean $grouped_flag
  * @property boolean $active_flag
+ * @property boolean $qualified_flag
+ * @property integer $qualification_status
  * @property integer $confirmed_status
  * @property integer $grouped_status
  * @property integer $status
@@ -72,6 +74,14 @@ abstract class BaseTeamMemberParticipantRole extends sfDoctrineRecord
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
+             ));
+        $this->hasColumn('qualified_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => true,
+             ));
+        $this->hasColumn('qualification_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 5,
              ));
         $this->hasColumn('confirmed_status', 'integer', null, array(
              'type' => 'integer',

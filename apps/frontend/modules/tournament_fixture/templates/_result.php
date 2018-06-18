@@ -1,4 +1,7 @@
 <div class="ui-panel-container" id=""> 
+
+	<input type="hidden" class="form-control" id="match_fixture_group_id" name="match_fixture_group_id" value="<?php echo $sf_request->getParameter('match_fixture_id') ?>"> 
+	<input type="hidden" class="form-control" id="match_fixture_group_token_id" name="match_fixture_group_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
 	<div class="ui-panel-grid-box" id=""> 
 		<!-- First panel --> 
 		<div class="col-sm-12" id="" style="">  
@@ -7,12 +10,12 @@
 				
 					<div class="ui-panel-header-default">
 						<h2 class="ui-theme-panel-header">
-							<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Tournament Match management') ?>">
+							<img src="<?php echo image_path('settings/championship') ?>" title="<?php echo __('Tournament Match Match Fixture Result Management') ?>">
 							<span class="ui-header-status-icon">
-								<img title="<?php echo $_candidateMatchFixtureGroup->gameCategoryName ?>" src="<?php echo image_path($_candidateMatchFixtureGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
-								<img title="<?php echo $_candidateMatchFixtureGroup->sportGameName ?>" src="<?php echo image_path($_candidateMatchFixtureGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
+								<img title="<?php echo $_tournamentMatchFixtureGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatchFixtureGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
+								<img title="<?php echo $_tournamentMatchFixtureGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatchFixtureGroup->activeFlag ? 'status/active':'status/other')  ?>"> 
 							</span>
-							<?php echo __('Match Fixture').' ( Game: '.$_candidateMatchFixtureGroup->sportGameName.' ('.TournamentCore::processGenderAlias($_candidateMatchFixtureGroup->teamGroupGenderCategoryID).') - Heat: '.$_candidateMatchFixtureGroup->matchFixtureHeatName.' - Round: '.TournamentCore::processRoundModeValue($_candidateMatchFixtureGroup->matchFixtureGroupRoundMode).' )'  ?>
+							<?php echo __('Match Fixture Result').' ( Sport Game: '.$_tournamentMatchFixtureGroup->sportGameName.' ( '.TournamentCore::processGenderAlias($_tournamentMatchFixtureGroup->teamGroupGenderCategoryID).' ) - ( '.$_tournamentMatchFixtureGroup->gameCategoryName.' ) - Code #: '.$_tournamentMatchFixtureGroup->tournamentMatchFixtureFullNumber.' )'  ?>
 						</h2>
 						<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 							<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow "><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -21,7 +24,7 @@
 					</div><!-- ui-panel-header-default -->
 					
 					<div class="" id="ui-list-collapsible-panel-one">
-					<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
+						<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
 					<!-- Begining of toolbar -->
 						<div class="ui-toolbar-menu-box  ui-toolbar-border">
 							<div class="ui-toolbar-menu">
@@ -30,14 +33,14 @@
 										<?php include_partial('action_toolbar', array('_participantTeams' => $_participantTeams)) ?> 
 									</div>
 									<div class="col-sm-6">
-										<?php include_partial('filter', array( )) ?> 
+										&nbsp;
 									</div>
 								</div><!-- end of ui-filter-list -->
 							</div>
 						</div  
 						<!--    End of toolbar      -->
 						<div class="ui-panel-grid-list-form">
-							<?php include_partial('result_list', array( '_matchFixtureGroupParticipants' => $_matchFixtureGroupParticipants )) ?> 
+							<?php include_partial('result_list', array( '_candidateMatchFixtureParticipants' => $_candidateMatchFixtureParticipants )) ?> 
 						</div> <!-- ui-panel-content -->  
 					</div><!-- ui-panel-content-box -->
 					
@@ -57,23 +60,4 @@
 	</div><!-- end of ui-panel-grid-box -->
 </div><!-- end of ui-panel-container -->   
 
-
-
-<script>
-	$(document).ready(function()	{ 
-		$('.participantTeamGoldMedalAward').keyup(function(key) {
-			var idValue = $(this).attr('rel');   
-			var goldMedalAward = $(this).val();   
-			var silverMedalAward = $('#participantTeamSilverMedalAward_'+idValue).val();   
-			var bronzeMedalAward = $('#participantTeamBronzMedalAward_'+idValue).val();   
-			//var thisIDName = $(this).attr('id');   
-			//document.getElementById("participantTeamTotalMedalAward_"+idValue).value = parseInt(goldMedalAward)+parseInt(silverMedalAward)+parseInt(bronzeMedalAward);
-			//document.getElementById("sport_game_group_type_id").value = thisIDNumber; 
-			//$('#createSchoolGradePaymentFee').removeAttr("disabled").removeClass("ui-action-toolbar-disabled-menu").addClass("ui-action-toolbar-enabled-menu");
-			return false;
-		}); 
-		 
-	}); 
-</script>
-
-
+ 
