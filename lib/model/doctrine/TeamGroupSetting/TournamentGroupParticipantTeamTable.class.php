@@ -128,6 +128,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 		 
 								sprtGmGrp.id, sprtGmGrp.group_name as sportGameGroupName, sprtGmGrp.group_code as sportGameGroupCode, sprtGmGrp.contestant_team_mode as contestantTeamMode, sprtGmGrp.active_flag as groupActiveFlag, sprtGmGrp.gender_category_id as groupGenderCategoryID, sprtGmGrp.start_date as matchDate,
 								
+								gmGrpTmPrt.team_game_participation_id as teamGameParticipationID,
 								trmnTmGrp.id, 
 								
 								sprtGm.id as sportGameID, sprtGm.token_id as sportGameTokenID, sprtGm.name as sportGameName, sprtGm.sport_game_category_id as matchSportGameCategoryID, sprtGm.contestant_team_mode as gameContestantTeamMode, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, 
@@ -138,6 +139,8 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 								tmPrt.id as teamID, tmPrt.token_id as teamTokenID, tmPrt.team_number as participantTeamNumber, tmPrt.team_name as participantTeamName, tmPrt.alias as participantTeamAlias, tmPrt.country_id as participantTeamCountry, tmPrt.team_city as teamCity, tmPrt.team_number as teamNumber, tmPrt.confirmed_flag as confirmFlag,
 								
 							 (EXISTS (SELECT tmGmPrtn.id FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tmPrt.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tmPrt.token_id)) )) as hasGameParticipation, 
+							 
+							 
 							   
 		";	
 		return $_queryFileds;
@@ -151,6 +154,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -181,6 +185,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -207,13 +212,14 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
-				->innerJoin("gmGrpTmPrt.SportGameGroup sprtGmGrp on gmGrpTmPrt.sport_game_group_id = sprtGmGrp.id ") 
+				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
+				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
-				->innerJoin("sprtGmGrp.GameGroupType grpTyp on sprtGmGrp.game_group_type_id = grpTyp.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")   
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->orderBy("sprtGmGrp.id ASC")
 				->where("sprtGmGrp.id IS NOT NULL");
 				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmt.org_id = ? AND trnmt.org_token_id = ? ", array($_orgID, $_orgTokenID));
@@ -238,13 +244,14 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
-				->innerJoin("gmGrpTmPrt.SportGameGroup sprtGmGrp on gmGrpTmPrt.sport_game_group_id = sprtGmGrp.id ") 
+				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
+				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
-				->innerJoin("sprtGmGrp.GameGroupType grpTyp on sprtGmGrp.game_group_type_id = grpTyp.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")   
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->orderBy("sprtGmGrp.id ASC")
 				->where("sprtGmGrp.id IS NOT NULL");
 				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmt.org_id = ? AND trnmt.org_token_id = ? ", array($_orgID, $_orgTokenID));
@@ -268,6 +275,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -300,6 +308,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -333,6 +342,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -362,6 +372,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -390,6 +401,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -421,6 +433,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -452,6 +465,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -481,6 +495,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -508,6 +523,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -527,6 +543,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
@@ -542,12 +559,15 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
-				->from("TournamentGroupParticipantTeam sprtGmGrp") 
-				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ") 
-				->innerJoin("sprtGmGrp.GameGroupType grpTyp on sprtGmGrp.game_group_type_id = grpTyp.id ")  
+				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
+				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
+				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
+				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
+				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")     
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->where("sprtGmGrp.id IS NOT NULL");
 				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
 				if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("sprtGmGrp.active_flag = ?", $_activeFlag);
@@ -567,6 +587,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
 				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
 				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
 				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 

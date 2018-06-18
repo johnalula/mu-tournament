@@ -101,45 +101,37 @@
 							<div id="navbar" class="navbar-collapse collapse">
 								<ul class="nav navbar-nav">
 									<li class="<?php echo $sf_request->getParameter('module') == 'home' ? 'active':''  ?>"><a href="<?php echo url_for('home/index') ?>">Home</a></li>
-									<li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About AAUG</a>
-										<ul class="dropdown-menu">  
-											<li>
-												<a href="<?php echo url_for('register/new') ?>">
-													<?php echo __('About AAUG') ?>
-												</a>
-											</li> 
-											<li>
-												<a href="<?php echo url_for('register/new') ?>">
-													<?php echo __('About The Event') ?>
-												</a>
-											</li> 
-											<li class="">
-												<a href="<?php echo url_for('register/new') ?>">
-													<?php echo __('AUUS') ?>
-												</a>
-											</li>
-											<li class="<?php echo ($sf_request->getParameter('module') == 'student') ? 'active':'' ?>">
-												<a href="<?php echo url_for('register/new') ?>">
-													<?php echo __('The Manager') ?>
-												</a>
-											</li>
-											<li class="<?php echo ($sf_request->getParameter('module') == 'campus') ? 'active':'' ?>">
-												<a href="<?php echo url_for('register/new') ?>">
-													<?php echo __('Related Links') ?>
-												</a>
-											</li>   
-										</ul>
-									</li>
+									
 									<li>
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Programs</a>
 									</li>
 									<li>
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Competitions</a>
-									</li>
+										<ul class="dropdown-menu">  
+											<li>
+											<li>
+												<a href="<?php echo url_for('register/new') ?>">
+													<?php echo __('Sport Games') ?>
+												</a>
+											</li> 
+											<li class="">
+												<a href="<?php echo url_for('register/new') ?>">
+													<?php echo __('All Fixtures') ?>
+												</a>
+											</li> 
+											<li class="">
+												<a href="<?php echo url_for('register/new') ?>">
+													<?php echo __('Team Standing') ?>
+												</a>
+											</li> 
+										</ul>
+									</li> 
 									<li>
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teams</a>
 									</li>
-									<li><a href="<?php echo url_for('register/new') ?>">Contact Us</a></li>
+									<li>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Participants</a>
+									</li>
 								</ul> 
 								 
 								<?php if(!$sf_user->isAuthenticated()): 	?> 

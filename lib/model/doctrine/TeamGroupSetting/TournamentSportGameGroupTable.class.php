@@ -108,7 +108,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 								
 								((SELECT COUNT(sprtGmGrp2.id) FROM TournamentGroupParticipantTeam sprtGmGrp2 WHERE sprtGmGrp2.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp2.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)))) as countTournamentGroupParticipantTeam,
 								
-								(EXISTS (SELECT sprtGmPrt1.id FROM TeamGameParticipation sprtGmPrt1 WHERE sprtGmPrt1.sport_game_id = sprtGm.id AND sprtGmPrt1.sport_game_token_id = ".sha1."(".md5."("."sprtGm.token_id)) AND sprtGmPrt1.gender_category_id = sprtGmGrp.gender_category_id AND sprtGmPrt1.confirmed_status = ".TournamentCore::$_INITIATED." AND sprtGmPrt1.status = ".TournamentCore::$_PENDING." AND sprtGmPrt1.active_flag IS TRUE AND sprtGmPrt1.confirmed_flag IS FALSE AND sprtGmPrt1.grouped_flag IS FALSE)) as hasPendingTeamGameParticipation,
+								(EXISTS (SELECT sprtGmPrt1.id FROM TeamGameParticipation sprtGmPrt1 WHERE sprtGmPrt1.sport_game_id = sprtGm.id AND sprtGmPrt1.sport_game_token_id = ".sha1."(".md5."("."sprtGm.token_id)) AND sprtGmPrt1.gender_category_id = sprtGmGrp.gender_category_id AND sprtGmPrt1.confirmed_status = ".TournamentCore::$_CONFIRMED." AND sprtGmPrt1.status = ".TournamentCore::$_ACTIVE." AND sprtGmPrt1.active_flag IS TRUE AND sprtGmPrt1.confirmed_flag IS TRUE AND sprtGmPrt1.grouped_flag IS FALSE)) as hasPendingTeamGameParticipation,
 								
 		";	
 		return $_queryFileds;

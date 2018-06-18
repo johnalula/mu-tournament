@@ -413,10 +413,10 @@ TournamentGroupParticipantTeam:
     token_id: { type: string(100) }     
     tournament_id: { type: integer }
     tournament_sport_game_group_id: { type: integer }
-    tournament_sport_game_group_token_id: { type: string(100) }   
-    team_game_participation_id: { type: integer }
+    tournament_sport_game_group_token_id: { type: string(100) }  
     team_id: { type: integer }
-    team_token_id: { type: string(100) }   
+    team_token_id: { type: string(100) }    
+    team_game_participation_id: { type: integer }
     start_date: { type: string(100) }
     effective_date: { type: string(100) }  
     end_date: { type: string(100) }  

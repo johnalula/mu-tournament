@@ -122,6 +122,7 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.id as tournamentAlias,
 							
+								(EXISTS (SELECT tmMbrPrtRol1.id FROM TeamMemberParticipantRole tmMbrPrtRol1 WHERE tmMbrPrtRol1.team_game_participation_id = sprtGmPrt.id AND tmMbrPrtRol1.team_game_participation_token_id = ".sha1."(".md5."("."sprtGmPrt.token_id)) )) as hasTeamMemberSportGameParticipant,
 						
 		";	
 		return $_queryFileds;

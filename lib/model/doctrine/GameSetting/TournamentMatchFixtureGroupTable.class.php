@@ -446,7 +446,6 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->where("mtchFix.id IS NOT NULL");
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
-				if(!is_null($_sportGameTypeID)) $_qry = $_qry->addWhere("sprtGmGrp.sport_game_id = ?", $_sportGameTypeID);    
 				if(!is_null($_genderCategory)) $_qry = $_qry->addWhere("sprtGmGrp.gender_category_id = ?", $_genderCategory);    
 				if(!is_null($_tournamentSession)) $_qry = $_qry->addWhere("mtchFixGrp.tournament_match_session_mode = ?", $_tournamentSession);    
 				if(!is_null($_tournamentDate)) $_qry = $_qry->addWhere("mtchFixGrp.match_date = ?", $_tournamentDate);    
@@ -460,7 +459,7 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 	}
 	
 	// process list selection function 
-   public static function makeCandidateSelections ( $_tournamentID=null, $_sportGameID=null, $_competitionStatus=null, $_approvalStatus=null, $_status=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   public static function makeCandidateSelections ( $_tournamentID=null, $_tournamentSessionMode=null, $_tournamentDate=null, $_competitionStatus=null, $_status=null) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -473,17 +472,14 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
-				->offset($_offset)
-				->limit($_limit) 
 				->orderBy("mtchFix.id DESC")
 				->where("mtchFix.id IS NOT NULL");
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
+				if(!is_null($_tournamentSessionMode)) $_qry = $_qry->addWhere("mtchFixGrp.tournament_match_session_mode = ?", $_tournamentSessionMode);    
 				//if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("mtchFixGrp.approval_status = ?", $_approvalStatus);    
 				if(!is_null($_status)) $_qry = $_qry->addWhere("mtchFixGrp.competition_status = ?", $_status);    
-				//if(!is_null($_status)) $_qry = $_qry->addWhere("mtchFixGrp.status = ?", $_status);    
-				if(!is_null($_keyword) )
-					if(strcmp(trim($_keyword), "") != 0 )
-						$_qry = $_qry->andWhere("gmCat.category_name LIKE ? OR mtchFix.id LIKE ? OR mtchFix.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				//if(!is_null($_status)) $_qry = $_qry->addWhere("mtchFixGrp.status = ?", $_status);      
+				if(!is_null($_tournamentDate)) $_qry = $_qry->addWhere("mtchFixGrp.match_date = ?", $_tournamentDate);    
 				
 			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
 

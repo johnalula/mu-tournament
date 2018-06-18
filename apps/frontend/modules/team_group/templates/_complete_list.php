@@ -13,7 +13,6 @@
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Team Group') ?>"><?php echo  __('# Teams') ?></th>    
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Description') ?>"><?php echo  __('Description') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Team Group Status') ?>"><?php echo  __('Status') ?></th>  
-			<th class="ui-th-left-text" style="text-align:left!important;"><?php echo  __('...') ?></th>  
 			<th></th>
 		 </tr>
 	  </thead>
@@ -50,18 +49,7 @@
 					<img title="<?php echo $_candidateGroupParticipantTeam->id ?>" src="<?php echo image_path($_candidateGroupParticipantTeam->activeFlag ? 'status/approved':'status/disabled')  ?>"> 
 					<img title="<?php echo $_candidateGroupParticipantTeam->id ?>" src="<?php echo image_path($_candidateGroupParticipantTeam->status == TournamentCore::$_ACTIVE  ? 'status/active':'status/pending')  ?>"> 
 				</span>
-			</td> 
-			<td class="ui-table-action ui-table-list-action-box-1">
-				<div class="ui-table-list-action " id="">
-					<ul class="ui-table-action-menu">   
-						<li>   
-							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_candidateGroupParticipantTeam->id ?>" onclick="Javascript:deleteProduct(<?php echo $_candidateGroupParticipantTeam->id ?>);" rel="<?php echo $_candidateGroupParticipantTeam->token_id ?>">	
-							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_candidateGroupParticipantTeam->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
-							</a>  
-						</li> 
-					</ul>
-				</div>
-			</td>
+			</td>  
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
@@ -69,13 +57,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=9></td>
+			<td class="ui-table-td-footer" colspan=8></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=11>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=10>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

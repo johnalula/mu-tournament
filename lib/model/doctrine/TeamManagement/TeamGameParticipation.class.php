@@ -20,10 +20,21 @@ class TeamGameParticipation extends PluginTeamGameParticipation
 	{
 		return (($this->confirm_status !=TournamentCore::$_ACTIVE) && (!$this->confirm_flag)) ? true:false;
 	}
+	//grouped_flag: { type: boolean, default: false } 
+   // confirmed_flag: { type: boolean, default: false } 
+  //  active_flag: { type: boolean, default: false } 
+  //  grouped_status: { type: integer, default: 1  } 
+   // confirmed_status: { type: integer, default: 1  } 
+   // status: { type: integer, default: 1  } 
+    
 	public function makePending ()
 	{
 		$_flag = true;   
-			$this->approval_status = trim(TournamentCore::$_PENDING);   
+			$this->grouped_flag = false;   
+			$this->confirmed_flag = false;   
+			$this->active_flag = false;   
+			$this->grouped_status = trim(TournamentCore::$_PENDING);   
+			$this->confirmed_status = trim(TournamentCore::$_PENDING);   
 			$this->status = trim(TournamentCore::$_PENDING); 
 			$this->save();
 			
@@ -32,23 +43,31 @@ class TeamGameParticipation extends PluginTeamGameParticipation
 	public function makeActivation ()
 	{
 		$_flag = true;    
-		//if($this->pendingTeamGroup) { 
-			$this->approval_status = trim(TournamentCore::$_ACTIVE); 
+			$this->grouped_flag = false;   
+			$this->confirmed_flag = true;   
+			$this->active_flag = true;   
+			$this->grouped_status = trim(TournamentCore::$_PENDING);   
+			$this->confirmed_status = trim(TournamentCore::$_CONFIRMED);   
 			$this->status = trim(TournamentCore::$_ACTIVE); 
 			$this->save();
-		//}
+
 		return $_flag;
 	}
 	
 	public function makeApproval ()
 	{
 		$_flag = true;   
-		$_effectiveDate = date('m/d/Y', time());  
-		$this->active_flag = true; 
-		$this->approval_status = trim(TournamentCore::$_ACTIVE); 
-		$this->status = trim(TournamentCore::$_ACTIVE); 
-		$this->effective_date = trim($_effectiveDate);  
-		$this->save();
+			$_effectiveDate = date('m/d/Y', time());  
+			$this->grouped_flag = true;   
+			$this->confirmed_flag = true;   
+			$this->active_flag = true;   
+			$this->grouped_status = trim(TournamentCore::$_APPROVED);   
+			$this->confirmed_status = trim(TournamentCore::$_CONFIRMED);   
+			$this->status = trim(TournamentCore::$_ACTIVE); 
+			$this->save();
+			$this->effective_date = trim($_effectiveDate);  
+			$this->save();
+			
 		return $_flag;
 	}
 	public function makeConfirmation ()

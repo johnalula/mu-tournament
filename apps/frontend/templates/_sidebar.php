@@ -67,26 +67,13 @@
 						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/team_group') ?>">
 						<?php echo __('Team Groups') ?>
 					</a>
-				</li>   
-				<li role="separator" class="ui-sidebar-divider"></li>  
-				<li>
-					<a href="<?php echo url_for('news_and_events/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/schedule') ?>">
-						<?php echo __('Programs') ?>
-					</a>
 				</li>  
 				<li>
-					<a href="<?php echo url_for('news_and_events/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">
-						<?php echo __('News') ?>
+					<a href="<?php echo url_for('match/index') ?>">
+						<img class="ui-sidebar-nav-img" src="<?php echo image_path('settings/team_group') ?>">
+						<?php echo __('Match') ?>
 					</a>
 				</li>  
-				<li>
-					<a href="<?php echo url_for('news_and_events/index') ?>">
-						<img class="ui-sidebar-nav-img" src="<?php echo image_path('icons/edit') ?>">
-						<?php echo __('Events') ?>
-					</a>
-				</li> 
 			</ul>
 		</div>
 	</div> 
