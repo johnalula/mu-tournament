@@ -1,19 +1,19 @@
 <div class="ui-panel-container" id=""> 
 
-	<input type="hidden" class="form-control" id="tournament_match_id" name="tournament_match_id" value="<?php echo $sf_request->getParameter('match_id') ?>"> 
-	<input type="hidden" class="form-control" id="tournament_match_token_id" name="tournament_match_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
+	<input type="hidden" class="form-control" id="team_group_id" name="team_group_id" value="<?php echo $sf_request->getParameter('team_group_id') ?>"> 
+	<input type="hidden" class="form-control" id="team_group_token_id" name="team_group_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
 	<div class="ui-panel-grid-box" id=""> 
 		<!-- First panel --> 
 		<div class="col-sm-12" id="">  
 			<div class="ui-panel-grid">
 				<div class="ui-panel-header-default">
 					<h2 class="ui-theme-panel-header">
-						<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
+						<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Tournament Match management') ?>">
 						<span class="ui-header-status-icon">
 							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Match Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->tournamentMatchFullNumber.' )'  ?>
+						<?php echo __('Match Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -32,9 +32,9 @@
 					<!--    End of toolbar      -->
 					
 					<div class="ui-panel-content-box">
-						<div class="ui-panel-detail-form-container" id=""> 
-							<div class="ui-panel-content-detail"> 
-								<?php include_partial('tournament_match_detail', array('_tournamentMatch' => $_tournamentMatch)) ?> 
+						<div class="ui-panel-detail-form-container" style=""> 
+							<div class="ui-panel-form-content"> 
+								<?php include_partial('participant_form', array('_tournamentMatch' => $_tournamentMatch,'_participantTeams' => $_participantTeams,'_candidateRounds' => $_candidateRounds)) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
 
@@ -62,7 +62,7 @@
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															<?php include_partial('action_toolbar', array()) ?> 
+															<?php include_partial('footer_action_toolbar', array('_object' => $_tournamentMatch)) ?> 
 														</div> 
 													</div><!-- end of ui-filter-list -->
 												</div>
@@ -70,11 +70,7 @@
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
-														<?php include_partial('participant_pair_team_list', array('_matchParticipantTeams' => $_tournamentMatchFixtureGroups)) ?> 
-													<?php else: ?>
-														<?php include_partial('complete_list', array('_candidateMatchParticipantTeams' => $_candidateMatchParticipantTeams)) ?> 
-													<?php endif; ?>
+													<?php include_partial('participant_list', array('_matchParticipantTeamMembers' => $_matchParticipantTeamMembers)) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											
@@ -86,6 +82,7 @@
 												</div>
 											</div>
 										</div><!-- end of ui-tab-content --> 
+										
 										
 										 <!-- Begining of toolbar -->
 										<div class="ui-toolbar-menu-box  ui-toolbar-border1 ui-panel-footer-margin ui-panel-footer-border">
@@ -100,13 +97,13 @@
 											</div>
 										</div  
 										<!--    End of toolbar      -->
-										
 									</div><!-- end of ui-tab-content -->  
 						
 								</div><!-- end of ui-main-tab-box --> 
 							</div><!-- end of ui-main-tab-box --> 
 							
 						</div><!-- end of ui-panel-footer-default-box --> 
+						 
 						
 					</div><!-- end of ui-panel-content-box --> 
 								

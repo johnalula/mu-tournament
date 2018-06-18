@@ -102,10 +102,11 @@
 
 <script>
 	$('#match_participant_creation_mode').change(function(e) {
-		if($(this).val() == 2){
-			//$("#createBatchTournamentMatchFixtureParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-		}
-		//alert('asdfa');
+		/*if($(this).val() == 2 && document.getElementById("match_fixture_id").value ){
+				$("#createBatchTournamentMatchFixtureTeamMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			} else {
+				$(".selectCandidateMatchFixtureParticipantTeam").removeAttr("disabled") ;
+			}*/
 		return false;
 	}); 
 	 

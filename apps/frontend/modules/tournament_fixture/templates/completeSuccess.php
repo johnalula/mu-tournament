@@ -1,12 +1,14 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)): 
+	
+	echo count($_matchParticipantTeams);
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('complete', array( '_tournamentMatch' => $_tournamentMatch, '_matchParticipantTeamMembers' => $_matchParticipantTeamMembers )) ?>
+				<?php include_partial('complete', array( '_tournamentMatch' => $_tournamentMatch, '_tournamentMatchFixtureGroups' => $_tournamentMatchFixtureGroups, '_candidateMatchParticipantTeams' => $_candidateMatchParticipantTeams )) ?>
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>

@@ -32,7 +32,7 @@
 							</div>
 						</div  
 						<!--    End of toolbar      -->
-						<div class="ui-panel-grid-list" id="match"> 
+						<div class="ui-panel-grid-list" id="product"> 
 							<?php include_partial('list', array( '_tournamentMatchs' => $_tournamentMatchs, '_countTeams' => $_countTeams )) ?> 
 						</div> <!-- ui-panel-content -->  
 					</div><!-- ui-panel-content-box -->

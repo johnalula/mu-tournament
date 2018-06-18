@@ -1,13 +1,14 @@
 
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)): 
+	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
+	
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('participant_team', array( '_tournamentMatch' => $_tournamentMatch,'_activeTournament' => $_activeTournament, '_tournamentMatchFixtureGroups' => $_tournamentMatchFixtureGroups, '_candidateTournamentMatchFixtureGroups' => $_candidateTournamentMatchFixtureGroups )) ?> 
+				<?php include_partial('participant', array( '_tournamentMatch' => $_tournamentMatch,'_matchParticipantTeamMembers' => $_matchParticipantTeamMembers, '_matchParticipantTeams' => $_matchParticipantTeams, '_matchFixtures' => $_matchFixtures )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -32,7 +33,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="candidateTournamentMatchFixtureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="candidateTournamentMatchFixtureGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <form id="insertModalOneData">
 	<div class="modal-dialog">
 		<div class="modal-content"> 
@@ -89,8 +90,9 @@
 </form>
 </div><!-- /.modal -->
 
+
 <!-- Modal -->
-<div class="modal fade" id="candidateParticipantTeamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="candidateMatchFixtureParticipantTeamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <form id="insertModalOneData">
 	<input type="hidden" class="form-control" id="multiple_team_group_id" name="multiple_team_group_id" value="<?php echo $sf_request->getParameter('team_group_id') ?>"> 
 	<input type="hidden" class="form-control" id="multiple_team_group_token_id" name="multiple_team_group_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
@@ -108,7 +110,7 @@
 										<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 										<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
 									</span>
-									<?php echo __('Candidate Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
+									<?php echo __('Candidate Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
 								</h2>
 								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -119,18 +121,14 @@
 							<!-- Begining of toolbar -->
 								<div class="ui-toolbar-menu-box ui-panel-content-border">
 									<div class="ui-toolbar-menu">
-										<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
-											<?php include_partial('partials/insert_toolbar', array('_object' => $_sportGameTeamGroup)) ?> 
-										<?php else: ?>
-											<?php include_partial('partials/modal_action_toolbar', array('_object' => $_sportGameTeamGroup)) ?> 
-										<?php endif; ?>
+										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_sportGameTeamGroup)) ?> 
 									</div>
 								</div>
 								<!--    End of toolbar      -->
 								<div class="ui-panel-content-box">
 									<div class="ui-panel-content-box ">
 										<div class="ui-panel-grid-list"> 
-											<?php include_partial('team_group/candidate_group_member_team', array('_candidateMemberTeams' => $_candidateParticipantTeams)) ?> 
+											<?php include_partial('candidate_participant_team', array('_candidateMemberTeams' => $_candidateParticipantTeams)) ?> 
 										</div>
 									</div> 
 									
@@ -149,8 +147,9 @@
 </form>
 </div><!-- /.modal -->
 
+  
 <!-- Modal -->
-<div class="modal fade" id="candidateOpponentParticipantTeamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="candidateMatchParticipantTeamMemberModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 <form id="insertModalOneData">
 	<input type="hidden" class="form-control" id="multiple_team_group_id" name="multiple_team_group_id" value="<?php echo $sf_request->getParameter('team_group_id') ?>"> 
 	<input type="hidden" class="form-control" id="multiple_team_group_token_id" name="multiple_team_group_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
@@ -168,7 +167,7 @@
 										<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 										<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
 									</span>
-									<?php echo __('Candidate Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
+									<?php echo __('Candidate Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
 								</h2>
 								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -179,14 +178,14 @@
 							<!-- Begining of toolbar -->
 								<div class="ui-toolbar-menu-box ui-panel-content-border">
 									<div class="ui-toolbar-menu">
-										<?php include_partial('partials/insert_toolbar', array('_object' => $_sportGameTeamGroup)) ?> 
+										<?php include_partial('partials/modal_action_toolbar', array('_object' => $_sportGameTeamGroup)) ?> 
 									</div>
 								</div>
 								<!--    End of toolbar      -->
 								<div class="ui-panel-content-box">
 									<div class="ui-panel-content-box ">
 										<div class="ui-panel-grid-list"> 
-											<?php include_partial('candidate_group_member_opponent_team', array('_candidateMemberTeams' => $_candidateParticipantTeams)) ?> 
+											<?php include_partial('candidate_match_fixture_group_participants', array('_candidateParticipants' => $_candidateParticipants)) ?> 
 										</div>
 									</div> 
 									
@@ -204,6 +203,7 @@
 	</div><!-- /.modal-dialog -->
 </form>
 </div><!-- /.modal -->
+
 
 <!--- ************************  -->
 
@@ -221,37 +221,34 @@
  
 
 <script>
-	$('#createTournamentMatchParticipantTeam').click(function(){
-		var url = '<?php echo url_for('match/createTournamentMatchParticipantTeam')?>'; 
-		var formName = 'createTournamentMatchParticipantTeamForm';
-		var data = $("form#createTournamentMatchParticipantTeamForm").serialize();
+	$('#createTournamentMatchParticipant').click(function(){
+		var url = '<?php echo url_for('match/createTournamentMatchParticipantTeamMember')?>'; 
+		var formName = 'createTournamentMatchFixtureGroupParticipantForm';
+		var data = $("form#createTournamentMatchFixtureGroupParticipantForm").serialize();
 		var datas = generateValidData (formName);
 		processEntry(datas, url )
 		//alert(datas);
 		return true; 
 	});  
-	
-	$('#createBatchCandidateTournamentMatchParticipantsData').click(function(){
-		var url = '<?php echo url_for('match/createBatchTournamentMatchParticipantTeam')?>';  
-		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&match_fixture_id='+document.getElementById('match_fixture_id').value+'&match_fixture_token_id='+document.getElementById('match_fixture_token_id').value+'&tournament_match_fixture_group_id='+document.getElementById('tournament_match_fixture_group_id').value+'&tournament_match_fixture_token_group_id='+document.getElementById('tournament_match_fixture_token_group_id').value+'&tournament_sport_game_group_id='+document.getElementById('tournament_sport_game_group_id').value+'&tournament_sport_game_group_token_id='+document.getElementById('tournament_sport_game_group_token_id').value+'&sport_game_group_team_id='+document.getElementById('sport_game_group_team_id').value+'&sport_game_group_team_token_id='+document.getElementById('sport_game_group_team_token_id').value+'&match_fixture='+document.getElementById('match_fixture').value+'&participant_team_name='+document.getElementById('participant_team_name').value+'&tournament_contestant_team_mode='+document.getElementById('tournament_contestant_team_mode').value+'&gender_category_id='+document.getElementById('gender_category_id').value+'&description='+document.getElementById('description').value;
-		//alert(data);
-		$('#candidateParticipantTeamModal').modal('hide');
-		processEntry(data, url )
-		return false; 
-	});  
-	
-	$('.selectSportGameMatchVenue').click(function() {   
-		var thisIDNumber = $(this).attr('rel');   
-		var thisIDName = $(this).attr('id');   
-		document.getElementById("sport_game_venue_name").value = thisIDNumber;
-		//document.getElementById("sport_game_group_type_id").value = thisIDNumber; 
-		//$('#createSchoolGradePaymentFee').removeAttr("disabled").removeClass("ui-action-toolbar-disabled-menu").addClass("ui-action-toolbar-enabled-menu");
-	}); 
+	  
 	
 	//*********************************/
 	
-	$('.selectCandidateTournamentMatchFixture').click(function() {   
-		var url = '<?php echo url_for('match/candidateTournamentMatchParticipantFixtures')?>'; 
+	$('#createBatchTournamentMatchFixtureTeamMemberParticipant').click(function(){
+		var url = '<?php echo url_for('match/createBatchMatchFixtureGroupParticipantTeamMembers')?>'; 
+		var formName = 'createTournamentMatchFixtureGroupParticipantForm';
+		var data = $("form#createTournamentMatchFixtureGroupParticipantForm").serialize();
+		var datas = generateValidData (formName);
+		processEntry(datas, url )
+		//alert(datas);
+		return true; 
+	});  
+	  
+	
+	//*********************************/
+	
+	$('.selectCandidateTournamentMatchFixtureGroups').click(function() {   
+		var url = '<?php echo url_for('match/candidateTournamentMatchParticipantFixtureGroups')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-match-fixtures';   
 		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&tournament_match_game_category_id='+document.getElementById('tournament_match_game_category_id').value+'&tournament_contestant_team_mode='+document.getElementById('match_fixture_contestant_team_mode').value;
@@ -259,26 +256,32 @@
 		processDataSelection(data, idName, url );		 
 	}); 
 	
-	$('.selectCandidateParticipantTeam').click(function() {   
-		var url = '<?php echo url_for('match/candidateMatchParticipantTeams')?>'; 
+	//*********************************/
+	
+	$('.selectCandidateMatchFixtureParticipantTeam').click(function() {   
+		var url = '<?php echo url_for('match/candidateMatchFixtureGroupParticipantTeams')?>'; 
 		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-group-member-teams';   
-		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&match_fixture_id='+document.getElementById('match_fixture_id').value+'&match_fixture_token_id='+document.getElementById('match_fixture_token_id').value+'&tournament_sport_game_group_id='+document.getElementById('tournament_sport_game_group_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
+		var idName = 'candidate-participant-teams';   
+		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&match_fixture_id='+document.getElementById('match_fixture_id').value+'&match_fixture_token_id='+document.getElementById('match_fixture_token_id').value+'&match_fixture_token_id='+document.getElementById('match_fixture_token_id').value+'&match_fixture_token_id='+document.getElementById('match_fixture_token_id').value+'&tournament_match_fixture_group_id='+document.getElementById('tournament_match_fixture_group_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
 		//alert(data);
 		processDataSelection(data, idName, url );		 
 	}); 
-	$('.selectCandidateOpponentParticipantTeam').click(function() {   
-		var url = '<?php echo url_for('match/candidateMatchParticipantOpponentTeams')?>'; 
+	
+	//*********************************/
+	
+	$('.selectCandidateMatchParticipantTeamMember').click(function() {   
+		var url = '<?php echo url_for('match/candidateMatchFixtureGroupParticipantTeamMembers')?>'; 
 		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-group-member-opponent_teams';   
-		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&match_fixture_id='+document.getElementById('match_fixture_id').value+'&match_fixture_token_id='+document.getElementById('match_fixture_token_id').value+'&tournament_sport_game_group_id='+document.getElementById('tournament_sport_game_group_id').value+'&sport_game_group_team_id='+document.getElementById('sport_game_group_team_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
+		var idName = 'candidate-group-member-participant';   
+		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&match_fixture_id='+document.getElementById('match_fixture_id').value+'&team_id='+document.getElementById('team_id').value+'&team_token_id='+document.getElementById('team_token_id').value+'&sport_game_id='+document.getElementById('match_fixture_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&sport_game_group_team_id='+document.getElementById('sport_game_group_team_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
 		//alert(data);
 		processDataSelection(data, idName, url );		 
 	}); 
+	 
 	//*********************************/
 	 
 	
-	$("#candidateTournamentMatchFixtureModal").submit(function(e) { 
+	$("#candidateTournamentMatchFixtureGroupModal").submit(function(e) { 
 		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
@@ -292,50 +295,60 @@
 			document.getElementById("tournament_sport_game_group_id").value = listArr[2];  
 			document.getElementById("tournament_sport_game_group_token_id").value = listArr[3];  
 			document.getElementById("gender_category_id").value = listArr[9];  
-			document.getElementById("sport_game_venue_name").value = listArr[13];  
-			document.getElementById("match_date").value = listArr[14];  
-			document.getElementById("match_time").value = listArr[15];  
+			document.getElementById("sport_game_id").value = listArr[11];  
 			
 			//$("#createTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 			//$("#cancelTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$(".selectCandidateParticipantTeam").removeAttr("disabled") ;
-			$('#candidateTournamentMatchFixtureModal').modal('hide');
+			if(document.getElementById("match_participant_creation_mode").value == 2){
+				$("#createBatchTournamentMatchFixtureTeamMemberParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			} else {
+				$(".selectCandidateMatchFixtureParticipantTeam").removeAttr("disabled") ;
+			}
+			$('#candidateTournamentMatchFixtureGroupModal').modal('hide');
 		return e.preventDefault();
 	});
-	$("#candidateParticipantTeamModal").submit(function(e) { 
+	
+	//*********************************/
+	
+	$("#candidateMatchFixtureParticipantTeamModal").submit(function(e) { 
 		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
 			var listArr = input.split("$"); 
-			document.getElementById("sport_game_group_team_id").value = listArr[0];
-			document.getElementById("sport_game_group_team_token_id").value = listArr[1];  
-			document.getElementById("participant_team_id").value = listArr[2];
-			document.getElementById("participant_team_token_id").value = listArr[3];  
+			  
+			document.getElementById("participant_team_id").value = listArr[0];
+			document.getElementById("participant_team_token_id").value = listArr[1];  
+			document.getElementById("sport_game_group_team_id").value = listArr[2];
+			document.getElementById("sport_game_group_team_token_id").value = listArr[3];
+			document.getElementById("team_id").value = listArr[7];
+			document.getElementById("team_token_id").value = listArr[8];
 			document.getElementById("participant_team_name").value = listArr[4]+' ('+listArr[5]+')'+' - '+listArr[6];    
 						
-			$("#createTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$(".selectCandidateOpponentParticipantTeam").removeAttr("disabled") ;
-			$('#candidateParticipantTeamModal').modal('hide');
+			//$("#createTournamentMatchParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			//$("#cancelTournamentMatchParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			$(".selectCandidateMatchParticipantTeamMember").removeAttr("disabled") ;
+			$('#candidateMatchFixtureParticipantTeamModal').modal('hide');
 		return e.preventDefault();
 	});
-	 
-	$("#candidateOpponentParticipantTeamModal").submit(function(e) { 
+	
+	//*********************************/
+	
+	$("#candidateMatchParticipantTeamMemberModal").submit(function(e) { 
 		if($("input[name=selectCandidate]:checked", this).length == 0)
 			$("input[id=selectCandidate-1]").attr("checked", "checked"); 
 			
 			var input = $("input[name=selectCandidate]:checked", this).val();
 			var listArr = input.split("$"); 
-			document.getElementById("opponent_sport_game_group_team_id").value = listArr[0];
-			document.getElementById("opponent_sport_game_group_team_token_id").value = listArr[1];  
-			document.getElementById("opponent_participant_team_id").value = listArr[2];
-			document.getElementById("opponent_participant_team_token_id").value = listArr[3];  
-			document.getElementById("opponent_participant_team_name").value = listArr[4]+' ('+listArr[5]+')'+' - '+listArr[6];    
-						
-			$("#createTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			$("#cancelTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
-			$('#candidateOpponentParticipantTeamModal').modal('hide');
+			document.getElementById("participant_role_id").value = listArr[0];
+			document.getElementById("participant_role_token_id").value = listArr[1];  
+			document.getElementById("participant_member_id").value = listArr[2];
+			document.getElementById("participant_member_token_id").value = listArr[3];  
+			document.getElementById("participant_name").value = listArr[4]+' ( '+listArr[6]+' )  ';    
+			
+			$("#createTournamentMatchParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+			$("#cancelTournamentMatchParticipant").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			$('#candidateMatchParticipantTeamMemberModal').modal('hide');
 		return e.preventDefault();
 	});
 	 

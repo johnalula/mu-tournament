@@ -1,10 +1,6 @@
 
 <?php if($sf_user->isAuthenticated()): 	 
-	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)): 
-	
-	//parent_match_fixture_name=&parent_match_fixture_id=&parent_match_fixture_token_id=&sport_game_type_id=1&tournament_match_id=1&tournament_match_token_id=fcc996646e7e664266cdce91a82f69c0211aef87&tournament_match_number=MTCH-001&tournament_match_round_mode=1&tournament_sport_game_group_name=Group One - 5000M (Women) - Running - Athletics&tournament_sport_game_group_id=2&tournament_sport_game_group_token_id=927b2b9fbbc5a6da68d82c646ffd661d32e00296&gender_category_id=2&contestant_team_mode=2&contestant_mode=4&sport_game_id=5&sport_game_token_id=a5b16fbdda8b5c083be1d62b23ce2380ffcf6213&number_of_heats_per_group=&event_type=1&tournament_match_round_mode=4&qualifying_status=4&description=sdf gsdfg sdfg sdfg sdfgsdfgsdfg
-	
-	//$_flag =  TournamentMatchFixtureTable::processNew ( $_orgID, $_orgTokenID, $_parentMatchID, $_parentMatchTokenID, 1, 'fcc996646e7e664266cdce91a82f69c0211aef87', 2, '927b2b9fbbc5a6da68d82c646ffd661d32e00296', 5, 'a5b16fbdda8b5c083be1d62b23ce2380ffcf6213', 'Group One - 5000M (Women) - Running - Athletics', 1, 2, 1, 2, 4, 'MTCH-001', 3, 1, 1, $_description, $_userID, $_userTokenID  );  
+	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):  
 ?> 
 
 <div class="ui-page-box">
@@ -189,13 +185,7 @@
 		processDataSelection(data, idName, url );		 
 	});  
 	
-	$('.selectSportGameMatchVenue').click(function() {   
-		var thisIDNumber = $(this).attr('rel');   
-		var thisIDName = $(this).attr('id');   
-		document.getElementById("sport_game_venue_name").value = thisIDNumber;
-		//document.getElementById("sport_game_group_type_id").value = thisIDNumber; 
-		//$('#createSchoolGradePaymentFee').removeAttr("disabled").removeClass("ui-action-toolbar-disabled-menu").addClass("ui-action-toolbar-enabled-menu");
-	}); 
+	
 	//*********************************/
 	
 	$("#candidateParentMatchFixtureModal").submit(function(e) { 

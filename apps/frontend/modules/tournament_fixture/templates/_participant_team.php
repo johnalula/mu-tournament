@@ -73,7 +73,7 @@
 													<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
 														<?php include_partial('participant_pair_team_list', array('_tournamentMatchFixtureGroups' => $_tournamentMatchFixtureGroups)) ?> 
 													<?php else: ?>
-														<?php include_partial('participant_team_list', array('_candidateMatchFixtureParticipants' => $_matchParticipantTeams)) ?> 
+														<?php include_partial('participant_team_list', array('_candidateTournamentMatchFixtureGroups' => $_candidateTournamentMatchFixtureGroups)) ?> 
 													<?php endif; ?>
 												</div>		
 											</div><!-- ui-tab-panel-grid -->

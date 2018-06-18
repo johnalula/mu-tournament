@@ -106,12 +106,14 @@
 						<?php echo __('Skip') ?>
 					</a>
 				</li>	 
-				<li class="ui-nav-button ">
-					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('match', 'match_id', 'participant', $_object)) ?>">
-						<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
-						<?php echo __('Next') ?>
-					</a>
-				</li>	 
+				<?php if($_object->hasTournamentMatchParticipantTeams ): ?>
+					<li class="ui-nav-button ">
+						<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('match', 'match_id', 'participant', $_object)) ?>">
+							<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
+							<?php echo __('Next') ?>
+						</a>
+					</li>	 
+				<?php endif; ?>
 			<?php endif; ?>
 		<?php endif; ?>
 		
