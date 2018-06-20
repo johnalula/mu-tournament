@@ -4,11 +4,12 @@
 		<div class="row ui-row-container">	 
 			<div class="col-sm-6">
 				<div class="ui-content-detail-box">
-					<h2><?php echo strtoupper($_matchFixtureGroup->gameCategoryName) ?> </h2> 
+					<h2><?php echo strtoupper("Participant Team Standings") ?> </h2> 
 					<div class="ui-content-detail">
-						<h3><?php echo $_matchFixtureGroup->sportGameName.' ( '.TournamentCore::processGenderValue($_matchFixtureGroup->teamGroupGenderCategoryID).' )'?> </h3>
-						<span><?php echo $_matchFixtureGroup->tournamentName.' ( '.$_matchFixtureGroup->tournamentAlias.' ) - '.$_matchFixtureGroup->tournamentSeason.' - MEKELLE' ?></span>
-						<span><?php echo date('d M Y',strtotime($_matchFixtureGroup->tournamentStartDate)).' - '.date('d M Y',strtotime($_matchFixtureGroup->tournamentEndDate)) ?></span>
+						<h3><?php echo $_activeTournament->tournamentName.' ( '.$_activeTournament->tournamentAlias.' )'?> </h3>
+						<span><?php echo $_matchFixtureGroup->tournamentName.' ( '.$_activeTournament->tournamentSeason.' ) - '.$_matchFixtureGroup->tournamentSeason.' - MEKELLE' ?></span>
+						<span><?php echo date('d M Y',strtotime($_activeTournament->startDate)).' - '.date('d M Y',strtotime($_activeTournament->endDate)) ?></span><br>
+						&nbsp;
 					</div>
 				</div>
 			</div>
@@ -29,7 +30,7 @@
 				<ul class="nav nav-tabs" id="myTab" style="background-color: #325889;">
 					<li class="active">
 					  <a href="#day_one">
-						 <span style="display:block"><?php echo __('Medal Standing') ?></span> 
+						 <span style="display:block"><?php echo __('Participant Teams') ?></span> 
 					  </a>
 				  </li> 
 				</ul>

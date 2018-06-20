@@ -177,6 +177,11 @@ Team:
     team_country_flag_file_name:  { type: string(255) }  
     team_country_flag_file_name_path:  { type: string(255) }  
     team_country_flag_file_full_path:  { type: string(255) }   
+    standing_rank: { type: integer }
+    gold_medal: { type: integer }
+    silver_medal: { type: integer }
+    bronze_medal: { type: integer }
+    total_medal_award: { type: integer }
     start_date: { type: string(100) }
     end_date: { type: string(100) }  
     grouped_flag: { type: boolean, default: false } 

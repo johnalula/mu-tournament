@@ -9,9 +9,9 @@
  * @property integer $tournament_id
  * @property integer $tournament_sport_game_group_id
  * @property string $tournament_sport_game_group_token_id
- * @property integer $team_game_participation_id
  * @property integer $team_id
  * @property string $team_token_id
+ * @property integer $team_game_participation_id
  * @property string $start_date
  * @property string $effective_date
  * @property string $end_date
@@ -55,15 +55,15 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('team_game_participation_id', 'integer', null, array(
-             'type' => 'integer',
-             ));
         $this->hasColumn('team_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('team_token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('team_game_participation_id', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('start_date', 'string', 100, array(
              'type' => 'string',

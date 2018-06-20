@@ -110,27 +110,31 @@
 										<ul class="dropdown-menu">  
 											<li>
 											<li>
-												<a href="<?php echo url_for('register/new') ?>">
+												<a href="<?php echo url_for('competition/sport_games') ?>">
 													<?php echo __('Sport Games') ?>
 												</a>
 											</li> 
 											<li class="">
-												<a href="<?php echo url_for('register/new') ?>">
+												<a href="<?php echo url_for('competition/match_fixtures') ?>">
 													<?php echo __('All Fixtures') ?>
 												</a>
 											</li> 
 											<li class="">
-												<a href="<?php echo url_for('register/new') ?>">
+												<a href="<?php echo url_for('competition/team_standing') ?>">
 													<?php echo __('Team Standing') ?>
 												</a>
 											</li> 
 										</ul>
 									</li> 
 									<li>
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Teams</a>
+										<a href="<?php echo url_for('competition/participant_teams') ?>">
+											<?php echo __('Teams') ?>
+										</a>
 									</li>
 									<li>
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Participants</a>
+										<a href="<?php echo url_for('competition/participants') ?>">
+											<?php echo __('Participants') ?>
+										</a>
 									</li>
 								</ul> 
 								 

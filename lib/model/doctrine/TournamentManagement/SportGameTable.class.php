@@ -250,6 +250,26 @@ class SportGameTable extends PluginSportGameTable
 	********** Candidate selection process *******************
 	**********************************************************/
 	
+	// process list selection function 
+   public static function makeCandidateSelections ( $_categoryID=null, $_activeFlag=null, $_keyword=null) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("SportGame sprtGm") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("sprtGm.Organization org on sprtGm.org_id = org.id ")  
+				->orderBy("sprtGm.id ASC")
+				->where("sprtGm.id IS NOT NULL");
+				if(!is_null($_categoryID)) $_qry = $_qry->addWhere("sprtGm.sport_game_category_id = ?", $_categoryID);    
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGm.active_flag = ?", $_activeFlag);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("sprtGm.category_name LIKE ? OR sprtGm.alias LIKE ? OR sprtGm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
 	//
 	public static function processCandidatePersonSelection ( ) 
    { 

@@ -27,7 +27,8 @@ class competitionActions extends sfActions
 	{
 		$_tournament = TournamentTable::makeActiveObject ( true );
 		
-		$this->_activeTournament = TournamentTable::makeActiveObject ( true );
+		$this->_activeTournament = TournamentTable::makeActiveObject ( 1, true );
+		//$this->_activeTournament = TournamentTable::processObject (  1, '5298132053f93db5da4d84b8c1c0eb9aece6cd57', 1, '67a74306b06d0c01624fe0d0249a570f4d093747' );
 		
 		$this->_candidateParticipantTeams = TournamentParticipantTeamMedalStandingTable::makeCandidates ( $_tournament->id, $_participantTeamID, $_activeFlag, $_keyword);
 	}
@@ -38,8 +39,8 @@ class competitionActions extends sfActions
 		$_matchFixtureGroupTokenID = $request->getParameter('token_id');	
 		
 		//$_this->_activeTournament = TournamentTable::makeCandidateObject ( null, true );
-		$this->_matchFixtureGroup = TournamentMatchFixtureGroupTable::makeObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_activeFlag );
-		$this->_participantTeams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
+		//$this->_matchFixtureGroup = TournamentMatchFixtureGroupTable::makeObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_activeFlag );
+		//$this->_participantTeams = TeamTable::processSelection ( $_orgID, $_orgTokenID, $_activeFlag, $_keyword, 0, 10 );
 		//$_sportGameID = $this->_matchFixtureGroup->sportGameID;
 		//$this->_tournamentGames = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 20  ) ;
 		//$this->_tournamentMatchFixtures = TournamentMatchFixtureTable::processCandidateSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword) ;
@@ -47,7 +48,7 @@ class competitionActions extends sfActions
 		//$this->_tournamentMatchFixtures = TournamentMatchFixtureGroupTable::processObject ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword, 0, 20  ) ;
 		
 		//$this->_tournamentMatchFixtureParticipants = TournamentMatchFixtureGroupTable::processAll ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword ); 
-		$this->_tournamentMatchFixtureParticipants = TournamentMatchTeamMemberParticipantTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword  ); 
+		//$this->_tournamentMatchFixtureParticipants = TournamentMatchTeamMemberParticipantTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword  ); 
 	}
 	public function executeParticipant_team(sfWebRequest $request)
 	{
@@ -69,5 +70,45 @@ class competitionActions extends sfActions
 		
 		$this->_memberParticipantRoles = TeamMemberParticipantRoleTable::processSelection ( $_tournamentID, $_participantTeamID, sha1(md5($_participantTeamTokenID)), $_participantID, $_sportGameID, $_keyword, 0, 20 ); 
 		 
+	}
+	public function executeMatch_fixtures(sfWebRequest $request)
+	{
+		$this->_activeTournament = TournamentTable::makeCandidateObject ( true );
+		 
+		//$this->_activeTournamentObje = TournamentTable::makeCandidateObject ( $_orgID, true ) ;
+		//$this->_tournamentMatchFixtureParticipants = TournamentMatchFixtureGroupTable::processAll ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword ); 
+		//$this->_tournamentMatchFixtureParticipants = TournamentMatchTeamMemberParticipantTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword  ); 
+		
+		$this->_candidateSportGames = SportGameTable::makeCandidateSelections ( $_categoryID, $_activeFlag, $_keyword); 
+	}
+	public function executeSport_games(sfWebRequest $request)
+	{
+		$this->_activeTournament = TournamentTable::makeCandidateObject ( true );
+		 
+		//$this->_activeTournamentObje = TournamentTable::makeCandidateObject ( $_orgID, true ) ;
+		//$this->_tournamentMatchFixtureParticipants = TournamentMatchFixtureGroupTable::processAll ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword ); 
+		//$this->_tournamentMatchFixtureParticipants = TournamentMatchTeamMemberParticipantTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword  ); 
+		
+		$this->_candidateSportGames = SportGameTable::makeCandidateSelections ( $_categoryID, $_activeFlag, $_keyword); 
+	}
+	public function executeParticipants(sfWebRequest $request)
+	{
+		$this->_activeTournament = TournamentTable::makeCandidateObject ( true );
+		 
+		//$this->_activeTournamentObje = TournamentTable::makeCandidateObject ( $_orgID, true ) ;
+		//$this->_tournamentMatchFixtureParticipants = TournamentMatchFixtureGroupTable::processAll ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword ); 
+		//$this->_tournamentMatchFixtureParticipants = TournamentMatchTeamMemberParticipantTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword  ); 
+		
+		//$this->_candidateSportGames = SportGameTable::makeCandidateSelections ( $_categoryID, $_activeFlag, $_keyword); 
+	}
+	public function executeParticipant_teams(sfWebRequest $request)
+	{
+		$this->_activeTournament = TournamentTable::makeCandidateObject ( true );
+		 
+		//$this->_activeTournamentObje = TournamentTable::makeCandidateObject ( $_orgID, true ) ;
+		//$this->_tournamentMatchFixtureParticipants = TournamentMatchFixtureGroupTable::processAll ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword ); 
+		//$this->_tournamentMatchFixtureParticipants = TournamentMatchTeamMemberParticipantTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword  ); 
+		
+		$this->_candidateSportGames = SportGameTable::makeCandidateSelections ( $_categoryID, $_activeFlag, $_keyword); 
 	}
 }

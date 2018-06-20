@@ -83,26 +83,25 @@ class TournamentTable extends PluginTournamentTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "trnmnt.id, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.default_flag as defaultFlag, trnmnt.active_flag as activeFlag, trnmnt.start_date as startDate, trnmnt.end_date as endDate, 
+		 $_queryFileds = "trnmnt.id, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.default_flag as defaultFlag, trnmnt.active_flag as activeFlag, trnmnt.start_date as startDate, trnmnt.end_date as endDate,
+		 
 		";	
-		return $_queryFileds;
+		return $_queryFileds; 
 	}
 	//
   // process list selection function 
-   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_season=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   public static function processSelection ( $_orgID=null, $_orgTokenID=null, $_season, $_activeFlag, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
-				->from("Tournament trnmnt") 
+				->from("Tournament trnmnt")  
 				->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")   
 				->offset($_offset)
 				->limit($_limit) 
 				->orderBy("trnmnt.id ASC")
 				->where("trnmnt.id IS NOT NULL");
 				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmnt.org_id = ? AND trnmnt.org_token_id = ? ", array($_orgID, $_orgTokenID));
-				if(!is_null($_season)) $_qry = $_qry->addWhere("trnmnt.season = ? ", $_season); 
 				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("trnmnt.active_flag = ?", $_activeFlag);    
-				if(!is_null($_exclusion))  $_qry = $_qry->andWhereNotIn("trnmnt.id", $_exclusion ); 
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
 						$_qry = $_qry->andWhere("trnmnt.name LIKE ? OR trnmnt.alias LIKE ? OR trnmnt.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
@@ -112,22 +111,57 @@ class TournamentTable extends PluginTournamentTable
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
-   public static function processAll ( ) 
+   public static function processAll ($_orgID=null, $_orgTokenID=null, $_keyword=null ) 
    {
-		  
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("GameCategory trnmnt")  
+				->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")   
+				->orderBy("trnmnt.id ASC")
+				->where("trnmnt.id IS NOT NULL");
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmnt.org_id = ? AND trnmnt.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("trnmnt.category_name LIKE ? OR trnmnt.alias LIKE ? OR trnmnt.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	 
+	// process list selection function 
+   public static function processCandidates ( $_orgID=null, $_orgTokenID=null, $_exclusion=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("GameCategory trnmnt")  
+				->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")   
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("trnmnt.id ASC")
+				->where("trnmnt.id IS NOT NULL");
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmnt.org_id = ? AND trnmnt.org_token_id = ? ", array($_orgID, $_orgTokenID));     
+				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("trnmnt.id ", $_exclusion ); 
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("trnmnt.category_name LIKE ? OR trnmnt.alias LIKE ? OR trnmnt.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
-   public static function processCandidates ( ) 
+   public static function processCandidateSelection ( ) 
    {
 		 
 	}
 	//
-   public static function processObject ( $_orgID=null, $_orgTokenID=null, $_tournamentID, $_tokenID ) 
+  public static function processObject ( $_orgID=null, $_orgTokenID=null, $_tournamentID, $_tokenID ) 
 	{
-			$_qry = Doctrine_Query::create()
-					->select(self::appendQueryFields())
-					->from("Tournament trnmnt") 
-					->innerJoin("tm.Organization org on tm.org_id = org.id ")     
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("Tournament trnmnt") 
+				->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")     
 				->where("trnmnt.id = ? AND trnmnt.token_id = ? ", array($_tournamentID, $_tokenID ));
 				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
@@ -135,65 +169,36 @@ class TournamentTable extends PluginTournamentTable
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeObject ( $_orgID=null, $_tournamentID, $_tokenID  ) 
+	public static function makeActiveObject ( $_orgID=null, $_activeFlag ) 
 	{
-			$_qry = Doctrine_Query::create()
-					->select(self::appendQueryFields())
-					->from("Tournament trnmnt") 
-					//->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ")  
-					//->innerJoin("tm.Organization org on tm.org_id = org.id ")     
-				->where("trnmnt.id = ? AND trnmnt.token_id = ? ", array($_tournamentID, $_tokenID ));
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
-				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
-			
-		return (! $_qry ? null : $_qry ); 	
-	}  
-	//
-   public static function makeCandidateObject ( $_orgID=null, $_activeFlag ) 
-	{
-			$_qry = Doctrine_Query::create()
-					->select(self::appendQueryFields())
-					->from("Tournament trnmnt") 
-					//->innerJoin("tm.Organization org on tm.org_id = org.id ")  
-					->where("trnmnt.id IS NOT NULL");
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("Tournament trnmnt") 
+				->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")     
+				->where("trnmnt.id IS NOT NULL");
+				if(!is_null($_orgID)) $_qry = $_qry->andWhere("trnmnt.org_id = ?", $_orgID);
 				if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("trnmnt.active_flag = ?", $_activeFlag);
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
-   public static function makeActiveObject ( $_activeFlag ) 
+	//
+   public static function makeObject ( ) 
+   {
+		 
+	} 
+	 
+	public static function makeCandidateObject ( $_activeFlag ) 
 	{
 			$_qry = Doctrine_Query::create()
 					->select(self::appendQueryFields())
-					->from("Tournament trnmnt") 
-					->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")  
-					->where("trnmnt.id IS NOT NULL");
-					if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("trnmnt.active_flag = ?", $_activeFlag);
-				
-					$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
+				->from("Tournament trnmnt") 
+				->innerJoin("trnmnt.Organization org on trnmnt.org_id = org.id ")     
+				->where("trnmnt.id IS NOT NULL");
+				if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("trnmnt.active_flag = ?", $_activeFlag);
+				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
-	 
-	
-	/*********************************************************
-	********** Candidate selection process *******************
-	**********************************************************/
-	
-	//
-	public static function processCandidatePersonSelection ( ) 
-   { 
-		
-	}  
-	
-	/*********************************************************
-	********** Candidate filtering process *******************
-	**********************************************************/
-	
-	public static function processRoleSelection ()
-	{
-		 
-	}
 	
 }
