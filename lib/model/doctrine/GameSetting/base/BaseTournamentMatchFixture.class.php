@@ -10,17 +10,16 @@
  * @property string $tournament_match_token_id
  * @property integer $parent_match_fixture_id
  * @property string $parent_match_fixture_token_id
- * @property integer $tournament_sport_game_group_id
- * @property string $tournament_sport_game_group_token_id
  * @property integer $sport_game_id
  * @property string $sport_game_token_id
+ * @property integer $gender_category_id
+ * @property integer $contestant_team_mode
  * @property integer $match_round_type_id
  * @property integer $match_heat_type_id
  * @property string $match_round_type_name
  * @property string $match_heat_type_name
  * @property integer $match_heat_number
  * @property string $match_heat_name
- * @property integer $gender_category_id
  * @property integer $match_fixture_round_mode
  * @property integer $event_type
  * @property integer $contestant_mode
@@ -28,7 +27,6 @@
  * @property integer $number_of_participants_per_fixture
  * @property integer $number_of_qualifying_rows
  * @property integer $number_of_best_qualifying_rows
- * @property integer $contestant_team_mode
  * @property string $match_venue
  * @property integer $tournament_match_session_mode
  * @property string $tournament_match_fixture_number
@@ -48,6 +46,7 @@
  * @property boolean $active_flag
  * @property boolean $competition_flag
  * @property boolean $complete_flag
+ * @property boolean $final_flag
  * @property integer $competition_status
  * @property integer $fixture_round_status
  * @property integer $duration_status
@@ -58,12 +57,12 @@
  * @property TournamentMatch $TournamentMatch
  * @property SportGame $SportGame
  * @property TournamentMatchFixture $TournamentMatchFixture
- * @property TournamentSportGameGroup $TournamentSportGameGroup
  * @property Doctrine_Collection $matchFixtureParentFixtures
  * @property Doctrine_Collection $matchFixtureMatchFixtureGroups
  * @property Doctrine_Collection $matchFixtureParticipantTeams
  * @property Doctrine_Collection $matchFixtureParticipants
  * @property Doctrine_Collection $tournamentMatchFixtureResults
+ * @property Doctrine_Collection $tournamentMatchFixtureTeamAwards
  * 
  * @package    symfony
  * @subpackage model
@@ -93,19 +92,18 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('tournament_sport_game_group_id', 'integer', null, array(
-             'type' => 'integer',
-             ));
-        $this->hasColumn('tournament_sport_game_group_token_id', 'string', 100, array(
-             'type' => 'string',
-             'length' => 100,
-             ));
         $this->hasColumn('sport_game_id', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('sport_game_token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('gender_category_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('contestant_team_mode', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('match_round_type_id', 'integer', null, array(
              'type' => 'integer',
@@ -128,9 +126,6 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
-        $this->hasColumn('gender_category_id', 'integer', null, array(
-             'type' => 'integer',
-             ));
         $this->hasColumn('match_fixture_round_mode', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -150,9 +145,6 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'type' => 'integer',
              ));
         $this->hasColumn('number_of_best_qualifying_rows', 'integer', null, array(
-             'type' => 'integer',
-             ));
-        $this->hasColumn('contestant_team_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('match_venue', 'string', 100, array(
@@ -216,7 +208,7 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              ));
         $this->hasColumn('roundable_flag', 'boolean', null, array(
              'type' => 'boolean',
-             'default' => false,
+             'default' => true,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
@@ -227,6 +219,10 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'default' => false,
              ));
         $this->hasColumn('complete_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('final_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));
@@ -276,11 +272,6 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $this->hasOne('TournamentSportGameGroup', array(
-             'local' => 'tournament_sport_game_group_id',
-             'foreign' => 'id',
-             'onDelete' => 'CASCADE'));
-
         $this->hasMany('TournamentMatchFixture as matchFixtureParentFixtures', array(
              'local' => 'id',
              'foreign' => 'parent_match_fixture_id'));
@@ -298,6 +289,10 @@ abstract class BaseTournamentMatchFixture extends sfDoctrineRecord
              'foreign' => 'tournament_match_fixture_id'));
 
         $this->hasMany('TournamentMatchFixtureResult as tournamentMatchFixtureResults', array(
+             'local' => 'id',
+             'foreign' => 'tournament_match_fixture_id'));
+
+        $this->hasMany('TournamentMatchTeamMedalAward as tournamentMatchFixtureTeamAwards', array(
              'local' => 'id',
              'foreign' => 'tournament_match_fixture_id'));
 

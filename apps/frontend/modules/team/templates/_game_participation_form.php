@@ -15,6 +15,7 @@
 								<input type="text" class="form-control " id="sport_game_type_name" name="sport_game_participation[sport_game_type_name]" placeholder="<?php echo __('Candidate Sport Game Type') ?>" title="<?php echo __('Candidate Sport Game Type') ?>" value="" data-toggle="modal" data-target="#candidateSportGameTypeModal"  disabled>
 								<input type="hidden" class="form-control" id="sport_game_type_id" name="sport_game_participation[sport_game_type_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="sport_game_type_token_id" name="sport_game_participation[sport_game_type_token_id]" value=""> 
+								<input type="hidden" class="form-control" id="contestant_team_mode" name="sport_game_participation[contestant_team_mode]" value=""> 
 								<input type="hidden" class="form-control" id="team_id" name="sport_game_participation[team_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_team->id ?>"  >
 								<input type="hidden" class="form-control" id="team_token_id" name="sport_game_participation[team_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_team->token_id ?>"  >
 								<span class="input-group-btn">

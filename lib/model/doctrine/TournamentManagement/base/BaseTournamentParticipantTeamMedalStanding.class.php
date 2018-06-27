@@ -15,6 +15,7 @@
  * @property integer $gold_medal
  * @property integer $silver_medal
  * @property integer $bronze_medal
+ * @property integer $other_medal_award
  * @property integer $total_medal_award
  * @property boolean $active_flag
  * @property integer $status
@@ -65,6 +66,9 @@ abstract class BaseTournamentParticipantTeamMedalStanding extends sfDoctrineReco
              'type' => 'integer',
              ));
         $this->hasColumn('bronze_medal', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('other_medal_award', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('total_medal_award', 'integer', null, array(

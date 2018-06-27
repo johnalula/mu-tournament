@@ -95,23 +95,17 @@
 									<img class="navbar-img" src="<?php echo image_path('settings/account_chart') ?>"><?php echo __('Match Tables') ?>
 								</a>
 							</li>
-							<li role="separator" class="divider"></li> 
-							<li class="">
-								<a href="<?php echo url_for('tournament_match/result') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('Fixture Result') ?>
-								</a>
-							</li>
-							<li class="">
-								<a href="<?php echo url_for('tournament_match/medal_award') ?>">
-									<img class="navbar-img" src="<?php echo image_path('settings/tournament_match') ?>"><?php echo __('Medal Award') ?>
-								</a>
-							</li> 
-							<li role="separator" class="divider"></li> 
+							<li role="separator" class="divider"></li>  
 							<li class="">
 								<a href="<?php echo url_for('tournament_match/team') ?>">
 									<img class="navbar-img" src="<?php echo image_path('settings/people') ?>"><?php echo __('Team Standings') ?>
 								</a>
 							</li> 
+							<li class="">
+								<a href="<?php echo url_for('tournament_award/index') ?>">
+									<img class="navbar-img" src="<?php echo image_path('settings/medal_award') ?>"><?php echo __('Tournament Medal Award') ?>
+								</a>
+							</li>  
 						</ul>
 					</li>  
 				<?php endif; ?>

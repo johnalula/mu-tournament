@@ -16,6 +16,10 @@ class TeamMemberParticipant extends PluginTeamMemberParticipant
 	{
 		return (($this->status ==TournamentCore::$_PENDING) && (!$this->grouped_flag)) ? true:false;
 	}
+	public function checkConfirmation ()
+	{
+		return (($this->confirmed_status ==TournamentCore::$_ACTIVE) && (!$this->confirmed_flag)) ? true:false;
+	}
 	public function makePending ()
 	{
 		$_flag = true;   
@@ -31,7 +35,18 @@ class TeamMemberParticipant extends PluginTeamMemberParticipant
 			$this->active_flag = true; 
 			$this->confirmed_flag = true; 
 			$this->grouped_status = trim(TournamentCore::$_ACTIVE); 
-			$this->status = trim(TournamentCore::$_COMPLETED); 
+			$this->status = trim(TournamentCore::$_ACTIVE); 
+			$this->save();
+
+		return $_flag;
+	}
+	public function makeConfirmation ()
+	{
+		$_flag = true;    
+			$this->active_flag = true; 
+			$this->confirmed_flag = true; 
+			$this->confirmed_status = trim(TournamentCore::$_ACTIVE); 
+			$this->status = trim(TournamentCore::$_ACTIVE); 
 			$this->save();
 
 		return $_flag;

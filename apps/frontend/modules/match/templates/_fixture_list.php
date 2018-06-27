@@ -30,13 +30,13 @@
 				<?php echo SystemCore::processDataID($_matchFixture->id) ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
-				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - ( '.TournamentCore::processGenderValue($_matchFixture->teamGroupGenderCategoryID).' )' ?>
+				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - ( '.TournamentCore::processGenderValue($_matchFixture->id).' )' ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo TournamentCore::processEventTypeValue($_matchFixture->matchEventType) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_matchFixture->sportGameGroupName ?>
+				<?php echo $_matchFixture->matchFixtureHeatNumber ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo TournamentCore::processRoundModeValue($_matchFixture->matchFixtureGroupRoundMode) ?>">
 				<?php echo $_matchFixture->matchFixtureHeatName ?>

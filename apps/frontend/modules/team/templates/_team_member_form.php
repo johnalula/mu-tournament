@@ -46,16 +46,10 @@
 								<?php endforeach; ?>
 							</select>
 						</div>
-						<label class="col-sm-121 control-label" title="<?php echo __('Date of Birth') ?>"><?php echo __('DoB') ?>:</label>
-						<div class="col-sm-23">
-							<div class="input-group"> 
-								<input type="text" class="form-control" id="date_of_birth" name="team_member[date_of_birth]" placeholder="<?php echo __('Date of Birth') ?>" title="<?php echo __('Member Date of Birth') ?>" readonly rel="ui-date" >
-								<span class="input-group-btn">
-									<button class="btn btn-default ui-button-img" type="button" title="<?php echo __('Date of birth') ?>">
-										<img class="ui-addon-img" src="<?php echo image_path('icons/calendar_small') ?>" >
-									</button>
-								</span> 
-							</div> 
+						<label class="col-sm-121 control-label" title="<?php echo __('Participant Age') ?>"><?php echo __('Age') ?>:</label>
+						<div class="col-sm-23"> 
+							<input type="text" class="form-control" id="participant_age" name="team_member[participant_age]" placeholder="<?php echo __('Participant Age') ?>" title="<?php echo __('Participant Age') ?>" readonly rel="ui-date" >
+								 
 						</div>
 					</div>  
 					<div class="form-group">

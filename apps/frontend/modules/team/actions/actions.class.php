@@ -57,7 +57,7 @@ class teamActions extends sfActions
 		
 		$this->_team = TeamTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_teamID, $_tokenID ) ;
 
-		$this->_gameParticipations = TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_keyword, $_exclusion, 0, 20  ) ;
+		$this->_gameParticipations = TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamIDs, sha1(md5($_tokenID)), $_gameTypeID, $_keyword, $_exclusion, 0, 20  ) ;
 		$this->_memberParticipants = TeamMemberParticipantTable::processSelection( $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_sportGameID, $_sportGameTokenID, $_keyword, $_exclusion, 0, 20  ) ;
 		
 		$this->_memberParticipantRoles = TeamMemberParticipantRoleTable::processSelection ( $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_participantID, $_sportGameID, $_keyword, 0, 20 ); 
@@ -99,6 +99,7 @@ class teamActions extends sfActions
 		$_eventType = $request->getParameter('event_type');	 
 		$_genderCategory = $request->getParameter('gender_category');	 
 		$_playerMode = $request->getParameter('player_mode');	 
+		$_contestantTeamMode = $request->getParameter('contestant_team_mode');	 
 		$_participantNumber = $request->getParameter('participant_number');	 
 		$_description = $request->getParameter('description');	
 				
@@ -107,7 +108,7 @@ class teamActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  TeamGameParticipationTable::processNew ( $_orgID, $_orgTokenID, $_teamID, $_teamTokenID, $_sportGameTypeID, $_sportGameID, $_sportGameTokenID, $_sportGameTypeName, $_sportGameName, $_genderCategory, $_eventType, $_playerMode, $_participantNumber, $_description, $_userID, $_userTokenID  );  
+		$_flag =  TeamGameParticipationTable::processNew ( $_orgID, $_orgTokenID, $_teamID, $_teamTokenID, $_sportGameTypeID, $_sportGameID, $_sportGameTokenID, $_sportGameTypeName, $_sportGameName, $_genderCategory, $_eventType, $_playerMode, $_contestantTeamMode, $_participantNumber, $_description, $_userID, $_userTokenID  );  
 				 
 		return $_flag ? true:false;
 	}
@@ -121,6 +122,7 @@ class teamActions extends sfActions
 		$_lastName = $request->getParameter('last_name');	
 		$_memberGender = $request->getParameter('member_gender');	
 		$_dateOfBirth = $request->getParameter('date_of_birth');	 
+		$_participantAge = $request->getParameter('participant_age');	 
 		$_memberRole = $request->getParameter('team_member_role');	 
 		$_memberRelation = $request->getParameter('team_member_relation');	 
 		$_memberNumber = $request->getParameter('team_member_relation');	 
@@ -134,7 +136,7 @@ class teamActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  TeamMemberParticipantTable::processNew ( $_orgID, $_orgTokenID, $_teamID, $_teamTokenID, $_firstName, $_middleName, $_lastName, $_memberRole, $_memberRelation, $_memberGender, $_dateOfBirth, $_memberNumber, $_memberStatus, $_remark, $_description, $_userID, $_userTokenID  );  
+		$_flag =  TeamMemberParticipantTable::processNew ( $_orgID, $_orgTokenID, $_teamID, $_teamTokenID, $_firstName, $_middleName, $_lastName, $_memberRole, $_memberRelation, $_memberGender, $_dateOfBirth, $_participantAge, $_memberNumber, $_memberStatus, $_remark, $_description, $_userID, $_userTokenID  );  
 		
 				 
 		return $_flag ? true:false;

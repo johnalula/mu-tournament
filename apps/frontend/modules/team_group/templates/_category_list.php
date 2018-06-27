@@ -27,7 +27,7 @@
 				<?php echo SystemCore::processDataID($_rowNumber) ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-00"> 
-				<?php echo $_tournamentTeamGroup->sportGameGroupCode  ?>
+				<?php echo $_tournamentTeamGroup->sportGameGroupName  ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xsmall-2">
 				<?php echo $_tournamentTeamGroup->sportGameName.' '.($_tournamentTeamGroup->sportGameDistanceTypeID ? (' - '.TournamentCore::processDistanceTypeValue($_tournamentTeamGroup->sportGameDistanceTypeID)):'').'  '.($_tournamentTeamGroup->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_tournamentTeamGroup->sportGameTypeMode)):'') ?>

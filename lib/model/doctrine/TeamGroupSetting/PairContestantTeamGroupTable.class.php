@@ -49,9 +49,9 @@ class PairContestantTeamGroupTable extends PluginPairContestantTeamGroupTable
 			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->gender_category_id = trim($_genderCategory); 
 			$_nw->group_team_number_mandatory_flag = $_mandatoryFlag ? trim($_mandatoryFlag):false; 
-			$_nw->start_date = trim($_startDate); 
-			//$_nw->confirmed_flag = false;  
+			$_nw->start_date = trim($_startDate);  
 			$_nw->active_flag = false;  
+			$_nw->competition_status = $_apporvalStatus ? trim($_apporvalStatus):TournamentCore::$_INITIATED;   
 			$_nw->approval_status = $_apporvalStatus ? trim($_apporvalStatus):TournamentCore::$_INITIATED;   
 			$_nw->status = $_groupStatus ? trim($_groupStatus):TournamentCore::$_INITIATED;   
 			$_nw->description = SystemCore::processDescription ((trim($_sportGameFullName).' - '.trim(TournamentCore::processGenderValue($_genderCategory)).' - '.trim($_groupTypeName)), trim($_description) );  

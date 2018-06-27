@@ -4,7 +4,7 @@
 prod:
   .settings:
     cache:                  false
-    web_debug:              true
+    web_debug:              false
     no_script_name:         true
     logging_enabled:        true
     standard_helpers: [Partial, Cache, I18N, Javascript]
@@ -12,7 +12,7 @@ prod:
 dev:
   .settings:
    # error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
-    web_debug:              true
+    web_debug:              false
     cache:                  false
     no_script_name:         false
     etag:                   false

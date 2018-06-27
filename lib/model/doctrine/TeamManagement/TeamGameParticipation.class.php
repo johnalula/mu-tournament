@@ -20,6 +20,10 @@ class TeamGameParticipation extends PluginTeamGameParticipation
 	{
 		return (($this->confirm_status !=TournamentCore::$_ACTIVE) && (!$this->confirm_flag)) ? true:false;
 	}
+	public function checkActivation ()
+	{
+		return (($this->status !=TournamentCore::$_ACTIVE) && (!$this->active_flag)) ? true:false;
+	}
 	//grouped_flag: { type: boolean, default: false } 
    // confirmed_flag: { type: boolean, default: false } 
   //  active_flag: { type: boolean, default: false } 
@@ -44,10 +48,10 @@ class TeamGameParticipation extends PluginTeamGameParticipation
 	{
 		$_flag = true;    
 			$this->grouped_flag = false;   
-			$this->confirmed_flag = true;   
+			$this->confirmed_flag = false;   
 			$this->active_flag = true;   
 			$this->grouped_status = trim(TournamentCore::$_PENDING);   
-			$this->confirmed_status = trim(TournamentCore::$_CONFIRMED);   
+			$this->confirmed_status = trim(TournamentCore::$_PENDING);   
 			$this->status = trim(TournamentCore::$_ACTIVE); 
 			$this->save();
 
@@ -83,35 +87,32 @@ class TeamGameParticipation extends PluginTeamGameParticipation
 		$this->effective_date = $_effectiveDate;  
 		$this->save();
 		return $_flag;
-	}
-	public function makeProcessRevertion ()
-	{
-		$_flag = true;       
-		$this->status = trim(TournamentCore::$_ACTIVE); 
-		$this->effective_date = NULL;  
-		$this->save();
-		return $_flag;
-	}
+	} 
 	public function makeCompletion ()
 	{
-		$_flag = true;   
-		$_endDate = date('m/d/Y', time());  
-		$this->active_flag = true;  
-		$this->approval_status = trim(TournamentCore::$_APPROVED); 
-		$this->status = trim(TournamentCore::$_COMPLETED);  
-		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  
+		$_flag = true;  
+		$_effectiveDate = date('m/d/Y', time());   
+		$this->confirmed_flag = true; 
+		$this->grouped_flag = true; 
+		$this->active_flag = true; 
+		$this->grouped_status = trim(TournamentCore::$_COMPLETED); 
+		$this->confirmed_status = trim(TournamentCore::$_CONFIRMED); 
+		$this->status = trim(TournamentCore::$_COMPLETED); 
+		$this->effective_date = $_effectiveDate;  
 		$this->save();
 		return $_flag;
 	}
-	public function makeProcessFinalize ()
+	public function makeFinalization ()
 	{
-		$_flag = true;   
-		$_endDate = date('m/d/Y', time());  
-		$this->active_flag = false;  
-		$this->complete_flag = true;  
-		$this->approval_status = trim(TournamentCore::$_COMPLETED); 
-		$this->status = trim(TournamentCore::$_COMPLETED);  
-		$this->end_date = $_endDate;  
+		$_flag = true;  
+		$_effectiveDate = date('m/d/Y', time());   
+		$this->confirmed_flag = true; 
+		$this->grouped_flag = true; 
+		$this->active_flag = true; 
+		$this->grouped_status = trim(TournamentCore::$_FINALIZED); 
+		$this->confirmed_status = trim(TournamentCore::$_FINALIZED); 
+		$this->status = trim(TournamentCore::$_FINALIZED); 
+		$this->effective_date = $_effectiveDate;  
 		$this->save();
 		return $_flag;
 	}

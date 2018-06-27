@@ -23,7 +23,7 @@
 					<?php echo $_matchFixture->matchTime ? $_matchFixture->matchTime:$_matchFixture->fixtureGroupMatchTime ?>
 				</td>
 				<td>
-					<?php echo TournamentCore::processGenderAlias($_matchFixture->teamGroupGenderCategoryID) ?>
+					<?php echo TournamentCore::processGenderAlias($_matchFixture->genderCategoryID) ?>
 				</td> 
 				<td>
 					<a href="<?php echo url_for('competition/fixture?match_fixture_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	
@@ -34,7 +34,7 @@
 					<?php echo $_matchFixture->matchContestantMode == TournamentCore::$_PAIR_TEAM ? $_matchFixture->selectCandidateParticipantTeams():'' ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->sportGameGroupName ?>
+					<?php echo $_matchFixture->matchFixtureHeatName ?>
 				</td>
 				<td>
 					<?php echo $_matchFixture->matchFixtureHeatName ?>

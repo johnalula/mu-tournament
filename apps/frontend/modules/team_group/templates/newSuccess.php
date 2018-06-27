@@ -3,6 +3,9 @@
 	
 	//echo sha1(md5($sf_user->getAttribute('orgTokenID')));
 	//echo sha1(md5('94f12f125643718e20d329aef595bc3e'));
+	//test_id=&tournament_name=All African Universities Sport Festival (FASU ) &tournament_token_id=67a74306b06d0c01624fe0d0249a570f4d093747&tournament_id=1&sport_game_type_name=Athletics (ATHLETICS)&sport_game_type_id=1&sport_game_type_token_id=096a750dfbe002a1c8175892d33fb7b84b789c3c&group_status=1&start_date=06/24/2018&description=&all-list-check-boxs=0&ui-total-data-list-product=0
+	
+	//$_teamGroup =  TournamentTeamGroupTable::processNew ( 1, '94f12f125643718e20d329aef595bc3e', 1, 1, '096a750dfbe002a1c8175892d33fb7b84b789c3c', 'Athletics (ATHLETICS)', $_startDate, $_groupStatus, $_description, $_userID, $_userTokenID ); 
 	
 ?> 
 
@@ -228,10 +231,10 @@
  
 
 <script>
-	/*$('#createTeamGroup').click(function(){
+	/*$('#createTournamentTeamGroup').click(function(){
 		var url = '<?php echo url_for('team_group/createTournamentTeamGroup')?>'; 
-		var formName = 'createTournamentTeamGroupForm';
-		var data = $("form#createTournamentTeamGroupForm").serialize();
+		var formName = 'createTournamentSportGameGroup';
+		var data = $("form#createTournamentSportGameGroup").serialize();
 		var datas = generateValidData (formName);
 		//processEntry(datas, url )
 		alert(datas);

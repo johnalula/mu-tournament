@@ -27,7 +27,7 @@
 				<?php echo SystemCore::processDataID($_rowNumber) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_candidateParticipant->memberNumber ? $_candidateParticipant->memberNumber:$_candidateParticipant->partyCodeNumber ?>
+				<?php echo $_candidateParticipant->memberNumber ? $_candidateParticipant->memberNumber:$_candidateParticipant->id ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-01"> 
 				<?php echo $_candidateParticipant->memberFullName  ?>

@@ -25,7 +25,7 @@
 			<?php foreach($_participantTeamStandings as $_key => $_participantTeam ): ?>
 			<tr class="<?php echo fmod($_key, 2) ? 'ui-even' : 'ui-odd' ?>"> 
 				<td align="left">
-					<?php echo $_participantTeam->participantTeamName ?>
+					<?php echo $_participantTeam->teamName ?>
 				</td>
 				<td align="center">
 					<?php echo  $_participantTeam->numberOfGoldMedal ?>

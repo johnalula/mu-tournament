@@ -31,6 +31,7 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 	public function makePending ()
 	{
 		$_flag = true;   
+			$this->competition_status = trim(TournamentCore::$_PENDING);   
 			$this->process_status = trim(TournamentCore::$_ACTIVE);   
 			$this->approval_status = trim(TournamentCore::$_PENDING);   
 			$this->status = trim(TournamentCore::$_PENDING); 
@@ -40,25 +41,16 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 	}
 	public function makeActivation ()
 	{
-		$_flag = true;    
+		$_flag = true;     
+			$this->active_flag = true; 
+			$this->competition_status = trim(TournamentCore::$_PENDING);  
 			$this->process_status = trim(TournamentCore::$_ACTIVE); 
 			$this->approval_status = trim(TournamentCore::$_ACTIVE); 
 			$this->status = trim(TournamentCore::$_PENDING); 
 			$this->save();
 			
 		return $_flag;
-	}
-	public function makeProcessApproval ()
-	{
-		$_flag = true;   
-		$_effectiveDate = date('m/d/Y', time());  
-		$this->active_flag = true; 
-		$this->approval_status = trim(TournamentCore::$_APPROVED); 
-		$this->status = trim(TournamentCore::$_ACTIVE); 
-		$this->effective_date = trim($_effectiveDate);  
-		$this->save();
-		return $_flag;
-	}
+	} 
 	public function makeProcessRevertion ()
 	{
 		$_flag = true;       
@@ -71,8 +63,10 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 	{
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  
+		$this->competition_flag = true;  
 		$this->active_flag = true;  
-		$this->process_status = trim(TournamentCore::$_APPROVED); 
+		$this->competition_status = trim(TournamentCore::$_ACTIVE); 
+		$this->process_status = trim(TournamentCore::$_COMPLETED); 
 		$this->approval_status = trim(TournamentCore::$_APPROVED); 
 		$this->status = trim(TournamentCore::$_ACTIVE);  
 		$this->save();
@@ -103,4 +97,40 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 		return $_flag;
 	}
 	
+	//
+	
+	public function countCandidateParticipants()
+	{
+		
+		//$_countParticipants = TeamMemberParticipantRoleTable::countCandidates ( $this->tournamentID, $_teamID, $_participantID, $this->tournamentID, $this->groupGenderCategoryID);
+		$_countParticipants = TeamMemberParticipantRoleTable::countQualifiedCandidates ( $this->tournamentID, $this->sportGameID, $this->groupGenderCategoryID, $_qualificationStatus, $_status, $_qualifiedFlag, $_activeFlag) ;
+		
+		return count($_countParticipants);
+	}
+
+	/************************************************/
+	 //((SELECT COUNT(sprtGmPrt1.id) FROM TeamGameParticipation sprtGmPrt1 WHERE sprtGmPrt1.sport_game_id = sprtGm.id AND sprtGmPrt1.sport_game_token_id = ".sha1."(".md5."("."sprtGm.token_id)) AND sprtGmPrt1.gender_category_id = sprtGmGrp.gender_category_id AND sprtGmPrt1.confirmed_status = ".TournamentCore::$_CONFIRMED." AND sprtGmPrt1.status = ".TournamentCore::$_ACTIVE." AND sprtGmPrt1.grouped_status = ".TournamentCore::$_PENDING." AND sprtGmPrt1.active_flag IS TRUE AND sprtGmPrt1.confirmed_flag IS TRUE AND sprtGmPrt1.grouped_flag IS FALSE)) as hasPendingTeamGameParticipation,
+	 
+	public function countCandidates () 
+	{
+		
+		$_tournamnetTeamGroups = TeamGameParticipationTable::countCandidateGameParticipations ( $this->sportGameID, $this->sportGameTokenID, $this->groupGenderCategoryID, $_groupedStatus, $_confirmedStatus, $_status, $_qualifiedFlag, $_activeFlag);
+		
+		return count($_tournamnetTeamGroups);
+	}
+	public function hasPendingTeamGameParticipation () 
+	{
+		
+		$_tournamnetTeamGroups = TeamGameParticipationTable::countCandidateGameParticipations ( $this->sportGameID, $this->sportGameTokenID, $this->groupGenderCategoryID, $_groupedStatus, TournamentCore::$_PENDING, $_status, $_qualifiedFlag, false, true);
+		
+		return (count($_tournamnetTeamGroups));
+	}
+
+
+
+	
 }
+
+
+
+

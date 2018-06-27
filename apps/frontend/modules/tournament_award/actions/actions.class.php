@@ -29,6 +29,59 @@ class tournament_awardActions extends sfActions
 
 		$this->_participantTeams = TournamentParticipantTeamMedalStandingTable::processCandidates ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_activeFlag, $_keyword);
 	}
+	public function executeNew(sfWebRequest $request)
+	{
+
+		$_defaultSuperAdmin = $this->getUser()->getAttribute('defaultSuperAdmin');
+		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
+
+		$this->_participantTeams = TournamentParticipantTeamMedalStandingTable::processCandidates ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_activeFlag, $_keyword);
+	}
+	public function executeCreateTournamentMatchMedalAward(sfWebRequest $request)
+	{
+		$_tournamentMedalAward = $request->getParameter('tournament_medal_award');
+		$_gameCategoryID = $_tournamentMedalAward['sport_game_category_id'];	 
+		$_sportGameTypeName = $_tournamentMedalAward['sport_game_category_name'];	
+		$_startDate = $_tournamentMedalAward['start_date'];	 
+		$_medalAwardStatus = $_tournamentMedalAward['medal_award_status'];	 
+		$_description = $_tournamentMedalAward['description'];	
+		$_sportGameFullName = $_sportGameName.' - '.$_sportGameTypeName;	
+				
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_userID = $this->getUser()->getAttribute('userID');
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
+
+		$_tournamentAward =  TournamentMatchMedalAwardTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_gameCategoryID, $_sportGameTypeName, $_startDate, $_medalAwardStatus, $_description, $_userID, $_userTokenID );  
+		
+		if(!trim($_teamGroup) && !empty($_teamGroup)) { 
+			$this->getUser()->setFlash('process_fail', true);
+			$this->redirect('tournament_award/new');
+		}  else {
+			$this->getUser()->setFlash('process_success', true);
+			$this->redirect('tournament_award/participant?medal_award_id='.$_tournamentAward->id.'&token_id='.$_tournamentAward->token_id);
+		}
+		
+	}
+	public function executeParticipant(sfWebRequest $request)
+	{
+		$_tournamentGroupID = $request->getParameter('team_group_id');	
+		$_tournamentGroupTokenID = $request->getParameter('token_id');	
+		
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		
+		//$this->_activeTournament = TournamentTable::makeCandidateObject ( $_orgID, true ) ;
+		$this->_tournamentTeamGroup = TournamentTeamGroupTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentGroupID, $_tournamentGroupTokenID ) ;
+		
+		$this->_groupParticipantTeams = TournamentGroupParticipantTeamTable::processSelection ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 20 ) ;
+		
+		//$this->_countGroupParticipantTeams = TournamentGroupParticipantTeamTable::processAll ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword) ;
+		
+		$this->_candidateTeamGroupParticipants = TournamentSportGameGroupTable::selectCanidates ( $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_keyword, 0, 20  ) ; 
+	}
 	//
 	public function executeGenerateTournamentMedalAwardStanding(sfWebRequest $request)
 	{ 

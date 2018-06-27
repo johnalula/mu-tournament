@@ -6,7 +6,10 @@
 				<div class="ui-content-detail-box">
 					<h2><?php echo $_participantTeam->teamName.' ( '.$_participantTeam->teamAlias.' )'?> </h2> 
 					<div class="ui-content-detail">
-						<h3><?php echo SystemCore::processCountryValue($_participantTeam->teamCountry).' ( '.SystemCore::processCountryAliasValue($_participantTeam->teamCountry).' )'  ?> </h3>
+						<h3>
+							<?php  $_contryFlag = 'flags/'.$_participantTeam->teamCountry ?>
+							<img style="max-width:85px;" src="<?php echo image_path($_contryFlag) ?>" alt="First slide">&nbsp;
+							<?php echo SystemCore::processCountryValue($_participantTeam->teamCountry).' ( '.SystemCore::processCountryAliasValue($_participantTeam->teamCountry).' )'  ?> </h3>
 						<span><?php echo $_participantTeam->tournamentName.' ( '.$_participantTeam->tournamentAlias.' ) - '.$_participantTeam->tournamentSeason.' - MEKELLE' ?></span>
 						<span><?php echo date('d M Y',strtotime($_participantTeam->tournamentStartDate)).' - '.date('d M Y',strtotime($_participantTeam->tournamentEndDate)) ?></span>
 					</div>
@@ -67,7 +70,7 @@
 						
 						<div class="col-sm-12">
 							<div class="panel-content">
-								<?php include_partial('team_member_list', array('_participantTeamMembers' => $_participantTeamMembers)) ?>
+								<?php include_partial('team_member_list', array('_candidateParticipants' => $_candidateParticipants)) ?>
 							</div><!-- /.col-sm -->
 						</div><!-- /.col-sm -->
 					
@@ -79,7 +82,7 @@
 					
 						<div class="col-sm-12">
 							<div class="panel-content">
-								<?php include_partial('team_participating_game_list', array('_teamParticipatingGames' => $_teamParticipatingGames)) ?>
+								<?php include_partial('participant_role_list', array('_candidateParticipants' => $_candidateParticipants)) ?>
 							</div><!-- /.col-sm -->
 						</div><!-- /.col-sm --> 
 						 

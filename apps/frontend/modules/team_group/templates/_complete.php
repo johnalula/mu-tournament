@@ -14,7 +14,7 @@
 							<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 							<img title="<?php echo $_tournamentTeamGroup->gameCategoryName ?>" src="<?php echo image_path($_tournamentTeamGroup->apporvalStatus == TournamentCore::$_APPROVED ? 'status/approved':'status/deny')  ?>"> 
 						</span>
-						<?php echo __('Tournament Group').' ( Type: '.$_tournamentTeamGroup->gameCategoryName.' -  Code #: '.$_tournamentTeamGroup->tournamentGroupFullCode.' - Mode : '.TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode).' )'  ?>
+						<?php echo __('Tournament Group').' ( Type: '.$_tournamentTeamGroup->countCandidates ().' -  Code #: '.$_tournamentTeamGroup->tournamentGroupFullCode.' - Mode : '.TournamentCore::processContestantTeamModeValue($_tournamentTeamGroup->contestantTeamMode).' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -74,7 +74,7 @@
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('complete_list', array('_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateGroupParticipantTeams' => $_candidateGroupParticipantTeams , '_countCandidateGroupParticipantTeams' => $_countCandidateGroupParticipantTeams )) ?> 
+													<?php include_partial('complete_list', array('_tournamentTeamGroup' => $_tournamentTeamGroup, '_caniddateParticipantTeams' => $_caniddateParticipantTeams , '_countCandidateGroupParticipantTeams' => $_countCandidateGroupParticipantTeams )) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											

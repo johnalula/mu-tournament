@@ -6,16 +6,20 @@
 	//$_candidateParticipantTeams = TournamentTeamGroupTable::selectAllCandidateParticipantTeams ( 1, '315290b52d8250fa1acaf151705378d95fcc9bff', 2, 1, 2, $_keyword );
 	
 	//echo count($_candidateParticipantTeams);
-	
+	//$_candidateSportGames = TournamentSportGameGroupTable::processCandidateSelections ( 1, '7a70ae99a478b6e7bbf72b53f4cfea5cd812a3f9', $_sportGameID, $_sportGameTypeID, 1, $_keyword );
 	//$_tournamentGroup = TournamentTeamGroupTable::makeCandidateObject ( 3, '8f599ee44ed36ebf2b28c66f5aa29f8aec49e1f2');
 	//echo $_tournamentGroup->token_id.' = ';
+	//echo count($_candidateSportGames).' = ';
+	//$_tournamentGroup =  TournamentSportGameGroupTable::makeObject (6, '77f1a16687ff9a2cf2985de3acc8f34f9b167882 ' );
+	
+	//echo $_tournamentGroup->hasPendingTeamGameParticipation() ? 'True':'false';
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('member', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateTeamGroupParticipants' => $_candidateTeamGroupParticipants, '_countGroupParticipantTeams' => $_countGroupParticipantTeams)) ?> 
+				<?php include_partial('member', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_caniddateParticipantTeams' => $_caniddateParticipantTeams, '_countGroupParticipantTeams' => $_countGroupParticipantTeams)) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>

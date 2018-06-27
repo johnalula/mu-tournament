@@ -30,10 +30,12 @@
 					<?php echo ++$_key ?>
 				</td>
 				<td align="left">
-					<?php echo $_participantTeam->participantTeamName ?>
+					<?php echo $_participantTeam->teamName ?>
 				</td>
 				<td align="left">
-					<?php echo SystemCore::processCountryValue($_participantTeam->teamCountry) ?>
+					<?php  $_contryFlag = 'flags/'.$_participantTeam->teamCountry ?>
+					<img style="max-width:45px;" src="<?php echo image_path($_contryFlag) ?>" alt="First slide">&nbsp;
+					<?php echo SystemCore::processCountryValue($_participantTeam->teamCountry)  ?>
 				</td>
 				<td align="left" width=80>
 					<?php echo  $_participantTeam->numberOfGoldMedal ?>

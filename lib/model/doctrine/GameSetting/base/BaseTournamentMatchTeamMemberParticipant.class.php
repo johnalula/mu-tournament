@@ -13,14 +13,22 @@
  * @property integer $tournament_match_participant_team_id
  * @property integer $participant_team_member_id
  * @property integer $participant_team_member_role_id
+ * @property integer $match_result_rank
  * @property integer $match_position_order
  * @property integer $match_result_position_order
+ * @property integer $match_result_point
  * @property integer $match_result_score
+ * @property integer $match_result_goal_number
+ * @property integer $red_card_number
+ * @property integer $yellow_card_number
+ * @property float $match_result_distance
+ * @property float $match_result_height
  * @property datetime $match_result_time
  * @property string $effective_date
  * @property boolean $qualified_flag
  * @property boolean $confirmed_flag
  * @property boolean $active_flag
+ * @property boolean $medal_award_flag
  * @property integer $qualification_status
  * @property integer $competition_status
  * @property integer $approval_status
@@ -32,7 +40,9 @@
  * @property TournamentMatchFixtureGroup $TournamentMatchFixtureGroup
  * @property TournamentMatchFixture $TournamentMatchFixture
  * @property TournamentMatchParticipantTeam $TournamentMatchParticipantTeam
+ * @property Doctrine_Collection $tournamentMatchFixtureResults
  * @property Doctrine_Collection $tournamentMatchTeamMemberParticipantTeamStandingDetails
+ * @property Doctrine_Collection $tournamentMatchTeamMemberParticipantMedaAwardParticipants
  * 
  * @package    symfony
  * @subpackage model
@@ -70,14 +80,35 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
         $this->hasColumn('participant_team_member_role_id', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('match_result_rank', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('match_position_order', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('match_result_position_order', 'integer', null, array(
              'type' => 'integer',
              ));
+        $this->hasColumn('match_result_point', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('match_result_score', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_goal_number', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('red_card_number', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('yellow_card_number', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_distance', 'float', null, array(
+             'type' => 'float',
+             ));
+        $this->hasColumn('match_result_height', 'float', null, array(
+             'type' => 'float',
              ));
         $this->hasColumn('match_result_time', 'datetime', null, array(
              'type' => 'datetime',
@@ -94,6 +125,10 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
              'default' => false,
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('medal_award_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));
@@ -151,9 +186,17 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
+        $this->hasMany('TournamentMatchFixtureResult as tournamentMatchFixtureResults', array(
+             'local' => 'id',
+             'foreign' => 'match_fixture_team_member_participant_id'));
+
         $this->hasMany('TournamentParticipantTeamMedalStandingDetail as tournamentMatchTeamMemberParticipantTeamStandingDetails', array(
              'local' => 'id',
              'foreign' => 'participant_team_member_id'));
+
+        $this->hasMany('TournamentMatchTeamMedalAwardParticipant as tournamentMatchTeamMemberParticipantMedaAwardParticipants', array(
+             'local' => 'id',
+             'foreign' => 'tournament_match_fixture_participant_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

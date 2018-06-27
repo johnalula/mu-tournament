@@ -1944,7 +1944,7 @@ class TournamentCore {
 	public static function processTournamentSessionModeValue ($_id )
 	{
 		try {
-			foreach( self::$_TOURNAMENT_SESSION_MODES as $_key => $_event ){
+			foreach( self::$_TOURNAMENT_SESSION_MODES as $_key => $_event ) {
 			  if( $_key == $_id )
 					return $_event; 
 			}
@@ -1980,6 +1980,74 @@ class TournamentCore {
 			break;
 			case self::$_AFTERNOON_SESSION:
 				return 'pair_players';
+			break; 
+		}
+	} 
+	/********************************************************/
+	
+	public static $_INDIVIDUAL_AWARD = 1;
+	public static $_GROUP_AWARD = 2;
+	public static $_TEAM_AWARD = 3;
+	public static $_OTHER_AWARD_MODE = 4;
+
+	public static $_TOURNAMENT_MEDAL_AWARD_MODES = array ( 1 => 'Individual Award', 2 => 'Group Award', 3 => 'Team Award', 4 => 'Other Award');
+	
+	public static function processTournamentMedalAwardModes ( ) 
+	{
+		 try {
+				return self::$_TOURNAMENT_MEDAL_AWARD_MODES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processTournamentMedalAwardModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_TOURNAMENT_MEDAL_AWARD_MODES as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processTournamentMedalAwardModeValue ($_id )
+	{
+		try { 
+			foreach( self::$_TOURNAMENT_MEDAL_AWARD_MODES as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultTournamentMedalAwardMode ( )
+	{
+		 try {
+				return self::$_INDIVIDUAL_AWARD; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processTournamentMedalAwardModeAlias ($_event) 
+	{
+		switch($_event) {			
+			case self::$_INDIVIDUAL_AWARD:
+				return 'individual_award';
+			break;
+			case self::$_GROUP_AWARD:
+				return 'group_award';
+			break; 
+			case self::$_TEAM_AWARD:
+				return 'team_award';
+			break; 
+			case self::$_OTHER_AWARD:
+				return 'other_award';
 			break; 
 		}
 	} 

@@ -57,31 +57,7 @@
 								</span>
 							</div><!-- /input-group -->
 						</div>
-					</div>  
-					<div class="form-group">
-						<label class="col-sm-20 control-label" title="<?php echo __('Team Member Relation') ?>"><?php echo __('Relation') ?> :<span class="ui-red-text"></span></label>
-						<div class="col-sm-23">
-							<select id="team_member_role" name="team_member_role[team_member_role]" class="form-control" title="<?php echo __('Team Member Role') ?>"  >
-								<option value="" selected  ><?php echo 'Select Player Mode ...' ?></option>
-								<?php foreach(PersonCore::processPersonRoles() as $_key => $_mode): ?>								 
-									<option value="<?php echo $_key ?>" <?php echo $_key == PersonCore::$_CONTESTANT ? 'selected':'' ?> >
-										<?php echo $_mode ?>
-									</option>								 
-								<?php endforeach; ?> 
-							</select> 
-						</div>
-						<label class="col-sm-01 control-label" title="<?php echo __('Member Role') ?>"><?php echo __('Role') ?>:<span class="ui-red-text"></span></label>
-						<div class="col-sm-23">
-							<select id="team_member_role" name="team_member[team_member_role]" class="form-control" title="<?php echo __('Member Role') ?>">
-								<option value="" selected  ><?php echo 'Select Status ...' ?></option>
-								<?php foreach(TournamentCore::processContestantNameModes() as $_key => $_mode): ?>								 
-									<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_ATHLETE ? 'selected':'' ?> >
-										<?php echo $_mode ?>
-									</option>								 
-								<?php endforeach; ?>
-							</select>
-						</div>
-					</div>  
+					</div>   
 					<div class="form-group">
 						<label class="col-sm-20 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>:</label>
 						<div class="col-sm-40"> 

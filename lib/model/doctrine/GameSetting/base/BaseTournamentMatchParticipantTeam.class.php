@@ -11,16 +11,27 @@
  * @property string $tournament_match_fixture_token_id
  * @property integer $tournament_match_fixture_group_id
  * @property string $tournament_match_fixture_group_token_id
+ * @property integer $tournament_sport_game_group_id
  * @property integer $group_participant_team_id
  * @property string $group_participant_team_token_id
  * @property integer $match_result_point
  * @property integer $match_result_score
- * @property integer $match_result_time
+ * @property datetime $match_result_time
+ * @property integer $red_card_number
+ * @property integer $yellow_card_number
+ * @property integer $match_result_winner_point
+ * @property integer $match_result_loser_point
+ * @property integer $standing_rank
+ * @property integer $gold_medal
+ * @property integer $silver_medal
+ * @property integer $bronze_medal
+ * @property integer $total_medal_award
  * @property string $effective_date
  * @property boolean $qualified_flag
  * @property boolean $confirmed_flag
  * @property boolean $active_flag
  * @property boolean $competition_flag
+ * @property boolean $medal_award_flag
  * @property integer $qualification_status
  * @property integer $competition_status
  * @property integer $process_status
@@ -32,7 +43,9 @@
  * @property TournamentGroupParticipantTeam $TournamentGroupParticipantTeam
  * @property TournamentMatchFixture $TournamentMatchFixture
  * @property TournamentMatchFixtureGroup $TournamentMatchFixtureGroup
+ * @property TournamentSportGameGroup $TournamentSportGameGroup
  * @property Doctrine_Collection $tournamentMatchParticipantTeamMemberParticipants
+ * @property Doctrine_Collection $tournamentMatchParticipantTeamMedalAwards
  * 
  * @package    symfony
  * @subpackage model
@@ -65,6 +78,9 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              'type' => 'string',
              'length' => 100,
              ));
+        $this->hasColumn('tournament_sport_game_group_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
         $this->hasColumn('group_participant_team_id', 'integer', null, array(
              'type' => 'integer',
              ));
@@ -78,7 +94,34 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
         $this->hasColumn('match_result_score', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('match_result_time', 'integer', null, array(
+        $this->hasColumn('match_result_time', 'datetime', null, array(
+             'type' => 'datetime',
+             ));
+        $this->hasColumn('red_card_number', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('yellow_card_number', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_winner_point', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_loser_point', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('standing_rank', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('gold_medal', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('silver_medal', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('bronze_medal', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('total_medal_award', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('effective_date', 'string', 100, array(
@@ -98,6 +141,10 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              'default' => false,
              ));
         $this->hasColumn('competition_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('medal_award_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
              ));
@@ -164,7 +211,16 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
+        $this->hasOne('TournamentSportGameGroup', array(
+             'local' => 'tournament_sport_game_group_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
         $this->hasMany('TournamentMatchTeamMemberParticipant as tournamentMatchParticipantTeamMemberParticipants', array(
+             'local' => 'id',
+             'foreign' => 'tournament_match_participant_team_id'));
+
+        $this->hasMany('TournamentMatchTeamMedalAward as tournamentMatchParticipantTeamMedalAwards', array(
              'local' => 'id',
              'foreign' => 'tournament_match_participant_team_id'));
 

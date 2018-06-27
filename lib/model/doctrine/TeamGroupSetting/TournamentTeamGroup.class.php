@@ -81,4 +81,31 @@ class TournamentTeamGroup extends PluginTournamentTeamGroup
 		return $_flag;
 	}
 	
+	/************************************************/
+	 
+	public function countCandidates () 
+	{
+		
+		$_tournamnetTeamGroups = TournamentSportGameGroupTable::countCanidates ( $this->id, sha1(md5($this->token_id)), $_qualificationStatus, $_approvalStatus, $_status, $_qualifiedFlag, $_activeFlag);
+		
+		return count($_tournamnetTeamGroups);
+	}
+	public function hasInitiatedTournamentSportGameGroup () 
+	{
+		
+		$_tournamnetTeamGroups = TournamentSportGameGroupTable::countCanidates ( $this->id, sha1(md5($this->token_id)), $_qualificationStatus, TournamentCore::$_INITIATED, TournamentCore::$_INITIATED, $_qualifiedFlag, false);
+		
+		return count($_tournamnetTeamGroups);
+	}
+	public function hasTournamentSportGameGroup () 
+	{
+		
+		$_tournamnetTeamGroups = TournamentSportGameGroupTable::countCanidates ( $this->id, sha1(md5($this->token_id)), $_qualificationStatus, $_approvalStatus, $_status, $_qualifiedFlag, $_activeFlag);
+		
+		return count($_tournamnetTeamGroups);
+	}
+	
+	
+	
+	
 }

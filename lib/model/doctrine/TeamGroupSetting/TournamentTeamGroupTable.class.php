@@ -79,7 +79,9 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	//
 	public static function appendCandidateQueryFields ( ) 
 	{		
-		 
+		 //((SELECT COUNT(sprtGmGrp1.id) FROM TournamentSportGameGroup sprtGmGrp1 WHERE sprtGmGrp1.tournament_team_group_id = trmntTmGrp.id AND sprtGmGrp1.tournament_team_group_token_id = ".sha1."(".md5."("."trmntTmGrp.token_id)) AND sprtGmGrp1.approval_status = ".TournamentCore::$_INITIATED." AND sprtGmGrp1.status = ".TournamentCore::$_INITIATED." AND sprtGmGrp1.active_flag IS FALSE )) as hasInitiatedTournamentSportGameGroup,
+								
+		//((SELECT COUNT(sprtGmGrp2.id) FROM TournamentSportGameGroup sprtGmGrp2 WHERE sprtGmGrp2.tournament_team_group_id = trmntTmGrp.id AND sprtGmGrp2.tournament_team_group_token_id = ".sha1."(".md5."("."trmntTmGrp.token_id)) )) as hasTournamentSportGameGroup,
 	}
 	public static function appendQueryFields ( ) 
 	{		
@@ -89,11 +91,9 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.alias as tournamentAlias, trnmt.season as tournamentSeason, trnmt.effective_date as tournamentEffectiveDate,
 								
 								(trmntTmGrp.status=".TournamentCore::$_PENDING.") as pendingTeamGroup, (trmntTmGrp.status=".TournamentCore::$_ACTIVE.") as activeTeamGroup, (trmntTmGrp.status=".TournamentCore::$_COMPLETED.") as completedTeamGroup,
+								
 								(trmntTmGrp.approval_status=".TournamentCore::$_PENDING.") as pendingApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_ACTIVE.") as activeApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_APPROVED.") as approvedApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_COMPLETED.") as completedApprovalTeamGroup,
 								
-								(EXISTS (SELECT sprtGmGrp1.id FROM TournamentSportGameGroup sprtGmGrp1 WHERE sprtGmGrp1.tournament_team_group_id = trmntTmGrp.id AND sprtGmGrp1.tournament_team_group_token_id = ".sha1."(".md5."("."trmntTmGrp.token_id)) AND sprtGmGrp1.approval_status = ".TournamentCore::$_INITIATED." AND sprtGmGrp1.status = ".TournamentCore::$_INITIATED." AND sprtGmGrp1.active_flag IS FALSE )) as hasInitiatedTournamentSportGameGroup,
-								
-								(EXISTS (SELECT sprtGmGrp2.id FROM TournamentSportGameGroup sprtGmGrp2 WHERE sprtGmGrp2.tournament_team_group_id = trmntTmGrp.id AND sprtGmGrp2.tournament_team_group_token_id = ".sha1."(".md5."("."trmntTmGrp.token_id)) )) as hasTournamentSportGameGroup,
 		";	
 		return $_queryFileds;
 	}
@@ -302,15 +302,17 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	} 
 	 /********** Candidate selection process member action *******************/
 	 
-	 public static function selectCandidateTournamentSportGameGroups ( $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameID=null, $_sportGameTypeID=null, $_genderCategoryID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	 public static function selectCandidateTournamentSportGameGroups ( $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameID=null, $_genderCategoryID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 			$_candidateSportGames = TournamentSportGameGroupTable::processCandidateSelections ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword );
-			$_exclusion = array();   
-			foreach($_candidateSportGames as $_candidateSportGame) {
-				if(!$_candidateSportGame->hasPendingTeamGameParticipation) {
-					$_exclusion[] = $_candidateSportGame->id;
-				}
-			} 
+			//if($_candidateSportGames) {
+				$_exclusion = array();    
+				foreach($_candidateSportGames as $_candidateSportGame) {
+					if(!$_candidateSportGame->hasPendingTeamGameParticipation() ) {
+						$_exclusion[] = $_candidateSportGame->id;
+					}
+				}  
+			//}
 			
 			return TournamentSportGameGroupTable::processCandidates ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_exclusion, $_keyword, $_offset, $_limit ) ;
 	} 
@@ -325,7 +327,10 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				$_exclusion[] = $_groupParticipantTeam->team_game_participation_id;
 			} 
 			
-			return TeamGameParticipationTable::processCandidateParticipants ($_teamID, $_teamTokenID, $_sportGameID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit ) ;
+			//return TeamGameParticipationTable::processCandidateParticipants ($_teamID, $_teamTokenID, $_sportGameID, $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, $_offset, $_limit ) ;
+			
+			//return TeamGameParticipationTable::makeCandidateSelection ($_teamID, $_sportGameID, $_genderCategory, TournamentCore::$_CONFIRMED, TournamentCore::$_ACTIVE, true, $_keyword, $_exclusion, $_offset, $_limit ) ;
+			return TeamGameParticipationTable::makeCandidateSelection ($_teamID, $_sportGameID, $_genderCategory, $_confirmedStatus, $_status, $_activeFlag, $_keyword, $_exclusion, $_offset, $_limit ) ;
 	} 
 	
 	/********************************************************************************************************************/
@@ -333,12 +338,14 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	public static function selectAllCandidateParticipantTeams ( $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameGroupID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null ) 
    {
 		/*$_groupParticipantTeams = TournamentGroupParticipantTeamTable::processCandidateParticipants($_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword);
-		$_exclusion = array();   
-		foreach($_groupParticipantTeams as $_groupParticipantTeam) {
-			$_exclusion[] = $_groupParticipantTeam->team_game_participation_id;
-		} */
+			$_exclusion = array();   
+			foreach($_groupParticipantTeams as $_groupParticipantTeam) {
+				$_exclusion[] = $_groupParticipantTeam->team_game_participation_id;
+			} */
 		
-		return TeamGameParticipationTable::selectAllCandidateParticipants ( $_teamID, $_teamTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategory, $_keyword, $_exclusion) ;
+		//return TeamGameParticipationTable::selectAllCandidateParticipants ( $_teamID, $_teamTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategory, $_keyword, $_exclusion) ;
+		
+		return TeamGameParticipationTable::makeAllCandidateSelection ($_teamID, $_sportGameID, $_genderCategory, $_confirmedStatus, $_status, $_activeFlag, $_keyword, $_exclusion) ;
 	} 
 	
 	 /********** Candidate selection process participant action *******************/
@@ -449,7 +456,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				$_flag = $_candidateTournamentGroup->makeConfirmation (); 
 			}
 		} 
-		$_flag = ($_tournamentTeamGroup && !$_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup) ? $_tournamentTeamGroup->makeApproval ():true;
+		$_flag = ($_tournamentTeamGroup && !$_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup()) ? $_tournamentTeamGroup->makeApproval ():true;
 		
 		/*if($_orgID && $_userID) { 
 				

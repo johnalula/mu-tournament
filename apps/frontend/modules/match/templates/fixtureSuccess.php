@@ -216,6 +216,8 @@
 			document.getElementById("gender_category_id").value = listArr[9];  
 			document.getElementById("contestant_team_mode").value = listArr[11];  
 			document.getElementById("contestant_mode").value = listArr[12];  
+			document.getElementById("number_of_participant_teams").value = listArr[13];  
+			document.getElementById("number_of_participant_contestats").value = listArr[14];  
 			document.getElementById("tournament_sport_game_group_name").value = listArr[4]+' - '+listArr[5]+' ('+listArr[10]+') - '+listArr[8]+' - '+listArr[6];  
 			
 			$("#createTournamentMatchFixture").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");

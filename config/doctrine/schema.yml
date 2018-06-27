@@ -177,16 +177,17 @@ Team:
     team_country_flag_file_name:  { type: string(255) }  
     team_country_flag_file_name_path:  { type: string(255) }  
     team_country_flag_file_full_path:  { type: string(255) }   
-    standing_rank: { type: integer }
-    gold_medal: { type: integer }
-    silver_medal: { type: integer }
-    bronze_medal: { type: integer }
-    total_medal_award: { type: integer }
+    standing_rank: { type: integer, default: 0 }
+    gold_medal: { type: integer, default: 0  }
+    silver_medal: { type: integer, default: 0  }
+    bronze_medal: { type: integer, default: 0  }
+    total_medal_award: { type: integer, default: 0  }
     start_date: { type: string(100) }
     end_date: { type: string(100) }  
     grouped_flag: { type: boolean, default: false } 
     confirmed_flag: { type: boolean, default: false } 
-    active_flag: { type: boolean, default: true } 
+    active_flag: { type: boolean, default: false } 
+    confirmed_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
@@ -239,11 +240,13 @@ TeamMemberParticipant:
     member_full_name: { type: string(255) }
     member_role_id: { type: integer }    
     member_relation_id: { type: integer }    
+    member_age: { type: integer }    
     member_number: { type: integer }    
     confirmed_flag: { type: boolean, default: false } 
     grouped_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
     grouped_status: { type: integer, default: 1  } 
+    confirmed_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
@@ -492,18 +495,17 @@ TournamentMatchFixture:
     tournament_match_id: { type: integer } 
     tournament_match_token_id: { type: string(100) } 
     parent_match_fixture_id: { type: integer } 
-    parent_match_fixture_token_id: { type: string(100) } 
-    tournament_sport_game_group_id: { type: integer } 
-    tournament_sport_game_group_token_id: { type: string(100) } 
+    parent_match_fixture_token_id: { type: string(100) }  
     sport_game_id: { type: integer } 
     sport_game_token_id: { type: string(100) } 
+    gender_category_id: { type: integer } 
+    contestant_team_mode: { type: integer } 
     match_round_type_id: { type: integer } 
     match_heat_type_id: { type: integer } 
     match_round_type_name: { type: string(100) } 
     match_heat_type_name: { type: string(100) }
     match_heat_number: { type: integer }  
     match_heat_name: { type: string(100) }   
-    gender_category_id: { type: integer } 
     match_fixture_round_mode: { type: integer } 
     event_type: { type: integer } 
     contestant_mode: { type: integer } 
@@ -511,7 +513,6 @@ TournamentMatchFixture:
     number_of_participants_per_fixture: { type: integer } 
     number_of_qualifying_rows: { type: integer } 
     number_of_best_qualifying_rows: { type: integer } 
-    contestant_team_mode: { type: integer } 
     match_venue: { type: string(100) } 
     tournament_match_session_mode: { type: integer } 
     tournament_match_fixture_number: { type: string(100) } 
@@ -531,6 +532,8 @@ TournamentMatchFixture:
     active_flag: { type: boolean, default: false } 
     competition_flag: { type: boolean, default: false } 
     complete_flag: { type: boolean, default: false } 
+    roundable_flag: { type: boolean, default: true } 
+    final_flag: { type: boolean, default: false } 
     competition_status: { type: integer, default: 1  } 
     fixture_round_status: { type: integer} 
     duration_status: { type: integer} 
@@ -542,7 +545,6 @@ TournamentMatchFixture:
     TournamentMatch: { onDelete: CASCADE, local: tournament_match_id, foreign: id, foreignAlias: tournamentMatchMatchFixtures }     
     SportGame: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: sportGameMatchFixtures }     
     TournamentMatchFixture: { onDelete: CASCADE, local: parent_match_fixture_id, foreign: id, foreignAlias: matchFixtureParentFixtures } 
-    TournamentSportGameGroup: { onDelete: CASCADE, local: tournament_sport_game_group_id, foreign: id, foreignAlias: tournamentSportGameGroupMatchFixtures }         
     
 TournamentMatchFixtureGroup:
   package: GameSetting
@@ -554,7 +556,8 @@ TournamentMatchFixtureGroup:
     tournament_match_id: { type: integer }
     tournament_match_fixture_id: { type: integer }
     tournament_match_fixture_token_id: { type: string(100) } 
-    tournament_sport_game_group_id: { type: integer } 
+    gender_category_id: { type: integer } 
+    contestant_team_mode: { type: integer } 
     tournament_match_group_number: { type: string(100) }
     match_fixture_round_mode: { type: integer } 
     match_heat_number: { type: integer }  
@@ -577,6 +580,8 @@ TournamentMatchFixtureGroup:
     confirmed_flag: { type: boolean, default: false } 
     competition_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    roundable_flag: { type: boolean, default: true } 
+    final_flag: { type: boolean, default: false } 
     competition_status: { type: integer, default: 1  } 
     fixture_round_status: { type: integer} 
     duration_status: { type: integer} 
@@ -585,8 +590,7 @@ TournamentMatchFixtureGroup:
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
-    TournamentMatch: { onDelete: CASCADE, local: tournament_match_id, foreign: id, foreignAlias: tournamentMatchMatchFixtureGroups }   
-    TournamentSportGameGroup: { onDelete: CASCADE, local: tournament_sport_game_group_id, foreign: id, foreignAlias: tournamentSportGameGroupMatchFixtureGroups }    
+    TournamentMatch: { onDelete: CASCADE, local: tournament_match_id, foreign: id, foreignAlias: tournamentMatchMatchFixtureGroups }    
     TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureMatchFixtureGroups }  
 
 TournamentMatchParticipantTeam:
@@ -601,16 +605,27 @@ TournamentMatchParticipantTeam:
     tournament_match_fixture_token_id: { type: string(100) } 
     tournament_match_fixture_group_id: { type: integer }
     tournament_match_fixture_group_token_id: { type: string(100) } 
+    tournament_sport_game_group_id: { type: integer } 
     group_participant_team_id: { type: integer } 
     group_participant_team_token_id: { type: string(100) } 
     match_result_point: { type: integer } 
     match_result_score: { type: integer } 
-    match_result_time: { type: integer } 
+    match_result_time: { type: datetime } 
+    red_card_number: { type: integer } 
+    yellow_card_number: { type: integer } 
+    match_result_winner_point: { type: integer } 
+    match_result_loser_point: { type: integer } 
+    standing_rank: { type: integer }
+    gold_medal: { type: integer }
+    silver_medal: { type: integer }
+    bronze_medal: { type: integer }
+    total_medal_award: { type: integer }
     effective_date: { type: string(100) }
     qualified_flag: { type: boolean, default: false } 
     confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
     competition_flag: { type: boolean, default: false } 
+    medal_award_flag: { type: boolean, default: false } 
     qualification_status: { type: integer, default: 1  } 
     competition_status: { type: integer, default: 1  } 
     process_status: { type: integer, default: 1  } 
@@ -622,6 +637,7 @@ TournamentMatchParticipantTeam:
     TournamentGroupParticipantTeam: { onDelete: CASCADE, local: group_participant_team_id, foreign: id, foreignAlias: sportGameTeamGroupMatchTeamParticipantTeams } 
     TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureParticipantTeams }  
     TournamentMatchFixtureGroup: { onDelete: CASCADE, local: tournament_match_fixture_group_id, foreign: id, foreignAlias: tournamentMatchFixtureGroupParticipantTeams }  
+    TournamentSportGameGroup: { onDelete: CASCADE, local: tournament_sport_game_group_id, foreign: id, foreignAlias: tournamentSportGameGroupMatchFixtureParticipantTeams }   
 
 MultipleParticipantTeam:
   package: GameSetting
@@ -655,14 +671,22 @@ TournamentMatchTeamMemberParticipant:
     tournament_match_participant_team_id: { type: integer }
     participant_team_member_id: { type: integer }
     participant_team_member_role_id: { type: integer }
+    match_result_rank: { type: integer } 
     match_position_order: { type: integer } 
     match_result_position_order: { type: integer } 
+    match_result_point: { type: integer } 
     match_result_score: { type: integer } 
+    match_result_goal_number: { type: integer } 
+    red_card_number: { type: integer } 
+    yellow_card_number: { type: integer } 
+    match_result_distance: { type: float } 
+    match_result_height: { type: float } 
     match_result_time: { type: datetime } 
     effective_date: { type: string(100) }
     qualified_flag: { type: boolean  } 
     confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
+    medal_award_flag: { type: boolean, default: false } 
     qualification_status: { type: integer, default: 1  } 
     competition_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
@@ -684,75 +708,31 @@ TournamentMatchFixtureResult:
   columns:
     token_id: { type: string(100) }    
     tournament_match_fixture_id: { type: integer }
-    tournament_match_fixture_token_id: { type: string(100) }  
-    active_flag: { type: boolean, default: false }   
+    tournament_match_fixture_group_id: { type: integer }
+    match_fixture_team_member_participant_id: { type: integer }
+    match_round_type: { type: integer } 
+    match_result_rank: { type: integer } 
+    match_position_order: { type: integer } 
+    match_result_position_order: { type: integer } 
+    match_result_point: { type: integer } 
+    match_result_score: { type: integer } 
+    match_result_goal_number: { type: integer } 
+    match_result_distance: { type: float } 
+    match_result_height: { type: float } 
+    match_result_time: { type: datetime } 
+    effective_date: { type: string(100) }
+    qualified_flag: { type: boolean  } 
+    active_flag: { type: boolean, default: false } 
+    medal_award_flag: { type: boolean, default: false } 
+    qualification_status: { type: integer, default: 1  } 
+    competition_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  
   relations:  
     TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: tournamentMatchFixtureResults }  
+    TournamentMatchFixtureGroup: { onDelete: CASCADE, local: tournament_match_fixture_group_id, foreign: id, foreignAlias: tournamentMatchFixtureResults }  
+    TournamentMatchTeamMemberParticipant: { onDelete: CASCADE, local: match_fixture_team_member_participant_id, foreign: id, foreignAlias: tournamentMatchFixtureResults }  
   
- 
-############  Party Management ####################
-
-TournamentRankTable:
-  package: TournamentManagement
-  tableName: mutms_tbl_tournament_rank_table
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    team_id: { type: integer }
-    person_id: { type: integer }
-    rank: { type: integer }
-    total_medal_award: { type: integer }
-    game_win: { type: integer }
-    game_draw: { type: integer }
-    game_lost: { type: integer }
-    goal_for: { type: integer }
-    goal_againest: { type: integer }
-    goal_difference: { type: integer }
-    points: { type: integer }
-    active_flag: { type: boolean, default: true }
-    status: { type: integer, default: 1  } 
-    description:  { type: clob }  
-  relations:  
-    Game: { onDelete: CASCADE, local: game_id, foreign: id, foreignAlias: gameMatchTables } 
-    Group: { onDelete: CASCADE, local: group_id, foreign: id, foreignAlias: groupMatchTables } 
-    Team: { onDelete: CASCADE, local: team_id, foreign: id, foreignAlias: teamMatchTables } 
-    Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personMatchTables } 
-
-TournamentMedalAwards:
-  package: TournamentManagement
-  tableName: mutms_tbl_tournament_medal_awards
-  actAs:
-    Timestampable: ~
-  columns:
-    token_id: { type: string(100) }    
-    tournament_id: { type: integer }
-    team_id: { type: integer }
-    tournament_award_id: { type: integer }
-    match_fixture_id: { type: integer }
-    person_id: { type: integer }
-    rank: { type: integer }
-    medal_award_type: { type: integer }
-    total_medal_award: { type: integer }
-    game_win: { type: integer }
-    game_draw: { type: integer }
-    game_lost: { type: integer }
-    goal_for: { type: integer }
-    goal_againest: { type: integer }
-    goal_difference: { type: integer }
-    points: { type: integer }
-    active_flag: { type: boolean, default: true }
-    status: { type: integer, default: 1  } 
-    description:  { type: clob }  
-  relations:  
-    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentMedalAwards } 
-    MatchFixture: { onDelete: CASCADE, local: match_fixture_id, foreign: id, foreignAlias: matchFixtureTournamentMedalAwards } 
-    TournamentRankTable: { onDelete: CASCADE, local: tournament_award_id, foreign: id, foreignAlias: tournamentRankTableMedalAwards } 
-    Person: { onDelete: CASCADE, local: person_id, foreign: id, foreignAlias: personMatchTables } 
- 
- 
 ############  Tournament Team Standings ####################
 
 TournamentParticipantTeamMedalStanding:
@@ -771,6 +751,7 @@ TournamentParticipantTeamMedalStanding:
     gold_medal: { type: integer }
     silver_medal: { type: integer }
     bronze_medal: { type: integer }
+    other_medal_award: { type: integer }
     total_medal_award: { type: integer }
     active_flag: { type: boolean, default: true }
     status: { type: integer, default: 1  } 
@@ -792,6 +773,7 @@ TournamentParticipantTeamMedalStandingDetail:
     tournament_match_id: { type: integer }
     tournament_match_fixture_group_id: { type: integer }
     participant_team_member_id: { type: integer }
+    medal_award_mode: { type: integer }
     sport_game_id: { type: integer }
     standing_rank: { type: integer }
     gold_medal: { type: integer }
@@ -808,6 +790,86 @@ TournamentParticipantTeamMedalStandingDetail:
     TournamentMatchTeamMemberParticipant: { onDelete: CASCADE, local: participant_team_member_id, foreign: id, foreignAlias: tournamentMatchTeamMemberParticipantTeamStandingDetails } 
     SportGame: { onDelete: CASCADE, local: sport_game_id, foreign: id, foreignAlias: sportGameParticipantTeamStandingDetails } 
  
+############  Party Management ####################
+
+TournamentMatchMedalAward:
+  package: TournamentManagement
+  tableName: mutms_tbl_tournament_match_medal_award
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    org_id: { type: integer }
+    org_token_id: { type: string(100) } 
+    tournament_id: { type: integer }
+    sport_game_category_id: { type: integer } 
+    tournament_medal_award_number: { type: string(100) }
+    tournament_medal_award_full_number: { type: string(100) }   
+    completed_flag: { type: boolean, default: false }
+    effective_date: { type: string(100) } 
+    start_date: { type: string(100) } 
+    end_date: { type: string(100) } 
+    active_flag: { type: boolean, default: true }
+    process_status: { type: integer, default: 1  } 
+    approval_status: { type: integer, default: 1  } 
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    Organization: { onDelete: CASCADE, local: org_id, foreign: id, foreignAlias: organizationTournamentMatchMedalAwards }
+    Tournament: { onDelete: CASCADE, local: tournament_id, foreign: id, foreignAlias: tournamentTournamentMatchMedalAwards }     
+    GameCategory: { onDelete: CASCADE, local: sport_game_category_id, foreign: id, foreignAlias: gameCategoryTournamentMatchMedalAwards }     
+ 
+ 
+TournamentMatchTeamMedalAward:
+  package: TournamentManagement
+  tableName: mutms_tbl_tournament_match_team_medal_award
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }     
+    tournament_match_medal_award_id: { type: integer }
+    tournament_match_fixture_id: { type: integer }
+    tournament_match_fixture_group_id: { type: integer }
+    tournament_match_fixture_group_id: { type: integer }
+    tournament_match_participant_team_id: { type: integer } 
+    tournament_medal_award_mode: { type: integer }
+    gold_medal: { type: integer }
+    silver_medal: { type: integer }
+    bronze_medal: { type: integer }
+    other_medal_award: { type: integer }
+    total_medal_award: { type: integer } 
+    active_flag: { type: boolean, default: true }
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    TournamentMatchMedalAward: { onDelete: CASCADE, local: tournament_match_medal_award_id, foreign: id, foreignAlias: tournamentMatchMedalAwardTeamAwards } 
+    TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: tournamentMatchFixtureTeamAwards }  
+    TournamentMatchFixtureGroup: { onDelete: CASCADE, local: tournament_match_fixture_group_id, foreign: id, foreignAlias: tournamentMatchFixtureGroupTeamAwards } 
+    TournamentMatchParticipantTeam: { onDelete: CASCADE, local: tournament_match_participant_team_id, foreign: id, foreignAlias: tournamentMatchParticipantTeamMedalAwards } 
+ 
+TournamentMatchTeamMedalAwardParticipant:
+  package: TournamentManagement
+  tableName: mutms_tbl_tournament_match_team_medal_award_participant
+  actAs:
+    Timestampable: ~
+  columns:
+    token_id: { type: string(100) }    
+    tournament_match_medal_award_id: { type: integer }
+    tournament_match_team_medal_award_id: { type: integer }
+    tournament_match_fixture_participant_id: { type: integer } 
+    tournament_medal_award_mode: { type: integer }
+    gold_medal: { type: integer }
+    silver_medal: { type: integer }
+    bronze_medal: { type: integer }
+    other_medal_award: { type: integer }
+    total_medal_award: { type: integer } 
+    active_flag: { type: boolean, default: true }
+    status: { type: integer, default: 1  } 
+    description:  { type: clob }  
+  relations:  
+    TournamentMatchMedalAward: { onDelete: CASCADE, local: tournament_match_medal_award_id, foreign: id, foreignAlias: tournamentMatchTeamMedalAwardParticipants } 
+    TournamentMatchTeamMedalAward: { onDelete: CASCADE, local: tournament_match_team_medal_award_id, foreign: id, foreignAlias: tournamentMatchTeamMedalAwardParticipants } 
+    TournamentMatchTeamMemberParticipant: { onDelete: CASCADE, local: tournament_match_fixture_participant_id, foreign: id, foreignAlias: tournamentMatchTeamMemberParticipantMedaAwardParticipants }
 
  
 ############  Party Management ####################

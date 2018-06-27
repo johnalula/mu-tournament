@@ -57,7 +57,7 @@
 										<td rowspan="2" class="bigText-left">
 											<span class="logo-title-right ">
 												<a href="<?php echo url_for('home/index') ?>" title="<?php echo __('All African University Games') ?>">
-													AAUG
+													FASU
 												</a>
 											</span>
 										</td>

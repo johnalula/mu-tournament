@@ -24,8 +24,8 @@
  * @property Doctrine_Collection $tournamentSportGamesGroups
  * @property Doctrine_Collection $tournamentSportGamesTeamGroups
  * @property Doctrine_Collection $tournamentMatchs
- * @property Doctrine_Collection $tournamentMedalAwards
  * @property Doctrine_Collection $tournamentParticipantTeamStandings
+ * @property Doctrine_Collection $tournamentTournamentMatchMedalAwards
  * @property Doctrine_Collection $tournamentTournamentNews
  * @property Doctrine_Collection $tournamentTournamentPrograms
  * 
@@ -119,11 +119,11 @@ abstract class BaseTournament extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
-        $this->hasMany('TournamentMedalAwards as tournamentMedalAwards', array(
+        $this->hasMany('TournamentParticipantTeamMedalStanding as tournamentParticipantTeamStandings', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 
-        $this->hasMany('TournamentParticipantTeamMedalStanding as tournamentParticipantTeamStandings', array(
+        $this->hasMany('TournamentMatchMedalAward as tournamentTournamentMatchMedalAwards', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 

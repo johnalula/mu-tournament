@@ -11,6 +11,7 @@
  * @property integer $tournament_match_id
  * @property integer $tournament_match_fixture_group_id
  * @property integer $participant_team_member_id
+ * @property integer $medal_award_mode
  * @property integer $sport_game_id
  * @property integer $standing_rank
  * @property integer $gold_medal
@@ -54,6 +55,9 @@ abstract class BaseTournamentParticipantTeamMedalStandingDetail extends sfDoctri
              'type' => 'integer',
              ));
         $this->hasColumn('participant_team_member_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('medal_award_mode', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('sport_game_id', 'integer', null, array(

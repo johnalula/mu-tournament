@@ -75,7 +75,7 @@
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php include_partial('member_list', array('_candidateTeamGroupParticipants' => $_candidateTeamGroupParticipants,'_countGroupParticipantTeams' => $_countGroupParticipantTeams)) ?> 
+													<?php include_partial('member_list', array('_caniddateParticipantTeams' => $_caniddateParticipantTeams,'_countGroupParticipantTeams' => $_countGroupParticipantTeams)) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											

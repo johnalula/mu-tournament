@@ -23,6 +23,7 @@
  * @property Doctrine_Collection $gameCategoryTeamPartcipation
  * @property Doctrine_Collection $sportGameCategoryTournamentGroups
  * @property Doctrine_Collection $gameCategoryTournamentMatch
+ * @property Doctrine_Collection $gameCategoryTournamentMatchMedalAwards
  * 
  * @package    symfony
  * @subpackage model
@@ -103,6 +104,10 @@ abstract class BaseGameCategory extends sfDoctrineRecord
              'foreign' => 'sport_game_category_id'));
 
         $this->hasMany('TournamentMatch as gameCategoryTournamentMatch', array(
+             'local' => 'id',
+             'foreign' => 'sport_game_category_id'));
+
+        $this->hasMany('TournamentMatchMedalAward as gameCategoryTournamentMatchMedalAwards', array(
              'local' => 'id',
              'foreign' => 'sport_game_category_id'));
 

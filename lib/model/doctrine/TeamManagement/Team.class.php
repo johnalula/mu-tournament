@@ -22,21 +22,36 @@ class Team extends PluginTeam
 	}
 	public function makePending ()
 	{
-		$_flag = true;   
+		$_flag = true;    
+			$this->confirmed_flag = false; 
+			$this->active_flag = true; 
+			$this->confirmed_status = trim(TournamentCore::$_PENDING); 
 			$this->status = trim(TournamentCore::$_PENDING); 
 			$this->save();
-			
+
 		return $_flag;
 	}
+	//
 	public function makeActivation ()
 	{
 		$_flag = true;    
-		//if($this->pendingTeamGroup) { 
 			$this->confirmed_flag = true; 
 			$this->active_flag = true; 
+			$this->confirmed_status = trim(TournamentCore::$_CONFIRMED); 
 			$this->status = trim(TournamentCore::$_ACTIVE); 
 			$this->save();
-		//}
+
+		return $_flag;
+	}
+	public function makeConfirmation ()
+	{
+		$_flag = true;    
+			$this->confirmed_flag = false; 
+			$this->active_flag = true; 
+			$this->confirmed_status = trim(TournamentCore::$_CONFIRMED); 
+			$this->status = trim(TournamentCore::$_ACTIVE); 
+			$this->save();
+
 		return $_flag;
 	}
 	

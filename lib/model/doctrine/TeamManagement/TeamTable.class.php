@@ -28,10 +28,8 @@ class TeamTable extends PluginTeamTable
 				$_participantTeamAlias = trim($_teamAlias).'-'.SystemCore::processCountryAliasValue($_teamCountry);
 
 				$_participantTeam = self::processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_participantTeamAlias, $_teamCountry, $_teamCity, $_teamNumber, $_description );
-		
-				if($_participantTeam ) { 
-					$_participantTeamStanding = TournamentParticipantTeamMedalStandingTable::processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeam->id, $_participantTeam->token_id, $_teamStandingRank, $_teamGoldMedals, $_teamSilverMedals, $_teamBronzeMedals, $_teamTotalMedalAwards, $_participantTeamName, $_status, $_description);
-				}
+				
+				$_flag = $_codeConfig->makeCodeSetup ( $_codeConfig->lastCode );
 				
 				if($_orgID && $_userID) { 
 				
@@ -69,7 +67,7 @@ class TeamTable extends PluginTeamTable
 			$_nw->country_id = trim($_teamCountry);  
 			$_nw->team_city = trim($_teamCity);  
 			$_nw->start_date = trim($_startDate);  
-			$_nw->status = trim(TournamentCore::$_ACTIVE);   
+			$_nw->status = trim(TournamentCore::$_PENDING);   
 			$_nw->description = SystemCore::processDescription ( trim($_teamName), trim($_description) );  
 			$_nw->save(); 
 			
@@ -122,11 +120,11 @@ class TeamTable extends PluginTeamTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.team_full_alias as teamFullAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirmed_flag as confirmFlag, tm.active_flag as activeFlag,  
+		 $_queryFileds = "tm.id, tm.team_name as teamName, tm.alias as teamAlias, tm.team_full_alias as teamFullAlias, tm.country_id as teamCountry, tm.team_city as teamCity, tm.team_number as teamNumber, tm.confirmed_flag as confirmFlag, tm.active_flag as activeFlag,  , tm.standing_rank as participantTeamStandingRank, tm.gold_medal as numberOfGoldMedal, tm.silver_medal as numberOfSilverMedal, tm.bronze_medal as numberOfBronzeMedal, tm.total_medal_award as totalMedalAward,
 		 
 			trnmnt.id as tournamentID, trnmnt.token_id as tournamentTokenID, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.start_date as tournamentStartDate, trnmnt.end_date as tournamentEndDate,
 			
-			(EXISTS (SELECT tmGmPrtn.id FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 
+			((SELECT COUNT(tmGmPrtn.id) FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 
 			
 			
 		 
@@ -271,6 +269,29 @@ class TeamTable extends PluginTeamTable
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	
+	/*********************************************************/
+	
+	// process list selection function 
+   public static function makeCandidateSelections ( $_tournamentID=null, $_activeFlag=null, $_keyword=null) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("Team tm") 
+				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
+				->innerJoin("tm.Organization org on tm.org_id = org.id ")   
+				->orderBy("tm.id ASC")
+				->where("tm.id IS NOT NULL");
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	
 	
 	/*********************************************************
 	********** Candidate selection process *******************
@@ -311,11 +332,7 @@ class TeamTable extends PluginTeamTable
 	/*********************************************************
 	********** Candidate filtering process *******************
 	**********************************************************/
-	
-	public static function processRoleSelection ()
-	{
-		 
-	}
+	  
 	
 	// process candidate selection function 
 	public static function selectCandidateMemberParticipants ( $_orgID=null, $_tournamentID=null, $_teamID=null, $_teamTokenID=null, $_genderCategory=null, $_keyword=null, $_offset=0, $_limit=10  )
@@ -331,6 +348,31 @@ class TeamTable extends PluginTeamTable
 		
 		return TeamMemberParticipantTable::processCandidateMembers ( $_tournamentID, $_teamID, $_teamTokenID, $_genderCategoryID, $_keyword, $_exclusion, $_offset, $_limit );
 	} 
+	/*********************************************************
+	********** Candidate filtering process *******************
+	**********************************************************/
+	  
 	
+	// process list selection function 
+   public static function selectCandidates ( $_tournamentID=null, $_activeFlag=null, $_keyword=null) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("Team tm") 
+				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
+				->innerJoin("tm.Organization org on tm.org_id = org.id ")  
+				->orderBy("tm.id ASC")
+				->where("tm.id IS NOT NULL");
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+ 
 	 
 }

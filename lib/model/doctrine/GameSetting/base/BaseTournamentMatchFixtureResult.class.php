@@ -7,11 +7,29 @@
  * 
  * @property string $token_id
  * @property integer $tournament_match_fixture_id
- * @property string $tournament_match_fixture_token_id
+ * @property integer $tournament_match_fixture_group_id
+ * @property integer $match_fixture_team_member_participant_id
+ * @property integer $match_round_type
+ * @property integer $match_result_rank
+ * @property integer $match_position_order
+ * @property integer $match_result_position_order
+ * @property integer $match_result_point
+ * @property integer $match_result_score
+ * @property integer $match_result_goal_number
+ * @property float $match_result_distance
+ * @property float $match_result_height
+ * @property datetime $match_result_time
+ * @property string $effective_date
+ * @property boolean $qualified_flag
  * @property boolean $active_flag
+ * @property boolean $medal_award_flag
+ * @property integer $qualification_status
+ * @property integer $competition_status
  * @property integer $status
  * @property clob $description
  * @property TournamentMatchFixture $TournamentMatchFixture
+ * @property TournamentMatchFixtureGroup $TournamentMatchFixtureGroup
+ * @property TournamentMatchTeamMemberParticipant $TournamentMatchTeamMemberParticipant
  * 
  * @package    symfony
  * @subpackage model
@@ -30,13 +48,64 @@ abstract class BaseTournamentMatchFixtureResult extends sfDoctrineRecord
         $this->hasColumn('tournament_match_fixture_id', 'integer', null, array(
              'type' => 'integer',
              ));
-        $this->hasColumn('tournament_match_fixture_token_id', 'string', 100, array(
+        $this->hasColumn('tournament_match_fixture_group_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_fixture_team_member_participant_id', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_round_type', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_rank', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_position_order', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_position_order', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_point', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_score', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_goal_number', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_distance', 'float', null, array(
+             'type' => 'float',
+             ));
+        $this->hasColumn('match_result_height', 'float', null, array(
+             'type' => 'float',
+             ));
+        $this->hasColumn('match_result_time', 'datetime', null, array(
+             'type' => 'datetime',
+             ));
+        $this->hasColumn('effective_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('qualified_flag', 'boolean', null, array(
+             'type' => 'boolean',
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
+             ));
+        $this->hasColumn('medal_award_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
+        $this->hasColumn('qualification_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
+        $this->hasColumn('competition_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('status', 'integer', null, array(
              'type' => 'integer',
@@ -52,6 +121,16 @@ abstract class BaseTournamentMatchFixtureResult extends sfDoctrineRecord
         parent::setUp();
         $this->hasOne('TournamentMatchFixture', array(
              'local' => 'tournament_match_fixture_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('TournamentMatchFixtureGroup', array(
+             'local' => 'tournament_match_fixture_group_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('TournamentMatchTeamMemberParticipant', array(
+             'local' => 'match_fixture_team_member_participant_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

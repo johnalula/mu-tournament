@@ -8,7 +8,7 @@
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('complete', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_candidateGroupParticipantTeams' => $_candidateGroupParticipantTeams , '_countCandidateGroupParticipantTeams' => $_countCandidateGroupParticipantTeams )) ?>
+				<?php include_partial('complete', array( '_tournamentTeamGroup' => $_tournamentTeamGroup, '_caniddateParticipantTeams' => $_caniddateParticipantTeams , '_countCandidateGroupParticipantTeams' => $_countCandidateGroupParticipantTeams )) ?>
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>

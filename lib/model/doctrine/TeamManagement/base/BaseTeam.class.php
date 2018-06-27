@@ -27,11 +27,17 @@
  * @property string $team_country_flag_file_name
  * @property string $team_country_flag_file_name_path
  * @property string $team_country_flag_file_full_path
+ * @property integer $standing_rank
+ * @property integer $gold_medal
+ * @property integer $silver_medal
+ * @property integer $bronze_medal
+ * @property integer $total_medal_award
  * @property string $start_date
  * @property string $end_date
  * @property boolean $grouped_flag
  * @property boolean $confirmed_flag
  * @property boolean $active_flag
+ * @property integer $confirmed_status
  * @property integer $status
  * @property clob $description
  * @property Organization $Organization
@@ -40,8 +46,6 @@
  * @property Doctrine_Collection $teamMemberParticipants
  * @property Doctrine_Collection $teamsTeamDetails
  * @property Doctrine_Collection $teamGroupMembers
- * @property Doctrine_Collection $teamMatchTables
- * @property Doctrine_Collection $TournamentMedalAwards
  * @property Doctrine_Collection $teamTournamentParticipantTeamStandings
  * 
  * @package    symfony
@@ -139,6 +143,26 @@ abstract class BaseTeam extends sfDoctrineRecord
              'type' => 'string',
              'length' => 255,
              ));
+        $this->hasColumn('standing_rank', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 0,
+             ));
+        $this->hasColumn('gold_medal', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 0,
+             ));
+        $this->hasColumn('silver_medal', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 0,
+             ));
+        $this->hasColumn('bronze_medal', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 0,
+             ));
+        $this->hasColumn('total_medal_award', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 0,
+             ));
         $this->hasColumn('start_date', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
@@ -157,7 +181,11 @@ abstract class BaseTeam extends sfDoctrineRecord
              ));
         $this->hasColumn('active_flag', 'boolean', null, array(
              'type' => 'boolean',
-             'default' => true,
+             'default' => false,
+             ));
+        $this->hasColumn('confirmed_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('status', 'integer', null, array(
              'type' => 'integer',
@@ -194,14 +222,6 @@ abstract class BaseTeam extends sfDoctrineRecord
              'foreign' => 'team_id'));
 
         $this->hasMany('TournamentGroupParticipantTeam as teamGroupMembers', array(
-             'local' => 'id',
-             'foreign' => 'team_id'));
-
-        $this->hasMany('TournamentRankTable as teamMatchTables', array(
-             'local' => 'id',
-             'foreign' => 'team_id'));
-
-        $this->hasMany('TournamentMedalAwards', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 

@@ -523,9 +523,8 @@
 			document.getElementById("sport_game_type_id").value = listArr[0];
 			document.getElementById("sport_game_type_token_id").value = listArr[1];  
 			document.getElementById("sport_game_type_name").value = listArr[2]+' ('+listArr[3]+')';  
+			document.getElementById("contestant_team_mode").value = listArr[4];  
 			  
-			//$("#createTeamSportGameParticipation").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			//$("#cancelTeamSportGameParticipation").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
 			$('.selectCandidateSportGame').removeAttr("disabled");
 			$('#candidateSportGameTypeModal').modal('hide');
 		return e.preventDefault();

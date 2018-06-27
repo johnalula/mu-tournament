@@ -1,57 +1,123 @@
- 
+<div id="" class="navbar-collapse ui-toolbar">
 	<ul class="nav navbar-nav ui-toolbar-action">
-	
-	<!-- ************ Account Chart Management ********************** -->
 		
-		<?php if($sf_request->getParameter('module') == 'tournament_award' ): ?>
-			
-			<?php if($sf_request->getParameter('action') == 'edit_medal_award'): ?>
-				<?php if(count($_participantTeams) > 0): ?>
+		<?php if($sf_request->getParameter('module') == 'tournament_award'): ?>
+			<?php if($sf_request->getParameter('action') == 'new'): ?>
+				<li class="">
+					<button title="<?php echo __('Save Match Information') ?>" id="createTournamentMatchMedalAward" class="ui-disabled-toolbar-btn" disabled >
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
+						<?php echo __('Save') ?>
+					</button>
+				</li>	
+				<li class="">
+					<button title="<?php echo __('Cancel Match Information') ?>" id="cancelTournamentMatch" class="ui-disabled-toolbar-btn" disabled>
+						<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
+						<?php echo __('Cancel') ?>
+					</button>
+				</li>
+			<?php endif; ?>
+
+			<?php if(($sf_request->getParameter('tournament_award_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+				<?php if($sf_request->getParameter('action') == 'edit'): ?>
 					<li class="">
-						<a href="<?php echo url_for('tournament_award/edit') ?>" title="<?php echo __('Add New Tournament Team Group') ?>" id="saveTournamentMatchMedalAward" class="" >
+						<a href="<?php echo url_for('tournament_award/index') ?>" title="<?php echo __('Create New Team') ?>" id="createNewTeam" class="" >
+							<img class="navbar-nav-img" src="<?php echo image_path('pagination/previous_page') ?>">
+							<?php echo __('Back') ?>
+						</a>
+					</li>	  
+					<li class="">
+						<button title="<?php echo __('Update Match Information') ?>" id="updateTournamentMatch" class="ui-disabled-toolbar-btn" disabled >
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/update') ?>">
+							<?php echo __('Update') ?>
+						</button>
+					</li>	
+					<li class="">
+						<button title="<?php echo __('Cancel Match Information') ?>" id="cancelTournamentMatch" class="ui-disabled-toolbar-btn" disabled>
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
+							<?php echo __('Cancel') ?>
+						</button>
+					</li> 
+				<?php endif; ?>
+			<?php endif; ?>
+		
+			<?php if(($sf_request->getParameter('tournament_award_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+				<?php if($sf_request->getParameter('action') == 'fixture'): ?>
+					<li class="">
+						<button title="<?php echo __('Save Match Fixture Information') ?>" id="createTournamentMatchFixture" class="ui-disabled-toolbar-btn" disabled >
 							<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
 							<?php echo __('Save') ?>
-						</a>
-					</li>  
-				<?php endif; ?>
-				<?php if(count($_participantTeams) <= 0): ?>
+						</button>
+					</li>	
 					<li class="">
-						<button title="<?php echo __('Generate Tournament Match Participant Medal Award Standing Information') ?>" id="generateTournamentMedalAwardStanding" class=""  >
+						<button title="<?php echo __('Cancel Match Fixture Information') ?>" id="cancelTournamentMatchFixture" class="ui-disabled-toolbar-btn" disabled>
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
+							<?php echo __('Cancel') ?>
+						</button>
+					</li> 
+				<?php endif; ?>
+			<?php endif; ?>
+			
+			<?php if(($sf_request->getParameter('tournament_award_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+				<?php if($sf_request->getParameter('action') == 'participant_team'): ?> 
+					<li class="">
+						<button title="<?php echo __('Save Match Participant Team Information') ?>" id="createTournamentMatchParticipantTeam" class="ui-disabled-toolbar-btn" disabled >
 							<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
-							<?php echo __('Generate') ?>
+							<?php echo __('Save') ?>
+						</button>
+					</li>	
+					<li class="">
+						<button title="<?php echo __('Cancel Match Participant Team Information') ?>" id="cancelTournamentMatchParticipantTeam" class="ui-disabled-toolbar-btn" disabled>
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
+							<?php echo __('Cancel') ?>
+						</button>
+					</li>
+				<?php endif; ?>
+			<?php endif; ?>
+			
+			<?php if(($sf_request->getParameter('tournament_award_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+				<?php if($sf_request->getParameter('action') == 'participant'): ?> 
+					<li class="">
+						<button title="<?php echo __('Save Match Participant Information') ?>" id="createTournamentMatchParticipant" class="ui-disabled-toolbar-btn" disabled >
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
+							<?php echo __('Save') ?>
+						</button>
+					</li>	
+					<li class="">
+						<button title="<?php echo __('Add Team Group Member Participant Information') ?>" id="createBatchTournamentMatchFixtureTeamMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/add') ?>">
+							<?php echo __('Batch Participant') ?>
+						</button>
+					</li>	 
+					<li class="">
+						<button title="<?php echo __('Cancel Match Participant Team Information') ?>" id="cancelTournamentMatchParticipant" class="ui-disabled-toolbar-btn" disabled>
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
+							<?php echo __('Cancel') ?>
+						</button>
+					</li>
+				<?php endif; ?> 
+				<?php if($sf_request->getParameter('action') == 'complete'): ?>
+					<li class="">
+						<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="completeTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
+							<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
+							<?php echo __('Approve') ?>
+						</button>
+					</li>	 
+					<li class="">
+						<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="completeTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
+							<img class="navbar-nav-img" src="<?php echo image_path('status/apply') ?>">
+							<?php echo __('Complete') ?>
 						</button>
 					</li>	  
 				<?php endif; ?>
-				<li class="">
-					<a href="<?php echo url_for('team_group/index') ?>" title="<?php echo __('Back to Team Group List') ?>" id="backToSportGame" class="" >
-						<img class="navbar-nav-img" src="<?php echo image_path('icons/details') ?>">
-						<?php echo __('List') ?>
-					</a>
-				</li>
 			<?php endif; ?>
 			
-			<?php if($sf_request->getParameter('action') == 'complete'): ?>
-				<li class="">
-					<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="completeTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
-						<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
-						<?php echo __('Approve') ?>
-					</button>
-				</li>	 
-				<li class="">
-					<button title="<?php echo __('Save Team Group Member Participant Information') ?>" id="completeTeamGroupMemberParticipant" class="ui-disabled-toolbar-btn" disabled >
-						<img class="navbar-nav-img" src="<?php echo image_path('status/apply') ?>">
-						<?php echo __('Complete') ?>
-					</button>
-				</li>	 
-				<li class="">
-					<a href="<?php echo url_for('team_group/index') ?>" title="<?php echo __('Back to Team Group List') ?>" id="backToSportGame" class="" >
-						<img class="navbar-nav-img" src="<?php echo image_path('icons/details') ?>">
-						<?php echo __('List') ?>
-					</a>
-				</li>
-			<?php endif; ?>
-			 
-		<?php endif; ?>
-		 
-	</ul> 
-
+			<li class="">
+				<a href="<?php echo url_for('tournament_award/index') ?>" title="<?php echo __('Back to Match List') ?>" id="backToMatchList" class="" >
+					<img class="navbar-nav-img" src="<?php echo image_path('settings/to_do_list') ?>">
+					<?php echo __('List') ?>
+				</a>
+			</li>	 
+		<?php endif; ?> 
+		
+	</ul>
+</div>
