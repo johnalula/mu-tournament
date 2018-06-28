@@ -246,6 +246,34 @@ class SportGameTable extends PluginSportGameTable
 		return ( count ( $_categoryID ) <= 0 ? null : $_categoryID );
 	}
 	
+	/*********************************************************/
+	
+	 // process list selection function 
+   public static function selectCanidates ( $_orgID=null, $_categoryID=null, $_exclusion=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("SportGame sprtGm") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("sprtGm.Organization org on sprtGm.org_id = org.id ")   
+				->offset($_offset)
+				->limit($_limit) 
+				->orderBy("sprtGm.id ASC")
+				->where("sprtGm.id IS NOT NULL");
+				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("sprtGm.org_id = ? AND sprtGm.org_token_id = ? ", array($_orgID, $_orgTokenID));
+				if(!is_null($_orgID)) $_qry = $_qry->addWhere("sprtGm.org_id = ?", $_orgID);    
+				if(!is_null($_categoryID)) $_qry = $_qry->addWhere("sprtGm.sport_game_category_id = ?", $_categoryID);    
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGm.active_flag = ?", $_activeFlag);           
+				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("sprtGm.id ", $_exclusion );   
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("sprtGm.category_name LIKE ? OR sprtGm.alias LIKE ? OR sprtGm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	
 	/*********************************************************
 	********** Candidate selection process *******************
 	**********************************************************/

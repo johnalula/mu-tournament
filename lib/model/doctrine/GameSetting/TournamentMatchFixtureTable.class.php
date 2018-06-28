@@ -39,10 +39,12 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 						
 						$_matchFixtureGroup = TournamentMatchFixtureGroupTable::processNew ( $_tournamentMatchID, $_matchFixture->id, $_matchFixture->token_id, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_key, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description );
 						
-					}
+				}
 					
-				//$_matchFixtureGroup = TournamentMatchFixtureGroupTable::processNew ( $_matchFixture->id, $_matchFixture->token_id, $_sportGameGroupID, $_sportGameGroupName, $_tournamentMatchVenue, $_matchTime, $_matchDate, $_matchStatus, $_description );
-					
+				$_tournamentTeamGroup =  TournamentSportGameGroupTable::makeObject ($_sportGameGroupID, $_sportGameGroupTokenID );
+				
+				$_flag1 = $_tournamentTeamGroup->makeConfirmation();
+				
 			}
 			$_matchFixture->makeMatchFixtureCode ($_tournamentMatchNumber); 
 			
@@ -142,7 +144,6 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 								trnmtMtch.id as tournamentMatchID, trnmtMtch.tournament_match_number as tournamentMatchNumbe, trnmtMtch.tournament_match_full_number as tournamentMatchFullNumber, trnmtMtch.tournament_match_result_mode as tournamentMatchResultMode, trnmtMtch.tournament_match_round_mode as tournamentMatchRoundMode,
 								prntMtchFix.id as parentMatchFixtureID, 
 								 
-								
 								sprtGm.id as sportGameID, sprtGm.token_id as sportGameTokenID, sprtGm.name as sportGameName,  sprtGm.sport_game_category_id as matchSportGameCategoryID, sprtGm.contestant_team_mode as gameContestantTeamMode, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, 
 								
 								gmCat.id as gameCategoryID, gmCat.token_id as gameCategoryTokenID, gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,

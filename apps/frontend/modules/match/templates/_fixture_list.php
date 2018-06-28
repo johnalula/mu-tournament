@@ -33,7 +33,7 @@
 				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - ( '.TournamentCore::processGenderValue($_matchFixture->id).' )' ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo TournamentCore::processEventTypeValue($_matchFixture->matchEventType) ?>
+				<?php echo TournamentCore::processEventTypeValue($_matchFixture->id) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo $_matchFixture->matchFixtureHeatNumber ?>

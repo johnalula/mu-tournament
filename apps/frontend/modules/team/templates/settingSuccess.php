@@ -588,6 +588,8 @@
 			document.getElementById("member_participant_token_id").value = listArr[1];  
 			document.getElementById("member_participant_name").value = listArr[2]+' ('+listArr[4]+')';    
 			document.getElementById("member_participant_gender_id").value = listArr[5];  
+			document.getElementById("team_member_role").value = listArr[3];  
+			document.getElementById("team_member_relation").value = listArr[6];  
 			
 			//$("#createTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
 			//$("#cancelTeamMemberRole").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");

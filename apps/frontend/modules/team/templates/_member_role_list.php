@@ -29,7 +29,7 @@
 				</a>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-1"> 
-				<?php echo $_memberPartcipantRole->teamGameParticipationID  ?>
+				<?php echo $_memberPartcipantRole->memberFullName  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-0">
 				<?php echo $_memberPartcipantRole->sportGameName.' '.($_memberPartcipantRole->categoryContestantTeamMode == TournamentCore::$_MULTIPLE_TEAM? (' - '.TournamentCore::processAthleticsTypeValue($_memberPartcipantRole->sportGameTypeMode)):'') ?>

@@ -19,7 +19,7 @@
 	  <?php foreach ( $_candidateMemberParticipants as $_key => $_candidateParticipant ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateParticipant->id.'$'.$_candidateParticipant->token_id.'$'.$_candidateParticipant->memberFullName.'$'.$_candidateParticipant->memberRoleID.'$'.TournamentCore::processContestantNameModeValue($_candidateParticipant->memberRoleID).'$'.$_candidateParticipant->genderCategoryID ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_candidateParticipant->id.'$'.$_candidateParticipant->token_id.'$'.$_candidateParticipant->memberFullName.'$'.$_candidateParticipant->memberRoleID.'$'.TournamentCore::processContestantNameModeValue($_candidateParticipant->memberRoleID).'$'.$_candidateParticipant->genderCategoryID.'$'.$_candidateParticipant->memberRelationID ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
 				<?php echo SystemCore::processDataID($_candidateParticipant->id) ?>

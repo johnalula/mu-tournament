@@ -53,7 +53,7 @@
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">   
 						<li>
-							<a href="<?php echo url_for('team_group/view?team_group_id='.$_tournamentTeamGroup->id.'&token_id='.$_tournamentTeamGroup->token_id) ?>" >	
+							<a href="<?php echo url_for('team_group/category?team_group_id='.$_tournamentTeamGroup->id.'&token_id='.$_tournamentTeamGroup->token_id) ?>" >	
 								<img title="<?php echo __('View Team Group').' ( '.' Group '.' #:'.$_tournamentTeamGroup->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
 						</li> 

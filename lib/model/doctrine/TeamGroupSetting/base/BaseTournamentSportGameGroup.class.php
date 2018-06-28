@@ -26,7 +26,9 @@
  * @property boolean $group_team_number_mandatory_flag
  * @property boolean $complete_flag
  * @property boolean $active_flag
+ * @property boolean $confirmed_flag
  * @property boolean $competition_flag
+ * @property integer $confirmed_status
  * @property integer $competition_status
  * @property integer $process_status
  * @property integer $approval_status
@@ -37,7 +39,7 @@
  * @property TournamentTeamGroup $TournamentTeamGroup
  * @property SportGame $SportGame
  * @property Doctrine_Collection $tournamentSportGameTeamGroups
- * @property Doctrine_Collection $tournamentSportGameGroupMatchFixtureParticipantTeams
+ * @property Doctrine_Collection $tournamentSportGameGroupMatchFixtureGroups
  * 
  * @package    symfony
  * @subpackage model
@@ -124,9 +126,17 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
              'type' => 'boolean',
              'default' => false,
              ));
+        $this->hasColumn('confirmed_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('competition_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
+             ));
+        $this->hasColumn('confirmed_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('competition_status', 'integer', null, array(
              'type' => 'integer',
@@ -186,7 +196,7 @@ abstract class BaseTournamentSportGameGroup extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'tournament_sport_game_group_id'));
 
-        $this->hasMany('TournamentMatchParticipantTeam as tournamentSportGameGroupMatchFixtureParticipantTeams', array(
+        $this->hasMany('TournamentMatchFixtureGroup as tournamentSportGameGroupMatchFixtureGroups', array(
              'local' => 'id',
              'foreign' => 'tournament_sport_game_group_id'));
 

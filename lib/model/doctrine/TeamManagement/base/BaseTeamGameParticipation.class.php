@@ -14,6 +14,7 @@
  * @property integer $number_of_players
  * @property integer $gender_category_id
  * @property integer $event_type
+ * @property integer $number_of_participants
  * @property integer $player_mode
  * @property string $start_date
  * @property string $effective_date
@@ -69,6 +70,9 @@ abstract class BaseTeamGameParticipation extends sfDoctrineRecord
              'type' => 'integer',
              ));
         $this->hasColumn('event_type', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('number_of_participants', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('player_mode', 'integer', null, array(

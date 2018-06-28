@@ -16,6 +16,8 @@
 								<input type="hidden" class="form-control" id="member_participant_id" name="team_member_role[member_participant_id]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="member_participant_token_id" name="team_member_role[member_participant_token_id]" value=""> 
 								<input type="hidden" class="form-control" id="member_participant_gender_id" name="team_member_role[member_participant_gender_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="team_member_role" name="team_member_role[team_member_role]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="team_member_relation" name="team_member_role[team_member_relation]" placeholder="" value="">
 								<input type="hidden" class="form-control" id="member_tournament_id" name="team_member_role[member_tournament_id]" placeholder="" value="<?php echo $_team->tournament_id ?>">
 								<input type="hidden" class="form-control" id="member_team_id" name="team_member_role[member_team_id]" placeholder="" value="<?php echo $_team->id ?>">
 								<input type="hidden" class="form-control" id="member_team_token_id" name="team_member_role[member_team_token_id]" placeholder="" value="<?php echo $_team->token_id ?>">

@@ -29,11 +29,12 @@ class TournamentTeamGroup extends PluginTournamentTeamGroup
 	public function makeActivation ()
 	{
 		$_flag = true;    
-		//if($this->pendingTeamGroup) { 
-			$this->approval_status = trim(TournamentCore::$_ACTIVE); 
-			$this->status = trim(TournamentCore::$_ACTIVE); 
-			$this->save();
-		//}
+		$_effectiveDate = date('m/d/Y', time());   
+		$this->process_status = trim(TournamentCore::$_ACTIVE); 
+		$this->approval_status = trim(TournamentCore::$_ACTIVE); 
+		$this->status = trim(TournamentCore::$_PENDING); 
+		$this->effective_date = trim($_effectiveDate);  
+		$this->save();
 		return $_flag;
 	}
 	
@@ -47,15 +48,7 @@ class TournamentTeamGroup extends PluginTournamentTeamGroup
 		$this->effective_date = trim($_effectiveDate);  
 		$this->save();
 		return $_flag;
-	}
-	public function makeProcessRevertion ()
-	{
-		$_flag = true;       
-		$this->status = trim(TournamentCore::$_ACTIVE); 
-		$this->effective_date = NULL;  
-		$this->save();
-		return $_flag;
-	}
+	} 
 	public function makeCompletion ()
 	{
 		$_flag = true;   

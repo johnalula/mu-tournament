@@ -290,15 +290,14 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 	//
 	public static function selectCandidateTournamentSportGames ( $_orgID=null, $_orgTokenID=null, $_categoryID=null, $_gameTypeID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
-		/*$_candidateCategorys = GameCategoryTable::processAll ( $_orgID, $_orgTokenID, $_keyword);
-		$_exclusion = array();   
-		foreach($_candidateCategorys as $_candidateCategory) {
-			if(!$_candidateCategory->hasTournamentSportGames) {
-				$_exclusion[] = $_candidateCategory->id;
-			}
-		} */
+			/*$_candidateSportGames = TournamentSportGameGroupTable::processCandidateSelections ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword );
+			//if($_candidateSportGames) {
+				$_exclusion = array();    
+				foreach($_candidateSportGames as $_candidateSportGame) {
+					$_exclusion[] = $_candidateSportGame->id;
+				} */  
 		
-		return SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, $_offset, $_limit );
+		return SportGameTable::selectCanidates ( $_orgID, $_categoryID, $_exclusion, $_activeFlag, $_keyword, $_offset, $_limit );
 	} 
 	 /********** Candidate selection process member action *******************/
 	 
@@ -453,29 +452,19 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		$_candidateTournamentGroups = TournamentSportGameGroupTable::processCandidateApprovalSelections ( $_tournamentGroupID, $_tournamentGroupTokenID, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING) ;
 		if(!$_candidateTournamentGroups) { $_flag = false; } else {
 			foreach($_candidateTournamentGroups as $_candidateTournamentGroup) {
-				$_flag = $_candidateTournamentGroup->makeConfirmation (); 
+				$_flag = $_candidateTournamentGroup->makeApproval (); 
 			}
 		} 
 		$_flag = ($_tournamentTeamGroup && !$_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup()) ? $_tournamentTeamGroup->makeApproval ():true;
-		
-		/*if($_orgID && $_userID) { 
-				
-				$_actionID = SystemCore::$_CREATE; 
-				$_moduleID  = ModuleCore::$_TOURNAMENT_MATCH;  
-				$_actionObject  = 'Match Fixture ID: '.$_matchFixtureGroup->id;  
-				$_actionDesc  = 'Tournament Match Fixture Participant Teams- [ Module: '.ModuleCore::processModuleValue(ModuleCore::$_TOURNAMENT_MATCH).' ]';  
-			
-				$_flag1 = SystemLogFileTable::processNew ($_omakeCandidateObjectrgID, $_orgTokenID, $_userID, $_userTokenID, $_moduleID, $_actionID, $_actionObject, $_actionDesc);
-			}*/
-			
+		 
 		return $_flag; 
 	}
-	public static function processCompletion ( $_orgID, $_orgTokenID, $_teamGroupID, $_teamGroupTokenID, $_userID, $_userTokenID ) 
+	public static function processCompletion ( $_orgID, $_orgTokenID, $_tournamentGroupID, $_tournamentGroupTokenID, $_userID, $_userTokenID ) 
 	{
 		$_flag = true;   
-		$_tournamentTeamGroup =  self::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_teamGroupID, $_teamGroupTokenID ); 
+		$_tournamentTeamGroup =  self::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentGroupID, $_tournamentGroupTokenID ); 
 		
-		$_flag = $_tournamentTeamGroup ? $_tournamentTeamGroup->makeCompletion ():false;
+		$_flag = ($_tournamentTeamGroup && !$_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup()) ? $_tournamentTeamGroup->makeCompletion ():true;
 		
 		if($_orgID && $_userID) { 
 				

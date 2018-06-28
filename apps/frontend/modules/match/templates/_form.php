@@ -30,29 +30,7 @@
 							</span>
 						</div><!-- /input-group -->
 					</div>
-				</div> 
-					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Parent Fixture') ?>: <span class="ui-red-text">&nbsp;</span></label>
-						<div class="col-sm-40"> 
-							<div class="input-group">
-								<input type="text" class="form-control " id="parent_match_fixture_name" name="tournament_match[parent_match_fixture_name]" placeholder="<?php echo __('Candidate Parent Match Fixture') ?>" title="<?php echo __('Candidate Parent Match Fixture') ?>" value="" data-toggle="modal" data-target="#candidateParentMatchFixtureModal"  disabled>
-								<input type="hidden" class="form-control" id="parent_match_fixture_id" name="tournament_match[parent_match_fixture_id]" placeholder="" value="">
-								<input type="hidden" class="form-control" id="parent_match_fixture_token_id" name="tournament_match[parent_match_fixture_token_id]" value=""> 
-								
-								<input type="hidden" class="form-control" id="sport_game_type_id" name="tournament_match[sport_game_type_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->gameCategoryID ?>"  >
-								<input type="hidden" class="form-control" id="tournament_match_id" name="tournament_match[tournament_match_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->id ?>"  >
-								<input type="hidden" class="form-control" id="tournament_match_token_id" name="tournament_match[tournament_match_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->token_id ?>"  >
-								<input type="hidden" class="form-control" id="tournament_match_number" name="tournament_match[tournament_match_number]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->matchNumber ?>"  >
-								<input type="hidden" class="form-control" id="tournament_match_round_mode" name="tournament_match[tournament_match_round_mode]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->tournamentMatchRoundMode ?>"  >
-								
-								<span class="input-group-btn">
-									<button class="btn btn-default selectCandidateParentMatchFixture" type="button" data-toggle="modal" data-target="#candidateParentMatchFixtureModal" title="<?php echo __('Candidat Parent Match Fixture') ?>" <?php echo $_tournamentMatch->tournamentMatchRoundMode == TournamentCore::$_PRELIMINARY_ROUND ? 'disabled':'' ?> disabled>
-										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
-									</button>
-								</span>
-							</div><!-- /input-group -->
-						</div>
-					</div>
+				</div>  
 				<div class="form-group">
 					<label class="col-sm-21 control-label" title="<?php echo __('Tournament Match Round Mode') ?>"><?php echo __('Round Mode') ?>:</label>
 					<div class="col-sm-23">

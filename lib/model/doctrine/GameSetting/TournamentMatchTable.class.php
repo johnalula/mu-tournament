@@ -296,17 +296,18 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	 /********** Candidate selection process fixture action *******************/
 	 
 	//
-	public static function selectCandidateTournamentSportGameGroups ( $_tournamentID=null, $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_tournamentFixtureID=null, $_sportGameTypeID=null, $_sportGameID=null, $_approvalStatus=null, $_status=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	public static function selectCandidateTournamentSportGameGroups ( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_tournamentFixtureID=null, $_sportGameTypeID=null, $_sportGameID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
-		/*$_candidateMatchFixtures = TournamentMatchFixtureTable::processCandidateSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword);
+		//$_candidateMatchFixtures = TournamentMatchFixtureTable::processCandidateSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword);
+	/*	$_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::selectCandidateFixtureGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID);
 		$_exclusion = array();   
-		foreach($_candidateMatchFixtures as $_candidateMatchFixture) {
-			$_exclusion[] = $_candidateMatchFixture->tournament_sport_game_group_id;
+		foreach($_candidateMatchFixtureGroups as $_candidateMatchFixtureGroup) {
+			$_exclusion[] = $_candidateMatchFixtureGroup->tournament_sport_game_group_id;
 		} */
 		
 		//return TournamentSportGameGroupTable::processCandidateTournamentSportGameGroups ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameTypeID, $_sportGameID, TournamentCore::$_APPROVED, TournamentCore::$_APPROVED, TournamentCore::$_ACTIVE, $_keyword, $_exclusion, $_offset, $_limit ) ;
 	
-		return TournamentSportGameGroupTable::processCandidateTournamentSportGameGroups ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameTypeID, $_sportGameID, $_approvalStatuss, $_statuss, $_statuss, $_keyword, $_exclusion, $_offset, $_limit ) ;
+		return TournamentSportGameGroupTable::processCandidateTournamentSportGameGroups ( $_sportGameTypeID, TournamentCore::$_ACTIVE, TournamentCore::$_APPROVED, TournamentCore::$_ACTIVE, $_keyword, $_exclusion, $_offset, $_limit ) ;
 	} 
 	//
 	public static function selectAllCandidateParticipantGroups ( $_tournamentID=null, $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_sportGameGroupID=null, $_sportGameID=null, $_genderCategory=null, $_keyword=null ) 

@@ -9,6 +9,7 @@
  * @property integer $tournament_match_id
  * @property integer $tournament_match_fixture_id
  * @property string $tournament_match_fixture_token_id
+ * @property integer $tournament_sport_game_group_id
  * @property integer $gender_category_id
  * @property integer $contestant_team_mode
  * @property string $tournament_match_group_number
@@ -44,6 +45,7 @@
  * @property clob $description
  * @property TournamentMatch $TournamentMatch
  * @property TournamentMatchFixture $TournamentMatchFixture
+ * @property TournamentSportGameGroup $TournamentSportGameGroup
  * @property Doctrine_Collection $tournamentMatchFixtureGroupParticipantTeams
  * @property Doctrine_Collection $tournamentMatchFixtureGroupTeamMemberParicipants
  * @property Doctrine_Collection $tournamentMatchFixtureResults
@@ -73,6 +75,9 @@ abstract class BaseTournamentMatchFixtureGroup extends sfDoctrineRecord
         $this->hasColumn('tournament_match_fixture_token_id', 'string', 100, array(
              'type' => 'string',
              'length' => 100,
+             ));
+        $this->hasColumn('tournament_sport_game_group_id', 'integer', null, array(
+             'type' => 'integer',
              ));
         $this->hasColumn('gender_category_id', 'integer', null, array(
              'type' => 'integer',
@@ -206,6 +211,11 @@ abstract class BaseTournamentMatchFixtureGroup extends sfDoctrineRecord
 
         $this->hasOne('TournamentMatchFixture', array(
              'local' => 'tournament_match_fixture_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
+        $this->hasOne('TournamentSportGameGroup', array(
+             'local' => 'tournament_sport_game_group_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 

@@ -1,6 +1,10 @@
 
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):  
+	
+	//$_tournamentSportGameGroups = TournamentSportGameGroupTable::processCandidateTournamentSportGameGroups ( 6, TournamentCore::$_ACTIVE, TournamentCore::$_APPROVED, TournamentCore::$_ACTIVE, $_keyword, $_exclusion, 0, 10) ;
+	
+	//echo count($_tournamentSportGameGroups).' == ';
 ?> 
 
 <div class="ui-page-box">

@@ -46,7 +46,7 @@
 					<div class="col-sm-23">
 						<div class="input-group">
 							<span class="input-group-addon" style="font-size:11px!important;"># <?php echo __('Groups')  ?></span>
-							<input type="text" class="form-control ui-text-right-align" id="group_number" name="team_group_category[group_number]" value=""  placeholder="<?php echo __('No of Groups') ?>"> 
+							<input type="text" class="form-control ui-text-right-align" id="group_number" name="team_group_category[group_number]" value="1" placeholder="<?php echo __('No of Groups') ?>" disabled > 
 						</div><!-- input-group -->
 						
 					</div>
@@ -67,8 +67,8 @@
 					<div class="col-sm-23">
 						<div class="input-group">
 							<span class="input-group-addon" style="font-size:11px!important;"># <?php echo __('Teams')  ?>&nbsp;</span>
-							<input type="hidden" class="form-control ui-text-right-align"  id="number_of_participant_teams_per_group" name="team_group_category[number_of_participant_teams_per_group]" placeholder="<?php echo __('per Group') ?>" title="<?php echo __('Number of Teams Per Group') ?>"> 
-							<input type="text" class="form-control ui-text-right-align" id="number_of_teams_per_group" name="team_group_category[number_of_teams_per_group]" value=""  placeholder="<?php echo __('Per Group') ?>"> 
+							<input type="hidden" class="form-control ui-text-right-align"  id="number_of_participant_teams_per_group" name="team_group_category[number_of_participant_teams_per_group]" placeholder="<?php echo __('per Group') ?>" title="<?php echo __('Number of Teams Per Group') ?>"  > 
+							<input type="text" class="form-control ui-text-right-align" id="number_of_teams_per_group" name="team_group_category[number_of_teams_per_group]" value=""  placeholder="<?php echo __('Per Group') ?>" disabled > 
 						</div><!-- input-group -->
 					</div>
 					<label class="col-sm-121 control-label" title="<?php echo __('Status') ?>"><?php echo __('Mandatory') ?> :</label>

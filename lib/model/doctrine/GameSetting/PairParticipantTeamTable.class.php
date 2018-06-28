@@ -34,6 +34,10 @@ class PairParticipantTeamTable extends PluginPairParticipantTeamTable
 						
 						$_matchFixtureGroup->makeMatchFixtureGroupCode ($_tournamentMatchNumber, $_matchFixtureID);
 						
+						$_tournamentTeamGroup =  TournamentSportGameGroupTable::makeObject ($_sportGameGroupID, $_sportGameGroupTokenID );
+				
+						$_flag1 = $_tournamentTeamGroup->makeConfirmation();
+				
 						$_groupParticipantTeam = TournamentGroupParticipantTeamTable::makeObject ( $_participantTeamGroupID, $_participantTeamGroupTokenID  );
 					
 						$_flag1 = $_groupParticipantTeam->checkConfirmation () ? $_groupParticipantTeam->makeConfirmation ():true;

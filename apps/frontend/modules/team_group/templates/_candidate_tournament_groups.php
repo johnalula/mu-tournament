@@ -14,7 +14,7 @@
 			<th></th>
 		 </tr>
 	  </thead>
-	  <tbody>
+	  <tbody> 
 	   <?php foreach ( $_tournamentSportGameGroups as $_key => $_tournamentSportGameGroup ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
@@ -22,7 +22,7 @@
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<span rel="<?php echo $_tournamentSportGameGroup->id ?>" class="ui-table-status-xsmall-icon" id="<?php echo $_tournamentSportGameGroup->id ?>">
-					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->hasGroupParticipantTeam ? 'status/pending':'status/disabled')  ?>"> 
+					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->hasPendingTeamGameParticipation() ? 'status/pending':'status/disabled')  ?>"> 
 				</span>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
