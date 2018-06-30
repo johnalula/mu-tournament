@@ -117,6 +117,8 @@ class TeamTable extends PluginTeamTable
 			(EXISTS (SELECT tmGmPrtn2.id FROM TeamGameParticipation tmGmPrtn2 WHERE tmGmPrtn2.team_id = tm.id AND tmGmPrtn2.team_id = tm.id AND tmGmPrtn2.team_token_id = ".sha1."(".md5."("."tm.token_id)) AND tmGmPrtn2.gender_category_id = ".TournamentCore::$_WOMEN." )) as hasMaleGameParticipation, 
 			
 			(EXISTS (SELECT tmGmPrtn3.id FROM TeamGameParticipation tmGmPrtn3 WHERE tmGmPrtn3.team_id = tm.id AND tmGmPrtn3.team_id = tm.id AND tmGmPrtn3.team_token_id = ".sha1."(".md5."("."tm.token_id)) AND tmGmPrtn3.gender_category_id = ".TournamentCore::$_MIXED." )) as hasMixedGameParticipation, */
+			
+			//((SELECT COUNT(tmGmPrtn.id) FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 
 	}
 	public static function appendQueryFields ( ) 
 	{		
@@ -124,7 +126,7 @@ class TeamTable extends PluginTeamTable
 		 
 			trnmnt.id as tournamentID, trnmnt.token_id as tournamentTokenID, trnmnt.name as tournamentName, trnmnt.alias as tournamentAlias, trnmnt.season as tournamentSeason, trnmnt.start_date as tournamentStartDate, trnmnt.end_date as tournamentEndDate,
 			
-			((SELECT COUNT(tmGmPrtn.id) FROM TeamGameParticipation tmGmPrtn WHERE tmGmPrtn.team_id = tm.id AND tmGmPrtn.team_token_id = ".sha1."(".md5."("."tm.token_id)) )) as hasGameParticipation, 
+			
 			
 			
 		 

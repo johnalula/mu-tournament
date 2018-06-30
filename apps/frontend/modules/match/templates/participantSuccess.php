@@ -2,6 +2,9 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
 	
+	//echo count($_candidateParticipantTeams);
+	//$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateParticipantTeams ( 1, "881275b4bd93f934188c8483e17ad1357f5dd682", 1, $_sportGameID, $_exclusion, $_keyword, 0, 50 ) ;
+	//echo count($_candidateParticipantTeams);
 ?> 
 
 <div class="ui-page-box">
@@ -128,7 +131,7 @@
 								<div class="ui-panel-content-box">
 									<div class="ui-panel-content-box ">
 										<div class="ui-panel-grid-list"> 
-											<?php include_partial('candidate_participant_team', array('_candidateMemberTeams' => $_candidateParticipantTeams)) ?> 
+											<?php include_partial('candidate_participant_team', array('_candidateParticipantTeams' => $_candidateMatchParticipantTeams)) ?> 
 										</div>
 									</div> 
 									

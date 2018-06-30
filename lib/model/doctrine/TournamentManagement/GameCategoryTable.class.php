@@ -89,13 +89,13 @@ class GameCategoryTable extends PluginGameCategoryTable
 	//
 	public static function appendCandidateQueryFields ( ) 
 	{		
-		 
+		 //(EXISTS (SELECT sprtGm1.id FROM SportGame sprtGm1 WHERE sprtGm1.sport_game_category_id = cat.id AND sprtGm1.org_id = cat.org_id AND sprtGm1.active_flag IS TRUE )) as hasTournamentSportGames,
 	}
 	public static function appendQueryFields ( ) 
 	{		
 		 $_queryFileds = "cat.id, cat.category_name as categoryName, cat.alias as categoryAlias, cat.category_type as categoryType, cat.contestant_team_mode as contestantTeamMode, cat.default_flag as defaultFlag, cat.active_flag as activeFlag, 
 		 
-			(EXISTS (SELECT sprtGm1.id FROM SportGame sprtGm1 WHERE sprtGm1.sport_game_category_id = cat.id AND sprtGm1.org_id = cat.org_id AND sprtGm1.active_flag IS TRUE )) as hasTournamentSportGames,
+			
 		";	
 		return $_queryFileds; 
 	}

@@ -32,6 +32,7 @@ class team_groupActions extends sfActions
 		
 		$this->_candidateGameCategorys = TournamentTeamGroupTable::selectCandidateTournamentGameCategorys ( $_orgID, sha1(md5($_orgTokenID)), $_keyword, 0, 20  ) ;
 	}
+	
 	public function executeCreateTournamentGroup(sfWebRequest $request)
 	{
 		$_tournamentTeamGroup = $request->getParameter('tournament_team_group');
@@ -143,11 +144,15 @@ class team_groupActions extends sfActions
 		//$this->_activeTournament = TournamentTable::makeCandidateObject ( $_orgID, true ) ;
 		$this->_tournamentTeamGroup = TournamentTeamGroupTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentGroupID, $_tournamentGroupTokenID ) ;
 		
-		$this->_groupParticipantTeams = TournamentGroupParticipantTeamTable::processSelection ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 20 ) ;
+		//$this->_groupParticipantTeams = TournamentGroupParticipantTeamTable::processSelection ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 50 ) ;
 		
-		$this->_caniddateParticipantTeams = TournamentGroupParticipantTeamTable::makeCandidateSelection ($_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 20 ) ;
+		$this->_caniddateParticipantTeams = TournamentGroupParticipantTeamTable::makeCandidateSelection ($_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 50 ) ;
 		
 		//$this->_countGroupParticipantTeams = TournamentGroupParticipantTeamTable::processAll ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword) ;
+		
+		//$this->_tournamentSportGameGroups = TournamentTeamGroupTable::selectCandidateTournamentSportGameGroups ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_genderCategoryID, $_keyword, 0, 20  ) ;
+		
+		//$this->_tournamentSportGameGroups = TournamentSportGameGroupTable::selectCandidateActiveTournamentGroups ( $_tournamentGroupID, $_tournamentGroupTokenID, $_competitionStatus, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_competitionFlag, true );
 		
 		//$this->_candidateTeamGroupParticipants = TournamentSportGameGroupTable::selectCanidates ( $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_approvalStatus, $_status, $_keyword, 0, 20  ) ; 
 	}
@@ -222,7 +227,7 @@ class team_groupActions extends sfActions
 		
 		//$this->_groupParticipantTeams = TournamentGroupParticipantTeamTable::processSelection ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 15 ) ;
 		//$this->_countGroupParticipantTeams = TournamentGroupParticipantTeamTable::processAll ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword) ;
-		$this->_caniddateParticipantTeams = TournamentGroupParticipantTeamTable::makeCandidateSelection ($_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 20 ) ;
+		$this->_caniddateParticipantTeams = TournamentGroupParticipantTeamTable::makeCandidateSelection ($_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 50 ) ;
 		
 		//$this->_candidateGroupParticipantTeams = TournamentSportGameGroupTable::selectCanidates ( $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_keyword, 0, 20  ) ; 
 		//$this->_countCandidateGroupParticipantTeams = TournamentSportGameGroupTable::selectAllCanidates ( $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_keyword ) ; 
@@ -233,7 +238,7 @@ class team_groupActions extends sfActions
 	/************************ Candidate Selection ***********************
 	//********************************************************************/
 	 
-	public function executeRRevertTournamentTeamGrouping (sfWebRequest $request)
+	public function executeRevertTournamentTeamGrouping (sfWebRequest $request)
 	{
 		$_teamGroupID = $request->getParameter('team_group_id');	
 		$_teamGroupTokenID = $request->getParameter('team_group_token_id');	
@@ -294,7 +299,7 @@ class team_groupActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		$_candidateSportGames = TournamentTeamGroupTable::selectCandidateTournamentSportGames ( $_orgID, sha1(md5($_orgTokenID)), $_categoryID, $_gameTypeID, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
@@ -313,7 +318,7 @@ class team_groupActions extends sfActions
 		$_limit = $request->getParameter('limit');	
 
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 		
 		$_tournamentSportGameGroups = TournamentTeamGroupTable::selectCandidateTournamentSportGameGroups ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_genderCategoryID, $_keyword, $_offset, $_limit  ) ;
 		
@@ -335,7 +340,7 @@ class team_groupActions extends sfActions
 		$_limit = $request->getParameter('limit');	
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		$_candidateParticipantTeams = TournamentTeamGroupTable::selectCandidateParticipantTeams ( $_tournamentGroupID, $_tournamenGroupTokenID, $_sportGameGroupIDs, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
@@ -388,7 +393,7 @@ class team_groupActions extends sfActions
 		//$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 		
 		$_tournamentSportGameGroups = TournamentTeamGroupTable::selectCandidateTournamentSportGameGroups ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameGroupID, $_sportGameID, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_keyword, $_offset, $_limit ) ;
 		
@@ -407,7 +412,7 @@ class team_groupActions extends sfActions
 		$_limit = $request->getParameter('limit');
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		$_candidateGroupMemberTeams = TournamentTeamGroupTable::selectCandidateGroupMemberParticipantTeams ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameGroupID, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
@@ -428,7 +433,7 @@ class team_groupActions extends sfActions
 		$_limit = $request->getParameter('limit');	
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 		if(!$_genderCategory || $_genderCategory == '' ) $_genderCategory = null;			 
 
 		$_candidateParticipants = TournamentTeamGroupTable::selectCandidateGroupParticipantTeamMembers ( $_tournamentGroupID, $_tournamentGroupTokenID, $_participantTeamID, sha1(md5($_participantTeamTokenID)), $_groupMemberTeamID, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit ); 
@@ -454,7 +459,7 @@ class team_groupActions extends sfActions
 		$_keyword = '%' . $_keyword . '%';
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 15;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 		if(!$_genderCategoryID || $_genderCategoryID == '' ) $_genderCategoryID = null;			 
 		if(!$_keyword || $_keyword == '' ) $_keyword = null;			 
 		

@@ -13,9 +13,13 @@
 			</a>
 		</div>			
 	<?php endforeach; ?>		
-		<span>
-			<?php echo __('Read More') ?>
-		</span>
+		<table width="100%">
+			<tr>
+				<td>xx</td>
+				<td>xx</td>
+				<td align="right"><a href="<?php echo url_for('competition/participant_teams') ?>">See More</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			</tr>
+		</table> 
 	</div>
 </div>
 

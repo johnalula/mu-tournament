@@ -123,7 +123,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 	//
 	public static function appendCandidateQueryFields ( ) 
 	{		
-		 
+		 //(EXISTS (SELECT tmGmPrtn1.id FROM TeamGameParticipation tmGmPrtn1 WHERE tmGmPrtn1.team_id = tmPrt.id AND tmGmPrtn1.team_token_id = ".sha1."(".md5."("."tmPrt.token_id)) )) as hasGameParticipation, 
 	}
 	public static function appendQueryFields ( ) 
 	{		
@@ -141,11 +141,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 							 
 								tmPrt.id as teamID, tmPrt.token_id as teamTokenID, tmPrt.team_number as participantTeamNumber, tmPrt.team_name as participantTeamName, tmPrt.alias as participantTeamAlias, tmPrt.country_id as participantTeamCountry, tmPrt.team_city as teamCity, tmPrt.team_number as teamNumber, tmPrt.confirmed_flag as confirmFlag,
 								
-							 (EXISTS (SELECT tmGmPrtn1.id FROM TeamGameParticipation tmGmPrtn1 WHERE tmGmPrtn1.team_id = tmPrt.id AND tmGmPrtn1.team_token_id = ".sha1."(".md5."("."tmPrt.token_id)) )) as hasGameParticipation, 
-							 
-							 
-							   
-		";	
+				";	
 		return $_queryFileds;
 	}
 	//

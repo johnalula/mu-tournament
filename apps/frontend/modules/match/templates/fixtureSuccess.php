@@ -4,7 +4,11 @@
 	
 	//$_tournamentSportGameGroups = TournamentSportGameGroupTable::processCandidateTournamentSportGameGroups ( 6, TournamentCore::$_ACTIVE, TournamentCore::$_APPROVED, TournamentCore::$_ACTIVE, $_keyword, $_exclusion, 0, 10) ;
 	
-	//echo count($_tournamentSportGameGroups).' == ';
+	//echo count($_candidateMatchFixtureGroups).' == ';
+	//foreach($_candidateMatchFixtureGroups as $_candidateMatchFixtureGroup) {
+			//echo $_candidateMatchFixtureGroup->tournament_sport_game_group_id.' => ';
+		//}
+		//tournament_match_id=1&tournament_match_token_id=d3c98f39903047cf592291c40e6fc6c94afc29ca&sport_game_type_id=1
 ?> 
 
 <div class="ui-page-box">

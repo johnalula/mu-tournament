@@ -112,7 +112,7 @@
 							<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
 							<?php echo __('Next') ?>
 						</a>
-					</li>	 
+					</li>	  
 				<?php endif; ?>
 			<?php endif; ?>
 		<?php endif; ?>

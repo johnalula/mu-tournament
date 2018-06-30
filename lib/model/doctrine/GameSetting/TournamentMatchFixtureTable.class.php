@@ -135,7 +135,8 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 	//
 	public static function appendCandidateQueryFields ( ) 
 	{		
-		 
+		 //((SELECT mtchFixGrp1.id FROM TournamentMatchFixtureGroup mtchFixGrp1 WHERE mtchFixGrp1.tournament_match_fixture_id = mtchFix.id AND mtchFixGrp1.tournament_match_fixture_token_id = ".sha1."(".md5."("."mtchFix.token_id)) )) as tournamentMatchFixtureGroupID,
+								 
 	}
 	public static function appendQueryFields ( ) 
 	{		
@@ -149,8 +150,7 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 								gmCat.id as gameCategoryID, gmCat.token_id as gameCategoryTokenID, gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.alias as tournamentAlias,
 								
-								((SELECT mtchFixGrp1.id FROM TournamentMatchFixtureGroup mtchFixGrp1 WHERE mtchFixGrp1.tournament_match_fixture_id = mtchFix.id AND mtchFixGrp1.tournament_match_fixture_token_id = ".sha1."(".md5."("."mtchFix.token_id)) )) as tournamentMatchFixtureGroupID,
-								 
+								
 		";	
 		return $_queryFileds;
 	}

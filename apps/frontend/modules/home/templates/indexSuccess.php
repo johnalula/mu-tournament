@@ -43,13 +43,13 @@
 					  </a>
 				  </li>
 				  <li>
-					  <a href="#day_three">
+					  <a href="#day_four">
 					  <span style="display:block">Day 4</span>
 							July 05 
 					  </a>
 				  </li>
 				  <li>
-					  <a href="#day_three">
+					  <a href="#day_five">
 					  <span style="display:block">Day 5</span>
 							July 06 
 					  </a>
@@ -64,7 +64,7 @@
 					
 						<div class="col-sm-12">
 							<div class="panel-content">
-								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchMorningSessionFixtures)) ?>
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_MORNING_SESSION, "07/02/2018", $_competitionStatus, $_status  ))) ?>
 							</div><!-- /.col-sm -->
 						</div><!-- /.col-sm --> 
 						
@@ -73,7 +73,7 @@
 								<h4><a><?php echo TournamentCore::processTournamentSessionModeValue (TournamentCore::$_AFTERNOON_SESSION ) ?></a></h4>
 							</div>
 							<div class="panel-content">
-								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchAfternoonSessionFixtures)) ?>
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_AFTERNOON_SESSION, "07/02/2018", $_competitionStatus, $_status ))) ?>
 							</div><!-- /.col-sm -->
 						</div><!-- /.col-sm -->
 					</div><!-- /.tab-pane -->
@@ -87,11 +87,21 @@
 						
 						<div class="col-sm-12">
 							<div class="panel-content">
-								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_MORNING_SESSION, "07/03/2018", $_competitionStatus, $_status  ))) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm --> 
+						
+						<div class="col-sm-12">
+							<div class="panel-title">
+								<h4><a><?php echo TournamentCore::processTournamentSessionModeValue (TournamentCore::$_AFTERNOON_SESSION ) ?></a></h4>
+							</div>
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_AFTERNOON_SESSION, "07/03/2018", $_competitionStatus, $_status ))) ?>
 							</div><!-- /.col-sm -->
 						</div><!-- /.col-sm -->
 					
 					</div><!-- /.tab-pane -->
+					
 					<div class="tab-pane" id="day_three">
 						 <div class="panel-title">
 							<h4><a><?php echo __('Morning Session') ?></a></h4>
@@ -99,16 +109,58 @@
 					
 						<div class="col-sm-12">
 							<div class="panel-content">
-								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_MORNING_SESSION, "07/04/2018", $_competitionStatus, $_status  ))) ?>
 							</div><!-- /.col-sm -->
 						</div><!-- /.col-sm --> 
 						
 						<div class="col-sm-12">
 							<div class="panel-title">
-								<h4><a><?php echo __('Afternoon Session') ?></a></h4>
+								<h4><a><?php echo TournamentCore::processTournamentSessionModeValue (TournamentCore::$_AFTERNOON_SESSION ) ?></a></h4>
 							</div>
 							<div class="panel-content">
-								<?php include_partial('fixture', array('_tournamentMatchFixtures' => $_tournamentMatchFixtures)) ?>
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_AFTERNOON_SESSION, "07/04/2018", $_competitionStatus, $_status ))) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm -->
+					</div><!-- /.tab-pane -->
+					
+					<div class="tab-pane" id="day_four">
+						 <div class="panel-title">
+							<h4><a><?php echo __('Morning Session') ?></a></h4>
+						</div>
+					
+						<div class="col-sm-12">
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_MORNING_SESSION, "07/05/2018", $_competitionStatus, $_status  ))) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm --> 
+						
+						<div class="col-sm-12">
+							<div class="panel-title">
+								<h4><a><?php echo TournamentCore::processTournamentSessionModeValue (TournamentCore::$_AFTERNOON_SESSION ) ?></a></h4>
+							</div>
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_AFTERNOON_SESSION, "07/05/2018", $_competitionStatus, $_status ))) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm -->
+					</div><!-- /.tab-pane -->
+					
+					<div class="tab-pane" id="day_five">
+						 <div class="panel-title">
+							<h4><a><?php echo __('Morning Session') ?></a></h4>
+						</div>
+					
+						<div class="col-sm-12">
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_MORNING_SESSION, "07/06/2018", $_competitionStatus, $_status  ))) ?>
+							</div><!-- /.col-sm -->
+						</div><!-- /.col-sm --> 
+						
+						<div class="col-sm-12">
+							<div class="panel-title">
+								<h4><a><?php echo TournamentCore::processTournamentSessionModeValue (TournamentCore::$_AFTERNOON_SESSION ) ?></a></h4>
+							</div>
+							<div class="panel-content">
+								<?php include_partial('fixture', array('_tournamentMatchFixtures' => TournamentMatchFixtureGroupTable::makeCandidateSelections ( 1, TournamentCore::$_AFTERNOON_SESSION, "07/06/2018", $_competitionStatus, $_status ))) ?>
 							</div><!-- /.col-sm -->
 						</div><!-- /.col-sm -->
 					</div><!-- /.tab-pane -->

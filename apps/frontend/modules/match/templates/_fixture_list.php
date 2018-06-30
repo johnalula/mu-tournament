@@ -8,7 +8,6 @@
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
 			<th class="" style="text-align:left!important;"><?php echo __('Tournament Match Game') ?></th>
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Event Type') ?>"><?php echo  __('Event') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Group') ?>"><?php echo  __('Group') ?></th>     
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Round') ?>"><?php echo  __('Heat') ?></th>  
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Qualifying') ?></th>    
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Date') ?></th>   
@@ -30,13 +29,10 @@
 				<?php echo SystemCore::processDataID($_matchFixture->id) ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
-				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - ( '.TournamentCore::processGenderValue($_matchFixture->id).' )' ?>
+				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - ( '.TournamentCore::processGenderValue($_matchFixture->genderCategoryID).' )' ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo TournamentCore::processEventTypeValue($_matchFixture->id) ?>
-			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_matchFixture->matchFixtureHeatNumber ?>
+				<?php echo TournamentCore::processEventTypeValue($_matchFixture->matchEventType) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo TournamentCore::processRoundModeValue($_matchFixture->matchFixtureGroupRoundMode) ?>">
 				<?php echo $_matchFixture->matchFixtureHeatName ?>
@@ -58,19 +54,14 @@
 					<img title="<?php echo $_matchFixture->sportGameName ?>" src="<?php echo image_path($_matchFixture->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
-			<td class="ui-table-action ui-table-list-action-box-2">
+			<td class="ui-table-action ui-table-list-action-box-1">
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">   
 						<li>
 							<a href="<?php echo url_for('team/view?product_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	
 								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_matchFixture->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
-						</li>  
-						<li>   
-							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_matchFixture->id ?>" onclick="Javascript:deleteProduct(<?php echo $_matchFixture->id ?>);" rel="<?php echo $_matchFixture->token_id ?>">	
-							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_matchFixture->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
-							</a>  
-						</li> 
+						</li>   
 					</ul>
 				</div>
 			</td>
@@ -80,13 +71,13 @@
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=11></td>
+			<td class="ui-table-td-footer" colspan=10></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=13>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=12>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

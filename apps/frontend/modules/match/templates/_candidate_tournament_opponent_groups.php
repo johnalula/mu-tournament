@@ -3,7 +3,7 @@
 	  <thead>
 		 <tr>
 			<th></th>
-			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
+			<th class="" style="text-align:center!important;"><?php echo __('PRO') ?></th>
 			<th class="" style="text-align:center!important;"><?php echo __('ID') ?></th>
 			<th class="" style="text-align:left!important;"><?php echo __('Game').' #' ?></th>
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Team Group') ?>"><?php echo  __('Group #') ?></th>    
@@ -14,15 +14,15 @@
 			<th></th>
 		 </tr>
 	  </thead>
-	  <tbody>  
-	   <?php foreach ( $_tournamentSportGameGroups as $_key => $_tournamentSportGameGroup ): ?>
+	  <tbody>
+	   <?php foreach ( $_tournamentSportGameOpponentGroups as $_key => $_tournamentSportGameGroup ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
-				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_tournamentSportGameGroup->id.'$'.$_tournamentSportGameGroup->token_id.'$'.$_tournamentSportGameGroup->sportGameID.'$'.$_tournamentSportGameGroup->sportGameTokenID.'$'.$_tournamentSportGameGroup->sportGameGroupName.'$'.$_tournamentSportGameGroup->sportGameName.'$'.$_tournamentSportGameGroup->gameCategoryName.'$'.TournamentCore::processDistanceTypeValue($_tournamentSportGameGroup->sportGameDistanceTypeID).'$'.TournamentCore::processAthleticsTypeValue($_tournamentSportGameGroup->sportGameTypeMode).'$'.$_tournamentSportGameGroup->groupGenderCategoryID.'$'.TournamentCore::processGenderValue($_tournamentSportGameGroup->groupGenderCategoryID).'$'.$_tournamentSportGameGroup->contestantTeamMode .'$'.$_tournamentSportGameGroup->contestantMode .'$'.$_tournamentSportGameGroup->id .'$'.$_tournamentSportGameGroup->id ?>">
+				<input type="radio" id="selectCandidate-<?php echo ++$_key ?>" class="selectCandidate" name="selectCandidate" value="<?php echo  $_tournamentSportGameGroup->id.'$'.$_tournamentSportGameGroup->token_id.'$'.$_tournamentSportGameGroup->sportGameID.'$'.$_tournamentSportGameGroup->sportGameTokenID.'$'.$_tournamentSportGameGroup->sportGameGroupName.'$'.$_tournamentSportGameGroup->sportGameName.'$'.$_tournamentSportGameGroup->gameCategoryName.'$'.TournamentCore::processDistanceTypeValue($_tournamentSportGameGroup->sportGameDistanceTypeID).'$'.TournamentCore::processAthleticsTypeValue($_tournamentSportGameGroup->sportGameTypeMode).'$'.$_tournamentSportGameGroup->groupGenderCategoryID.'$'.TournamentCore::processGenderValue($_tournamentSportGameGroup->groupGenderCategoryID).'$'.$_tournamentSportGameGroup->contestantTeamMode .'$'.$_tournamentSportGameGroup->contestantMode .'$'.$_tournamentSportGameGroup->countTournamentGroupParticipantTeam .'$'.$_tournamentSportGameGroup->countCandidateParticipants() ?>">
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
 				<span rel="<?php echo $_tournamentSportGameGroup->id ?>" class="ui-table-status-xsmall-icon" id="<?php echo $_tournamentSportGameGroup->id ?>">
-					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->id ? 'status/pending':'status/disabled')  ?>"> 
+					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->hasGroupParticipantTeam ? 'status/pending':'status/disabled')  ?>"> 
 				</span>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-00"> 

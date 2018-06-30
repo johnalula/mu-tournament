@@ -13,7 +13,6 @@
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Group') ?>"><?php echo  __('Group') ?></th>   
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Match Time') ?>"><?php echo  __('Description') ?></th>   
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Status Status') ?>"><?php echo  __('Status') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('Action') ?></th>  
 			<th></th>
 		 </tr>
 	  </thead>
@@ -49,36 +48,20 @@
 				<span rel="<?php echo $_matchParticipantTeamMember->id ?>" class="ui-table-status-small-icon" id="<?php echo $_matchParticipantTeamMember->id ?>">
 					<img title="<?php echo $_matchParticipantTeamMember->sportGameName ?>" src="<?php echo image_path($_matchParticipantTeamMember->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
-			</td> 
-			<td class="ui-table-action ui-table-list-action-box-2">
-				<div class="ui-table-list-action " id="">
-					<ul class="ui-table-action-menu">   
-						<li>
-							<a href="<?php echo url_for('team/view?product_id='.$_matchParticipantTeamMember->id.'&token_id='.$_matchParticipantTeamMember->token_id) ?>" >	
-								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_matchParticipantTeamMember->id ?> )" src="<?php echo image_path('icons/view') ?>">			
-							</a>
-						</li>  
-						<li>   
-							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_matchParticipantTeamMember->id ?>" onclick="Javascript:deleteProduct(<?php echo $_matchParticipantTeamMember->id ?>);" rel="<?php echo $_matchParticipantTeamMember->token_id ?>">	
-							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_matchParticipantTeamMember->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
-							</a>  
-						</li> 
-					</ul>
-				</div>
-			</td>
+			</td>  
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=9></td>
+			<td class="ui-table-td-footer" colspan=8></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=11>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=10>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

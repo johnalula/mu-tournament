@@ -108,6 +108,9 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 	public static function appendCandidateQueryFields ( ) 
 	{		
 		 //	(EXISTS (SELECT sprtGmPrtn1.id FROM TeamGameParticipation sprtGmPrtn1 WHERE sprtGmPrtn1.sport_game_id = sprtGm.id  AND sprtGmPrtn1.sport_game_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND sprtGmGrp1.gender_category_id=".TournamentCore::$_MEN." ) as maxSportGameGroupNumberMen,
+		 
+		// ((SELECT COUNT(tmMbrPrtRol1.id) FROM TeamMemberParticipantRole tmMbrPrtRol1 WHERE tmMbrPrtRol1.team_game_participation_id = sprtGmPrt.id AND tmMbrPrtRol1.team_game_participation_token_id = ".sha1."(".md5."("."sprtGmPrt.token_id)) )) as hasTeamMemberSportGameParticipant,
+						
 	}
 	public static function appendQueryFields ( ) 
 	{		
@@ -121,8 +124,7 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 								gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias, gmCat.contestant_team_mode as contestantTeamMode,
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.id as tournamentAlias,
 							
-								((SELECT COUNT(tmMbrPrtRol1.id) FROM TeamMemberParticipantRole tmMbrPrtRol1 WHERE tmMbrPrtRol1.team_game_participation_id = sprtGmPrt.id AND tmMbrPrtRol1.team_game_participation_token_id = ".sha1."(".md5."("."sprtGmPrt.token_id)) )) as hasTeamMemberSportGameParticipant,
-						
+								
 		";	
 		return $_queryFileds;
 	}

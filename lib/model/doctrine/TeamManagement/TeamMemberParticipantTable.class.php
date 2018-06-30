@@ -65,7 +65,7 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 			$_nw->member_relation_id = trim($_memberRelation); 
 			$_nw->member_age = trim($_participantAge); 
 			$_nw->gender_category_id = trim($_memberGender); 
-			$_nw->member_full_name = trim($_memberFullName); 
+			$_nw->member_full_name = ucwords(strtolower(trim($_memberFullName))); 
 			$_nw->member_number = trim($_memberNumber); 
 			$_nw->active_flag = true;  
 			$_nw->status = $_memberStatus ? $_memberStatus:trim(PartyCore::$_ACTIVE);   
@@ -99,7 +99,7 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 	//
 	public static function appendCandidateQueryFields ( ) 
 	{		
-		 
+		 //((SELECT COUNT(tmMbrPrt1.id) FROM TeamMemberParticipantRole tmMbrPrt1 WHERE tmMbrPrt1.team_member_participant_id = tmMbrPrt.id AND tmMbrPrt1.team_member_participant_token_id = ".sha1."(".md5."("."tmMbrPrt.token_id)) AND tmMbrPrt1.confirmed_status=".TournamentCore::$_INITIATED."  AND tmMbrPrt1.grouped_status=".TournamentCore::$_INITIATED."  AND tmMbrPrt1.status=".TournamentCore::$_PENDING." AND tmMbrPrt1.active_flag IS FALSE )) as countTeamMemberParticipantRoles,
 	}
 	public static function appendQueryFields ( ) 
 	{		
@@ -111,7 +111,7 @@ class TeamMemberParticipantTable extends PluginTeamMemberParticipantTable
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.id as tournamentAlias,
 								prsn.id as personID, prsn.name as memberName, prsn.middle_name as memberMiddleName, prsn.last_name as memberLastName, prsn.full_name as memberFullName, prsn.party_code_number as partyCodeNumber,
 								
-								((SELECT COUNT(tmMbrPrt1.id) FROM TeamMemberParticipantRole tmMbrPrt1 WHERE tmMbrPrt1.team_member_participant_id = tmMbrPrt.id AND tmMbrPrt1.team_member_participant_token_id = ".sha1."(".md5."("."tmMbrPrt.token_id)) AND tmMbrPrt1.confirmed_status=".TournamentCore::$_INITIATED."  AND tmMbrPrt1.grouped_status=".TournamentCore::$_INITIATED."  AND tmMbrPrt1.status=".TournamentCore::$_PENDING." AND tmMbrPrt1.active_flag IS FALSE )) as countTeamMemberParticipantRoles,
+								
 		";	
 		return $_queryFileds;
 	}

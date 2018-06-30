@@ -71,6 +71,23 @@
 						</div>
 					</div>  
 					<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
+					
+					<div class="form-group">
+						<label class="col-sm-21 control-label"><?php echo __('Group') ?>: <span class="ui-red-text">*</span></label>
+						<div class="col-sm-40"> 
+							<div class="input-group">
+								<input type="text" class="form-control " id="tournament_sport_game_group_opponent_name" name="match_participant_team[tournament_sport_game_group_opponent_name]" placeholder="<?php echo __('Candidate Sport Game Group') ?>" title="<?php echo __('Candidate Sport Game Group') ?>" value="" data-toggle="modal" data-target="#candidateTournamentSportGameGroupOpponentModal"  disabled>
+								<input type="hidden" class="form-control" id="tournament_sport_game_group_opponent_id" name="match_participant_team[tournament_sport_game_group_opponent_id]" placeholder="" value="">
+								<input type="hidden" class="form-control" id="tournament_sport_game_group_opponent_token_id" name="match_participant_team[tournament_sport_game_group_opponent_token_id]" value=""> 
+								
+								<span class="input-group-btn">
+									<button class="btn btn-default selectCandidateTournamentSportGameGroupOpponent" type="button" data-toggle="modal" data-target="#candidateTournamentSportGameGroupOpponentModal" title="<?php echo __('Candidat Sport Game Group') ?>" disabled >
+										<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
+									</button>
+								</span>
+							</div><!-- /input-group -->
+						</div>
+					</div>  
 					<div class="form-group">
 						<label class="col-sm-21 control-label"><?php echo __('Opponent Team') ?>: <span class="ui-red-text">*</span></label>
 						<div class="col-sm-40"> 

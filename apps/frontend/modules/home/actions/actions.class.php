@@ -30,9 +30,9 @@ class homeActions extends sfActions
 		$this->_participantTeamStandings = TeamTable::makeCandidateSelection ( $_tournament->id, $_activeFlag, $_keyword, 0, 6);
 		//$this->_participantTeamStandings = TeamTable::makeCandidateSelection ( $_tournament->id, $_activeFlag, $_keyword, 0, 6);;
 		
-		$this->_tournamentMatchMorningSessionFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelections ( $_tournament->id, TournamentCore::$_MORNING_SESSION, $_tournamentDate, $_competitionStatus, $_status  ) ; 
+		//$this->_tournamentMatchMorningSessionFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelections ( $_tournament->id, TournamentCore::$_MORNING_SESSION, "07/02/2018", $_competitionStatus, $_status  ) ; 
 		
-		$this->_tournamentMatchAfternoonSessionFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelections ( $_tournament->id, TournamentCore::$_AFTERNOON_SESSION, $_tournamentDate, $_competitionStatus, $_status ) ;
+		//$this->_tournamentMatchAfternoonSessionFixtures = TournamentMatchFixtureGroupTable::makeCandidateSelections ( $_tournament->id, TournamentCore::$_AFTERNOON_SESSION, "02/07/2018", $_competitionStatus, $_status ) ;
 		//makeCandidateSelections ( $_tournamentID=null, $_tournamentSessionMode=null, $_tournamentDate=null, $_competitionStatus=null, $_status=null, $_offset=0, $_limit=10 ) 
 		
 		$this->_candidateMatchFixtureParticipants = TournamentMatchFixtureTable::selectCandidateParticipants ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameID, $_genderCategoryID, $_qualificationStatus, $_competitionStatus, $_status ); 

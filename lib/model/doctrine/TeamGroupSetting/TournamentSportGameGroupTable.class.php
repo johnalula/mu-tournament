@@ -93,6 +93,8 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 		 //((SELECT COUNT(sprtGmGrp1.id) FROM TournamentGroupParticipantTeam sprtGmGrp1 WHERE sprtGmGrp1.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp1.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND sprtGmGrp1.approval_status = ".TournamentCore::$_APPROVED." AND sprtGmGrp1.status = ".TournamentCore::$_ACTIVE." )) as hasGroupParticipantTeam,
 								
 		//((SELECT COUNT(sprtGmGrp2.id) FROM TournamentGroupParticipantTeam sprtGmGrp2 WHERE sprtGmGrp2.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp2.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)))) as countTournamentGroupParticipantTeam,
+		
+		//((SELECT COUNT(sprtGmGrp2.id) FROM TournamentGroupParticipantTeam sprtGmGrp2 WHERE sprtGmGrp2.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp2.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)))) as countTournamentGroupParticipantTeam,
 	}
 	public static function appendQueryFields ( ) 
 	{		
@@ -103,18 +105,11 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 								
 								gmCat.id as gameCategoryID, gmCat.token_id as gameCategoryTokenID, gmCat.category_name as gameCategoryName, gmCat.alias as gameCategoryAlias,
 								trnmt.id as tournamentID, trnmt.token_id as tournamentTokenID, trnmt.name as tournamentName, trnmt.alias as tournamentAlias,
-								 
 								
 								(sprtGmGrp.status=".TournamentCore::$_PENDING.") as pendingTeamGroup, (sprtGmGrp.status=".TournamentCore::$_ACTIVE.") as activeTeamGroup, (sprtGmGrp.status=".TournamentCore::$_COMPLETED.") as completedTeamGroup,
 								(sprtGmGrp.approval_status=".TournamentCore::$_PENDING.") as pendingApprovalTeamGroup, (sprtGmGrp.approval_status=".TournamentCore::$_ACTIVE.") as activeApprovalTeamGroup, (sprtGmGrp.approval_status=".TournamentCore::$_APPROVED.") as approvedApprovalTeamGroup, (sprtGmGrp.approval_status=".TournamentCore::$_COMPLETED.") as completedApprovalTeamGroup,
 								
-								 
-								
-								((SELECT COUNT(sprtGmGrp2.id) FROM TournamentGroupParticipantTeam sprtGmGrp2 WHERE sprtGmGrp2.tournament_sport_game_group_id = sprtGmGrp.id AND sprtGmGrp2.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)))) as countTournamentGroupParticipantTeam,
-								
-								
-								
-		";	
+				";	
 		return $_queryFileds;
 	}
 	//
@@ -322,7 +317,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 				//if(!is_null($_competitionStatus)) $_qry = $_qry->addWhere("sprtGmGrp.competition_status = ?", $_competitionStatus);    
 				//if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("sprtGmGrp.approval_status = ?", $_approvalStatus);    
 				//if(!is_null($_status)) $_qry = $_qry->addWhere("sprtGmGrp.status = ?", $_status);           
-				//if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("sprtGmGrp.id ", $_exclusion );         
+				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("sprtGmGrp.id ", $_exclusion );         
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
 						$_qry = $_qry->andWhere("sprtGmGrp.group_name LIKE ? OR sprtGm.name LIKE ? OR sprtGmGrp.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
@@ -382,6 +377,32 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 	}  
 	 
 	/*********************************************************/
+	
+	// process list selection function 
+   public static function selectCandidateActiveTournamentGroups ( $_tournamentGroupID=null, $_tournamentGroupTokenID=null, $_competitionStatus=null,$_approvalStatus=null, $_status=null, $_competitionFlag=null, $_activeFlag=null ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TournamentSportGameGroup sprtGmGrp") 
+				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnSprtGmGrp on sprtGmGrp.tournament_team_group_id = trmnSprtGmGrp.id ")  
+				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
+				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")   
+				->orderBy("sprtGmGrp.id ASC")
+				->where("sprtGmGrp.id IS NOT NULL");
+				if(!is_null($_tournamentGroupID)) $_qry = $_qry->addWhere("trmnSprtGmGrp.id = ? AND trmnSprtGmGrp.token_id = ? ", array($_tournamentGroupID, $_tournamentGroupTokenID));
+				if(!is_null($_sportGameTypeID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_sportGameTypeID);    
+				if(!is_null($_competitionStatus)) $_qry = $_qry->addWhere("sprtGmGrp.competition_status = ?", $_competitionStatus);    
+				if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("sprtGmGrp.approval_status = ?", $_approvalStatus);    
+				if(!is_null($_status)) $_qry = $_qry->addWhere("sprtGmGrp.status = ?", $_status);  
+				if(!is_null($_competitionFlag)) $_qry = $_qry->addWhere("sprtGmGrp.competition_flag = ?", $_competitionFlag);  
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGmGrp.active_flag = ?", $_activeFlag);  
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
 	
 	// process list selection function 
    public static function selectCandidateTournamentSportGameGroups ( $_tournamentGroupID=null, $_sportGameID=null, $_genderCategory=null, $_approvalStatus=null, $_status=null, $_keyword=null, $_exclusion=null, $_offset=0, $_limit=10 ) 

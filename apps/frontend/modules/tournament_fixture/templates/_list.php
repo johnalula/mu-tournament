@@ -6,88 +6,84 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
-			<th class="ui-th-left-text" title="<?php echo __('Match Name') ?>"><?php echo  __('Match Name') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Name') ?>"><?php echo  __('Type') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Name') ?>"><?php echo  __('Tournament') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Mode') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Category Class') ?>"><?php echo  __('Date') ?></th>  
-			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Category Group') ?>"><?php echo  __('Description') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Employee Status') ?>"><?php echo  __('Status') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('Action') ?></th>  
+			<th class="" style="text-align:left!important;"><?php echo __('Tournament Match Game') ?></th>
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Event Type') ?>"><?php echo  __('Event') ?></th>   
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Round') ?>"><?php echo  __('Heat') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Qualifying') ?></th>    
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Date') ?></th>   
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Time') ?>"><?php echo  __('Time') ?></th>   
+			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Match Time') ?>"><?php echo  __('Venue') ?></th>   
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Status Status') ?>"><?php echo  __('Status') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('...') ?></th>  
 			<th></th>
 		 </tr>
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-product" name="ui-total-data-list-product" value="<?php echo count($_countTournaments) ?>">
-	  <?php foreach ( $_tournamentMatchs as $_key => $_tournamentMatch ): ?>
+	  <?php $_rowNumber=1; foreach ( $_candidateMatchFixtureGroups as $_key => $_candidateMatchFixtureGroup ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
-			<td class="ui-td-center-text ui-td-xsmall-00">
-				<a href="<?php echo url_for('match/view?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id) ?>" >	
-					<?php echo SystemCore::processDataID($_tournamentMatch->id) ?>
-				</a>
+			<td class="ui-td-center-text ui-td-xsmall-00"> 
+				<?php echo $_rowNumber ?> 
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
-				<?php echo $_tournamentMatch->gameCategoryName  ?>
-			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_tournamentMatch->id ?>
-			</td>
-			
-			 
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_tournamentMatch->id ?>
-			</td> 
-			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_tournamentMatch->id ?>
-			</td> 
-			<td class="ui-td-right-text ui-td-xsmall-00">
-				<?php echo $_tournamentMatch->start_date  ?>
-			</td>  
-			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_tournamentMatch->description ?> 
+				<?php echo $_candidateMatchFixtureGroup->sportGameName.' - '.$_candidateMatchFixtureGroup->gameCategoryName.'- '.($_candidateMatchFixtureGroup->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_candidateMatchFixtureGroup->sportGameTypeMode)):$_candidateMatchFixtureGroup->sportGameName).' - ( '.TournamentCore::processGenderValue($_candidateMatchFixtureGroup->genderCategoryID).' )' ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<span rel="<?php echo $_tournamentMatch->id ?>" class="ui-table-status-small-icon" id="<?php echo $_tournamentMatch->id ?>">
-					<img title="<?php echo $_tournamentMatch->id ?>" src="<?php echo image_path($_tournamentMatch->id ? 'status/approved':'status/disabled')  ?>"> 
+				<?php echo TournamentCore::processEventTypeValue($_candidateMatchFixtureGroup->matchEventType) ?>
+			</td>  
+			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo TournamentCore::processRoundModeValue($_candidateMatchFixtureGroup->matchFixtureGroupRoundMode) ?>">
+				<?php echo $_candidateMatchFixtureGroup->matchFixtureHeatName ?>
+			</td>  
+			<td class="ui-td-center-text ui-td-xsmall-0">
+				<?php echo TournamentCore::processMatchCompetitionRoundModeValue($_candidateMatchFixtureGroup->qualifyingStatus) ?>
+			</td>  
+			<td class="ui-td-center-text ui-td-xsmall-0">
+				<?php echo  date('D M, d-Y', strtotime($_candidateMatchFixtureGroup->matchDate)) ?>
+			</td> 
+			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo TournamentCore::processTournamentSessionModeValue($_candidateMatchFixtureGroup->matchFixtureGroupSessionMode) ?>">
+				<?php echo $_candidateMatchFixtureGroup->matchTime ?>
+			</td>  
+			<td class="ui-td-left-text ui-td-xsmall-2">
+				<?php echo $_candidateMatchFixtureGroup->tournamentMatchFixtureVenue ?>
+			</td>  
+			<td class="ui-td-center-text ui-td-xsmall-0">
+				<span rel="<?php echo $_candidateMatchFixtureGroup->id ?>" class="ui-table-status-small-icon" id="<?php echo $_candidateMatchFixtureGroup->id ?>">
+					<img title="<?php echo $_candidateMatchFixtureGroup->sportGameName ?>" src="<?php echo image_path($_candidateMatchFixtureGroup->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
-			<td class="ui-table-action ui-table-list-action-box-3">
+			<td class="ui-table-action ui-table-list-action-box-2">
 				<div class="ui-table-list-action " id="">
-					<ul class="ui-table-action-menu">  
+					<ul class="ui-table-action-menu">   
 						<li>
-							<a href="<?php echo url_for('match/fixture?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id) ?>" >	
-								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_tournamentMatch->id ?> )" src="<?php echo image_path('icons/view') ?>">			
+							<a href="<?php echo url_for('tournament_fixture/view?match_fixture_id='.$_candidateMatchFixtureGroup->id.'&token_id='.$_candidateMatchFixtureGroup->token_id) ?>" >	
+								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_candidateMatchFixtureGroup->id ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
-						</li> 
-						<li>  
-							<a href="<?php echo url_for('match/fixture?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id) ?>" >	
-								<img title="<?php echo __('Edit Team').' ( '.' Task '.' #:'.$_tournamentMatch->id ?> )" src="<?php echo image_path('icons/detail')  ?>" >
-							</a>    
-						</li> 
-						<li>   
-							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_tournamentMatch->id ?>" onclick="Javascript:deleteProduct(<?php echo $_tournamentMatch->id ?>);" rel="<?php echo $_tournamentMatch->token_id ?>">	
-							<img title="<?php echo __('Delete Match').' ( '.' Task '.' #:'.$_tournamentMatch->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
-							</a>  
-						</li> 
+						</li>    
+						<li>
+							<a href="<?php echo url_for('tournament_fixture/result?match_fixture_id='.$_candidateMatchFixtureGroup->id.'&token_id='.$_candidateMatchFixtureGroup->token_id) ?>" >	
+								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_candidateMatchFixtureGroup->id ?> )" src="<?php echo image_path('icons/edit') ?>">			
+							</a>
+						</li>    
 					</ul>
 				</div>
 			</td>
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
+		 <?php $_rowNumber++; ?>
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=9></td>
+			<td class="ui-table-td-footer" colspan=10></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=11>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=12>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

@@ -24,8 +24,9 @@ class tournament_fixtureActions extends sfActions
 		$_tournamentID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('activeTournamentID');
 		$_tournament = TournamentTable::makeActiveObject ( true );
 		
-		$this->_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournament->id, $_sportGameID, $_genderCategory, $_matchSessionMode, $_tournamentDate, $_keyword, 0, 20  ) ;
-		$this->_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateSelections ( $_tournamentID, $_sportGameID, $_competitionStatus, $_approvalStatus, $_status, $_keyword, 0, 20  ) ;
+		$this->_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::selectCandidateMatchFixtureGroupSelection ( $_tournamentID, $_tournamentDate, $_competitionStatus, $_status, $_keyword, 0, 50  ) ;
+		//$this->_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateSelection ( $_tournamentID, $_sportGameID, $_genderCategory, $_matchSessionMode, $_tournamentDate, $_keyword, 0, 50  ) ;
+		//$this->_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateSelections ( $_tournamentID, $_sportGameID, $_competitionStatus, $_approvalStatus, $_status, $_keyword, 0, 50  ) ;
   }
   //
   public function executeResult(sfWebRequest $request)
@@ -36,7 +37,7 @@ class tournament_fixtureActions extends sfActions
 		$_matchFixtureGroupID = $request->getParameter('match_fixture_id');	
 		$_matchFixtureGroupTokenID = $request->getParameter('token_id');	
 		
-		$this->_tournamentMatchFixtureGroup = TournamentMatchFixtureGroupTable::makeObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID );
+		$this->_tournamentMatchFixtureGroup = TournamentMatchFixtureGroupTable::makeObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID,true );
 		
 		//$this->_tournamentMatchFixtureParticipants = TournamentMatchFixtureGroupTable::processAll ($_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword ); 
 		$this->_candidateMatchFixtureParticipants = TournamentMatchFixtureTable::selectCandidateParticipants ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameID, $_genderCategoryID, $_qualificationStatus, $_competitionStatus, $_status ); 

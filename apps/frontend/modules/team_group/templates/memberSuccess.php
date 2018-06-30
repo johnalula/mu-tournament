@@ -13,6 +13,8 @@
 	//$_tournamentGroup =  TournamentSportGameGroupTable::makeObject (6, '77f1a16687ff9a2cf2985de3acc8f34f9b167882 ' );
 	
 	//echo $_tournamentGroup->hasPendingTeamGameParticipation() ? 'True':'false';
+	
+	//echo count($_tournamentSportGameGroups);
 ?> 
 
 <div class="ui-page-box">

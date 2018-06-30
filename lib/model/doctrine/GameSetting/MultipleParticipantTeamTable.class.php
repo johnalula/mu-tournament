@@ -88,7 +88,11 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 			$_nw->group_participant_team_id = trim($_participantTeamGroupID); 
 			$_nw->group_participant_team_token_id = sha1(md5(trim($_participantTeamGroupTokenID)));
 			$_nw->confirmed_flag = true;     
+			$_nw->competition_flag = true;     
+			$_nw->qualified_flag = true;     
 			$_nw->active_flag = true;     
+			$_nw->qualification_status = TournamentCore::$_QUALIFIED;  
+			$_nw->competition_status = TournamentCore::$_ACTIVE;  
 			$_nw->process_status = TournamentCore::$_COMPLETED;  
 			$_nw->approval_status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_APPROVED;  
 			$_nw->status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_ACTIVE;  
