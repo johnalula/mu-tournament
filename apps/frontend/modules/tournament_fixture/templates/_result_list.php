@@ -12,9 +12,9 @@
 			<th class="" style="text-align:center!important;"><?php echo __('Country') ?></th>
 			<th class="" style="text-align:center!important;"><?php echo __('Team') ?></th>
 			<th class="ui-th-left-text" style="text-align:left!important;" title="<?php echo __('Participant Name') ?>"><?php echo  __('Participant Name') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Time') ?>"><?php echo  __('Result Time') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Status') ?>"><?php echo  __('Status') ?></th>  
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Medal Award') ?>"><?php echo  __('Award') ?></th>    
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Time') ?>"><?php echo  __('Results') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Status') ?>"><?php echo  __('Qualification') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Medal Award') ?>"><?php echo  __('Status') ?></th>    
 			<th class="ui-th-left-text" style="text-align:center!important;">&nbsp;</th>  
 			<th class="ui-th-left-text" style="text-align:center!important;"><?php echo  __('...') ?></th>  
 			<th></th>
@@ -30,13 +30,13 @@
 				<?php echo SystemCore::processDataID($_candidateMatchFixtureParticipant->id) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0 ui-table-td-form">
-				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupParticipantRankNumber <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupParticipantRankNumber_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="" rel="<?php echo $_candidateMatchFixtureParticipant->id ?>" placeholder="0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
+				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupParticipantRankNumber <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupParticipantRankNumber_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="<?php echo $_candidateMatchFixtureParticipant->matchResultRank ?>" rel="<?php echo $_candidateMatchFixtureParticipant->id ?>" placeholder="0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0 ui-table-td-form">
-				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupParticipantPositionNumber <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupParticipantPositionNumber_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="" rel="<?php echo $_candidateMatchFixtureParticipant->id ?>" placeholder="0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
+				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupParticipantPositionNumber <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupParticipantPositionNumber_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="<?php echo $_candidateMatchFixtureParticipant->matchResultRank ?>" rel="<?php echo $_candidateMatchFixtureParticipant->id ?>" placeholder="0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0 ui-table-td-form">
-				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupParticipantNumber <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupParticipantNumber_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="" rel="<?php echo $_candidateMatchFixtureParticipant->id ?>" placeholder="0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
+				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupParticipantNumber <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupParticipantNumber_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="<?php echo $_candidateMatchFixtureParticipant->matchResultRank ?>" rel="<?php echo $_candidateMatchFixtureParticipant->id ?>" placeholder="0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_candidateMatchFixtureParticipant->id ? 'disabled':'' ?>  >
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo SystemCore::processCountryValue($_candidateMatchFixtureParticipant->teamCountry) ?>">
 				<?php  $_contryFlag = 'flags/'.$_candidateMatchFixtureParticipant->teamCountry ?>
@@ -50,24 +50,28 @@
 				<?php echo $_candidateMatchFixtureParticipant->participantMemberFullName  ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xsmall-01 ui-table-td-form"> 
-				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupParticipantTimeResult <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupParticipantTimeResult_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="" rel="<?php echo $_candidateMatchFixtureParticipant->id ?>" placeholder="0:00.0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
+				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupParticipantTimeResult <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupParticipantTimeResult_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="<?php echo $_candidateMatchFixtureParticipant->matchResultTime ?>" rel="<?php echo $_candidateMatchFixtureParticipant->id ?>" placeholder="0:00.0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
+				
+				<input type="hidden" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupMemberParticipant <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupMemberParticipant_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="<?php echo $_candidateMatchFixtureParticipant->memberParticipantID ?>" rel="<?php echo $_candidateMatchFixtureParticipant->memberParticipantTokenID ?>" placeholder="0:00.0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
+				
+				<input type="hidden" class="ui-table-list-form-input-md  ui-text-center-align matchFixtureGroupParticipantTeam <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="matchFixtureGroupParticipantTeam_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="<?php echo $_candidateMatchFixtureParticipant->id ?>" value="<?php echo $_candidateMatchFixtureParticipant->participantTeamID ?>" rel="<?php echo $_candidateMatchFixtureParticipant->participantTeamTokenID ?>" placeholder="0:00.0" title="<?php echo $_candidateMatchFixtureParticipant->id ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-01 ui-table-td-form"> 
 				<select id="matchFixtureGroupParticipantResultStatus_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="tournament_match_fixture[event_type]" class="form-control matchFixtureGroupParticipantResultStatus" title="<?php echo __('Participant Result Status') ?>" >
 					<option value=""  ><?php echo 'Select Status ...' ?></option>
 					<?php foreach(TournamentCore::processCompetitionStatuses() as $_key => $_resultStatus): ?>								 
-						<option value="<?php echo $_key ?>"  <?php echo $_key == TournamentCore::$_FIN ? 'selected':'' ?>  > 
+						<option value="<?php echo $_key ?>"  <?php echo $_key == $_candidateMatchFixtureParticipant->qualificationStatus ? 'selected':($_key == TournamentCore::$_FIN ? 'selected':'') ?>    > 
 							<?php echo $_resultStatus ?>
 						</option>								 
 					<?php endforeach; ?>
 				</select>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-10 ui-table-td-form"> 
-				<select id="matchFixtureGroupParticipantMedalAward_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="tournament_match_fixture[event_type]" class="form-control matchFixtureGroupParticipantMedalAward" title="<?php echo __('Participant Result Status') ?>" <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? 'disabled':'' ?>>
-					<option value=""  ><?php echo 'Select Medal Award ...' ?></option>
-					<?php foreach(TournamentCore::processMatchMedalAwardModes() as $_key => $_medalAward): ?>								 
-						<option value="<?php echo $_key ?>"  > 
-							<?php echo $_medalAward ?>
+				<select id="matchFixtureGroupParticipantStatus_<?php echo $_candidateMatchFixtureParticipant->id ?>" name="tournament_match_fixture[event_type]" class="form-control matchFixtureGroupParticipantStatus" title="<?php echo __('Participant Result Status') ?>" <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? 'disabled':'' ?>>
+					<option value=""  ><?php echo 'Select Status ...' ?></option>
+					<?php foreach(TournamentCore::processTournamentStatuses() as $_key => $_status): ?>								 
+						<option value="<?php echo $_key ?>" <?php echo $_key == TournamentCore::$_PLAYED ? 'selected':'' ?> > 
+							<?php echo $_status ?>
 						</option>								 
 					<?php endforeach; ?>
 				</select>
@@ -79,7 +83,7 @@
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">     
 						<li>
-							<button class="ui-table-grid-list-button updateCandidateSerializedItem" id="updateTournamentMatchParticipantMedalAward-<?php echo $_candidateMatchFixtureParticipant->id ?>" rel="<?php echo $_candidateMatchFixtureParticipant->token_id ?>" onclick='Javascript:updateTournamentMatchFixtureParticipantResultFunction(<?php echo $_candidateMatchFixtureParticipant->id ?>)'>	 
+							<button class="ui-table-grid-list-button tournamentMatchFixtureParticipantResult" id="tournamentMatchFixtureParticipantResult-<?php echo $_candidateMatchFixtureParticipant->id ?>" rel="<?php echo $_candidateMatchFixtureParticipant->token_id ?>" onclick='Javascript:updateTournamentMatchFixtureParticipantResult(<?php echo $_candidateMatchFixtureParticipant->id ?>)'>	 
 								<img title="<?php echo __('View Participant Team Medal Award').' ( '.' Team '.' #:'.$_candidateMatchFixtureParticipant->teamNumber ?> )" src="<?php echo image_path('icons/update') ?>">		
 							</button>
 						</li> 

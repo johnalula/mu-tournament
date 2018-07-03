@@ -461,6 +461,30 @@ class TeamMemberParticipantRoleTable extends PluginTeamMemberParticipantRoleTabl
 	/*********************************************************/
 	
 	// process list selection function 
+   public static function makeCandidateParticipantRoleSelection ( $_participantMemeberID=null, $_participantMemeberTokenID=null) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TeamMemberParticipantRole tmMbrPrtRol") 
+				->innerJoin("tmMbrPrtRol.TeamGameParticipation sprtGmPrtn on tmMbrPrtRol.team_game_participation_id = sprtGmPrtn.id ")  
+				->innerJoin("tmMbrPrtRol.TeamMemberParticipant tmMbrPrt on tmMbrPrtRol.team_member_participant_id = tmMbrPrt.id ")  
+				->innerJoin("tmMbrPrt.Team prtTm on tmMbrPrt.team_id = prtTm.id ")   
+				->innerJoin("sprtGmPrtn.GameCategory gmCat on sprtGmPrtn.sport_game_category_id = gmCat.id ")  
+				->innerJoin("sprtGmPrtn.SportGame sprtGm on sprtGmPrtn.sport_game_id = sprtGm.id ")  
+				->innerJoin("prtTm.Tournament trnmt on prtTm.tournament_id = trnmt.id ")  
+				->innerJoin("tmMbrPrt.Person prsn on tmMbrPrt.person_id = prsn.id ")  
+				->innerJoin("prtTm.Organization org on prtTm.org_id = org.id ")   
+				->orderBy("tmMbrPrt.id DESC")
+				->where("tmMbrPrt.id IS NOT NULL");
+				//if(!is_null($_orgID)) $_qry = $_qry->addWhere("prtTm.org_id = ?", $_orgID);
+				if(!is_null($_participantMemeberID)) $_qry = $_qry->addWhere("tmMbrPrt.id = ? AND tmMbrPrt.token_id = ? ", array($_participantMemeberID, $_participantMemeberTokenID));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	
+	// process list selection function 
    public static function makeCandidateSelection ($_teamID=null, $_teamTokenID=null, $_sportGameID=null, $_genderCategory=null, $_qualificationStatus=null, $_status=null, $_exclusion=null, $_keyword=null, $_offset=0, $_limit=10 )
    {
 		$_qry = Doctrine_Query::create()
@@ -482,8 +506,8 @@ class TeamMemberParticipantRoleTable extends PluginTeamMemberParticipantRoleTabl
 				if(!is_null($_teamID)) $_qry = $_qry->addWhere("prtTm.id = ? AND prtTm.token_id = ? ", array($_teamID, $_teamTokenID));
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGmPrtn.sport_game_id = ?", $_sportGameID);   
 				if(!is_null($_genderCategory)) $_qry = $_qry->addWhere("sprtGmPrtn.gender_category_id = ?", $_genderCategory);   
-				if(!is_null($_qualificationStatus)) $_qry = $_qry->addWhere("tmMbrPrt.qualification_status = ?", $_qualificationStatus);    
-				if(!is_null($_status)) $_qry = $_qry->addWhere("tmMbrPrt.status = ?", $_status);    
+				if(!is_null($_qualificationStatus)) $_qry = $_qry->addWhere("tmMbrPrtRol.qualification_status = ?", $_qualificationStatus);    
+				if(!is_null($_status)) $_qry = $_qry->addWhere("tmMbrPrtRol.status = ?", $_status);    
 				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("tmMbrPrtRol.id ", $_exclusion );          
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )

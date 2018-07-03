@@ -9,6 +9,8 @@
 			//echo $_candidateMatchFixtureGroup->tournament_sport_game_group_id.' => ';
 		//}
 		//tournament_match_id=1&tournament_match_token_id=d3c98f39903047cf592291c40e6fc6c94afc29ca&sport_game_type_id=1
+		
+		//echo count($_tournamentSportGameGroups);
 ?> 
 
 <div class="ui-page-box">
@@ -188,7 +190,7 @@
 		var url = '<?php echo url_for('match/candidateSportGameGroup')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-tournament-groups';   
-		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&sport_game_type_id='+document.getElementById('sport_game_type_id').value;
+		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&sport_game_type_id='+document.getElementById('sport_game_type_id').value+'&tournament_contestant_team_mode='+document.getElementById('tournament_contestant_team_mode').value;
 		//alert(data);
 		processDataSelection(data, idName, url );		 
 	});  

@@ -84,7 +84,8 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 			$_nw->tournament_match_fixture_id = trim($_matchFixtureID); 
 			$_nw->tournament_match_fixture_token_id = sha1(md5(trim($_tournamentMatchTokenID)));   
 			$_nw->tournament_match_fixture_group_id = trim($_matchFixtureGroupID); 
-			$_nw->tournament_match_fixture_group_token_id = sha1(md5(trim($_matchFixtureGroupTokenID)));  
+			$_nw->tournament_match_fixture_group_token_id = sha1(md5(trim($_matchFixtureGroupTokenID)));   
+			$_nw->group_participant_team_id = trim($_participantTeamGroupID); 
 			$_nw->group_participant_team_id = trim($_participantTeamGroupID); 
 			$_nw->group_participant_team_token_id = sha1(md5(trim($_participantTeamGroupTokenID)));
 			$_nw->confirmed_flag = true;     

@@ -4,14 +4,27 @@
 	
 	//echo count($_candidateParticipantTeams);
 	//$_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processCandidateParticipantTeams ( 1, "881275b4bd93f934188c8483e17ad1357f5dd682", 1, $_sportGameID, $_exclusion, $_keyword, 0, 50 ) ;
-	//echo count($_candidateParticipantTeams);
+	//$_candidateParticipantMembers = TournamentMatchTeamMemberParticipantTable::processCandidateSelection ( 1, "881275b4bd93f934188c8483e17ad1357f5dd682", $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword);
+	
+	//11
+	//24c1001f8768284f8b0a52656d9115497ea55c8e
+	
+	//15
+	//ccc47a894df37044095e687bd63f2c51cb5ceb3c
+	
+	//$_tournamentMatchParticipant = TournamentMatchParticipantTeamTable::makeObject ( 9, 'c36a61412e886946efb96d8b682966074059c384' );
+	//ccc47a894df37044095e687bd63f2c51cb5ceb3c
+	//echo sha1(md5("ccc47a894df37044095e687bd63f2c51cb5ceb3c")); 992f3a318cf1b41c1c933fd74ffd805b4469032a
+	//$_participantTeamMembers = TeamMemberParticipantRoleTable::makeCandidateParticipantRoleSelection ( 15, "ccc47a894df37044095e687bd63f2c51cb5ceb3c", $_teamID);
+	//echo $_tournamentMatchParticipant->id;
+	//echo count($_candidateMemeberParticipants);
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('participant', array( '_tournamentMatch' => $_tournamentMatch,'_matchParticipantTeamMembers' => $_matchParticipantTeamMembers, '_matchParticipantTeams' => $_matchParticipantTeams, '_matchFixtures' => $_matchFixtures )) ?> 
+				<?php include_partial('participant', array( '_tournamentMatch' => $_tournamentMatch,'_candidateMemeberParticipants' => $_candidateMemeberParticipants, '_matchParticipantTeams' => $_matchParticipantTeams, '_matchFixtures' => $_matchFixtures )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>

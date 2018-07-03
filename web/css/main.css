@@ -909,6 +909,7 @@ a.reset_time {
 .carousel-caption {
   z-index: 10;
   border:0px solid #f00!important;
+  margin: 0px 0px!important;
 }
 
 /* Declare heights because of positioning of img element */
@@ -920,9 +921,10 @@ a.reset_time {
 .carousel-inner > .item > img {
   position: absolute;
   top: 0;
-  left: 0;
-  min-width: 25%;
-  height: 100px;
+  left: 0; 
+  margin: 32px 10px!important; 
+  height: 80%!important;
+  width: 30%!important;
 }
 
 
@@ -983,19 +985,22 @@ a.reset_time {
 
   /* Bump up size of carousel content */
   .carousel-caption h1 {
-    font-size: 32px;
+		font-size: 20px;
 		border:0px solid #f00!important;
+		margin-left: 25px;
+		font-weight:bold;
   }
   .carousel-caption p {
 		margin-bottom: 5px;
-		font-size: 16px;
+		margin-left: 85px;
+		font-size: 15px;
 		font-style:justify!important;
 		line-height: 1.4;
 		border:0px solid #f00!important;
   }
   .carousel-caption img.carousel-img {
     width: 50px;
-    height: 50px;
+    height: 50px; 
   }
 
   .featurette-heading {

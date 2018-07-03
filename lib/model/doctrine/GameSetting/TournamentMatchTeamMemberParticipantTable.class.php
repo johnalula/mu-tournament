@@ -175,10 +175,11 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "mtchPrtTmMbr.id, mtchPrtTmMbr.match_result_time as matchResultTime, mtchPrtTmMbr.approval_status as apporvalStatus,
+		 $_queryFileds = "mtchPrtTmMbr.id, mtchPrtTmMbr.match_result_time as matchResultTime, mtchPrtTmMbr.match_result_rank as matchResultRank, mtchPrtTmMbr.approval_status as apporvalStatus, mtchPrtTmMbr.qualification_status as qualificationStatus, mtchPrtTmMbr.competition_status as competitionStatus, mtchPrtTmMbr.qualified_flag as qualifiedFlag, 
 		 
 								mtchPrtTm.id, 
-								mtchFixGrp.id, tmMbrPrt.member_full_name as participantMemberFullName, mtchFixGrp.fixture_round_status as qualifyingStatus,
+								mtchFixGrp.id, 
+								tmMbrPrt.id as memberParticipantID, tmMbrPrt.token_id as memberParticipantTokenID, tmMbrPrt.member_full_name as participantMemberFullName, mtchFixGrp.fixture_round_status as qualifyingStatus,
 								
 								mtchFix.id, mtchFix.match_round_type_id as matchRoundTypeID, mtchFix.event_type as matchEventType, mtchFix.contestant_mode as matchContestantMode, mtchFix.match_venue as matchVenue, mtchFix.gender_category_id as genderCategoryID, mtchFix.tournament_match_fixture_number as tournamentMatchFixtureNumber, mtchFix.tournament_match_fixture_full_number as tournamentMatchFixtureFullNumber, mtchFix.match_venue as tournamentMatchVenue, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.id as groupID, mtchFix.active_flag as activeFlag,  
 						
@@ -203,7 +204,7 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 	}
 	//
   // process list selection function 
-   public static function processSelection ( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_matchFixtureGroupID=null, $_sportGameID=null, $_teamID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   public static function processSelection ( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_matchFixtureID=null, $_teamID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -213,10 +214,10 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
@@ -224,12 +225,10 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("mtchPrtTm.id ASC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id ASC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_matchFixtureID)) $_qry = $_qry->addWhere("mtchFix.id = ?", $_matchFixtureID);    
-				if(!is_null($_sportGameGroupID)) $_qry = $_qry->addWhere("sprtGmGrp.id = ?", $_sportGameGroupID);    
-				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
 				if(!is_null($_teamID)) $_qry = $_qry->addWhere("tmPrt.id = ?", $_teamID);       
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
@@ -250,17 +249,17 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->orderBy("mtchPrtTm.id ASC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id ASC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_matchFixtureID)) $_qry = $_qry->addWhere("mtchFix.id = ?", $_matchFixtureID);    
@@ -284,10 +283,10 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
@@ -295,8 +294,8 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("mtchPrtTm.id ASC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id ASC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_matchID)) $_qry = $_qry->addWhere("mtchFix.tournament_match_id = ? AND mtchFix.tournament_match_token_id = ? ", array($_matchID, $_machTokenID));    
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_categoryID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_categoryID);    
@@ -321,17 +320,17 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->orderBy("mtchPrtTm.id ASC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id ASC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_matchFixtureID)) $_qry = $_qry->addWhere("mtchFix.id = ?", $_matchFixtureID);    
 				if(!is_null($_matchFixtureGroupID)) $_qry = $_qry->addWhere("sprtGmGrp.id = ?", $_matchFixtureGroupID);    
@@ -355,17 +354,17 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->orderBy("mtchPrtTm.id DESC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id DESC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));    
 				if(!is_null($_matchFixtureID)) $_qry = $_qry->addWhere("mtchFix.id = ? ", $_matchFixtureID);    
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
@@ -391,10 +390,10 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
@@ -402,8 +401,8 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("mtchPrtTm.id DESC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id DESC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));    
 				if(!is_null($_matchFixtureID)) $_qry = $_qry->addWhere("mtchFix.id = ? ", $_matchFixtureID);    
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
@@ -429,10 +428,10 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
@@ -440,8 +439,8 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("mtchPrtTm.id ASC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id ASC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_matchFixtureID)) $_qry = $_qry->addWhere("mtchFix.id = ?", $_matchFixtureID);    
 				//if(!is_null($_teamGroupID)) $_qry = $_qry->addWhere("sprtGmGrp.id = ?", $_teamGroupID);    
@@ -456,7 +455,7 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 		return ( count($_qry) <= 0 ? null:$_qry );  
 	}
 	//
-	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_matchID, $_tokenID ) 
+	public static function processObject ( $_orgID=null, $_orgTokenID=null, $_matchFixtureParticipantID, $_matchFixtureParticipantTokenID ) 
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -466,23 +465,23 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->where("mtchFix.id = ? AND mtchFix.token_id = ? ", array($_matchID, $_tokenID ));
+				->where("mtchPrtTmMbr.id = ? AND mtchPrtTmMbr.token_id = ? ", array($_matchFixtureParticipantID, $_matchFixtureParticipantTokenID ));
 				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeObject ( $_orgID=null, $_matchID, $_tokenID  ) 
+   public static function makeObject ( $_orgID=null, $_matchFixtureParticipantID, $_matchFixtureParticipantTokenID  ) 
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -492,23 +491,22 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->where("mtchFix.id = ? AND mtchFix.token_id = ? ", array($_matchID, $_tokenID ));
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
+				->where("mtchPrtTmMbr.id = ? AND mtchPrtTmMbr.token_id = ? ", array($_matchFixtureParticipantID, $_matchFixtureParticipantTokenID ));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	//
-   public static function makeCandidateObject ( $_orgID=null, $_activeFlag ) 
+   public static function makeCandidateObject ( $_matchFixtureParticipantID, $_matchFixtureParticipantTokenID ) 
 	{
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
@@ -518,23 +516,23 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->where("mtchFix.id IS NOT NULL");
-				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
-				if(!is_null($_activeFlag)) $_qry = $_qry->andWhere("mtchFix.active_flag = ?", $_activeFlag);
+				->where("mtchPrtTmMbr.id = ? AND mtchPrtTmMbr.token_id = ? ", array($_matchFixtureParticipantID, $_matchFixtureParticipantTokenID ));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
 			
 		return (! $_qry ? null : $_qry ); 	
 	}  
 	 
+	
+	/*************************************************************/
 	//
    public static function makeCandidateGroupParticipantSelection ( $_fixtureGroupID=null ) 
 	{
@@ -546,17 +544,17 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->orderBy("mtchPrtTm.id ASC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id ASC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_fixtureGroupID)) $_qry = $_qry->addWhere("mtchFixGrp.id = ?", $_fixtureGroupID);    
 				
 			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
@@ -578,17 +576,17 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->orderBy("mtchPrtTm.id ASC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id ASC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_matchFixtureID)) $_qry = $_qry->addWhere("mtchFix.id = ?", $_matchFixtureID);    
 				if(!is_null($_matchFixtureGroupID)) $_qry = $_qry->addWhere("mtchFixGrp.id = ?", $_matchFixtureGroupID);    
@@ -613,17 +611,17 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->orderBy("mtchPrtTm.id ASC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id ASC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_matchFixtureID)) $_qry = $_qry->addWhere("mtchFix.id = ?", $_matchFixtureID);    
 				if(!is_null($_matchFixtureGroupID)) $_qry = $_qry->addWhere("mtchFixGrp.id = ?", $_matchFixtureGroupID);    
@@ -653,17 +651,17 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
+				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 
-				->innerJoin("gmGrpMbr.TournamentSportGameGroup sprtGmGrp on gmGrpMbr.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("tmMbrPrt.Team tmPrt on tmMbrPrt.team_id = tmPrt.id ") 
 				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
-				->orderBy("mtchPrtTm.id ASC")
-				->where("mtchPrtTm.id IS NOT NULL");
+				->orderBy("mtchPrtTmMbr.id ASC")
+				->where("mtchPrtTmMbr.id IS NOT NULL");
 				if(!is_null($_matchFixtureGroupID)) $_qry = $_qry->addWhere("mtchFixGrp.id = ? AND mtchFixGrp.token_id = ? ", array($_matchFixtureGroupID, $_matchFixtureGroupTokenID));
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
 				if(!is_null($_genderCategoryID)) $_qry = $_qry->addWhere("mtchFix.gender_category_id = ?", $_genderCategoryID); 

@@ -94,4 +94,17 @@ class TeamMemberParticipant extends PluginTeamMemberParticipant
 		$this->save();
 		return $_flag;
 	}
+	
+	//
+	public function countTeamMemberParticipantRoles ()
+	{
+		$_participantTeamMembers = TeamMemberParticipantRoleTable::makeCandidateParticipantRoleSelection ( $this->id, $this->token_id);
+		
+		return count($_participantTeamMembers);
+	}
+	
+	
+	
+	
+	
 }

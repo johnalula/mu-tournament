@@ -32,7 +32,7 @@
 				<?php echo $_team->teamNumber ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-2"> 
-				<?php echo $_team->teamName  ?>
+				<?php echo Wordlimit::Wordlimiter($_team->teamName, 5)  ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-1"> 
 				<?php echo $_team->teamFullAlias  ?>
@@ -56,7 +56,7 @@
 							<a href="<?php echo url_for('team/setting?team_id='.$_team->id.'&token_id='.$_team->token_id) ?>" >	
 								<img title="<?php echo __('View Team Setting').' ( '.' Task '.' #:'.$_team->id ?> )" src="<?php echo image_path('icons/setting_large') ?>">			
 							</a>
-						</li> 
+						</li>  
 						<li>
 							<a href="<?php echo url_for('team/view?team_id='.$_team->id.'&token_id='.$_team->token_id) ?>" >	
 								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_team->id ?> )" src="<?php echo image_path('icons/view') ?>">			

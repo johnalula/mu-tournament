@@ -56,16 +56,8 @@ class TournamentMatch extends PluginTournamentMatch
 		$this->effective_date = trim($_effectiveDate);  
 		$this->save();
 		return $_flag;
-	}
-	public function makeProcessRevertion ()
-	{
-		$_flag = true;       
-		$this->status = trim(TournamentCore::$_ACTIVE); 
-		$this->effective_date = NULL;  
-		$this->save();
-		return $_flag;
-	}
-	public function makeCompletion ()
+	} 
+	public function makeConfirmation ()
 	{
 		$_flag = true;   
 		$_endDate = date('m/d/Y', time());  
@@ -76,6 +68,21 @@ class TournamentMatch extends PluginTournamentMatch
 		$this->approval_status = trim(TournamentCore::$_APPROVED); 
 		$this->status = trim(TournamentCore::$_ACTIVE);  
 		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  
+		$this->save();
+		return $_flag;
+	}
+	public function makeCompletion ()
+	{
+		$_flag = true;   
+		$_endDate = date('m/d/Y', time());  
+		$this->active_flag = false;  
+		$this->competition_flag = false;  
+		$this->complete_flag = true;  
+		$this->competition_status = trim(TournamentCore::$_COMPLETED); 
+		$this->process_status = trim(TournamentCore::$_COMPLETED); 
+		$this->approval_status = trim(TournamentCore::$_COMPLETED); 
+		$this->status = trim(TournamentCore::$_COMPLETED);  
+		$this->end_date = $this->effective_date ? $this->effective_date:$_endDate;  
 		$this->save();
 		return $_flag;
 	}

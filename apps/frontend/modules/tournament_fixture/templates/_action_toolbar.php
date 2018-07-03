@@ -3,7 +3,7 @@
 		
 		<?php if($sf_request->getParameter('module') == 'tournament_fixture'): ?>
 			<?php if(($sf_request->getParameter('match_fixture_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
-				<?php if($sf_request->getParameter('action') == 'result'): ?>
+				<?php if($sf_request->getParameter('action') == 'participant'): ?>
 					<li class="">
 						<button title="<?php echo __('Save Match Fixture Information') ?>" id="createTournamentMatchFixture" class="ui-disabled-toolbar-btn" disabled >
 							<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">

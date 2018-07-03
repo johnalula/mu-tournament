@@ -112,7 +112,7 @@ class GameCategoryTable extends PluginGameCategoryTable
 				->orderBy("cat.id ASC")
 				->where("cat.id IS NOT NULL");
 				if(!is_null($_orgID)) $_qry = $_qry->addWhere("cat.org_id = ? AND cat.org_token_id = ? ", array($_orgID, $_orgTokenID));
-				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("cat.active_flag = ?", $_activeFlag);    
+				//if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("cat.active_flag = ?", $_activeFlag);    
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )
 						$_qry = $_qry->andWhere("cat.category_name LIKE ? OR cat.alias LIKE ? OR cat.description LIKE ?", array( $_keyword, $_keyword, $_keyword));

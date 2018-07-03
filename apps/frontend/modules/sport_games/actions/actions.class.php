@@ -21,8 +21,8 @@ class sport_gamesActions extends sfActions
 		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
-		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
-		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_activeFlag, $_keyword, 0, 40 ); 
+		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 50 );
+		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_activeFlag, $_keyword, 0, 50 ); 
 		$this->_countSportGames = SportGameTable::processAll ($_orgID, $_orgTokenID, $_categoryID, $_activeFlag, $_keyword ); 
 	}
 	
@@ -36,7 +36,7 @@ class sport_gamesActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');    
 		
-		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
+		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 50 );
 		$this->_tournamentSportGame = SportGameTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_sportGameID, $_tokenID ); 
 		
 	}
@@ -46,9 +46,9 @@ class sport_gamesActions extends sfActions
 		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 		
-		$this->_gameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 15 );
-		$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 15 ); 
-		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20 ); 
+		$this->_gameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 50 );
+		$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 50 ); 
+		$this->_sportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 50 ); 
 		
 	}
 	
@@ -100,12 +100,12 @@ class sport_gamesActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');    
 		
-		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 10 );
+		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 50 );
 		$this->_tournamentSportGame = SportGameTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_sportGameID, $_tokenID ); 
 		
-		$this->_candidateParticipantTeams = TeamGameParticipationTable::processCandidateTeams ( $_orgID, $_tournamentID, $_sportGameID, sha1(md5($_tokenID)), $_gameTypeID, 1, $_keyword, $_exclusion, 0, 30 ); 
-		$this->_candidateMenParticipants = TeamMemberParticipantRoleTable::selectCandidates( $_tournamentID, $_teamID, $_participantID, $_sportGameID, $_sportGameCategoryID, TournamentCore::$_MEN, $_keyword, 0, 20 ); 
-		$this->_candidateWomenParticipants = TeamMemberParticipantRoleTable::selectCandidates( $_tournamentID, $_teamID, $_participantID, $_sportGameID, $_sportGameCategoryID, TournamentCore::$_WOMEN, $_keyword, 0, 20 ); 
+		$this->_candidateParticipantTeams = TeamGameParticipationTable::processCandidateTeams ( $_orgID, $_tournamentID, $_sportGameID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, $_keyword, $_exclusion, 0, 50 ); 
+		$this->_candidateMenParticipants = TeamMemberParticipantRoleTable::selectCandidates( $_tournamentID, $_teamID, $_participantID, $_sportGameID, $_sportGameCategoryID, TournamentCore::$_MEN, $_keyword, 0, 50 ); 
+		$this->_candidateWomenParticipants = TeamMemberParticipantRoleTable::selectCandidates( $_tournamentID, $_teamID, $_participantID, $_sportGameID, $_sportGameCategoryID, TournamentCore::$_WOMEN, $_keyword, 0, 50 ); 
 		
 	}
 	
@@ -124,7 +124,7 @@ class sport_gamesActions extends sfActions
 		//$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		$_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
@@ -148,7 +148,7 @@ class sport_gamesActions extends sfActions
 		$_keyword = '%' . $_keyword . '%';
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 10;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 		if(!$_categoryID || $_categoryID == '' ) $_categoryID = null;			 
 		if(!$_gameTypeID || $_gameTypeID == '' ) $_gameTypeID = null;			 
 		if(!$_keyword || $_keyword == '' ) $_keyword = null;			 

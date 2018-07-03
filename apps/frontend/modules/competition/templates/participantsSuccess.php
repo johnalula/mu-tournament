@@ -6,8 +6,8 @@
 				<div class="ui-content-detail-box">
 					<h2><?php echo strtoupper("Participants") ?> </h2> 
 					<div class="ui-content-detail">
-						<h3><?php echo $_activeTournament->tournamentName.' ( '.$_activeTournament->tournamentAlias.' )'?> </h3>
-						<span><?php echo $_matchFixtureGroup->tournamentName.' ( '.$_activeTournament->tournamentSeason.' ) - '.$_matchFixtureGroup->tournamentSeason.' - MEKELLE' ?></span>
+						<h3><?php echo $_activeTournament->tournamentName.' (FASU'.''.')'?> </h3>
+						<span><?php echo ' MEKELLE' ?></span>
 						<span><?php echo date('d M Y',strtotime($_activeTournament->startDate)).' - '.date('d M Y',strtotime($_activeTournament->endDate)) ?></span><br>
 						&nbsp;
 					</div>

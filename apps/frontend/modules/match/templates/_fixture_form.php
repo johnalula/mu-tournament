@@ -15,6 +15,7 @@
 							<input type="hidden" class="form-control" id="tournament_match_token_id" name="tournament_match_fixture[tournament_match_token_id]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->token_id ?>"  >
 							<input type="hidden" class="form-control" id="tournament_match_number" name="tournament_match_fixture[tournament_match_number]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->tournamentMatchNumber ?>"  >
 							<input type="hidden" class="form-control" id="tournament_match_round_mode" name="tournament_match_fixture[tournament_match_round_mode]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->tournamentMatchRoundMode ?>"  >
+							<input type="hidden" class="form-control" id="tournament_contestant_team_mode" name="tournament_match_fixture[tournament_contestant_team_mode]" placeholder="<?php echo __('Tournament') ?>" value="<?php echo $_tournamentMatch->tournamentContestantTeamMode ?>"  >
 						</div>		 
 						<div class="form-group">
 							<label class="col-sm-22 control-label"><?php echo __('Team Groups') ?>: <span class="ui-red-text">*</span></label>

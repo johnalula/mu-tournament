@@ -20,7 +20,7 @@ class teamActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 50 );
+		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 60 );
 	}
 	
 	public function executeNew(sfWebRequest $request)
@@ -57,7 +57,7 @@ class teamActions extends sfActions
 		
 		$this->_team = TeamTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_teamID, $_tokenID ) ;
 
-		$this->_gameParticipations = TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamIDs, sha1(md5($_tokenID)), $_gameTypeID, $_keyword, $_exclusion, 0, 20  ) ;
+		$this->_gameParticipations = TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_keyword, $_exclusion, 0, 20  ) ;
 		$this->_memberParticipants = TeamMemberParticipantTable::processSelection( $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_sportGameID, $_sportGameTokenID, $_keyword, $_exclusion, 0, 20  ) ;
 		
 		$this->_memberParticipantRoles = TeamMemberParticipantRoleTable::processSelection ( $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_participantID, $_sportGameID, $_keyword, 0, 20 ); 

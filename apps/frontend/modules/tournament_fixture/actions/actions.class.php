@@ -45,18 +45,24 @@ class tournament_fixtureActions extends sfActions
   //
   public function executeUpdateTournamentMatchFixtureGroupParticipantResult(sfWebRequest $request)
 	{ 
-		//=13&=aaf85a268d5613462b49876462e33a4fe6e2b96e&=2&=1c550449c742b96368ed6e51697be8c46e8505f6&=&=&=&=1:55.28&=1&=
+		//=1&=afdb28e0451c8f50ac97e93423a1c017e1df1f98&=1&=a5a975d861baaef5ee8b1e855f56f8c023d4ebb4&=1&=9248cc14f48fcd09ddf3ea1538ecdd49844651a4&=&=&fixture_group_participant_number=&=&=1&=8
 		
+		$_matchFixtureID = $request->getParameter('match_fixture_id');	
+		$_matchFixtureTokenID = $request->getParameter('match_fixture_token_id');	
 		$_matchFixtureGroupID = $request->getParameter('match_fixture_group_id');	
 		$_matchFixtureGroupTokenID = $request->getParameter('match_fixture_group_token_id');	
-		$_matchFixtureParticipantID = $request->getParameter('fixture_group_participant_id');	
-		$_matchFixtureParticipantTokenID = $request->getParameter('fixture_group_participant_token_id');	
+		$_matchFixtureParticipantID = $request->getParameter('match_fixture_participant_id');	
+		$_matchFixtureParticipantTokenID = $request->getParameter('match_fixture_participant_token_id');	
+		$_participantTeamID = $request->getParameter('participant_team_id');	
+		$_participantTeamTokenID = $request->getParameter('participant_team_token_id');	
+		$_memberParticipantID = $request->getParameter('member_participant_id');	
+		$_memberParticipantTokenID = $request->getParameter('member_participant_token_id');	
 		$_participantRankNumber = $request->getParameter('fixture_group_participant_rank_number');	 
 		$_participantPositionNumber = $request->getParameter('fixture_group_participant_position_number');	 
 		$_participantBIBNumber = $request->getParameter('fixture_group_participant_number');	 
 		$_participantTimeResult = $request->getParameter('fixture_group_participant_time_result');	 
 		$_qualificationStatus = $request->getParameter('fixture_group_participant_qualification_status');	 
-		$_participantMedalAward = $request->getParameter('fixture_group_participant_medal_award');	 
+		$_fixtureParticipantStatus = $request->getParameter('fixture_group_participant_status');	 
 		
 		
 		$_orgID = $this->getUser()->getAttribute('orgID');
@@ -65,7 +71,7 @@ class tournament_fixtureActions extends sfActions
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
 		
-		$_flag =  TournamentParticipantTeamMedalStandingTable::processUpdate ( $_orgID, $_orgTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_matchFixtureGroupTokenID, $_matchFixtureParticipantID, $_matchFixtureParticipantTokenID, $_participantRankNumber, $_participantPositionNumber, $_participantBIBNumber, $_participantTimeResult, $_qualificationStatus, $_participantMedalAward, $_userID, $_userTokenID );  
+		$_flag =  TournamentMatchFixtureTable::makeTournamentMatchFixtureResult ($_orgID, $_orgTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_matchFixtureParticipantID, $_matchFixtureParticipantTokenID, $_participantTeamID, $_participantTeamTokenID, $_memberParticipantID, $_memberParticipantTokenID, $_participantRankNumber, $_participantPositionNumber, $_participantBIBNumber, $_participantTimeResult, $_qualificationStatus, $_fixtureParticipantStatus, $_userID, $_userTokenID );  
 			 
 		return $_flag ? true:false;
 

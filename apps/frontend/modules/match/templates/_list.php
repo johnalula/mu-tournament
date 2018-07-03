@@ -64,7 +64,7 @@
 						</li> 
 						<li>  
 							<a href="<?php echo url_for('match/fixture?match_id='.$_tournamentMatch->id.'&token_id='.$_tournamentMatch->token_id) ?>" >	
-								<img title="<?php echo __('Edit Team').' ( '.' Task '.' #:'.$_tournamentMatch->id ?> )" src="<?php echo image_path('icons/detail')  ?>" >
+								<img title="<?php echo __('Edit Team').' ( '.' Task '.' #:'.$_tournamentMatch->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
 							</a>    
 						</li> 
 						<li>   

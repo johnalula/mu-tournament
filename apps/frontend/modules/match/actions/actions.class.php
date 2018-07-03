@@ -104,7 +104,7 @@ class matchActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');  
 		
-		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID );
+		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentMatchID, $_tournamentMatchTokenID );
 		$_contestantTeamMode = $this->_tournamentMatch->contestantTeamMode;
 		//$this->_matchFixtures = TournamentMatchFixtureTable::processSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_gameTypeID, $_keyword, 0, 50  ) ;
 		
@@ -118,6 +118,8 @@ class matchActions extends sfActions
 		//$this->_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentSportGameGroups ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameTypeID, $_sportGameID, $_keyword, 0, 50);
 		
 		//$this->_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentSportGameGroups ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameTypeID, $_sportGameID, TournamentCore::$_APPROVED, TournamentCore::$_ACTIVE, $_keyword, 0, 50); 
+		
+		$this->_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameTypeID, $_sportGameID, $_contestantTeamMode, $_keyword, 0, 50); 
 		
 	}
 	public function executeCreateTournamentMatchFixture(sfWebRequest $request)
@@ -170,7 +172,7 @@ class matchActions extends sfActions
 		return $_flag ? true:false;
 		
 	}
-	public function executeParticipant_team(sfWebRequest $request)
+	public function executeParticipant_group(sfWebRequest $request)
 	{
 		$_tournamentMatchID = $request->getParameter('match_id');	
 		$_tournamentMatchTokenID = $request->getParameter('token_id');	
@@ -179,7 +181,7 @@ class matchActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');  
 		
-		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID );
+		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentMatchID, $_tournamentMatchTokenID );
 		
 		$this->_candidateTournamentMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateFixtureSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_processStatus, $_approvalStatus, TournamentCore::$_ACTIVE, $_keyword, 0, 50  ) ;
 		//$this->_candidateTournamentMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateFixtureSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, TournamentCore::$_ACTIVE, $_approvalStatus, $_status, $_keyword, 0, 50  ) ;
@@ -193,10 +195,14 @@ class matchActions extends sfActions
 		
 		//$this->_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameID, $_genderCategory, $_approvalStatus, $_status, $_keyword, 0, 50); 
 		
+		//$this->_tournamentSportGameOpponentGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, 26, 1, $_approvalStatus, $_status, $_keyword, 0, 50); 
 		
 	}
-	public function executeCreateTournamentMatchParticipantTeam(sfWebRequest $request)
+	//
+	public function executeCreateTournamentMatchGroupParticipant(sfWebRequest $request)
 	{
+		//match_fixture= - Table Tennis Single Player  - Men (Table Tennis)&=5&=90d8a6cd8c7f1f4bd2346b4f3de0edc04bf5f208&gender_category_id=1&=5&=90d8a6cd8c7f1f4bd2346b4f3de0edc04bf5f208&sport_game_id=26&contestant_team_mode=1&match_fixture_contestant_team_mode=1&tournament_contestant_team_mode=1&=2&=b2c2b256c170f31930f600e4c74b7663609dcef7&tournament_match_game_category_id=7&tournament_sport_game_group_name=Group One - Table Tennis Single Player (Men) -  - Table Tennis&tournament_sport_game_group_id=8&tournament_sport_game_group_token_id=44313725ac582f3d20c754cb0ebac3a5db956075&participant_team_name=Kampala International University (KIU) - Uganda&participant_team_id=10&participant_team_token_id=603685d0aa5cb85003333d48b14e66c5a0b458b6&sport_game_group_team_id=78&sport_game_group_team_token_id=983981bbe51701778510e9007f45d6ea67a1cd61&tournament_sport_game_group_opponent_name=Group One - Table Tennis Single Player (Men) -  - Table Tennis&tournament_sport_game_group_opponent_id=8&tournament_sport_game_group_opponent_token_id=44313725ac582f3d20c754cb0ebac3a5db956075&opponent_participant_team_name=Bayero University (BU) - Nigeria&opponent_participant_team_id=6&opponent_participant_team_token_id=f7c75d07758e88589f904628b142f31940c7ca9e&opponent_sport_game_group_team_id=74&opponent_sport_game_group_team_token_id=762426cc7f5c64c68e4553ef5ab50a2f2e94bebb&sport_game_venue_name=Mekelle Tigray Stadium&sport_game_group_type_id=&match_date=07/03/2018&match_time=8:00 AM&tournament_match_time_value=8:00&tournament_match_session=1&description=
+		
 		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
 		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
 		
@@ -204,17 +210,24 @@ class matchActions extends sfActions
 		$_matchFixtureTokenID = $request->getParameter('match_fixture_token_id');	
 		$_matchFixtureGroupID = $request->getParameter('tournament_match_fixture_group_id');	
 		$_matchFixtureGroupTokenID = $request->getParameter('tournament_match_fixture_token_group_id');	
+		
 		$_sportGameGroupID = $request->getParameter('tournament_sport_game_group_id');	
 		$_sportGameGroupTokenID = $request->getParameter('tournament_sport_game_group_token_id');	
 		$_participantTeamGroupID = $request->getParameter('sport_game_group_team_id');	
 		$_participantTeamGroupTokenID = $request->getParameter('sport_game_group_team_token_id');	
+		
+		$_sportGameOpponentGroupID = $request->getParameter('tournament_sport_game_group_opponent_id');	
+		$_sportGameOpponentGroupTokenID = $request->getParameter('tournament_sport_game_group_opponent_token_id');	
 		$_opponentParticipantTeamGroupID = $request->getParameter('opponent_sport_game_group_team_id');	
 		$_opponentParticipantTeamGroupTokenID = $request->getParameter('opponent_sport_game_group_team_token_id');	
+		
+		$_opponentParticipantTeamID = $request->getParameter('opponent_participant_team_id');	
+		$_opponentParticipantTeamTokenID = $request->getParameter('opponent_participant_team_token_id');	
 		
 		$_contestantTeamMode = $request->getParameter('tournament_contestant_team_mode');	
 		$_matchFixtureName = $request->getParameter('match_fixture');	
 		$_participantTeamName = $request->getParameter('participant_team_name');	
-		$_opponentParticipantTeamName = $request->getParameter('opponent_participant_team_name');	
+		$_opponentParticipantTeamName = $request->getParameter('tournament_sport_game_group_opponent_name');	
 		$_genderCategory = $request->getParameter('gender_category_id');	
 		$_tournamentMatchVenu = $request->getParameter('sport_game_venue_name');	 
 		$_matchTime = $request->getParameter('match_time');	 
@@ -229,7 +242,123 @@ class matchActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 	
-		$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_opponentParticipantTeamName, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession, $_matchStatus, $_description, $_contestantTeamMode, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
+		$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_sportGameOpponentGroupID, $_sportGameOpponentGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_opponentParticipantTeamID, $_opponentParticipantTeamTokenID, $_matchFixtureName, $_participantTeamName, $_opponentParticipantTeamName, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession, $_matchStatus, $_description, $_contestantTeamMode, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
+		
+		 
+		return $_flag ? true:false;
+		
+	}
+	public function executeCreateBatchTournamentMatchGroupParticipantm(sfWebRequest $request)
+	{
+		
+		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
+		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
+		
+		$_matchFixtureID = $request->getParameter('match_fixture_id');	
+		$_matchFixtureTokenID = $request->getParameter('match_fixture_token_id');	
+		$_matchFixtureGroupID = $request->getParameter('tournament_match_fixture_group_id');	
+		$_matchFixtureGroupTokenID = $request->getParameter('tournament_match_fixture_token_group_id');	
+		$_sportGameGroupID = $request->getParameter('tournament_sport_game_group_id');	
+		$_sportGameGroupTokenID = $request->getParameter('tournament_sport_game_group_token_id');	
+		$_participantTeamGroupID = $request->getParameter('sport_game_group_team_id');	
+		$_participantTeamGroupTokenID = $request->getParameter('sport_game_group_team_token_id');	
+		$_opponentParticipantTeamGroupID = $request->getParameter('opponent_sport_game_group_team_id');	
+		$_opponentParticipantTeamGroupTokenID = $request->getParameter('opponent_sport_game_group_team_token_id');	
+		
+		$_matchFixtureName = $request->getParameter('match_fixture');	
+		$_participantTeamName = $request->getParameter('participant_team_name');	
+		$_opponentParticipantTeamName = $request->getParameter('opponent_participant_team_name');	
+		$_genderCategory = $request->getParameter('gender_category_id');	
+		$_contestantTeamMode = $request->getParameter('tournament_contestant_team_mode');	
+		
+		$_matchStatus = $request->getParameter('match_status');	 
+		$_description = $request->getParameter('description');	
+		$_tournamentMatchSession = $request->getParameter('tournament_match_session');
+				
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_userID = $this->getUser()->getAttribute('userID');
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+		
+		
+		$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_opponentParticipantTeamName, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession, $_matchStatus, $_description, $_contestantTeamMode, SystemCore::$_MULTIPLE_DATA, $_userID, $_userTokenID );
+		
+		return $_flag ? true:false;
+		
+	}
+	public function executeParticipant_team(sfWebRequest $request)
+	{
+		$_tournamentMatchID = $request->getParameter('match_id');	
+		$_tournamentMatchTokenID = $request->getParameter('token_id');	
+		
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');  
+		
+		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentMatchID, $_tournamentMatchTokenID );
+		
+		$this->_candidateTournamentMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateFixtureSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_processStatus, $_approvalStatus, TournamentCore::$_ACTIVE, $_keyword, 0, 50  ) ;
+		//$this->_candidateTournamentMatchFixtureGroups = TournamentMatchFixtureGroupTable::makeCandidateFixtureSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, TournamentCore::$_ACTIVE, $_approvalStatus, $_status, $_keyword, 0, 50  ) ;
+		
+		//$this->_candidateMatchFixtures = TournamentMatchTable::selectCandidateTournamentMatchParticipantFixtures ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, 1, $_keyword, 0, 50 ); 
+		///$this->_candidateMatchFixtures = TournamentMatchFixtureGroupTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameTypeID, $_processStatus, $_approvalStatus, $_exclusion, $_keyword, 0, 50);
+		
+		//$this->_matchParticipantTeams= TournamentMatchParticipantTeamTable::processSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameGroupID, $_sportGameID, $_teamID, $_keyword, 0, 50  ) ;
+		
+		//$this->_candidateMatchFixtures = TournamentMatchTable::selectCandidateTournamentMatchParticipantFixtures ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, 1, $_keyword, 0, 50); 
+		
+		//$this->_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameID, $_genderCategory, $_approvalStatus, $_status, $_keyword, 0, 50); 
+		
+		//$this->_tournamentSportGameOpponentGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, 26, 1, $_approvalStatus, $_status, $_keyword, 0, 50); 
+		//$this->_tournamentSportGameOpponentGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_genderCategory, $_keyword, 0, 50); 
+		
+	}
+	public function executeCreateTournamentMatchParticipantTeam(sfWebRequest $request)
+	{
+		//match_fixture= - Table Tennis Single Player  - Men (Table Tennis)&=5&=90d8a6cd8c7f1f4bd2346b4f3de0edc04bf5f208&gender_category_id=1&=5&=90d8a6cd8c7f1f4bd2346b4f3de0edc04bf5f208&sport_game_id=26&contestant_team_mode=1&match_fixture_contestant_team_mode=1&tournament_contestant_team_mode=1&=2&=b2c2b256c170f31930f600e4c74b7663609dcef7&tournament_match_game_category_id=7&tournament_sport_game_group_name=Group One - Table Tennis Single Player (Men) -  - Table Tennis&tournament_sport_game_group_id=8&tournament_sport_game_group_token_id=44313725ac582f3d20c754cb0ebac3a5db956075&participant_team_name=Kampala International University (KIU) - Uganda&participant_team_id=10&participant_team_token_id=603685d0aa5cb85003333d48b14e66c5a0b458b6&sport_game_group_team_id=78&sport_game_group_team_token_id=983981bbe51701778510e9007f45d6ea67a1cd61&tournament_sport_game_group_opponent_name=Group One - Table Tennis Single Player (Men) -  - Table Tennis&tournament_sport_game_group_opponent_id=8&tournament_sport_game_group_opponent_token_id=44313725ac582f3d20c754cb0ebac3a5db956075&opponent_participant_team_name=Bayero University (BU) - Nigeria&opponent_participant_team_id=6&opponent_participant_team_token_id=f7c75d07758e88589f904628b142f31940c7ca9e&opponent_sport_game_group_team_id=74&opponent_sport_game_group_team_token_id=762426cc7f5c64c68e4553ef5ab50a2f2e94bebb&sport_game_venue_name=Mekelle Tigray Stadium&sport_game_group_type_id=&match_date=07/03/2018&match_time=8:00 AM&tournament_match_time_value=8:00&tournament_match_session=1&description=
+		
+		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
+		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
+		
+		$_matchFixtureID = $request->getParameter('match_fixture_id');	
+		$_matchFixtureTokenID = $request->getParameter('match_fixture_token_id');	
+		$_matchFixtureGroupID = $request->getParameter('tournament_match_fixture_group_id');	
+		$_matchFixtureGroupTokenID = $request->getParameter('tournament_match_fixture_token_group_id');	
+		
+		$_sportGameGroupID = $request->getParameter('tournament_sport_game_group_id');	
+		$_sportGameGroupTokenID = $request->getParameter('tournament_sport_game_group_token_id');	
+		$_sportGameGroupName = $request->getParameter('tournament_sport_game_group_name');	
+		$_participantTeamGroupID = $request->getParameter('sport_game_group_team_id');	
+		$_participantTeamGroupTokenID = $request->getParameter('sport_game_group_team_token_id');	
+		
+		$_sportGameOpponentGroupID = $request->getParameter('tournament_sport_game_group_opponent_id');	
+		$_sportGameOpponentGroupTokenID = $request->getParameter('tournament_sport_game_group_opponent_token_id');	
+		$_sportGameOpponentGroupName = $request->getParameter('tournament_sport_game_group_opponent_name');	
+		$_opponentParticipantTeamGroupID = $request->getParameter('opponent_sport_game_group_team_id');	
+		$_opponentParticipantTeamGroupTokenID = $request->getParameter('opponent_sport_game_group_team_token_id');	
+		
+		$_opponentParticipantTeamID = $request->getParameter('opponent_participant_team_id');	
+		$_opponentParticipantTeamTokenID = $request->getParameter('opponent_participant_team_token_id');	
+		
+		$_contestantTeamMode = $request->getParameter('tournament_contestant_team_mode');	
+		$_matchFixtureName = $request->getParameter('match_fixture');	
+		$_participantTeamName = $request->getParameter('participant_team_name');	
+		$_opponentParticipantTeamName = $request->getParameter('tournament_sport_game_group_opponent_name');	
+		$_genderCategory = $request->getParameter('gender_category_id');	
+		$_tournamentMatchVenu = $request->getParameter('sport_game_venue_name');	 
+		$_matchTime = $request->getParameter('match_time');	 
+		$_matchDate = $request->getParameter('match_date');	
+		$_tournamentMatchSession = $request->getParameter('tournament_match_session');
+		
+		$_matchStatus = $request->getParameter('match_status');	 
+		$_description = $request->getParameter('description');	
+				
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_userID = $this->getUser()->getAttribute('userID');
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+	
+		$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_sportGameOpponentGroupID, $_sportGameOpponentGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_opponentParticipantTeamID, $_opponentParticipantTeamTokenID, $_matchFixtureName, $_participantTeamName, $_sportGameGroupName, $_sportGameOpponentGroupName, $_opponentParticipantTeamName, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession, $_matchStatus, $_description, $_contestantTeamMode, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
 		
 		 
 		return $_flag ? true:false;
@@ -281,15 +410,17 @@ class matchActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID );
+		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentMatchID, $_tournamentMatchTokenID );
 		
-		$this->_matchParticipantTeamMembers = TournamentMatchTeamMemberParticipantTable::processSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_keyword, 0, 50  ) ; 
+		$this->_candidateMemeberParticipants = TournamentMatchTeamMemberParticipantTable::processSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_teamID, $_keyword, 0, 50  ) ; 
 		
 		//$this->_candidateParticipantTeams = TournamentMatchTable::selectCandidateMatchFixtureGroupParticipantTeams ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameID, $_genderCategory, $_keyword, 0, 50  ); 
 		
 		//$this->_candidateParticipantTeams = TournamentMatchParticipantTeamTable::processSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_sportGameGroupID, $_sportGameID, $_keyword, 0, 50  ) ;
 		
 		//$this->_candidateMatchParticipantTeams = TournamentMatchTable::selectCandidateMatchFixtureGroupParticipantTeams ( $_tournamentMatchID, $_tournamentMatchTokenID, 1, $_matchFixtureGroupID, $_sportGameID, $_genderCategory, $_keyword, 0, 50 ); 
+		
+		//$this->_candidateParticipants = TournamentMatchTable::selectCandidateMatchFixtureGroupParticipantTeamMembers( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_participantTeamID, $_participantTeamTokenID, $_sportGameID, $_genderCategory, $_keyword, 0, 50 ); 
 	}
 	public function executeCreateTournamentMatchParticipantTeamMember(sfWebRequest $request)
 	{
@@ -371,11 +502,11 @@ class matchActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');  
 		
-		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID );
+		$this->_tournamentMatch = TournamentMatchTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentMatchID, $_tournamentMatchTokenID );
 		
 		$this->_tournamentMatchFixtureGroups = TournamentMatchFixtureGroupTable::processSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword, 0, 50  ) ;
 		
-		$this->_candidateMatchParticipantTeams = TournamentMatchTeamMemberParticipantTable::processSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID, $_teamID, $_keyword, 0, 50  ) ;
+		$this->_candidateMemeberParticipants = TournamentMatchTeamMemberParticipantTable::processSelection ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_teamID, $_keyword, 0, 50  ) ; 
 		
 		//$this->_matchParticipantTeams = TournamentMatchFixtureGroupTable::processSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_keyword, 0, 50  ) ;
 		
@@ -399,7 +530,7 @@ class matchActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID');  
 		
-		$_flag = TournamentMatchTable::processApproval ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_userID, $_userTokenID ); 
+		$_flag = TournamentMatchTable::processApproval ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentMatchID, $_tournamentMatchTokenID, $_userID, $_userTokenID ); 
 		
 		return $_flag ? true:false;
 	}
@@ -413,7 +544,7 @@ class matchActions extends sfActions
 		$_userID = $this->getUser()->getAttribute('userID');
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID');  
 		
-		$_flag = TournamentMatchTable::processCompletion ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_userID, $_userTokenID ); 
+		$_flag = TournamentMatchTable::processCompletion ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentMatchID, $_tournamentMatchTokenID, $_userID, $_userTokenID ); 
 		
 		return $_flag ? true:false;
 		
@@ -474,6 +605,7 @@ class matchActions extends sfActions
 		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
 		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
 		$_sportGameTypeID = $request->getParameter('sport_game_type_id');	
+		$_contestantTeamMode = $request->getParameter('tournament_contestant_team_mode');	
 		$_offset = $request->getParameter('offset');	
 		$_limit = $request->getParameter('limit');	
 		
@@ -483,9 +615,7 @@ class matchActions extends sfActions
 		if(!$_offset || $_offset=='')	$_offset = 0;			
 		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
-		//$_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentSportGameGroups ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameTypeID, $_sportGameID, TournamentCore::$_APPROVED, TournamentCore::$_ACTIVE, $_keyword, $_offset, $_limit); 
-		
-		$_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameTypeID, $_sportGameID, $_keyword, $_offset, $_limit); 
+		$_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameTypeID, $_sportGameID, $_contestantTeamMode, $_keyword, $_offset, $_limit); 
 		
 		return $this->renderPartial('team_group/candidate_tournament_groups', array('_tournamentSportGameGroups' => $_tournamentSportGameGroups, '_countCandidateSportGames' => $_countCandidateSportGames));	  
 	}
@@ -507,13 +637,14 @@ class matchActions extends sfActions
 		if(!$_offset || $_offset=='')	$_offset = 0;			
 		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
-		$_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameID, $_genderCategory, $_approvalStatus, $_status, $_keyword, $_offset, $_limit); 
+		$_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit); 
 		
 		return $this->renderPartial('candidate_tournament_groups', array('_tournamentSportGameGroups' => $_tournamentSportGameGroups, '_countCandidateSportGames' => $_countCandidateSportGames));	  
 	}
 	//
 	public function executeCandidateTournamentFixtureSportGameOpponentGroup(sfWebRequest $request)
 	{
+		//tournament_match_id=2&tournament_match_token_id=b2c2b256c170f31930f600e4c74b7663609dcef7&sport_game_id=26&gender_category_id=1
 		$_tournamentMatchID = $request->getParameter('tournament_match_id');	
 		$_tournamentMatchTokenID = $request->getParameter('tournament_match_token_id');	
 		$_sportGameID = $request->getParameter('sport_game_id');	
@@ -527,7 +658,7 @@ class matchActions extends sfActions
 		if(!$_offset || $_offset=='')	$_offset = 0;			
 		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
-		$_tournamentSportGameOpponentGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, $_sportGameID, $_genderCategory, $_approvalStatus, $_status, $_keyword, $_offset, $_limit); 
+		$_tournamentSportGameOpponentGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit); 
 		
 		return $this->renderPartial('candidate_tournament_opponent_groups', array( '_tournamentSportGameOpponentGroups' => $_tournamentSportGameOpponentGroups, '_countCandidateSportGames' => $_countCandidateSportGames));	  
 	}
@@ -646,7 +777,7 @@ class matchActions extends sfActions
 		$_matchFixtureID = $request->getParameter('match_fixture_id');	
 		$_participantTeamID = $request->getParameter('team_id');	
 		$_participantTeamTokenID = $request->getParameter('team_token_id');	
-		$_groupMemberTeamID = $request->getParameter('sport_game_group_team_id');	
+		//$_groupMemberTeamID = $request->getParameter('sport_game_group_team_id');	
 		$_sportGameID = $request->getParameter('sport_game_id');	
 		$_genderCategory = $request->getParameter('gender_category_id');	
 		$_offset = $request->getParameter('offset');	

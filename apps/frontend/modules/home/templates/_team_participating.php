@@ -15,8 +15,8 @@
 	<?php endforeach; ?>		
 		<table width="100%">
 			<tr>
-				<td>xx</td>
-				<td>xx</td>
+				<td>&nbsp;</td>
+				<td></td>
 				<td align="right"><a href="<?php echo url_for('competition/participant_teams') ?>">See More</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 			</tr>
 		</table> 

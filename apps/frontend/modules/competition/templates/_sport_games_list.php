@@ -24,8 +24,8 @@
 				<td align="left" width=80>
 					<?php echo  $_candidateSportGame->sportGameDistanceTypeID ?>
 				</td>
-				<td align="left" width=80>
-					<?php echo  $_candidateSportGame->description ?>
+				<td align="left" width=420>
+					<?php echo Wordlimit::Wordlimiter($_candidateSportGame->description, 6) ?>
 				</td> 
 			</tr> 
 			<?php endforeach; ?> 

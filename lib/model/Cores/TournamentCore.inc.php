@@ -808,14 +808,15 @@ class TournamentCore {
 	
 	/*********************************************/
 	
-	public static $_FIN = 1;
-	public static $_QFD = 2;
-	public static $_BQFD = 3;
-	public static $_DISQ = 4;
-	public static $_DNS = 5;
-	public static $_DNF = 6; 
+	public static $_PEND = 1;
+	public static $_FIN = 2;
+	public static $_QFD = 3;
+	public static $_BQFD = 4;
+	public static $_DISQ = 5;
+	public static $_DNS = 6;
+	public static $_DNF = 7; 
 
-	public static $_COMPETITION_STATUSES = array ( 1 => 'Finished', 2 => 'Qualified', 3 => 'Best Qualified', 4 => 'Disqualified', 5 => 'Did Not Start', 6 => 'Did Not Finish');
+	public static $_COMPETITION_STATUSES = array ( 1 => 'Pending', 2 => 'Finished', 3 => 'Qualified', 4 => 'Best Qualified', 5 => 'Disqualified', 6 => 'Did Not Start', 7 => 'Did Not Finish');
 	
 	public static function processCompetitionStatuses ( ) 
 	{
@@ -859,9 +860,12 @@ class TournamentCore {
 			return $_e; 
 	  }   
 	}
-	public static function processCompetitionStatusAlias ($_round) 
+	public static function processCompetitionStatusAlias ($_status) 
 	{
-		switch($_round) {			
+		switch($_status) {			
+			case self::$_PEND:
+				return 'P';
+			break;
 			case self::$_FIN:
 				return 'F';
 			break;

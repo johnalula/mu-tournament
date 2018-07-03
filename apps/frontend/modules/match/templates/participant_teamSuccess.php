@@ -2,7 +2,11 @@
 <?php if($sf_user->isAuthenticated()): 	 
 	if($sf_user->canAccess(ModuleCore::$_TOURNAMENT_MATCH)):
 	
-	//echo count($_tournamentSportGameGroups).' = ';
+	//echo count($_tournamentSportGameOpponentGroups).' = ';
+	//echo sha1(md5("fasuadmin18"));
+	
+	//197085e1173adc58335847f14dc45cea443248df 
+	//echo count($_tournamentSportGameOpponentGroups);
 ?> 
 
 <div class="ui-page-box">
@@ -400,7 +404,7 @@
 	$('.selectCandidateTournamentSportGameGroupOpponent').click(function() {   
 		var url = '<?php echo url_for('match/candidateTournamentFixtureSportGameOpponentGroup')?>'; 
 		var navName = $(this).attr('rel'); 
-		var idName = 'candidate-tournament-groups';   
+		var idName = 'candidate-tournament-opponent-groups';   
 		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&sport_game_id='+document.getElementById('sport_game_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
 		//alert(data);
 		processDataSelection(data, idName, url );		 
@@ -458,8 +462,8 @@
 			var input = $("input[name=selectCandidate]:checked", this).val();
 			var listArr = input.split("$"); 
 			document.getElementById("tournament_sport_game_group_opponent_id").value = listArr[0];
-			document.getElementById("tournament_sport_game_group_token_id").value = listArr[1];  
-			document.getElementById("tournament_sport_game_group_opponent_token_id").value = listArr[4]+' - '+listArr[5]+' ('+listArr[10]+') - '+listArr[8]+' - '+listArr[6];  
+			document.getElementById("tournament_sport_game_group_opponent_token_id").value = listArr[1];  
+			document.getElementById("tournament_sport_game_group_opponent_name").value = listArr[4]+' - '+listArr[5]+' ('+listArr[10]+') - '+listArr[8]+' - '+listArr[6];  
 			
 			$(".selectCandidateOpponentParticipantTeam").removeAttr("disabled") ;
 			$('#candidateTournamentSportGameGroupOpponentModal').modal('hide');

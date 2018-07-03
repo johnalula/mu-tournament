@@ -9,6 +9,7 @@
 				<th align="center">RANK</th>
 				
 				<th align="center">TIME</th>
+				<th></th>
 				<th>STATUS</th>
 				<th>...</th>
 			</tr>
@@ -31,16 +32,19 @@
 					<?php echo SystemCore::processCountryValue($_tournamentMatchFixtureParticipant->teamCountry)  ?>
 				</td> 
 				<td align="center">
-					<?php echo $_tournamentMatchFixtureParticipant->id ? '0':'' ?>
+					<?php echo $_tournamentMatchFixtureParticipant->matchResultRank ?>
 				</td>
-				<td align="center">
-					<?php echo $_tournamentMatchFixtureParticipant->id ? '0':'' ?>
+				<td align="left">
+					<?php echo date('H:i:s', strtotime($_tournamentMatchFixtureParticipant->matchResultTime))  ?>
+				</td>
+				<td align="left">
+					<?php echo TournamentCore::processCompetitionStatusAlias($_tournamentMatchFixtureParticipant->qualificationStatus)  ?>
 				</td>
 				<td>
-					<?php echo $_tournamentMatchFixtureParticipant->id ? 'Pending':'Active' ?>
+					<?php echo TournamentCore::processTournamentStatusValue($_tournamentMatchFixtureParticipant->competitionStatus)  ?>
 				</td>
 				<td>
-					<?php echo $_tournamentMatchFixtureParticipant->id ? '0':'' ?>
+					<?php echo $_tournamentMatchFixtureParticipant->id ? '':'' ?>
 				</td>
 			</tr> 
 			<?php endforeach; ?>

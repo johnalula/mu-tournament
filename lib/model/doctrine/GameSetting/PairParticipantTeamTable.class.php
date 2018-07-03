@@ -17,7 +17,7 @@ class PairParticipantTeamTable extends PluginPairParticipantTeamTable
         return Doctrine_Core::getTable('PairParticipantTeam');
     }
     //
-	public static function processNew ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_opponentParticipantTeamName, $_tournamentMatchNumber, $_tournamentMatchVenue, $_matchDate, $_matchTime, $_tournamentMatchSession, $_matchStatus, $_description, $_dataCreationMode )
+	public static function processNew ( $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_sportGameOpponentGroupID, $_sportGameOpponentGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_opponentParticipantTeamID, $_opponentParticipantTeamTokenID, $_matchFixtureName, $_participantTeamName, $_sportGameGroupName, $_sportGameOpponentGroupName, $_opponentParticipantTeamName, $_tournamentMatchNumber, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession, $_matchStatus, $_description, $_dataCreationMode )
 	{
 			$_flag = true;
 			
@@ -25,12 +25,14 @@ class PairParticipantTeamTable extends PluginPairParticipantTeamTable
 				case SystemCore::$_SINGLE_DATA: 
 				
 					$_matchFixtureGroup = TournamentMatchFixtureGroupTable::processNew ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_matchHeatNumber, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description );
+					
+					//$_matchFixtureOpponentGroup = TournamentMatchFixtureGroupTable::processNew ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_sportGameOpponentGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_matchHeatNumber, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description );
 				
-					if($_matchFixtureGroup) {
+					if($_matchFixtureGroup && $_matchFixtureOpponentGroup) {
 						
 						$_matchFixtureParticipantTeam = self::processSave ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroup->id, $_matchFixtureGroup->token_id, $_sportGameGroupID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_matchStatus, $_description);
 					
-						$_matchFixtureParticipantOpponentTeam = self::processSave ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroup->id, $_matchFixtureGroup->token_id, $_sportGameGroupID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_matchFixtureName, $_opponentParticipantTeamName, $_matchStatus, $_description);
+						$_matchFixtureParticipantOpponentTeam = self::processSave ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroup->id, $_matchFixtureGroup->token_id, $_sportGameOpponentGroupID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_matchFixtureName, $_opponentParticipantTeamName, $_matchStatus, $_description);
 						
 						$_matchFixtureGroup->makeMatchFixtureGroupCode ($_tournamentMatchNumber, $_matchFixtureID);
 						
@@ -74,7 +76,7 @@ class PairParticipantTeamTable extends PluginPairParticipantTeamTable
 	{
 		
 	} 
-	public static function processSave ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_matchStatus, $_description )
+	public static function processSave ( $_tournamentMatchID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameOpponentGroupID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_matchFixtureName, $_participantTeamName, $_matchStatus, $_description )
 	{
 		//try {
 			//if(!$_orgID || !$_name) return false;
@@ -86,8 +88,8 @@ class PairParticipantTeamTable extends PluginPairParticipantTeamTable
 			$_nw->tournament_match_fixture_id = trim($_matchFixtureID); 
 			$_nw->tournament_match_fixture_token_id = sha1(md5(trim($_tournamentMatchTokenID)));   
 			$_nw->tournament_match_fixture_group_id = trim($_matchFixtureGroupID); 
-			$_nw->tournament_match_fixture_group_token_id = sha1(md5(trim($_matchFixtureGroupTokenID)));   
-			$_nw->tournament_sport_game_group_id = trim($_sportGameGroupID); 
+			$_nw->tournament_match_fixture_group_token_id = sha1(md5(trim($_matchFixtureGroupTokenID))); 
+			$_nw->tournament_sport_game_group_id = trim($_sportGameOpponentGroupID);   
 			$_nw->group_participant_team_id = trim($_participantTeamGroupID); 
 			$_nw->group_participant_team_token_id = sha1(md5(trim($_participantTeamGroupTokenID)));
 			$_nw->confirmed_flag = true;     

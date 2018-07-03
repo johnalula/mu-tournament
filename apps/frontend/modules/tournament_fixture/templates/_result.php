@@ -1,7 +1,9 @@
 <div class="ui-panel-container" id=""> 
 
-	<input type="hidden" class="form-control" id="tournament_match_id" name="tournament_match_id" value="<?php echo $sf_request->getParameter('match_id') ?>"> 
-	<input type="hidden" class="form-control" id="tournament_match_token_id" name="tournament_match_token_id" value="<?php echo $sf_request->getParameter('token_id') ?>"> 
+	<input type="hidden" class="form-control" id="tournament_match_fixture_group_id" name="tournament_match_fixture_group_id" value="<?php echo $_tournamentMatchFixtureGroup->id ?>"> 
+	<input type="hidden" class="form-control" id="tournament_match_fixture_group_token_id" name="tournament_match_fixture_group_token_id" value="<?php echo $_tournamentMatchFixtureGroup->token_id ?>"> 
+	<input type="hidden" class="form-control" id="tournament_match_fixture_id" name="tournament_match_fixture_id" value="<?php echo $_tournamentMatchFixtureGroup->matchFixtureID ?>"> 
+	<input type="hidden" class="form-control" id="tournament_match_fixture_token_id" name="tournament_match_fixture_token_id" value="<?php echo $_tournamentMatchFixtureGroup->matchFixtureTokenID ?>"> 
 	<div class="ui-panel-grid-box" id=""> 
 		<!-- First panel --> 
 		<div class="col-sm-12" id="">  
@@ -74,13 +76,19 @@
 												</div> <!-- ui-panel-content -->  
 											</div><!-- ui-tab-panel-grid -->
 											
-											<div class="ui-panel-footer-default ui-panel-footer-margin">
-												<div class="ui-panel-list-pagination-default">
-													<div class="ui-panel-list-pagination">
-														&nbsp;<br>
-													</div>
+											 <!-- Begining of toolbar -->
+											<div class="ui-toolbar-menu-box  ui-toolbar-border1 ui-panel-footer-margin ui-panel-footer-border">
+												<div class="ui-toolbar-menu">
+													<div id="" class="navbar-collapse ui-toolbar">
+														<div class="row">
+															<div class="col-sm-12">
+																<?php include_partial('footer_navigation', array('_object' => $_tournamentMatchFixtureGroup)) ?> 
+															</div> 
+														</div><!-- end of ui-filter-list -->
+													</div><!-- end of ui-filter-list -->
 												</div>
-											</div>
+											</div  
+										<!--    End of toolbar      -->
 										</div><!-- end of ui-tab-content --> 
 										
 									</div><!-- end of ui-tab-content -->  

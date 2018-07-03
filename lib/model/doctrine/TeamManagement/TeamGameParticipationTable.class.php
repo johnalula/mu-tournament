@@ -344,7 +344,6 @@ class TeamGameParticipationTable extends PluginTeamGameParticipationTable
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);      
 				//if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);      
 				if(!is_null($_gameTypeID)) $_qry = $_qry->addWhere("sprtGmPrt.sport_game_category_id = ?", $_gameTypeID);      
-				//if(!is_null($_gameTypeID)) $_qry = $_qry->addWhere("sprtGmPrt.sport_game_id = ?", $_gameTypeID);      
 				if(!is_null($_genderCategory)) $_qry = $_qry->addWhere("sprtGmPrt.gender_category_id = ?", $_genderCategory);      
 				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("sprtGmPrt.active_flag = ?", $_activeFlag);   
 				if(!is_null($_exclusion))  $_qry = $_qry->andWhereNotIn("prtTm.id", $_exclusion ); 

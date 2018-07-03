@@ -46,7 +46,7 @@
 					<div class="col-sm-23">
 						<div class="input-group">
 							<span class="input-group-addon" style="font-size:11px!important;"># <?php echo __('Groups')  ?></span>
-							<input type="text" class="form-control ui-text-right-align" id="group_number" name="team_group_category[group_number]" value="1" placeholder="<?php echo __('No of Groups') ?>" disabled > 
+							<input type="text" class="form-control ui-text-right-align" id="group_number" name="team_group_category[group_number]" value="1" placeholder="<?php echo __('No of Groups') ?>" > 
 						</div><!-- input-group -->
 						
 					</div>

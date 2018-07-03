@@ -56,12 +56,18 @@ class TournamentMatchFixture extends PluginTournamentMatchFixture
 		$this->effective_date = trim($_effectiveDate);  
 		$this->save();
 		return $_flag;
-	}
-	public function makeProcessRevertion ()
+	} 
+	public function makeConfirmation ()
 	{
-		$_flag = true;       
-		$this->status = trim(TournamentCore::$_ACTIVE); 
-		$this->effective_date = NULL;  
+		$_flag = true;   
+		$_endDate = date('m/d/Y', time());  
+		$this->active_flag = true;  
+		$this->competition_flag = true;  
+		$this->competition_status = trim(TournamentCore::$_ACTIVE); 
+		$this->process_status = trim(TournamentCore::$_COMPLETED); 
+		$this->approval_status = trim(TournamentCore::$_APPROVED); 
+		$this->status = trim(TournamentCore::$_ACTIVE);  
+		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  
 		$this->save();
 		return $_flag;
 	}
@@ -71,11 +77,11 @@ class TournamentMatchFixture extends PluginTournamentMatchFixture
 		$_endDate = date('m/d/Y', time());  
 		$this->active_flag = true;  
 		$this->competition_flag = true;  
-		$this->competition_status = trim(TournamentCore::$_ACTIVE); 
+		$this->competition_status = trim(TournamentCore::$_COMPLETED); 
 		$this->process_status = trim(TournamentCore::$_COMPLETED); 
-		$this->approval_status = trim(TournamentCore::$_APPROVED); 
+		$this->approval_status = trim(TournamentCore::$_COMPLETED); 
 		$this->status = trim(TournamentCore::$_COMPLETED);  
-		$this->effective_date = $this->effective_date ? $this->effective_date:$_endDate;  
+		$this->end_date = $this->effective_date ? $this->effective_date:$_endDate;  
 		$this->save();
 		return $_flag;
 	}

@@ -87,7 +87,7 @@
 		
 		<?php if(($sf_request->getParameter('match_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
 			<?php if($sf_request->getParameter('action') == 'fixture'): ?>
-				<?php if($_object->hasTournamentMatchFixtures ): ?>
+				<?php if($_object->id ): ?>
 					<li class="ui-nav-button">
 						<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('match', 'match_id', 'participant_team', $_object)) ?>">
 							<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
@@ -106,7 +106,7 @@
 						<?php echo __('Skip') ?>
 					</a>
 				</li>	 
-				<?php if($_object->hasTournamentMatchParticipantTeams ): ?>
+				<?php if($_object->id ): ?>
 					<li class="ui-nav-button ">
 						<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('match', 'match_id', 'participant', $_object)) ?>">
 							<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
@@ -138,7 +138,7 @@
 						</button> 
 					</li>	 
 				<?php endif; ?>
-				<?php if($_object->activeApprovalTournamentMatch && $_object->activeTournamentMatch && !$_object->activeFlag ): ?>
+				<?php if($_object->activeApprovalTournamentMatch && $_object->activeTournamentMatch && $_object->activeFlag ): ?>
 					<li class="ui-nav-button ">
 						<button id="completeTournamentMatch"  class="ui-nav-active-btn"  title="<?php echo __('Complete Team Grouping').' ( Name: '.$_object->gameCategoryName.' - Code #: '.$_object->matchNumber.' )' ?>">
 							<img class="navbar-nav-img" src="<?php echo image_path('status/approved') ?>">
