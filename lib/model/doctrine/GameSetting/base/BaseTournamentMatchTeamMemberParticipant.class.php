@@ -23,6 +23,7 @@
  * @property integer $yellow_card_number
  * @property float $match_result_distance
  * @property float $match_result_height
+ * @property string $match_fixture_result_time
  * @property datetime $match_result_time
  * @property string $effective_date
  * @property boolean $qualified_flag
@@ -110,6 +111,10 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
         $this->hasColumn('match_result_height', 'float', null, array(
              'type' => 'float',
              ));
+        $this->hasColumn('match_fixture_result_time', 'string', 50, array(
+             'type' => 'string',
+             'length' => 50,
+             ));
         $this->hasColumn('match_result_time', 'datetime', null, array(
              'type' => 'datetime',
              ));
@@ -119,6 +124,7 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
              ));
         $this->hasColumn('qualified_flag', 'boolean', null, array(
              'type' => 'boolean',
+             'default' => true,
              ));
         $this->hasColumn('confirmed_flag', 'boolean', null, array(
              'type' => 'boolean',
@@ -134,7 +140,7 @@ abstract class BaseTournamentMatchTeamMemberParticipant extends sfDoctrineRecord
              ));
         $this->hasColumn('qualification_status', 'integer', null, array(
              'type' => 'integer',
-             'default' => 1,
+             'default' => 2,
              ));
         $this->hasColumn('competition_status', 'integer', null, array(
              'type' => 'integer',

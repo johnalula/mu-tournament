@@ -99,6 +99,72 @@ MultipleContestantTeamGroup:
     type: '1'
     created_at: '2018-07-03 02:46:57'
     updated_at: '2018-07-03 02:48:49'
+  MultipleContestantTeamGroup_4:
+    token_id: 97f833fae4baf8f6fe40ecb9b33b4eff891e1edd
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_3
+    tournament_team_group_token_id: 24728f85ca2c5955800baf79422bcecee732c336
+    SportGame: SportGame_28
+    sport_game_token_id: 8f49b264c2f706e140bbe316b504ca5c15981fec
+    gender_category_id: '1'
+    group_code: GRP-003-004/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    number_of_teams_per_group: '0'
+    number_of_participants_per_group: null
+    contestant_team_mode: '1'
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    group_team_number_mandatory_flag: false
+    complete_flag: false
+    active_flag: true
+    confirmed_flag: false
+    competition_flag: true
+    confirmed_status: '2'
+    competition_status: '3'
+    process_status: '13'
+    approval_status: '4'
+    status: '3'
+    description: 'Volleyball (Volleyball) - Men - (  )'
+    type: '1'
+    created_at: '2018-07-03 21:07:42'
+    updated_at: '2018-07-03 21:08:59'
+  MultipleContestantTeamGroup_5:
+    token_id: 213ab66966ad17f485b85f3302b6f12dd1d9082c
+    Tournament: Tournament_1
+    TournamentTeamGroup: TournamentTeamGroup_3
+    tournament_team_group_token_id: 24728f85ca2c5955800baf79422bcecee732c336
+    SportGame: SportGame_28
+    sport_game_token_id: 8f49b264c2f706e140bbe316b504ca5c15981fec
+    gender_category_id: '2'
+    group_code: GRP-003-005/18
+    group_name: 'Group One'
+    group_number: '1'
+    alias: null
+    total_group_members: null
+    number_of_teams_per_group: '0'
+    number_of_participants_per_group: null
+    contestant_team_mode: '1'
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    group_team_number_mandatory_flag: false
+    complete_flag: false
+    active_flag: true
+    confirmed_flag: false
+    competition_flag: true
+    confirmed_status: '2'
+    competition_status: '3'
+    process_status: '13'
+    approval_status: '4'
+    status: '3'
+    description: 'Volleyball (Volleyball) - Women - (  )'
+    type: '1'
+    created_at: '2018-07-03 21:07:55'
+    updated_at: '2018-07-03 21:08:59'
 Party: {  }
 Organization:
   Organization_1:
@@ -2008,7 +2074,7 @@ SportGame:
     org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
     GameCategory: GameCategory_8
     distance_type: '0'
-    name: Vollyball
+    name: Volleyball
     alias: ''
     game_distance: '0'
     game_distance_measurement: '1'
@@ -2033,9 +2099,9 @@ SportGame:
     default_flag: false
     active_flag: true
     status: '3'
-    description: 'Vollyball (VOLLYBALL) - Vollyball ( jhg jhgjkjhljh jkhjkh jkhkjhj )'
+    description: 'Volleyball (VOLLYBALL) - Volleyball ( jhg jhgjkjhljh jkhjkh jkhkjhj )'
     created_at: '2018-06-02 22:21:15'
-    updated_at: '2018-06-02 22:21:15'
+    updated_at: '2018-07-03 21:08:59'
   SportGame_29:
     token_id: b05e5b13bbd93333b59cb5ac5e18b7ed85221a6b
     Organization: Organization_1
@@ -2392,7 +2458,7 @@ GameCategory:
     Organization: Organization_1
     org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
     category_type: null
-    category_name: Vollyball
+    category_name: Volleyball
     alias: VOLLYBALL
     contestant_team_mode: '1'
     contestant_name_mode: '9'
@@ -2400,7 +2466,7 @@ GameCategory:
     default_flag: false
     active_flag: true
     status: '1'
-    description: 'Vollyball ( sdf gsdfg sdfgs dfg sdfg )'
+    description: 'Volleyball ( sdf gsdfg sdfgs dfg sdfg )'
     created_at: '2018-06-01 21:22:13'
     updated_at: '2018-06-01 21:22:13'
   GameCategory_9:
@@ -2522,7 +2588,7 @@ Team:
     status: '3'
     description: 'Mekelle University ( Mekellle )'
     created_at: '2018-06-30 10:54:24'
-    updated_at: '2018-07-03 02:48:26'
+    updated_at: '2018-07-03 21:08:47'
   Team_2:
     token_id: 2f6e72bdaf446d6dc8cd78db58dc76d7b2f860c4
     Organization: Organization_1
@@ -2560,7 +2626,7 @@ Team:
     status: '3'
     description: 'Adigrat University ( Adigrat University )'
     created_at: '2018-06-30 10:54:48'
-    updated_at: '2018-07-03 02:48:26'
+    updated_at: '2018-07-03 21:08:47'
   Team_3:
     token_id: c0661e96d4eeb8bdc024df73a2584c6f5fa696b4
     Organization: Organization_1
@@ -2598,7 +2664,7 @@ Team:
     status: '3'
     description: 'Aksum University ( Aksum University )'
     created_at: '2018-06-30 10:55:21'
-    updated_at: '2018-07-03 02:18:14'
+    updated_at: '2018-07-03 21:08:31'
   Team_4:
     token_id: 62d05d3cc66d2d279febdb415e039cd3437be30e
     Organization: Organization_1
@@ -2674,7 +2740,7 @@ Team:
     status: '3'
     description: 'KOTEBE METROPLITAN UNIVERSITY ( KOTEBE METROPLITAN UNIVERSITY )'
     created_at: '2018-06-30 10:56:21'
-    updated_at: '2018-07-03 02:48:26'
+    updated_at: '2018-07-03 21:08:32'
   Team_6:
     token_id: 1b6d795687615dd436e896e35be6a0022e140cf0
     Organization: Organization_1
@@ -2712,7 +2778,7 @@ Team:
     status: '3'
     description: 'University Of Botswana ( UNIVERSITY OF BOTSWANA )'
     created_at: '2018-06-30 10:57:27'
-    updated_at: '2018-07-03 02:19:49'
+    updated_at: '2018-07-03 21:08:31'
   Team_7:
     token_id: 8552f6fb8b67815348a6344a7becc9787f6460d8
     Organization: Organization_1
@@ -2750,7 +2816,7 @@ Team:
     status: '3'
     description: 'Nkumba University ( NKUMBA UNIVERSITY )'
     created_at: '2018-06-30 10:58:48'
-    updated_at: '2018-07-03 02:25:12'
+    updated_at: '2018-07-03 21:08:48'
   Team_8:
     token_id: 14395d0b7cb00ce1f80ad795936f1c0deb570c5d
     Organization: Organization_1
@@ -4498,7 +4564,7 @@ Team:
     status: '3'
     description: 'Wachemo University ( Wachemo University from Ethiopia )'
     created_at: '2018-07-03 01:54:13'
-    updated_at: '2018-07-03 02:21:54'
+    updated_at: '2018-07-03 21:08:32'
   Team_54:
     token_id: ff948a648162b66e9777636310a28294bb6f2fc5
     Organization: Organization_1
@@ -4699,17 +4765,17 @@ TeamGameParticipation:
     number_of_participants: null
     player_mode: '0'
     start_date: null
-    effective_date: null
+    effective_date: 07/03/2018
     end_date: null
-    grouped_flag: false
-    confirmed_flag: false
+    grouped_flag: true
+    confirmed_flag: true
     active_flag: true
-    grouped_status: '2'
-    confirmed_status: '2'
+    grouped_status: '4'
+    confirmed_status: '9'
     status: '3'
-    description: 'Vollyball (VOLLYBALL) - Vollyball (Vollyball) (  )'
+    description: 'Volleyball (VOLLYBALL) - Volleyball (Volleyball) (  )'
     created_at: '2018-07-03 01:57:52'
-    updated_at: '2018-07-03 01:57:52'
+    updated_at: '2018-07-03 21:08:31'
   TeamGameParticipation_5:
     token_id: bbdf6cff17dd848a031b31dfe2be775794535b09
     Team: Team_1
@@ -4723,17 +4789,17 @@ TeamGameParticipation:
     number_of_participants: null
     player_mode: '0'
     start_date: null
-    effective_date: null
+    effective_date: 07/03/2018
     end_date: null
-    grouped_flag: false
-    confirmed_flag: false
+    grouped_flag: true
+    confirmed_flag: true
     active_flag: true
-    grouped_status: '2'
-    confirmed_status: '2'
+    grouped_status: '4'
+    confirmed_status: '9'
     status: '3'
-    description: 'Vollyball (VOLLYBALL) - Vollyball (Vollyball) (  )'
+    description: 'Volleyball (VOLLYBALL) - Volleyball (Volleyball) (  )'
     created_at: '2018-07-03 01:57:52'
-    updated_at: '2018-07-03 01:57:52'
+    updated_at: '2018-07-03 21:08:47'
   TeamGameParticipation_6:
     token_id: 4ff7ce97553bff45ecee972cf63eee778e329a88
     Team: Team_1
@@ -5155,17 +5221,17 @@ TeamGameParticipation:
     number_of_participants: null
     player_mode: '0'
     start_date: null
-    effective_date: null
+    effective_date: 07/03/2018
     end_date: null
-    grouped_flag: false
-    confirmed_flag: false
+    grouped_flag: true
+    confirmed_flag: true
     active_flag: true
-    grouped_status: '2'
-    confirmed_status: '2'
+    grouped_status: '4'
+    confirmed_status: '9'
     status: '3'
-    description: 'Vollyball (VOLLYBALL) - Vollyball (Vollyball) (  )'
+    description: 'Volleyball (VOLLYBALL) - Volleyball (Volleyball) (  )'
     created_at: '2018-07-03 02:18:14'
-    updated_at: '2018-07-03 02:18:14'
+    updated_at: '2018-07-03 21:08:31'
   TeamGameParticipation_24:
     token_id: 9a311d12b4b3bdbf7427d82a56a331bccd0004b0
     Team: Team_6
@@ -5179,17 +5245,17 @@ TeamGameParticipation:
     number_of_participants: null
     player_mode: '0'
     start_date: null
-    effective_date: null
+    effective_date: 07/03/2018
     end_date: null
-    grouped_flag: false
-    confirmed_flag: false
+    grouped_flag: true
+    confirmed_flag: true
     active_flag: true
-    grouped_status: '2'
-    confirmed_status: '2'
+    grouped_status: '4'
+    confirmed_status: '9'
     status: '3'
-    description: 'Vollyball (VOLLYBALL) - Vollyball (Vollyball) (  )'
+    description: 'Volleyball (VOLLYBALL) - Volleyball (Volleyball) (  )'
     created_at: '2018-07-03 02:19:49'
-    updated_at: '2018-07-03 02:19:49'
+    updated_at: '2018-07-03 21:08:31'
   TeamGameParticipation_25:
     token_id: d4f804c5d83e892d4d2597c2efd77ab587754c80
     Team: Team_5
@@ -5203,17 +5269,17 @@ TeamGameParticipation:
     number_of_participants: null
     player_mode: '0'
     start_date: null
-    effective_date: null
+    effective_date: 07/03/2018
     end_date: null
-    grouped_flag: false
-    confirmed_flag: false
+    grouped_flag: true
+    confirmed_flag: true
     active_flag: true
-    grouped_status: '2'
-    confirmed_status: '2'
+    grouped_status: '4'
+    confirmed_status: '9'
     status: '3'
-    description: 'Vollyball (VOLLYBALL) - Vollyball (Vollyball) (  )'
+    description: 'Volleyball (VOLLYBALL) - Volleyball (Volleyball) (  )'
     created_at: '2018-07-03 02:20:27'
-    updated_at: '2018-07-03 02:20:27'
+    updated_at: '2018-07-03 21:08:32'
   TeamGameParticipation_26:
     token_id: d13b40b742a378050166fc4db88f3e7d87f6daa8
     Team: Team_53
@@ -5227,17 +5293,17 @@ TeamGameParticipation:
     number_of_participants: null
     player_mode: '0'
     start_date: null
-    effective_date: null
+    effective_date: 07/03/2018
     end_date: null
-    grouped_flag: false
-    confirmed_flag: false
+    grouped_flag: true
+    confirmed_flag: true
     active_flag: true
-    grouped_status: '2'
-    confirmed_status: '2'
+    grouped_status: '4'
+    confirmed_status: '9'
     status: '3'
-    description: 'Vollyball (VOLLYBALL) - Vollyball (Vollyball) (  )'
+    description: 'Volleyball (VOLLYBALL) - Volleyball (Volleyball) (  )'
     created_at: '2018-07-03 02:21:53'
-    updated_at: '2018-07-03 02:21:53'
+    updated_at: '2018-07-03 21:08:32'
   TeamGameParticipation_27:
     token_id: 0557f437fa35a5447f35a574a82dc7cfb5347f9b
     Team: Team_2
@@ -5251,17 +5317,17 @@ TeamGameParticipation:
     number_of_participants: null
     player_mode: '0'
     start_date: null
-    effective_date: null
+    effective_date: 07/03/2018
     end_date: null
-    grouped_flag: false
-    confirmed_flag: false
+    grouped_flag: true
+    confirmed_flag: true
     active_flag: true
-    grouped_status: '2'
-    confirmed_status: '2'
+    grouped_status: '4'
+    confirmed_status: '9'
     status: '3'
-    description: 'Vollyball (VOLLYBALL) - Vollyball (Vollyball) (  )'
+    description: 'Volleyball (VOLLYBALL) - Volleyball (Volleyball) (  )'
     created_at: '2018-07-03 02:23:09'
-    updated_at: '2018-07-03 02:23:09'
+    updated_at: '2018-07-03 21:08:47'
   TeamGameParticipation_28:
     token_id: cafa12113456ebda9e63c1e8bf2dfdcd1ecc7370
     Team: Team_7
@@ -5275,17 +5341,17 @@ TeamGameParticipation:
     number_of_participants: null
     player_mode: '0'
     start_date: null
-    effective_date: null
+    effective_date: 07/03/2018
     end_date: null
-    grouped_flag: false
-    confirmed_flag: false
+    grouped_flag: true
+    confirmed_flag: true
     active_flag: true
-    grouped_status: '2'
-    confirmed_status: '2'
+    grouped_status: '4'
+    confirmed_status: '9'
     status: '3'
-    description: 'Vollyball (VOLLYBALL) - Vollyball (Vollyball) (  )'
+    description: 'Volleyball (VOLLYBALL) - Volleyball (Volleyball) (  )'
     created_at: '2018-07-03 02:25:12'
-    updated_at: '2018-07-03 02:25:12'
+    updated_at: '2018-07-03 21:08:48'
 CodeGenerator:
   CodeGenerator_1:
     token_id: ee5bb3a6124bae087ac3f5d732d94947
@@ -5384,7 +5450,7 @@ CodeGenerator:
     prefix_code: GRP
     alias: GRP
     initial_number: '001'
-    last_code: '0003'
+    last_code: '0004'
     deleted_code: null
     can_recreate_deleted: true
     code_type: '8'
@@ -5394,7 +5460,7 @@ CodeGenerator:
     active_flag: true
     description: 'Team Group ( Team Group generated code )'
     created_at: '2016-01-21 01:26:19'
-    updated_at: '2018-07-03 02:46:12'
+    updated_at: '2018-07-03 21:07:16'
   CodeGenerator_7:
     token_id: 80f14629d01dc4b0d7073752f1020eda
     Organization: Organization_1
@@ -5450,6 +5516,24 @@ TournamentTeamGroup:
     description: 'Football team groups'
     created_at: '2018-07-03 02:46:12'
     updated_at: '2018-07-03 02:48:55'
+  TournamentTeamGroup_3:
+    token_id: 26edbd0aad0f91f9a15478d90cd083ad4d646ec5
+    Tournament: Tournament_1
+    GameCategory: GameCategory_8
+    sport_game_category_token_id: c3a790511fb546122399ca0bb8d08f51f9c505af
+    group_full_code: GRP-003/18
+    group_code: GRP-003
+    start_date: 07/03/2018
+    effective_date: 07/03/2018
+    end_date: null
+    complete_flag: false
+    active_flag: true
+    process_status: '13'
+    approval_status: '4'
+    status: '3'
+    description: 'Volleyball participant team groups'
+    created_at: '2018-07-03 21:07:16'
+    updated_at: '2018-07-03 21:09:21'
 TournamentGroupParticipantTeam:
   TournamentGroupParticipantTeam_1:
     token_id: a2f68785f56d6fc270c25f4950b7f4861dbe9073
@@ -5750,6 +5834,190 @@ TournamentGroupParticipantTeam:
     description: 'Guinea Conakry University ( GCU ) - Guinea team grouped in Group One - Football (Men) - (  )'
     created_at: '2018-07-03 02:48:26'
     updated_at: '2018-07-03 02:48:26'
+  TournamentGroupParticipantTeam_14:
+    token_id: 7a6f39d132720c5ca5b2c89a28659b05ae4a5d69
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_4
+    tournament_sport_game_group_token_id: f746cb339be82b14252f063cecd80a1a19f07770
+    Team: Team_1
+    team_token_id: 83a04370149cd5f8b82b9d361c571d2065255da5
+    TeamGameParticipation: TeamGameParticipation_4
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: true
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '5'
+    confirmed_status: '9'
+    process_status: '3'
+    approval_status: '4'
+    status: '3'
+    description: 'Mekelle University ( MU ) - Ethiopia team grouped in Group One - Volleyball (Men) - (  )'
+    created_at: '2018-07-03 21:08:31'
+    updated_at: '2018-07-03 21:08:31'
+  TournamentGroupParticipantTeam_15:
+    token_id: 962b07b4cc2fb9a44fa529349bc1bf5c416b141f
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_4
+    tournament_sport_game_group_token_id: f746cb339be82b14252f063cecd80a1a19f07770
+    Team: Team_3
+    team_token_id: 6f36dd194bbda1d9f1a2dda626e46f6f25680ecd
+    TeamGameParticipation: TeamGameParticipation_23
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: true
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '5'
+    confirmed_status: '9'
+    process_status: '3'
+    approval_status: '4'
+    status: '3'
+    description: 'Aksum University ( AKU ) - Ethiopia team grouped in Group One - Volleyball (Men) - (  )'
+    created_at: '2018-07-03 21:08:31'
+    updated_at: '2018-07-03 21:08:31'
+  TournamentGroupParticipantTeam_16:
+    token_id: 28321bcb798b23869c9e9e98979356eec7a12ed9
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_4
+    tournament_sport_game_group_token_id: f746cb339be82b14252f063cecd80a1a19f07770
+    Team: Team_6
+    team_token_id: f41c112d8c7bea98d4102f82363bae492be075c5
+    TeamGameParticipation: TeamGameParticipation_24
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: true
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '5'
+    confirmed_status: '9'
+    process_status: '3'
+    approval_status: '4'
+    status: '3'
+    description: 'University Of Botswana ( UB ) - Botswana team grouped in Group One - Volleyball (Men) - (  )'
+    created_at: '2018-07-03 21:08:31'
+    updated_at: '2018-07-03 21:08:31'
+  TournamentGroupParticipantTeam_17:
+    token_id: af8804efd2141ca0c82e2ca544648db6b8f25c80
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_4
+    tournament_sport_game_group_token_id: f746cb339be82b14252f063cecd80a1a19f07770
+    Team: Team_5
+    team_token_id: 723e72c3cb216373f1c02917763458223d71a032
+    TeamGameParticipation: TeamGameParticipation_25
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: true
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '5'
+    confirmed_status: '9'
+    process_status: '3'
+    approval_status: '4'
+    status: '3'
+    description: 'Kotebe Metropolitan University ( KMU ) - Ethiopia team grouped in Group One - Volleyball (Men) - (  )'
+    created_at: '2018-07-03 21:08:31'
+    updated_at: '2018-07-03 21:08:31'
+  TournamentGroupParticipantTeam_18:
+    token_id: 15f4d6e8bdb762fc649407afedacf9efc3f15e29
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_4
+    tournament_sport_game_group_token_id: f746cb339be82b14252f063cecd80a1a19f07770
+    Team: Team_53
+    team_token_id: 7bf585370884c3a7a331c2f05ee174d159e45c8a
+    TeamGameParticipation: TeamGameParticipation_26
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: true
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '5'
+    confirmed_status: '9'
+    process_status: '3'
+    approval_status: '4'
+    status: '3'
+    description: 'Wachemo University ( WCU ) - Ethiopia team grouped in Group One - Volleyball (Men) - (  )'
+    created_at: '2018-07-03 21:08:32'
+    updated_at: '2018-07-03 21:08:32'
+  TournamentGroupParticipantTeam_19:
+    token_id: 98a546ae2bfec65ec6180f1d56f2206aa78402a0
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_5
+    tournament_sport_game_group_token_id: 4fa8c5297d3af88e3a64f905e7b59adae077c852
+    Team: Team_1
+    team_token_id: 83a04370149cd5f8b82b9d361c571d2065255da5
+    TeamGameParticipation: TeamGameParticipation_5
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: true
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '5'
+    confirmed_status: '9'
+    process_status: '3'
+    approval_status: '4'
+    status: '3'
+    description: 'Mekelle University ( MU ) - Ethiopia team grouped in Group One - Volleyball (Women) - (  )'
+    created_at: '2018-07-03 21:08:47'
+    updated_at: '2018-07-03 21:08:47'
+  TournamentGroupParticipantTeam_20:
+    token_id: 3b6593ee81860894e4b6f053765faebf1344bd24
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_5
+    tournament_sport_game_group_token_id: 4fa8c5297d3af88e3a64f905e7b59adae077c852
+    Team: Team_2
+    team_token_id: 44ba6bb3a63c30f5e695e822ecf067e72e831c8b
+    TeamGameParticipation: TeamGameParticipation_27
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: true
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '5'
+    confirmed_status: '9'
+    process_status: '3'
+    approval_status: '4'
+    status: '3'
+    description: 'Adigrat University ( ADU ) - Ethiopia team grouped in Group One - Volleyball (Women) - (  )'
+    created_at: '2018-07-03 21:08:47'
+    updated_at: '2018-07-03 21:08:47'
+  TournamentGroupParticipantTeam_21:
+    token_id: 5deed01713eb94be2dd5d05bd9f6d0f37d66ecd9
+    Tournament: Tournament_1
+    TournamentSportGameGroup: MultipleContestantTeamGroup_5
+    tournament_sport_game_group_token_id: 4fa8c5297d3af88e3a64f905e7b59adae077c852
+    Team: Team_7
+    team_token_id: 72529230081bcbbd37cfb7a4fe9f05e09b504fce
+    TeamGameParticipation: TeamGameParticipation_28
+    start_date: 07/03/2018
+    effective_date: null
+    end_date: null
+    confirmed_flag: true
+    active_flag: true
+    completed_flag: null
+    qualified_flag: true
+    qualification_status: '5'
+    confirmed_status: '9'
+    process_status: '3'
+    approval_status: '4'
+    status: '3'
+    description: 'Nkumba University ( NU ) - Uganda team grouped in Group One - Volleyball (Women) - (  )'
+    created_at: '2018-07-03 21:08:48'
+    updated_at: '2018-07-03 21:08:48'
 SystemLogFile:
   SystemLogFile_1:
     token_id: 2a2f84ae5068c607c92f61382ab7dcd91a55e0e9
@@ -7556,3 +7824,79 @@ SystemLogFile:
     description: 'Admin has performed APPROVE action to Approve Tournament Team Group - [ Module: Team Group ] from [ IP: 127.0.0.1 ] at [Date: Tue Jul 03, 2018 02:48:55 AM]'
     created_at: '2018-07-03 02:48:55'
     updated_at: '2018-07-03 02:48:55'
+  SystemLogFile_96:
+    token_id: 73c61c25d8baa2e6c34059bfba750dee02741f10
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '8'
+    action_date: '07/03/2018 09:07:16 PM'
+    action_time: '09:07:16 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Team Group - [ Module: Team Group ], Object: Tournament Team Group ID: 3, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team_group/createTournamentGroup
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Team Group - [ Module: Team Group ] from [ IP: 127.0.0.1 ] at [Date: Tue Jul 03, 2018 09:07:16 PM]'
+    created_at: '2018-07-03 21:07:16'
+    updated_at: '2018-07-03 21:07:16'
+  SystemLogFile_97:
+    token_id: d90d867de4305a89d4e0110efd9c047782f9754d
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '8'
+    action_date: '07/03/2018 09:07:43 PM'
+    action_time: '09:07:43 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team Group - [ Module: Team Group ], Object: Tournament Sport Game Group ID: 4, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team_group/createTournamentTeamGroup
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team Group - [ Module: Team Group ] from [ IP: 127.0.0.1 ] at [Date: Tue Jul 03, 2018 09:07:43 PM]'
+    created_at: '2018-07-03 21:07:43'
+    updated_at: '2018-07-03 21:07:43'
+  SystemLogFile_98:
+    token_id: 7be96d19ba91e3db5bc097a40d2bc6cf3b28756d
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '8'
+    action_date: '07/03/2018 09:07:55 PM'
+    action_time: '09:07:55 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team Group - [ Module: Team Group ], Object: Tournament Sport Game Group ID: 5, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team_group/createTournamentTeamGroup
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team Group - [ Module: Team Group ] from [ IP: 127.0.0.1 ] at [Date: Tue Jul 03, 2018 09:07:55 PM]'
+    created_at: '2018-07-03 21:07:55'
+    updated_at: '2018-07-03 21:07:55'
+  SystemLogFile_99:
+    token_id: d09bb96a786cce99d476834b85b537dd4b6630af
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '8'
+    action_date: '07/03/2018 09:09:21 PM'
+    action_time: '09:09:21 PM'
+    action_data: 'User: admin, Action: APPROVE, Data: Approve Tournament Team Group - [ Module: Team Group ], Object: Tournament Team Group ID: 3, IP: 127.0.0.1'
+    action_type_id: '7'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team_group/completeTeamGrouping
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed APPROVE action to Approve Tournament Team Group - [ Module: Team Group ] from [ IP: 127.0.0.1 ] at [Date: Tue Jul 03, 2018 09:09:21 PM]'
+    created_at: '2018-07-03 21:09:21'
+    updated_at: '2018-07-03 21:09:21'

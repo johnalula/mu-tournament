@@ -29,6 +29,7 @@
 									<input type="hidden" class="form-control" id="contestant_mode" name="tournament_match_fixture[contestant_mode]" value=""> 
 									<input type="hidden" class="form-control" id="sport_game_id" name="tournament_match_fixture[sport_game_id]" placeholder="<?php echo __('Tournament') ?>" value=""  >
 									<input type="hidden" class="form-control" id="sport_game_token_id" name="tournament_match_fixture[sport_game_token_id]" placeholder="<?php echo __('Tournament') ?>" value=""  >
+									<input type="hidden" class="form-control" id="sport_game_group_number" name="tournament_match_fixture[sport_game_group_number]" placeholder="<?php echo __('Tournament') ?>" value=""  >
 									<span class="input-group-btn">
 										<button class="btn btn-default selectCandidateSportGameTournamentGroup" type="button" data-toggle="modal" data-target="#candidateSportGameTournamentGroupModal" title="<?php echo __('Candidate Sport Game Team Group') ?>">
 											<img class="btn-img" src="<?php echo image_path('icons/find') ?>" >
@@ -60,7 +61,7 @@
 							<div class="col-sm-30">
 								<div class="input-group">
 									<span class="input-group-addon" style="font-size:11px!important;"># <?php echo __('Heats')  ?>&nbsp;</span>
-									<input type="text" class="form-control ui-text-right-align" id="number_of_heats_per_group" name="tournament_match_fixture[number_of_heats_per_group]" value=""  placeholder="<?php echo __('Per Group') ?>" <?php echo ($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM) ? 'disabled':'' ?>> 
+									<input type="text" class="form-control ui-text-right-align" id="number_of_heats_per_group" name="tournament_match_fixture[number_of_heats_per_group]" value=""  placeholder="<?php echo __('Per Group') ?>" > 
 								</div><!-- input-group -->
 							</div>
 							<label class="col-sm-212 control-label" title="<?php echo __('Event Type') ?>"><?php echo __('Event') ?>:</label>

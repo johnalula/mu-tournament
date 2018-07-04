@@ -274,7 +274,7 @@ TeamMemberParticipantRole:
     active_flag: { type: boolean, default: false } 
     qualified_flag: { type: boolean, default: true  } 
     competition_status: { type: integer, default: 1  } 
-    qualification_status: { type: integer, default: 5  } 
+    qualification_status: { type: integer, default: 2  } 
     confirmed_status: { type: integer, default: 1  } 
     grouped_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
@@ -437,7 +437,7 @@ TournamentGroupParticipantTeam:
     active_flag: { type: boolean  } 
     completed_flag: { type: boolean  } 
     qualified_flag: { type: boolean, default: true  } 
-    qualification_status: { type: integer, default: 1  } 
+    qualification_status: { type: integer, default: 2  } 
     confirmed_status: { type: integer, default: 1  } 
     process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
@@ -560,12 +560,13 @@ TournamentMatchFixtureGroup:
     token_id: { type: string(100) }    
     tournament_match_id: { type: integer }
     tournament_match_fixture_id: { type: integer }
-    tournament_match_fixture_token_id: { type: string(100) } 
-    tournament_sport_game_group_id: { type: integer } 
+    tournament_match_fixture_token_id: { type: string(100) }  
     gender_category_id: { type: integer } 
     contestant_team_mode: { type: integer } 
     tournament_match_group_number: { type: string(100) }
     match_fixture_round_mode: { type: integer } 
+    match_group_number: { type: integer }  
+    match_group_name: { type: string(100) }  
     match_heat_number: { type: integer }  
     match_heat_name: { type: string(100) }  
     match_venue: { type: string(100) } 
@@ -581,8 +582,8 @@ TournamentMatchFixtureGroup:
     best_qualifying_row_enable_flag: { type: boolean, default: false } 
     enable_participant_team_number_mandatory_flag: { type: boolean, default: false } 
     enable_participant_number_mandatory_flag: { type: boolean, default: false } 
-    qualified_flag: { type: boolean, default: false } 
-    qualification_status: { type: integer, default: 1  } 
+    qualified_flag: { type: boolean, default: true } 
+    qualification_status: { type: integer, default: 2  } 
     confirmed_flag: { type: boolean, default: false } 
     competition_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
@@ -598,7 +599,6 @@ TournamentMatchFixtureGroup:
   relations:  
     TournamentMatch: { onDelete: CASCADE, local: tournament_match_id, foreign: id, foreignAlias: tournamentMatchMatchFixtureGroups }    
     TournamentMatchFixture: { onDelete: CASCADE, local: tournament_match_fixture_id, foreign: id, foreignAlias: matchFixtureMatchFixtureGroups }  
-    TournamentSportGameGroup: { onDelete: CASCADE, local: tournament_sport_game_group_id, foreign: id, foreignAlias: tournamentSportGameGroupMatchFixtureGroups } 
 
 TournamentMatchParticipantTeam:
   package: GameSetting
@@ -628,12 +628,12 @@ TournamentMatchParticipantTeam:
     bronze_medal: { type: integer }
     total_medal_award: { type: integer }
     effective_date: { type: string(100) }
-    qualified_flag: { type: boolean, default: false } 
+    qualified_flag: { type: boolean, default: true } 
     confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
     competition_flag: { type: boolean, default: false } 
     medal_award_flag: { type: boolean, default: false } 
-    qualification_status: { type: integer, default: 1  } 
+    qualification_status: { type: integer, default: 2  } 
     competition_status: { type: integer, default: 1  } 
     process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
@@ -688,13 +688,14 @@ TournamentMatchTeamMemberParticipant:
     yellow_card_number: { type: integer } 
     match_result_distance: { type: float } 
     match_result_height: { type: float } 
+    match_fixture_result_time: { type: string(50) } 
     match_result_time: { type: datetime } 
     effective_date: { type: string(100) }
-    qualified_flag: { type: boolean  } 
+    qualified_flag: { type: boolean, default: true  } 
     confirmed_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
     medal_award_flag: { type: boolean, default: false } 
-    qualification_status: { type: integer, default: 1  } 
+    qualification_status: { type: integer, default: 2  } 
     competition_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
@@ -728,10 +729,10 @@ TournamentMatchFixtureResult:
     match_result_height: { type: float } 
     match_result_time: { type: datetime } 
     effective_date: { type: string(100) }
-    qualified_flag: { type: boolean  } 
+    qualified_flag: { type: boolean, default: true  } 
     active_flag: { type: boolean, default: false } 
     medal_award_flag: { type: boolean, default: false } 
-    qualification_status: { type: integer, default: 1  } 
+    qualification_status: { type: integer, default: 2  } 
     competition_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
     description:  { type: clob }  

@@ -910,6 +910,7 @@ a.reset_time {
   z-index: 10;
   border:0px solid #f00!important;
   margin: 0px 0px!important;
+  padding: 0px 0px!important;
 }
 
 /* Declare heights because of positioning of img element */
@@ -927,7 +928,18 @@ a.reset_time {
   width: 30%!important;
 }
 
-
+.carousel-control {
+	border:0px solid #ff0!important;
+	padding: 0px 0px!important; 
+	margin: 0px 0px!important; 
+}
+.carousel-control span.glyphicon{
+	border:0px solid #fff!important;
+	margin: 0px 0px!important; 
+}
+.carousel-control span.glyphicon-chevron-right{
+	border:0px solid #f00!important;
+}
 /* MARKETING CONTENT
 -------------------------------------------------- */
 

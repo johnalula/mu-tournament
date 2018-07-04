@@ -98,7 +98,7 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "sprtGmGrp.id, sprtGmGrp.group_name as sportGameGroupName, sprtGmGrp.group_code as sportGameGroupCode, sprtGmGrp.contestant_team_mode as contestantTeamMode, sprtGmGrp.gender_category_id as groupGenderCategoryID, sprtGmGrp.total_group_members as totalGroupMembers, sprtGmGrp.start_date as matchDate, sprtGmGrp.approval_status as apporvalStatus, sprtGmGrp.active_flag as activeFlag, sprtGmGrp.number_of_teams_per_group as totalParticipantTeamsPerGroup, sprtGmGrp.number_of_participants_per_group as totalParticipantsPerGroup,
+		 $_queryFileds = "sprtGmGrp.id, sprtGmGrp.group_name as sportGameGroupName, sprtGmGrp.group_code as sportGameGroupCode, sprtGmGrp.group_number as sportGameGroupNumber, sprtGmGrp.contestant_team_mode as contestantTeamMode, sprtGmGrp.gender_category_id as groupGenderCategoryID, sprtGmGrp.total_group_members as totalGroupMembers, sprtGmGrp.start_date as matchDate, sprtGmGrp.approval_status as apporvalStatus, sprtGmGrp.active_flag as activeFlag, sprtGmGrp.number_of_teams_per_group as totalParticipantTeamsPerGroup, sprtGmGrp.number_of_participants_per_group as totalParticipantsPerGroup,
 								
 								trmnSprtGmGrp.id, 
 								sprtGm.id as sportGameID, sprtGm.token_id as sportGameTokenID, sprtGm.name as sportGameName,  sprtGm.sport_game_category_id as matchSportGameCategoryID, sprtGm.contestant_team_mode as gameContestantTeamMode, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, 
@@ -311,11 +311,11 @@ class TournamentSportGameGroupTable extends PluginTournamentSportGameGroupTable
 				->limit($_limit) 
 				->orderBy("sprtGmGrp.id ASC")
 				->where("sprtGmGrp.id IS NOT NULL");
-				//if(!is_null($_sportGameTypeID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_sportGameTypeID);    
-				/*if(!is_null($_competitionStatus)) $_qry = $_qry->addWhere("sprtGmGrp.competition_status = ?", $_competitionStatus);    
-				if(!is_null($_confirmedStatus)) $_qry = $_qry->addWhere("sprtGmGrp.confirmed_status = ?", $_confirmedStatus);    
-				if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("sprtGmGrp.approval_status = ?", $_approvalStatus);    
-				if(!is_null($_status)) $_qry = $_qry->addWhere("sprtGmGrp.status = ?", $_status);   */        
+				if(!is_null($_sportGameTypeID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_sportGameTypeID);    
+				if(!is_null($_competitionStatus)) $_qry = $_qry->addWhere("sprtGmGrp.competition_status = ?", $_competitionStatus);    
+				//if(!is_null($_confirmedStatus)) $_qry = $_qry->addWhere("sprtGmGrp.confirmed_status = ?", $_confirmedStatus);    
+				//if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("sprtGmGrp.approval_status = ?", $_approvalStatus);    
+				if(!is_null($_status)) $_qry = $_qry->addWhere("sprtGmGrp.status = ?", $_status);          
 				//if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("sprtGmGrp.id ", $_exclusion );         
 				if(!is_null($_keyword) )
 					if(strcmp(trim($_keyword), "") != 0 )

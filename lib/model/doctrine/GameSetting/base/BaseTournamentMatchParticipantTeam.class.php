@@ -130,7 +130,7 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              ));
         $this->hasColumn('qualified_flag', 'boolean', null, array(
              'type' => 'boolean',
-             'default' => false,
+             'default' => true,
              ));
         $this->hasColumn('confirmed_flag', 'boolean', null, array(
              'type' => 'boolean',
@@ -150,7 +150,7 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              ));
         $this->hasColumn('qualification_status', 'integer', null, array(
              'type' => 'integer',
-             'default' => 1,
+             'default' => 2,
              ));
         $this->hasColumn('competition_status', 'integer', null, array(
              'type' => 'integer',

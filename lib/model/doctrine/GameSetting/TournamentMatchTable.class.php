@@ -360,6 +360,15 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	
 	/********** Candidate Match Fixtures *******************/
 	//
+	public static function selectCandidateMatchFixtureGroups ( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_sportGameTypeID=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		
+		return TournamentMatchFixtureGroupTable::selectCandidates ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameTypeID, $_processStatus, $_approvalStatus, $_exclusion, $_keyword, $_offset, $_limit) ;
+		 
+	} 
+	
+	/********** Candidate Match Fixtures *******************/
+	//
 	public static function selectCandidateTournamentMatchParticipantFixtures ( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_sportGameID=null, $_sportGameTypeID=null, $_genderCategoryID=null, $_contestantTeamMode=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
 		

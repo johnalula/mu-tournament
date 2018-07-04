@@ -651,7 +651,7 @@ class TournamentMatchTeamMemberParticipantTable extends PluginTournamentMatchTea
 				->innerJoin("mtchPrtTmMbr.TournamentMatchFixture mtchFix on mtchPrtTmMbr.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")
-				->innerJoin("mtchFixGrp.TournamentSportGameGroup sprtGmGrp on mtchFixGrp.tournament_sport_game_group_id = sprtGmGrp.id ") 
+				->innerJoin("mtchPrtTm.TournamentSportGameGroup sprtGmGrp on mtchPrtTm.tournament_sport_game_group_id = sprtGmGrp.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipant tmMbrPrt on mtchPrtTmMbr.participant_team_member_id = tmMbrPrt.id ") 
 				->innerJoin("mtchPrtTmMbr.TeamMemberParticipantRole tmMbrPrtRol on mtchPrtTmMbr.participant_team_member_role_id = tmMbrPrtRol.id ") 
 				->innerJoin("mtchPrtTm.TournamentGroupParticipantTeam gmGrpMbr on mtchPrtTm.group_participant_team_id = gmGrpMbr.id ") 

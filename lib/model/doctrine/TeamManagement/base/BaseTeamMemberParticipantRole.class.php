@@ -91,7 +91,7 @@ abstract class BaseTeamMemberParticipantRole extends sfDoctrineRecord
              ));
         $this->hasColumn('qualification_status', 'integer', null, array(
              'type' => 'integer',
-             'default' => 5,
+             'default' => 2,
              ));
         $this->hasColumn('confirmed_status', 'integer', null, array(
              'type' => 'integer',

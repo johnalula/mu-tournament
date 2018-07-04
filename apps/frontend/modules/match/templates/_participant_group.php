@@ -8,12 +8,12 @@
 			<div class="ui-panel-grid">
 				<div class="ui-panel-header-default">
 					<h2 class="ui-theme-panel-header">
-						<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group management') ?>">
+						<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Tournament Match management') ?>">
 						<span class="ui-header-status-icon">
 							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
 							<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
 						</span>
-						<?php echo __('Match Fixture').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->tournamentMatchFullNumber.' )'  ?>
+						<?php echo __('Match Participant Teams').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->tournamentMatchFullNumber.' )'  ?>
 					</h2>
 					<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
 						<span id="ui-panel-form-up-arrow" class="ui-minimize-arrow"><img src="<?php echo image_path('icons/arrow_up') ?>"></span>		
@@ -34,7 +34,7 @@
 					<div class="ui-panel-content-box">
 						<div class="ui-panel-detail-form-container" style=""> 
 							<div class="ui-panel-form-content"> 
-								<?php include_partial('fixture_form', array('_tournamentMatch' => $_tournamentMatch,'_candidateRounds' => $_candidateRounds)) ?> 
+								<?php include_partial('participant_group_form', array('_tournamentMatch' => $_tournamentMatch,'_participantTeams' => $_participantTeams,'_candidateRounds' => $_candidateRounds)) ?> 
 							</div> <!-- ui-panel-content -->
 						</div> <!-- ui-panel-content -->
 
@@ -47,7 +47,7 @@
 												<li class="active">
 													<a href="#ui-main-tab-one" data-toggle="tab">
 														<img class="" src="<?php echo image_path('settings/team') ?>">
-														<?php echo __('Match Fixtures') ?>
+														<?php echo __('Participant Teams') ?>
 													</a>
 												</li>  
 											</ul>
@@ -58,23 +58,23 @@
 										<div class="ui-tab-separater"></div>
 										<div id="ui-main-tab-one" class="tab-pane active"> 
 											<!-- Begining of toolbar -->
-											<div class="ui-toolbar-menu-box  ui-toolbar-border1">
+											<div class="ui-toolbar-menu-box">
 												<div class="ui-toolbar-menu">
 													<div id="" class="navbar-collapse ui-toolbar">
 														<div class="">
-															<?php include_partial('footer_action_toolbar', array()) ?> 
-														</div>
-														<div class="">
-															<?php include_partial('filter', array( )) ?> 
-														</div><!-- end of ui-filter-list -->
+															<?php include_partial('footer_action_toolbar', array('_object' => $_tournamentMatch)) ?> 
+														</div> 
 													</div><!-- end of ui-filter-list -->
 												</div>
-											</div  
-											<!--    End of toolbar      -->
+											</div>
 											
 											<div id="ui-list-collapsible-panel-five">
-												<div class="ui-tab-panel-grid"> 
-													<?php include_partial('fixture_list', array('_tournamentFixtureGroups' => $_tournamentFixtureGroups)) ?>  
+												<div class="ui-tab-panel-grid">
+													<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
+														<?php include_partial('participant_pair_team_list', array('_tournamentMatchFixtureGroups' => $_tournamentMatchFixtureGroups)) ?> 
+													<?php else: ?>
+														<?php include_partial('participant_team_list', array('_candidateTournamentMatchFixtureGroups' => $_candidateTournamentMatchFixtureGroups)) ?> 
+													<?php endif; ?>
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											

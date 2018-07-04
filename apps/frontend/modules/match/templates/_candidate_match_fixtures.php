@@ -34,7 +34,7 @@
 				<?php echo TournamentCore::processEventTypeValue($_candidateMatchFixture->matchEventType) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_candidateMatchFixture->genderCategoryID ?>
+				<?php echo $_candidateMatchFixture->matchFixtureHeatNumber ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo  $_candidateMatchFixture->matchFixtureHeatName ?>

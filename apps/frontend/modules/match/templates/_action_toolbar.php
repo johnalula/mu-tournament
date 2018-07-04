@@ -58,6 +58,23 @@
 			<?php endif; ?>
 			
 			<?php if(($sf_request->getParameter('match_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+				<?php if($sf_request->getParameter('action') == 'participant_group'): ?> 
+					<li class="">
+						<button title="<?php echo __('Save Match Participant Team Information') ?>" id="createTournamentMatchParticipantGroup" class="ui-disabled-toolbar-btn" disabled >
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/save') ?>">
+							<?php echo __('Save') ?>
+						</button>
+					</li>	
+					<li class="">
+						<button title="<?php echo __('Cancel Match Participant Team Information') ?>" id="cancelTournamentMatchParticipantGroup" class="ui-disabled-toolbar-btn" disabled>
+							<img class="navbar-nav-img" src="<?php echo image_path('icons/cancel') ?>">
+							<?php echo __('Cancel') ?>
+						</button>
+					</li>
+				<?php endif; ?>
+			<?php endif; ?>
+			
+			<?php if(($sf_request->getParameter('match_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
 				<?php if($sf_request->getParameter('action') == 'participant_team'): ?> 
 					<li class="">
 						<button title="<?php echo __('Save Match Participant Team Information') ?>" id="createTournamentMatchParticipantTeam" class="ui-disabled-toolbar-btn" disabled >

@@ -93,7 +93,7 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
              ));
         $this->hasColumn('qualification_status', 'integer', null, array(
              'type' => 'integer',
-             'default' => 1,
+             'default' => 2,
              ));
         $this->hasColumn('confirmed_status', 'integer', null, array(
              'type' => 'integer',

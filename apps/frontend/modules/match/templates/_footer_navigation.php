@@ -33,9 +33,20 @@
 		<?php endif; ?>
 		
 		<?php if(($sf_request->getParameter('match_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
-			<?php if($sf_request->getParameter('action') == 'participant_team'): ?>
+			<?php if($sf_request->getParameter('action') == 'participant_group'): ?>
 				<li class="ui-nav-button">
 					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('match', 'match_id', 'fixture', $_object)) ?>">
+						<img class="navbar-nav-img" src="<?php echo image_path('pagination/previous_page') ?>">
+						<?php echo __('Back') ?>
+					</a>
+				</li>	   
+			<?php endif; ?>
+		<?php endif; ?>
+		
+		<?php if(($sf_request->getParameter('match_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+			<?php if($sf_request->getParameter('action') == 'participant_team'): ?>
+				<li class="ui-nav-button">
+					<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('match', 'match_id', 'participant_group', $_object)) ?>">
 						<img class="navbar-nav-img" src="<?php echo image_path('pagination/previous_page') ?>">
 						<?php echo __('Back') ?>
 					</a>
@@ -87,6 +98,19 @@
 		
 		<?php if(($sf_request->getParameter('match_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
 			<?php if($sf_request->getParameter('action') == 'fixture'): ?>
+				<?php if($_object->id ): ?>
+					<li class="ui-nav-button">
+						<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('match', 'match_id', 'participant_group', $_object)) ?>">
+							<img class="navbar-nav-img" src="<?php echo image_path('pagination/next_page') ?>">
+							<?php echo __('Next') ?>
+						</a>
+					</li>	  
+				<?php endif; ?>
+			<?php endif; ?>
+		<?php endif; ?>
+		
+		<?php if(($sf_request->getParameter('match_id') == $_object->id) && $sf_request->getParameter('token_id') == $_object->token_id): ?>
+			<?php if($sf_request->getParameter('action') == 'participant_group'): ?>
 				<?php if($_object->id ): ?>
 					<li class="ui-nav-button">
 						<a class="ui-nav-active-btn" href="<?php echo url_for(ModuleCore::makeModuleURLAction('match', 'match_id', 'participant_team', $_object)) ?>">
