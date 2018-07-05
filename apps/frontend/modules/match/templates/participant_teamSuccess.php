@@ -7,6 +7,14 @@
 	
 	//197085e1173adc58335847f14dc45cea443248df 
 	//echo count($_tournamentSportGameOpponentGroups);
+	
+	//match_fixture=Heat One - Basketball  - Men (Basketball)&match_fixture_id=1&match_fixture_token_id=a90d585ad1da0c0dd714912740ef5e51745c8d4e&gender_category_id=1&tournament_match_fixture_group_id=1&tournament_match_fixture_token_group_id=34bcd0dddecf6761dc6460017f3abdf699cadcda&sport_game_id=17&contestant_team_mode=1&match_fixture_contestant_team_mode=1&tournament_contestant_team_mode=1&tournament_match_id=1&tournament_match_token_id=1823478c831a03403d922373feb04f578e3ce4c2&tournament_match_game_category_id=2&tournament_sport_game_group_name=Group One - Basketball (Men) -  - Basketball&tournament_sport_game_group_id=1&tournament_sport_game_group_token_id=1a2177208e4f072db768f63d20f327ddab8ae56b&participant_team_name=Addis ababa Science and Technology University (AASTU) - Ethiopia &participant_team_id=8&participant_team_token_id=14395d0b7cb00ce1f80ad795936f1c0deb570c5d&sport_game_group_team_id=4&sport_game_group_team_token_id=b03a7b37a6054c598fc66c7f7fc0340977bb64f3&tournament_sport_game_group_opponent_name=Group One - Basketball (Men) -  - Basketball&tournament_sport_game_group_opponent_id=1&tournament_sport_game_group_opponent_token_id=1a2177208e4f072db768f63d20f327ddab8ae56b&opponent_participant_team_name=Adigrat University (ADU) - Ethiopia &opponent_participant_team_id=2&opponent_participant_team_token_id=2f6e72bdaf446d6dc8cd78db58dc76d7b2f860c4&opponent_sport_game_group_team_id=1&opponent_sport_game_group_team_token_id=a2f68785f56d6fc270c25f4950b7f4861dbe9073&description=
+	
+	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, 1, '1823478c831a03403d922373feb04f578e3ce4c2', 1, 'a90d585ad1da0c0dd714912740ef5e51745c8d4e', 1, '34bcd0dddecf6761dc6460017f3abdf699cadcda', 1, '1a2177208e4f072db768f63d20f327ddab8ae56b', 4, 'b03a7b37a6054c598fc66c7f7fc0340977bb64f3', 1, '1a2177208e4f072db768f63d20f327ddab8ae56b', 1, 'a2f68785f56d6fc270c25f4950b7f4861dbe9073', 2, '2f6e72bdaf446d6dc8cd78db58dc76d7b2f860c4', 'Heat One - Basketball  - Men (Basketball)', 'Addis ababa Science and Technology University (AASTU)', 'Group One - Basketball (Men) -  - Basketball', 'Group One - Basketball (Men) -  - Basketball', 'Adigrat University (ADU) - Ethiopia', $_description, 1, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
+	
+	//$_candidateParticipantTeamss = TournamentMatchTable::selectCandidateMatchFixtureGroups ( 1, '1823478c831a03403d922373feb04f578e3ce4c2', 2, $_keyword, 0, 10 ) ;
+	//$_candidateParticipantTeamss = TournamentMatchParticipantTeamTable::makeAllCandidateSelection ( 1, '1823478c831a03403d922373feb04f578e3ce4c2', $_matchFixtureID, 2, $_sportGameID) ;
+	//echo count($_candidateParticipantTeamss);
 ?> 
 
 <div class="ui-page-box">
@@ -413,7 +421,7 @@
 		var url = '<?php echo url_for('match/candidateMatchParticipantOpponentTeams')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-group-member-opponent_teams';   
-		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&match_fixture_id='+document.getElementById('match_fixture_id').value+'&match_fixture_token_id='+document.getElementById('match_fixture_token_id').value+'&tournament_sport_game_group_id='+document.getElementById('tournament_sport_game_group_id').value+'&sport_game_group_team_id='+document.getElementById('sport_game_group_team_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
+		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&match_fixture_id='+document.getElementById('match_fixture_id').value+'&match_fixture_token_id='+document.getElementById('match_fixture_token_id').value+'&tournament_sport_game_group_id='+document.getElementById('tournament_sport_game_group_opponent_id').value+'&sport_game_group_team_id='+document.getElementById('opponent_sport_game_group_team_id').value+'&gender_category_id='+document.getElementById('gender_category_id').value;
 		//alert(data);
 		processDataSelection(data, idName, url );		 
 	}); 
@@ -433,9 +441,6 @@
 			document.getElementById("match_fixture").value = listArr[7]+' - '+listArr[4]+' '+listArr[6]+' - '+listArr[8]+' ('+listArr[5]+')';    
 			document.getElementById("gender_category_id").value = listArr[9];  
 			document.getElementById("sport_game_id").value = listArr[11];  
-			document.getElementById("sport_game_venue_name").value = listArr[13];  
-			document.getElementById("match_date").value = listArr[14];  
-			document.getElementById("match_time").value = listArr[15];  
 			
 			$(".selectCandidateTournamentSportGameGroup").removeAttr("disabled") ;
 			$('#candidateTournamentMatchFixtureModal').modal('hide');

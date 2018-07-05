@@ -97,4 +97,25 @@ class TournamentMatchFixture extends PluginTournamentMatchFixture
 		$this->save();
 		return $_flag;
 	}
+	
+	/********************************************************/
+	
+	public function makeTournamentMatchSchedule($_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession)
+	{
+		$_flag = true;   
+		$this->match_venue = trim($_tournamentMatchVenu); 
+		$this->match_time = trim($_matchTime);  
+		$this->match_date = trim($_matchDate);  
+		$this->tournament_match_session_mode = trim($_tournamentMatchSession);  
+		$this->save();
+		return $_flag;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 }

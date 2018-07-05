@@ -488,29 +488,7 @@ class TournamentCore {
 
 	public static function processRoundModeValue ($_id )
 	{
-		try {switch($_distance) {			
-			case self::$_RUNNING_ATHLETICS:
-				return 'running';
-			break; 
-			case self::$_HURDLE_ATHLETICS:
-				return 'hurdles';
-			break;
-			case self::$_STEEPLE_CHASE_ATHLETICS:
-				return 'steeplechase';
-			break;
-			case self::$_RELAY_ATHLETICS:
-				return 'relay';
-			break;
-			case self::$_JUMP_ATHLETICS:
-				return 'jumps';
-			break;
-			case self::$_THROW_ATHLETICS:
-				return 'throws';
-			break; 
-			default:
-				return 'other';
-			break;
-		}
+		try { 
 			foreach( self::$_ROUND_MODES as $_key=> $_round ){
 			  if( $_key == $_id )
 					return $_round; 
@@ -1028,6 +1006,11 @@ class TournamentCore {
 				return 'sixteen';
 			break; 
 		}
+	}
+	
+	public static function makeGroupName ($_number )
+	{
+		 return ('Group '.self::processRoundNumberValue($_number));
 	}
 	/*********************************************/
 	

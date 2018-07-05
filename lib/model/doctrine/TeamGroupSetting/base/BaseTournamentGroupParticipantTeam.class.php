@@ -19,8 +19,10 @@
  * @property boolean $active_flag
  * @property boolean $completed_flag
  * @property boolean $qualified_flag
+ * @property boolean $competition_flag
  * @property integer $qualification_status
  * @property integer $confirmed_status
+ * @property integer $competition_status
  * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
@@ -91,11 +93,19 @@ abstract class BaseTournamentGroupParticipantTeam extends sfDoctrineRecord
              'type' => 'boolean',
              'default' => true,
              ));
+        $this->hasColumn('competition_flag', 'boolean', null, array(
+             'type' => 'boolean',
+             'default' => false,
+             ));
         $this->hasColumn('qualification_status', 'integer', null, array(
              'type' => 'integer',
              'default' => 2,
              ));
         $this->hasColumn('confirmed_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
+             ));
+        $this->hasColumn('competition_status', 'integer', null, array(
              'type' => 'integer',
              'default' => 1,
              ));

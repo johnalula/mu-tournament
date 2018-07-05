@@ -47,7 +47,7 @@
 												<li class="active">
 													<a href="#ui-main-tab-one" data-toggle="tab">
 														<img class="" src="<?php echo image_path('settings/team') ?>">
-														<?php echo __('Participant Teams') ?>
+														<?php echo __('Sport Game Heats') ?>
 													</a>
 												</li>  
 											</ul>
@@ -70,11 +70,7 @@
 											
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
-													<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
-														<?php include_partial('participant_pair_team_list', array('_tournamentMatchFixtureGroups' => $_tournamentMatchFixtureGroups)) ?> 
-													<?php else: ?>
-														<?php include_partial('participant_team_list', array('_candidateTournamentMatchFixtureGroups' => $_candidateTournamentMatchFixtureGroups)) ?> 
-													<?php endif; ?>
+													<?php include_partial('participant_group_list', array('_tournamentFixtureGroups' => $_tournamentFixtureGroups)) ?> 
 												</div>		
 											</div><!-- ui-tab-panel-grid -->
 											

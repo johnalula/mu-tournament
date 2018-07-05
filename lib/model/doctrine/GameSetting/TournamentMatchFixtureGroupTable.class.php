@@ -17,11 +17,11 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
         return Doctrine_Core::getTable('TournamentMatchFixtureGroup');
     }
      //
-	public static function processNew ( $_tournamentMatchID, $_tournamentMatchFixtureID, $_tournamentMatchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_sportGameGroupNumber, $_matchHeatNumber, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description )
+	public static function processNew ( $_tournamentMatchID, $_tournamentMatchFixtureID, $_tournamentMatchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_sportGameGroupNumber, $_matchHeatNumber, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_contestantTeamMode, $_remark, $_description )
 	{
 			$_flag = true;
 			
-			$_matchFixtureGroup = self::processSave ( $_tournamentMatchID, $_tournamentMatchFixtureID, $_tournamentMatchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_sportGameGroupNumber, $_matchHeatNumber, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark , $_description );
+			$_matchFixtureGroup = self::processSave ( $_tournamentMatchID, $_tournamentMatchFixtureID, $_tournamentMatchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_sportGameGroupNumber, $_matchHeatNumber, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_contestantTeamMode, $_remark , $_description );
 			
 			$_flag = $_matchFixtureGroup->makeMatchFixtureGroupCode ($_tournamentMatchNumber, $_tournamentMatchFixtureID);
 			
@@ -32,7 +32,7 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 	{
 		
 	} 
-	public static function processSave ( $_tournamentMatchID, $_tournamentMatchFixtureID, $_tournamentMatchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_sportGameGroupNumber, $_matchHeatNumber, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description )
+	public static function processSave ( $_tournamentMatchID, $_tournamentMatchFixtureID, $_tournamentMatchFixtureTokenID, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_sportGameGroupNumber, $_matchHeatNumber, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_contestantTeamMode, $_remark, $_description )
 	{
 		//try { 
 			//if(!$_orgID || !$_name) return false;
@@ -44,9 +44,11 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 			$_nw->tournament_match_fixture_id = trim($_tournamentMatchFixtureID); 
 			$_nw->tournament_match_fixture_token_id = sha1(md5(trim($_tournamentMatchFixtureID)));  
 			$_nw->match_fixture_round_mode = trim($_matchRoundMode); 
+			$_nw->contestant_team_mode = trim($_contestantTeamMode); 
 			$_nw->number_of_qualifying_rows = trim($_qualifyingRowNumbers); 
 			$_nw->number_of_best_qualifying_rows = trim($_bestQqualifyingRowNumbers); 
 			$_nw->match_group_number = trim($_sportGameGroupNumber); 
+			$_nw->match_group_name = TournamentCore::makeGroupName($_sportGameGroupNumber); 
 			$_nw->match_heat_number = trim($_matchHeatNumber); 
 			$_nw->match_heat_name = TournamentCore::processHeatNumberValue(trim($_matchHeatNumber)); 
 			$_nw->match_venue = trim($_tournamentMatchVenue); 
@@ -67,6 +69,20 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 		//} catch ( Exception $e) {
 	    //  return false; 
 		//}
+	} 
+	
+	public static function makeUpdate ( $_orgID, $_orgTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession, $_userID, $_userTokenID )
+	{
+			$_tournamentMatchFixture = TournamentMatchFixtureTable::makeCandidateObject ( $_matchFixtureID, $_matchFixtureTokenID  );
+		
+			$_matchFixtureGroupObj = self::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID);
+		
+			$_flag = $_matchFixtureGroupObj->makeTournamentMatchSchedule($_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession);
+		
+			$_flag = $_tournamentMatchFixture->makeTournamentMatchSchedule($_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession);
+			
+			return $_flag;
+		
 	} 
 	public static function processEdit ( )
 	{
@@ -102,11 +118,11 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 	}
 	public static function appendQueryFields ( ) 
 	{		
-		 $_queryFileds = "mtchFixGrp.id, mtchFixGrp.match_heat_number as matchFixtureHeatNumber, mtchFixGrp.match_heat_name as matchFixtureHeatName, mtchFixGrp.match_venue as tournamentMatchFixtureGroupVenue, mtchFixGrp.match_date as fixtureGroupMatchDate, mtchFixGrp.match_time as fixtureGroupMatchTime, mtchFixGrp.match_fixture_round_mode as matchFixtureGroupRoundMode, mtchFixGrp.tournament_match_session_mode as matchFixtureGroupSessionMode, mtchFixGrp.tournament_match_session_mode as matchFixtureGroupSessionMode, mtchFixGrp.qualifying_rows_enable_flag as enableQualifyingRowFlag, mtchFixGrp.fixture_round_status as qualifyingStatus, 
+		 $_queryFileds = "mtchFixGrp.id, mtchFixGrp.match_group_number as matchFixtureGroupNumber, mtchFixGrp.match_heat_number as matchFixtureHeatNumber, mtchFixGrp.match_heat_name as matchFixtureHeatName, mtchFixGrp.match_venue as tournamentMatchFixtureGroupVenue, mtchFixGrp.match_date as fixtureGroupMatchDate, mtchFixGrp.match_time as fixtureGroupMatchTime, mtchFixGrp.match_fixture_round_mode as matchFixtureGroupRoundMode, mtchFixGrp.match_venue as matchFixtureGroupMatchVenue, mtchFixGrp.tournament_match_session_mode as matchFixtureGroupSessionMode, mtchFixGrp.qualifying_rows_enable_flag as enableQualifyingRowFlag, mtchFixGrp.fixture_round_status as qualifyingStatus, mtchFixGrp.competition_status as competitionStatus, 
 		 
-								mtchFix.id as matchFixtureID, mtchFix.token_id as matchFixtureTokenID, mtchFix.match_round_type_id as matchRoundTypeID, mtchFix.event_type as matchEventType, mtchFix.contestant_mode as matchContestantMode, mtchFix.match_venue as matchVenue, mtchFix.gender_category_id as genderCategoryID, mtchFix.tournament_match_fixture_number as tournamentMatchFixtureNumber, mtchFix.tournament_match_fixture_full_number as tournamentMatchFixtureFullNumber, mtchFix.match_venue as tournamentMatchFixtureVenue, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.id as groupID, mtchFix.active_flag as activeFlag, mtchFix.sport_game_id as fixtureSportGameID, mtchFix.match_round_type_name as roundTypeName, mtchFix.match_round_type_name as matchFixtureRoundName, 
+								mtchFix.id as matchFixtureID, mtchFix.token_id as matchFixtureTokenID, mtchFix.match_round_type_id as matchRoundTypeID, mtchFix.event_type as matchEventType, mtchFix.contestant_mode as matchContestantMode, mtchFix.contestant_team_mode as matchContestantTeamMode, mtchFix.match_venue as matchVenue, mtchFix.gender_category_id as genderCategoryID, mtchFix.tournament_match_fixture_number as tournamentMatchFixtureNumber, mtchFix.tournament_match_fixture_full_number as tournamentMatchFixtureFullNumber, mtchFix.match_venue as tournamentMatchFixtureVenue, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.id as groupID, mtchFix.active_flag as activeFlag, mtchFix.sport_game_id as fixtureSportGameID, mtchFix.match_round_type_name as roundTypeName, mtchFix.match_round_type_name as matchFixtureRoundName, mtchFix.match_fixture_round_mode as matchFixtureRoundMode, 
 		 
-								trnmtMtch.id as tournamentMatchID, trnmtMtch.tournament_match_number as tournamentMatchNumbe, trnmtMtch.tournament_match_full_number as tournamentMatchFullNumber, trnmtMtch.tournament_match_result_mode as tournamentMatchResultMode, trnmtMtch.tournament_match_round_mode as tournamentMatchRoundMode,
+								trnmtMtch.id as tournamentMatchID, trnmtMtch.tournament_match_number as tournamentMatchNumber, trnmtMtch.tournament_match_full_number as tournamentMatchFullNumber, trnmtMtch.tournament_match_result_mode as tournamentMatchResultMode, trnmtMtch.tournament_match_round_mode as tournamentMatchRoundMode,
 								prntMtchFix.id as parentMatchFixtureID, 
 								
 								sprtGm.id as sportGameID, sprtGm.token_id as sportGameTokenID, sprtGm.name as sportGameName,  sprtGm.sport_game_category_id as matchSportGameCategoryID, sprtGm.contestant_team_mode as gameContestantTeamMode, sprtGm.sport_game_type_mode as sportGameTypeMode, sprtGm.contestant_team_mode as contestantTeamMode, sprtGm.contestant_mode as contestantMode, sprtGm.distance_type as sportGameDistanceTypeID, sprtGm.distance_type as sportGameDistanceTypeID, 
@@ -136,8 +152,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("mtchFix.id DESC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id DESC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
@@ -165,8 +181,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")   
-				->orderBy("mtchFix.id ASC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id ASC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
@@ -196,8 +212,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit)   
-				->orderBy("mtchFix.id ASC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id ASC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_sportGameTypeID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_sportGameTypeID);    
 				if(!is_null($_genderCategoryID)) $_qry = $_qry->addWhere("sprtGmGrp.gender_category_id = ?", $_genderCategoryID);      
@@ -225,8 +241,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit)   
-				->orderBy("mtchFix.id ASC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id ASC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_sportGameTypeID)) $_qry = $_qry->addWhere("gmCat.id = ?", $_sportGameTypeID);    
 				if(!is_null($_competitionStatus)) $_qry = $_qry->addWhere("mtchFixGrp.competition_status = ?", $_competitionStatus);
@@ -255,8 +271,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
-				->orderBy("mtchFix.id DESC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id DESC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("mtchFix.tournament_match_id = ? AND mtchFix.tournament_match_token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));    
 				if(!is_null($_parentMatchID)) $_qry = $_qry->addWhere("mtchFix.parent_match_fixture_id = ? ", $_parentMatchID);    
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
@@ -284,8 +300,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
-				->orderBy("mtchFix.id ASC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id ASC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_matchFixtureID)) $_qry = $_qry->addWhere("mtchFix.id = ?", $_matchFixtureID);    
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
@@ -342,7 +358,7 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
    public static function makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID) 
 	{
 		$_qry = Doctrine_Query::create()
-				->select("mtchFixGrp.id, (EXISTS (SELECT gmGrpMbr1.id FROM TournamentGroupParticipantTeam gmGrpMbr1 WHERE gmGrpMbr1.tournament_sport_game_group_id = sprtGmGrp.id AND gmGrpMbr1.tournament_sport_game_group_token_id = ".sha1."(".md5."("."sprtGmGrp.token_id)) AND gmGrpMbr1.confirmed_status=".TournamentCore::$_INITIATED." AND gmGrpMbr1.confirmed_flag IS FALSE )) as hasActiveGroupParticipantTeam")
+				->select("mtchFixGrp.id")
 				->from("TournamentMatchFixtureGroup mtchFixGrp") 
 				->innerJoin("mtchFixGrp.TournamentMatchFixture mtchFix on mtchFixGrp.tournament_match_fixture_id = mtchFix.id ")  
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
@@ -374,8 +390,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
-				->orderBy("mtchFix.id ASC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id ASC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
@@ -405,8 +421,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit)   
-				->orderBy("mtchFix.id DESC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id DESC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				//if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("mtchFixGrp.tournament_match_id = ?", $_tournamentMatchID);         
 				if(!is_null($_processStatus)) $_qry = $_qry->addWhere("mtchFixGrp.process_status = ?", $_processStatus);         
@@ -435,13 +451,41 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
-				//->offset($_offset)
-				//->limit($_limit)   
-				->orderBy("mtchFix.id ASC")
-				->where("mtchFix.id IS NOT NULL");
+				->offset($_offset)
+				->limit($_limit)   
+				->orderBy("mtchFixGrp.id ASC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_sportGameTypeID)) $_qry = $_qry->addWhere("trnmtMtch.sport_game_category_id = ?", $_sportGameTypeID);    
 				if(!is_null($_processStatus)) $_qry = $_qry->addWhere("mtchFixGrp.process_status = ?", $_processStatus);    
+				if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("mtchFixGrp.approval_status = ?", $_approvalStatus);      
+				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("mtchFixGrp.id ", $_exclusion );
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("gmCat.category_name LIKE ? OR mtchFix.id LIKE ? OR mtchFix.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+   public static function selectApprovalCandidates ( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_confirmedStatus=null,  $_competitionStatus=null, $_competitionStatus=null, $_approvalStatus=null) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("TournamentMatchFixtureGroup mtchFixGrp") 
+				->leftJoin("mtchFixGrp.TournamentMatchFixture mtchFix on mtchFixGrp.tournament_match_fixture_id = mtchFix.id ")  
+				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
+				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ") 
+				->innerJoin("mtchFix.SportGame sprtGm on mtchFix.sport_game_id = sprtGm.id ")  
+				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")   
+				->orderBy("mtchFixGrp.id ASC")
+				->where("mtchFixGrp.id IS NOT NULL");
+				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
+				if(!is_null($_competitionStatus)) $_qry = $_qry->addWhere("mtchFixGrp.process_status = ?", $_competitionStatus);    
+				if(!is_null($_confirmedStatus)) $_qry = $_qry->addWhere("mtchFixGrp.qualification_status = ?", $_confirmedStatus);    
+				if(!is_null($_qualificationStatus)) $_qry = $_qry->addWhere("mtchFixGrp.qualification_status = ?", $_qualificationStatus);    
 				if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("mtchFixGrp.approval_status = ?", $_approvalStatus);      
 				if(! is_null($_exclusion)) $_qry = $_qry->andWhereNotIn("mtchFixGrp.id ", $_exclusion );
 				if(!is_null($_keyword) )
@@ -466,8 +510,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")   
-				->orderBy("mtchFix.id DESC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id DESC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentMatchID)) $_qry = $_qry->addWhere("trnmtMtch.id = ? AND trnmtMtch.token_id = ? ", array($_tournamentMatchID, $_tournamentMatchTokenID));
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
 				if(!is_null($_sportGameTypeID)) $_qry = $_qry->addWhere("trnmtMtch.sport_game_category_id = ?", $_sportGameTypeID);  
@@ -492,8 +536,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit)   
-				->orderBy("mtchFix.id DESC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id DESC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_competitionStatus)) $_qry = $_qry->addWhere("mtchFixGrp.competition_status = ?", $_competitionStatus);    
 				if(!is_null($_status)) $_qry = $_qry->addWhere("mtchFixGrp.status = ?", $_status);      
@@ -526,8 +570,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("mtchFix.id DESC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id DESC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
 				if(!is_null($_genderCategory)) $_qry = $_qry->addWhere("sprtGmGrp.gender_category_id = ?", $_genderCategory);    
@@ -556,14 +600,14 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 				->innerJoin("trnmtMtch.Tournament trnmt on trnmtMtch.tournament_id = trnmt.id ")  
 				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
-				->orderBy("mtchFix.id DESC")
-				->where("mtchFix.id IS NOT NULL");
+				->orderBy("mtchFixGrp.id DESC")
+				->where("mtchFixGrp.id IS NOT NULL");
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmt.id = ?", $_tournamentID);    
-				//if(!is_null($_tournamentSessionMode)) $_qry = $_qry->addWhere("mtchFixGrp.tournament_match_session_mode = ?", $_tournamentSessionMode);    
+				if(!is_null($_tournamentSessionMode)) $_qry = $_qry->addWhere("mtchFixGrp.tournament_match_session_mode = ?", $_tournamentSessionMode);    
 				//if(!is_null($_approvalStatus)) $_qry = $_qry->addWhere("mtchFixGrp.approval_status = ?", $_approvalStatus);    
 				if(!is_null($_status)) $_qry = $_qry->addWhere("mtchFixGrp.competition_status = ?", $_status);    
 				//if(!is_null($_status)) $_qry = $_qry->addWhere("mtchFixGrp.status = ?", $_status);      
-				//if(!is_null($_tournamentDate)) $_qry = $_qry->addWhere("mtchFixGrp.match_date = ?", $_tournamentDate);    
+			if(!is_null($_tournamentDate)) $_qry = $_qry->addWhere("mtchFixGrp.match_date = ?", $_tournamentDate);    
 				
 			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
 

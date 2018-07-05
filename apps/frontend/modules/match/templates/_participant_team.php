@@ -71,7 +71,7 @@
 											<div id="ui-list-collapsible-panel-five">
 												<div class="ui-tab-panel-grid">
 													<?php if($_tournamentMatch->contestantTeamMode == TournamentCore::$_PAIR_TEAM): ?>
-														<?php include_partial('participant_pair_team_list', array('_tournamentMatchFixtureGroups' => $_tournamentMatchFixtureGroups)) ?> 
+														<?php include_partial('participant_pair_team_list', array('_tournamentMatchFixtureGroups' => $_candidateTournamentMatchFixtureGroups)) ?> 
 													<?php else: ?>
 														<?php include_partial('participant_team_list', array('_candidateTournamentMatchFixtureGroups' => $_candidateTournamentMatchFixtureGroups)) ?> 
 													<?php endif; ?>

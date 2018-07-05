@@ -55,18 +55,11 @@ class TournamentGroupParticipantTeam extends PluginTournamentGroupParticipantTea
 	{
 		$_flag = true;   
 		$this->confirmed_flag = true; 
+		$this->qualification_status = trim(TournamentCore::$_QFD); 
 		$this->confirmed_status = trim(TournamentCore::$_CONFIRMED); 
 		$this->save();
 		return $_flag;
-	}
-	public function makeProcessRevertion ()
-	{
-		$_flag = true;       
-		$this->status = trim(TournamentCore::$_ACTIVE); 
-		$this->effective_date = NULL;  
-		$this->save();
-		return $_flag;
-	}
+	} 
 	public function makeCompletion ()
 	{
 		$_flag = true;   

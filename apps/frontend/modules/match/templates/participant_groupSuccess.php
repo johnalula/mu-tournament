@@ -7,13 +7,21 @@
 	
 	//197085e1173adc58335847f14dc45cea443248df 
 	//echo count($_candidateMatchFixtures);
+	
+	//match_fixture=Heat One - Basketball  - Men (Basketball)&match_fixture_id=1&match_fixture_token_id=a90d585ad1da0c0dd714912740ef5e51745c8d4e&tournament_match_fixture_group_id=1&tournament_match_fixture_token_group_id=34bcd0dddecf6761dc6460017f3abdf699cadcda&tournament_match_id=1&tournament_match_token_id=1823478c831a03403d922373feb04f578e3ce4c2&tournament_match_game_category_id=2&sport_game_venue_name=Tigray Stadium ( City )&sport_game_group_type_id=&match_date=07/02/2018&match_time=8:00 AM&tournament_match_time_value=8:00&tournament_match_session=1&description=
+	
+	//$_flag =  TournamentMatchFixtureGroupTable::makeUpdate ( $_orgID, $_orgTokenID, 1, 'a90d585ad1da0c0dd714912740ef5e51745c8d4e', 1, '34bcd0dddecf6761dc6460017f3abdf699cadcda', 'Tigray Stadium ( City )', '07/02/2018', '8:00 AM', 1, $_userID, $_userTokenID );
+	
+	//$_matchFixtureGroupObj = TournamentMatchFixtureTable::makeCandidateObject ( 1, 'a90d585ad1da0c0dd714912740ef5e51745c8d4e');
+	
+	//echo $_matchFixtureGroupObj->token_id;
 ?> 
 
 <div class="ui-page-box">
 	<div class="ui-main-content-box" >
 		<div class="ui-detail-tab-list ui-grid-content-container-box" >
 			<div id="ui-tab-three" class="ui-tab" style="">
-				<?php include_partial('participant_group', array( '_tournamentMatch' => $_tournamentMatch,'_activeTournament' => $_activeTournament, '_tournamentMatchFixtureGroups' => $_tournamentMatchFixtureGroups, '_candidateTournamentMatchFixtureGroups' => $_candidateTournamentMatchFixtureGroups )) ?> 
+				<?php include_partial('participant_group', array( '_tournamentMatch' => $_tournamentMatch,'_activeTournament' => $_activeTournament, '_tournamentFixtureGroups' => $_tournamentFixtureGroups, '_candidateTournamentMatchFixtureGroups' => $_candidateTournamentMatchFixtureGroups )) ?> 
 			</div><!-- end of ui-tab-three-->
 		</div> <!-- end of ui-detail-tab-list -->
 		<div class="ui-clear-fix"></div>
@@ -94,65 +102,7 @@
 	</div><!-- /.modal-dialog -->
 </form>
 </div><!-- /.modal -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="candidateTournamentSportGameGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<form id="insertModalOneData">
-	<div class="modal-dialog">
-		<div class="modal-content"> 
-			 <div class="ui-modal-panel-container1" id=""> 
-				<div class="ui-panel-grid-box" id=""> 
-					<!-- First panel -->  
-						<div class="ui-panel-grid">
-							<div class="ui-panel-header-default">
-								<h2 class="ui-theme-panel-header">
-									<img src="<?php echo image_path('settings/team_group') ?>" title="<?php echo __('Team Group Management') ?>">
-									<span class="ui-header-status-icon">
-										<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->status == TournamentCore::$_ACTIVE ? 'status/enabled':'status/pending')  ?>"> 
-										<img title="<?php echo $_tournamentMatch->gameCategoryName ?>" src="<?php echo image_path($_tournamentMatch->activeFlag ? 'status/active':'status/other')  ?>"> 
-									</span>
-									<?php echo __('Candidate Sport Games').' ( Sport Game: '.$_tournamentMatch->gameCategoryName.' - Code #: '.$_tournamentMatch->matchNumber.' )'  ?>
-								</h2>
-								<div class="ui-panel-content-minimize opened" id="ui-list-collaps-panel-one" style="">	
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-								</div>
-							</div><!-- ui-panel-header-default -->
-							<div class="" id="ui-list-collapsible-panel-one">
-								<div class="ui-panel-content-separater"></div><!-- end of ui-panel-filter-box -->
-							<!-- Begining of toolbar -->
-								<div class="ui-toolbar-menu-box ui-panel-content-border">
-									<div class="ui-toolbar-menu">
-										<?php include_partial('partials/insert_toolbar', array('_object' => $_candidateSportGames)) ?> 
-									</div>
-								</div>
-								<!--    End of toolbar      -->
-								<div class="ui-panel-content-box">
-									<div class="ui-panel-content-box ">
-										<div class="ui-panel-grid-list"> 
-											<?php include_partial('candidate_tournament_groups', array( '_tournamentSportGameGroups' => $_tournamentSportGameGroups )) ?> 
-										</div>
-									</div> 
-									
-									<div class="ui-panel-footer-default">
-										<div class="ui-panel-list-pagination-default">
-											<div class="ui-panel-list-pagination">
-												<?php include_partial('global/pagination', array('_totalRecords' => $_countProducts , '_pager'=> 'sport_game')) ?>
-											</div>
-										</div>
-									</div>
-											
-								</div> 			
-							</div><!-- ui-panel-content-box --> 
-						</div><!-- end of ui-panel-grid --> 
-					<!-- First panel --> 
-					<div class="clearFix"></div>		
-				</div><!-- end of ui-panel-grid-box --> 
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</form>
-</div><!-- /.modal -->
+ 
 
 <div class="modal fade" id="processAjaxLoadergModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
 	<div class="modal-dialog-xxsm">
@@ -173,8 +123,8 @@
 		var formName = 'createTournamentMatchParticipantGroupForm';
 		var data = $("form#createTournamentMatchParticipantGroupForm").serialize();
 		var datas = generateValidData (formName);
-		//processEntry(datas, url )
-		alert(datas);
+		processEntry(datas, url )
+		//alert(datas);
 		return true; 
 	});  
 	 
@@ -189,7 +139,7 @@
 	//*********************************/
 	
 	$('.selectCandidateTournamentMatchFixture').click(function() {   
-		var url = '<?php echo url_for('match/candidateTournamentMatchParticipantFixtures')?>'; 
+		var url = '<?php echo url_for('match/candidateTournamentMatchFixtureGroups')?>'; 
 		var navName = $(this).attr('rel'); 
 		var idName = 'candidate-match-fixtures';   
 		var data = 'tournament_match_id='+document.getElementById('tournament_match_id').value+'&tournament_match_token_id='+document.getElementById('tournament_match_token_id').value+'&tournament_match_game_category_id='+document.getElementById('tournament_match_game_category_id').value;

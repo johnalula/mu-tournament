@@ -37,7 +37,7 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
 				
 				for($_i=0,$_key=$_initialGroupNumber;$_i<$_heatsPerFixture;$_i++,++$_key) {
 						
-						$_matchFixtureGroup = TournamentMatchFixtureGroupTable::processNew ( $_tournamentMatchID, $_matchFixture->id, $_matchFixture->token_id, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_sportGameGroupNumber, $_key, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_remark, $_description );
+						$_matchFixtureGroup = TournamentMatchFixtureGroupTable::processNew ( $_tournamentMatchID, $_matchFixture->id, $_matchFixture->token_id, $_sportGameGroupID, $_sportGameGroupName, $_matchRoundMode, $_tournamentMatchNumber, $_sportGameGroupNumber, $_key, $_tournamentMatchVenue, $_tournamentMatchSession, $_matchTime, $_matchDate, $_qualifyingRowNumbers, $_bestQqualifyingRowNumbers, $_qualifyingRowNumbersFlag, $_bestQqualifyingRowNumbersFlag, $_qualifyingStatus, $_matchStatus, $_contestantTeamMode, $_remark, $_description );
 						
 				}
 					
@@ -367,7 +367,7 @@ class TournamentMatchFixtureTable extends PluginTournamentMatchFixtureTable
    public static function makeCandidateObject ( $_matchFixtureID, $_matchFixtureTokenID  ) 
 	{
 		$_qry = Doctrine_Query::create()
-					->select(self::appendQueryFields())
+				->select("mtchFix.id")
 				->from("TournamentMatchFixture mtchFix") 
 				->leftJoin("mtchFix.TournamentMatchFixture prntMtchFix on mtchFix.parent_match_fixture_id = prntMtchFix.id ")  
 				->innerJoin("mtchFix.TournamentMatch trnmtMtch on mtchFix.tournament_match_id = trnmtMtch.id ")

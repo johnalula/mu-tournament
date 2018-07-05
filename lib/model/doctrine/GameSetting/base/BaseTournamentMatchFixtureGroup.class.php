@@ -31,7 +31,6 @@
  * @property boolean $enable_participant_team_number_mandatory_flag
  * @property boolean $enable_participant_number_mandatory_flag
  * @property boolean $qualified_flag
- * @property integer $qualification_status
  * @property boolean $confirmed_flag
  * @property boolean $competition_flag
  * @property boolean $active_flag
@@ -40,6 +39,8 @@
  * @property integer $competition_status
  * @property integer $fixture_round_status
  * @property integer $duration_status
+ * @property integer $qualification_status
+ * @property integer $confirmed_status
  * @property integer $process_status
  * @property integer $approval_status
  * @property integer $status
@@ -154,10 +155,6 @@ abstract class BaseTournamentMatchFixtureGroup extends sfDoctrineRecord
              'type' => 'boolean',
              'default' => true,
              ));
-        $this->hasColumn('qualification_status', 'integer', null, array(
-             'type' => 'integer',
-             'default' => 2,
-             ));
         $this->hasColumn('confirmed_flag', 'boolean', null, array(
              'type' => 'boolean',
              'default' => false,
@@ -187,6 +184,14 @@ abstract class BaseTournamentMatchFixtureGroup extends sfDoctrineRecord
              ));
         $this->hasColumn('duration_status', 'integer', null, array(
              'type' => 'integer',
+             ));
+        $this->hasColumn('qualification_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 2,
+             ));
+        $this->hasColumn('confirmed_status', 'integer', null, array(
+             'type' => 'integer',
+             'default' => 1,
              ));
         $this->hasColumn('process_status', 'integer', null, array(
              'type' => 'integer',

@@ -6,9 +6,10 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</th>
 			<th class="" style="text-align:center!important;"><?php echo __('SID') ?></th>
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Round') ?>"><?php echo  __('Group #') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Round') ?>"><?php echo  __('Heat #') ?></th>  
 			<th class="" style="text-align:left!important;"><?php echo __('Tournament Match Game') ?></th>
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Event Type') ?>"><?php echo ('# of '). __('Teams') ?></th>   
-			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Round') ?>"><?php echo  __('Heat') ?></th>  
+			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Event Type') ?>"><?php echo  __('Event') ?></th>   
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Qualifying') ?></th>    
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Date') ?>"><?php echo  __('Date') ?></th>   
 			<th class="ui-th-left-text" style="text-align:center!important;" title="<?php echo __('Match Time') ?>"><?php echo  __('Time') ?></th>   
@@ -19,31 +20,34 @@
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-product" name="ui-total-data-list-product" value="<?php echo count($_countTournaments) ?>">
-	  <?php $_rowNumber = 1; foreach ( $_candidateTournamentMatchFixtureGroups as $_key => $_matchFixture ): ?>
+	  <?php foreach ( $_tournamentFixtureGroups as $_key => $_matchFixture ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00"> 
-				<?php echo SystemCore::processDataID($_rowNumber) ?> 
+				<?php echo SystemCore::processDataID($_matchFixture->id) ?> 
 			</td> 
+			<td class="ui-td-left-text ui-td-xsmall-0" title="">
+				<?php echo TournamentCore::makeGroupName($_matchFixture->matchFixtureGroupNumber)  ?> 
+			</td>  
+			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo TournamentCore::processRoundModeValue($_matchFixture->matchFixtureGroupRoundMode) ?>">
+				<?php echo $_matchFixture->matchFixtureHeatName ?>
+			</td>  
 			<td class="ui-td-left-text ui-td-xsmall-02"> 
 				<?php echo $_matchFixture->sportGameName.' - '.$_matchFixture->gameCategoryName.'- '.($_matchFixture->sportGameTypeMode ? (TournamentCore::processAthleticsTypeValue($_matchFixture->sportGameTypeMode)):$_matchFixture->sportGameName).' - ( '.TournamentCore::processGenderValue($_matchFixture->genderCategoryID).' )' ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_matchFixture->id ?>
-			</td>  
-			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo TournamentCore::processRoundModeValue($_matchFixture->matchFixtureGroupRoundMode) ?>">
-				<?php echo $_matchFixture->matchFixtureHeatName ?>
+				<?php echo TournamentCore::processEventTypeValue($_matchFixture->matchEventType) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<?php echo TournamentCore::processMatchCompetitionRoundModeValue($_matchFixture->qualifyingStatus) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo  date('D M, d-Y', strtotime($_matchFixture->matchDate)) ?>
+				<?php echo  date('D M, d-Y', strtotime($_matchFixture->fixtureGroupMatchDate)) ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xsmall-0" title="<?php echo TournamentCore::processTournamentSessionModeValue($_matchFixture->matchFixtureGroupSessionMode) ?>">
-				<?php echo $_matchFixture->matchTime ?>
+				<?php echo $_matchFixture->fixtureGroupMatchTime ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xsmall-2">
 				<?php echo $_matchFixture->tournamentMatchFixtureVenue ?>
@@ -56,17 +60,16 @@
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
-		 <?php $_rowNumber++; ?>
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>
-			<td class="ui-table-td-footer" colspan=9></td>
+			<td class="ui-table-td-footer" colspan=10></td>
 			<td class="ui-table-td-right-border ui-table-td-xfw"></td>
 		 </tr>
 	  </tbody>
 	  <tfoot>
 			<tr>
-				<td class="ui-panel-table-list-footer" colspan=11>&nbsp;</td>
+				<td class="ui-panel-table-list-footer" colspan=12>&nbsp;</td>
 			</tr>
 	  </tfoot>
 	</table>

@@ -88,7 +88,7 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 			$_nw->confirmed_flag = true;  
 			$_nw->active_flag = true;  
 			$_nw->qualified_flag = true;  
-			$_nw->qualification_status = TournamentCore::$_QUALIFIED;   
+			$_nw->qualification_status = TournamentCore::$_QFD;   
 			$_nw->confirmed_status = TournamentCore::$_CONFIRMED;   
 			$_nw->process_status = TournamentCore::$_ACTIVE;   
 			$_nw->approval_status = TournamentCore::$_APPROVED;   
@@ -596,8 +596,6 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 				->limit($_limit) 
 				->orderBy("gmGrpTmPrt.id DESC")
 				->where("gmGrpTmPrt.id IS NOT NULL AND gmGrpTmPrt.active_flag IS TRUE AND gmGrpTmPrt.qualified_flag IS TRUE");
-				//->addWhere("gmGrpTmPrt.active_flag IS TRUE AND gmGrpTmPrt.qualified_flag IS TRUE")
-				//->addWhere("gmGrpTmPrt.confirmed_status  = ? AND gmGrpTmPrt.approval_status = ?", array(TournamentCore::$_CONFIRMED, TournamentCore::$_APPROVED));
 				if(!is_null($_sportGameGroupID)) $_qry = $_qry->addWhere("sprtGmGrp.id = ?", $_sportGameGroupID);    
 				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
 				if(!is_null($_genderCategoryID)) $_qry = $_qry->addWhere("sprtGmGrp.gender_category_id = ?", $_genderCategoryID);         

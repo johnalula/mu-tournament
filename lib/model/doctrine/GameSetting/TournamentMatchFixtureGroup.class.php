@@ -95,7 +95,20 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 		$this->save();
 		return $_flag;
 	}
+
+	/************************************************/
 	
+	public function makeTournamentMatchSchedule($_tournamentMatchVenu, $_matchDate, $_matchTime, $_tournamentMatchSession)
+	{
+		$_flag = true;   
+		$this->match_venue = trim($_tournamentMatchVenu); 
+		$this->match_time = trim($_matchTime);  
+		$this->match_date = trim($_matchDate);  
+		$this->tournament_match_session_mode = trim($_tournamentMatchSession);  
+		$this->save();
+		return $_flag;
+		
+	}
 	/************************************************/
 	
 	public function selectCandidateParticipantTeams ()
@@ -106,6 +119,19 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 		
 		foreach($_fixtureParticipantTeams as $_fixtureParticipantTeam) {
 			$_participantTeams[] = $_fixtureParticipantTeam->participantTeamName.' ( '.$_fixtureParticipantTeam->participantTeamAlias.' )';
+		}
+		
+		return Wordlimit::wordTeaxtLimiter($_participantTeams[0],3).' '." --- ".' '.Wordlimit::wordTeaxtLimiter($_participantTeams[1],3);
+		
+	}
+	public function selectCandidateParticipantTeamsAlias ()
+	{
+		$_fixtureParticipantTeams = TournamentMatchParticipantTeamTable::makeCandidateGroupParticipantSelection ($this->id);
+		
+		$_participantTeams = array();   
+		
+		foreach($_fixtureParticipantTeams as $_fixtureParticipantTeam) {
+			$_participantTeams[] = $_fixtureParticipantTeam->participantTeamAlias.' ( '.SystemCore::processCountryAliasValue($_fixtureParticipantTeam->teamCountry).' )';
 		}
 		
 		return Wordlimit::wordTeaxtLimiter($_participantTeams[0],3).' '." --- ".' '.Wordlimit::wordTeaxtLimiter($_participantTeams[1],3);

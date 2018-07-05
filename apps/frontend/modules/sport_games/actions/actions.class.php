@@ -98,7 +98,7 @@ class sport_gamesActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');
-		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');    
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID');     
 		
 		//$this->_tournaments = TournamentTable::processSelection ( $_orgID, $_orgTokenID, $_season, $_activeFlag, $_keyword, 0, 50 );
 		$this->_tournamentSportGame = SportGameTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_sportGameID, $_tokenID ); 

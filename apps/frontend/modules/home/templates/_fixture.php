@@ -31,16 +31,16 @@
 					</a>
 				</td> 
 				<td>
-					<?php echo $_matchFixture->matchContestantMode == TournamentCore::$_PAIR_TEAM ? $_matchFixture->selectCandidateParticipantTeams():'' ?>
+					<?php echo $_matchFixture->matchContestantTeamMode == TournamentCore::$_PAIR_TEAM ? $_matchFixture->selectCandidateParticipantTeamsAlias():'' ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->matchFixtureHeatName ?>
+					<?php echo TournamentCore::makeGroupName($_matchFixture->matchFixtureGroupNumber).' - '.$_matchFixture->matchFixtureHeatName ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->matchFixtureHeatName ?>
+					<?php echo TournamentCore::processRoundModeValue($_matchFixture->matchFixtureRoundMode) ?>
 				</td>
 				<td>
-					<?php echo $_matchFixture->status ? 'Pending':'Active' ?>
+					<?php echo $_matchFixture->competitionStatus ? 'Pending':'Active' ?>
 				</td>
 				<td>
 					<a href="<?php echo url_for('competition/fixture?match_fixture_id='.$_matchFixture->id.'&token_id='.$_matchFixture->token_id) ?>" >	

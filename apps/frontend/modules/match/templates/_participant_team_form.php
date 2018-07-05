@@ -106,69 +106,7 @@
 							</div><!-- /input-group -->
 						</div>
 					</div>  
-					<?php endif; ?>
-					<div class="form-group">
-						<label class="col-sm-21 control-label" title="<?php echo __('Match Venue') ?>"><?php echo __('Match Venue') ?>:&nbsp;</label>
-						<div class="col-sm-40"> 
-							<div class="input-group">
-								<input type="text" class="form-control" id="sport_game_venue_name" name="match_participant_team[sport_game_venue_name]" placeholder="<?php echo __('Game Venue') ?>" title="<?php echo __('Sport Game Venue') ?>" >
-								<input type="hidden" class="form-control" id="sport_game_group_type_id" name="match_participant_team[sport_game_group_type_id]" >
-								<div class="input-group-btn">
-									<button type="button" class="btn btn-default	dropdown-toggle" data-toggle="dropdown" >
-										Venu
-										<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu pull-right">
-										<li class="selectSportGameMatchVenue" rel="Mekelle Tigray Stadium" id="">
-											<a href="#"><?php echo ('Mekelle Tigray Stadium') ?></a>
-										</li> 			 
-										<li class="selectSportGameMatchVenue" rel="Adi Haki Campus Stadium" id="">
-											<a href="#"><?php echo ('Adi Haki Campus Stadium') ?></a>
-										</li> 			 
-										<li class="selectSportGameMatchVenue" rel="Arid Campus Stadium" id="">
-											<a href="#"><?php echo ('Arid Campus Stadium') ?></a>
-										</li> 			 
-									</ul>
-								</div><!-- /btn-group -->
-							</div><!-- /input-group -->
-
-						</div>
-					</div>  
-					<div class="form-group">
-						<label class="col-sm-21 control-label"><?php echo __('Match Date') ?>: <span class="ui-red-text">*</span></label>
-						<div class="col-sm-23">
-							 <div class="input-group"> 
-								<input class="form-control" id="match_date" name="match_participant_team[match_date]" type="text" placeholder="<?php echo __('Match Date') ?>" value="" title="<?php echo __('Match Date') ?>" readonly required >
-								<span class="input-group-btn">
-									<button class="btn btn-default ui-button-img" type="button">
-										<img class="ui-addon-img" src="<?php echo image_path('icons/calendar_small') ?>" >
-									</button>
-								</span> 
-							</div>
-						</div>
-						<label class="col-sm-01 control-label"><?php echo __('Time') ?>: <span class="ui-red-text">*</span></label>
-						<div class="col-sm-23">
-							<div class="input-group">
-								<input type="text" class="form-control" id="match_time"	name="tournament_match_fixture[match_time]"	placeholder="<?php echo __('Match Time') ?>" required  >
-								<input type="hidden" class="form-control" id="tournament_match_time_value" name="match_participant_team[tournament_match_time_value]" >
-								<input type="hidden" class="form-control" id="tournament_match_session" name="match_participant_team[tournament_match_session]" >
-								<div class="input-group-btn">
-									<button type="button" class="btn btn-default	dropdown-toggle tournamentMathTimeValue" data-toggle="dropdown" >
-										TIme
-										<span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu pull-right">
-										<li class="selectTournamentMatchTime" rel="AM" id="<?php echo TournamentCore::$_MORNING_SESSION ?>">
-											<a href="#"><?php echo ('AM') ?></a>
-										</li> 			 
-										<li class="selectTournamentMatchTime" rel="PM" id="<?php echo TournamentCore::$_AFTERNOON_SESSION ?>">
-											<a href="#"><?php echo ('PM') ?></a>
-										</li> 			  
-									</ul>
-								</div><!-- /btn-group -->
-							</div><!-- /input-group -->
-						</div>
-					</div>  
+					<?php endif; ?> 
 					<div class="form-group">
 						<label class="col-sm-21 control-label" title="<?php echo __('Description') ?>"><?php echo __('Description') ?>:&nbsp;</label>
 						<div class="col-sm-40"> 

@@ -437,8 +437,10 @@ TournamentGroupParticipantTeam:
     active_flag: { type: boolean  } 
     completed_flag: { type: boolean  } 
     qualified_flag: { type: boolean, default: true  } 
+    competition_flag: { type: boolean, default: false } 
     qualification_status: { type: integer, default: 2  } 
     confirmed_status: { type: integer, default: 1  } 
+    competition_status: { type: integer, default: 1  } 
     process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 
@@ -583,7 +585,6 @@ TournamentMatchFixtureGroup:
     enable_participant_team_number_mandatory_flag: { type: boolean, default: false } 
     enable_participant_number_mandatory_flag: { type: boolean, default: false } 
     qualified_flag: { type: boolean, default: true } 
-    qualification_status: { type: integer, default: 2  } 
     confirmed_flag: { type: boolean, default: false } 
     competition_flag: { type: boolean, default: false } 
     active_flag: { type: boolean, default: false } 
@@ -592,6 +593,8 @@ TournamentMatchFixtureGroup:
     competition_status: { type: integer, default: 1  } 
     fixture_round_status: { type: integer} 
     duration_status: { type: integer} 
+    qualification_status: { type: integer, default: 2  } 
+    confirmed_status: { type: integer, default: 1  } 
     process_status: { type: integer, default: 1  } 
     approval_status: { type: integer, default: 1  } 
     status: { type: integer, default: 1  } 

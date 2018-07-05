@@ -3684,13 +3684,13 @@ Team:
     start_date: 06/30/2018
     end_date: null
     grouped_flag: false
-    confirmed_flag: false
-    active_flag: false
-    confirmed_status: '1'
-    status: '2'
+    confirmed_flag: true
+    active_flag: true
+    confirmed_status: '9'
+    status: '3'
     description: 'Botswana International University Of Science And Technology ( Botswana International University Of Science And Technology )'
     created_at: '2018-06-30 11:38:17'
-    updated_at: '2018-06-30 11:38:17'
+    updated_at: '2018-07-05 10:01:50'
   Team_31:
     token_id: 4704f73a362328bbf38b51b98e02ed691b31071c
     Organization: Organization_1
@@ -4026,13 +4026,13 @@ Team:
     start_date: 07/02/2018
     end_date: null
     grouped_flag: false
-    confirmed_flag: false
-    active_flag: false
-    confirmed_status: '1'
-    status: '2'
+    confirmed_flag: true
+    active_flag: true
+    confirmed_status: '9'
+    status: '3'
     description: 'Kyambogo University ( Kyambogo University from Uganda )'
     created_at: '2018-07-02 15:01:06'
-    updated_at: '2018-07-02 15:01:06'
+    updated_at: '2018-07-05 10:05:05'
   Team_40:
     token_id: ba7729ac0ef4e4cdb002c759be96cbf3b5474da1
     Organization: Organization_1
@@ -5352,6 +5352,198 @@ TeamGameParticipation:
     description: 'Volleyball (VOLLYBALL) - Volleyball (Volleyball) (  )'
     created_at: '2018-07-03 02:25:12'
     updated_at: '2018-07-03 21:08:48'
+  TeamGameParticipation_29:
+    token_id: fbdb302b6db008d17dc2e6cc26086a4f73d652b1
+    Team: Team_4
+    team_token_id: 3833d5a903782f5451f585fd4ffd3f85a588ecf1
+    GameCategory: GameCategory_1
+    SportGame: SportGame_29
+    sport_game_token_id: b16eb13acaa373b013c8d808d13749806b8ea8e4
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    number_of_participants: null
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 10000 Meters (Athletics) (  )'
+    created_at: '2018-07-05 09:59:14'
+    updated_at: '2018-07-05 09:59:14'
+  TeamGameParticipation_30:
+    token_id: c588f32aa044fa366ed124dadff9d826ca9485bb
+    Team: Team_4
+    team_token_id: 3833d5a903782f5451f585fd4ffd3f85a588ecf1
+    GameCategory: GameCategory_1
+    SportGame: SportGame_29
+    sport_game_token_id: b16eb13acaa373b013c8d808d13749806b8ea8e4
+    number_of_players: '0'
+    gender_category_id: '2'
+    event_type: '0'
+    number_of_participants: null
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 10000 Meters (Athletics) (  )'
+    created_at: '2018-07-05 09:59:14'
+    updated_at: '2018-07-05 09:59:14'
+  TeamGameParticipation_31:
+    token_id: 36a5e139bb1b3b03ad07baeed58c970daa12eb26
+    Team: Team_4
+    team_token_id: 3833d5a903782f5451f585fd4ffd3f85a588ecf1
+    GameCategory: GameCategory_1
+    SportGame: SportGame_30
+    sport_game_token_id: e52c6178fef62c1ffd9c52badeac4025f6c3c55c
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    number_of_participants: null
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 5000 Meters (Athletics) (  )'
+    created_at: '2018-07-05 09:59:41'
+    updated_at: '2018-07-05 09:59:41'
+  TeamGameParticipation_32:
+    token_id: 11e9d1fd0f1335f0c8e2ec39c8dfafd33e5f1cf3
+    Team: Team_4
+    team_token_id: 3833d5a903782f5451f585fd4ffd3f85a588ecf1
+    GameCategory: GameCategory_1
+    SportGame: SportGame_30
+    sport_game_token_id: e52c6178fef62c1ffd9c52badeac4025f6c3c55c
+    number_of_players: '0'
+    gender_category_id: '2'
+    event_type: '0'
+    number_of_participants: null
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 5000 Meters (Athletics) (  )'
+    created_at: '2018-07-05 09:59:41'
+    updated_at: '2018-07-05 09:59:41'
+  TeamGameParticipation_33:
+    token_id: cb14cc784384fce35accf1c1b7edfe3b22bdaf77
+    Team: Team_30
+    team_token_id: e49c447dea46d5268adb483a60354cadb995efb5
+    GameCategory: GameCategory_1
+    SportGame: SportGame_29
+    sport_game_token_id: b16eb13acaa373b013c8d808d13749806b8ea8e4
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    number_of_participants: null
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 10000 Meters (Athletics) (  )'
+    created_at: '2018-07-05 10:01:50'
+    updated_at: '2018-07-05 10:01:50'
+  TeamGameParticipation_34:
+    token_id: a2cc83b6bc712eeed3bef7a1ae0655ebaaca2bcd
+    Team: Team_30
+    team_token_id: e49c447dea46d5268adb483a60354cadb995efb5
+    GameCategory: GameCategory_1
+    SportGame: SportGame_30
+    sport_game_token_id: e52c6178fef62c1ffd9c52badeac4025f6c3c55c
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    number_of_participants: null
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 5000 Meters (Athletics) (  )'
+    created_at: '2018-07-05 10:02:11'
+    updated_at: '2018-07-05 10:02:11'
+  TeamGameParticipation_35:
+    token_id: d5c2fc7e211bb3798b6a3052aa16f635d82df1ae
+    Team: Team_39
+    team_token_id: d33009b8c912b337d969f0900fddf7f9c3487871
+    GameCategory: GameCategory_1
+    SportGame: SportGame_29
+    sport_game_token_id: b16eb13acaa373b013c8d808d13749806b8ea8e4
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    number_of_participants: null
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 10000 Meters (Athletics) (  )'
+    created_at: '2018-07-05 10:05:05'
+    updated_at: '2018-07-05 10:05:05'
+  TeamGameParticipation_36:
+    token_id: e0214bb081eaf13f9c7750724959645fc28e22e7
+    Team: Team_39
+    team_token_id: d33009b8c912b337d969f0900fddf7f9c3487871
+    GameCategory: GameCategory_1
+    SportGame: SportGame_30
+    sport_game_token_id: e52c6178fef62c1ffd9c52badeac4025f6c3c55c
+    number_of_players: '0'
+    gender_category_id: '1'
+    event_type: '0'
+    number_of_participants: null
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 5000 Meters (Athletics) (  )'
+    created_at: '2018-07-05 10:05:24'
+    updated_at: '2018-07-05 10:05:24'
 CodeGenerator:
   CodeGenerator_1:
     token_id: ee5bb3a6124bae087ac3f5d732d94947
@@ -5550,8 +5742,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5573,8 +5767,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5596,8 +5792,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5619,8 +5817,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5642,8 +5842,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5665,8 +5867,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5688,8 +5892,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5711,8 +5917,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5734,8 +5942,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5757,8 +5967,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5780,8 +5992,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5803,8 +6017,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5826,8 +6042,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5849,8 +6067,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5872,8 +6092,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5895,8 +6117,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5918,8 +6142,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5941,8 +6167,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5964,8 +6192,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -5987,8 +6217,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -6010,8 +6242,10 @@ TournamentGroupParticipantTeam:
     active_flag: true
     completed_flag: null
     qualified_flag: true
+    competition_flag: false
     qualification_status: '5'
     confirmed_status: '9'
+    competition_status: '1'
     process_status: '3'
     approval_status: '4'
     status: '3'
@@ -7900,3 +8134,117 @@ SystemLogFile:
     description: 'Admin has performed APPROVE action to Approve Tournament Team Group - [ Module: Team Group ] from [ IP: 127.0.0.1 ] at [Date: Tue Jul 03, 2018 09:09:21 PM]'
     created_at: '2018-07-03 21:09:21'
     updated_at: '2018-07-03 21:09:21'
+  SystemLogFile_100:
+    token_id: f482a2f91ef97c46f6907a3c0f7877ee753974e1
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '5'
+    action_date: '07/05/2018 09:59:14 AM'
+    action_time: '09:59:14 AM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team - [ Module: Team ], Object: Participant Team ID: 4, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team/createTeamGamePartcipation
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team - [ Module: Team ] from [ IP: 127.0.0.1 ] at [Date: Thu Jul 05, 2018 09:59:14 AM]'
+    created_at: '2018-07-05 09:59:14'
+    updated_at: '2018-07-05 09:59:14'
+  SystemLogFile_101:
+    token_id: 158443043993a1add2e80da3224f67f7aa3a5e34
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '5'
+    action_date: '07/05/2018 09:59:41 AM'
+    action_time: '09:59:41 AM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team - [ Module: Team ], Object: Participant Team ID: 4, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team/createTeamGamePartcipation
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team - [ Module: Team ] from [ IP: 127.0.0.1 ] at [Date: Thu Jul 05, 2018 09:59:41 AM]'
+    created_at: '2018-07-05 09:59:41'
+    updated_at: '2018-07-05 09:59:41'
+  SystemLogFile_102:
+    token_id: 2c60fe9e16b3ce59b0018a3ca12fdd01f5a92df4
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '5'
+    action_date: '07/05/2018 10:01:50 AM'
+    action_time: '10:01:50 AM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team - [ Module: Team ], Object: Participant Team ID: 30, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team/createTeamGamePartcipation
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team - [ Module: Team ] from [ IP: 127.0.0.1 ] at [Date: Thu Jul 05, 2018 10:01:50 AM]'
+    created_at: '2018-07-05 10:01:50'
+    updated_at: '2018-07-05 10:01:50'
+  SystemLogFile_103:
+    token_id: 63ea3dddfef376b6ffe3bb7ac146f80d723d2dd3
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '5'
+    action_date: '07/05/2018 10:02:11 AM'
+    action_time: '10:02:11 AM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team - [ Module: Team ], Object: Participant Team ID: 30, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team/createTeamGamePartcipation
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team - [ Module: Team ] from [ IP: 127.0.0.1 ] at [Date: Thu Jul 05, 2018 10:02:11 AM]'
+    created_at: '2018-07-05 10:02:11'
+    updated_at: '2018-07-05 10:02:11'
+  SystemLogFile_104:
+    token_id: 48491b4591e01ed261637629f63df4d8664cb2df
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '5'
+    action_date: '07/05/2018 10:05:05 AM'
+    action_time: '10:05:05 AM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team - [ Module: Team ], Object: Participant Team ID: 39, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team/createTeamGamePartcipation
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team - [ Module: Team ] from [ IP: 127.0.0.1 ] at [Date: Thu Jul 05, 2018 10:05:05 AM]'
+    created_at: '2018-07-05 10:05:05'
+    updated_at: '2018-07-05 10:05:05'
+  SystemLogFile_105:
+    token_id: 2f4a5fd068d630975934b18f800c06773d652e8e
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '5'
+    action_date: '07/05/2018 10:05:24 AM'
+    action_time: '10:05:24 AM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team - [ Module: Team ], Object: Participant Team ID: 39, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team/createTeamGamePartcipation
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team - [ Module: Team ] from [ IP: 127.0.0.1 ] at [Date: Thu Jul 05, 2018 10:05:24 AM]'
+    created_at: '2018-07-05 10:05:24'
+    updated_at: '2018-07-05 10:05:24'

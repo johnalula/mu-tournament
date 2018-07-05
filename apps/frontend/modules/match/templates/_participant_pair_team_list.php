@@ -29,7 +29,7 @@
 				</a>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-12"> 
-				<?php echo $_candidateMatchFixtureGroup->sportGameName.' - '.$_candidateMatchFixtureGroup->sportGameGroupName.' ( '.TournamentCore::processGenderValue($_candidateMatchFixtureGroup->teamGroupGenderCategoryID).' )' ?>
+				<?php echo $_candidateMatchFixtureGroup->sportGameName.' - '.TournamentCore::makeGroupName($_candidateMatchFixtureGroup->matchFixtureGroupNumber).' ( '.TournamentCore::processGenderValue($_candidateMatchFixtureGroup->genderCategoryID).' )' ?>
 			</td> 
 			<td class="ui-td-center-text ui-td-xlarg">
 				<?php echo $_candidateMatchFixtureGroup->selectCandidateParticipantTeams()  ?>
@@ -48,14 +48,9 @@
 					<img title="<?php echo $_candidateMatchFixtureGroup->sportGameName ?>" src="<?php echo image_path($_candidateMatchFixtureGroup->id ? 'status/approved':'status/disabled')  ?>"> 
 				</span>
 			</td> 
-			<td class="ui-table-action ui-table-list-action-box-2">
+			<td class="ui-table-action ui-table-list-action-box-1">
 				<div class="ui-table-list-action " id="">
-					<ul class="ui-table-action-menu">   
-						<li>
-							<a href="<?php echo url_for('team/view?product_id='.$_candidateMatchFixtureGroup->id.'&token_id='.$_candidateMatchFixtureGroup->token_id) ?>" >	
-								<img title="<?php echo __('View Team').' ( '.' Task '.' #:'.$_candidateMatchFixtureGroup->id ?> )" src="<?php echo image_path('icons/view') ?>">			
-							</a>
-						</li>  
+					<ul class="ui-table-action-menu">  
 						<li>   
 							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_candidateMatchFixtureGroup->id ?>" onclick="Javascript:deleteProduct(<?php echo $_candidateMatchFixtureGroup->id ?>);" rel="<?php echo $_candidateMatchFixtureGroup->token_id ?>">	
 							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_candidateMatchFixtureGroup->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
