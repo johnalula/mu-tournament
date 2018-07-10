@@ -10,7 +10,12 @@
 		//}
 		//tournament_match_id=1&tournament_match_token_id=d3c98f39903047cf592291c40e6fc6c94afc29ca&sport_game_type_id=1
 		
-		//echo count($_tournamentFixtureGroups);
+		//$_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentSportGameGroups ( 4, '346b5501f220f346040c45a17e40244d64e2b415', $_tournamentFixtureID, 1, TournamentCore::$_MULTIPLE_TEAM, $_keyword, 0, 20); 
+		///$_candidateTournamentTeamGroups = TournamentSportGameGroupTable::makeCandidateFixtureGroupSelections ( $_sportGameTypeID, TournamentCore::$_CONFIRMED, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE, $_confirmedFlag, $_activeFlag);
+		
+		//$_candidateTournamentTeamGroups = TournamentSportGameGroupTable::processCandidateTournamentSportGameGroups ( 1, $_confirmedStatus, TournamentCore::$_ACTIVE, TournamentCore::$_APPROVED, TournamentCore::$_ACTIVE, $_keyword, $_exclusion, 0, 20 ) ;;
+		
+		//echo count($_candidateTournamentTeamGroups);
 ?> 
 
 <div class="ui-page-box">

@@ -54,18 +54,27 @@
 					<ul class="ui-table-action-menu">   
 						<li>
 							<a href="<?php echo url_for('team_group/category?team_group_id='.$_tournamentTeamGroup->id.'&token_id='.$_tournamentTeamGroup->token_id) ?>" >	
-								<img title="<?php echo __('View Team Group').' ( '.' Group '.' #:'.$_tournamentTeamGroup->id ?> )" src="<?php echo image_path('icons/view') ?>">			
+								<img title="<?php echo __('View Tournament Team Group').' ( '.' Team Group '.' #:'.$_tournamentTeamGroup->tournamentGroupFullCode ?> )" src="<?php echo image_path('icons/view') ?>">			
 							</a>
 						</li> 
 						<li>  
+						<?php if($_tournamentTeamGroup->canDeleteTournamentTeamGroup): ?> 
 							<a href="<?php echo url_for('team_group/category?team_group_id='.$_tournamentTeamGroup->id.'&token_id='.$_tournamentTeamGroup->token_id) ?>" >	
-								<img title="<?php echo __('Edit Team Group').' ( '.' Group '.' #:'.$_tournamentTeamGroup->id ?> )" src="<?php echo image_path('icons/edit')  ?>" >
-							</a>    
-						</li> 
-						<li>   
-							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_tournamentTeamGroup->id ?>" onclick="Javascript:deleteProduct(<?php echo $_tournamentTeamGroup->id ?>);" rel="<?php echo $_tournamentTeamGroup->token_id ?>">	
-							<img title="<?php echo __('Delete Category').' ( '.' Task '.' #:'.$_tournamentTeamGroup->id ?> )" src="<?php echo image_path('icons/del')  ?>" > 
+								<img title="<?php echo __('Edit Tournament Team Group').' ( '.' Team Group '.' #:'.$_tournamentTeamGroup->tournamentGroupFullCode ?> )" src="<?php echo image_path('icons/edit')  ?>" >
 							</a>  
+						<?php else: ?> 
+							<img title="<?php echo __('Delete Tournament Team Group').' ( '.' Team Group'.' #:'.$_tournamentTeamGroup->tournamentGroupFullCode ?> )" src="<?php echo image_path('icons/edit_disabled')  ?>" > 
+						<?php endif; ?>  
+						</li>   
+						</li> 
+						<li>  
+						<?php if($_tournamentTeamGroup->canDeleteTournamentTeamGroup): ?> 
+							<a href="#" class="ui-action-button" id="ui-delete-cash_request-<?php echo $_tournamentTeamGroup->id ?>" onclick="Javascript:deleteProduct(<?php echo $_tournamentTeamGroup->id ?>);" rel="<?php echo $_tournamentTeamGroup->token_id ?>">	
+							<img title="<?php echo __('Delete Category').' ( '.' Team Group '.' #:'.$_tournamentTeamGroup->tournamentGroupFullCode ?> )" src="<?php echo image_path('icons/del')  ?>" > 
+							</a>  
+						<?php else: ?> 
+							<img title="<?php echo __('Delete Tournament Team Group').' ( '.' Team Group'.' #:'.$_tournamentTeamGroup->tournamentGroupFullCode ?> )" src="<?php echo image_path('status/deny')  ?>" > 
+							<?php endif; ?>  
 						</li> 
 					</ul>
 				</div>

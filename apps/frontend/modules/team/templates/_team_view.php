@@ -1,9 +1,10 @@
 <div class="ui-content-detail">
 	<fieldset class="ui-content-detail-fieldset"> 
 		<legend class="ui-content-detial-fieldset-legend">
-				<img src="<?php echo image_path('icons/detail') ?>" title="<?php echo __('Team Management') ?>">
-				<?php echo __('Team').' ( Name: '.$_team->teamName.' - Alias: '.$_team->teamAlias.' - Team #: '.$_team->teamNumber.')'  ?>
-				ET: <img src="<?php echo image_path('flags/et') ?>" title="<?php echo __('Team Flag') ?>">
+			<img src="<?php echo image_path('icons/detail') ?>" title="<?php echo __('Team Management') ?>">
+			<?php echo __('Team').' ( Name: '.$_team->teamName.' - Alias: '.$_team->teamAlias.' - Team #: '.$_team->teamNumber.')'  ?>
+			<?php  $_contryFlag = 'flags/'.$_team->teamCountry ?>
+			<img style="max-width:65px;" src="<?php echo image_path($_contryFlag) ?>" alt="First slide">
 		</legend> 
 		<div class="ui-content-detail-box"> 	
 			<div class="col-sm-3">

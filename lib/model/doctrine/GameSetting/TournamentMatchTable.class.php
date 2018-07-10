@@ -295,16 +295,15 @@ class TournamentMatchTable extends PluginTournamentMatchTable
 	 /********** Candidate selection process fixture action *******************/
 	 
 	//
-	public static function selectCandidateTournamentSportGameGroups ( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_tournamentFixtureID=null, $_sportGameTypeID=null, $_sportGameID=null, $_contestantTeamMode=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+	public static function selectCandidateTournamentSportGameGroups ( $_tournamentMatchID=null, $_tournamentMatchTokenID=null, $_tournamentFixtureID=null, $_sportGameTypeID=null, $_contestantTeamMode=null, $_keyword=null, $_offset=0, $_limit=10 ) 
    {
-		//$_candidateMatchFixtures = TournamentMatchFixtureTable::processCandidateSelection ( $_tournamentID, $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword);
-		
 		switch ( trim($_contestantTeamMode) ) {
 			case TournamentCore::$_MULTIPLE_TEAM: 
-				$_candidateMatchFixtureGroups = TournamentMatchFixtureGroupTable::selectCandidateFixtureGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_sportGameTypeID);
+				
+				$_candidateTournamentTeamGroups = TournamentSportGameGroupTable::makeCandidateFixtureGroupSelections ( $_sportGameTypeID, TournamentCore::$_CONFIRMED, TournamentCore::$_ACTIVE, TournamentCore::$_ACTIVE, $_confirmedFlag, $_activeFlag);
 				$_exclusion = array();   
-					foreach($_candidateMatchFixtureGroups as $_candidateMatchFixtureGroup) {
-						$_exclusion[] = $_candidateMatchFixtureGroup->tournament_sport_game_group_id;
+					foreach($_candidateTournamentTeamGroups as $_candidateTournamentTeamGroup) {
+						$_exclusion[] = $_candidateTournamentTeamGroup->id;
 					} 
 					
 				return TournamentSportGameGroupTable::processCandidateTournamentSportGameGroups ( $_sportGameTypeID, $_confirmedStatus, TournamentCore::$_ACTIVE, TournamentCore::$_APPROVED, TournamentCore::$_ACTIVE, $_keyword, $_exclusion, $_offset, $_limit ) ;

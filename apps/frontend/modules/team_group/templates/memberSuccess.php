@@ -14,7 +14,10 @@
 	
 	//echo $_tournamentGroup->hasPendingTeamGameParticipation() ? 'True':'false';
 	
-	//echo count($_tournamentSportGameGroups);
+	//tournament_team_group_id=7&tournament_team_group_token_id=dd943b1be24aa4387a7e1763544867951be1a96b&sport_game_id=7&sport_game_group_id=25&tournament_id=1&gender_category_id=2
+	
+	//$_teamGroup = TournamentTeamGroupTable::makeCandidateObject ( $_tournamentTeamGroupID, $_tournamentTeamGroupTokenID);
+	//echo count($_candidateParticipantTeams);
 ?> 
 
 <div class="ui-page-box">

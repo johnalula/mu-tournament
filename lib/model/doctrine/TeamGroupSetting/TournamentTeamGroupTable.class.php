@@ -92,6 +92,12 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 								
 								(trmntTmGrp.status=".TournamentCore::$_PENDING.") as pendingTeamGroup, (trmntTmGrp.status=".TournamentCore::$_ACTIVE.") as activeTeamGroup, (trmntTmGrp.status=".TournamentCore::$_COMPLETED.") as completedTeamGroup,
 								
+								(trmntTmGrp.status = ".TournamentCore::$_PENDING." AND trmntTmGrp.approval_status = ".TournamentCore::$_PENDING." AND trmntTmGrp.process_status = ".TournamentCore::$_ACTIVE." AND trmntTmGrp.active_flag IS NOT TRUE) as canApproveTournamentTeamGroup,
+								
+								(trmntTmGrp.status = ".TournamentCore::$_PENDING." AND trmntTmGrp.approval_status = ".TournamentCore::$_ACTIVE." AND trmntTmGrp.process_status = ".TournamentCore::$_APPROVED." AND trmntTmGrp.active_flag IS NOT TRUE) as canCompleteTournamentTeamGroup,
+								
+								(trmntTmGrp.status = ".TournamentCore::$_PENDING." AND trmntTmGrp.approval_status = ".TournamentCore::$_PENDING." AND trmntTmGrp.process_status = ".TournamentCore::$_PENDING.") as canDeleteTournamentTeamGroup,
+								
 								(trmntTmGrp.approval_status=".TournamentCore::$_PENDING.") as pendingApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_ACTIVE.") as activeApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_APPROVED.") as approvedApprovalTeamGroup, (trmntTmGrp.approval_status=".TournamentCore::$_COMPLETED.") as completedApprovalTeamGroup,
 								
 		";	
@@ -109,7 +115,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit) 
-				->orderBy("trmntTmGrp.id ASC")
+				->orderBy("trmntTmGrp.id DESC")
 				->where("trmntTmGrp.id IS NOT NULL");
 				if(!is_null($_orgID)) $_qry = $_qry->addWhere("trnmt.org_id = ? AND trnmt.org_token_id = ? ", array($_orgID, $_orgTokenID));
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trmntTmGrp.tournament_id = ?", $_tournamentID);    
@@ -207,7 +213,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				->from("TournamentTeamGroup trmntTmGrp") 
 				->innerJoin("trmntTmGrp.Tournament trnmt on trmntTmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("trmntTmGrp.GameCategory gmCat on trmntTmGrp.sport_game_category_id = gmCat.id ")  
-				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")      
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->where("trmntTmGrp.id = ? AND trmntTmGrp.token_id = ? ", array($_teamGroupID, $_tokenID ));
 				if(!is_null($_orgID)) $_qry = $_qry->andWhere("trnmt.org_id = ? AND trnmt.org_token_id = ?", array($_orgID, $_orgTokenID));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
@@ -220,10 +226,9 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		$_qry = Doctrine_Query::create()
 				->select(self::appendQueryFields())
 				->from("TournamentTeamGroup trmntTmGrp") 
-				->innerJoin("trmntTmGrp.Tournament trnmt on trmntTmGrp.tournament_id = trnmt.id ") 
-				->innerJoin("trmntTmGrp.SportGame sprtGm on trmntTmGrp.sport_game_id = sprtGm.id ") 
-				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
-				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")     
+				->innerJoin("trmntTmGrp.Tournament trnmt on trmntTmGrp.tournament_id = trnmt.id ")  
+				->innerJoin("trmntTmGrp.GameCategory gmCat on trmntTmGrp.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->where("trmntTmGrp.id = ? AND trmntTmGrp.token_id = ? ", array($_groupID, $_tokenID ));
 				//if(!is_null($_orgID)) $_qry = $_qry->andWhere("prt.org_id = ? AND prt.org_token_id = ?", array($_orgID, $_orgTokenID));
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
@@ -238,7 +243,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 				->from("TournamentTeamGroup trmntTmGrp") 
 				->innerJoin("trmntTmGrp.Tournament trnmt on trmntTmGrp.tournament_id = trnmt.id ")  
 				->innerJoin("trmntTmGrp.GameCategory gmCat on trmntTmGrp.sport_game_category_id = gmCat.id ")  
-				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")   
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ")  
 				->where("trmntTmGrp.id = ? AND trmntTmGrp.token_id = ? ", array($_tournamentTeamGroupID, $_tournamentTeamGroupTokenID ));
 
 				$_qry = $_qry->fetchOne(array(), Doctrine_Core::HYDRATE_RECORD); 
@@ -460,7 +465,7 @@ class TournamentTeamGroupTable extends PluginTournamentTeamGroupTable
 		$_flag = true;   
 		$_tournamentTeamGroup =  self::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentGroupID, $_tournamentGroupTokenID ); 
 		
-		$_flag = ($_tournamentTeamGroup && !$_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup()) ? $_tournamentTeamGroup->makeCompletion ():true;
+		$_flag = ($_tournamentTeamGroup && !$_tournamentTeamGroup->hasInitiatedTournamentSportGameGroup ()) ? $_tournamentTeamGroup->makeCompletion ():true;
 		
 		if($_orgID && $_userID) { 
 				

@@ -58,9 +58,10 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 			
 			}
 			
+			$_tournamentTeamGroup = TournamentTeamGroupTable::makeCandidateObject ( $_tournamentGroupID, $_tournamentGroupTokenID);
 			//$_flag1 = $_sportGameGroup->checkInitiated ? ($_sportGameGroup->hasPendingTeamGameParticipation ? $_sportGameGroup->makePending():$_sportGameGroup->makeActivation()):true;
 			
-			//$_flag1 = $_sportGameGroup->checkInitiated ? $_sportGameGroup->makePending():true;
+			$_flag1 = $_tournamentTeamGroup->checkProcessActivation () ? true:$_tournamentTeamGroup->makeActivation ();
 			
 		return $_groupParticipantTeam;
 	}

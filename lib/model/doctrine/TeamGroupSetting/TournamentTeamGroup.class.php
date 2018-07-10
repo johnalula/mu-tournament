@@ -16,12 +16,16 @@ class TournamentTeamGroup extends PluginTournamentTeamGroup
 	{
 		return (($this->approval_status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;
 	}
+	public function checkProcessActivation ()
+	{
+		return (($this->approval_status ==TournamentCore::$_ACTIVE) && ($this->process_status ==TournamentCore::$_ACTIVE)) ? true:false;
+	}
 	public function makePending ()
 	{
 		$_flag = true;   
 			$this->process_status = trim(TournamentCore::$_PENDING);   
-			$this->approval_status = trim(TournamentCore::$_PENDING);   
-			$this->status = trim(TournamentCore::$_PENDING); 
+			$this->approval_status = trim(TournamentCore::$_INITIATED);   
+			$this->status = trim(TournamentCore::$_INITIATED); 
 			$this->save();
 			
 		return $_flag;
@@ -31,7 +35,7 @@ class TournamentTeamGroup extends PluginTournamentTeamGroup
 		$_flag = true;    
 		$_effectiveDate = date('m/d/Y', time());   
 		$this->process_status = trim(TournamentCore::$_ACTIVE); 
-		$this->approval_status = trim(TournamentCore::$_ACTIVE); 
+		$this->approval_status = trim(TournamentCore::$_PENDING); 
 		$this->status = trim(TournamentCore::$_PENDING); 
 		$this->effective_date = trim($_effectiveDate);  
 		$this->save();
@@ -42,7 +46,7 @@ class TournamentTeamGroup extends PluginTournamentTeamGroup
 	{
 		$_flag = true;   
 		$_effectiveDate = date('m/d/Y', time());   
-		$this->process_status = trim(TournamentCore::$_ACTIVE); 
+		$this->process_status = trim(TournamentCore::$_APPROVED); 
 		$this->approval_status = trim(TournamentCore::$_ACTIVE); 
 		$this->status = trim(TournamentCore::$_PENDING); 
 		$this->effective_date = trim($_effectiveDate);  

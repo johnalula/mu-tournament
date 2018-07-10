@@ -23,7 +23,7 @@
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" disabled />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
-				<?php echo $_rowNumber ?>
+				<?php echo '0'.$_rowNumber ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-00"> 
 				<?php echo $_caniddateParticipantTeam->participantTeamNumber  ?>

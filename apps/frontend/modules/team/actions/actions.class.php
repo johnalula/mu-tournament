@@ -20,7 +20,7 @@ class teamActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 60 );
+		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 70 );
 	}
 	
 	public function executeNew(sfWebRequest $request)
@@ -28,7 +28,7 @@ class teamActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 30 );
+		$this->_teams = TeamTable::processSelection ( $_orgIDs, $_tournamentID, $_activeFlag, $_keyword, 0, 70 );
 		
 	}
 	public function executeView(sfWebRequest $request)
@@ -57,12 +57,12 @@ class teamActions extends sfActions
 		
 		$this->_team = TeamTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_teamID, $_tokenID ) ;
 
-		$this->_gameParticipations = TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_keyword, $_exclusion, 0, 20  ) ;
-		$this->_memberParticipants = TeamMemberParticipantTable::processSelection( $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_sportGameID, $_sportGameTokenID, $_keyword, $_exclusion, 0, 20  ) ;
+		$this->_gameParticipations = TeamGameParticipationTable::processSelection ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_keyword, $_exclusion, 0, 50  ) ;
+		$this->_memberParticipants = TeamMemberParticipantTable::processSelection( $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_sportGameID, $_sportGameTokenID, $_keyword, $_exclusion, 0, 50  ) ;
 		
-		$this->_memberParticipantRoles = TeamMemberParticipantRoleTable::processSelection ( $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_participantID, $_sportGameID, $_keyword, 0, 20 ); 
-		//$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 20 ); 
-		$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgIDs, sha1(md5($_orgTokenID)), $_keyword, 0, 20); 
+		$this->_memberParticipantRoles = TeamMemberParticipantRoleTable::processSelection ( $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_participantID, $_sportGameID, $_keyword, 0, 50 ); 
+		//$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 50 ); 
+		$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgIDs, sha1(md5($_orgTokenID)), $_keyword, 0, 50); 
 		
 	}
 	
@@ -239,7 +239,7 @@ class teamActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  */
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		$_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
@@ -260,7 +260,7 @@ class teamActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  */
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		$_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
@@ -281,7 +281,7 @@ class teamActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  */
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		$_candidateSportGames = SportGameTable::processSelection ( $_orgID, sha1(md5($_orgTokenID)), $_categoryID, $_gameTypeID, $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
@@ -304,7 +304,7 @@ class teamActions extends sfActions
 		//$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		$_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, sha1(md5($_orgTokenID)), $_keyword, $_offset, $_limit ); 
 		//$_countCandidateSportGames = SportGameTable::processAll ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword); 
@@ -330,7 +330,7 @@ class teamActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		//$_teamGameParticipations = TeamTable::processCandidateSportGameParticipation ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, $_offset, $_limit  );
 		$_teamGameParticipations = TeamTable::processCandidateTeamGameParticipation ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_memberParticipantID, $_sportGameCategory, $_genderCategory, $_keyword, $_offset, $_limit  );
@@ -355,7 +355,7 @@ class teamActions extends sfActions
 		$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		//$_teamGameParticipations = TeamTable::processCandidateSportGameParticipation ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_gameTypeID, $_genderCategory, $_offset, $_limit  );
 		$_candidateMemberParticipants = TeamTable::selectCandidateMemberParticipants ( $_orgID, $_tournamentID, $_teamID, sha1(md5($_tokenID)), $_genderCategory, $_keyword, $_offset, $_limit  );
@@ -377,7 +377,7 @@ class teamActions extends sfActions
 		$_keyword = '%' . $_keyword . '%';
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 35;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 		if(!$_classID || $_classID == '' ) $_classID = null;			 
 		if(!$_keyword || $_keyword == '' ) $_keyword = null;			 
 		

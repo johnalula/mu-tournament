@@ -22,7 +22,7 @@ class team_groupActions extends sfActions
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
 		
-		$this->_tournamentTeamGroups = TournamentTeamGroupTable::processSelection ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentID, $_sportGameTypeID, $_keyword, 0, 20  ) ;
+		$this->_tournamentTeamGroups = TournamentTeamGroupTable::processSelection ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentID, $_sportGameTypeID, $_keyword, 0, 50  ) ;
 	}
 
 	public function executeNew(sfWebRequest $request)
@@ -30,7 +30,7 @@ class team_groupActions extends sfActions
 		$_orgID = $this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
 		
-		$this->_candidateGameCategorys = TournamentTeamGroupTable::selectCandidateTournamentGameCategorys ( $_orgID, sha1(md5($_orgTokenID)), $_keyword, 0, 20  ) ;
+		$this->_candidateGameCategorys = TournamentTeamGroupTable::selectCandidateTournamentGameCategorys ( $_orgID, sha1(md5($_orgTokenID)), $_keyword, 0, 50  ) ;
 	}
 	
 	public function executeCreateTournamentGroup(sfWebRequest $request)
@@ -73,8 +73,8 @@ class team_groupActions extends sfActions
 		//$this->_sportGameGroups =  SportGameGroupTable::processObject ( $_orgID, sha1(md5($_tokenID)), $_groupID, $_tokenID );  
 		$this->_sportGameTeamGroup =  TournamentTeamGroupTable::processObject ($_orgID, sha1(md5($_orgTokenID)), $_groupID, $_tokenID );  
 		$this->_activeTournament = TournamentTable::makeCandidateObject ( $_orgID, true ) ;
-		$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 20  ) ;
-		//$this->_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 20  ) ;
+		$this->_candidateGameCategorys = GameCategoryTable::processSelection ( $_orgID, $_orgTokenID, $_keyword, 0, 50  ) ;
+		//$this->_candidateSportGames = SportGameTable::processSelection ( $_orgID, $_orgTokenID, $_categoryID, $_gameTypeID, $_keyword, 0, 50  ) ;
 		$this->_candidateGroups = GameGroupTypeTable::processAll ($_orgID, $_orgTokenID, $_keyword, $_activeFlag ) ;
 	}
 
@@ -88,7 +88,7 @@ class team_groupActions extends sfActions
 		
 		$this->_tournamentTeamGroup = TournamentTeamGroupTable::processObject ( $_orgID, $_orgTokenID, $_tournamentGroupID, $_tokenID ) ;
 		
-		//$this->_candidateParticipantMembers = TournamentGroupParticipantTeamMemberTable::processSelection ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tokenID)), $_sportGameGroupID, $_sportGameID, $_genderCategoryID, $_keyword, 0, 20 ); 
+		//$this->_candidateParticipantMembers = TournamentGroupParticipantTeamMemberTable::processSelection ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tokenID)), $_sportGameGroupID, $_sportGameID, $_genderCategoryID, $_keyword, 0, 50 ); 
 	}
 	
 	public function executeCategory(sfWebRequest $request)
@@ -102,7 +102,8 @@ class team_groupActions extends sfActions
 		
 		$this->_tournamentTeamGroup = TournamentTeamGroupTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_tournamentGroupID, $_tournamentGroupTokenID ) ;
 		
-		$this->_tournamentSportGameGroups = TournamentSportGameGroupTable::processSelection ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword, 0, 20  ) ;
+		//$this->_tournamentSportGameGroups = TournamentSportGameGroupTable::processSelection ( $_tournamentID, $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_sportGameTypeID, $_genderCategoryID, $_keyword, 0, 10  ) ;
+		$this->_tournamentSportGameGroups = TournamentSportGameGroupTable::makeCandidateSelection ($_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameTypeID, $_genderCategoryID, $_keyword, 0, 50  ) ;
 		
 	}
 	public function executeCreateTournamentTeamGroup(sfWebRequest $request)
@@ -150,11 +151,15 @@ class team_groupActions extends sfActions
 		
 		//$this->_countGroupParticipantTeams = TournamentGroupParticipantTeamTable::processAll ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword) ;
 		
-		//$this->_tournamentSportGameGroups = TournamentTeamGroupTable::selectCandidateTournamentSportGameGroups ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_genderCategoryID, $_keyword, 0, 20  ) ;
+		//$this->_tournamentSportGameGroups = TournamentTeamGroupTable::selectCandidateTournamentSportGameGroups ( $_tournamentGroupID, $_tournamentGroupTokenID, $_sportGameID, $_genderCategoryID, $_keyword, 0, 50  ) ;
 		
 		//$this->_tournamentSportGameGroups = TournamentSportGameGroupTable::selectCandidateActiveTournamentGroups ( $_tournamentGroupID, $_tournamentGroupTokenID, $_competitionStatus, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_competitionFlag, true );
 		
-		//$this->_candidateTeamGroupParticipants = TournamentSportGameGroupTable::selectCanidates ( $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_approvalStatus, $_status, $_keyword, 0, 20  ) ; 
+		//$this->_candidateTeamGroupParticipants = TournamentSportGameGroupTable::selectCanidates ( $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_approvalStatus, $_status, $_keyword, 0, 50  ) ; 
+		
+		//tournament_team_group_id=7&tournament_team_group_token_id=dd943b1be24aa4387a7e1763544867951be1a96b&sport_game_id=7&sport_game_group_id=25&tournament_id=1&gender_category_id=2
+		
+		//$this->_candidateParticipantTeams = TournamentTeamGroupTable::selectCandidateParticipantTeams ( $_tournamentGroupID, $_tournamenGroupTokenID, $_sportGameGroupIDs, 7, 1, $_keyword , 0, 50  ) ;
 	}
 
 	public function executeCreateGroupParticipantTeam(sfWebRequest $request)
@@ -229,7 +234,7 @@ class team_groupActions extends sfActions
 		//$this->_countGroupParticipantTeams = TournamentGroupParticipantTeamTable::processAll ( $_tournamentID, $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword) ;
 		$this->_caniddateParticipantTeams = TournamentGroupParticipantTeamTable::makeCandidateSelection ($_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, $_keyword, 0, 50 ) ;
 		
-		//$this->_candidateGroupParticipantTeams = TournamentSportGameGroupTable::selectCanidates ( $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_keyword, 0, 20  ) ; 
+		//$this->_candidateGroupParticipantTeams = TournamentSportGameGroupTable::selectCanidates ( $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_keyword, 0, 50  ) ; 
 		//$this->_countCandidateGroupParticipantTeams = TournamentSportGameGroupTable::selectAllCanidates ( $_tournamentGroupID, sha1(md5($_tournamentGroupTokenID)), $_sportGameID, $_genderCategoryID, TournamentCore::$_ACTIVE, TournamentCore::$_PENDING, $_keyword ) ; 
 	}
 
@@ -367,7 +372,7 @@ class team_groupActions extends sfActions
 		//$_orgTokenID = $_defaultSuperAdmin ? null:sha1(md5(trim($this->getUser()->getAttribute('orgTokenID'))));
 		
 		if(!$_offset || $_offset=='')	$_offset = 0;			
-		if(!$_limit || $_limit=='' ) $_limit = 20;			 
+		if(!$_limit || $_limit=='' ) $_limit = 50;			 
 
 		//$_candidateTeams = SportGameGroupTable::processCandidateGroupMemberTeam ( $_orgID, $_orgTokenID, $_tournamentID, $_teamGroupID, $_teamGroupTokenID, $_sportGameID, $_genderCategory, $_keyword, $_offset, $_limit ); 
 		$_candidateMemberTeams = SportGameGroupTable::processCandidateGroupMemberTeams ( $_orgID, $_tournamentID, $_teamGroupID, $_memberTeamID, $_memberTeamTokenID, $_sportGameID, $_sportGameTokenID, $_genderCategoryID, $_keyword, $_offset, $_limit ); 
