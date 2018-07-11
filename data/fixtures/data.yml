@@ -515,6 +515,1339 @@ TournamentMatchFixtureGroup:
     description: 'Group Two - Basketball (Men) -  - Basketball ( - )'
     created_at: '2018-07-08 22:55:56'
     updated_at: '2018-07-08 23:04:20'
+  TournamentMatchFixtureGroup_13:
+    token_id: 86a1235bad84e5f0b1a2a640e042fcd54d830672
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-013/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:51'
+    updated_at: '2018-07-08 23:06:51'
+  TournamentMatchFixtureGroup_14:
+    token_id: 38c40296b9d38d3d54c6a695866a6d34530e0c67
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-014/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '2'
+    match_heat_name: 'Heat Two'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:51'
+    updated_at: '2018-07-08 23:06:51'
+  TournamentMatchFixtureGroup_15:
+    token_id: f368defbcffec6ed99fe59ae3126d647f43c6525
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-015/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '3'
+    match_heat_name: 'Heat Three'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:51'
+    updated_at: '2018-07-08 23:06:51'
+  TournamentMatchFixtureGroup_16:
+    token_id: 752a677bf28a2f74c72828062ac8e2dee76dce5a
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-016/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '4'
+    match_heat_name: 'Heat Four'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:51'
+    updated_at: '2018-07-08 23:06:51'
+  TournamentMatchFixtureGroup_17:
+    token_id: 0e39998e206351cd5b3992f4eb8665d26f5ed634
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-017/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '5'
+    match_heat_name: 'Heat Five'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:51'
+    updated_at: '2018-07-08 23:06:51'
+  TournamentMatchFixtureGroup_18:
+    token_id: ec60d4f575deef22b35697fddbf7dd3ee39059b1
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-018/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '6'
+    match_heat_name: 'Heat Six'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:51'
+    updated_at: '2018-07-08 23:06:51'
+  TournamentMatchFixtureGroup_19:
+    token_id: 2af99d0acd535a37fffbf7699de2dffc983f02e6
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-019/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '7'
+    match_heat_name: 'Heat Seven'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:52'
+    updated_at: '2018-07-08 23:06:52'
+  TournamentMatchFixtureGroup_20:
+    token_id: e0b98a6fe2a36824be2b87403addb13c5204bc87
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-020/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '8'
+    match_heat_name: 'Heat Eight'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:52'
+    updated_at: '2018-07-08 23:06:52'
+  TournamentMatchFixtureGroup_21:
+    token_id: 20bfa7a14a5a0863850dcb6dfc9d4fff45c12a79
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-021/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '9'
+    match_heat_name: 'Heat Nine'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:52'
+    updated_at: '2018-07-08 23:06:52'
+  TournamentMatchFixtureGroup_22:
+    token_id: d7b560f5373a7f98537fcd6539a040f40f7e2bd2
+    TournamentMatch: TournamentMatch_2
+    TournamentMatchFixture: TournamentMatchFixture_3
+    tournament_match_fixture_token_id: b6a9bd1071d37d92d43c22131e0b16c8781d8b82
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-003-022/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '10'
+    match_heat_name: 'Heat Ten'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:52'
+    updated_at: '2018-07-08 23:06:52'
+  TournamentMatchFixtureGroup_23:
+    token_id: 3c7bbbdd85279b1b1878dfd93cbc6edac769f82e
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-023/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:46'
+    updated_at: '2018-07-08 23:08:46'
+  TournamentMatchFixtureGroup_24:
+    token_id: b78c8f07938c107902b5611a0b8751887145f8f2
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-024/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '2'
+    match_heat_name: 'Heat Two'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:46'
+    updated_at: '2018-07-08 23:08:46'
+  TournamentMatchFixtureGroup_25:
+    token_id: dcd199e9615f6c70dec450e673796fe88d9b3ec5
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-025/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '3'
+    match_heat_name: 'Heat Three'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:46'
+    updated_at: '2018-07-08 23:08:46'
+  TournamentMatchFixtureGroup_26:
+    token_id: c54d66a003f7fbadbe1bb4b899107f8b41f531df
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-026/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '4'
+    match_heat_name: 'Heat Four'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:46'
+    updated_at: '2018-07-08 23:08:46'
+  TournamentMatchFixtureGroup_27:
+    token_id: 6b3cbd7200f46a02baafb0922355e781444b0fac
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-027/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '5'
+    match_heat_name: 'Heat Five'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:47'
+    updated_at: '2018-07-08 23:08:47'
+  TournamentMatchFixtureGroup_28:
+    token_id: 25b10b027f6ca4f54afa33ef0faca617b7fa4ebf
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-028/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '6'
+    match_heat_name: 'Heat Six'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:47'
+    updated_at: '2018-07-08 23:08:47'
+  TournamentMatchFixtureGroup_29:
+    token_id: 19192bed682a991a5ab8e3e91528108b4e971892
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-029/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '7'
+    match_heat_name: 'Heat Seven'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:47'
+    updated_at: '2018-07-08 23:08:47'
+  TournamentMatchFixtureGroup_30:
+    token_id: dfe9751260e251fa2dee5b9b6640f4471bced222
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-030/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '8'
+    match_heat_name: 'Heat Eight'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:47'
+    updated_at: '2018-07-08 23:08:47'
+  TournamentMatchFixtureGroup_31:
+    token_id: 664e174d9cd9877082af2d8091924527a2c5cf4f
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-031/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '9'
+    match_heat_name: 'Heat Nine'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:47'
+    updated_at: '2018-07-08 23:08:47'
+  TournamentMatchFixtureGroup_32:
+    token_id: 4b86a5a6f412fba49d4b4996f62e5c4dfba10f34
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_4
+    tournament_match_fixture_token_id: d3b049426bfa6b3891d3c2b7c78d3d68f5f0137d
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-004-032/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '10'
+    match_heat_name: 'Heat Ten'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:47'
+    updated_at: '2018-07-08 23:08:47'
+  TournamentMatchFixtureGroup_33:
+    token_id: c3614a98f005078c4ec32d388fc8d20772c21ff7
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_5
+    tournament_match_fixture_token_id: 2d47436625a76b11e5eca1b94e55e2aa98d5f725
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-005-033/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Women) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:09:14'
+    updated_at: '2018-07-08 23:09:15'
+  TournamentMatchFixtureGroup_34:
+    token_id: 8bf35de203edd350e692b61306e751ca5bbce550
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_5
+    tournament_match_fixture_token_id: 2d47436625a76b11e5eca1b94e55e2aa98d5f725
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-005-034/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '2'
+    match_heat_name: 'Heat Two'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Women) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:09:15'
+    updated_at: '2018-07-08 23:09:15'
+  TournamentMatchFixtureGroup_35:
+    token_id: 7527a4953afa7488ef9674ed07e22916415503fe
+    TournamentMatch: TournamentMatch_3
+    TournamentMatchFixture: TournamentMatchFixture_5
+    tournament_match_fixture_token_id: 2d47436625a76b11e5eca1b94e55e2aa98d5f725
+    gender_category_id: null
+    contestant_team_mode: '1'
+    tournament_match_group_number: MTCH-001-005-035/18
+    match_fixture_round_mode: '1'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '3'
+    match_heat_name: 'Heat Three'
+    match_venue: ''
+    match_date: ''
+    match_time: ''
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/08/2018
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '2'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - Volleyball (Women) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:09:15'
+    updated_at: '2018-07-08 23:09:15'
+  TournamentMatchFixtureGroup_36:
+    token_id: c75a981d339dffb2fd5e333b5de760a6469a55bc
+    TournamentMatch: TournamentMatch_4
+    TournamentMatchFixture: TournamentMatchFixture_6
+    tournament_match_fixture_token_id: 05797c664d6627b52617123ce900831f7be825b4
+    gender_category_id: null
+    contestant_team_mode: '2'
+    tournament_match_group_number: MTCH-001-006-036/18
+    match_fixture_round_mode: '6'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: 'Tigray Stadium ( City )'
+    match_date: 07/05/2018
+    match_time: '9:30 AM'
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/09/2018
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '5'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - 10000 Meters (Men) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:08:18'
+    updated_at: '2018-07-10 22:21:07'
+  TournamentMatchFixtureGroup_37:
+    token_id: 02ae7dbc1030d746f7f68c06373e6abfab97ba49
+    TournamentMatch: TournamentMatch_4
+    TournamentMatchFixture: TournamentMatchFixture_7
+    tournament_match_fixture_token_id: 2abd9867cad9eeee50033bf1d4310baa0c3c2aed
+    gender_category_id: null
+    contestant_team_mode: '2'
+    tournament_match_group_number: MTCH-001-007-037/18
+    match_fixture_round_mode: '6'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: 'Tigray Stadium ( City )'
+    match_date: 07/05/2018
+    match_time: '12:40 PM'
+    tournament_match_session_mode: '2'
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/09/2018
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '5'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - 10000 Meters (Women) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:13:40'
+    updated_at: '2018-07-10 22:21:55'
+  TournamentMatchFixtureGroup_38:
+    token_id: d35f1c6e6e2693c539b85aefc7b03f8189b3e522
+    TournamentMatch: TournamentMatch_4
+    TournamentMatchFixture: TournamentMatchFixture_8
+    tournament_match_fixture_token_id: b9b4c1c45b77ba67f49349aaaeb6d76984bb57f3
+    gender_category_id: null
+    contestant_team_mode: '2'
+    tournament_match_group_number: MTCH-001-008-038/18
+    match_fixture_round_mode: '6'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: 'Tigray Stadium ( City )'
+    match_date: 07/06/2018
+    match_time: '11:40 AM'
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/09/2018
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '5'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - 5000 Meters (Men) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:38:48'
+    updated_at: '2018-07-10 22:22:30'
+  TournamentMatchFixtureGroup_39:
+    token_id: 01fff13cfeb1f6f181df801804a1c9cceb33fbd7
+    TournamentMatch: TournamentMatch_4
+    TournamentMatchFixture: TournamentMatchFixture_9
+    tournament_match_fixture_token_id: a472f29e029301730e3c19e0aabe92fde271205a
+    gender_category_id: null
+    contestant_team_mode: '2'
+    tournament_match_group_number: MTCH-001-009-039/18
+    match_fixture_round_mode: '6'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: 'Tigray Stadium ( City )'
+    match_date: 07/06/2018
+    match_time: '10:40 AM'
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/09/2018
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '5'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - 5000 Meters (Women) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:39:02'
+    updated_at: '2018-07-10 22:22:55'
+  TournamentMatchFixtureGroup_40:
+    token_id: 07ba8ff5c10463a5c418337025504ca797b22ede
+    TournamentMatch: TournamentMatch_4
+    TournamentMatchFixture: TournamentMatchFixture_10
+    tournament_match_fixture_token_id: 07ddadbc3cb6741cfa5701ea55af35061ac203c5
+    gender_category_id: null
+    contestant_team_mode: '2'
+    tournament_match_group_number: MTCH-001-010-040/18
+    match_fixture_round_mode: '6'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: 'Tigray Stadium ( City )'
+    match_date: 07/05/2018
+    match_time: '11:15 AM'
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/09/2018
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '5'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - 3000 Meters (Men) - Steeplechase - Athletics ( - )'
+    created_at: '2018-07-09 21:39:15'
+    updated_at: '2018-07-10 22:23:45'
+  TournamentMatchFixtureGroup_41:
+    token_id: 22cf7fcf94af75cf0172a20e8c971eaca2615ea4
+    TournamentMatch: TournamentMatch_4
+    TournamentMatchFixture: TournamentMatchFixture_11
+    tournament_match_fixture_token_id: a9c71ad9a291209f8b77d851c4b46f92f734389e
+    gender_category_id: null
+    contestant_team_mode: '2'
+    tournament_match_group_number: MTCH-001-011-041/18
+    match_fixture_round_mode: '6'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: 'Tigray Stadium ( City )'
+    match_date: 07/05/2018
+    match_time: '11:00 AM'
+    tournament_match_session_mode: '1'
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/09/2018
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '5'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - 3000 Meters (Women) - Steeplechase - Athletics ( - )'
+    created_at: '2018-07-09 21:39:49'
+    updated_at: '2018-07-10 22:24:12'
+  TournamentMatchFixtureGroup_42:
+    token_id: e0acb590b92ea4f2aee92d368d4177baf9649570
+    TournamentMatch: TournamentMatch_4
+    TournamentMatchFixture: TournamentMatchFixture_12
+    tournament_match_fixture_token_id: 531c154c293dfa54ca8eb77046c68c1aad5eb1f8
+    gender_category_id: null
+    contestant_team_mode: '2'
+    tournament_match_group_number: MTCH-001-012-042/18
+    match_fixture_round_mode: '6'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: 'Tigray Stadium ( City )'
+    match_date: 07/05/2018
+    match_time: '12:30 PM'
+    tournament_match_session_mode: '2'
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/09/2018
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '5'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - 1500 Meters (Men) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:40:05'
+    updated_at: '2018-07-10 22:24:55'
+  TournamentMatchFixtureGroup_43:
+    token_id: 884b8b70ccd6d34bbe68695a86b90a587bf72405
+    TournamentMatch: TournamentMatch_4
+    TournamentMatchFixture: TournamentMatchFixture_13
+    tournament_match_fixture_token_id: 01cdc9798ebb10f457d0ef298b06a51be6349b18
+    gender_category_id: null
+    contestant_team_mode: '2'
+    tournament_match_group_number: MTCH-001-013-043/18
+    match_fixture_round_mode: '6'
+    match_group_number: '1'
+    match_group_name: 'Group One'
+    match_heat_number: '1'
+    match_heat_name: 'Heat One'
+    match_venue: 'Tigray Stadium ( City )'
+    match_date: 07/05/2018
+    match_time: '12:20 PM'
+    tournament_match_session_mode: '2'
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    number_of_teams_per_fixture_group: null
+    number_of_participants_per_fixture_group: null
+    effective_date: 07/09/2018
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    qualified_flag: true
+    confirmed_flag: false
+    competition_flag: false
+    active_flag: false
+    roundable_flag: true
+    final_flag: false
+    competition_status: '2'
+    fixture_round_status: '5'
+    duration_status: null
+    qualification_status: '2'
+    confirmed_status: '1'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: 'Group One - 1500 Meters (Women) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:40:21'
+    updated_at: '2018-07-10 22:25:14'
 TournamentMatch:
   TournamentMatch_1:
     token_id: da1358fa9530facdf31dc8ef6625384889e6ad2a
@@ -544,6 +1877,90 @@ TournamentMatch:
     description: ' (  )'
     created_at: '2018-07-08 22:54:43'
     updated_at: '2018-07-08 22:55:41'
+  TournamentMatch_2:
+    token_id: bb0e5950208f8a431294583993a2d98d32f463f6
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    Tournament: Tournament_1
+    tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
+    parent_tournament_match_token_id: null
+    GameCategory: GameCategory_4
+    tournament_match_number: MTCH-001
+    tournament_match_full_number: MTCH-001/18
+    tournament_match_round_mode: '1'
+    tournament_match_result_mode: '2'
+    round_type_mode: '1'
+    contestant_team_mode: '1'
+    competition_mode: null
+    start_date: 07/08/2018
+    effective_date: null
+    end_date: null
+    competition_flag: false
+    complete_flag: false
+    active_flag: false
+    competition_status: '2'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: ' (  )'
+    created_at: '2018-07-08 23:06:26'
+    updated_at: '2018-07-08 23:06:52'
+  TournamentMatch_3:
+    token_id: 14480a2d11207a555c69603a4a9f273f1d984258
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    Tournament: Tournament_1
+    tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
+    parent_tournament_match_token_id: null
+    GameCategory: GameCategory_8
+    tournament_match_number: MTCH-001
+    tournament_match_full_number: MTCH-001/18
+    tournament_match_round_mode: '1'
+    tournament_match_result_mode: '2'
+    round_type_mode: '1'
+    contestant_team_mode: '1'
+    competition_mode: null
+    start_date: 07/08/2018
+    effective_date: null
+    end_date: null
+    competition_flag: false
+    complete_flag: false
+    active_flag: false
+    competition_status: '2'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: ' (  )'
+    created_at: '2018-07-08 23:07:55'
+    updated_at: '2018-07-08 23:08:47'
+  TournamentMatch_4:
+    token_id: 346b5501f220f346040c45a17e40244d64e2b415
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    Tournament: Tournament_1
+    tournament_token_id: 0303c6e6494c502e4d59900f69cc50b92eda0865
+    parent_tournament_match_token_id: null
+    GameCategory: GameCategory_1
+    tournament_match_number: MTCH-001
+    tournament_match_full_number: MTCH-001/18
+    tournament_match_round_mode: '6'
+    tournament_match_result_mode: '5'
+    round_type_mode: '6'
+    contestant_team_mode: '2'
+    competition_mode: null
+    start_date: 07/09/2018
+    effective_date: null
+    end_date: null
+    competition_flag: false
+    complete_flag: false
+    active_flag: false
+    competition_status: '2'
+    process_status: '2'
+    approval_status: '2'
+    status: '2'
+    description: ' ( Athletics final tournament match fixture )'
+    created_at: '2018-07-09 21:06:53'
+    updated_at: '2018-07-09 21:08:18'
 TournamentMatchFixture:
   TournamentMatchFixture_1:
     token_id: 7b267dee765806f8295083cf046846fb7c08dc09
@@ -647,6 +2064,567 @@ TournamentMatchFixture:
     description: 'Group Two - Basketball (Men) -  - Basketball ( - )'
     created_at: '2018-07-08 22:55:55'
     updated_at: '2018-07-08 23:04:20'
+  TournamentMatchFixture_3:
+    token_id: be17b836e08048e1fdab4db56605f9888d55a823
+    TournamentMatch: TournamentMatch_2
+    tournament_match_token_id: caae980e7db9a9913ea64bd32003e88e39ccbd16
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_22
+    sport_game_token_id: daa9c5f6151153bb5535bf6e647aed665aaed540
+    gender_category_id: '1'
+    contestant_team_mode: '1'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '1'
+    event_type: '2'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    match_venue: ''
+    tournament_match_session_mode: '1'
+    tournament_match_fixture_number: MTCH-001-003
+    tournament_match_fixture_full_number: MTCH-001-003/18
+    match_date: ''
+    match_time: ''
+    start_date: 07/08/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '2'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - Football (Men) -  - Football ( - )'
+    created_at: '2018-07-08 23:06:51'
+    updated_at: '2018-07-08 23:06:52'
+  TournamentMatchFixture_4:
+    token_id: f088fe675a5b60b6dc6b590e86f54d8aad4c4280
+    TournamentMatch: TournamentMatch_3
+    tournament_match_token_id: 1c7d853f3f8ac715746c05aa95ccc58ba8523982
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_28
+    sport_game_token_id: 8f49b264c2f706e140bbe316b504ca5c15981fec
+    gender_category_id: '1'
+    contestant_team_mode: '1'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '1'
+    event_type: '2'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    match_venue: ''
+    tournament_match_session_mode: '1'
+    tournament_match_fixture_number: MTCH-001-004
+    tournament_match_fixture_full_number: MTCH-001-004/18
+    match_date: ''
+    match_time: ''
+    start_date: 07/08/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '2'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - Volleyball (Men) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:08:46'
+    updated_at: '2018-07-08 23:08:47'
+  TournamentMatchFixture_5:
+    token_id: bc32baad0ebc1cab117b7e2d520e476a5fb3c0e7
+    TournamentMatch: TournamentMatch_3
+    tournament_match_token_id: 1c7d853f3f8ac715746c05aa95ccc58ba8523982
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_28
+    sport_game_token_id: 8f49b264c2f706e140bbe316b504ca5c15981fec
+    gender_category_id: '2'
+    contestant_team_mode: '1'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '1'
+    event_type: '2'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '0'
+    number_of_best_qualifying_rows: '0'
+    match_venue: ''
+    tournament_match_session_mode: '1'
+    tournament_match_fixture_number: MTCH-001-005
+    tournament_match_fixture_full_number: MTCH-001-005/18
+    match_date: ''
+    match_time: ''
+    start_date: 07/08/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: false
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '2'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - Volleyball (Women) -  - Volleyball ( - )'
+    created_at: '2018-07-08 23:09:14'
+    updated_at: '2018-07-08 23:09:15'
+  TournamentMatchFixture_6:
+    token_id: c08c53ab0143bccb3b3f268413901ce3cf90ff8a
+    TournamentMatch: TournamentMatch_4
+    tournament_match_token_id: 8120d0a3432ec69f3e3574dfed0f6fc2e0d25222
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_29
+    sport_game_token_id: b16eb13acaa373b013c8d808d13749806b8ea8e4
+    gender_category_id: '1'
+    contestant_team_mode: '2'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '6'
+    event_type: '1'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    match_venue: 'Tigray Stadium ( City )'
+    tournament_match_session_mode: '1'
+    tournament_match_fixture_number: MTCH-001-006
+    tournament_match_fixture_full_number: MTCH-001-006/18
+    match_date: 07/05/2018
+    match_time: '9:30 AM'
+    start_date: 07/09/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '5'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - 10000 Meters (Men) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:08:18'
+    updated_at: '2018-07-10 22:21:07'
+  TournamentMatchFixture_7:
+    token_id: 9001556f01eebf17cd49dab8e6bd87671dd7d601
+    TournamentMatch: TournamentMatch_4
+    tournament_match_token_id: 8120d0a3432ec69f3e3574dfed0f6fc2e0d25222
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_29
+    sport_game_token_id: b16eb13acaa373b013c8d808d13749806b8ea8e4
+    gender_category_id: '2'
+    contestant_team_mode: '2'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '6'
+    event_type: '1'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    match_venue: 'Tigray Stadium ( City )'
+    tournament_match_session_mode: '2'
+    tournament_match_fixture_number: MTCH-001-007
+    tournament_match_fixture_full_number: MTCH-001-007/18
+    match_date: 07/05/2018
+    match_time: '12:40 PM'
+    start_date: 07/09/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '5'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - 10000 Meters (Women) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:13:40'
+    updated_at: '2018-07-10 22:21:55'
+  TournamentMatchFixture_8:
+    token_id: 1576d5d37092640eb6ce684027da519cf5b1527e
+    TournamentMatch: TournamentMatch_4
+    tournament_match_token_id: 8120d0a3432ec69f3e3574dfed0f6fc2e0d25222
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_30
+    sport_game_token_id: e52c6178fef62c1ffd9c52badeac4025f6c3c55c
+    gender_category_id: '1'
+    contestant_team_mode: '2'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '6'
+    event_type: '1'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    match_venue: 'Tigray Stadium ( City )'
+    tournament_match_session_mode: '1'
+    tournament_match_fixture_number: MTCH-001-008
+    tournament_match_fixture_full_number: MTCH-001-008/18
+    match_date: 07/06/2018
+    match_time: '11:40 AM'
+    start_date: 07/09/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '5'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - 5000 Meters (Men) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:38:48'
+    updated_at: '2018-07-10 22:22:30'
+  TournamentMatchFixture_9:
+    token_id: 6bd538f3ae69d6f053c86d3b30fc3bc73ff49cdb
+    TournamentMatch: TournamentMatch_4
+    tournament_match_token_id: 8120d0a3432ec69f3e3574dfed0f6fc2e0d25222
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_30
+    sport_game_token_id: e52c6178fef62c1ffd9c52badeac4025f6c3c55c
+    gender_category_id: '2'
+    contestant_team_mode: '2'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '6'
+    event_type: '1'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    match_venue: 'Tigray Stadium ( City )'
+    tournament_match_session_mode: '1'
+    tournament_match_fixture_number: MTCH-001-009
+    tournament_match_fixture_full_number: MTCH-001-009/18
+    match_date: 07/06/2018
+    match_time: '10:40 AM'
+    start_date: 07/09/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '5'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - 5000 Meters (Women) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:39:02'
+    updated_at: '2018-07-10 22:22:55'
+  TournamentMatchFixture_10:
+    token_id: ea6b93823f598db4c924af3b708dffd2e13b1415
+    TournamentMatch: TournamentMatch_4
+    tournament_match_token_id: 8120d0a3432ec69f3e3574dfed0f6fc2e0d25222
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_34
+    sport_game_token_id: dd1b47595a341e2df2ad1c32c9afe64d3bb46927
+    gender_category_id: '1'
+    contestant_team_mode: '2'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '6'
+    event_type: '1'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    match_venue: 'Tigray Stadium ( City )'
+    tournament_match_session_mode: '1'
+    tournament_match_fixture_number: MTCH-001-010
+    tournament_match_fixture_full_number: MTCH-001-010/18
+    match_date: 07/05/2018
+    match_time: '11:15 AM'
+    start_date: 07/09/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '5'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - 3000 Meters (Men) - Steeplechase - Athletics ( - )'
+    created_at: '2018-07-09 21:39:15'
+    updated_at: '2018-07-10 22:23:45'
+  TournamentMatchFixture_11:
+    token_id: 2cafb00864c8a657788da45462e67c612f277b66
+    TournamentMatch: TournamentMatch_4
+    tournament_match_token_id: 8120d0a3432ec69f3e3574dfed0f6fc2e0d25222
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_34
+    sport_game_token_id: dd1b47595a341e2df2ad1c32c9afe64d3bb46927
+    gender_category_id: '2'
+    contestant_team_mode: '2'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '6'
+    event_type: '1'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    match_venue: 'Tigray Stadium ( City )'
+    tournament_match_session_mode: '1'
+    tournament_match_fixture_number: MTCH-001-011
+    tournament_match_fixture_full_number: MTCH-001-011/18
+    match_date: 07/05/2018
+    match_time: '11:00 AM'
+    start_date: 07/09/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '5'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - 3000 Meters (Women) - Steeplechase - Athletics ( - )'
+    created_at: '2018-07-09 21:39:49'
+    updated_at: '2018-07-10 22:24:12'
+  TournamentMatchFixture_12:
+    token_id: 934b4b0497d0a420ef4208e02d41ff9bd63ed965
+    TournamentMatch: TournamentMatch_4
+    tournament_match_token_id: 8120d0a3432ec69f3e3574dfed0f6fc2e0d25222
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_5
+    sport_game_token_id: 4e91f307f721b004af3bd091e4b406eb737b0255
+    gender_category_id: '1'
+    contestant_team_mode: '2'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '6'
+    event_type: '1'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    match_venue: 'Tigray Stadium ( City )'
+    tournament_match_session_mode: '2'
+    tournament_match_fixture_number: MTCH-001-012
+    tournament_match_fixture_full_number: MTCH-001-012/18
+    match_date: 07/05/2018
+    match_time: '12:30 PM'
+    start_date: 07/09/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '5'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - 1500 Meters (Men) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:40:05'
+    updated_at: '2018-07-10 22:24:55'
+  TournamentMatchFixture_13:
+    token_id: 40536a9e26836fb6b0b229ea1f443d023bf5f11f
+    TournamentMatch: TournamentMatch_4
+    tournament_match_token_id: 8120d0a3432ec69f3e3574dfed0f6fc2e0d25222
+    parent_match_fixture_token_id: null
+    SportGame: SportGame_5
+    sport_game_token_id: 4e91f307f721b004af3bd091e4b406eb737b0255
+    gender_category_id: '2'
+    contestant_team_mode: '2'
+    match_round_type_id: null
+    match_heat_type_id: null
+    match_round_type_name: null
+    match_heat_type_name: null
+    match_heat_number: null
+    match_heat_name: null
+    match_fixture_round_mode: '6'
+    event_type: '1'
+    contestant_mode: '4'
+    number_of_teams_per_fixture: null
+    number_of_participants_per_fixture: null
+    number_of_qualifying_rows: '3'
+    number_of_best_qualifying_rows: '0'
+    match_venue: 'Tigray Stadium ( City )'
+    tournament_match_session_mode: '2'
+    tournament_match_fixture_number: MTCH-001-013
+    tournament_match_fixture_full_number: MTCH-001-013/18
+    match_date: 07/05/2018
+    match_time: '12:20 PM'
+    start_date: 07/09/2018
+    effective_date: null
+    end_date: null
+    qualifying_rows_enable_flag: true
+    best_qualifying_row_enable_flag: false
+    enable_participant_team_number_mandatory_flag: false
+    enable_participant_number_mandatory_flag: false
+    parent_flag: false
+    inheritable_flag: false
+    roundable_flag: false
+    active_flag: false
+    competition_flag: false
+    complete_flag: false
+    final_flag: false
+    competition_status: '1'
+    fixture_round_status: '5'
+    duration_status: null
+    process_status: '1'
+    approval_status: '1'
+    status: '1'
+    description: 'Group One - 1500 Meters (Women) - Running - Athletics ( - )'
+    created_at: '2018-07-09 21:40:21'
+    updated_at: '2018-07-10 22:25:14'
 TournamentSportGameGroup: {  }
 MultipleContestantTeamGroup:
   MultipleContestantTeamGroup_1:
@@ -737,9 +2715,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -747,7 +2725,7 @@ MultipleContestantTeamGroup:
     description: 'Football (Football) - Men - ( Football team groups only one group )'
     type: '1'
     created_at: '2018-07-03 02:46:57'
-    updated_at: '2018-07-03 02:48:49'
+    updated_at: '2018-07-08 23:06:52'
   MultipleContestantTeamGroup_4:
     token_id: 97f833fae4baf8f6fe40ecb9b33b4eff891e1edd
     Tournament: Tournament_1
@@ -770,9 +2748,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -780,7 +2758,7 @@ MultipleContestantTeamGroup:
     description: 'Volleyball (Volleyball) - Men - (  )'
     type: '1'
     created_at: '2018-07-03 21:07:42'
-    updated_at: '2018-07-03 21:08:59'
+    updated_at: '2018-07-08 23:08:47'
   MultipleContestantTeamGroup_5:
     token_id: 213ab66966ad17f485b85f3302b6f12dd1d9082c
     Tournament: Tournament_1
@@ -803,9 +2781,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -813,7 +2791,7 @@ MultipleContestantTeamGroup:
     description: 'Volleyball (Volleyball) - Women - (  )'
     type: '1'
     created_at: '2018-07-03 21:07:55'
-    updated_at: '2018-07-03 21:08:59'
+    updated_at: '2018-07-08 23:09:15'
   MultipleContestantTeamGroup_6:
     token_id: 0a72785f5c0fb9dea969fa3a1a6e17b7aa1d51e1
     Tournament: Tournament_1
@@ -1100,9 +3078,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -1110,7 +3088,7 @@ MultipleContestantTeamGroup:
     description: '10000 Meters (Athletics) - Long Distance Running - Men - (  )'
     type: '1'
     created_at: '2018-07-06 10:05:37'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:08:18'
   MultipleContestantTeamGroup_15:
     token_id: e25e2f89f8cb7d8e5276cdac985a5bb8e7eb1266
     Tournament: Tournament_1
@@ -1133,9 +3111,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -1143,7 +3121,7 @@ MultipleContestantTeamGroup:
     description: '10000 Meters (Athletics) - Long Distance Running - Women - (  )'
     type: '1'
     created_at: '2018-07-08 21:13:35'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:13:40'
   MultipleContestantTeamGroup_16:
     token_id: da258cb814e8682a55eb45cab08e787385868b53
     Tournament: Tournament_1
@@ -1166,9 +3144,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -1176,7 +3154,7 @@ MultipleContestantTeamGroup:
     description: '5000 Meters (Athletics) - Long Distance Running - Men - (  )'
     type: '1'
     created_at: '2018-07-08 21:15:37'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:38:48'
   MultipleContestantTeamGroup_17:
     token_id: acf4fd605e7a7d0f0b6c67f55014875a537627b7
     Tournament: Tournament_1
@@ -1199,9 +3177,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -1209,7 +3187,7 @@ MultipleContestantTeamGroup:
     description: '5000 Meters (Athletics) - Long Distance Running - Women - (  )'
     type: '1'
     created_at: '2018-07-08 21:16:40'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:39:03'
   MultipleContestantTeamGroup_18:
     token_id: c4814144a415a234885c15bafe4e600755f87a0f
     Tournament: Tournament_1
@@ -1232,9 +3210,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -1242,7 +3220,7 @@ MultipleContestantTeamGroup:
     description: '3000 Meters (Athletics) - Steeplechase Steeplechase - Men - (  )'
     type: '1'
     created_at: '2018-07-08 21:17:28'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:39:15'
   MultipleContestantTeamGroup_19:
     token_id: c02c1551cc0bfdcce9141eed2907894d44454eac
     Tournament: Tournament_1
@@ -1265,9 +3243,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -1275,7 +3253,7 @@ MultipleContestantTeamGroup:
     description: '3000 Meters (Athletics) - Steeplechase Steeplechase - Women - (  )'
     type: '1'
     created_at: '2018-07-08 21:17:56'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:39:50'
   MultipleContestantTeamGroup_20:
     token_id: 4cf4507d90d5281eeea98ddaee0d5eda319b83f5
     Tournament: Tournament_1
@@ -1298,9 +3276,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -1308,7 +3286,7 @@ MultipleContestantTeamGroup:
     description: '1500 Meters (Athletics) - Middle Distance Running - Men - (  )'
     type: '1'
     created_at: '2018-07-08 21:18:08'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:40:06'
   MultipleContestantTeamGroup_21:
     token_id: 8a8db055259604095420a482de9e866a2e88b7ca
     Tournament: Tournament_1
@@ -1331,9 +3309,9 @@ MultipleContestantTeamGroup:
     group_team_number_mandatory_flag: false
     complete_flag: false
     active_flag: true
-    confirmed_flag: false
+    confirmed_flag: true
     competition_flag: true
-    confirmed_status: '2'
+    confirmed_status: '9'
     competition_status: '3'
     process_status: '13'
     approval_status: '4'
@@ -1341,7 +3319,7 @@ MultipleContestantTeamGroup:
     description: '1500 Meters (Athletics) - Middle Distance Running - Women - (  )'
     type: '1'
     created_at: '2018-07-08 21:19:02'
-    updated_at: '2018-07-08 21:26:24'
+    updated_at: '2018-07-09 21:40:21'
   MultipleContestantTeamGroup_22:
     token_id: a9710cce79847d8cf9cb83f70c82948a687953f9
     Tournament: Tournament_1
@@ -2694,7 +4672,7 @@ SportGame:
     status: '3'
     description: 'Athletics (ATHLETICS) - 1500 Meters ( s dfgs dfgsdfgsdfgsdfg sdfgsfd )'
     created_at: '2018-06-02 19:41:49'
-    updated_at: '2018-07-08 21:26:24'
+    updated_at: '2018-07-09 21:40:21'
   SportGame_6:
     token_id: f2037005b932f729eff43c6d878c55f08d3e12fa
     Organization: Organization_1
@@ -3272,7 +5250,7 @@ SportGame:
     status: '3'
     description: 'Football (FOOTBALL) - Football ( sdfgsdf gdsfgsdfgsdfg )'
     created_at: '2018-06-02 22:14:33'
-    updated_at: '2018-07-03 02:48:49'
+    updated_at: '2018-07-08 23:06:52'
   SportGame_23:
     token_id: b626f2e3b973331a692f0e0f06155c7cc11ae61a
     Organization: Organization_1
@@ -3476,7 +5454,7 @@ SportGame:
     status: '3'
     description: 'Volleyball (VOLLYBALL) - Volleyball ( jhg jhgjkjhljh jkhjkh jkhkjhj )'
     created_at: '2018-06-02 22:21:15'
-    updated_at: '2018-07-03 21:08:59'
+    updated_at: '2018-07-08 23:09:15'
   SportGame_29:
     token_id: b05e5b13bbd93333b59cb5ac5e18b7ed85221a6b
     Organization: Organization_1
@@ -3510,7 +5488,7 @@ SportGame:
     status: '3'
     description: 'Athletics (ATHLETICS) - 10000 Meters (  )'
     created_at: '2018-07-02 22:05:48'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:13:40'
   SportGame_30:
     token_id: bcd4c2584f03b278b1d94cc64d4bdf4c909d25cb
     Organization: Organization_1
@@ -3544,7 +5522,7 @@ SportGame:
     status: '3'
     description: 'Athletics (ATHLETICS) - 5000 Meters (  )'
     created_at: '2018-07-02 22:07:49'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:39:02'
   SportGame_31:
     token_id: 74edd5b7b7c13db7e78376fa642cb97d4a72c002
     Organization: Organization_1
@@ -3680,7 +5658,7 @@ SportGame:
     status: '3'
     description: 'Athletics (ATHLETICS) - 3000 Meters ( fdfgsdfg )'
     created_at: '2018-07-06 21:53:57'
-    updated_at: '2018-07-08 21:26:25'
+    updated_at: '2018-07-09 21:39:50'
 GameCategory:
   GameCategory_1:
     token_id: 096a750dfbe002a1c8175892d33fb7b84b789c3c
@@ -14745,6 +16723,30 @@ TeamGameParticipation:
     description: 'Chess (CHESS) - Chess (Chess) (  )'
     created_at: '2018-07-07 21:59:11'
     updated_at: '2018-07-08 21:30:46'
+  TeamGameParticipation_355:
+    token_id: b381ece89bfaa88ef1e4e832314343f39296ca13
+    Team: Team_1
+    team_token_id: 83a04370149cd5f8b82b9d361c571d2065255da5
+    GameCategory: GameCategory_1
+    SportGame: SportGame_30
+    sport_game_token_id: e52c6178fef62c1ffd9c52badeac4025f6c3c55c
+    number_of_players: '0'
+    gender_category_id: '2'
+    event_type: '0'
+    number_of_participants: null
+    player_mode: '0'
+    start_date: null
+    effective_date: null
+    end_date: null
+    grouped_flag: false
+    confirmed_flag: false
+    active_flag: false
+    grouped_status: '1'
+    confirmed_status: '1'
+    status: '2'
+    description: 'Athletics (ATHLETICS) - 5000 Meters (Athletics) (  )'
+    created_at: '2018-07-10 22:20:41'
+    updated_at: '2018-07-10 22:20:41'
 CodeGenerator:
   CodeGenerator_1:
     token_id: ee5bb3a6124bae087ac3f5d732d94947
@@ -24691,3 +26693,288 @@ SystemLogFile:
     description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Sun Jul 08, 2018 10:55:57 PM]'
     created_at: '2018-07-08 22:55:57'
     updated_at: '2018-07-08 22:55:57'
+  SystemLogFile_386:
+    token_id: 2eb447963b907d188909d76ef04e640d3a229c68
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/08/2018 11:06:26 PM'
+    action_time: '11:06:26 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match - [ Module: Tournament Match ], Object: Match ID: 2, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatch
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Sun Jul 08, 2018 11:06:26 PM]'
+    created_at: '2018-07-08 23:06:26'
+    updated_at: '2018-07-08 23:06:26'
+  SystemLogFile_387:
+    token_id: 88e91c5813a9c5c6eaab5c2f2d0f9062d2fbab7a
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/08/2018 11:06:52 PM'
+    action_time: '11:06:52 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 3, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Sun Jul 08, 2018 11:06:52 PM]'
+    created_at: '2018-07-08 23:06:52'
+    updated_at: '2018-07-08 23:06:52'
+  SystemLogFile_388:
+    token_id: 55a35e719158c64702b235958949942c2638b3f2
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/08/2018 11:07:55 PM'
+    action_time: '11:07:55 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match - [ Module: Tournament Match ], Object: Match ID: 3, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatch
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Sun Jul 08, 2018 11:07:55 PM]'
+    created_at: '2018-07-08 23:07:55'
+    updated_at: '2018-07-08 23:07:55'
+  SystemLogFile_389:
+    token_id: 81c7c88c9443f8921a797d5f082495d61b733531
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/08/2018 11:08:47 PM'
+    action_time: '11:08:47 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 4, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Sun Jul 08, 2018 11:08:47 PM]'
+    created_at: '2018-07-08 23:08:47'
+    updated_at: '2018-07-08 23:08:47'
+  SystemLogFile_390:
+    token_id: 1370e9b9d68c33baa03f6184f9f33fdf3aaf0c2c
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/08/2018 11:09:15 PM'
+    action_time: '11:09:15 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 5, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Sun Jul 08, 2018 11:09:15 PM]'
+    created_at: '2018-07-08 23:09:15'
+    updated_at: '2018-07-08 23:09:15'
+  SystemLogFile_391:
+    token_id: f1feeae9ddc47a0a547568573425681f3ab3bff2
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/09/2018 09:06:53 PM'
+    action_time: '09:06:53 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match - [ Module: Tournament Match ], Object: Match ID: 4, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatch
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Mon Jul 09, 2018 09:06:53 PM]'
+    created_at: '2018-07-09 21:06:53'
+    updated_at: '2018-07-09 21:06:53'
+  SystemLogFile_392:
+    token_id: 352d1ccb89c33e96d530f2a62f8194a03378f3ce
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/09/2018 09:08:18 PM'
+    action_time: '09:08:18 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 6, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Mon Jul 09, 2018 09:08:18 PM]'
+    created_at: '2018-07-09 21:08:18'
+    updated_at: '2018-07-09 21:08:18'
+  SystemLogFile_393:
+    token_id: 2bef58ee25fc0f8b8da0822d5c5ac2d0476af3eb
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/09/2018 09:13:40 PM'
+    action_time: '09:13:40 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 7, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Mon Jul 09, 2018 09:13:40 PM]'
+    created_at: '2018-07-09 21:13:40'
+    updated_at: '2018-07-09 21:13:40'
+  SystemLogFile_394:
+    token_id: d4b59c3f29984e191f7a40f2ca0582e4e5563332
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/09/2018 09:38:48 PM'
+    action_time: '09:38:48 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 8, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Mon Jul 09, 2018 09:38:48 PM]'
+    created_at: '2018-07-09 21:38:48'
+    updated_at: '2018-07-09 21:38:48'
+  SystemLogFile_395:
+    token_id: 5ce350812d21b6223b5384255dc64e1eb6557d28
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/09/2018 09:39:03 PM'
+    action_time: '09:39:03 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 9, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Mon Jul 09, 2018 09:39:03 PM]'
+    created_at: '2018-07-09 21:39:03'
+    updated_at: '2018-07-09 21:39:03'
+  SystemLogFile_396:
+    token_id: d1a7d42dd4c74a31fc71f6c4c1d9ca1a24e33ac2
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/09/2018 09:39:15 PM'
+    action_time: '09:39:15 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 10, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Mon Jul 09, 2018 09:39:15 PM]'
+    created_at: '2018-07-09 21:39:15'
+    updated_at: '2018-07-09 21:39:15'
+  SystemLogFile_397:
+    token_id: 40320b4306c85a17bb6848187e6069e2f1a981ae
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/09/2018 09:39:50 PM'
+    action_time: '09:39:50 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 11, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Mon Jul 09, 2018 09:39:50 PM]'
+    created_at: '2018-07-09 21:39:50'
+    updated_at: '2018-07-09 21:39:50'
+  SystemLogFile_398:
+    token_id: 9b1550fcf91894bffbc6be37a953d70b35168ce3
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/09/2018 09:40:06 PM'
+    action_time: '09:40:06 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 12, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Mon Jul 09, 2018 09:40:06 PM]'
+    created_at: '2018-07-09 21:40:06'
+    updated_at: '2018-07-09 21:40:06'
+  SystemLogFile_399:
+    token_id: c99d3780f3aa8521a33fde3d74c5e5dcfc8c6565
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '7'
+    action_date: '07/09/2018 09:40:21 PM'
+    action_time: '09:40:21 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Tournament Match Fixture - [ Module: Tournament Match ], Object: Match Fixture ID: 13, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/match/createTournamentMatchFixture
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Tournament Match Fixture - [ Module: Tournament Match ] from [ IP: 127.0.0.1 ] at [Date: Mon Jul 09, 2018 09:40:21 PM]'
+    created_at: '2018-07-09 21:40:21'
+    updated_at: '2018-07-09 21:40:21'
+  SystemLogFile_400:
+    token_id: 100a9735b49fccb9388f3299918dba355c485841
+    Organization: Organization_1
+    org_token_id: 5298132053f93db5da4d84b8c1c0eb9aece6cd57
+    User: User_1
+    module_id: '5'
+    action_date: '07/10/2018 10:20:42 PM'
+    action_time: '10:20:42 PM'
+    action_data: 'User: admin, Action: CREATE, Data: New Team - [ Module: Team ], Object: Participant Team ID: 1, IP: 127.0.0.1'
+    action_type_id: '1'
+    host_name: mutms.sys.local
+    document_root: /var/www/mu-tournament/web
+    php_self: /index.php/team/createTeamGamePartcipation
+    pc_ip_address: '2130706433'
+    browser_type: 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:52.0) Gecko/20100101 Firefox/52.0'
+    effective_date: null
+    description: 'Admin has performed CREATE action to create New Team - [ Module: Team ] from [ IP: 127.0.0.1 ] at [Date: Tue Jul 10, 2018 10:20:42 PM]'
+    created_at: '2018-07-10 22:20:42'
+    updated_at: '2018-07-10 22:20:42'

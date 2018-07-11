@@ -32,11 +32,11 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 					
 					$_matchFixtureGroupObj = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID);
 					
-					$_flag2 = $_matchFixtureGroupObj->hasActiveGroupParticipantTeam ? $_matchFixtureGroupObj->makeApproval ():$_matchFixtureGroupObj->makeActivation ();
+					//$_flag2 = $_matchFixtureGroupObj->hasActiveGroupParticipantTeam ? $_matchFixtureGroupObj->makeApproval ():$_matchFixtureGroupObj->makeActivation ();
 					
 					//$_matchFixtureGroupObj = TournamentMatchFixtureGroupTable::makeCandidateObject ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID);
 					
-					//$_flag2 = $_matchFixtureGroupObj->makeApproval ();
+					$_flag2 = $_matchFixtureGroupObj->makeApproval ();
 					
 				break; 
 				case SystemCore::$_MULTIPLE_DATA: 
@@ -92,7 +92,7 @@ class MultipleParticipantTeamTable extends PluginMultipleParticipantTeamTable
 			$_nw->competition_flag = true;     
 			$_nw->qualified_flag = true;     
 			$_nw->active_flag = true;     
-			$_nw->qualification_status = TournamentCore::$_QUALIFIED;  
+			$_nw->qualification_status = TournamentCore::$_QFD;  
 			$_nw->competition_status = TournamentCore::$_ACTIVE;  
 			$_nw->process_status = TournamentCore::$_COMPLETED;  
 			$_nw->approval_status = $_matchStatus ? trim($_matchStatus):TournamentCore::$_APPROVED;  

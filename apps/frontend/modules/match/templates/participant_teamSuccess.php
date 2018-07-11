@@ -8,13 +8,30 @@
 	//197085e1173adc58335847f14dc45cea443248df 
 	//echo count($_tournamentSportGameOpponentGroups);
 	
-	//match_fixture=Heat One - Basketball  - Men (Basketball)&match_fixture_id=1&match_fixture_token_id=a90d585ad1da0c0dd714912740ef5e51745c8d4e&gender_category_id=1&tournament_match_fixture_group_id=1&tournament_match_fixture_token_group_id=34bcd0dddecf6761dc6460017f3abdf699cadcda&sport_game_id=17&contestant_team_mode=1&match_fixture_contestant_team_mode=1&tournament_contestant_team_mode=1&tournament_match_id=1&tournament_match_token_id=1823478c831a03403d922373feb04f578e3ce4c2&tournament_match_game_category_id=2&tournament_sport_game_group_name=Group One - Basketball (Men) -  - Basketball&tournament_sport_game_group_id=1&tournament_sport_game_group_token_id=1a2177208e4f072db768f63d20f327ddab8ae56b&participant_team_name=Addis ababa Science and Technology University (AASTU) - Ethiopia &participant_team_id=8&participant_team_token_id=14395d0b7cb00ce1f80ad795936f1c0deb570c5d&sport_game_group_team_id=4&sport_game_group_team_token_id=b03a7b37a6054c598fc66c7f7fc0340977bb64f3&tournament_sport_game_group_opponent_name=Group One - Basketball (Men) -  - Basketball&tournament_sport_game_group_opponent_id=1&tournament_sport_game_group_opponent_token_id=1a2177208e4f072db768f63d20f327ddab8ae56b&opponent_participant_team_name=Adigrat University (ADU) - Ethiopia &opponent_participant_team_id=2&opponent_participant_team_token_id=2f6e72bdaf446d6dc8cd78db58dc76d7b2f860c4&opponent_sport_game_group_team_id=1&opponent_sport_game_group_team_token_id=a2f68785f56d6fc270c25f4950b7f4861dbe9073&description=
+	//match_fixture=Heat One - 10000 Meters Running - Men (Athletics)&match_fixture_id=6&match_fixture_token_id=c08c53ab0143bccb3b3f268413901ce3cf90ff8a&gender_category_id=1&tournament_match_fixture_group_id=36&tournament_match_fixture_token_group_id=c75a981d339dffb2fd5e333b5de760a6469a55bc&sport_game_id=29&contestant_team_mode=1&match_fixture_contestant_team_mode=2&tournament_contestant_team_mode=2&tournament_match_id=4&tournament_match_token_id=346b5501f220f346040c45a17e40244d64e2b415&tournament_match_game_category_id=1&tournament_sport_game_group_name=Group One - 10000 Meters (Men) - Running - Athletics&tournament_sport_game_group_id=14&tournament_sport_game_group_token_id=df0094cb234d3c7b0b9ac0148022223bd0bd174f&participant_team_name=Université Des Comores (UDC) - Comoros &participant_team_id=23&participant_team_token_id=08f2d7c86d34a89476cdf612b50eaa021ee80241&sport_game_group_team_id=29&sport_game_group_team_token_id=c986906dc7d6ba3b7ac8458e24f8809176dafe11&description=
+	
+	
+	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, 4, '346b5501f220f346040c45a17e40244d64e2b415', 6, 'c08c53ab0143bccb3b3f268413901ce3cf90ff8a', 36, 'c75a981d339dffb2fd5e333b5de760a6469a55bc', 14, 'df0094cb234d3c7b0b9ac0148022223bd0bd174f', 29, 'c986906dc7d6ba3b7ac8458e24f8809176dafe11', $_sportGameOpponentGroupID, $_sportGameOpponentGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_opponentParticipantTeamID, $_opponentParticipantTeamTokenID, 'Heat One - 10000 Meters Running - Men (Athletics)', 'Université Des Comores (UDC) - Comoros', 'Group One - 10000 Meters (Men) - Running - Athletics', $_sportGameOpponentGroupName, $_opponentParticipantTeamName, $_description, 2, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
+	
+	
+	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, $_tournamentMatchID, $_tournamentMatchTokenID, $_matchFixtureID, $_matchFixtureTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameGroupID, $_sportGameGroupTokenID, $_participantTeamGroupID, $_participantTeamGroupTokenID, $_sportGameOpponentGroupID, $_sportGameOpponentGroupTokenID, $_opponentParticipantTeamGroupID, $_opponentParticipantTeamGroupTokenID, $_opponentParticipantTeamID, $_opponentParticipantTeamTokenID, $_matchFixtureName, $_participantTeamName, $_sportGameGroupName, $_sportGameOpponentGroupName, $_opponentParticipantTeamName, $_description, $_contestantTeamMode, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
+	
+	//$_groupParticipantTeam = TournamentGroupParticipantTeamTable::makeObject ( 29, 'c986906dc7d6ba3b7ac8458e24f8809176dafe11'  );
+	//echo $_groupParticipantTeam->id;
 	
 	//$_flag =  TournamentMatchParticipantTeamTable::processNew ( $_orgID, $_orgTokenID, 1, '1823478c831a03403d922373feb04f578e3ce4c2', 1, 'a90d585ad1da0c0dd714912740ef5e51745c8d4e', 1, '34bcd0dddecf6761dc6460017f3abdf699cadcda', 1, '1a2177208e4f072db768f63d20f327ddab8ae56b', 4, 'b03a7b37a6054c598fc66c7f7fc0340977bb64f3', 1, '1a2177208e4f072db768f63d20f327ddab8ae56b', 1, 'a2f68785f56d6fc270c25f4950b7f4861dbe9073', 2, '2f6e72bdaf446d6dc8cd78db58dc76d7b2f860c4', 'Heat One - Basketball  - Men (Basketball)', 'Addis ababa Science and Technology University (AASTU)', 'Group One - Basketball (Men) -  - Basketball', 'Group One - Basketball (Men) -  - Basketball', 'Adigrat University (ADU) - Ethiopia', $_description, 1, SystemCore::$_SINGLE_DATA, $_userID, $_userTokenID );
 	
 	//$_candidateParticipantTeamss = TournamentMatchTable::selectCandidateMatchFixtureGroups ( 1, '1823478c831a03403d922373feb04f578e3ce4c2', 2, $_keyword, 0, 10 ) ;
 	//$_candidateParticipantTeamss = TournamentMatchParticipantTeamTable::makeAllCandidateSelection ( 1, '1823478c831a03403d922373feb04f578e3ce4c2', $_matchFixtureID, 2, $_sportGameID) ;
 	//echo count($_candidateParticipantTeamss);
+	
+	//$_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( 4, '346b5501f220f346040c45a17e40244d64e2b415', $_sportGameID, $_genderCategory, $_keyword, 0, 20); 
+	
+	//tournament_match_id=4&tournament_match_token_id=346b5501f220f346040c45a17e40244d64e2b415&match_fixture_id=6&match_fixture_token_id=c08c53ab0143bccb3b3f268413901ce3cf90ff8a&tournament_sport_game_group_id=14&gender_category_id=1
+	
+	//$_candidateParticipantTeams = TournamentMatchTable::selectCandidateParticipantTeams (  4, '346b5501f220f346040c45a17e40244d64e2b415', $_matchFixtureID, 14, $_sportGameID, 1, $_keyword, 0, 20 );
+	
+	//echo count($_candidateParticipantTeams);
 ?> 
 
 <div class="ui-page-box">
@@ -484,10 +501,12 @@
 			document.getElementById("sport_game_group_team_token_id").value = listArr[1];  
 			document.getElementById("participant_team_id").value = listArr[2];
 			document.getElementById("participant_team_token_id").value = listArr[3];  
-			document.getElementById("participant_team_name").value = listArr[4]+' ('+listArr[5]+')'+' - '+listArr[6];    
-						
-			//$("#createTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
-			//$("#cancelTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			document.getElementById("participant_team_name").value = listArr[4]+' ('+listArr[5]+')'+' - '+listArr[6];   
+			 
+			if(document.getElementById("tournament_contestant_team_mode").value == 2 ) {
+				$("#createTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn").addClass("ui-toolbar-btn");
+				$("#cancelTournamentMatchParticipantTeam").removeAttr("disabled").removeClass("ui-disabled-toolbar-btn");
+			}
 			$(".selectCandidateTournamentSportGameGroupOpponent").removeAttr("disabled") ;
 			$('#candidateParticipantTeamModal').modal('hide');
 		return e.preventDefault();
