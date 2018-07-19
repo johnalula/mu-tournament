@@ -35,7 +35,7 @@
 				<?php echo TournamentCore::processGenderValue($_tournamentTeamGroup->groupGenderCategoryID) ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
-				<?php echo $_tournamentTeamGroup->sportGameGroupName ?>
+				<?php echo $_tournamentTeamGroup->hasCandidatePendingParticipants() ?>
 			</td>  
 			<td class="ui-td-left-text ui-td-xlarg">
 				<?php echo Wordlimit::Wordlimiter($_tournamentTeamGroup->description, 8) ?>

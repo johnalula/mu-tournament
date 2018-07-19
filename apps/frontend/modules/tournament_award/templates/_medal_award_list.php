@@ -37,29 +37,29 @@
 				<?php echo $_participantTeam->teamNumber ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xlarg">
-				<?php echo $_participantTeam->participantTeamName.' ( '.$_participantTeam->participantTeamAlias.' ) ' ?>
+				<?php echo $_participantTeam->teamName.' ( '.$_participantTeam->teamAlias.' ) ' ?>
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-1">
 				<?php echo SystemCore::processCountryValue($_participantTeam->teamCountry) ?>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-01 ui-table-td-form"> 
-				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align participantTeamGoldMedalAward <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="participantTeamGoldMedalAward_<?php echo $_participantTeam->id ?>" name="<?php echo $_participantTeam->id ?>" value="<?php echo $_participantTeam->numberOfGoldMedal ?>" rel="<?php echo $_participantTeam->id ?>" placeholder="" title="<?php echo $_participantTeam->participantTeamName ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
+				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align participantTeamGoldMedalAward <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="participantTeamGoldMedalAward_<?php echo $_participantTeam->id ?>" name="<?php echo $_participantTeam->id ?>" value="<?php echo $_participantTeam->numberOfGoldMedal ?>" rel="<?php echo $_participantTeam->id ?>" placeholder="" title="<?php echo $_participantTeam->teamName ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-01 ui-table-td-form"> 
-				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align participantTeamSilverMedalAward <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="participantTeamSilverMedalAward_<?php echo $_participantTeam->id ?>" name="<?php echo $_participantTeam->id ?>" value="<?php echo $_participantTeam->numberOfSilverMedal ?>" rel="<?php echo $_participantTeam->id ?>" placeholder="" title="<?php echo $_participantTeam->participantTeamName ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
+				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align participantTeamSilverMedalAward <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="participantTeamSilverMedalAward_<?php echo $_participantTeam->id ?>" name="<?php echo $_participantTeam->id ?>" value="<?php echo $_participantTeam->numberOfSilverMedal ?>" rel="<?php echo $_participantTeam->id ?>" placeholder="" title="<?php echo $_participantTeam->teamName ?>" <?php echo $_task->id ? 'disabled':'' ?>  >
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-01 ui-table-td-form"> 
-				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align participantTeamBronzMedalAward <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="participantTeamBronzMedalAward_<?php echo $_participantTeam->id ?>" name="<?php echo $_participantTeam->id ?>" value="<?php echo $_participantTeam->numberOfBronzeMedal ?>" rel="<?php echo $_participantTeam->id ?>" placeholder="" title="<?php echo $_participantTeam->participantTeamName ?>" >
+				<input type="text" class="ui-table-list-form-input-md  ui-text-center-align participantTeamBronzMedalAward <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="participantTeamBronzMedalAward_<?php echo $_participantTeam->id ?>" name="<?php echo $_participantTeam->id ?>" value="<?php echo $_participantTeam->numberOfBronzeMedal ?>" rel="<?php echo $_participantTeam->id ?>" placeholder="" title="<?php echo $_participantTeam->teamName ?>" >
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-01 ui-table-td-form"> 
-				<input type="text" class="ui-table-list-form-input-md ui-table-list-form-disabled-input  ui-text-center-align participantTeamTotalMedalAward <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="participantTeamTotalMedalAward_<?php echo $_row ?>" name="<?php echo $_participantTeam->id ?>" value="<?php echo $_participantTeam->totalMedalAward ?>" rel="<?php echo $_participantTeam->id ?>" placeholder="" title="<?php echo $_participantTeam->participantTeamName ?>" disabled   >
+				<input type="text" class="ui-table-list-form-input-md ui-table-list-form-disabled-input  ui-text-center-align participantTeamTotalMedalAward <?php echo $_task->id ? 'ui-table-list-form-disabled-input':'' ?>" id="participantTeamTotalMedalAward_<?php echo $_row ?>" name="<?php echo $_participantTeam->id ?>" value="<?php echo $_participantTeam->totalMedalAward ?>" rel="<?php echo $_participantTeam->id ?>" placeholder="" title="<?php echo $_participantTeam->teamName ?>" disabled   >
 			</td>  
 			<td class="ui-table-action ui-table-list-action-box-3">
 				<div class="ui-table-list-action " id="">
 					<ul class="ui-table-action-menu">     
 						<li>
 							<button class="ui-table-grid-list-button updateCandidateSerializedItem" id="updateTournamentMatchMedalAward-<?php echo $_participantTeam->id ?>" rel="<?php echo $_participantTeam->token_id ?>"   onclick='Javascript:updateTournamentMatchMedalAwardFunction(<?php echo $_participantTeam->id ?>)'>	 
-								<img title="<?php echo __('View Participant Team Medal Award').' ( '.' Team '.' #:'.$_participantTeam->teamNumber ?> )" src="<?php echo image_path('icons/update') ?>">		
+								<img title="<?php echo __('View Participant Team Medal Award').' ( '.' Team '.' #:'.$_participantTeam->teamName ?> )" src="<?php echo image_path('icons/update') ?>">		
 							</button>
 						</li> 
 						<li>

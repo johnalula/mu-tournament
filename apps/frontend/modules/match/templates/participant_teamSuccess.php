@@ -25,13 +25,24 @@
 	//$_candidateParticipantTeamss = TournamentMatchParticipantTeamTable::makeAllCandidateSelection ( 1, '1823478c831a03403d922373feb04f578e3ce4c2', $_matchFixtureID, 2, $_sportGameID) ;
 	//echo count($_candidateParticipantTeamss);
 	
-	//$_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( 4, '346b5501f220f346040c45a17e40244d64e2b415', $_sportGameID, $_genderCategory, $_keyword, 0, 20); 
+	//$_tournamentSportGameGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( 4, '346b5501f220f346040c45a17e40244d64e2b415', $_sportGameID, $_genderCategory, $_keyword, 0, 100); 
+	
+	//$_tournamentSportGameGroups = TournamentSportGameGroupTable::selectCandidateTournamentSportGameGroups ( $_tournamentGroupID, $_sportGameID, $_genderCategory, $_approvalStatus, $_status, $_keyword, $_exclusion, 0, 100); 
+	
+	//$_tournamentSportGameGroupsss = TournamentGroupParticipantTeamTable::makeCandidateParticipantTeamSelection ($_sportGameGroupID, $_sportGameID, $_genderCategoryID, $_qual, $_qual, $_keyword, $_exclusion, 0, 100); 
+	//$_tournamentSportGameGroupsss = TournamentMatchParticipantTeamTable::selectCandidates ( 4, '346b5501f220f346040c45a17e40244d64e2b415', $_matchFixtureID, $_matchFixtureGroupID, $_sportGameID ); 
 	
 	//tournament_match_id=4&tournament_match_token_id=346b5501f220f346040c45a17e40244d64e2b415&match_fixture_id=6&match_fixture_token_id=c08c53ab0143bccb3b3f268413901ce3cf90ff8a&tournament_sport_game_group_id=14&gender_category_id=1
 	
 	//$_candidateParticipantTeams = TournamentMatchTable::selectCandidateParticipantTeams (  4, '346b5501f220f346040c45a17e40244d64e2b415', $_matchFixtureID, 14, $_sportGameID, 1, $_keyword, 0, 20 );
 	
-	//echo count($_candidateParticipantTeams);
+	//echo count($_tournamentSportGameGroupsss);
+	
+	/*foreach($_tournamentSportGameGroupsss as $_tournamentSportGameGroup) {
+		
+			$_tournamentSportGameGroup->makeConfirmation();
+	}*/
+	//echo count($_tournamentSportGameOpponentGroups);
 ?> 
 
 <div class="ui-page-box">

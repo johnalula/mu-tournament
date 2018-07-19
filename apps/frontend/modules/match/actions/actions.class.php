@@ -252,6 +252,8 @@ class matchActions extends sfActions
 		//$this->_tournamentSportGameOpponentGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_tournamentFixtureID, 26, 1, $_approvalStatus, $_status, $_keyword, 0, 50); 
 		//$this->_tournamentSportGameOpponentGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_genderCategory, $_keyword, 0, 50); 
 		
+		//$this->_tournamentSportGameOpponentGroups =  TournamentMatchTable::selectCandidateTournamentFixtureSportGameGroups ( $_tournamentMatchID, $_tournamentMatchTokenID, $_sportGameID, $_genderCategory, $_keyword, 0, 50); 
+		
 	}
 	public function executeCreateTournamentMatchParticipantTeam(sfWebRequest $request)
 	{

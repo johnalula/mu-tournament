@@ -12,6 +12,19 @@
  */
 class Team extends PluginTeam
 {
+	public function makeMatchMedalAward ($_goldMedalAward, $_silverMedalAward, $_bronzeMedalAward)
+	{
+		
+		$_flag = true;    
+			$this->gold_medal = trim($_goldMedalAward); 
+			$this->silver_medal = trim($_silverMedalAward); 
+			$this->bronze_medal = trim($_bronzeMedalAward); 
+			$this->total_medal_award = intval(trim($_goldMedalAward))+intval(trim($_silverMedalAward))+intval(trim($_bronzeMedalAward)); 
+			$this->save();
+			
+		return $_flag;
+	}
+	
 	public function makeFullCodeNumber ($_tournamentMatchNumber)
 	{
 		return (($_tournamentMatchNumber->approval_status ==TournamentCore::$_INITIATED) && ($this->status ==TournamentCore::$_INITIATED)) ? true:false;

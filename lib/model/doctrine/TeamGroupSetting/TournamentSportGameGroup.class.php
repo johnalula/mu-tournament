@@ -136,6 +136,22 @@ class TournamentSportGameGroup extends PluginTournamentSportGameGroup
 		return (count($_tournamnetTeamGroups));
 	}
 
+	public function hasCandidatePendingParticipants () 
+	{
+		
+		$_countCandidateParticipantTeams = TournamentGroupParticipantTeamTable::countCandidates ($this->id, $_sportGameID, $_genderCategoryID, TournamentCore::$_CONFIRMED, TournamentCore::$_PENDING, TournamentCore::$_QFD, TournamentCore::$_ACTIVE);
+		
+		return (count($_countCandidateParticipantTeams));
+	}
+	
+	/*public function countCandidateParticipants () 
+	{
+		
+		$_countCandidateParticipantTeams = TournamentGroupParticipantTeamTable::countCandidates ($this->id, $_sportGameID, $_genderCategoryID, $_confirmedStatus, $_competitionStatus, $_qualificationStatus, $_status);
+		
+		return (count($_countCandidateParticipantTeams));
+	}*/
+
 
 
 	

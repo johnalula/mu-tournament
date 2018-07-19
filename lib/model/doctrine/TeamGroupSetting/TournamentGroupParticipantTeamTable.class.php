@@ -662,4 +662,33 @@ class TournamentGroupParticipantTeamTable extends PluginTournamentGroupParticipa
 	/*********************************************************
 	********** Candidate selection process *******************
 	**********************************************************/
+	
+	// process list selection function 
+   public static function countCandidates ($_tournamentGroupID=null, $_sportGameID=null, $_genderCategoryID=null, $_confirmedStatus=null, $_competitionStatus=null, $_qualificationStatus=null, $_status=null) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select("gmGrpTmPrt.id")
+				->from("TournamentGroupParticipantTeam gmGrpTmPrt") 
+				->innerJoin("gmGrpTmPrt.TournamentSportGameGroup sprtGmGrp on gmGrpTmPrt.tournament_sport_game_group_id = sprtGmGrp.id ") 
+				->innerJoin("sprtGmGrp.TournamentTeamGroup trmnTmGrp on sprtGmGrp.tournament_team_group_id = trmnTmGrp.id ")  
+				->innerJoin("gmGrpTmPrt.TeamGameParticipation tmGmPrtn on gmGrpTmPrt.team_game_participation_id = tmGmPrtn.id ")  
+				->innerJoin("gmGrpTmPrt.Team tmPrt on gmGrpTmPrt.team_id = tmPrt.id ") 
+				->innerJoin("sprtGmGrp.Tournament trnmt on sprtGmGrp.tournament_id = trnmt.id ")  
+				->innerJoin("sprtGmGrp.SportGame sprtGm on sprtGmGrp.sport_game_id = sprtGm.id ") 
+				->innerJoin("sprtGm.GameCategory gmCat on sprtGm.sport_game_category_id = gmCat.id ")  
+				->innerJoin("trnmt.Organization org on trnmt.org_id = org.id ") 
+				->orderBy("gmGrpTmPrt.id DESC")
+				->where("gmGrpTmPrt.id IS NOT NULL");
+				if(!is_null($_tournamentGroupID)) $_qry = $_qry->addWhere("sprtGmGrp.id = ?", $_tournamentGroupID);    
+				if(!is_null($_sportGameID)) $_qry = $_qry->addWhere("sprtGm.id = ?", $_sportGameID);    
+				if(!is_null($_genderCategoryID)) $_qry = $_qry->addWhere("sprtGmGrp.gender_category_id = ?", $_genderCategoryID);        
+				if(!is_null($_confirmedStatus)) $_qry = $_qry->addWhere("gmGrpTmPrt.confirmed_status = ?", $_confirmedStatus);         
+				if(!is_null($_competitionStatus)) $_qry = $_qry->addWhere("gmGrpTmPrt.competition_status = ?", $_competitionStatus);         
+				if(!is_null($_qualificationStatus)) $_qry = $_qry->addWhere("gmGrpTmPrt.qualification_status = ?", $_qualificationStatus);         
+				if(!is_null($_status)) $_qry = $_qry->addWhere("gmGrpTmPrt.status = ?", $_status);                
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
 }

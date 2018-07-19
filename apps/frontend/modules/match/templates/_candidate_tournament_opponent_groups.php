@@ -45,7 +45,7 @@
 			</td>  
 			<td class="ui-td-center-text ui-td-xsmall-0">
 				<span rel="<?php echo $_tournamentSportGameGroup->id ?>" class="ui-table-status-small-icon" id="<?php echo $_tournamentSportGameGroup->id ?>">
-					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->activeFlag ? 'status/approved':'status/disabled')  ?>"> 
+					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->status ? 'status/approved':'status/disabled')  ?>"> 
 					<img title="<?php echo $_tournamentSportGameGroup->id ?>" src="<?php echo image_path($_tournamentSportGameGroup->status == TournamentCore::$_ACTIVE  ? 'status/active':'status/pending')  ?>"> 
 				</span>
 			</td> 

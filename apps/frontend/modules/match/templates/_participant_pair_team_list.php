@@ -18,14 +18,14 @@
 	  </thead>
 	  <tbody>
 		<input type="hidden" class="form-control" id="ui-total-data-list-product" name="ui-total-data-list-product" value="<?php echo count($_countTournaments) ?>">
-	  <?php foreach ( $_tournamentMatchFixtureGroups as $_key => $_candidateMatchFixtureGroup ): ?>
+	  <?php $_rowNumber = 1; foreach ( $_tournamentMatchFixtureGroups as $_key => $_candidateMatchFixtureGroup ): ?>
 		 <tr class="<?php echo fmod($_key, 2) ? 'ui-table-td-even' : 'ui-table-td-odd' ?>"> 
 			<td class="ui-table-td-left-border ui-table-td-xfw">
 				<input type="checkbox" id="all-list-check-boxs" name="all-list-check-boxs" class="ui-input-checkbox" value="true" />
 			</td>
 			<td class="ui-td-center-text ui-td-xsmall-00">
 				<a href="<?php echo url_for('category/view?category_id='.$_candidateMatchFixtureGroup->id.'&token_id='.$_candidateMatchFixtureGroup->token_id) ?>" >	
-					<?php echo SystemCore::processDataID($_candidateMatchFixtureGroup->id) ?>
+					<?php echo '0'.$_rowNumber ?>
 				</a>
 			</td> 
 			<td class="ui-td-left-text ui-td-xsmall-12"> 
@@ -62,6 +62,7 @@
 			<td class="ui-table-td-right-border ui-table-td-xfw">
 			</td>
 		 </tr> 
+		 <?php $_rowNumber++; ?>
 		 <?php endforeach; ?>
 		 <tr> 
 			<td class="ui-table-td-left-border ui-table-td-xfw"></td>

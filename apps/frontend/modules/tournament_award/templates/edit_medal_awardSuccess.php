@@ -9,6 +9,9 @@
 	
 	//echo $_participantStanding->participantTeamName.' == ';
 	//$_participantStanding->makeMatchMedalAward (2, 0, 3);
+	
+	
+	//$_team = TeamTable::makeCandidateObject ( $_teamID, $_tokenID );
 ?> 
 
 <div class="ui-page-box">

@@ -58,17 +58,28 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 	{
 		$_flag = true;   
 			$this->confirmed_flag = true; 
-			$this->competition_status = trim(TournamentCore::$_ACTIVE); 
+			$this->active_flag = true;   
+			$this->confirmed_status = trim(TournamentCore::$_PENDING); 
+			$this->competition_status = trim(TournamentCore::$_PENDING);   
+			$this->process_status = trim(TournamentCore::$_ACTIVE);   
+			$this->approval_status = trim(TournamentCore::$_PENDING);   
+			$this->status = trim(TournamentCore::$_PENDING);    
 			$this->save();
 
 		return $_flag;
-	}
-	public function makeProcessRevertion ()
+	} 
+	public function makeConfirmation ()
 	{
-		$_flag = true;       
-		$this->status = trim(TournamentCore::$_ACTIVE); 
-		$this->effective_date = NULL;  
-		$this->save();
+		$_flag = true;    
+			$this->qualified_flag = true; 
+			$this->confirmed_flag = true; 
+			$this->active_flag = true;   
+			$this->competition_status = trim(TournamentCore::$_ACTIVE);   
+			$this->process_status = trim(TournamentCore::$_COMPLETED);   
+			$this->approval_status = trim(TournamentCore::$_APPROVED);  
+			$this->status = trim(TournamentCore::$_ACTIVE);   
+			$this->save();
+
 		return $_flag;
 	}
 	public function makeCompletion ()

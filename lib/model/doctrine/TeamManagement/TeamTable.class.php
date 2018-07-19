@@ -16,7 +16,7 @@ class TeamTable extends PluginTeamTable
     {
         return Doctrine_Core::getTable('Team');
     }
-     //
+   //
 	public static function processNew ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_teamCountry, $_teamCity, $_description, $_userID, $_userTokenID  )
 	{
 		 $_flag = true;
@@ -48,6 +48,16 @@ class TeamTable extends PluginTeamTable
 	{
 		
 	} 
+	//
+	public static function makeUpdateMadalAward ( $_participantTeamID, $_participantTeamTokenID, $_goldMedalAward, $_silverMedalAward, $_bronzeMedalAward)
+	{
+		
+			$_participantTeam = TeamTable::makeCandidateObject ( $_participantTeamID, $_participantTeamTokenID );;
+			$_flag = $_participantTeam->makeMatchMedalAward($_goldMedalAward, $_silverMedalAward, $_bronzeMedalAward);
+		
+		return $_flag ? true:false;
+	}
+	//
 	public static function processSave ( $_orgID, $_orgTokenID, $_tournamentID, $_teamName, $_teamAlias, $_teamFullAlias, $_teamCountry, $_teamCity, $_teamNumber, $_description )
 	{
 		//try {
@@ -95,7 +105,7 @@ class TeamTable extends PluginTeamTable
 		
 	} 
 	//
-	public static function processUpdate ( )
+	public static function processUpdates ( )
 	{
 		   
 	} 
@@ -258,6 +268,28 @@ class TeamTable extends PluginTeamTable
 				->innerJoin("tm.Organization org on tm.org_id = org.id ")  
 				->offset($_offset)
 				->limit($_limit) 
+				->orderBy("tm.gold_medal DESC")
+				->where("tm.id IS NOT NULL");
+				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
+				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    
+				if(!is_null($_keyword) )
+					if(strcmp(trim($_keyword), "") != 0 )
+						$_qry = $_qry->andWhere("tm.team_name LIKE ? OR tm.alias LIKE ? OR tm.description LIKE ?", array( $_keyword, $_keyword, $_keyword));
+				
+			$_qry = $_qry->execute(array(), Doctrine_Core::HYDRATE_RECORD); 
+
+		return ( count($_qry) <= 0 ? null:$_qry );  
+	}
+	// process list selection function 
+   public static function makeSelection ( $_tournamentID=null, $_activeFlag=null, $_keyword=null, $_offset=0, $_limit=10 ) 
+   {
+		$_qry = Doctrine_Query::create()
+				->select(self::appendQueryFields())
+				->from("Team tm") 
+				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
+				->innerJoin("tm.Organization org on tm.org_id = org.id ")  
+				->offset($_offset)
+				->limit($_limit) 
 				->orderBy("tm.id ASC")
 				->where("tm.id IS NOT NULL");
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
@@ -281,7 +313,7 @@ class TeamTable extends PluginTeamTable
 				->from("Team tm") 
 				->innerJoin("tm.Tournament trnmnt on tm.tournament_id = trnmnt.id ") 
 				->innerJoin("tm.Organization org on tm.org_id = org.id ")   
-				->orderBy("tm.id ASC")
+				->orderBy("tm.gold_medal DESC, tm.silver_medal DESC, tm.bronze_medal DESC")
 				->where("tm.id IS NOT NULL");
 				if(!is_null($_tournamentID)) $_qry = $_qry->addWhere("trnmnt.id = ? ", $_tournamentID); 
 				if(!is_null($_activeFlag)) $_qry = $_qry->addWhere("tm.active_flag = ?", $_activeFlag);    

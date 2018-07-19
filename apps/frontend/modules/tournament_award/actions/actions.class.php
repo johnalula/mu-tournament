@@ -27,8 +27,15 @@ class tournament_awardActions extends sfActions
 		$_orgID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgID');
 		$_orgTokenID = $_defaultSuperAdmin ? null:$this->getUser()->getAttribute('orgTokenID');
 
-		$this->_participantTeams = TournamentParticipantTeamMedalStandingTable::processCandidates ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_activeFlag, $_keyword);
+		$_tournament = TournamentTable::makeActiveObject ( true );
+		
+		$this->_activeTournament = TournamentTable::makeActiveObject ( 1, true );
+		//$this->_activeTournament = TournamentTable::processObject (  1, '5298132053f93db5da4d84b8c1c0eb9aece6cd57', 1, '67a74306b06d0c01624fe0d0249a570f4d093747' );
+		
+		//$this->_candidateParticipantTeams = TournamentParticipantTeamMedalStandingTable::makeCandidates ( $_tournament->id, $_participantTeamID, $_activeFlag, $_keyword);
+		$this->_participantTeams = TeamTable::makeCandidateSelections ( $_tournament->id, $_activeFlag, $_keyword );;
 	}
+	
 	public function executeNew(sfWebRequest $request)
 	{
 
@@ -112,7 +119,7 @@ class tournament_awardActions extends sfActions
 		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
 		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
 
-		$_flag =  TournamentParticipantTeamMedalStandingTable::processUpdate ( $_orgID, $_orgTokenID, $_tournamentID, $_participantTeamID, $_participantTeamTokenID, $_goldMedalAward, $_silverMedalAward, $_bronzeMedalAward, $_userID, $_userTokenID );  
+		$_flag =  TeamTable::makeUpdateMadalAward ( $_participantTeamID, $_participantTeamTokenID, $_goldMedalAward, $_silverMedalAward, $_bronzeMedalAward);  
 			 
 		return $_flag ? true:false;
 
