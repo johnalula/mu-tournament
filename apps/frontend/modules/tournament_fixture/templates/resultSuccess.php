@@ -9,6 +9,15 @@
 	//$_fixtureParticipant = TournamentMatchTeamMemberParticipantTable::makeCandidateObject ( 15, "0b8ca977dadd6206136b1e6b5b58f6e501dcc843" ); 
 	//$_fixtureParticipant = TournamentMatchFixtureTable::processObject (null, null, 4, "456e5766400c40899a9802329be10f8e1a54ccd0" ); 
 	//echo $_fixtureParticipant->id;
+	
+	//echo $_tournamentMatchFixtureGroup->selectCandidateParticipantTeam(0);
+	
+	//match_fixture_group_id=13&match_fixture_group_token_id=86a1235bad84e5f0b1a2a640e042fcd54d830672&fixture_participant_team_id=1&fixture_participant_team_token_id=c02614d670570553718e3c12b1086fde93760fe2&fixture_participant_opponent_team_id=2&fixture_participant_opponent_team_token_id=d550d2593ffb687b2cb75e7045ed0484debaebd1&fixture_participant_team_result=4&fixture_participant_opponent_team_result=2
+	
+	//$_fixtureParticipantTeam = TournamentMatchParticipantTeamTable::makeObject ( 2, 'd550d2593ffb687b2cb75e7045ed0484debaebd1');
+	//echo $_fixtureParticipantTeam->matchResultScore;
+	
+	//$_flag =  TournamentMatchFixtureGroupTable::makeMatchFixtureGroupResult ($_orgID, $_orgTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, 1, 'c02614d670570553718e3c12b1086fde93760fe2', 2, 'd550d2593ffb687b2cb75e7045ed0484debaebd1', 4, 2, $_userID, $_userTokenID );  
 ?> 
 
 <div class="ui-page-box">
@@ -53,6 +62,25 @@
  
 
 <script>
+	
+	$('#updateTournamentMatchFixtureResult').click(function(){
+		var url = '<?php echo url_for('tournament_fixture/updateMatchFixtureGroupParticipantResult')?>'; 
+		var matchFixtureGroupID = $(this).attr('rel'); 
+		var matchFixtureGroupTokenID = $(this).attr('data'); 
+		var matchFixtureParticipantTeamID = $('#matchFixtureParticipantTeamID_'+matchFixtureGroupID).attr('rel'); 
+		var matchFixtureParticipantTeamTokenID = $('#matchFixtureParticipantTeamID_'+matchFixtureGroupID).val(); 
+		var matchFixtureParticipantOpponentTeamID = $('#matchFixtureParticipantOpponentTeamID_'+matchFixtureGroupID).attr('rel'); 
+		var matchFixtureParticipantOpponentTeamTokenID = $('#matchFixtureParticipantOpponentTeamID_'+matchFixtureGroupID).val(); 
+		var matchFixtureParticipantTeamResult = $('#matchFixtureParticipantTeamResult_'+matchFixtureGroupID).val(); 
+		var matchFixtureParticipantOpponentTeamResult = $('#matchFixtureParticipantOpponentTeamResult_'+matchFixtureGroupID).val(); 
+		 
+		
+		var datas = 'match_fixture_group_id='+matchFixtureGroupID+'&match_fixture_group_token_id='+matchFixtureGroupTokenID+'&fixture_participant_team_id='+matchFixtureParticipantTeamID+'&fixture_participant_team_token_id='+matchFixtureParticipantTeamTokenID+'&fixture_participant_opponent_team_id='+matchFixtureParticipantOpponentTeamID+'&fixture_participant_opponent_team_token_id='+matchFixtureParticipantOpponentTeamTokenID+'&fixture_participant_team_result='+matchFixtureParticipantTeamResult+'&fixture_participant_opponent_team_result='+matchFixtureParticipantOpponentTeamResult;
+		processEntry(datas, url );
+		
+		//alert(datas);
+		return true; 
+	});  
 	
 	function updateTournamentMatchFixtureParticipantResult (matchFixtureParticipantID) {
 		var url = '<?php echo url_for('tournament_fixture/updateTournamentMatchFixtureGroupParticipantResult')?>'; 

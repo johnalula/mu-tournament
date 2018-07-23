@@ -1970,6 +1970,7 @@ class TournamentCore {
 			break; 
 		}
 	} 
+	
 	/********************************************************/
 	
 	public static $_INDIVIDUAL_AWARD = 1;
@@ -2036,6 +2037,71 @@ class TournamentCore {
 			case self::$_OTHER_AWARD:
 				return 'other_award';
 			break; 
+		}
+	} 
+	
+	/********************************************************/
+	
+	public static $_WIN = 1;
+	public static $_DRAW = 2;
+	public static $_LOST = 3;
+
+	public static $_MATCH_RESULT_STATUS_MODES = array ( 1 => 'Win', 2 => 'Draw', 3 => 'Lost');
+	
+	public static function processMatchResultStatusModes ( ) 
+	{
+		 try {
+				return self::$_MATCH_RESULT_STATUS_MODES; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	
+	public static function processMatchResultStatusModeID ( $_value ) 
+	{
+		try {
+			foreach( self::$_MATCH_RESULT_STATUS_MODES as $_key => $_event ){
+				if( strcmp($_event, $_value) == 0 )
+					return $_key; 
+			}
+			return null; 
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+
+	public static function processMatchResultStatusModeValue ($_id )
+	{
+		try { 
+			foreach( self::$_MATCH_RESULT_STATUS_MODES as $_key => $_event ){
+			  if( $_key == $_id )
+					return $_event; 
+			}
+			return null;       
+		} catch ( Exception $_e ) {
+			return null; 
+		}
+	}
+	public static function processDefaultMatchResultStatusMode ( )
+	{
+		 try {
+				return self::$_WIN; 
+			} catch ( Exception $_e ) {
+			return $_e; 
+	  }   
+	}
+	public static function processMatchResultStatusModeAlias ($_event) 
+	{
+		switch($_event) {			
+			case self::$_WIN:
+				return 'W';
+			break;
+			case self::$_DRAW:
+				return 'D';
+			break; 
+			case self::$_LOST:
+				return 'L';
+			break;  
 		}
 	} 
 }

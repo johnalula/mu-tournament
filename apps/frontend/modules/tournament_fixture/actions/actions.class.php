@@ -43,6 +43,32 @@ class tournament_fixtureActions extends sfActions
 		$this->_candidateMatchFixtureParticipants = TournamentMatchFixtureTable::selectCandidateParticipants ( $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_sportGameID, $_genderCategoryID, $_qualificationStatus, $_competitionStatus, $_status ); 
   }
   //
+  public function executeUpdateMatchFixtureGroupParticipantResult(sfWebRequest $request)
+	{ 
+		//match_fixture_group_id=13&match_fixture_group_token_id=86a1235bad84e5f0b1a2a640e042fcd54d830672&fixture_participant_team_id=1&fixture_participant_team_token_id=c02614d670570553718e3c12b1086fde93760fe2&fixture_participant_opponent_team_id=2&fixture_participant_opponent_team_token_id=d550d2593ffb687b2cb75e7045ed0484debaebd1&fixture_participant_team_result=4&fixture_participant_opponent_team_result=2
+		
+		$_matchFixtureGroupID = $request->getParameter('match_fixture_group_id');	
+		$_matchFixtureGroupTokenID = $request->getParameter('match_fixture_group_token_id');	
+		
+		$_fixtureParticipantTeamID = $request->getParameter('fixture_participant_team_id');	
+		$_fixtureParticipantTeamTokenID = $request->getParameter('fixture_participant_team_token_id');	
+		$_fixtureParticipantOpponentTeamID = $request->getParameter('fixture_participant_opponent_team_id');	
+		$_fixtureParticipantOpponentTeamTokenID = $request->getParameter('fixture_participant_opponent_team_token_id');	
+		
+		$_fixtureParticipantTeamResult = $request->getParameter('fixture_participant_team_result');	
+		$_fixtureParticipantOpponentTeamResult = $request->getParameter('fixture_participant_opponent_team_result');	
+		 
+		$_orgID = $this->getUser()->getAttribute('orgID');
+		$_orgTokenID = $this->getUser()->getAttribute('orgTokenID');  
+		$_userID = $this->getUser()->getAttribute('userID');
+		$_userTokenID = $this->getUser()->getAttribute('userTokenID'); 
+		$_tournamentID = $this->getUser()->getAttribute('activeTournamentID'); 
+		
+		$_flag =  TournamentMatchFixtureGroupTable::makeMatchFixtureGroupResult ( $_orgID, $_orgTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_fixtureParticipantTeamID, $_fixtureParticipantTeamTokenID, $_fixtureParticipantOpponentTeamID, $_fixtureParticipantOpponentTeamTokenID, $_fixtureParticipantTeamResult, $_fixtureParticipantOpponentTeamResult, $_userID, $_userTokenID );  
+			 
+		return $_flag ? true:false;
+
+	}
   public function executeUpdateTournamentMatchFixtureGroupParticipantResult(sfWebRequest $request)
 	{ 
 		//=1&=afdb28e0451c8f50ac97e93423a1c017e1df1f98&=1&=a5a975d861baaef5ee8b1e855f56f8c023d4ebb4&=1&=9248cc14f48fcd09ddf3ea1538ecdd49844651a4&=&=&fixture_group_participant_number=&=&=1&=8

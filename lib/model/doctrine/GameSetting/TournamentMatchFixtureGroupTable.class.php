@@ -120,6 +120,8 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 	{		
 		 $_queryFileds = "mtchFixGrp.id, mtchFixGrp.match_group_number as matchFixtureGroupNumber, mtchFixGrp.match_heat_number as matchFixtureHeatNumber, mtchFixGrp.match_heat_name as matchFixtureHeatName, mtchFixGrp.match_venue as tournamentMatchFixtureGroupVenue, mtchFixGrp.match_date as fixtureGroupMatchDate, mtchFixGrp.match_time as fixtureGroupMatchTime, mtchFixGrp.match_fixture_round_mode as matchFixtureGroupRoundMode, mtchFixGrp.match_venue as matchFixtureGroupMatchVenue, mtchFixGrp.tournament_match_session_mode as matchFixtureGroupSessionMode, mtchFixGrp.qualifying_rows_enable_flag as enableQualifyingRowFlag, mtchFixGrp.fixture_round_status as qualifyingStatus, mtchFixGrp.competition_status as competitionStatus, 
 		 
+			
+		 
 								mtchFix.id as matchFixtureID, mtchFix.token_id as matchFixtureTokenID, mtchFix.match_round_type_id as matchRoundTypeID, mtchFix.event_type as matchEventType, mtchFix.contestant_mode as matchContestantMode, mtchFix.contestant_team_mode as matchContestantTeamMode, mtchFix.match_venue as matchVenue, mtchFix.gender_category_id as genderCategoryID, mtchFix.tournament_match_fixture_number as tournamentMatchFixtureNumber, mtchFix.tournament_match_fixture_full_number as tournamentMatchFixtureFullNumber, mtchFix.match_venue as tournamentMatchFixtureVenue, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.id as groupID, mtchFix.active_flag as activeFlag, mtchFix.sport_game_id as fixtureSportGameID, mtchFix.match_round_type_name as roundTypeName, mtchFix.match_round_type_name as matchFixtureRoundName, mtchFix.match_fixture_round_mode as matchFixtureRoundMode, 
 		 
 								trnmtMtch.id as tournamentMatchID, trnmtMtch.tournament_match_number as tournamentMatchNumber, trnmtMtch.tournament_match_full_number as tournamentMatchFullNumber, trnmtMtch.tournament_match_result_mode as tournamentMatchResultMode, trnmtMtch.tournament_match_round_mode as tournamentMatchRoundMode,
@@ -620,4 +622,22 @@ class TournamentMatchFixtureGroupTable extends PluginTournamentMatchFixtureGroup
 	**********************************************************/
 
 	/********** Candidate selection process new action *******************/
+	
+	public static function makeMatchFixtureGroupResult ($_orgID, $_orgTokenID, $_matchFixtureGroupID, $_matchFixtureGroupTokenID, $_fixtureParticipantTeamID, $_fixtureParticipantTeamTokenID, $_fixtureParticipantOpponentTeamID, $_fixtureParticipantOpponentTeamTokenID, $_fixtureParticipantTeamResult, $_fixtureParticipantOpponentTeamResult, $_userID, $_userTokenID ) 
+   {
+		
+		$_fixtureParticipantTeam = TournamentMatchParticipantTeamTable::makeObject ( $_fixtureParticipantTeamID, $_fixtureParticipantTeamTokenID);
+		
+		$_fixtureParticipantTeam->makeMatchFixtureResult ($_fixtureParticipantTeamResult, $_scorePoint, $_fixtureStatus);
+		
+		$_fixtureParticipantOpponentTeam = TournamentMatchParticipantTeamTable::makeObject ( $_fixtureParticipantOpponentTeamID, $_fixtureParticipantOpponentTeamTokenID );
+		
+		$_fixtureParticipantOpponentTeam->makeMatchFixtureResult ($_fixtureParticipantOpponentTeamResult, $_scorePoint, $_fixtureStatus);
+		 
+		// $_participantTeam = TeamTable::processObject ( $_orgID, $_orgTokenID, $_participantTeamID, $_participantTeamTokenID ) ;
+		 
+		 //$_tournamentMatchFixture = TournamentMatchFixtureTable::processObject ( $_orgID, sha1(md5($_orgTokenID)), $_matchFixtureID, $_matchFixtureTokenID );;  
+		 
+		return true;
+	} 
 }

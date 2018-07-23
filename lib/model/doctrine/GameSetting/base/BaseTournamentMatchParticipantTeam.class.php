@@ -16,6 +16,7 @@
  * @property string $group_participant_team_token_id
  * @property integer $match_result_point
  * @property integer $match_result_score
+ * @property integer $match_result_total_goals
  * @property datetime $match_result_time
  * @property integer $red_card_number
  * @property integer $yellow_card_number
@@ -92,6 +93,9 @@ abstract class BaseTournamentMatchParticipantTeam extends sfDoctrineRecord
              'type' => 'integer',
              ));
         $this->hasColumn('match_result_score', 'integer', null, array(
+             'type' => 'integer',
+             ));
+        $this->hasColumn('match_result_total_goals', 'integer', null, array(
              'type' => 'integer',
              ));
         $this->hasColumn('match_result_time', 'datetime', null, array(

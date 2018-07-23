@@ -620,6 +620,7 @@ TournamentMatchParticipantTeam:
     group_participant_team_token_id: { type: string(100) } 
     match_result_point: { type: integer } 
     match_result_score: { type: integer } 
+    match_result_total_goals: { type: integer } 
     match_result_time: { type: datetime } 
     red_card_number: { type: integer } 
     yellow_card_number: { type: integer } 

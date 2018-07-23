@@ -135,6 +135,11 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 		return Wordlimit::wordTeaxtLimiter($_participantTeams[0],3).' '." --- ".' '.Wordlimit::wordTeaxtLimiter($_participantTeams[1],3);
 		
 	}
+	public function selectCandidatePairParticipantTeams ()
+	{
+		return $_fixtureParticipantTeams = TournamentMatchParticipantTeamTable::makeCandidateGroupParticipantSelection ($this->id);
+		
+	}
 	public function selectCandidateParticipantTeamsAlias ()
 	{
 		$_fixtureParticipantTeams = TournamentMatchParticipantTeamTable::makeCandidateGroupParticipantSelection ($this->id);
@@ -148,6 +153,83 @@ class TournamentMatchFixtureGroup extends PluginTournamentMatchFixtureGroup
 		return Wordlimit::wordTeaxtLimiter($_participantTeams[0],3).' '." --- ".' '.Wordlimit::wordTeaxtLimiter($_participantTeams[1],3);
 		
 	}
+	public function selectCandidateTeamsArray ()
+	{
+		$_candidateParticipantTeams = $this->selectCandidatePairParticipantTeams();
+		
+		$_participantTeams = array();   
+		
+		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
+			$_participantTeams[] = $_candidateParticipantTeam->participantTeamAlias.' ( '.SystemCore::processCountryAliasValue($_candidateParticipantTeam->teamCountry).' )';
+		}
+		
+		return $_participantTeams;
+		
+	}
+	public function selectCandidateParticipantTeamsArray ()
+	{
+		$_candidateParticipantTeams = $this->selectCandidatePairParticipantTeams();
+		
+		$_participantTeams = array();   
+		
+		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
+			$_participantTeams[] = $_candidateParticipantTeam->id;
+		}
+		
+		return $_participantTeams;
+		
+	}
+	public function selectCandidateParticipantTeamsTokenArray ()
+	{
+		$_candidateParticipantTeams = $this->selectCandidatePairParticipantTeams();
+		
+		$_participantTeams = array();   
+		
+		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
+			$_participantTeams[] = $_candidateParticipantTeam->token_id;
+		}
+		
+		return $_participantTeams;
+		
+	}
+	public function selectCandidateParticipantTeam ( $_teamNumber )
+	{
+		$_participantTeams = array(); 
+		
+		$_participantTeams = $this->selectCandidateTeamsArray();
+		
+		return $_participantTeams[$_teamNumber];
+	}
+	public function makeCandidateParticipantTeamID ( $_teamNumber )
+	{
+		$_participantTeams = array(); 
+		
+		$_participantTeams = $this->selectCandidateParticipantTeamsArray();
+		
+		return $_participantTeams[$_teamNumber];
+	}
+	public function makeCandidateParticipantTeamTokenID ( $_teamNumber )
+	{
+		$_participantTeams = array(); 
+		
+		$_participantTeams = $this->selectCandidateParticipantTeamsTokenArray();
+		
+		return $_participantTeams[$_teamNumber];
+	}
+	
+	public function makeCandidateMatchResult ( $_teamNumber )
+	{
+		$_candidateParticipantTeams = $this->selectCandidatePairParticipantTeams();
+		
+		$_participantTeams = array();   
+		
+		foreach($_candidateParticipantTeams as $_candidateParticipantTeam) {
+			$_participantTeams[] = $_candidateParticipantTeam->matchResultScore ? $_candidateParticipantTeam->matchResultScore:0;
+		}
+		
+		return $_participantTeams[$_teamNumber];
+	}
+	
 }
 
 

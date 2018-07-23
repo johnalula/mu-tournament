@@ -86,6 +86,8 @@ class TournamentMatchParticipantTeamTable extends PluginTournamentMatchParticipa
 	{		
 		 $_queryFileds = "mtchPrtTm.id, mtchPrtTm.approval_status as apporvalStatus, 
 								
+								mtchPrtTm.match_result_score as matchResultScore, 
+								
 								mtchFixGrp.id, 
 								
 								mtchFix.id, mtchFix.sport_game_id as fixtureSportGameID, mtchFix.match_round_type_id as matchRoundTypeID, mtchFix.event_type as matchEventType, mtchFix.contestant_mode as matchContestantMode, mtchFix.match_venue as matchVenue, mtchFix.gender_category_id as genderCategoryID, mtchFix.tournament_match_fixture_number as tournamentMatchFixtureNumber, mtchFix.tournament_match_fixture_full_number as tournamentMatchFixtureFullNumber, mtchFix.match_venue as tournamentMatchVenue, mtchFix.match_date as matchDate, mtchFix.match_time as matchTime, mtchFix.id as groupID, mtchFix.active_flag as activeFlag, 

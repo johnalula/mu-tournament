@@ -101,6 +101,16 @@ class TournamentMatchParticipantTeam extends PluginTournamentMatchParticipantTea
 	
 	/************************************************/
 	
+	public function makeMatchFixtureResult ($_scoreResult, $_scorePoint, $_fixtureStatus)
+	{
+		$this->match_result_score = trim($_scoreResult); 
+		$this->save();
+		
+		return true;
+	}
+	
+	/************************************************/
+	
 	public function selectCandidateParticipantTeams ()
 	{
 		$_fixtureParticipantTeams = TournamentMatchParticipantTeamTable::makeCandidateGroupParticipantSelection ($this->id);
